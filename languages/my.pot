@@ -1,0 +1,437 @@
+# Copyright (C) 2024 DaftPlug
+# This file is distributed under the same license as the DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-06-05T12:03:45+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+
+#. Plugin Name of the plugin
+#: daftplug-progressify.php:22
+msgid "DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://daftplug.com/applications/progressify"
+msgstr ""
+
+#. Description of the plugin
+#: daftplug-progressify.php:23
+msgid "Enhance your website with Progressive Web Apps (PWA) features and take the user experience to the next level with future of mobile web."
+msgstr ""
+
+#. Author of the plugin
+msgid "DaftPlug"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://daftplug.com/"
+msgstr ""
+
+#: admin/class-admin.php:86
+msgid "An unexpected error occurred"
+msgstr ""
+
+#: admin/class-admin.php:102
+msgid "Dashboard"
+msgstr ""
+
+#: admin/class-admin.php:107
+msgid "Settings"
+msgstr ""
+
+#: admin/class-admin.php:111
+msgid "General"
+msgstr ""
+
+#: admin/class-admin.php:115
+msgid "Installation"
+msgstr ""
+
+#: admin/class-admin.php:119
+msgid "Offline Usage"
+msgstr ""
+
+#: admin/class-admin.php:123
+msgid "Accessibility"
+msgstr ""
+
+#: admin/class-admin.php:127
+msgid "Enhancements"
+msgstr ""
+
+#: admin/class-admin.php:131
+msgid "Push Notifications"
+msgstr ""
+
+#: admin/class-admin.php:138
+msgid "Tools"
+msgstr ""
+
+#: admin/class-admin.php:143
+msgid "Support"
+msgstr ""
+
+#: admin/templates/header.php:23
+msgid "Search"
+msgstr ""
+
+#: admin/templates/page-error.php:9
+msgid "Oops, something went wrong."
+msgstr ""
+
+#: admin/templates/page-error.php:10
+msgid "Sorry, we couldn't find your page."
+msgstr ""
+
+#: admin/templates/page-error.php:16
+msgid "Go to Dashboard"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:73
+msgid "App Configuration (Web App Manifest)"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:76
+msgid "The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user's device. This file is necessary for enabling the \"Add to Home Screen\" prompt, enhancing the integration of your web app with the user's device."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:149
+msgid "App Identity"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:152
+msgid "Define the core identifiers of your app such as the name, short name, icon, description, and categories which represent your app across devices and platforms."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:161
+msgid "App Icon"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:169
+msgid "Upload an icon representing your app, used for home screen and app listings. Ideally your web app icon should be the logo of your website."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:190
+msgid "Select Image"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:194
+msgid "512x512 PNG image."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:203
+msgid "App Screenshots"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:211
+msgid "Upload screenshots of your app to showcase its features and user interface in app stores. By default, we auto-generate one mobile and one desktop version screenshot of your homepage, but you can add up to 5 screenshots of different screens and sizes."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:294
+msgid "Drop your screenshots here or"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:297
+msgid "browse"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:302
+msgid "Select up to 5 screenshots."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:311
+msgid "App Name"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:319
+msgid "Specify the full name of your web application, typically matching your business or service name."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:324
+msgid "Enter App Name"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:330
+msgid "Short Name"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:338
+msgid "Provide a brief version (up to 12 characters) of your app’s name for display on home screens and dashboards."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:343
+msgid "Enter Short Name"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:345
+msgid "Maximum 12 characters."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:352
+msgid "Description"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:360
+msgid "Enter a concise summary of your app's purpose and main features."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:365
+msgid "Enter Description"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:371
+msgid "Categories"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:379
+msgid "The categories describe the expected application categories to which the web application belongs. It's used as a hint to catalogs or store listing web applications. We recommend not to choose more than 3 categories."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:386
+#: admin/templates/settings/subpage-general.php:394
+msgid "Select Categories"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:440
+msgid "Display Settings"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:443
+msgid "Customize how your app appears and behaves on user screens, including the startup page, display layout, and screen orientation."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:452
+msgid "Start Page"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:460
+msgid "Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:467
+#: admin/templates/settings/subpage-general.php:475
+msgid "Select Start Page"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:476
+msgid "Home Page"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:487
+msgid "Display Mode"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:495
+msgid "Choose how your app displays. We recommend choosing \"Standalone\", as it provides a native app feeling."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:502
+#: admin/templates/settings/subpage-general.php:511
+msgid "Select Display Mode"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:528
+msgid "Orientation"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:536
+msgid "Select the preferred screen orientation. We recommend choosing \"Portrait\", as it provides a more native app feeling."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:543
+#: admin/templates/settings/subpage-general.php:551
+msgid "Select Orientation"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:572
+msgid "Appearance"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:575
+msgid "Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:584
+msgid "iOS Status Bar Style"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:592
+msgid "Specify the style of the status bar for your app on iOS devices."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:599
+#: admin/templates/settings/subpage-general.php:607
+msgid "Select iOS Status Bar Style"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:608
+msgid "White bar with black text"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:609
+msgid "Black bar with white text"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:610
+msgid "Transparent bar with white text"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:618
+#: admin/templates/settings/subpage-general.php:631
+msgid "Theme Color"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:626
+msgid "Define the primary color theme for the browser's toolbar and app's header. It should be the same as the main color palette of your website."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:637
+#: admin/templates/settings/subpage-general.php:650
+msgid "Background Color"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:645
+msgid "Choose a background color that displays during app startup and loading. It should be the same as the background color of your website."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:666
+msgid "App Capabilities"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:669
+msgid "Expand your app’s functionality with advanced features like app categories, age ratings, related applications, and customizable shortcuts to various app functions."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:678
+msgid "IARC Rating ID"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:686
+msgid "International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:691
+msgid "Enter IARC Rating ID"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:697
+msgid "Related Applications"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:705
+msgid "Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don't have a native application for your web app, you can request generation of them by clicking the \"Generate Native Apps\" button on the navigation menu."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:715
+#: admin/templates/settings/subpage-general.php:724
+msgid "Select Platform"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:760
+msgid "Add Related Application"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:768
+msgid "App Shortcuts"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:776
+msgid "App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's desktop, or long pressing the app's launcher icon on Android."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:790
+msgid "Select Icon"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:819
+msgid "Add App Shortcut"
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:839
+msgid "Saving..."
+msgstr ""
+
+#: admin/templates/settings/subpage-general.php:841
+msgid "Save Changes"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:56
+msgid "Installation Prompts"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:59
+msgid "Installation prompts are messages that encourage users to add your website to their home screens. By doing so, your website becomes more accessible and provides a native app-like experience. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:75
+msgid "Installation Overlays"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:81
+msgid "Installation overlays provide a visual prompt to users, encouraging them to add your web app to their home screens. These overlays appear at strategic moments to increase the likelihood of installation."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:90
+msgid "Overlay Types"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:98
+msgid "Choose the style of installation overlays to display to users, such as a header banner, in-feed, or snackbar, to encourage them to add your web app to their home screens. Try not to enable them all to avoid spamming users with the installation banners."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:124
+msgid "Supported Browsers"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:132
+msgid "Select the supported web browsers for installation overlays. We recommend to choose all the browsers available to cover as much users as possible."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:139
+#: admin/templates/settings/subpage-installation.php:147
+msgid "Select Browsers"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:175
+msgid "Skip First Visit"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:182
+msgid "Skips first-time visitors and only shows installation overlays to returning users."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:189
+msgid "Show overlays to returning visitors only"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:197
+msgid "Timeout"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:205
+msgid "to be added..."
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:244
+msgid "Installation Button"
+msgstr ""
+
+#: admin/templates/settings/subpage-installation.php:250
+msgid "Installation button is a customizable button that can be placed anywhere on your site using a shortcode. When clicked, it triggers an installation prompt, allowing users to easily add your web app to their home screens."
+msgstr ""
+
+#: admin/templates/sidebar.php:23
+msgid "v%s"
+msgstr ""
+
+#: daftplug-progressify.php:33
+msgid "Progressify"
+msgstr ""

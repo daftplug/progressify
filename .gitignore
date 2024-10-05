@@ -1,0 +1,33 @@
+# Ignore dependencies
+/node_modules
+/vendor
+
+# Ignore generated files
+/dist
+/build
+
+# Ignore environment-specific files
+.env
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+
+# Ignore Composer files
+composer.phar
+
+# Ignore other common files/directories as needed
+# Add any other files or directories specific to your project that shouldn't be in version control
