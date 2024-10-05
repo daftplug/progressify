@@ -15,8 +15,8 @@ import { initInputValidation } from './modules/inputValidation.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initSupportAttachments } from './modules/supportAttachments.js';
 import { initChangelog } from './modules/changelog.js';
-import { initApexcharts } from './modules/apexcharts.js';
-import { initInstallationsChart } from './modules/installationsChart.js';
+// import { initApexcharts } from './modules/apexcharts.js';
+// import { initInstallationsChart } from './modules/installationsChart.js';
 
 document.addEventListener('DOMContentLoaded', (e) => {
   // Components
@@ -36,6 +36,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
   initPushImageUpload();
   initSupportAttachments();
   initChangelog();
-  initApexcharts();
-  initInstallationsChart();
+  // initApexcharts();
+  // initInstallationsChart();
 });

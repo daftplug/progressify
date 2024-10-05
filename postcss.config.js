@@ -6,7 +6,7 @@ module.exports = {
     require('tailwindcss/nesting'),
     require('tailwindcss')({ config: 'tailwind.config.js' }),
     require('postcss-prefix-selector')({
-      prefix: '.daftplugAdmin',
+      prefix: '#daftplugAdmin',
       transform: function (prefix, selector, prefixedSelector, filePath, rule) {
         if (prefixOverrideList.includes(selector)) {
           return prefix;

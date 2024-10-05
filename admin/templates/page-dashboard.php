@@ -108,9 +108,11 @@ if (!defined('ABSPATH')) {
     <div class="flex flex-col justify-between h-full pb-5 px-5">
       <div class="p-3 block border border-gray-200 rounded-xl dark:border-neutral-700 shrink-0 group">
         <div class="flex items-start justify-between gap-x-4">
-          <div class="flex items-center max-w-[70%]">
+          <div class="flex items-center max-w-[70%] gap-3">
+            <?php if (Progressify::getSetting('appConfiguration[appIdentity][appIcon]')): ?>
             <img class="inline-block shrink-0 size-[60px] rounded-full border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Progressify::getSetting('appConfiguration[appIdentity][appIcon]'), 'full')[0]; ?>" alt="PWA Icon">
-            <div class="ms-3 space-y-0.5">
+            <?php endif; ?>
+            <div class="space-y-0.5">
               <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1"><?php echo Progressify::getSetting('appConfiguration[appIdentity][appName]'); ?></h3>
               <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1"><?php echo Progressify::getSetting('appConfiguration[appIdentity][description]'); ?></p>
             </div>
@@ -329,7 +331,7 @@ if (!defined('ABSPATH')) {
     </div>
   </div>
 </div>
-<div class="grid grid-cols-1">
+<div class="hidden grid grid-cols-1">
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="text-lg inline-block font-semibold text-gray-800 dark:text-neutral-200">
