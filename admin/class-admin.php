@@ -111,6 +111,8 @@ if (!class_exists('ProgressifyAdmin')) {
         [
           'id' => 'dashboard',
           'menuTitle' => esc_html__('Dashboard', $this->textDomain),
+          'pageTitle' => esc_html__('Dashboard', $this->textDomain),
+          'description' => esc_html__(' View your PWA\'s performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control.', $this->textDomain),
           'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'page-dashboard.php']),
         ],
         [
