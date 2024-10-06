@@ -60,11 +60,83 @@ if (!defined('ABSPATH')) {
                 <?php _e('Header Banner', $this->textDomain); ?>
               </span>
             </span>
-            <span class="absolute top-3 right-3 hidden peer-checked:block ms-auto">
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
               <?php _e('Edit', $this->textDomain); ?>
-            </span>
+            </button>
           </label>
           <!-- End Header Banner -->
+          <!-- Snackbar -->
+          <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+            <input type="checkbox" name="installation[prompts][overlays][types][snackbar]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[prompts][overlays][types][snackbar]'), 'on'); ?>>
+            <span class="flex flex-col items-center justify-center gap-y-1.5">
+              <img src="<?php echo plugins_url('admin/assets/img/icon-snackbar.png', $this->pluginFile); ?>" />
+              <span class="block text-center">
+                <?php _e('Snackbar', $this->textDomain); ?>
+              </span>
+            </span>
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+              <?php _e('Edit', $this->textDomain); ?>
+            </button>
+          </label>
+          <!-- End Snackbar -->
+          <!-- Navigation Menu -->
+          <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+            <input type="checkbox" name="installation[prompts][overlays][types][navigationMenu]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[prompts][overlays][types][navigationMenu]'), 'on'); ?>>
+            <span class="flex flex-col items-center justify-center gap-y-1.5">
+              <img src="<?php echo plugins_url('admin/assets/img/icon-navigation-menu.png', $this->pluginFile); ?>" />
+              <span class="block text-center">
+                <?php _e('Navigation Menu', $this->textDomain); ?>
+              </span>
+            </span>
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+              <?php _e('Edit', $this->textDomain); ?>
+            </button>
+          </label>
+          <!-- End Navigation Menu -->
+          <!-- In Feed -->
+          <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+            <input type="checkbox" name="installation[prompts][overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[prompts][overlays][types][inFeed]'), 'on'); ?>>
+            <span class="flex flex-col items-center justify-center gap-y-1.5">
+              <img src="<?php echo plugins_url('admin/assets/img/icon-in-feed.png', $this->pluginFile); ?>" />
+              <span class="block text-center">
+                <?php _e('In Feed', $this->textDomain); ?>
+              </span>
+            </span>
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+              <?php _e('Edit', $this->textDomain); ?>
+            </button>
+          </label>
+          <!-- End In Feed -->
+          <!-- Post Popup -->
+          <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+            <input type="checkbox" name="installation[prompts][overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[prompts][overlays][types][postPopup]'), 'on'); ?>>
+            <span class="flex flex-col items-center justify-center gap-y-1.5">
+              <img src="<?php echo plugins_url('admin/assets/img/icon-post-popup.png', $this->pluginFile); ?>" />
+              <span class="block text-center">
+                <?php _e('Post Popup', $this->textDomain); ?>
+              </span>
+            </span>
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+              <?php _e('Edit', $this->textDomain); ?>
+            </button>
+          </label>
+          <!-- End Post Popup -->
+          <!-- WooCommerce Checkout -->
+          <?php if (Progressify::isWooCommerceActive()): ?>
+          <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+            <input type="checkbox" name="installation[prompts][overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[prompts][overlays][types][woocommerceCheckout]'), 'on'); ?>>
+            <span class="flex flex-col items-center justify-center gap-y-1.5">
+              <img src="<?php echo plugins_url('admin/assets/img/icon-woocommerce-checkout.png', $this->pluginFile); ?>" />
+              <span class="block text-center">
+                <?php _e('WooCommerce Checkout', $this->textDomain); ?>
+              </span>
+            </span>
+            <button type="button" class="absolute top-3 right-3 hidden peer-checked:inline-flex ms-auto py-1 px-2 items-center gap-x-2 text-[0.7rem] leading-[0.65rem] font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+              <?php _e('Edit', $this->textDomain); ?>
+            </button>
+          </label>
+          <?php endif; ?>
+          <!-- End WooCommerce Checkout -->
         </div>
       </div>
       <!-- End Overlay Types -->

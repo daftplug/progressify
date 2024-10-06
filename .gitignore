@@ -28,6 +28,3 @@ Thumbs.db
 
 # Ignore Composer files
 composer.phar
-
-# Ignore other common files/directories as needed
-# Add any other files or directories specific to your project that shouldn't be in version control

@@ -96,7 +96,6 @@ if (!class_exists('ProgressifyAdmin')) {
             'generalError' => esc_html__('An unexpected error occurred', $this->textDomain),
             'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
             'adminUrl' => trailingslashit(strtok(admin_url('/', 'https'), '?')),
-            'fileIcon' => plugins_url('admin/assets/img/icon-file.png', $this->pluginFile),
             'slug' => $this->slug,
             'settings' => $this->settings,
           ])

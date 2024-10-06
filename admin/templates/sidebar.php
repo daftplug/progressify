@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
       <a class="flex justify-center items-center gap-1 flex-none rounded-xl text-xl font-semibold focus:outline-none [&.disabled]:pointer-events-none [&.disabled]:opacity-50" aria-label="<?php esc_html_e($this->menuTitle, $this->textDomain); ?>" href="#/dashboard/">
         <img class="flex-none h-auto" src="<?php echo plugins_url('admin/assets/img/icon-logo.png', $this->pluginFile); ?>" alt="<?php esc_html_e($this->menuTitle, $this->textDomain); ?>" />
         <span class="flex-none text-xl font-semibold dark:text-white"><?php esc_html_e($this->menuTitle, $this->textDomain); ?></span>
-        <span class="inline-flex items-center gap-x-1.5 leading-none py-[0.15rem] px-1 mt-1 rounded-full text-[0.55rem] font-medium border border-gray-200 bg-white text-gray-800 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white"><?php printf(__('v%s', $this->textDomain), $this->version); ?></span>
+        <span class="inline-flex items-center gap-x-1.5 py-[0.15rem] px-1 mt-1 rounded-full leading-[0.6rem] text-[0.55rem] font-medium border border-gray-200 bg-white text-gray-800 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white"><?php printf(__('v%s', $this->textDomain), $this->version); ?></span>
       </a>
       <!-- End Logo -->
     </header>
