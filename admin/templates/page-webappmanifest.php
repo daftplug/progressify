@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
             </svg>
           </span>
           <div class="group flex relative items-center justify-center">
-            <img class="flex-shrink-0 size-20 rounded-full hidden border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Progressify::getSetting('appConfiguration[appIdentity][appIcon]'), [512, 512])[0]; ?>" alt="<?php _e('App Icon', $this->textDomain); ?>" data-attachment-holder="" />
+            <img class="flex-shrink-0 size-20 rounded-full hidden border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Progressify::getSetting('webAppManifest[appIdentity][appIcon]'), [512, 512])[0]; ?>" alt="<?php _e('App Icon', $this->textDomain); ?>" data-attachment-holder="" />
             <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 rounded-full transition cursor-pointer">
               <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
                 <svg class="flex-shrink-0 size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,7 +62,7 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="relative grow">
             <div class="flex items-center gap-x-2">
-              <input type="text" name="appConfiguration[appIdentity][appIcon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" value="<?php echo Progressify::getSetting('appConfiguration[appIdentity][appIcon]'); ?>" data-file-upload-input="" data-mimes="png" data-min-width="512" data-max-width="" data-min-height="512" data-max-height="" required>
+              <input type="text" name="webAppManifest[appIdentity][appIcon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" value="<?php echo Progressify::getSetting('webAppManifest[appIdentity][appIcon]'); ?>" data-file-upload-input="" data-mimes="png" data-min-width="512" data-max-width="" data-min-height="512" data-max-height="" required>
               <button data-file-upload-btn="" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -98,7 +98,7 @@ if (!defined('ABSPATH')) {
         <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-1.5 [&:not(:has(img))]:hidden" data-screenshots-container="">
         </div>
         <?php for ($appScreenshotIndex = 1; $appScreenshotIndex <= 5; $appScreenshotIndex++): ?>
-        <input type="text" name="appConfiguration[appIdentity][appScreenshot<?php echo $appScreenshotIndex; ?>]" id="appScreenshot<?php echo $appScreenshotIndex; ?>" class="hidden" value="<?php echo Progressify::getSetting(sprintf('appConfiguration[appIdentity][appScreenshot%s]', $appScreenshotIndex)); ?>" data-mimes="png" data-min-width="320" data-max-width="3840" data-min-height="320" data-max-height="3840" data-attach-url="<?php echo @wp_get_attachment_image_src(Progressify::getSetting(sprintf('appConfiguration[appIdentity][appScreenshot%s]', $appScreenshotIndex)))[0]; ?>">
+        <input type="text" name="webAppManifest[appIdentity][appScreenshot<?php echo $appScreenshotIndex; ?>]" id="appScreenshot<?php echo $appScreenshotIndex; ?>" class="hidden" value="<?php echo Progressify::getSetting(sprintf('webAppManifest[appIdentity][appScreenshot%s]', $appScreenshotIndex)); ?>" data-mimes="png" data-min-width="320" data-max-width="3840" data-min-height="320" data-max-height="3840" data-attach-url="<?php echo @wp_get_attachment_image_src(Progressify::getSetting(sprintf('webAppManifest[appIdentity][appScreenshot%s]', $appScreenshotIndex)))[0]; ?>">
         <?php endfor; ?>
         <div class="p-12 flex justify-center border border-dashed border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600" data-attachment-dropzone="">
           <div class="text-center">
@@ -140,7 +140,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="appConfiguration[appIdentity][appName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App Name', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('appConfiguration[appIdentity][appName]'); ?>" autocomplete="off" required>
+        <input name="webAppManifest[appIdentity][appName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App Name', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('webAppManifest[appIdentity][appName]'); ?>" autocomplete="off" required>
       </div>
       <!-- End App Name -->
       <!-- Short Name -->
@@ -159,7 +159,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="appConfiguration[appIdentity][shortName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Short Name', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('appConfiguration[appIdentity][shortName]'); ?>" maxlength="12" autocomplete="off" required>
+        <input name="webAppManifest[appIdentity][shortName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Short Name', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('webAppManifest[appIdentity][shortName]'); ?>" maxlength="12" autocomplete="off" required>
         <p class="inline-flex items-center mt-1 text-xs text-gray-500 dark:text-neutral-500">
           <?php _e('Maximum 12 characters.', $this->textDomain); ?>
         </p>
@@ -181,7 +181,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <textarea name="appConfiguration[appIdentity][description]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Description', $this->textDomain); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo Progressify::getSetting('appConfiguration[appIdentity][description]'); ?></textarea>
+        <textarea name="webAppManifest[appIdentity][description]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Description', $this->textDomain); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo Progressify::getSetting('webAppManifest[appIdentity][description]'); ?></textarea>
       </div>
       <!-- End Description -->
       <!-- Categories -->
@@ -200,45 +200,44 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appConfiguration[appIdentity][categories]" multiple="true" data-dp-select='{
+        <select name="webAppManifest[appIdentity][categories]" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Categories', $this->textDomain); ?>"
         }'>
           <option value=""><?php _e('Select Categories', $this->textDomain); ?></option>
-          <option value="books" <?php selected(true, in_array('books', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Books', $this->textDomain); ?></option>
-          <option value="business" <?php selected(true, in_array('business', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Business', $this->textDomain); ?></option>
-          <option value="education" <?php selected(true, in_array('education', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Education', $this->textDomain); ?></option>
-          <option value="entertainment" <?php selected(true, in_array('entertainment', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Entertainment', $this->textDomain); ?></option>
-          <option value="finance" <?php selected(true, in_array('finance', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Finance', $this->textDomain); ?></option>
-          <option value="fitness" <?php selected(true, in_array('fitness', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Fitness', $this->textDomain); ?></option>
-          <option value="food" <?php selected(true, in_array('food', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Food', $this->textDomain); ?></option>
-          <option value="games" <?php selected(true, in_array('games', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Games', $this->textDomain); ?></option>
-          <option value="government" <?php selected(true, in_array('government', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Government', $this->textDomain); ?></option>
-          <option value="health" <?php selected(true, in_array('health', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Health', $this->textDomain); ?></option>
-          <option value="kids" <?php selected(true, in_array('kids', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Kids', $this->textDomain); ?></option>
-          <option value="lifestyle" <?php selected(true, in_array('lifestyle', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Lifestyle', $this->textDomain); ?></option>
-          <option value="magazines" <?php selected(true, in_array('magazines', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Magazines', $this->textDomain); ?></option>
-          <option value="medical" <?php selected(true, in_array('medical', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Medical', $this->textDomain); ?></option>
-          <option value="music" <?php selected(true, in_array('music', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Music', $this->textDomain); ?></option>
-          <option value="navigation" <?php selected(true, in_array('navigation', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Navigation', $this->textDomain); ?></option>
-          <option value="news" <?php selected(true, in_array('news', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('News', $this->textDomain); ?></option>
-          <option value="personalization" <?php selected(true, in_array('personalization', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Personalization', $this->textDomain); ?></option>
-          <option value="photo" <?php selected(true, in_array('photo', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Photo', $this->textDomain); ?></option>
-          <option value="politics" <?php selected(true, in_array('politics', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Politics', $this->textDomain); ?></option>
-          <option value="productivity" <?php selected(true, in_array('productivity', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Productivity', $this->textDomain); ?></option>
-          <option value="security" <?php selected(true, in_array('security', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Security', $this->textDomain); ?></option>
-          <option value="shopping" <?php selected(true, in_array('shopping', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Shopping', $this->textDomain); ?></option>
-          <option value="social" <?php selected(true, in_array('social', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Social', $this->textDomain); ?></option>
-          <option value="sports" <?php selected(true, in_array('sports', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Sports', $this->textDomain); ?></option>
-          <option value="travel" <?php selected(true, in_array('travel', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Travel', $this->textDomain); ?></option>
-          <option value="utilities" <?php selected(true, in_array('utilities', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Utilities', $this->textDomain); ?></option>
-          <option value="weather" <?php selected(true, in_array('weather', (array) Progressify::getSetting('appConfiguration[appIdentity][categories]'))); ?>><?php esc_html_e('Weather', $this->textDomain); ?></option>
+          <option value="books" <?php selected(true, in_array('books', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Books', $this->textDomain); ?></option>
+          <option value="business" <?php selected(true, in_array('business', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Business', $this->textDomain); ?></option>
+          <option value="education" <?php selected(true, in_array('education', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Education', $this->textDomain); ?></option>
+          <option value="entertainment" <?php selected(true, in_array('entertainment', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Entertainment', $this->textDomain); ?></option>
+          <option value="finance" <?php selected(true, in_array('finance', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Finance', $this->textDomain); ?></option>
+          <option value="fitness" <?php selected(true, in_array('fitness', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Fitness', $this->textDomain); ?></option>
+          <option value="food" <?php selected(true, in_array('food', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Food', $this->textDomain); ?></option>
+          <option value="games" <?php selected(true, in_array('games', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Games', $this->textDomain); ?></option>
+          <option value="government" <?php selected(true, in_array('government', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Government', $this->textDomain); ?></option>
+          <option value="health" <?php selected(true, in_array('health', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Health', $this->textDomain); ?></option>
+          <option value="kids" <?php selected(true, in_array('kids', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Kids', $this->textDomain); ?></option>
+          <option value="lifestyle" <?php selected(true, in_array('lifestyle', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Lifestyle', $this->textDomain); ?></option>
+          <option value="magazines" <?php selected(true, in_array('magazines', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Magazines', $this->textDomain); ?></option>
+          <option value="medical" <?php selected(true, in_array('medical', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Medical', $this->textDomain); ?></option>
+          <option value="music" <?php selected(true, in_array('music', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Music', $this->textDomain); ?></option>
+          <option value="navigation" <?php selected(true, in_array('navigation', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Navigation', $this->textDomain); ?></option>
+          <option value="news" <?php selected(true, in_array('news', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('News', $this->textDomain); ?></option>
+          <option value="personalization" <?php selected(true, in_array('personalization', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Personalization', $this->textDomain); ?></option>
+          <option value="photo" <?php selected(true, in_array('photo', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Photo', $this->textDomain); ?></option>
+          <option value="politics" <?php selected(true, in_array('politics', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Politics', $this->textDomain); ?></option>
+          <option value="productivity" <?php selected(true, in_array('productivity', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Productivity', $this->textDomain); ?></option>
+          <option value="security" <?php selected(true, in_array('security', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Security', $this->textDomain); ?></option>
+          <option value="shopping" <?php selected(true, in_array('shopping', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Shopping', $this->textDomain); ?></option>
+          <option value="social" <?php selected(true, in_array('social', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Social', $this->textDomain); ?></option>
+          <option value="sports" <?php selected(true, in_array('sports', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Sports', $this->textDomain); ?></option>
+          <option value="travel" <?php selected(true, in_array('travel', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Travel', $this->textDomain); ?></option>
+          <option value="utilities" <?php selected(true, in_array('utilities', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Utilities', $this->textDomain); ?></option>
+          <option value="weather" <?php selected(true, in_array('weather', (array) Progressify::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Weather', $this->textDomain); ?></option>
         </select>
       </div>
       <!-- End Categories -->
     </div>
   </fieldset>
   <!-- End App Identity -->
-
   <!-- Display Settings -->
   <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionDisplaySettings">
     <div class="col-span-full xl:col-span-5">
@@ -274,13 +273,13 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appConfiguration[displaySettings][startPage]" required="true" data-dp-select='{
+        <select name="webAppManifest[displaySettings][startPage]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Start Page', $this->textDomain); ?>"
         }'>
           <option value=""><?php _e('Select Start Page', $this->textDomain); ?></option>
-          <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
+          <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
           <?php foreach (get_pages() as $wpPage): ?>
-          <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+          <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -301,17 +300,17 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appConfiguration[displaySettings][displayMode]" required="true" data-dp-select='{
+        <select name="webAppManifest[displaySettings][displayMode]" required="true" data-dp-select='{
             "placeholder": "<?php _e('Select Display Mode', $this->textDomain); ?>"
           }'>
           <option value=""><?php _e('Select Display Mode', $this->textDomain); ?></option>
-          <option value="standalone" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][displayMode]'), 'standalone'); ?> data-dp-select-option='{
+          <option value="standalone" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][displayMode]'), 'standalone'); ?> data-dp-select-option='{
             "description": "<?php _e('Opens the app in a separate window for a native app experience.', $this->textDomain); ?>"
           }'><?php _e('Standalone', $this->textDomain); ?></option>
-          <option value="fullscreen" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][displayMode]'), 'fullscreen'); ?> data-dp-select-option='{
+          <option value="fullscreen" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][displayMode]'), 'fullscreen'); ?> data-dp-select-option='{
             "description": "<?php _e('Expands the app to cover the entire screen, hiding browser UI.', $this->textDomain); ?>"
           }'><?php _e('Fullscreen', $this->textDomain); ?></option>
-          <option value="minimal-ui" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][displayMode]'), 'minimal-ui'); ?> data-dp-select-option='{
+          <option value="minimal-ui" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][displayMode]'), 'minimal-ui'); ?> data-dp-select-option='{
             "description": "<?php _e('Displays the app with minimal browser UI for a cleaner interface.', $this->textDomain); ?>"
           }'><?php _e('Minimal UI', $this->textDomain); ?></option>
         </select>
@@ -333,20 +332,19 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appConfiguration[displaySettings][orientation]" required="true" data-dp-select='{
+        <select name="webAppManifest[displaySettings][orientation]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Orientation', $this->textDomain); ?>"
           }'>
           <option value=""><?php _e('Select Orientation', $this->textDomain); ?></option>
-          <option value="any" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][orientation]'), 'any'); ?>><?php esc_html_e('Allow Both', $this->textDomain); ?></option>
-          <option value="portrait" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][orientation]'), 'portrait'); ?>><?php esc_html_e('Portrait', $this->textDomain); ?></option>
-          <option value="landscape" <?php selected(Progressify::getSetting('appConfiguration[displaySettings][orientation]'), 'landscape'); ?>><?php esc_html_e('Landscape', $this->textDomain); ?></option>
+          <option value="any" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][orientation]'), 'any'); ?>><?php esc_html_e('Allow Both', $this->textDomain); ?></option>
+          <option value="portrait" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][orientation]'), 'portrait'); ?>><?php esc_html_e('Portrait', $this->textDomain); ?></option>
+          <option value="landscape" <?php selected(Progressify::getSetting('webAppManifest[displaySettings][orientation]'), 'landscape'); ?>><?php esc_html_e('Landscape', $this->textDomain); ?></option>
         </select>
       </div>
       <!-- End Orientation -->
     </div>
   </fieldset>
   <!-- End Display Settings -->
-
   <!-- Appearance -->
   <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppearance">
     <div class="col-span-full xl:col-span-5">
@@ -381,13 +379,13 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appConfiguration[appearance][iosStatusBarStyle]" required="true" data-dp-select='{
+        <select name="webAppManifest[appearance][iosStatusBarStyle]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select iOS Status Bar Style', $this->textDomain); ?>"
         }'>
           <option value=""><?php _e('Select iOS Status Bar Style', $this->textDomain); ?></option>
-          <option value="default" <?php selected(Progressify::getSetting('appConfiguration[appearance][iosStatusBarStyle]'), 'default'); ?>><?php esc_html_e('White bar with black text', $this->textDomain); ?></option>
-          <option value="light-content" <?php selected(Progressify::getSetting('appConfiguration[appearance][iosStatusBarStyle]'), 'light-content'); ?>><?php esc_html_e('Black bar with white text', $this->textDomain); ?></option>
-          <option value="black-translucent" <?php selected(Progressify::getSetting('appConfiguration[appearance][iosStatusBarStyle]'), 'black-translucent'); ?>><?php esc_html_e('Transparent bar with white text', $this->textDomain); ?></option>
+          <option value="default" <?php selected(Progressify::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'default'); ?>><?php esc_html_e('White bar with black text', $this->textDomain); ?></option>
+          <option value="light-content" <?php selected(Progressify::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'light-content'); ?>><?php esc_html_e('Black bar with white text', $this->textDomain); ?></option>
+          <option value="black-translucent" <?php selected(Progressify::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'black-translucent'); ?>><?php esc_html_e('Transparent bar with white text', $this->textDomain); ?></option>
         </select>
       </div>
       <!-- End iOS Status Bar Style -->
@@ -407,7 +405,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="appConfiguration[appearance][themeColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('appConfiguration[appearance][themeColor]'); ?>" title="<?php _e('Theme Color', $this->textDomain); ?>" required>
+        <input name="webAppManifest[appearance][themeColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('webAppManifest[appearance][themeColor]'); ?>" title="<?php _e('Theme Color', $this->textDomain); ?>" required>
       </div>
       <!-- End Theme Color -->
       <!-- Background Color -->
@@ -426,13 +424,12 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="appConfiguration[appearance][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('appConfiguration[appearance][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->textDomain); ?>" required>
+        <input name="webAppManifest[appearance][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('webAppManifest[appearance][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->textDomain); ?>" required>
       </div>
       <!-- End Background Color -->
     </div>
   </fieldset>
   <!-- End Appearance -->
-
   <!-- Advanced Features -->
   <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAdvancedFeatures">
     <div class="col-span-full xl:col-span-5">
@@ -468,7 +465,7 @@ if (!defined('ABSPATH')) {
             </button>
           </a>
         </label>
-        <input name="appConfiguration[appCapabilities][iarcRatingId]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter IARC Rating ID', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('appConfiguration[appCapabilities][iarcRatingId]'); ?>">
+        <input name="webAppManifest[advancedFeatures][iarcRatingId]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter IARC Rating ID', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('webAppManifest[advancedFeatures][iarcRatingId]'); ?>">
       </div>
       <!-- End IARC Rating ID -->
       <!-- Related Applications -->
@@ -490,7 +487,7 @@ if (!defined('ABSPATH')) {
         <div class="space-y-3" data-dp-copy-markup-wrapper="relatedApplications">
           <div class="flex gap-2" data-dp-copy-markup-target="relatedApplication">
             <div class="flex-none w-1/4">
-              <select name="appConfiguration[appCapabilities][relatedApplications][platform]" data-dp-select='{
+              <select name="webAppManifest[advancedFeatures][relatedApplications][platform]" data-dp-select='{
                   "placeholder": "<?php _e('Select Platform', $this->textDomain); ?>"
                 }'>
                 <option value=""><?php _e('Select Platform', $this->textDomain); ?></option>
@@ -506,7 +503,7 @@ if (!defined('ABSPATH')) {
               </select>
             </div>
             <div class="flex-grow">
-              <input name="appConfiguration[appCapabilities][relatedApplications][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App ID', $this->textDomain); ?>">
+              <input name="webAppManifest[advancedFeatures][relatedApplications][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App ID', $this->textDomain); ?>">
             </div>
             <div class="flex-none flex items-center ml-1.5">
               <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="relatedApplication">
@@ -554,7 +551,7 @@ if (!defined('ABSPATH')) {
           <div class="flex gap-2" data-dp-copy-markup-target="appShortcut">
             <div class="flex-none">
               <button data-file-upload="" type="button" class="rounded-full size-[38px] justify-center relative inline-flex items-center gap-x-1 text-xs font-medium border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-                <input type="text" name="appConfiguration[appCapabilities][appShortcuts][icon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" data-mimes="png" data-min-width="192" data-max-width="" data-min-height="192" data-max-height="">
+                <input type="text" name="webAppManifest[advancedFeatures][appShortcuts][icon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" data-mimes="png" data-min-width="192" data-max-width="" data-min-height="192" data-max-height="">
                 <svg data-attachment-placeholder="" class="flex-shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                   <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
                   <circle cx="9" cy="9" r="2"></circle>
@@ -565,10 +562,10 @@ if (!defined('ABSPATH')) {
               </button>
             </div>
             <div class="flex-grow">
-              <input name="appConfiguration[appCapabilities][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut Name', $this->textDomain); ?>">
+              <input name="webAppManifest[advancedFeatures][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut Name', $this->textDomain); ?>">
             </div>
             <div class="flex-grow">
-              <input name="appConfiguration[appCapabilities][appShortcuts][url]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut URL', $this->textDomain); ?>">
+              <input name="webAppManifest[advancedFeatures][appShortcuts][url]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut URL', $this->textDomain); ?>">
             </div>
             <div class="flex-none flex items-center ml-1.5">
               <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="appShortcut">

@@ -14,6 +14,7 @@ import { initAppScreenshotsUpload } from './modules/appScreenshotsUpload.js';
 import { initInputValidation } from './modules/inputValidation.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initSupportAttachments } from './modules/supportAttachments.js';
+import { initOverlayBackdropFix } from './modules/overlayBackdropFix.js';
 import { initChangelog } from './modules/changelog.js';
 // import { initApexcharts } from './modules/apexcharts.js';
 // import { initInstallationsChart } from './modules/installationsChart.js';
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   initInputValidation();
   initPushImageUpload();
   initSupportAttachments();
+  initOverlayBackdropFix();
   initChangelog();
   // initApexcharts();
   // initInstallationsChart();

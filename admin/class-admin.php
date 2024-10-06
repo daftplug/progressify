@@ -53,7 +53,6 @@ if (!class_exists('ProgressifyAdmin')) {
 
       add_action('admin_menu', [$this, 'addMenuPage']);
       add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
-      add_filter('admin_body_class', [$this, 'addContainerBodyClass']);
       add_action('rest_api_init', [$this, 'registerRoutes']);
     }
 
@@ -194,19 +193,10 @@ if (!class_exists('ProgressifyAdmin')) {
       return $pages;
     }
 
-    public function addContainerBodyClass($classes)
-    {
-      if (!is_array($classes)) {
-        $classes = explode(' ', $classes);
-      }
-      $classes[] = 'daftplugAdmin';
-      return implode(' ', $classes);
-    }
-
     public function createAdminPage()
     {
       ?>
-<div class="daftplugAdmin" id="daftplugAdmin" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
+<div id="daftplugAdmin" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <div class="relative mr-6 mt-6 rounded-xl bg-gray-50 shadow-[0_5px_25px_0_rgba(0,0,0,.1)]">
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'header.php']); ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'sidebar.php']); ?>
