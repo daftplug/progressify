@@ -2,7 +2,7 @@ import { handleSelect } from './select.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 const optionName = daftplugAdmin.attr('data-option-name');
-const jsVars = window[optionName + '_admin_js_vars'];
+const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initCopyMarkup() {
   window.addEventListener('load', () => handleCopyMarkup());
@@ -123,19 +123,20 @@ function populateInitialValues(wrapperElement, wrapper, target) {
           .replace(/\]/g, '');
 
         // Traverse the settings object to find the corresponding value
-        let value = jsVars && jsVars.settings ? jsVars.settings : undefined;
+        let value = jsVars && typeof jsVars.settings === 'object' ? jsVars.settings : undefined;
         if (value) {
-          path.split('.').forEach((segment) => {
-            if (segment && value && segment in value) {
+          const segments = path.split('.');
+          for (const segment of segments) {
+            if (segment && value && typeof value === 'object' && segment in value) {
               value = value[segment];
             } else {
               value = undefined;
-              return;
+              break;
             }
-          });
+          }
 
           // Get the value using index and key
-          if (value && value[index] && value[index][key] !== undefined) {
+          if (value && Array.isArray(value) && value[index] && typeof value[index] === 'object' && key in value[index]) {
             formEl.val(value[index][key]);
           }
         }
@@ -148,10 +149,13 @@ function findKey(obj, targetKey) {
   let result = [];
 
   function search(obj, targetKey) {
+    if (typeof obj !== 'object' || obj === null) {
+      return;
+    }
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         if (key === targetKey) {
-          result = obj[key];
+          result = Array.isArray(obj[key]) ? obj[key] : [];
           return;
         } else if (typeof obj[key] === 'object' && obj[key] !== null) {
           search(obj[key], targetKey);

@@ -31,7 +31,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "offlineusage[offlineCache][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -168,7 +168,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "offlineusage[offlineCapabilities][feature]",
       "state": "checked",
       "mode": "availability"

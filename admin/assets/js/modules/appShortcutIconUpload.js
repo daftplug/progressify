@@ -4,7 +4,7 @@ import { validateAttachment } from './utils.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 const optionName = daftplugAdmin.attr('data-option-name');
-const jsVars = window[optionName + '_admin_js_vars'];
+const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initAppShortcutIconUpload() {
   jQuery(window).on('load', () => {

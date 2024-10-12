@@ -368,7 +368,7 @@ if (!defined('ABSPATH')) {
 
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Push Notifications Settings -->
-  <fieldset class="grid grid-cols-12 gap-5 py-6 sm:py-10 first:pt-0 dark:border-neutral-700" id="subsectionPushNotificationSettings">
+  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushNotificationSettings">
     <div class="col-span-full xl:col-span-5">
       <div class="flex gap-x-2 sticky top-14">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -385,7 +385,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- Time To Live (TTL) -->
       <div id="settingTimeToLive">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -489,7 +489,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "pushNotifications[prompt][feature]",
       "state": "checked",
       "mode": "availability"
@@ -600,7 +600,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "pushNotifications[button][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -726,7 +726,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "pushNotifications[automation][feature]",
       "state": "checked",
       "mode": "availability"
@@ -1483,7 +1483,7 @@ if (!defined('ABSPATH')) {
         </button>
       </div>
       <div class="p-4 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
-        <div class="space-y-5">
+        <div class="space-y-6">
           <div>
             <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Notification Image', $this->textDomain); ?>

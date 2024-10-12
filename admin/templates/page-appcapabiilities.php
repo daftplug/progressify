@@ -28,7 +28,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[ajaxify][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -125,7 +125,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[urlProtocolHandler][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -195,7 +195,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[webShareTarget][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -265,7 +265,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[vibration][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -336,7 +336,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[idleDetection][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -444,7 +444,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[screenWakeLock][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -515,7 +515,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[advancedWebCapabilities][feature]",
                   "state": "checked",
       "mode": "availability"

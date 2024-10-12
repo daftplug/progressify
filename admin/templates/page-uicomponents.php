@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[navigationTabBar][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -237,7 +237,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[scrollProgressBar][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -311,7 +311,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[darkMode][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -455,7 +455,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[webShareButton][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -595,7 +595,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[pullDownNavigation][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -685,7 +685,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[swipeNavigation][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -756,7 +756,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[shakeToRefresh][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -824,7 +824,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[loader][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -940,7 +940,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[inactiveBlur][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -1010,7 +1010,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5" data-dp-dependant-markup='{
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appUiComponents[toastMessages][feature]",
                   "state": "checked",
       "mode": "availability"

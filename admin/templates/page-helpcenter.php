@@ -125,7 +125,7 @@ if (!defined('ABSPATH')) {
         <?php _e('Before submitting a ticket, please make sure that the FAQ didn\'t help, you\'re using the latest version of the plugin and there are no javascript errors on your website.', $this->textDomain); ?>
       </p>
     </div>
-    <form id="supportForm" name="supportForm" spellcheck="false" autocomplete="off" class="space-y-5">
+    <form id="supportForm" name="supportForm" spellcheck="false" autocomplete="off" class="space-y-6">
       <fieldset>
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Your Name', $this->textDomain); ?>

@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- App Icon -->
       <div id="settingAppIcon">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -256,7 +256,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- Start Page -->
       <div id="settingStartPage">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -362,7 +362,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- iOS Status Bar Style -->
       <div id="settingIosStatusBarStyle">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -448,7 +448,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- IARC Rating ID -->
       <div id="settingIarcRatingId">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
