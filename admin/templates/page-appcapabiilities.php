@@ -71,7 +71,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appCapabilities[ajaxify][supportedPlatforms]" multiple="true" data-dp-select='{
+        <select name="appCapabilities[ajaxify][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }' class="hidden">
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
@@ -197,7 +197,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[webShareTarget][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Share Action -->
@@ -286,7 +286,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appCapabilities[vibration][supportedPlatforms]" multiple="true" data-dp-select='{
+        <select name="appCapabilities[vibration][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }' class="hidden">
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
@@ -361,7 +361,7 @@ if (!defined('ABSPATH')) {
           "max": 120
         }'>
           <div class="w-full flex justify-between items-center gap-x-3">
-            <input name="appCapabilities[idleDetection][threshold]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="<?php echo Progressify::getSetting('appCapabilities[idleDetection][threshold]'); ?>" step="1" max="120" min="0" data-hs-input-number-input="">
+            <input name="appCapabilities[idleDetection][threshold]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="<?php echo Progressify::getSetting('appCapabilities[idleDetection][threshold]'); ?>" step="1" max="120" min="0" data-hs-input-number-input="" required>
             <div class="flex justify-end items-center gap-x-1.5">
               <button type="button" class="inline-flex size-6 justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 disabled:opacity-50 data-[disabled=true]:pointer-events-none disabled:pointer-events-none" data-hs-input-number-decrement="">
                 <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -395,7 +395,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appCapabilities[idleDetection][supportedPlatforms]" multiple="true" data-dp-select='{
+        <select name="appCapabilities[idleDetection][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }' class="hidden">
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
@@ -465,7 +465,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="appCapabilities[screenWakeLock][supportedPlatforms]" multiple="true" data-dp-select='{
+        <select name="appCapabilities[screenWakeLock][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }' class="hidden">
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
@@ -678,7 +678,7 @@ if (!defined('ABSPATH')) {
   </fieldset>
   <!-- End Advanced Web Capabilities -->
   <!-- Save Settings Button -->
-  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold opacity-35 hover:opacity-100 focus:opacity-100 active:opacity-100 border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
     <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
       <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
     </span>

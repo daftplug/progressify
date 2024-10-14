@@ -39,7 +39,6 @@ if (!defined('ABSPATH')) {
                   </span>
                 </div>
               </th>
-
               <th scope="col" class="ps-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -47,7 +46,6 @@ if (!defined('ABSPATH')) {
                   </span>
                 </div>
               </th>
-
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -55,7 +53,6 @@ if (!defined('ABSPATH')) {
                   </span>
                 </div>
               </th>
-
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -63,7 +60,6 @@ if (!defined('ABSPATH')) {
                   </span>
                 </div>
               </th>
-
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -71,7 +67,6 @@ if (!defined('ABSPATH')) {
                   </span>
                 </div>
               </th>
-
               <th scope="col" class="px-6 py-3 text-end">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -85,49 +80,45 @@ if (!defined('ABSPATH')) {
             <tr>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block" src="https://flagcdn.com/28x21/us.png" />
+                  <div class="flex items-center gap-x-1.5">
+                    <img class="inline-block border rounded-full size-6" src="https://hatscripts.github.io/circle-flags/flags/us.svg" />
                     <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">United States</span>
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">United States</span>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <svg class="inline-block size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
-                      <g transform="translate(-40.96,-40.96) scale(1.32,1.32)">
-                        <g fill="#7cb342" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                          <g transform="scale(5.33333,5.33333)">
-                            <path d="M12,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM40,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM22,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM30,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2z"></path>
-                            <path d="M14,18v15c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2v-15zM24,8c-6,0 -9.7,3.6 -10,8h20c-0.3,-4.4 -4,-8 -10,-8zM20,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1zM28,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1z"></path>
-                            <path d="M28.3,10.5c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.5,-0.3 -0.6,-0.9 -0.3,-1.4l1.7,-2.5c0.3,-0.5 0.9,-0.6 1.4,-0.3c0.5,0.3 0.6,0.9 0.3,1.4l-1.7,2.5c-0.1,0.3 -0.4,0.5 -0.8,0.5zM19.3,10.1c-0.3,0 -0.7,-0.2 -0.8,-0.5l-1.3,-2.1c-0.3,-0.5 -0.2,-1.1 0.3,-1.4c0.5,-0.3 1.1,-0.2 1.4,0.3l1.3,2.1c0.3,0.5 0.2,1.1 -0.3,1.4c-0.2,0.1 -0.4,0.2 -0.6,0.2z"></path>
+                  <div class="flex items-center gap-x-1.5">
+                    <svg class="inline-block size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
+                      <g transform="translate(-8.96,-8.96) scale(1.07,1.07)">
+                        <g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                          <g transform="translate(-1.86268,5.11905) scale(5.12,5.12)">
+                            <path d="M44.52734,34.75c-1.07812,2.39453 -1.59766,3.46484 -2.98437,5.57813c-1.94141,2.95313 -4.67969,6.64063 -8.0625,6.66406c-3.01172,0.02734 -3.78906,-1.96484 -7.87891,-1.92969c-4.08594,0.01953 -4.9375,1.96875 -7.95312,1.9375c-3.38672,-0.03125 -5.97656,-3.35156 -7.91797,-6.30078c-5.42969,-8.26953 -6.00391,-17.96484 -2.64844,-23.12109c2.375,-3.65625 6.12891,-5.80469 9.65625,-5.80469c3.59375,0 5.85156,1.97266 8.82031,1.97266c2.88281,0 4.63672,-1.97656 8.79297,-1.97656c3.14063,0 6.46094,1.71094 8.83594,4.66406c-7.76562,4.25781 -6.50391,15.34766 1.33984,18.31641zM31.19531,8.46875c1.51172,-1.94141 2.66016,-4.67969 2.24219,-7.46875c-2.46484,0.16797 -5.34766,1.74219 -7.03125,3.78125c-1.52734,1.85938 -2.79297,4.61719 -2.30078,7.28516c2.69141,0.08594 5.47656,-1.51953 7.08984,-3.59766z"></path>
                           </g>
                         </g>
                       </g>
                     </svg>
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Android</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v10.0.2</span>
+                    <div class="grow space-y-1">
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">iOS</span>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block size-7" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-chrome.png" />
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Chrome</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v13.0.2</span>
+                  <div class="flex items-center gap-x-1.5">
+                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-safari.png" />
+                    <div class="grow space-y-1">
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Safari</span>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <span class="text-sm text-gray-500 dark:text-neutral-500">30 Dec, 2020</span>
+                  <span class="text-sm text-gray-500 dark:text-neutral-500">30 Dec, 2023</span>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
@@ -169,18 +160,18 @@ if (!defined('ABSPATH')) {
             <tr>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block" src="https://flagcdn.com/28x21/ge.png" />
+                  <div class="flex items-center gap-x-1.5">
+                    <img class="inline-block border rounded-full size-6" src="https://hatscripts.github.io/circle-flags/flags/ge.svg" />
                     <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Georgia</span>
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Georgia</span>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <svg class="inline-block size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
+                  <div class="flex items-center gap-x-1.5">
+                    <svg class="inline-block size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
                       <g transform="translate(-40.96,-40.96) scale(1.32,1.32)">
                         <g fill="#7cb342" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                           <g transform="scale(5.33333,5.33333)">
@@ -191,104 +182,18 @@ if (!defined('ABSPATH')) {
                         </g>
                       </g>
                     </svg>
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Android</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v10.0.2</span>
+                    <div class="grow space-y-1">
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Android</span>
                     </div>
                   </div>
                 </div>
               </td>
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block size-7" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-chrome.png" />
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Chrome</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v13.0.2</span>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-3">
-                  <span class="text-sm text-gray-500 dark:text-neutral-500">30 Dec, 2020</span>
-                </div>
-              </td>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-3">
-                  <span class="text-sm text-gray-500 dark:text-neutral-500">Unregistered</span>
-                </div>
-              </td>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-1.5">
-                  <div class="flex items-center gap-x-2">
-                    <div class="hs-tooltip inline-block [--placement:top]">
-                      <button type="button" class="rounded-full p-2 transition hs-tooltip-toggle flex hover:bg-gray-100 focus:z-10 focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
-                        <svg class="flex-shrink-0 size-5 text-blue-600 dark:text-neutral-600" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                        <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                          <?php _e('Send Notification', $this->textDomain); ?>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="hs-tooltip inline-block [--placement:top]">
-                      <button type="button" class="rounded-full p-2 transition hs-tooltip-toggle flex hover:bg-gray-100 focus:z-10 focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
-                        <svg class="flex-shrink-0 size-5 text-red-600 dark:text-neutral-600" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="3 6 5 6 21 6"></polyline>
-                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                          <line x1="10" y1="11" x2="10" y2="17"></line>
-                          <line x1="14" y1="11" x2="14" y2="17"></line>
-                        </svg>
-                        <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                          <?php _e('Remove User', $this->textDomain); ?>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block" src="https://flagcdn.com/28x21/ge.png" />
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Georgia</span>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <svg class="inline-block size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
-                      <g transform="translate(-40.96,-40.96) scale(1.32,1.32)">
-                        <g fill="#7cb342" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                          <g transform="scale(5.33333,5.33333)">
-                            <path d="M12,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM40,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM22,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM30,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2z"></path>
-                            <path d="M14,18v15c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2v-15zM24,8c-6,0 -9.7,3.6 -10,8h20c-0.3,-4.4 -4,-8 -10,-8zM20,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1zM28,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1z"></path>
-                            <path d="M28.3,10.5c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.5,-0.3 -0.6,-0.9 -0.3,-1.4l1.7,-2.5c0.3,-0.5 0.9,-0.6 1.4,-0.3c0.5,0.3 0.6,0.9 0.3,1.4l-1.7,2.5c-0.1,0.3 -0.4,0.5 -0.8,0.5zM19.3,10.1c-0.3,0 -0.7,-0.2 -0.8,-0.5l-1.3,-2.1c-0.3,-0.5 -0.2,-1.1 0.3,-1.4c0.5,-0.3 1.1,-0.2 1.4,0.3l1.3,2.1c0.3,0.5 0.2,1.1 -0.3,1.4c-0.2,0.1 -0.4,0.2 -0.6,0.2z"></path>
-                          </g>
-                        </g>
-                      </g>
-                    </svg>
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Android</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v10.0.2</span>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="size-px whitespace-nowrap">
-                <div class="px-6 py-3">
-                  <div class="flex items-center gap-x-2">
-                    <img class="inline-block size-7" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-chrome.png" />
-                    <div class="grow">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">Chrome</span>
-                      <span class="block text-[0.6rem] text-gray-500 dark:text-neutral-500">v13.0.2</span>
+                  <div class="flex items-center gap-x-1.5">
+                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-chrome.png" />
+                    <div class="grow space-y-1">
+                      <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Chrome</span>
                     </div>
                   </div>
                 </div>
@@ -350,7 +255,6 @@ if (!defined('ABSPATH')) {
                 </svg>
                 Prev
               </button>
-
               <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
                 Next
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -366,6 +270,7 @@ if (!defined('ABSPATH')) {
 </div>
 <!-- End Subscribers List -->
 
+<!-- Settings Form -->
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Push Notifications Settings -->
   <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushNotificationSettings">
@@ -1456,7 +1361,7 @@ if (!defined('ABSPATH')) {
   </fieldset>
   <!-- End Push Notifications Automation -->
   <!-- Save Settings Button -->
-  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold opacity-35 hover:opacity-100 focus:opacity-100 active:opacity-100 border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
     <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
       <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
     </span>
@@ -1464,11 +1369,10 @@ if (!defined('ABSPATH')) {
   </button>
   <!-- End Settings Button -->
 </form>
-
-
+<!-- End Settings Form -->
 
 <!-- Send Push Notification Modal -->
-<form id="send-notification-popup" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto [--close-when-click-inside:true] pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="send-notification-popup-label">
+<form id="send-notification-popup" class="hs-overlay hidden size-full fixed top-0 start-0 z-[9999999999999] overflow-x-hidden overflow-y-auto [--close-when-click-inside:true] pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="send-notification-popup-label">
   <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-xl sm:w-full m-3 sm:mx-auto h-[calc(100%-5rem)] min-h-[calc(100%-5rem)] flex items-center">
     <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-800">
       <div class="py-2.5 px-4 flex justify-between items-center border-b dark:border-neutral-700">

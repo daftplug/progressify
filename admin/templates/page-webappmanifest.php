@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- App Icon -->
       <div id="settingAppIcon">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -256,7 +256,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- Start Page -->
       <div id="settingStartPage">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -362,7 +362,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- iOS Status Bar Style -->
       <div id="settingIosStatusBarStyle">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -448,7 +448,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
+    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- IARC Rating ID -->
       <div id="settingIarcRatingId">
         <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -597,7 +597,7 @@ if (!defined('ABSPATH')) {
   </fieldset>
   <!-- End Advanced Features -->
   <!-- Save Settings Button -->
-  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold opacity-35 hover:opacity-100 focus:opacity-100 active:opacity-100 border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
     <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
       <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
     </span>

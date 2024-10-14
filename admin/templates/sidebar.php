@@ -74,7 +74,7 @@ if (!defined('ABSPATH')) {
 
           <!-- Generate Mobile Apps Link -->
           <li class="px-5 mb-1.5">
-            <a class="w-full flex items-center gap-x-2 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-300 dark:data-[active=true]:text-white dark:focus:bg-neutral-700 data-[active=true]:bg-neutral-100 dark:data-[active=true]:bg-neutral-700 [&.disabled]:pointer-events-none [&.disabled]:opacity-50" href="#/generatemobileapps/" data-page-id="generatemobileapps">
+            <a class="w-full flex items-center gap-x-2 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-300 dark:data-[active=true]:text-white dark:focus:bg-neutral-700 data-[active=true]:bg-neutral-100 dark:data-[active=true]:bg-neutral-700 [&.disabled]:pointer-events-none [&.disabled]:opacity-50" href="#/generateMobileApps/" data-page-id="generateMobileApps">
               <img class="flex-shrink-0 size-[22px] -mr-0.5" src="<?php echo plugins_url('admin/assets/img/icons/icon-androios.png', $this->pluginFile); ?>" alt="Mobile Apps" />
               <span class="bg-clip-text bg-gradient-to-r from-gray-800 to-lime-700 text-transparent font-medium">
                 <?php esc_html_e('Generate Mobile Apps', $this->textDomain); ?>
@@ -93,7 +93,7 @@ if (!defined('ABSPATH')) {
         <!-- Dark Mode -->
         <div class="hs-dropdown relative inline-flex">
           <!-- Select Theme Button Icon -->
-          <button id="hs-pro-dsstd" type="button" class="hs-tooltip-toggle inline-flex flex-shrink-0 justify-center items-center gap-x-2 size-[38px] rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+          <button id="theme-select-button" type="button" class="hs-tooltip-toggle inline-flex flex-shrink-0 justify-center items-center gap-x-2 size-[38px] rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2" />
@@ -107,9 +107,8 @@ if (!defined('ABSPATH')) {
             </svg>
           </button>
           <!-- End Select Theme Button Icon -->
-
           <!-- Select Theme Dropdown -->
-          <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-60 transition-[opacity,margin] duration opacity-0 hidden z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-800" aria-labelledby="hs-pro-dsstd">
+          <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-60 transition-[opacity,margin] duration opacity-0 hidden z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-800" aria-labelledby="theme-select-button">
             <div class="p-1 space-y-0.5">
               <button type="button" class="hs-auto-mode-active:bg-gray-100 hs-auto-mode-active:dark:bg-neutral-800 hs-auto-mode-active:dark:text-neutral-300 w-full flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-hs-theme-click-value="auto">
                 Auto (system default)
@@ -125,7 +124,6 @@ if (!defined('ABSPATH')) {
           <!-- End Select Theme Dropdown -->
         </div>
         <!-- End Dark Mode -->
-
         <!-- Language Select -->
         <div class="relative">
           <select data-hs-select='{
@@ -173,7 +171,6 @@ if (!defined('ABSPATH')) {
             </svg>
           </button>
           <!-- End Help Button Icon -->
-
           <!-- Help Dropdown -->
           <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-60 transition-[opacity,margin] duration opacity-0 hidden z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-900" aria-labelledby="hs-pro-dnhd">
             <div class="p-1">
