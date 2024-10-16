@@ -1,6 +1,6 @@
 <?php
 
-use DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
             <?php _e('Offline Cache', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="offlineUsage[cache][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Progressify::getSetting('offlineUsage[cache][feature]'), 'on'); ?>>
+              <input type="checkbox" name="offlineUsage[cache][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('offlineUsage[cache][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
@@ -54,7 +54,7 @@ if (!defined('ABSPATH')) {
         }'>
           <option value=""><?php _e('Select Offline Fallback Page', $this->textDomain); ?></option>
           <?php foreach (get_pages() as $wpPage): ?>
-          <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Progressify::getSetting('offlineUsage[cache][fallbackPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+          <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('offlineUsage[cache][fallbackPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -79,19 +79,19 @@ if (!defined('ABSPATH')) {
             "placeholder": "<?php _e('Select Caching Strategy', $this->textDomain); ?>"
           }'>
           <option value=""><?php _e('Select Caching Strategy', $this->textDomain); ?></option>
-          <option value="StaleWhileRevalidate" <?php selected(Progressify::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
+          <option value="StaleWhileRevalidate" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
             "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->textDomain); ?>"
           }'><?php _e('Stale While Revalidate', $this->textDomain); ?></option>
-          <option value="NetworkFirst" <?php selected(Progressify::getSetting('offlineUsage[cache][strategy]'), 'NetworkFirst'); ?> data-dp-select-option='{
+          <option value="NetworkFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'NetworkFirst'); ?> data-dp-select-option='{
             "description": "<?php _e('Fetches from the network first and caches the response. Uses the last cached response if the network request fails.', $this->textDomain); ?>"
           }'><?php _e('Network-First', $this->textDomain); ?></option>
-          <option value="CacheFirst" <?php selected(Progressify::getSetting('offlineUsage[cache][strategy]'), 'CacheFirst'); ?> data-dp-select-option='{
+          <option value="CacheFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'CacheFirst'); ?> data-dp-select-option='{
             "description": "<?php _e('Uses a cached response first. If unavailable, fetches from the network and caches the response.', $this->textDomain); ?>"
           }'><?php _e('Cache-First', $this->textDomain); ?></option>
-          <option value="NetworkOnly" <?php selected(Progressify::getSetting('offlineUsage[cache][strategy]'), 'NetworkOnly'); ?> data-dp-select-option='{
+          <option value="NetworkOnly" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'NetworkOnly'); ?> data-dp-select-option='{
             "description": "<?php _e('Does not cache anything. Always uses the network and passes the response to the browser.', $this->textDomain); ?>"
           }'><?php _e('Network-Only', $this->textDomain); ?></option>
-          <option value="CacheOnly" <?php selected(Progressify::getSetting('offlineUsage[cache][strategy]'), 'CacheOnly'); ?> data-dp-select-option='{
+          <option value="CacheOnly" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'CacheOnly'); ?> data-dp-select-option='{
             "description": "<?php _e('Always uses a pre-populated cached response, never requesting from the network. Updates only when cache settings change or cache expires.', $this->textDomain); ?>"
           }'><?php _e('Cache-Only', $this->textDomain); ?></option>
         </select>
@@ -119,7 +119,7 @@ if (!defined('ABSPATH')) {
           "step": 1
         }'>
           <div class="w-full flex justify-between items-center gap-x-3">
-            <input name="offlineUsage[cache][expirationTime]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm" value="<?php echo Progressify::getSetting('offlineUsage[cache][expirationTime]'); ?>" step="1" max="10" min="1" data-hs-input-number-input="" required="true">
+            <input name="offlineUsage[cache][expirationTime]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm" value="<?php echo Plugin::getSetting('offlineUsage[cache][expirationTime]'); ?>" step="1" max="10" min="1" data-hs-input-number-input="" required="true">
             <div class="flex justify-end items-center gap-x-1.5">
               <button type="button" class="inline-flex size-6 justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 disabled:opacity-50 data-[disabled=true]:pointer-events-none disabled:pointer-events-none" data-hs-input-number-decrement="">
                 <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -152,10 +152,7 @@ if (!defined('ABSPATH')) {
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
             <?php _e('Offline Capabilities', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="offlineUsage[capabilities][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Progressify::getSetting('offlineUsage[capabilities][feature]'),
-                'on'
-              ); ?>>
+              <input type="checkbox" name="offlineUsage[capabilities][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('offlineUsage[capabilities][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
@@ -194,7 +191,7 @@ if (!defined('ABSPATH')) {
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
               <input type="checkbox" id="offlineUsage[capabilities][notification]" name="offlineUsage[capabilities][notification]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Progressify::getSetting('offlineUsage[capabilities][notification]'),
+                Plugin::getSetting('offlineUsage[capabilities][notification]'),
                 'on'
               ); ?>>
             </div>
@@ -227,7 +224,7 @@ if (!defined('ABSPATH')) {
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
               <input type="checkbox" id="offlineUsage[capabilities][forms]" name="offlineUsage[capabilities][forms]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Progressify::getSetting('offlineUsage[capabilities][forms]'),
+                Plugin::getSetting('offlineUsage[capabilities][forms]'),
                 'on'
               ); ?>>
             </div>
@@ -260,7 +257,7 @@ if (!defined('ABSPATH')) {
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
               <input type="checkbox" id="offlineUsage[capabilities][googleAnalytics]" name="offlineUsage[capabilities][googleAnalytics]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Progressify::getSetting('offlineUsage[capabilities][googleAnalytics]'), 'on'); ?>>
+                <?php checked(Plugin::getSetting('offlineUsage[capabilities][googleAnalytics]'), 'on'); ?>>
             </div>
           </div>
         </label>

@@ -1,5 +1,5 @@
 <?php
-use DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();

@@ -1,5 +1,5 @@
 <?php
-use DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -91,7 +91,7 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="flex justify-between items-center">
               <div class="relative inline-block">
-                <input type="checkbox" id="pwa[feature]" name="pwa[feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Progressify::getSetting('pwa[feature]'), 'on'); ?>>
+                <input type="checkbox" id="pwa[feature]" name="pwa[feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('pwa[feature]'), 'on'); ?>>
               </div>
             </div>
           </label>
@@ -109,12 +109,12 @@ if (!defined('ABSPATH')) {
       <div class="p-3 block border border-gray-200 rounded-xl dark:border-neutral-700 shrink-0 group">
         <div class="flex items-start justify-between gap-x-4">
           <div class="flex items-center max-w-[70%] gap-3">
-            <?php if (Progressify::getSetting('appConfiguration[appIdentity][appIcon]')): ?>
-            <img class="inline-block shrink-0 size-[60px] rounded-full border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Progressify::getSetting('appConfiguration[appIdentity][appIcon]'), 'full')[0]; ?>" alt="PWA Icon">
+            <?php if (Plugin::getSetting('appConfiguration[appIdentity][appIcon]')): ?>
+            <img class="inline-block shrink-0 size-[60px] rounded-full border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Plugin::getSetting('appConfiguration[appIdentity][appIcon]'), 'full')[0]; ?>" alt="PWA Icon">
             <?php endif; ?>
             <div class="space-y-0.5">
-              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1"><?php echo Progressify::getSetting('appConfiguration[appIdentity][appName]'); ?></h3>
-              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1"><?php echo Progressify::getSetting('appConfiguration[appIdentity][description]'); ?></p>
+              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1"><?php echo Plugin::getSetting('appConfiguration[appIdentity][appName]'); ?></h3>
+              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1"><?php echo Plugin::getSetting('appConfiguration[appIdentity][description]'); ?></p>
             </div>
           </div>
           <span class="py-1 ps-1.5 pe-2.5 inline-flex items-center gap-x-1.5 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">

@@ -1,5 +1,5 @@
 <?php
-use DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-  <div data-version="v1.0.2" data-date="February 15, 2020" data-title="New installation banners and stability improvements" data-description="The update fixes some unexpected issues that was occuring on the admin side and adds new installation banners as well.">
+  <div data-version="v1.0.2" data-date="February 15, 2020" data-title="New installation banners and stability improvements" data-description="The update fixes some unexpected issues that was occurring on the admin side and adds new installation banners as well.">
     <ul data-icon="star" data-label="New Features">
       <li>New inline installation banner type.</li>
       <li>Added new workplace module that now checks for something else instead of this.</li>

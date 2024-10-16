@@ -1,5 +1,5 @@
 <?php
-use DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
             <?php _e('Installation Overlays', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="installation[overlays][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Progressify::getSetting('installation[overlays][feature]'), 'on'); ?>>
+              <input type="checkbox" name="installation[overlays][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('installation[overlays][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
         <div class="grid grid-cols-2 2xl:grid-cols-3 gap-3 lg:gap-5">
           <!-- Header Banner -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][headerBanner]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][headerBanner]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][headerBanner]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][headerBanner]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-header-banner.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -64,7 +64,7 @@ if (!defined('ABSPATH')) {
           <!-- End Header Banner -->
           <!-- Snackbar -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][snackbar]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][snackbar]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][snackbar]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][snackbar]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-snackbar.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -78,7 +78,7 @@ if (!defined('ABSPATH')) {
           <!-- End Snackbar -->
           <!-- Navigation Menu -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][navigationMenu]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][navigationMenu]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][navigationMenu]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][navigationMenu]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-navigation-menu.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -92,7 +92,7 @@ if (!defined('ABSPATH')) {
           <!-- End Navigation Menu -->
           <!-- In Feed -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][inFeed]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][inFeed]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-in-feed.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -106,7 +106,7 @@ if (!defined('ABSPATH')) {
           <!-- End In Feed -->
           <!-- Post Popup -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][postPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][postPopup]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][postPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][postPopup]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-post-popup.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -119,9 +119,9 @@ if (!defined('ABSPATH')) {
           </label>
           <!-- End Post Popup -->
           <!-- WooCommerce Checkout -->
-          <?php if (Progressify::isWooCommerceActive()): ?>
+          <?php if (Plugin::isWooCommerceActive()): ?>
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[overlays][types][woocommerceCheckout]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Progressify::getSetting('installation[overlays][types][woocommerceCheckout]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][types][woocommerceCheckout]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][woocommerceCheckout]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
               <img src="<?php echo plugins_url('admin/assets/img/icon-woocommerce-checkout.png', $this->pluginFile); ?>" />
               <span class="block text-center">
@@ -158,23 +158,23 @@ if (!defined('ABSPATH')) {
           }' class="hidden">
           <option value=""><?php _e('Select Browsers', $this->textDomain); ?></option>
           <option value="Chrome" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-chrome.png', $this->pluginFile); ?>\" alt=\"Chrome\"/>"}' <?php selected(true, in_array('Chrome', (array) Progressify::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-chrome.png', $this->pluginFile); ?>\" alt=\"Chrome\"/>"}' <?php selected(true, in_array('Chrome', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Chrome
           </option>
           <option value="Safari" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-safari.png', $this->pluginFile); ?>\" alt=\"Safari\"/>"}' <?php selected(true, in_array('Safari', (array) Progressify::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-safari.png', $this->pluginFile); ?>\" alt=\"Safari\"/>"}' <?php selected(true, in_array('Safari', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Safari
           </option>
           <option value="Firefox" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-firefox.png', $this->pluginFile); ?>\" alt=\"Firefox\"/>"}' <?php selected(true, in_array('Firefox', (array) Progressify::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-firefox.png', $this->pluginFile); ?>\" alt=\"Firefox\"/>"}' <?php selected(true, in_array('Firefox', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Firefox
           </option>
           <option value="Microsoft Edge" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-edge.png', $this->pluginFile); ?>\" alt=\"Microsoft Edge\"/>"}' <?php selected(true, in_array('Microsoft Edge', (array) Progressify::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-edge.png', $this->pluginFile); ?>\" alt=\"Microsoft Edge\"/>"}' <?php selected(true, in_array('Microsoft Edge', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Edge
           </option>
           <option value="Opera" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-opera.png', $this->pluginFile); ?>\" alt=\"Opera\"/>"}' <?php selected(true, in_array('Opera', (array) Progressify::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-opera.png', $this->pluginFile); ?>\" alt=\"Opera\"/>"}' <?php selected(true, in_array('Opera', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Opera
           </option>
         </select>
@@ -196,7 +196,7 @@ if (!defined('ABSPATH')) {
         </div>
         <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
           <label class="flex items-center gap-x-1.5 cursor-pointer">
-            <input type="checkbox" name="installation[overlays][skipFirstVisit]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Progressify::getSetting('installation[overlays][skipFirstVisit]'), 'on'); ?>>
+            <input type="checkbox" name="installation[overlays][skipFirstVisit]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('installation[overlays][skipFirstVisit]'), 'on'); ?>>
             <span class="text-sm dark:text-neutral-400"><?php _e('Show overlays to returning visitors only.', $this->textDomain); ?></span>
           </label>
         </div>
@@ -222,7 +222,7 @@ if (!defined('ABSPATH')) {
           "max": 10
         }'>
           <div class="w-full flex justify-between items-center gap-x-3">
-            <input name="installation[overlays][timeout]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="<?php echo Progressify::getSetting('installation[overlays][timeout]'); ?>" step="1" max="10" min="0" data-hs-input-number-input="">
+            <input name="installation[overlays][timeout]" type="number" class="w-full p-0 bg-transparent border-0 focus:ring-0 text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="<?php echo Plugin::getSetting('installation[overlays][timeout]'); ?>" step="1" max="10" min="0" data-hs-input-number-input="">
             <div class="flex justify-end items-center gap-x-1.5">
               <button type="button" class="inline-flex size-6 justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 disabled:opacity-50 data-[disabled=true]:pointer-events-none disabled:pointer-events-none" data-hs-input-number-decrement="">
                 <svg class="flex-shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -254,7 +254,7 @@ if (!defined('ABSPATH')) {
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
             <?php _e('Installation Button', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="installation[button][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Progressify::getSetting('installation[button][feature]'), 'on'); ?>>
+              <input type="checkbox" name="installation[button][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('installation[button][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
@@ -317,7 +317,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="installation[button][text]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Button Text', $this->textDomain); ?>" value="<?php echo Progressify::getSetting('installation[button][text]'); ?>" autocomplete="off" required>
+        <input name="installation[button][text]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Button Text', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('installation[button][text]'); ?>" autocomplete="off" required>
       </div>
       <!-- End Button Text -->
       <!-- Button Text Color -->
@@ -336,7 +336,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="installation[button][textColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('installation[button][textColor]'); ?>" title="<?php _e('Button Text Color', $this->textDomain); ?>" required>
+        <input name="installation[button][textColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('installation[button][textColor]'); ?>" title="<?php _e('Button Text Color', $this->textDomain); ?>" required>
       </div>
       <!-- End Button Text Color -->
       <!-- Background Color -->
@@ -355,7 +355,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <input name="installation[button][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Progressify::getSetting('installation[button][backgroundColor]'); ?>" title="<?php _e('Button Background Color', $this->textDomain); ?>" required>
+        <input name="installation[button][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('installation[button][backgroundColor]'); ?>" title="<?php _e('Button Background Color', $this->textDomain); ?>" required>
       </div>
       <!-- End Background Color -->
     </div>
