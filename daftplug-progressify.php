@@ -12,13 +12,15 @@ Requires at least: 5.0
 Requires PHP: 7.0
 */
 
+use DaftPlug\Progressify\Plugin;
+
 if (!defined('ABSPATH')) {
   exit();
 }
 
 require_once 'includes/class-plugin.php';
 
-new DaftPlug\Progressify([
+new Plugin([
   'name' => esc_html__('DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress'),
   'description' => esc_html__('Enhance your website with Progressive Web Apps (PWA) features and take the user experience to the next level with future of mobile web.'),
   'slug' => 'daftplug-progressify',
