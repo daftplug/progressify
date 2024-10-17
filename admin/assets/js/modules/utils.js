@@ -48,7 +48,7 @@ export function navigateTo(pageId, subPageId = '') {
 export function validateAttachment(attachment, mimes, maxWidth, minWidth, maxHeight, minHeight) {
   const errors = [];
 
-  if (mimes !== '') {
+  if (mimes && mimes !== '') {
     const mimesArray = mimes.split(',');
     const fileMime = attachment.subtype;
     if (!mimesArray.includes(fileMime)) {
@@ -56,19 +56,19 @@ export function validateAttachment(attachment, mimes, maxWidth, minWidth, maxHei
     }
   }
 
-  if (maxHeight !== '' && attachment.height > maxHeight) {
+  if (maxHeight && attachment.height > parseInt(maxHeight)) {
     errors.push("Image can't be higher than " + maxHeight + 'px.');
   }
 
-  if (minHeight !== '' && attachment.height < minHeight) {
+  if (minHeight && attachment.height < parseInt(minHeight)) {
     errors.push('Image should be at least ' + minHeight + 'px high.');
   }
 
-  if (maxWidth !== '' && attachment.width > maxWidth) {
+  if (maxWidth && attachment.width > parseInt(maxWidth)) {
     errors.push("Image can't be wider than " + maxWidth + 'px.');
   }
 
-  if (minWidth !== '' && attachment.width < minWidth) {
+  if (minWidth && attachment.width < parseInt(minWidth)) {
     errors.push('Image should be at least ' + minWidth + 'px wide.');
   }
 

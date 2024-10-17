@@ -109,12 +109,12 @@ if (!defined('ABSPATH')) {
       <div class="p-3 block border border-gray-200 rounded-xl dark:border-neutral-700 shrink-0 group">
         <div class="flex items-start justify-between gap-x-4">
           <div class="flex items-center max-w-[70%] gap-3">
-            <?php if (Plugin::getSetting('appConfiguration[appIdentity][appIcon]')): ?>
-            <img class="inline-block shrink-0 size-[60px] rounded-full border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Plugin::getSetting('appConfiguration[appIdentity][appIcon]'), 'full')[0]; ?>" alt="PWA Icon">
+            <?php if (Plugin::getSetting('webAppManifest[appIdentity][appIcon]')): ?>
+            <img class="inline-block shrink-0 size-[60px] rounded-full border border-gray-200 shadow-sm" src="<?php echo @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0]; ?>" alt="PWA Icon">
             <?php endif; ?>
             <div class="space-y-0.5">
-              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1"><?php echo Plugin::getSetting('appConfiguration[appIdentity][appName]'); ?></h3>
-              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1"><?php echo Plugin::getSetting('appConfiguration[appIdentity][description]'); ?></p>
+              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1"><?php echo Plugin::getSetting('webAppManifest[appIdentity][appName]'); ?></h3>
+              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1"><?php echo Plugin::getSetting('webAppManifest[appIdentity][description]'); ?></p>
             </div>
           </div>
           <span class="py-1 ps-1.5 pe-2.5 inline-flex items-center gap-x-1.5 text-xs font-medium bg-teal-100 text-teal-800 rounded-full dark:bg-teal-500/10 dark:text-teal-500">

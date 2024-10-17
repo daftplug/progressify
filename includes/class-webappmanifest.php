@@ -1,6 +1,8 @@
 <?php
 
-namespace DaftPlug;
+namespace DaftPlug\Progressify\Module;
+
+use DaftPlug\Progressify\Plugin;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -19,6 +21,7 @@ class WebAppManifest
   public $pluginDirUrl;
   public $pluginDirPath;
   public $pluginUploadDir;
+  public $pluginUploadUrl;
   public $menuTitle;
   public $menuIcon;
   public $menuId;
@@ -39,6 +42,7 @@ class WebAppManifest
     $this->pluginBasename = $config['plugin_basename'];
     $this->pluginDirPath = $config['plugin_dir_path'];
     $this->pluginUploadDir = $config['plugin_upload_dir'];
+    $this->pluginUploadUrl = $config['plugin_upload_url'];
     $this->menuTitle = $config['menu_title'];
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
@@ -51,39 +55,39 @@ class WebAppManifest
     add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
     add_filter("{$this->optionName}_public_css", [$this, 'addAccentColor']);
-    add_action("wp_ajax_{$this->optionName}_display_coupon_reward", [$this, 'generateCouponPopup']);
-    add_action("wp_ajax_nopriv_{$this->optionName}_display_coupon_reward", [$this, 'generateCouponPopup']);
     add_shortcode('pwa-install-button', [$this, 'renderInstallationButton']);
 
-    if (wp_is_mobile()) {
-      if (daftplugInstantify::getSetting('pwaOverlays') == 'on' || daftplugInstantify::getSetting('pwaInstallButton') == 'on') {
-        add_filter("{$this->optionName}_public_html", [$this, 'renderFullscreenOverlays']);
-        if (daftplugInstantify::getSetting('pwaOverlays') == 'on') {
-          if (daftplugInstantify::getSetting('pwaOverlaysTypeHeader') == 'on') {
-            add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
-          }
-          if (daftplugInstantify::getSetting('pwaOverlaysTypeSnackbar') == 'on') {
-            add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
-          }
-          if (daftplugInstantify::getSetting('pwaOverlaysTypePost') == 'on') {
-            add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
-          }
-          if (daftplugInstantify::getSetting('pwaOverlaysTypeIos') == 'on' && in_array('safari', (array) daftplugInstantify::getSetting('pwaOverlaysBrowsers'))) {
-            add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
-          }
-          if (daftplugInstantify::getSetting('pwaOverlaysTypeMenu') == 'on') {
-            add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
-          }
-          if (daftplugInstantify::getSetting('pwaOverlaysTypeFeed') == 'on') {
-            add_action('loop_start', [$this, 'renderFeedOverlay']);
-          }
-          if (daftplugInstantify::isWooCommerceActive()) {
-            if (daftplugInstantify::getSetting('pwaOverlaysTypeCheckout') == 'on') {
-              add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
-            }
-            if (daftplugInstantify::getSetting('pwaOverlaysTypeCoupon') == 'on' && get_option('woocommerce_enable_coupons') == 'yes') {
-              add_filter("{$this->optionName}_public_html", [$this, 'renderCouponOverlay']);
-            }
+    add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
+    add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
+    add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
+    add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
+    add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
+    add_action('loop_start', [$this, 'renderFeedOverlay']);
+    add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
+
+    if (Plugin::getSetting('pwaOverlays') == 'on' || Plugin::getSetting('pwaInstallButton') == 'on') {
+      if (Plugin::getSetting('pwaOverlays') == 'on') {
+        if (Plugin::getSetting('pwaOverlaysTypeHeader') == 'on') {
+          add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
+        }
+        if (Plugin::getSetting('pwaOverlaysTypeSnackbar') == 'on') {
+          add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
+        }
+        if (Plugin::getSetting('pwaOverlaysTypePost') == 'on') {
+          add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
+        }
+        if (Plugin::getSetting('pwaOverlaysTypeIos') == 'on' && in_array('safari', (array) Plugin::getSetting('pwaOverlaysBrowsers'))) {
+          add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
+        }
+        if (Plugin::getSetting('pwaOverlaysTypeMenu') == 'on') {
+          add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
+        }
+        if (Plugin::getSetting('pwaOverlaysTypeFeed') == 'on') {
+          add_action('loop_start', [$this, 'renderFeedOverlay']);
+        }
+        if (Plugin::isWooCommerceActive()) {
+          if (Plugin::getSetting('pwaOverlaysTypeCheckout') == 'on') {
+            add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
           }
         }
       }
@@ -92,7 +96,7 @@ class WebAppManifest
 
   public function generateLaunchScreensAndMakableIcons()
   {
-    if (isset($this->settings['pwaIcon'])) {
+    if (isset($this->settings['webAppManifest[appIdentity][appIcon]'])) {
       if (isset($_POST['launchScreen']) && !empty($_POST['launchScreen']) && (isset($_POST['maskableIcon']) && !empty($_POST['maskableIcon']))) {
         $launchScreen = substr($_POST['launchScreen'], strpos($_POST['launchScreen'], ',') + 1);
         $maskableIcon = substr($_POST['maskableIcon'], strpos($_POST['maskableIcon'], ',') + 1);
@@ -140,97 +144,130 @@ class WebAppManifest
     global $wp;
     global $wp_query;
 
+    $manifest = [];
+
     if (!$wp_query->is_main_query()) {
       return;
     }
 
-    if ($wp->request === self::$manifestName) {
-      $wp_query->set(self::$manifestName, 1);
+    if ($wp->request === 'manifest.webmanifest') {
+      $wp_query->set('manifest.webmanifest', 1);
     }
 
-    if ($wp_query->get(self::$manifestName)) {
+    if ($wp_query->get('manifest.webmanifest')) {
       @ini_set('display_errors', 0);
       @header('Cache-Control: no-cache');
       @header('X-Robots-Tag: noindex, follow');
       @header('Content-Type: application/manifest+json; charset=utf-8');
+
       $homeUrlParts = wp_parse_url(trailingslashit(strtok(home_url('/', 'https'), '?')));
       $scope = '/';
       if (array_key_exists('path', $homeUrlParts)) {
         $scope = $homeUrlParts['path'];
       }
 
-      if (daftplugInstantify::getSetting('pwaDetectionMode') == 'queryParameter') {
-        $startUrl = add_query_arg('isPwa', 'true', !empty($_GET['start_url']) ? $_GET['start_url'] : trailingslashit(wp_make_link_relative(daftplugInstantify::getSetting('pwaStartPage'))));
-      } else {
-        $startUrl = !empty($_GET['start_url']) ? $_GET['start_url'] : trailingslashit(wp_make_link_relative(daftplugInstantify::getSetting('pwaStartPage')));
-      }
-
-      $manifestShortName = strlen(daftplugInstantify::getSetting('pwaShortName')) > 12 ? substr(daftplugInstantify::getSetting('pwaShortName'), 0, 9) . '...' : daftplugInstantify::getSetting('pwaShortName');
-
       if (get_bloginfo('language')) {
-        $this->manifest['lang'] = get_bloginfo('language');
+        $manifest['lang'] = get_bloginfo('language');
       }
 
-      $this->manifest['id'] = hash('crc32', daftplugInstantify::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))));
-      $this->manifest['dir'] = is_rtl() ? 'rtl' : 'ltr';
-      $this->manifest['name'] = trim(!empty($_GET['name']) ? $_GET['name'] : daftplugInstantify::getSetting('pwaName'));
-      $this->manifest['scope'] = $scope;
-      $this->manifest['start_url'] = $startUrl;
-      $this->manifest['scope_extensions'][] = ['origin' => 'https://*.' . daftplugInstantify::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))];
-      $this->manifest['short_name'] = trim(!empty($_GET['short_name']) ? $_GET['short_name'] : $manifestShortName);
-      $this->manifest['description'] = trim(!empty($_GET['description']) ? $_GET['description'] : daftplugInstantify::getSetting('pwaDescription'));
-      $this->manifest['display_override'] = (array) daftplugInstantify::getSetting('pwaDisplayMode');
-      $this->manifest['display'] = daftplugInstantify::getSetting('pwaDisplayMode');
-      $this->manifest['orientation'] = daftplugInstantify::getSetting('pwaOrientation');
-      $this->manifest['handle_links'] = daftplugInstantify::getSetting('pwaHandleLinks');
-      $this->manifest['theme_color'] = daftplugInstantify::getSetting('pwaThemeColor');
-      $this->manifest['background_color'] = daftplugInstantify::getSetting('pwaBackgroundColor');
-      $this->manifest['categories'] = (array) daftplugInstantify::getSetting('pwaCategories');
-      if (!empty(daftplugInstantify::getSetting('pwaIarcRatingId'))) {
-        $this->manifest['iarc_rating_id'] = daftplugInstantify::getSetting('pwaIarcRatingId');
+      $manifest['lang'] = get_bloginfo('language') ? get_bloginfo('language') : 'en-US';
+
+      $manifest['id'] = hash('crc32', Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))));
+      $manifest['dir'] = is_rtl() ? 'rtl' : 'ltr';
+      $manifest['name'] = trim(!empty($_GET['name']) ? $_GET['name'] : Plugin::getSetting('webAppManifest[appIdentity][appName]'));
+      $manifest['scope'] = $scope;
+      $manifest['start_url'] = add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]'))));
+      $manifest['scope_extensions'][] = ['origin' => 'https://*.' . Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))];
+      $manifest['short_name'] = trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12));
+      $manifest['description'] = trim(Plugin::getSetting('webAppManifest[appIdentity][description]'));
+      $manifest['display'] = Plugin::getSetting('webAppManifest[displaySettings][displayMode]');
+      $manifest['display_override'] = [$manifest['display'], 'window-controls-overlay', 'browser'];
+      $manifest['orientation'] = Plugin::getSetting('webAppManifest[displaySettings][orientation]');
+      $manifest['theme_color'] = Plugin::getSetting('webAppManifest[appearance][themeColor]');
+      $manifest['background_color'] = Plugin::getSetting('webAppManifest[appearance][backgroundColor]');
+      $manifest['categories'] = (array) Plugin::getSetting('webAppManifest[appIdentity][categories]');
+      $manifest['handle_links'] = 'preferred';
+      $manifest['edge_side_panel'] = [
+        'preferred_width' => 400,
+      ];
+
+      if (!empty(Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]'))) {
+        $manifest['iarc_rating_id'] = Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]');
       }
-      $this->manifest['prefer_related_applications'] = daftplugInstantify::getSetting('pwaRelatedApplication1') == 'on' ? true : false;
-      for ($ra = 1; $ra <= 3; $ra++) {
-        if (daftplugInstantify::getSetting(sprintf('pwaRelatedApplication%s', $ra)) == 'on') {
-          $this->manifest['related_applications'][] = [
-            'platform' => daftplugInstantify::getSetting(sprintf('pwaRelatedApplication%sPlatform', $ra)),
-            'url' => daftplugInstantify::getSetting(sprintf('pwaRelatedApplication%sUrl', $ra)),
-            'id' => daftplugInstantify::getSetting(sprintf('pwaRelatedApplication%sId', $ra)),
-          ];
+
+      $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][relatedApplications]');
+      $relatedApplicationsNotEmpty = !empty($relatedApplications) && !(count($relatedApplications) === 1 && empty($relatedApplications[0]['platform']) && empty($relatedApplications[0]['id']));
+
+      $manifest['prefer_related_applications'] = $relatedApplicationsNotEmpty;
+
+      if ($relatedApplicationsNotEmpty) {
+        $manifest['related_applications'] = [];
+        foreach ($relatedApplications as $relatedApplication) {
+          if (!empty($relatedApplication['platform']) && !empty($relatedApplication['id'])) {
+            $url = '';
+            switch ($relatedApplication['platform']) {
+              case 'play':
+                $url = "https://play.google.com/store/apps/details?id={$relatedApplication['id']}";
+                break;
+              case 'itunes':
+                $url = "https://apps.apple.com/us/app/{$relatedApplication['id']}";
+                break;
+              case 'windows':
+                $url = "https://apps.microsoft.com/detail/{$relatedApplication['id']}";
+                break;
+            }
+
+            $manifest['related_applications'][] = [
+              'platform' => $relatedApplication['platform'],
+              'url' => $url,
+              'id' => $relatedApplication['id'],
+            ];
+          }
         }
       }
-      $icon = !empty($_GET['icon']) ? $_GET['icon'] : daftplugInstantify::getSetting('pwaIcon');
-      $iconWidth = wp_get_attachment_image_src($icon, 'full')[1];
+
+      $appIcon = Plugin::getSetting('webAppManifest[appIdentity][appIcon]');
       $iconSizes = [180, 192, 512];
-      if (wp_attachment_is_image(intval($icon))) {
+
+      if (wp_attachment_is_image(intval($appIcon))) {
+        $iconSrc = wp_get_attachment_image_src($appIcon, 'full');
+        $iconWidth = $iconSrc[1];
+
         foreach ($iconSizes as $iconSize) {
           if ($iconWidth < $iconSize) {
             continue;
           }
 
-          $newIcon = daftplugInstantifyPwa::resizeImage($icon, $iconSize, $iconSize, 'png', true);
+          $newIcon = Plugin::resizeImage($appIcon, $iconSize, $iconSize, 'png', true);
 
-          if ($newIcon[1] != $iconSize) {
+          // Check if resizeImage failed
+          if ($newIcon === false || $newIcon['width'] != $iconSize) {
             continue;
           }
 
-          $this->manifest['icons'][] = [
-            'src' => $newIcon[0],
+          // Add icon with purpose 'any'
+          $manifest['icons'][] = [
+            'src' => $newIcon['url'],
             'sizes' => "{$iconSize}x{$iconSize}",
             'type' => 'image/png',
             'purpose' => 'any',
           ];
 
-          if (file_exists($this->pluginUploadDir . 'icon-pwa-maskable.png')) {
-            $this->manifest['icons'][] = [
-              'src' => "{$this->pluginUploadUrl}icon-pwa-maskable-{$iconSize}x{$iconSize}.png",
+          // Prepare maskable icon filename
+          $maskableIconFilename = "icon-maskable-{$iconSize}x{$iconSize}.png";
+          $maskableIconPath = $this->pluginUploadDir . $maskableIconFilename;
+          $maskableIconUrl = $this->pluginUploadUrl . $maskableIconFilename;
+
+          if (file_exists($maskableIconPath)) {
+            $manifest['icons'][] = [
+              'src' => $maskableIconUrl,
               'sizes' => "{$iconSize}x{$iconSize}",
               'type' => 'image/png',
               'purpose' => 'maskable',
             ];
           } else {
-            $this->manifest['icons'][] = [
-              'src' => $newIcon[0],
+            $manifest['icons'][] = [
+              'src' => $newIcon['url'],
               'sizes' => "{$iconSize}x{$iconSize}",
               'type' => 'image/png',
               'purpose' => 'maskable',
@@ -239,58 +276,80 @@ class WebAppManifest
         }
       }
 
-      $screenshotOptionNames = ['pwaScreenshot1', 'pwaScreenshot2', 'pwaScreenshot3', 'pwaScreenshot4', 'pwaScreenshot5'];
-      foreach ($screenshotOptionNames as $screenshotOptionName) {
-        $screenshotId = daftplugInstantify::getSetting($screenshotOptionName);
-        if (wp_attachment_is_image(intval($screenshotId))) {
-          $this->manifest['screenshots'][] = [
-            'src' => wp_get_attachment_image_src($screenshotId, 'full')[0],
-            'sizes' => wp_get_attachment_image_src($screenshotId, 'full')[1] . 'x' . wp_get_attachment_image_src($screenshotId, 'full')[2],
-            'type' => 'image/png',
-          ];
-        } else {
-          if ($screenshotOptionName == 'pwaScreenshot1') {
-            $this->manifest['screenshots'][] = [
-              'src' => 'https://s0.wp.com/mshots/v1/' . trailingslashit(daftplugInstantify::getSetting('pwaStartPage')) . '?vpw=750&vph=1334',
-              'sizes' => '750x1334',
-              'type' => 'image/png',
-            ];
-          }
-
-          if ($screenshotOptionName == 'pwaScreenshot2') {
-            $this->manifest['screenshots'][] = [
-              'src' => 'https://s0.wp.com/mshots/v1/' . trailingslashit(daftplugInstantify::getSetting('pwaStartPage')) . '?vpw=1280&vph=800',
-              'sizes' => '1280x800',
-              'type' => 'image/png',
-            ];
+      $screenshots = Plugin::getSetting('webAppManifest[appIdentity][appScreenshots]');
+      if (!empty($screenshots) && is_array($screenshots)) {
+        foreach ($screenshots as $screenshotId) {
+          $screenshotId = intval($screenshotId);
+          if (wp_attachment_is_image($screenshotId)) {
+            $image_src = wp_get_attachment_image_src($screenshotId, 'full');
+            if ($image_src) {
+              $manifest['screenshots'][] = [
+                'src' => $image_src[0],
+                'sizes' => $image_src[1] . 'x' . $image_src[2],
+                'type' => get_post_mime_type($screenshotId),
+              ];
+            }
           }
         }
       }
 
-      $appShortcutOptionNames = ['pwaAppShortcut1', 'pwaAppShortcut2', 'pwaAppShortcut3', 'pwaAppShortcut4'];
-      foreach ($appShortcutOptionNames as $appShortcutOptionName) {
-        $icon = daftplugInstantifyPwa::resizeImage(daftplugInstantify::getSetting($appShortcutOptionName . 'Icon'), '96', '96', 'png', true);
-        if (daftplugInstantify::getSetting($appShortcutOptionName) == 'on') {
-          $this->manifest['shortcuts'][] = [
-            'name' => daftplugInstantify::getSetting($appShortcutOptionName . 'Name'),
-            'short_name' => substr(daftplugInstantify::getSetting($appShortcutOptionName . 'Name'), 0, 12),
-            'url' => daftplugInstantify::getSetting($appShortcutOptionName . 'Url'),
-          ];
+      if (empty($manifest['screenshots'])) {
+        $startPage = trailingslashit(Plugin::getSetting('webAppManifest[displaySettings][startPage]'));
+        $manifest['screenshots'][] = [
+          'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334',
+          'sizes' => '750x1334',
+          'type' => 'image/png',
+        ];
+        $manifest['screenshots'][] = [
+          'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800',
+          'sizes' => '1280x800',
+          'type' => 'image/png',
+        ];
+      }
 
-          if (wp_attachment_is_image(intval(daftplugInstantify::getSetting($appShortcutOptionName . 'Icon')))) {
-            $this->manifest['shortcuts'][0]['icons'][] = [
-              'src' => $icon[0],
-              'sizes' => '96x96',
-              'type' => 'image/png',
+      $appShortcuts = Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts]');
+      $appShortcutsNotEmpty = !empty($appShortcuts) && !(count($appShortcuts) === 1 && empty($appShortcuts[0]['name']) && empty($appShortcuts[0]['url']));
+
+      if ($appShortcutsNotEmpty) {
+        $manifest['shortcuts'] = [];
+        foreach ($appShortcuts as $appShortcut) {
+          $name = sanitize_text_field($appShortcut['name']);
+          $url = esc_url_raw($appShortcut['url']);
+          $iconId = !empty($appShortcut['icon']) ? intval($appShortcut['icon']) : null;
+
+          if (!empty($name) && !empty($url)) {
+            $shortcut = [
+              'name' => $name,
+              'short_name' => substr($name, 0, 12),
+              'url' => $url,
             ];
+
+            if ($iconId && wp_attachment_is_image($iconId)) {
+              $icon = Plugin::resizeImage($iconId, '96', '96', 'png', true);
+              if ($icon && !is_wp_error($icon)) {
+                $shortcut['icons'] = [
+                  [
+                    'src' => $icon['url'],
+                    'sizes' => $icon['width'] . 'x' . $icon['height'],
+                    'type' => 'image/png',
+                  ],
+                ];
+              }
+            }
+
+            $manifest['shortcuts'][] = $shortcut;
           }
+        }
+
+        if (empty($manifest['shortcuts'])) {
+          unset($manifest['shortcuts']);
         }
       }
 
-      $this->manifest = apply_filters("{$this->optionName}_pwa_manifest", $this->manifest);
-      $this->manifest = wp_json_encode($this->manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      $manifest = apply_filters("{$this->optionName}_manifest", $manifest);
+      $manifest = wp_json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
-      echo $this->manifest;
+      echo $manifest;
       exit();
     }
   }
@@ -322,6 +381,9 @@ class WebAppManifest
               'paths' => ['/*'],
             ],
           ],
+          [
+            'web_app_identity' => Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))),
+          ],
         ],
       ];
 
@@ -339,7 +401,7 @@ class WebAppManifest
     echo '
           :root {
               accent-color: ' .
-      daftplugInstantify::getSetting('pwaThemeColor') .
+      Plugin::getSetting('pwaThemeColor') .
       ';
           }
       ';
@@ -356,7 +418,7 @@ class WebAppManifest
 
   public function renderFullscreenOverlays()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return;
     }
 
@@ -365,7 +427,7 @@ class WebAppManifest
 
   public function renderHeaderOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return;
     }
 
@@ -374,7 +436,7 @@ class WebAppManifest
 
   public function renderSnackbarOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return;
     }
 
@@ -383,7 +445,7 @@ class WebAppManifest
 
   public function renderPostOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !is_single()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !is_single()) {
       return;
     }
 
@@ -392,7 +454,7 @@ class WebAppManifest
 
   public function renderIosOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return;
     }
 
@@ -401,13 +463,13 @@ class WebAppManifest
 
   public function renderMenuOverlay($items, $args)
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return $items;
     } else {
-      $appIcon = @wp_get_attachment_image_src(daftplugInstantify::getSetting('pwaIcon'), [150, 150])[0];
-      $message = esc_html__(daftplugInstantify::getSetting('pwaOverlaysTypeMenuMessage'), $this->textDomain);
-      $backgroundColor = daftplugInstantify::getSetting('pwaOverlaysTypeMenuBackgroundColor');
-      $textColor = daftplugInstantify::getSetting('pwaOverlaysTypeMenuTextColor');
+      $appIcon = @wp_get_attachment_image_src(Plugin::getSetting('pwaIcon'), [150, 150])[0];
+      $message = esc_html__(Plugin::getSetting('pwaOverlaysTypeMenuMessage'), $this->textDomain);
+      $backgroundColor = Plugin::getSetting('pwaOverlaysTypeMenuBackgroundColor');
+      $textColor = Plugin::getSetting('pwaOverlaysTypeMenuTextColor');
       $notNow = esc_html__('Not now', $this->textDomain);
       $install = esc_html__('Install', $this->textDomain);
 
@@ -451,7 +513,7 @@ class WebAppManifest
 
   public function renderFeedOverlay($query)
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
       return;
     }
 
@@ -459,10 +521,10 @@ class WebAppManifest
       add_action('the_post', function () {
         static $nr = 0;
         if (++$nr == 4) {
-          $appIcon = @wp_get_attachment_image_src(daftplugInstantify::getSetting('pwaIcon'), [150, 150])[0];
-          $message = esc_html__(daftplugInstantify::getSetting('pwaOverlaysTypeFeedMessage'), $this->textDomain);
-          $backgroundColor = daftplugInstantify::getSetting('pwaOverlaysTypeFeedBackgroundColor');
-          $textColor = daftplugInstantify::getSetting('pwaOverlaysTypeFeedTextColor');
+          $appIcon = @wp_get_attachment_image_src(Plugin::getSetting('pwaIcon'), [150, 150])[0];
+          $message = esc_html__(Plugin::getSetting('pwaOverlaysTypeFeedMessage'), $this->textDomain);
+          $backgroundColor = Plugin::getSetting('pwaOverlaysTypeFeedBackgroundColor');
+          $textColor = Plugin::getSetting('pwaOverlaysTypeFeedTextColor');
           $notNow = esc_html__('Not now', $this->textDomain);
           $install = esc_html__('Install', $this->textDomain);
 
@@ -505,7 +567,7 @@ class WebAppManifest
 
   public function renderCheckoutOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !daftplugInstantify::isWooCommerceActive()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !Plugin::isWooCommerceActive()) {
       return;
     }
 
@@ -514,7 +576,7 @@ class WebAppManifest
 
   public function renderCouponOverlay()
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !daftplugInstantify::isWooCommerceActive()) {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !Plugin::isWooCommerceActive()) {
       return;
     }
 
@@ -523,13 +585,13 @@ class WebAppManifest
 
   public function renderInstallationButton($atts)
   {
-    if (daftplugInstantify::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || daftplugInstantify::getSetting('pwaInstallButton') !== 'on') {
+    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || Plugin::getSetting('pwaInstallButton') !== 'on') {
       return;
     }
 
-    $backgroundColor = daftplugInstantify::getSetting('pwaInstallButtonBackgroundColor');
-    $textColor = daftplugInstantify::getSetting('pwaInstallButtonTextColor');
-    $text = esc_html__(daftplugInstantify::getSetting('pwaInstallButtonText'), $this->textDomain);
+    $backgroundColor = Plugin::getSetting('pwaInstallButtonBackgroundColor');
+    $textColor = Plugin::getSetting('pwaInstallButtonTextColor');
+    $text = esc_html__(Plugin::getSetting('pwaInstallButtonText'), $this->textDomain);
 
     $installButton =
       '<div class="daftplugPublic" data-daftplug-plugin="' .
@@ -547,52 +609,9 @@ class WebAppManifest
     return $installButton;
   }
 
-  public function generateCouponPopup()
-  {
-    if (wp_is_mobile() && !daftplugInstantify::isAmpPage() && daftplugInstantify::isWooCommerceActive() && daftplugInstantify::getSetting('pwaOverlaysTypeCoupon') == 'on' && get_option('woocommerce_enable_coupons') == 'yes') {
-      $couponCode = strtoupper(substr(substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1) . substr(md5(time()), 1), 0, 7));
-      $discountPercentage = daftplugInstantify::getSetting('pwaOverlaysTypeCouponPercentage');
-      $coupon = [
-        'post_title' => $couponCode,
-        'post_content' => '',
-        'post_status' => 'publish',
-        'post_author' => 1,
-        'post_type' => 'shop_coupon',
-      ];
-      $couponId = wp_insert_post($coupon);
-      update_post_meta($couponId, 'discount_type', 'percent');
-      update_post_meta($couponId, 'coupon_amount', $discountPercentage);
-      update_post_meta($couponId, 'individual_use', 'yes');
-      update_post_meta($couponId, 'product_ids', '');
-      update_post_meta($couponId, 'exclude_product_ids', '');
-      update_post_meta($couponId, 'usage_limit', '1');
-      update_post_meta($couponId, 'expiry_date', strtotime('+10 days'));
-      update_post_meta($couponId, 'apply_before_tax', 'no');
-      update_post_meta($couponId, 'free_shipping', 'no');
-      update_post_meta($couponId, 'exclude_sale_items', 'no');
-      update_post_meta($couponId, 'free_shipping', 'no');
-      update_post_meta($couponId, 'product_categories', '');
-      update_post_meta($couponId, 'exclude_product_categories', '');
-      update_post_meta($couponId, 'minimum_amount', '');
-
-      if ($couponCode) {
-        wp_send_json_success([
-          'couponCode' => $couponCode,
-          'iconUrl' => plugins_url('pwa/public/assets/img/icon-present.png', $this->pluginFile),
-          'title' => __('CONGRATULATIONS', $this->textDomain),
-          'message' => sprintf(__('Thank you for installing and using our web app. Your %s%% reward coupon is available below. Tap on it to copy your coupon code.', $this->textDomain), $discountPercentage),
-        ]);
-      } else {
-        wp_send_json_error();
-      }
-    } else {
-      wp_send_json_error();
-    }
-  }
-
   public function getManifestUrl($encoded = true)
   {
-    $url = untrailingslashit(strtok(home_url('/', 'https'), '?') . self::$manifestName);
+    $url = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'manifest.webmanifest');
     $queryArgs = [];
 
     if (is_singular()) {
@@ -605,7 +624,7 @@ class WebAppManifest
       if (!empty($postPwaName)) {
         $queryArgs['name'] = $postPwaName;
       } else {
-        if (daftplugInstantify::getSetting('pwaDynamicManifest') == 'on') {
+        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
           $queryArgs['name'] = get_the_title();
         }
       }
@@ -613,7 +632,7 @@ class WebAppManifest
       if (!empty($postPwaShortName)) {
         $queryArgs['short_name'] = $postPwaShortName;
       } else {
-        if (daftplugInstantify::getSetting('pwaDynamicManifest') == 'on') {
+        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
           $queryArgs['short_name'] = strlen(get_the_title()) > 12 ? substr(get_the_title(), 0, 9) . '...' : get_the_title();
         }
       }
@@ -621,7 +640,7 @@ class WebAppManifest
       if (!empty($postPwaDescription)) {
         $queryArgs['description'] = $postPwaDescription;
       } else {
-        if (daftplugInstantify::getSetting('pwaDynamicManifest') == 'on') {
+        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
           $queryArgs['description'] = strlen(strip_tags(get_the_excerpt())) > 70 ? substr(strip_tags(get_the_excerpt()), 0, 70) . '...' : strip_tags(get_the_excerpt());
         }
       }
@@ -630,8 +649,8 @@ class WebAppManifest
         $queryArgs['icon'] = $postPwaIcon;
       }
 
-      if (!empty($postPwaName) || !empty($postPwaShortName) || !empty($postPwaDescription) || !empty($postPwaIcon) || daftplugInstantify::getSetting('pwaDynamicManifest') == 'on') {
-        $queryArgs['start_url'] = wp_make_link_relative(daftplugInstantify::getCurrentUrl());
+      if (!empty($postPwaName) || !empty($postPwaShortName) || !empty($postPwaDescription) || !empty($postPwaIcon) || Plugin::getSetting('pwaDynamicManifest') == 'on') {
+        $queryArgs['start_url'] = wp_make_link_relative(Plugin::getCurrentUrl());
       }
     }
 

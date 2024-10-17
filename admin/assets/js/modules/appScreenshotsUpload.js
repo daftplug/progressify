@@ -17,48 +17,112 @@ export function handleAppScreenshotsUpload() {
 
   const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=750&vph=1334`, `https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=1280&vph=800`];
 
-  const inputs = [settingAppScreenshots.find('#appScreenshot1')[0], settingAppScreenshots.find('#appScreenshot2')[0], settingAppScreenshots.find('#appScreenshot3')[0], settingAppScreenshots.find('#appScreenshot4')[0], settingAppScreenshots.find('#appScreenshot5')[0]];
-
   function initializeScreenshots() {
-    jQuery.each(inputs, (index, input) => {
-      let imageSrc = jQuery(input).attr('data-attach-url');
-      if (!jQuery(input).val() && index < 2) {
-        imageSrc = defaultScreenshots[index];
-      }
-      if (imageSrc) {
-        const screenshotElement = createScreenshotElement(imageSrc, jQuery(input).val(), index);
-        screenshotsContainer.append(screenshotElement);
-      }
+    const savedScreenshots = jsVars.settings.webAppManifest?.appIdentity?.appScreenshots || [];
+    screenshotsContainer.empty();
+
+    if (savedScreenshots.length === 0) {
+      addDefaultScreenshots();
+    } else {
+      const promises = savedScreenshots.map((attachmentId) =>
+        fetchAttachmentUrl(attachmentId).then((url) => {
+          if (url) {
+            addScreenshot(url, attachmentId, false);
+          } else {
+            console.error(`Failed to fetch URL for attachment ID: ${attachmentId}`);
+          }
+        })
+      );
+
+      Promise.all(promises).then(() => {
+        updateInputFields();
+      });
+    }
+  }
+
+  function fetchAttachmentUrl(attachmentId) {
+    return new Promise((resolve) => {
+      wp.media
+        .attachment(attachmentId)
+        .fetch()
+        .then(function () {
+          const imageSrc = wp.media.attachment(attachmentId).get('url');
+          resolve(imageSrc);
+        })
+        .catch(() => {
+          console.error(`Screenshot attachment ${attachmentId} has a problem`);
+          resolve(null);
+        });
     });
   }
 
-  function reindexScreenshots() {
-    const screenshots = screenshotsContainer.find('div[id^="dismiss-img"]');
-    screenshots.each((newIndex, screenshot) => {
-      jQuery(screenshot).attr('id', `dismiss-img${newIndex}`);
-      const button = jQuery(screenshot).find('button[data-hs-remove-element]');
-      button.attr('data-hs-remove-element', `#dismiss-img${newIndex}`);
-      const img = jQuery(screenshot).find('img');
-      const hiddenInput = settingAppScreenshots.find(`#appScreenshot${newIndex + 1}`);
-      hiddenInput.val(img.length ? img.attr('data-attachment-id') : '');
+  function addDefaultScreenshots() {
+    defaultScreenshots.forEach((screenshot) => {
+      addScreenshot(screenshot, '', true);
+    });
+  }
+
+  function addScreenshot(imgSrc, attachmentId, isDefault = false) {
+    // Prevent duplicates for user-uploaded screenshots
+    if (!isDefault && attachmentId) {
+      const existingImg = screenshotsContainer.find(`img[data-attachment-id="${attachmentId}"]`);
+      if (existingImg.length > 0) {
+        alert('This screenshot is already added.');
+        return;
+      }
+    }
+
+    if (!isDefault) {
+      // Remove default screenshots if present
+      screenshotsContainer.find('div[data-is-default="true"]').remove();
+    }
+
+    const screenshotElement = createScreenshotElement(imgSrc, attachmentId, isDefault);
+    screenshotsContainer.append(screenshotElement);
+    updateInputFields();
+  }
+
+  function updateInputFields() {
+    // Remove all existing input fields
+    settingAppScreenshots.find('input[name^="webAppManifest[appIdentity][appScreenshots]"]').remove();
+
+    const screenshotDivs = screenshotsContainer.find('div[data-is-default]');
+    let index = 0;
+    screenshotDivs.each((_, div) => {
+      const $div = jQuery(div);
+      const isDefault = $div.attr('data-is-default') === 'true';
+
+      if (!isDefault) {
+        const $img = $div.find('img');
+        const attachmentId = $img.attr('data-attachment-id');
+
+        if (attachmentId) {
+          const inputField = jQuery('<input>', {
+            class: 'hidden',
+            type: 'hidden',
+            name: `webAppManifest[appIdentity][appScreenshots][${index}]`,
+            value: attachmentId,
+          });
+          screenshotsContainer.after(inputField);
+          index++;
+        }
+      }
     });
 
-    for (let i = screenshots.length; i < maxFiles; i++) {
-      const hiddenInput = settingAppScreenshots.find(`#appScreenshot${i + 1}`);
-      hiddenInput.val('');
+    // If there are no user-uploaded screenshots, indicate an empty array
+    if (index === 0) {
+      const inputField = jQuery('<input>', {
+        type: 'hidden',
+        name: 'webAppManifest[appIdentity][appScreenshots]',
+        value: '', // Empty value to represent an empty array
+      });
+      screenshotsContainer.after(inputField);
     }
   }
 
   appScreenshotsUploadBtn.on('click', function (e) {
     e.preventDefault();
-    let frame;
-
-    if (frame) {
-      frame.open();
-      return;
-    }
-
-    frame = wp.media({
+    let frame = wp.media({
       title: 'Select or upload App Screenshots',
       button: {
         text: 'Select Screenshots',
@@ -68,35 +132,23 @@ export function handleAppScreenshotsUpload() {
 
     frame.on('select', function () {
       const attachments = frame.state().get('selection').toJSON();
-      const currentScreenshotsCount = screenshotsContainer.find('img').length;
 
-      if (attachments.length + currentScreenshotsCount > maxFiles) {
-        alert(`You can only upload up to ${maxFiles} screenshots.`);
+      if (!canAddMoreScreenshots(attachments.length)) {
         return;
       }
 
-      attachments.forEach((attachment, index) => {
-        const currentIndex = index + currentScreenshotsCount;
-        const mimes = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`).attr('data-mimes');
-        const maxWidth = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`).attr('data-max-width');
-        const minWidth = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`).attr('data-min-width');
-        const maxHeight = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`).attr('data-max-height');
-        const minHeight = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`).attr('data-min-height');
-        const errors = validateAttachment(attachment, mimes, maxWidth, minWidth, maxHeight, minHeight);
+      attachments.forEach((attachment) => {
+        const errors = validateAttachment(attachment, 'png', '3840', '320', '3840', '320');
 
         if (errors.length) {
           alert(errors.join('\n\n'));
           return;
         }
 
-        const imgSrc = attachment.url;
-        const screenshotElement = createScreenshotElement(imgSrc, attachment.id, currentIndex);
-        screenshotsContainer.append(screenshotElement);
-
-        // Update hidden input values
-        const hiddenInput = settingAppScreenshots.find(`#appScreenshot${currentIndex + 1}`);
-        hiddenInput.val(attachment.id);
+        addScreenshot(attachment.url, attachment.id, false);
       });
+
+      updateInputFields();
     });
 
     frame.open();
@@ -116,21 +168,103 @@ export function handleAppScreenshotsUpload() {
     dropzone.removeClass('bg-gray-200');
 
     const files = e.originalEvent.dataTransfer.files;
-    if (files.length + screenshotsContainer.find('img').length > maxFiles) {
-      alert(`You can only upload up to ${maxFiles} screenshots.`);
+
+    if (!canAddMoreScreenshots(files.length)) {
       return;
     }
 
-    jQuery.each(files, (index, file) => {
+    jQuery.each(files, (_, file) => {
       uploadFile(file);
     });
   });
+
+  function canAddMoreScreenshots(countToAdd) {
+    const currentCount = screenshotsContainer.find('div[data-is-default="false"]').length;
+    if (currentCount + countToAdd > maxFiles) {
+      alert(`You can only upload up to ${maxFiles} screenshots.`);
+      return false;
+    }
+    return true;
+  }
+
+  function createScreenshotElement(imgSrc, attachmentId, isDefault = false) {
+    const uniqueId = 'dismiss-img' + Date.now() + Math.floor(Math.random() * 1000);
+    const screenshotDiv = jQuery('<div>', {
+      class: 'relative',
+      id: uniqueId,
+      'data-is-default': isDefault ? 'true' : 'false',
+    });
+
+    const innerDiv = jQuery('<div>', {
+      class: 'flex-shrink-0 relative rounded-xl overflow-hidden w-full h-36 !border',
+    });
+
+    const img = jQuery('<img>', {
+      class: 'size-full absolute top-0 start-0 object-cover rounded-xl',
+      src: imgSrc,
+      alt: 'App Screenshot',
+      'data-attachment-id': attachmentId,
+    });
+
+    innerDiv.append(img);
+    screenshotDiv.append(innerDiv);
+
+    if (!isDefault) {
+      // Only add the remove button for non-default screenshots
+      const buttonDiv = jQuery('<div>', {
+        class: 'absolute top-2 end-2 z-10',
+      });
+
+      const button = jQuery('<button>', {
+        type: 'button',
+        class: 'size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700',
+        'data-hs-remove-element': `#${uniqueId}`,
+      });
+
+      const svg = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'svg')).attr({
+        class: 'flex-shrink-0 size-3',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        'stroke-width': '2',
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+      });
+
+      const path1 = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'path')).attr({
+        d: 'M18 6L6 18',
+      });
+
+      const path2 = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'path')).attr({
+        d: 'M6 6L18 18',
+      });
+
+      svg.append(path1, path2);
+      button.append(svg);
+      buttonDiv.append(button);
+      screenshotDiv.append(buttonDiv);
+
+      button.on('click', function () {
+        screenshotDiv.remove();
+        updateInputFields();
+
+        // Check if any manually added screenshots remain
+        const manualScreenshots = screenshotsContainer.find('div[data-is-default="false"]');
+        if (manualScreenshots.length === 0) {
+          // No manually added screenshots, add default screenshots
+          addDefaultScreenshots();
+        }
+      });
+    }
+
+    return screenshotDiv;
+  }
 
   function uploadFile(file) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('action', 'upload-attachment');
-    formData.append('post_id', 0); // This can be set to the post ID you want to attach the image to
+    formData.append('post_id', 0);
 
     fetch(wpApiSettings.root + 'wp/v2/media', {
       method: 'POST',
@@ -144,14 +278,8 @@ export function handleAppScreenshotsUpload() {
       .then((data) => {
         if (data.id) {
           const attachment = data;
-          const imgSrc = attachment.source_url;
-          const index = screenshotsContainer.find('img').length;
-          const screenshotElement = createScreenshotElement(imgSrc, attachment.id, index);
-          screenshotsContainer.append(screenshotElement);
-
-          // Update hidden input values
-          const hiddenInput = settingAppScreenshots.find(`#appScreenshot${index + 1}`);
-          hiddenInput.val(attachment.id);
+          addScreenshot(attachment.source_url, attachment.id, false);
+          updateInputFields();
         } else {
           alert('Failed to upload the image.');
         }
@@ -160,65 +288,6 @@ export function handleAppScreenshotsUpload() {
         console.error('Error uploading file:', error);
         alert('An error occurred while uploading the file.');
       });
-  }
-
-  function createScreenshotElement(imgSrc, attachmentId, index) {
-    const screenshotDiv = jQuery('<div>', {
-      class: 'relative',
-      id: `dismiss-img${index}`,
-    });
-
-    const innerDiv = jQuery('<div>', {
-      class: 'flex-shrink-0 relative rounded-xl overflow-hidden w-full h-36 !border',
-    });
-
-    const img = jQuery('<img>', {
-      class: 'size-full absolute top-0 start-0 object-cover rounded-xl',
-      src: imgSrc,
-      alt: 'Image Description',
-      'data-attachment-id': attachmentId,
-    });
-
-    const buttonDiv = jQuery('<div>', {
-      class: 'absolute top-2 end-2 z-10',
-    });
-
-    const button = jQuery('<button>', {
-      type: 'button',
-      class: 'size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700',
-      'data-hs-remove-element': `#dismiss-img${index}`,
-    });
-
-    const svg = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'svg')).attr({
-      class: 'flex-shrink-0 size-3',
-      viewBox: '0 0 24 24',
-      fill: 'none',
-      stroke: 'currentColor',
-      'stroke-width': '2',
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-    });
-
-    const path1 = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'path')).attr({
-      d: 'M18 6 6 18',
-    });
-
-    const path2 = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'path')).attr({
-      d: 'M6 6 18 18',
-    });
-
-    svg.append(path1, path2);
-    button.append(svg);
-    buttonDiv.append(button);
-    innerDiv.append(img);
-    screenshotDiv.append(innerDiv, buttonDiv);
-
-    button.on('click', function () {
-      screenshotDiv.remove();
-      reindexScreenshots();
-    });
-
-    return screenshotDiv;
   }
 
   initializeScreenshots();

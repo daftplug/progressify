@@ -18,6 +18,8 @@ class Admin
   public $pluginBasename;
   public $pluginDirUrl;
   public $pluginDirPath;
+  public $pluginUploadDir;
+  public $pluginUploadUrl;
   public $menuTitle;
   public $menuIcon;
   public $menuId;
@@ -25,10 +27,8 @@ class Admin
   public $purchaseCode;
   public $capability;
   public $settings;
-  public $defaultSettings;
   public $verifyUrl;
   public $itemId;
-  public $website;
   public $pages;
 
   public function __construct($config)
@@ -41,6 +41,10 @@ class Admin
     $this->optionName = $config['option_name'];
     $this->pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
+    $this->pluginDirUrl = $config['plugin_dir_url'];
+    $this->pluginDirPath = $config['plugin_dir_path'];
+    $this->pluginUploadDir = $config['plugin_upload_dir'];
+    $this->pluginUploadUrl = $config['plugin_upload_url'];
     $this->verifyUrl = $config['verify_url'];
     $this->itemId = $config['item_id'];
     $this->menuTitle = $config['menu_title'];
@@ -71,6 +75,8 @@ class Admin
 
       wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.css', $this->pluginFile), [], $this->version);
       wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
+
+      // Ensure the script is loaded as a module if needed
       add_filter(
         'script_loader_tag',
         function ($tag, $handle, $src) {
@@ -88,14 +94,14 @@ class Admin
       // WP media
       wp_enqueue_media();
 
-      // Pass PHP variables in JS
+      // Pass PHP variables to JS
       wp_localize_script(
         "{$this->slug}-admin",
         "{$this->optionName}_admin_js_vars",
         apply_filters("{$this->optionName}_admin_js_vars", [
-          'generalError' => esc_html__('An unexpected error occurred', $this->textDomain),
-          'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
-          'adminUrl' => trailingslashit(strtok(admin_url('/', 'https'), '?')),
+          'generalError' => __('An unexpected error occurred', $this->textDomain),
+          'homeUrl' => trailingslashit(home_url('/', 'https')),
+          'adminUrl' => trailingslashit(admin_url('/', 'https')),
           'slug' => $this->slug,
           'settings' => $this->settings,
         ])

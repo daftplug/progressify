@@ -3,8 +3,6 @@ namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\Admin;
 use DeviceDetector\DeviceDetector;
-use DeviceDetector\Parser\OperatingSystem;
-use DeviceDetector\Parser\Client\Browser;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -21,16 +19,16 @@ class Plugin
   public static $pluginOptionName;
   public static $pluginFile;
   public $pluginBasename;
-  public $pluginUploadDir;
-  public $pluginDirPath;
+  public static $pluginDirPath;
+  public static $pluginDirUrl;
+  public static $pluginUploadDir;
+  public static $pluginUploadUrl;
   public static $verifyUrl;
   public static $itemId;
   public static $website;
   public $capability;
   public static $settings;
-  public $defaultSettings;
 
-  public $WebAppManifest;
   public $Admin;
 
   public function __construct($config)
@@ -45,8 +43,10 @@ class Plugin
 
     self::$pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
-    $this->pluginDirPath = $config['plugin_dir_path'];
-    $this->pluginUploadDir = $config['plugin_upload_dir'];
+    self::$pluginDirPath = $config['plugin_dir_path'];
+    self::$pluginDirUrl = $config['plugin_dir_url'];
+    self::$pluginUploadDir = $config['plugin_upload_dir'];
+    self::$pluginUploadUrl = $config['plugin_upload_url'];
 
     self::$verifyUrl = $config['verify_url'];
     self::$itemId = $config['item_id'];
@@ -55,12 +55,15 @@ class Plugin
 
     self::$settings = $config['settings'];
 
-    require_once $this->pluginDirPath . 'vendor/autoload.php';
+    $autoload_path = self::$pluginDirPath . 'vendor/autoload.php';
+    if (file_exists($autoload_path)) {
+      require_once $autoload_path;
+    } else {
+      error_log('DaftPlug Progressify: Autoload file not found.');
+    }
 
-    // require_once $this->pluginDirPath . 'includes/class-webappmanifest.php';
-    // $this->ProgressifyWebAppManifest = new ProgressifyWebAppManifest($config);
-
-    require_once $this->pluginDirPath . 'admin/class-admin.php';
+    // Initialize Admin class
+    require_once self::$pluginDirPath . 'admin/class-admin.php';
     $this->Admin = new Admin($config);
   }
 
@@ -161,43 +164,21 @@ class Plugin
     return true;
   }
 
+  public static function getDomainFromUrl($url)
+  {
+    $pieces = wp_parse_url($url);
+    $domain = isset($pieces['host']) ? $pieces['host'] : $pieces['path'];
+    if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+      return $regs['domain'];
+    }
+
+    return false;
+  }
+
   private static function parseNestedKey($key)
   {
     $keys = preg_split('/\]\[|\[|\]/', $key, -1, PREG_SPLIT_NO_EMPTY);
     return $keys;
-  }
-
-  public static function isPwaAvailable()
-  {
-    if (daftplugInstantify::getSetting('pwaOnAll') == 'off') {
-      if (is_singular((array) daftplugInstantify::getSetting('pwaOnPostTypes'))) {
-        global $post;
-        if (get_post_meta($post->ID, 'pwa', true) == 'disable') {
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        foreach ((array) daftplugInstantify::getSetting('pwaOnPageTypes') as $PageType) {
-          if (is_string($PageType) && substr($PageType, 0, 3) === 'is_' && call_user_func($PageType) == true) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-      }
-    } else {
-      if (is_singular()) {
-        global $post;
-        if (get_post_meta($post->ID, 'pwa', true) == 'disable') {
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        return true;
-      }
-    }
   }
 
   public static function putContent($file, $content = null)
@@ -224,25 +205,41 @@ class Plugin
     return true;
   }
 
-  public static function resizeImage($attachId, $width, $height, $ext, $crop = false)
+  public static function resizeImage($attachId, $width, $height, $ext = '', $crop = false)
   {
-    if ('attachment' != get_post_type($attachId)) {
+    // Ensure attachment ID is an integer
+    $attachId = intval($attachId);
+
+    // Verify that the attachment exists and is an image
+    if (!wp_attachment_is_image($attachId)) {
       return false;
     }
 
+    // Ensure width and height are positive integers
     $width = intval($width);
     $height = intval($height);
-    $srcImg = wp_get_attachment_image_src($attachId, 'full');
-    $imageDimensions = @getimagesize($srcImg[0]);
-    $oldWidth = 1;
-    $oldHeight = 1;
-    $srcImgRatio = 1;
 
-    if ($imageDimensions && $imageDimensions[1] != 0) {
-      list($oldWidth, $oldHeight) = $imageDimensions;
-      $srcImgRatio = $oldWidth / $oldHeight;
+    if ($width <= 0 || $height <= 0) {
+      return false; // Invalid dimensions
     }
 
+    // Get the image source and dimensions
+    $srcImg = wp_get_attachment_image_src($attachId, 'full');
+
+    if (!$srcImg) {
+      return false; // Could not get image src
+    }
+
+    $oldWidth = $srcImg[1];
+    $oldHeight = $srcImg[2];
+
+    if ($oldWidth == 0 || $oldHeight == 0) {
+      return false; // Invalid original dimensions
+    }
+
+    $srcImgRatio = $oldWidth / $oldHeight;
+
+    // Get the path to the source image
     $srcImgPath = get_attached_file($attachId);
 
     if (!file_exists($srcImgPath)) {
@@ -251,50 +248,89 @@ class Plugin
 
     $srcImgInfo = pathinfo($srcImgPath);
 
+    // Calculate new dimensions
     if ($crop) {
       $newWidth = $width;
       $newHeight = $height;
-    } elseif ($width / $height <= $srcImgRatio) {
-      $newWidth = $width;
-      $newHeight = (1 / $srcImgRatio) * $width;
     } else {
-      $newWidth = $height * $srcImgRatio;
-      $newHeight = $height;
+      $targetRatio = $width / $height;
+      if ($targetRatio > $srcImgRatio) {
+        // Fix height, adjust width
+        $newHeight = $height;
+        $newWidth = round($height * $srcImgRatio);
+      } else {
+        // Fix width, adjust height
+        $newWidth = $width;
+        $newHeight = round($width / $srcImgRatio);
+      }
     }
 
-    $newWidth = round($newWidth);
-    $newHeight = round($newHeight);
+    // Check if we need to change the file type
+    $extension = strtolower($srcImgInfo['extension']);
+    $desiredExtension = strtolower($ext);
+    $changeFiletype = $desiredExtension && $extension != $desiredExtension;
 
-    $changeFiletype = false;
-    if ($ext && strtolower($srcImgInfo['extension']) != strtolower($ext)) {
-      $changeFiletype = true;
+    // If new dimensions are larger than original and not changing file type, return original image
+    if ($newWidth >= $oldWidth && $newHeight >= $oldHeight && !$changeFiletype) {
+      return [
+        'url' => $srcImg[0],
+        'width' => $oldWidth,
+        'height' => $oldHeight,
+      ];
     }
 
-    if (($newWidth > $oldWidth || $newHeight > $oldHeight) && !$changeFiletype) {
-      return $srcImg;
-    }
+    // Build the new filename
+    $filenameBase = $srcImgInfo['filename'];
+    $newExtension = $changeFiletype ? $desiredExtension : $extension;
+    $newFilename = "{$filenameBase}-{$newWidth}x{$newHeight}.{$newExtension}";
 
-    $extension = $srcImgInfo['extension'];
-    if ($changeFiletype) {
-      $extension = $ext;
-    }
+    // Use plugin's upload directory
+    $dirname = trailingslashit(self::$pluginUploadDir);
+    $newImgPath = $dirname . $newFilename;
 
-    $newImgPath = "{$srcImgInfo['dirname']}/{$srcImgInfo['filename']}-{$newWidth}x{$newHeight}.{$extension}";
-    $newImgUrl = str_replace(trailingslashit(ABSPATH), trailingslashit(get_site_url()), $newImgPath);
+    // Build the new image URL
+    $uploads_base_url = trailingslashit(self::$pluginUploadUrl);
+    $newImgUrl = $uploads_base_url . $newFilename;
 
+    // If the new image already exists, return it
     if (file_exists($newImgPath)) {
-      return [$newImgUrl, $newWidth, $newHeight];
+      return [
+        'url' => $newImgUrl,
+        'width' => $newWidth,
+        'height' => $newHeight,
+      ];
     }
 
+    // Load the image editor
     $image = wp_get_image_editor($srcImgPath);
-    if (!is_wp_error($image)) {
-      $image->resize($width, $height, $crop);
-      $image->save($newImgPath);
-
-      return [$newImgUrl, $newWidth, $newHeight];
+    if (is_wp_error($image)) {
+      return false; // Could not load image editor
     }
 
-    return false;
+    // Resize the image
+    $result = $image->resize($width, $height, $crop);
+    if (is_wp_error($result)) {
+      return false; // Could not resize image
+    }
+
+    // Set up save options
+    $save_options = [];
+    if ($changeFiletype) {
+      $save_options['mime_type'] = 'image/' . $newExtension;
+    }
+
+    // Save the new image
+    $result = $image->save($newImgPath, $save_options);
+
+    if (is_wp_error($result)) {
+      return false; // Could not save image
+    }
+
+    return [
+      'url' => $newImgUrl,
+      'width' => $newWidth,
+      'height' => $newHeight,
+    ];
   }
 
   public static function isPlatform($platform)

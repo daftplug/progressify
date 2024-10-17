@@ -97,9 +97,6 @@ if (!defined('ABSPATH')) {
         </label>
         <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-1.5 [&:not(:has(img))]:hidden" data-screenshots-container="">
         </div>
-        <?php for ($appScreenshotIndex = 1; $appScreenshotIndex <= 5; $appScreenshotIndex++): ?>
-        <input type="text" name="webAppManifest[appIdentity][appScreenshot<?php echo $appScreenshotIndex; ?>]" id="appScreenshot<?php echo $appScreenshotIndex; ?>" class="hidden" value="<?php echo Plugin::getSetting(sprintf('webAppManifest[appIdentity][appScreenshot%s]', $appScreenshotIndex)); ?>" data-mimes="png" data-min-width="320" data-max-width="3840" data-min-height="320" data-max-height="3840" data-attach-url="<?php echo @wp_get_attachment_image_src(Plugin::getSetting(sprintf('webAppManifest[appIdentity][appScreenshot%s]', $appScreenshotIndex)))[0]; ?>">
-        <?php endfor; ?>
         <div class="p-12 flex justify-center border border-dashed border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600" data-attachment-dropzone="">
           <div class="text-center">
             <svg class="w-16 text-gray-400 mx-auto dark:text-neutral-400" width="70" height="46" viewBox="0 0 70 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -503,7 +500,7 @@ if (!defined('ABSPATH')) {
               </select>
             </div>
             <div class="flex-grow">
-              <input name="webAppManifest[advancedFeatures][relatedApplications][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App ID', $this->textDomain); ?>">
+              <input name="webAppManifest[advancedFeatures][relatedApplications][id]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App ID', $this->textDomain); ?>">
             </div>
             <div class="flex-none flex items-center ml-1.5">
               <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="relatedApplication">
