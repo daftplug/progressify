@@ -76,7 +76,7 @@ class Admin
       wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.css', $this->pluginFile), [], $this->version);
       wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
-      // Ensure the script is loaded as a module if needed
+      // Ensure the script is loaded as a module
       add_filter(
         'script_loader_tag',
         function ($tag, $handle, $src) {

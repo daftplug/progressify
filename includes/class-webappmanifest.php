@@ -3,6 +3,7 @@
 namespace DaftPlug\Progressify\Module;
 
 use DaftPlug\Progressify\Plugin;
+use DaftPlug\Progressify\Frontend;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -54,44 +55,44 @@ class WebAppManifest
     add_action('parse_request', [$this, 'generateManifest']);
     add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
-    add_filter("{$this->optionName}_public_css", [$this, 'addAccentColor']);
-    add_shortcode('pwa-install-button', [$this, 'renderInstallationButton']);
 
-    add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
-    add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
-    add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
-    add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
-    add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
-    add_action('loop_start', [$this, 'renderFeedOverlay']);
-    add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
+    // add_filter("{$this->optionName}_public_css", [$this, 'addAccentColor']);
+    // add_shortcode('pwa-install-button', [$this, 'renderInstallationButton']);
+    // add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
+    // add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
+    // add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
+    // add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
+    // add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
+    // add_action('loop_start', [$this, 'renderFeedOverlay']);
+    // add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
 
-    if (Plugin::getSetting('pwaOverlays') == 'on' || Plugin::getSetting('pwaInstallButton') == 'on') {
-      if (Plugin::getSetting('pwaOverlays') == 'on') {
-        if (Plugin::getSetting('pwaOverlaysTypeHeader') == 'on') {
-          add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
-        }
-        if (Plugin::getSetting('pwaOverlaysTypeSnackbar') == 'on') {
-          add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
-        }
-        if (Plugin::getSetting('pwaOverlaysTypePost') == 'on') {
-          add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
-        }
-        if (Plugin::getSetting('pwaOverlaysTypeIos') == 'on' && in_array('safari', (array) Plugin::getSetting('pwaOverlaysBrowsers'))) {
-          add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
-        }
-        if (Plugin::getSetting('pwaOverlaysTypeMenu') == 'on') {
-          add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
-        }
-        if (Plugin::getSetting('pwaOverlaysTypeFeed') == 'on') {
-          add_action('loop_start', [$this, 'renderFeedOverlay']);
-        }
-        if (Plugin::isWooCommerceActive()) {
-          if (Plugin::getSetting('pwaOverlaysTypeCheckout') == 'on') {
-            add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
-          }
-        }
-      }
-    }
+    // if (Plugin::getSetting('pwaOverlays') == 'on' || Plugin::getSetting('pwaInstallButton') == 'on') {
+    //   if (Plugin::getSetting('pwaOverlays') == 'on') {
+    //     if (Plugin::getSetting('pwaOverlaysTypeHeader') == 'on') {
+    //       add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
+    //     }
+    //     if (Plugin::getSetting('pwaOverlaysTypeSnackbar') == 'on') {
+    //       add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
+    //     }
+    //     if (Plugin::getSetting('pwaOverlaysTypePost') == 'on') {
+    //       add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
+    //     }
+    //     if (Plugin::getSetting('pwaOverlaysTypeIos') == 'on' && in_array('safari', (array) Plugin::getSetting('pwaOverlaysBrowsers'))) {
+    //       add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
+    //     }
+    //     if (Plugin::getSetting('pwaOverlaysTypeMenu') == 'on') {
+    //       add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
+    //     }
+    //     if (Plugin::getSetting('pwaOverlaysTypeFeed') == 'on') {
+    //       add_action('loop_start', [$this, 'renderFeedOverlay']);
+    //     }
+    //     if (Plugin::isWooCommerceActive()) {
+    //       if (Plugin::getSetting('pwaOverlaysTypeCheckout') == 'on') {
+    //         add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   public function generateLaunchScreensAndMakableIcons()
@@ -102,8 +103,8 @@ class WebAppManifest
         $maskableIcon = substr($_POST['maskableIcon'], strpos($_POST['maskableIcon'], ',') + 1);
         $decodedLaunchScreen = base64_decode($launchScreen);
         $decodedMaskableIcon = base64_decode($maskableIcon);
-        $launchScreenName = $this->pluginUploadDir . 'img-pwa-apple-launch.png';
-        $maskableIconName = $this->pluginUploadDir . 'icon-pwa-maskable.png';
+        $launchScreenName = $this->pluginUploadDir . 'img-apple-launch.png';
+        $maskableIconName = $this->pluginUploadDir . 'icon-maskable.png';
 
         Plugin::putContent($launchScreenName, $decodedLaunchScreen);
         Plugin::putContent($maskableIconName, $decodedMaskableIcon);
@@ -144,8 +145,6 @@ class WebAppManifest
     global $wp;
     global $wp_query;
 
-    $manifest = [];
-
     if (!$wp_query->is_main_query()) {
       return;
     }
@@ -155,203 +154,203 @@ class WebAppManifest
     }
 
     if ($wp_query->get('manifest.webmanifest')) {
-      @ini_set('display_errors', 0);
-      @header('Cache-Control: no-cache');
-      @header('X-Robots-Tag: noindex, follow');
-      @header('Content-Type: application/manifest+json; charset=utf-8');
+      nocache_headers();
+      header('X-Robots-Tag: noindex, follow');
+      header('Content-Type: application/manifest+json; charset=utf-8');
 
-      $homeUrlParts = wp_parse_url(trailingslashit(strtok(home_url('/', 'https'), '?')));
-      $scope = '/';
-      if (array_key_exists('path', $homeUrlParts)) {
-        $scope = $homeUrlParts['path'];
-      }
+      $manifest = $this->buildManifestData();
 
-      if (get_bloginfo('language')) {
-        $manifest['lang'] = get_bloginfo('language');
-      }
+      wp_send_json($manifest, 200, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      exit();
+    }
+  }
 
-      $manifest['lang'] = get_bloginfo('language') ? get_bloginfo('language') : 'en-US';
+  public function buildManifestData()
+  {
+    $homeUrlParts = wp_parse_url(trailingslashit(strtok(home_url('/', 'https'), '?')));
+    $scope = '/';
+    if (isset($homeUrlParts['path'])) {
+      $scope = $homeUrlParts['path'];
+    }
 
-      $manifest['id'] = hash('crc32', Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))));
-      $manifest['dir'] = is_rtl() ? 'rtl' : 'ltr';
-      $manifest['name'] = trim(!empty($_GET['name']) ? $_GET['name'] : Plugin::getSetting('webAppManifest[appIdentity][appName]'));
-      $manifest['scope'] = $scope;
-      $manifest['start_url'] = add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]'))));
-      $manifest['scope_extensions'][] = ['origin' => 'https://*.' . Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))];
-      $manifest['short_name'] = trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12));
-      $manifest['description'] = trim(Plugin::getSetting('webAppManifest[appIdentity][description]'));
-      $manifest['display'] = Plugin::getSetting('webAppManifest[displaySettings][displayMode]');
-      $manifest['display_override'] = [$manifest['display'], 'window-controls-overlay', 'browser'];
-      $manifest['orientation'] = Plugin::getSetting('webAppManifest[displaySettings][orientation]');
-      $manifest['theme_color'] = Plugin::getSetting('webAppManifest[appearance][themeColor]');
-      $manifest['background_color'] = Plugin::getSetting('webAppManifest[appearance][backgroundColor]');
-      $manifest['categories'] = (array) Plugin::getSetting('webAppManifest[appIdentity][categories]');
-      $manifest['handle_links'] = 'preferred';
-      $manifest['edge_side_panel'] = [
-        'preferred_width' => 400,
-      ];
+    $manifest = [
+      'lang' => get_bloginfo('language') ?: 'en-US',
+      'id' => hash('crc32', Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))),
+      'dir' => is_rtl() ? 'rtl' : 'ltr',
+      'name' => trim(Plugin::getSetting('webAppManifest[appIdentity][appName]')),
+      'scope' => $scope,
+      'start_url' => add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]')))),
+      'scope_extensions' => [['origin' => 'https://*.' . Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))]],
+      'short_name' => trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12)),
+      'description' => trim(Plugin::getSetting('webAppManifest[appIdentity][description]')),
+      'display' => Plugin::getSetting('webAppManifest[displaySettings][displayMode]'),
+      'display_override' => [Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'window-controls-overlay', 'browser'],
+      'orientation' => Plugin::getSetting('webAppManifest[displaySettings][orientation]'),
+      'theme_color' => Plugin::getSetting('webAppManifest[appearance][themeColor]'),
+      'background_color' => Plugin::getSetting('webAppManifest[appearance][backgroundColor]'),
+      'categories' => (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'),
+      'handle_links' => 'preferred',
+      'edge_side_panel' => ['preferred_width' => 400],
+    ];
 
-      if (!empty(Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]'))) {
-        $manifest['iarc_rating_id'] = Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]');
-      }
+    // IARC Rating ID
+    if (!empty(Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]'))) {
+      $manifest['iarc_rating_id'] = Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]');
+    }
 
-      $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][relatedApplications]');
-      $relatedApplicationsNotEmpty = !empty($relatedApplications) && !(count($relatedApplications) === 1 && empty($relatedApplications[0]['platform']) && empty($relatedApplications[0]['id']));
+    // Related Applications
+    $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][relatedApplications]');
+    $relatedApplicationsNotEmpty = !empty($relatedApplications) && !(count($relatedApplications) === 1 && empty($relatedApplications[0]['platform']) && empty($relatedApplications[0]['id']));
 
-      $manifest['prefer_related_applications'] = $relatedApplicationsNotEmpty;
+    $manifest['prefer_related_applications'] = $relatedApplicationsNotEmpty;
 
-      if ($relatedApplicationsNotEmpty) {
-        $manifest['related_applications'] = [];
-        foreach ($relatedApplications as $relatedApplication) {
-          if (!empty($relatedApplication['platform']) && !empty($relatedApplication['id'])) {
-            $url = '';
-            switch ($relatedApplication['platform']) {
-              case 'play':
-                $url = "https://play.google.com/store/apps/details?id={$relatedApplication['id']}";
-                break;
-              case 'itunes':
-                $url = "https://apps.apple.com/us/app/{$relatedApplication['id']}";
-                break;
-              case 'windows':
-                $url = "https://apps.microsoft.com/detail/{$relatedApplication['id']}";
-                break;
-            }
-
-            $manifest['related_applications'][] = [
-              'platform' => $relatedApplication['platform'],
-              'url' => $url,
-              'id' => $relatedApplication['id'],
-            ];
+    if ($relatedApplicationsNotEmpty) {
+      $manifest['related_applications'] = [];
+      foreach ($relatedApplications as $relatedApplication) {
+        if (!empty($relatedApplication['platform']) && !empty($relatedApplication['id'])) {
+          $url = '';
+          switch ($relatedApplication['platform']) {
+            case 'play':
+              $url = "https://play.google.com/store/apps/details?id={$relatedApplication['id']}";
+              break;
+            case 'itunes':
+              $url = "https://apps.apple.com/us/app/{$relatedApplication['id']}";
+              break;
+            case 'windows':
+              $url = "https://apps.microsoft.com/detail/{$relatedApplication['id']}";
+              break;
           }
+
+          $manifest['related_applications'][] = [
+            'platform' => $relatedApplication['platform'],
+            'url' => $url,
+            'id' => $relatedApplication['id'],
+          ];
         }
       }
+    }
 
-      $appIcon = Plugin::getSetting('webAppManifest[appIdentity][appIcon]');
-      $iconSizes = [180, 192, 512];
+    // Icons
+    $appIcon = Plugin::getSetting('webAppManifest[appIdentity][appIcon]');
+    $iconSizes = [180, 192, 512];
 
-      if (wp_attachment_is_image(intval($appIcon))) {
-        $iconSrc = wp_get_attachment_image_src($appIcon, 'full');
-        $iconWidth = $iconSrc[1];
+    if (wp_attachment_is_image(intval($appIcon))) {
+      $iconSrc = wp_get_attachment_image_src($appIcon, 'full');
+      $iconWidth = $iconSrc[1];
 
-        foreach ($iconSizes as $iconSize) {
-          if ($iconWidth < $iconSize) {
-            continue;
-          }
+      foreach ($iconSizes as $iconSize) {
+        if ($iconWidth < $iconSize) {
+          continue;
+        }
 
-          $newIcon = Plugin::resizeImage($appIcon, $iconSize, $iconSize, 'png', true);
+        $newIcon = Plugin::resizeImage($appIcon, $iconSize, $iconSize, 'png', true);
 
-          // Check if resizeImage failed
-          if ($newIcon === false || $newIcon['width'] != $iconSize) {
-            continue;
-          }
+        if ($newIcon === false || $newIcon['width'] != $iconSize) {
+          continue;
+        }
 
-          // Add icon with purpose 'any'
+        $manifest['icons'][] = [
+          'src' => $newIcon['url'],
+          'sizes' => "{$iconSize}x{$iconSize}",
+          'type' => 'image/png',
+          'purpose' => 'any',
+        ];
+
+        $maskableIconFilename = "icon-maskable-{$iconSize}x{$iconSize}.png";
+        $maskableIconPath = $this->pluginUploadDir . $maskableIconFilename;
+        $maskableIconUrl = $this->pluginUploadUrl . $maskableIconFilename;
+
+        if (file_exists($maskableIconPath)) {
+          $manifest['icons'][] = [
+            'src' => $maskableIconUrl,
+            'sizes' => "{$iconSize}x{$iconSize}",
+            'type' => 'image/png',
+            'purpose' => 'maskable',
+          ];
+        } else {
           $manifest['icons'][] = [
             'src' => $newIcon['url'],
             'sizes' => "{$iconSize}x{$iconSize}",
             'type' => 'image/png',
-            'purpose' => 'any',
+            'purpose' => 'maskable',
           ];
+        }
+      }
+    }
 
-          // Prepare maskable icon filename
-          $maskableIconFilename = "icon-maskable-{$iconSize}x{$iconSize}.png";
-          $maskableIconPath = $this->pluginUploadDir . $maskableIconFilename;
-          $maskableIconUrl = $this->pluginUploadUrl . $maskableIconFilename;
-
-          if (file_exists($maskableIconPath)) {
-            $manifest['icons'][] = [
-              'src' => $maskableIconUrl,
-              'sizes' => "{$iconSize}x{$iconSize}",
-              'type' => 'image/png',
-              'purpose' => 'maskable',
-            ];
-          } else {
-            $manifest['icons'][] = [
-              'src' => $newIcon['url'],
-              'sizes' => "{$iconSize}x{$iconSize}",
-              'type' => 'image/png',
-              'purpose' => 'maskable',
+    // Screenshots
+    $screenshots = Plugin::getSetting('webAppManifest[appIdentity][appScreenshots]');
+    if (!empty($screenshots) && is_array($screenshots)) {
+      foreach ($screenshots as $screenshotId) {
+        $screenshotId = intval($screenshotId);
+        if (wp_attachment_is_image($screenshotId)) {
+          $image_src = wp_get_attachment_image_src($screenshotId, 'full');
+          if ($image_src) {
+            $manifest['screenshots'][] = [
+              'src' => $image_src[0],
+              'sizes' => $image_src[1] . 'x' . $image_src[2],
+              'type' => get_post_mime_type($screenshotId),
             ];
           }
         }
       }
+    }
 
-      $screenshots = Plugin::getSetting('webAppManifest[appIdentity][appScreenshots]');
-      if (!empty($screenshots) && is_array($screenshots)) {
-        foreach ($screenshots as $screenshotId) {
-          $screenshotId = intval($screenshotId);
-          if (wp_attachment_is_image($screenshotId)) {
-            $image_src = wp_get_attachment_image_src($screenshotId, 'full');
-            if ($image_src) {
-              $manifest['screenshots'][] = [
-                'src' => $image_src[0],
-                'sizes' => $image_src[1] . 'x' . $image_src[2],
-                'type' => get_post_mime_type($screenshotId),
+    if (empty($manifest['screenshots'])) {
+      $startPage = trailingslashit(Plugin::getSetting('webAppManifest[displaySettings][startPage]'));
+      $manifest['screenshots'][] = [
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334',
+        'sizes' => '750x1334',
+        'type' => 'image/png',
+      ];
+      $manifest['screenshots'][] = [
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800',
+        'sizes' => '1280x800',
+        'type' => 'image/png',
+      ];
+    }
+
+    // Shortcuts
+    $appShortcuts = Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts]');
+    $appShortcutsNotEmpty = !empty($appShortcuts) && !(count($appShortcuts) === 1 && empty($appShortcuts[0]['name']) && empty($appShortcuts[0]['url']));
+
+    if ($appShortcutsNotEmpty) {
+      $manifest['shortcuts'] = [];
+      foreach ($appShortcuts as $appShortcut) {
+        $name = sanitize_text_field($appShortcut['name']);
+        $url = esc_url_raw($appShortcut['url']);
+        $iconId = !empty($appShortcut['icon']) ? intval($appShortcut['icon']) : null;
+
+        if (!empty($name) && !empty($url)) {
+          $shortcut = [
+            'name' => $name,
+            'short_name' => substr($name, 0, 12),
+            'url' => $url,
+          ];
+
+          if ($iconId && wp_attachment_is_image($iconId)) {
+            $icon = Plugin::resizeImage($iconId, '96', '96', 'png', true);
+            if ($icon && !is_wp_error($icon)) {
+              $shortcut['icons'] = [
+                [
+                  'src' => $icon['url'],
+                  'sizes' => $icon['width'] . 'x' . $icon['height'],
+                  'type' => 'image/png',
+                ],
               ];
             }
           }
+
+          $manifest['shortcuts'][] = $shortcut;
         }
       }
 
-      if (empty($manifest['screenshots'])) {
-        $startPage = trailingslashit(Plugin::getSetting('webAppManifest[displaySettings][startPage]'));
-        $manifest['screenshots'][] = [
-          'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334',
-          'sizes' => '750x1334',
-          'type' => 'image/png',
-        ];
-        $manifest['screenshots'][] = [
-          'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800',
-          'sizes' => '1280x800',
-          'type' => 'image/png',
-        ];
+      if (empty($manifest['shortcuts'])) {
+        unset($manifest['shortcuts']);
       }
-
-      $appShortcuts = Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts]');
-      $appShortcutsNotEmpty = !empty($appShortcuts) && !(count($appShortcuts) === 1 && empty($appShortcuts[0]['name']) && empty($appShortcuts[0]['url']));
-
-      if ($appShortcutsNotEmpty) {
-        $manifest['shortcuts'] = [];
-        foreach ($appShortcuts as $appShortcut) {
-          $name = sanitize_text_field($appShortcut['name']);
-          $url = esc_url_raw($appShortcut['url']);
-          $iconId = !empty($appShortcut['icon']) ? intval($appShortcut['icon']) : null;
-
-          if (!empty($name) && !empty($url)) {
-            $shortcut = [
-              'name' => $name,
-              'short_name' => substr($name, 0, 12),
-              'url' => $url,
-            ];
-
-            if ($iconId && wp_attachment_is_image($iconId)) {
-              $icon = Plugin::resizeImage($iconId, '96', '96', 'png', true);
-              if ($icon && !is_wp_error($icon)) {
-                $shortcut['icons'] = [
-                  [
-                    'src' => $icon['url'],
-                    'sizes' => $icon['width'] . 'x' . $icon['height'],
-                    'type' => 'image/png',
-                  ],
-                ];
-              }
-            }
-
-            $manifest['shortcuts'][] = $shortcut;
-          }
-        }
-
-        if (empty($manifest['shortcuts'])) {
-          unset($manifest['shortcuts']);
-        }
-      }
-
-      $manifest = apply_filters("{$this->optionName}_manifest", $manifest);
-      $manifest = wp_json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-      echo $manifest;
-      exit();
     }
+
+    return apply_filters("{$this->optionName}_manifest", $manifest);
   }
 
   public function generateWebAppOriginAssociation()
@@ -392,269 +391,15 @@ class WebAppManifest
     }
   }
 
-  public function addAccentColor()
-  {
-    if (!daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    echo '
-          :root {
-              accent-color: ' .
-      Plugin::getSetting('pwaThemeColor') .
-      ';
-          }
-      ';
-  }
-
   public function renderMetaTagsInHeader()
   {
-    if (!daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['metaTags'];
+    return Frontend::renderPartial('metaTags');
   }
 
-  public function renderFullscreenOverlays()
+  public static function getManifestUrl($encoded = true)
   {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
+    $manifestUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'manifest.webmanifest');
 
-    include_once $this->daftplugInstantifyPwaPublic->partials['fullscreenOverlays'];
-  }
-
-  public function renderHeaderOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['headerOverlay'];
-  }
-
-  public function renderSnackbarOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['snackbarOverlay'];
-  }
-
-  public function renderPostOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !is_single()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['postOverlay'];
-  }
-
-  public function renderIosOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['iosOverlay'];
-  }
-
-  public function renderMenuOverlay($items, $args)
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return $items;
-    } else {
-      $appIcon = @wp_get_attachment_image_src(Plugin::getSetting('pwaIcon'), [150, 150])[0];
-      $message = esc_html__(Plugin::getSetting('pwaOverlaysTypeMenuMessage'), $this->textDomain);
-      $backgroundColor = Plugin::getSetting('pwaOverlaysTypeMenuBackgroundColor');
-      $textColor = Plugin::getSetting('pwaOverlaysTypeMenuTextColor');
-      $notNow = esc_html__('Not now', $this->textDomain);
-      $install = esc_html__('Install', $this->textDomain);
-
-      $items .=
-        '<div class="daftplugPublic" data-daftplug-plugin="' .
-        $this->optionName .
-        '">
-                        <div class="daftplugPublicMenuOverlay" style="background: ' .
-        $backgroundColor .
-        '; color: ' .
-        $textColor .
-        ';">
-                            <div class="daftplugPublicMenuOverlay_content">
-                                <img class="daftplugPublicMenuOverlay_icon" src="' .
-        $appIcon .
-        '">
-                                <span class="daftplugPublicMenuOverlay_msg">' .
-        $message .
-        '</span>
-                            </div>
-                            <div class="daftplugPublicMenuOverlay_buttons">
-                                <div class="daftplugPublicMenuOverlay_dismiss" style="color: ' .
-        $textColor .
-        ';">' .
-        $notNow .
-        '</div>
-                                <div class="daftplugPublicMenuOverlay_install" style="background: ' .
-        $textColor .
-        '; color: ' .
-        $backgroundColor .
-        ';">' .
-        $install .
-        '</div>
-                            </div>
-                        </div>
-                    </div>';
-
-      return $items;
-    }
-  }
-
-  public function renderFeedOverlay($query)
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable()) {
-      return;
-    }
-
-    if ($query->is_main_query()) {
-      add_action('the_post', function () {
-        static $nr = 0;
-        if (++$nr == 4) {
-          $appIcon = @wp_get_attachment_image_src(Plugin::getSetting('pwaIcon'), [150, 150])[0];
-          $message = esc_html__(Plugin::getSetting('pwaOverlaysTypeFeedMessage'), $this->textDomain);
-          $backgroundColor = Plugin::getSetting('pwaOverlaysTypeFeedBackgroundColor');
-          $textColor = Plugin::getSetting('pwaOverlaysTypeFeedTextColor');
-          $notNow = esc_html__('Not now', $this->textDomain);
-          $install = esc_html__('Install', $this->textDomain);
-
-          echo '<div class="daftplugPublic" data-daftplug-plugin="' .
-            $this->optionName .
-            '">
-                            <div class="daftplugPublicFeedOverlay" style="background: ' .
-            $backgroundColor .
-            '; color: ' .
-            $textColor .
-            ';">
-                                <div class="daftplugPublicFeedOverlay_content">
-                                    <img class="daftplugPublicFeedOverlay_icon" src="' .
-            $appIcon .
-            '">
-                                    <span class="daftplugPublicFeedOverlay_msg">' .
-            $message .
-            '</span>
-                                </div>
-                                <div class="daftplugPublicFeedOverlay_buttons">
-                                    <div class="daftplugPublicFeedOverlay_dismiss" style="color: ' .
-            $textColor .
-            ';">' .
-            $notNow .
-            '</div>
-                                    <div class="daftplugPublicFeedOverlay_install" style="background: ' .
-            $textColor .
-            '; color: ' .
-            $backgroundColor .
-            ';">' .
-            $install .
-            '</div>
-                                </div>
-                            </div>
-                        </div>';
-        }
-      });
-    }
-  }
-
-  public function renderCheckoutOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !Plugin::isWooCommerceActive()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['checkoutOverlay'];
-  }
-
-  public function renderCouponOverlay()
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || !Plugin::isWooCommerceActive()) {
-      return;
-    }
-
-    include_once $this->daftplugInstantifyPwaPublic->partials['couponOverlay'];
-  }
-
-  public function renderInstallationButton($atts)
-  {
-    if (Plugin::isAmpPage() || !daftplugInstantifyPwa::isPwaAvailable() || Plugin::getSetting('pwaInstallButton') !== 'on') {
-      return;
-    }
-
-    $backgroundColor = Plugin::getSetting('pwaInstallButtonBackgroundColor');
-    $textColor = Plugin::getSetting('pwaInstallButtonTextColor');
-    $text = esc_html__(Plugin::getSetting('pwaInstallButtonText'), $this->textDomain);
-
-    $installButton =
-      '<div class="daftplugPublic" data-daftplug-plugin="' .
-      $this->optionName .
-      '">
-                          <button class="daftplugPublicInstallButton" style="background: ' .
-      $backgroundColor .
-      '; color: ' .
-      $textColor .
-      ';">' .
-      $text .
-      '</button>
-                        </div>';
-
-    return $installButton;
-  }
-
-  public function getManifestUrl($encoded = true)
-  {
-    $url = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'manifest.webmanifest');
-    $queryArgs = [];
-
-    if (is_singular()) {
-      global $post;
-      $postPwaName = get_post_meta($post->ID, 'pwaName', true);
-      $postPwaShortName = get_post_meta($post->ID, 'pwaShortName', true);
-      $postPwaDescription = get_post_meta($post->ID, 'pwaDescription', true);
-      $postPwaIcon = get_post_meta($post->ID, 'pwaIcon', true);
-
-      if (!empty($postPwaName)) {
-        $queryArgs['name'] = $postPwaName;
-      } else {
-        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
-          $queryArgs['name'] = get_the_title();
-        }
-      }
-
-      if (!empty($postPwaShortName)) {
-        $queryArgs['short_name'] = $postPwaShortName;
-      } else {
-        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
-          $queryArgs['short_name'] = strlen(get_the_title()) > 12 ? substr(get_the_title(), 0, 9) . '...' : get_the_title();
-        }
-      }
-
-      if (!empty($postPwaDescription)) {
-        $queryArgs['description'] = $postPwaDescription;
-      } else {
-        if (Plugin::getSetting('pwaDynamicManifest') == 'on') {
-          $queryArgs['description'] = strlen(strip_tags(get_the_excerpt())) > 70 ? substr(strip_tags(get_the_excerpt()), 0, 70) . '...' : strip_tags(get_the_excerpt());
-        }
-      }
-
-      if (!empty($postPwaIcon)) {
-        $queryArgs['icon'] = $postPwaIcon;
-      }
-
-      if (!empty($postPwaName) || !empty($postPwaShortName) || !empty($postPwaDescription) || !empty($postPwaIcon) || Plugin::getSetting('pwaDynamicManifest') == 'on') {
-        $queryArgs['start_url'] = wp_make_link_relative(Plugin::getCurrentUrl());
-      }
-    }
-
-    $manifestUrl = add_query_arg($queryArgs, $url);
     if ($encoded) {
       return wp_json_encode($manifestUrl);
     }

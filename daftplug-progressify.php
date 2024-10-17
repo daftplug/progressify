@@ -41,3 +41,4 @@ new Plugin([
 ]);
 
 // echo json_encode(get_option('daftplug_progressify_settings', true));
+// echo print_r(get_option('daftplug_progressify_settings', true));

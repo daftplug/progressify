@@ -2,6 +2,8 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\Admin;
+use DaftPlug\Progressify\Frontend;
+use DaftPlug\Progressify\Module\webAppManifest;
 use DeviceDetector\DeviceDetector;
 
 if (!defined('ABSPATH')) {
@@ -30,6 +32,8 @@ class Plugin
   public static $settings;
 
   public $Admin;
+  public $Frontend;
+  public $WebAppManifest;
 
   public function __construct($config)
   {
@@ -40,14 +44,12 @@ class Plugin
     $this->textDomain = $config['text_domain'];
     $this->optionName = $config['option_name'];
     self::$pluginOptionName = $config['option_name'];
-
     self::$pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
     self::$pluginDirPath = $config['plugin_dir_path'];
     self::$pluginDirUrl = $config['plugin_dir_url'];
     self::$pluginUploadDir = $config['plugin_upload_dir'];
     self::$pluginUploadUrl = $config['plugin_upload_url'];
-
     self::$verifyUrl = $config['verify_url'];
     self::$itemId = $config['item_id'];
 
@@ -62,9 +64,14 @@ class Plugin
       error_log('DaftPlug Progressify: Autoload file not found.');
     }
 
-    // Initialize Admin class
     require_once self::$pluginDirPath . 'admin/class-admin.php';
     $this->Admin = new Admin($config);
+
+    require_once self::$pluginDirPath . 'frontend/class-frontend.php';
+    $this->Frontend = new Frontend($config);
+
+    require_once self::$pluginDirPath . 'includes/class-webappmanifest.php';
+    $this->WebAppManifest = new WebAppManifest($config);
   }
 
   public static function getSetting($key)
