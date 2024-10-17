@@ -190,6 +190,7 @@ class WebAppManifest
       'background_color' => Plugin::getSetting('webAppManifest[appearance][backgroundColor]'),
       'categories' => (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'),
       'handle_links' => 'preferred',
+      'launch_handler' => ['client_mode' => 'focus-existing'],
       'edge_side_panel' => ['preferred_width' => 400],
     ];
 
