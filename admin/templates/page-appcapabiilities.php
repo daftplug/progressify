@@ -57,7 +57,7 @@ if (!defined('ABSPATH')) {
       <!-- End Ajaxify Forms -->
       <!-- Supported Platforms -->
       <div id="settingAjaxifyPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -73,7 +73,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="appCapabilities[ajaxify][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[ajaxify][supportedPlatforms]'))); ?>>
@@ -132,7 +132,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Protocol -->
       <div id="settingProtocol">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Protocol', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -151,7 +151,7 @@ if (!defined('ABSPATH')) {
       <!-- End Protocol -->
       <!-- URL -->
       <div id="settingProtocolUrl">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('URL', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -202,7 +202,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Share Action -->
       <div id="settingShareAction">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Share Action', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -221,7 +221,7 @@ if (!defined('ABSPATH')) {
       <!-- End Share Action -->
       <!-- URL Query -->
       <div id="settingUrlQuery">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('URL Query', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -269,7 +269,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingAjaxifyPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -285,7 +285,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="appCapabilities[vibration][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[vibration][supportedPlatforms]'))); ?>>
@@ -340,7 +340,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Threshold -->
       <div id="settingIdleThreshold">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Threshold', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -378,7 +378,7 @@ if (!defined('ABSPATH')) {
       <!-- End Threshold -->
       <!-- Supported Platforms -->
       <div id="settingAjaxifyPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -394,7 +394,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="appCapabilities[idleDetection][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[idleDetection][supportedPlatforms]'))); ?>>
@@ -448,7 +448,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingAjaxifyPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -464,7 +464,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="appCapabilities[screenWakeLock][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[screenWakeLock][supportedPlatforms]'))); ?>>

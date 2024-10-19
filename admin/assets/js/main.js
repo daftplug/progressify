@@ -19,7 +19,7 @@ import { initChangelog } from './modules/changelog.js';
 // import { initApexcharts } from './modules/apexcharts.js';
 // import { initInstallationsChart } from './modules/installationsChart.js';
 
-document.addEventListener('DOMContentLoaded', (e) => {
+async function initModules() {
   // Components
   initCopyMarkup();
   initDependentMarkup();
@@ -40,4 +40,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
   initChangelog();
   // initApexcharts();
   // initInstallationsChart();
-});
+};
+
+document.addEventListener('DOMContentLoaded', initModules);

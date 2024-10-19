@@ -55,44 +55,7 @@ class WebAppManifest
     add_action('parse_request', [$this, 'generateManifest']);
     add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
-
-    // add_filter("{$this->optionName}_public_css", [$this, 'addAccentColor']);
-    // add_shortcode('pwa-install-button', [$this, 'renderInstallationButton']);
-    // add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
-    // add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
-    // add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
-    // add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
-    // add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
-    // add_action('loop_start', [$this, 'renderFeedOverlay']);
-    // add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
-
-    // if (Plugin::getSetting('pwaOverlays') == 'on' || Plugin::getSetting('pwaInstallButton') == 'on') {
-    //   if (Plugin::getSetting('pwaOverlays') == 'on') {
-    //     if (Plugin::getSetting('pwaOverlaysTypeHeader') == 'on') {
-    //       add_filter("{$this->optionName}_public_html", [$this, 'renderHeaderOverlay']);
-    //     }
-    //     if (Plugin::getSetting('pwaOverlaysTypeSnackbar') == 'on') {
-    //       add_filter("{$this->optionName}_public_html", [$this, 'renderSnackbarOverlay']);
-    //     }
-    //     if (Plugin::getSetting('pwaOverlaysTypePost') == 'on') {
-    //       add_filter("{$this->optionName}_public_html", [$this, 'renderPostOverlay']);
-    //     }
-    //     if (Plugin::getSetting('pwaOverlaysTypeIos') == 'on' && in_array('safari', (array) Plugin::getSetting('pwaOverlaysBrowsers'))) {
-    //       add_filter("{$this->optionName}_public_html", [$this, 'renderIosOverlay']);
-    //     }
-    //     if (Plugin::getSetting('pwaOverlaysTypeMenu') == 'on') {
-    //       add_filter('wp_nav_menu_items', [$this, 'renderMenuOverlay'], 10, 2);
-    //     }
-    //     if (Plugin::getSetting('pwaOverlaysTypeFeed') == 'on') {
-    //       add_action('loop_start', [$this, 'renderFeedOverlay']);
-    //     }
-    //     if (Plugin::isWooCommerceActive()) {
-    //       if (Plugin::getSetting('pwaOverlaysTypeCheckout') == 'on') {
-    //         add_action('woocommerce_review_order_after_payment', [$this, 'renderCheckoutOverlay']);
-    //       }
-    //     }
-    //   }
-    // }
+    add_filter("{$this->optionName}_frontend_css", [$this, 'addAccentColor']);
   }
 
   public function generateLaunchScreensAndMakableIcons()
@@ -368,10 +331,9 @@ class WebAppManifest
     }
 
     if ($wp_query->get('.well-known/web-app-origin-association')) {
-      @ini_set('display_errors', 0);
-      @header('Cache-Control: no-cache');
-      @header('X-Robots-Tag: noindex, follow');
-      @header('Content-Type: application/json; charset=utf-8');
+      nocache_headers();
+      header('X-Robots-Tag: noindex, follow');
+      header('Content-Type: application/json; charset=utf-8');
 
       $webAppOriginAssociation = [
         'web_apps' => [
@@ -387,9 +349,21 @@ class WebAppManifest
         ],
       ];
 
-      echo wp_json_encode($webAppOriginAssociation, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      wp_send_json($webAppOriginAssociation, 200, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
       exit();
     }
+  }
+
+  public function addAccentColor()
+  {
+    echo '
+        :root {
+            accent-color: ' .
+      Plugin::getSetting('webAppManifest[appearance][themeColor]') .
+      ';
+        }
+    ';
   }
 
   public function renderMetaTagsInHeader()

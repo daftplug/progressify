@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Offline Fallback Page -->
       <div id="settingOfflineFallbackPage">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Offline Fallback Page', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -61,7 +61,7 @@ if (!defined('ABSPATH')) {
       <!-- End Offline Fallback Page -->
       <!-- Caching Strategy -->
       <div id="settingCachingStrategy">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Caching Strategy', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -99,7 +99,7 @@ if (!defined('ABSPATH')) {
       <!-- End Caching Strategy -->
       <!-- Cache Expiration Time -->
       <div id="settingCacheExpirationTime">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Cache Expiration Time', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">

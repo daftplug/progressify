@@ -127,20 +127,20 @@ if (!defined('ABSPATH')) {
     </div>
     <form id="supportForm" name="supportForm" spellcheck="false" autocomplete="off" class="space-y-6">
       <fieldset>
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Your Name', $this->textDomain); ?>
         </label>
         <input name="yourName" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Your Name', $this->textDomain); ?>" autocomplete="off" required>
       </fieldset>
       <fieldset>
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Your Email', $this->textDomain); ?>
         </label>
         <input name="yourEmail" type="email" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Your Email', $this->textDomain); ?>" value="<?php echo get_option('admin_email'); ?>" autocomplete="off" required>
         <p class="inline-flex items-center gap-x-1 mt-1 text-xs text-gray-500 dark:text-neutral-500"><?php _e('Enter your email address where we\'ll send our response.', $this->textDomain); ?></p>
       </fieldset>
       <fieldset>
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Problem Description', $this->textDomain); ?>
         </label>
         <div class="relative">

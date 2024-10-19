@@ -23,6 +23,9 @@ class Frontend
   protected $dependencies;
   public $purchaseCode;
   public $settings;
+  public $html;
+  public $css;
+  public $js;
   private static $partials;
 
   public function __construct($config)
@@ -41,21 +44,77 @@ class Frontend
     $this->pluginUploadUrl = $config['plugin_upload_url'];
     $this->dependencies = [];
     $this->settings = $config['settings'];
+    $this->html = '';
+    $this->css = '';
+    $this->js = '';
     self::$partials = $this->generatePartials();
 
     add_action('wp_enqueue_scripts', [$this, 'loadAssets']);
+    add_action('wp_footer', [$this, 'addFrontendCssHtmlJs'], 70);
   }
 
   public function loadAssets()
   {
     $this->dependencies[] = 'jquery';
-    $this->dependencies[] = "{$this->slug}-frontend";
+
+    wp_enqueue_script("{$this->slug}-frontend", plugins_url('admin/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
+
+    // Ensure the script is loaded as a module
+    add_filter(
+      'script_loader_tag',
+      function ($tag, $handle, $src) {
+        if ("{$this->slug}-frontend" !== $handle) {
+          return $tag;
+        }
+        return '<script type="module" src="' . esc_url($src) . '"></script>';
+      },
+      10,
+      3
+    );
+
+    // Pass PHP variables to JS
+    wp_localize_script(
+      "{$this->slug}-frontend",
+      "{$this->optionName}_frontend_js_vars",
+      apply_filters("{$this->optionName}_frontend_js_vars", [
+        'generalError' => __('An unexpected error occurred', $this->textDomain),
+        'homeUrl' => trailingslashit(home_url('/', 'https')),
+        'adminUrl' => trailingslashit(admin_url('/', 'https')),
+        'currentUrl' => Plugin::getCurrentUrl(false),
+        'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0],
+        'slug' => $this->slug,
+        'settings' => $this->settings,
+        'deviceData' => [
+          'isSmartphone' => Plugin::isPlatform('smartphone'),
+          'isTablet' => Plugin::isPlatform('tablet'),
+          'isDesktop' => Plugin::isPlatform('desktop'),
+        ],
+      ])
+    );
+  }
+
+  public function addFrontendCssHtmlJs()
+  {
+    ?>
+<div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
+  <style type="text/css">
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
+  </style>
+  <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    <?php echo apply_filters("{$this->optionName}_frontend_js", $this->js); ?>
+  });
+  </script>
+</div>
+<?php
   }
 
   private static function generatePartials()
   {
     $partials = [
       'metaTags' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-metatags.php']),
+      'installButton' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-installbutton.php']),
     ];
 
     return $partials;

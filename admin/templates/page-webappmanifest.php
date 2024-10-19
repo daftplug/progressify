@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- App Icon -->
       <div id="settingAppIcon">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('App Icon', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -123,7 +123,7 @@ if (!defined('ABSPATH')) {
       <!-- End App Screenshots -->
       <!-- Name -->
       <div id="settingAppName">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('App Name', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -142,7 +142,7 @@ if (!defined('ABSPATH')) {
       <!-- End App Name -->
       <!-- Short Name -->
       <div id="settingShortName">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Short Name', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -164,7 +164,7 @@ if (!defined('ABSPATH')) {
       <!-- End Short Name -->
       <!-- Description -->
       <div id="settingDescription">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Description', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -183,7 +183,7 @@ if (!defined('ABSPATH')) {
       <!-- End Description -->
       <!-- Categories -->
       <div id="settingCategories">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Categories', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -256,7 +256,7 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- Start Page -->
       <div id="settingStartPage">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Start Page', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -283,7 +283,7 @@ if (!defined('ABSPATH')) {
       <!-- End Start Page -->
       <!-- Display Mode -->
       <div id="settingDisplayMode">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Display Mode', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -315,7 +315,7 @@ if (!defined('ABSPATH')) {
       <!-- End Display Mode -->
       <!-- Orientation -->
       <div id="settingOrientation">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Orientation', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -362,7 +362,7 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- iOS Status Bar Style -->
       <div id="settingIosStatusBarStyle">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('iOS Status Bar Style', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -388,7 +388,7 @@ if (!defined('ABSPATH')) {
       <!-- End iOS Status Bar Style -->
       <!-- Theme Color -->
       <div id="settingThemeColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Theme Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -407,7 +407,7 @@ if (!defined('ABSPATH')) {
       <!-- End Theme Color -->
       <!-- Background Color -->
       <div id="settingBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -448,7 +448,7 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
       <!-- IARC Rating ID -->
       <div id="settingIarcRatingId">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('IARC Rating ID', $this->textDomain); ?>
           <a class="hs-tooltip inline-block [--placement:top]" href="https://www.globalratings.com/about.aspx" target="_blank">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -467,7 +467,7 @@ if (!defined('ABSPATH')) {
       <!-- End IARC Rating ID -->
       <!-- Related Applications -->
       <div id="settingRelatedApplications">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Related Applications', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -530,7 +530,7 @@ if (!defined('ABSPATH')) {
       <!-- End Related Applications -->
       <!-- App Shortcuts -->
       <div id="settingAppShortcuts">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('App Shortcuts', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">

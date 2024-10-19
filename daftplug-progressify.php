@@ -34,7 +34,7 @@ new Plugin([
   'plugin_upload_dir' => trailingslashit(wp_upload_dir()['basedir']) . 'daftplug-progressify/',
   'plugin_upload_url' => trailingslashit(wp_upload_dir()['baseurl']) . 'daftplug-progressify/',
   'menu_title' => __('Progressify'),
-  'menu_icon' => plugins_url('admin/assets/img/icon-menu.png', __FILE__),
+  'menu_icon' => plugins_url('admin/assets/media/icon-menu.png', __FILE__),
   'settings' => get_option('daftplug_progressify_settings', true),
   'verify_url' => 'https://daftplug.com/wp-json/daftplugify/purchase-verify/',
   'item_id' => '25757693',

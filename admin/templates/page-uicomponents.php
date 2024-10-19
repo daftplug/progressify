@@ -36,7 +36,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Background Color -->
       <div id="settingNavTabBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
       <!-- End Background Color -->
       <!-- Icon Color -->
       <div id="settingNavTabIconColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Icon Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -74,7 +74,7 @@ if (!defined('ABSPATH')) {
       <!-- End Icon Color -->
       <!-- Active Icon Color -->
       <div id="settingNavTabActiveIconColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Active Icon Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -93,7 +93,7 @@ if (!defined('ABSPATH')) {
       <!-- End Active Icon Color -->
       <!-- Active Icon Background Color -->
       <div id="settingNavTabActiveBackgroundIconColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Active Icon Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -112,7 +112,7 @@ if (!defined('ABSPATH')) {
       <!-- End Active Icon Color -->
       <!-- Supported Platforms -->
       <div id="settingNavTabSupportedPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -128,7 +128,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[navigationTabBar][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedPlatforms]'))); ?>>
@@ -151,7 +151,7 @@ if (!defined('ABSPATH')) {
       <!-- End Supported Platforms -->
       <!-- Navigation Items -->
       <div id="settingNavTabNavigationItems">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Navigation Items', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -244,7 +244,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingScrollProgressBarPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -260,7 +260,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[scrollProgressBar][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedPlatforms]'))); ?>>
@@ -315,7 +315,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Switch Button Position -->
       <div id="settingDarkModeButtonPosition">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Switch Button Position', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -384,7 +384,7 @@ if (!defined('ABSPATH')) {
       <!-- End Battery Low Dark Mode -->
       <!-- Supported Platforms -->
       <div id="settingDarkModePlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -400,7 +400,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[darkMode][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[darkMode][supportedPlatforms]'))); ?>>
@@ -459,7 +459,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Button Icon Color -->
       <div id="settingWebShareButtonIconColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Icon Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -478,7 +478,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Icon Color -->
       <!-- Button Background Color -->
       <div id="settingWebShareButtonBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -497,7 +497,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Background Color -->
       <!-- Button Position -->
       <div id="settingWebShareButtonPosition">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Switch Button Position', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -524,7 +524,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Position -->
       <!-- Supported Platforms -->
       <div id="settingWebShareButtonPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -540,7 +540,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[webShareButton][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[webShareButton][supportedPlatforms]'))); ?>>
@@ -599,7 +599,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Background Color -->
       <div id="settingPullDownNavigationBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -618,7 +618,7 @@ if (!defined('ABSPATH')) {
       <!-- End Background Color -->
       <!-- Supported Platforms -->
       <div id="settingPullDownNavigationPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -634,7 +634,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[pullDownNavigation][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[pullDownNavigation][supportedPlatforms]'))); ?>>
@@ -689,7 +689,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingSwipeNavigationPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -705,7 +705,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[swipeNavigation][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[swipeNavigation][supportedPlatforms]'))); ?>>
@@ -760,7 +760,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingShakeToRefreshPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -776,7 +776,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[shakeToRefresh][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[shakeToRefresh][supportedPlatforms]'))); ?>>
@@ -828,7 +828,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Loader Type -->
       <div id="settingLoaderType">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Loader Type', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -869,7 +869,7 @@ if (!defined('ABSPATH')) {
       <!-- End Loader Type -->
       <!-- Supported Platforms -->
       <div id="settingLoaderPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -885,7 +885,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[loader][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[loader][supportedPlatforms]'))); ?>>
@@ -941,7 +941,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingInactiveBlurPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -957,7 +957,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[inactiveBlur][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedPlatforms]'))); ?>>
@@ -1008,7 +1008,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Supported Platforms -->
       <div id="settingToastMessagesPlatforms">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Platforms', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1024,7 +1024,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[toastMessages][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }' class="hidden">
+          }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[toastMessages][supportedPlatforms]'))); ?>>

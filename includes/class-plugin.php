@@ -4,6 +4,7 @@ namespace DaftPlug\Progressify;
 use DaftPlug\Progressify\Admin;
 use DaftPlug\Progressify\Frontend;
 use DaftPlug\Progressify\Module\webAppManifest;
+use DaftPlug\Progressify\Module\Installation;
 use DeviceDetector\DeviceDetector;
 
 if (!defined('ABSPATH')) {
@@ -34,6 +35,7 @@ class Plugin
   public $Admin;
   public $Frontend;
   public $WebAppManifest;
+  public $Installation;
 
   public function __construct($config)
   {
@@ -64,14 +66,19 @@ class Plugin
       error_log('DaftPlug Progressify: Autoload file not found.');
     }
 
+    // Init Admin
     require_once self::$pluginDirPath . 'admin/class-admin.php';
     $this->Admin = new Admin($config);
 
+    // Init Frontend
     require_once self::$pluginDirPath . 'frontend/class-frontend.php';
     $this->Frontend = new Frontend($config);
 
-    require_once self::$pluginDirPath . 'includes/class-webappmanifest.php';
+    // Init Modules
+    require_once self::$pluginDirPath . 'includes/modules/class-webappmanifest.php';
     $this->WebAppManifest = new WebAppManifest($config);
+    require_once self::$pluginDirPath . 'includes/modules/class-installation.php';
+    $this->Installation = new Installation($config);
   }
 
   public static function getSetting($key)
@@ -169,6 +176,22 @@ class Plugin
     }
 
     return true;
+  }
+
+  public static function getCurrentUrl($clean = false)
+  {
+    $http = 'http';
+    if (isset($_SERVER['HTTPS'])) {
+      $http = 'https';
+    }
+    $host = $_SERVER['HTTP_HOST'];
+    $requestUri = $_SERVER['REQUEST_URI'];
+
+    if ($clean == true) {
+      return trim(strtok($http . '://' . htmlentities($host) . htmlentities($requestUri), '?'));
+    } else {
+      return $http . '://' . htmlentities($host) . htmlentities($requestUri);
+    }
   }
 
   public static function getDomainFromUrl($url)
@@ -347,14 +370,14 @@ class Plugin
     $dd->parse();
 
     switch (strtolower($platform)) {
-      case 'mobile':
+      case 'smartphone':
         $detected = $dd->isSmartphone();
         break;
       case 'tablet':
         $detected = $dd->isTablet();
         break;
       case 'desktop':
-        $detected = !$dd->isSmartphone() && !$dd->isTablet();
+        $detected = $dd->getDeviceName() == 'desktop';
         break;
       case 'chrome':
       case 'safari':

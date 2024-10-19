@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Overlay Types -->
       <div id="settingOverlayTypes">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Overlay Types', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -52,7 +52,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][headerBanner]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][headerBanner]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-header-banner.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-header-banner.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('Header Banner', $this->textDomain); ?>
               </span>
@@ -66,7 +66,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][snackbar]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][snackbar]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-snackbar.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-snackbar.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('Snackbar', $this->textDomain); ?>
               </span>
@@ -80,7 +80,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][navigationMenu]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][navigationMenu]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-navigation-menu.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-navigation-menu.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('Navigation Menu', $this->textDomain); ?>
               </span>
@@ -94,7 +94,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][inFeed]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-in-feed.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-in-feed.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('In Feed', $this->textDomain); ?>
               </span>
@@ -108,7 +108,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][postPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][postPopup]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-post-popup.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-post-popup.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('Post Popup', $this->textDomain); ?>
               </span>
@@ -123,7 +123,7 @@ if (!defined('ABSPATH')) {
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[overlays][types][woocommerceCheckout]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[overlays][types][woocommerceCheckout]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/img/icon-woocommerce-checkout.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-woocommerce-checkout.png', $this->pluginFile); ?>" />
               <span class="block text-center">
                 <?php _e('WooCommerce Checkout', $this->textDomain); ?>
               </span>
@@ -139,7 +139,7 @@ if (!defined('ABSPATH')) {
       <!-- End Overlay Types -->
       <!-- Supported Browsers -->
       <div id="settingOverlaySupportedBrowsers">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Browsers', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -158,23 +158,23 @@ if (!defined('ABSPATH')) {
           }' class="hidden">
           <option value=""><?php _e('Select Browsers', $this->textDomain); ?></option>
           <option value="Chrome" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-chrome.png', $this->pluginFile); ?>\" alt=\"Chrome\"/>"}' <?php selected(true, in_array('Chrome', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-chrome.png', $this->pluginFile); ?>\" alt=\"Chrome\"/>"}' <?php selected(true, in_array('Chrome', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Chrome
           </option>
           <option value="Safari" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-safari.png', $this->pluginFile); ?>\" alt=\"Safari\"/>"}' <?php selected(true, in_array('Safari', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-safari.png', $this->pluginFile); ?>\" alt=\"Safari\"/>"}' <?php selected(true, in_array('Safari', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Safari
           </option>
           <option value="Firefox" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-firefox.png', $this->pluginFile); ?>\" alt=\"Firefox\"/>"}' <?php selected(true, in_array('Firefox', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-firefox.png', $this->pluginFile); ?>\" alt=\"Firefox\"/>"}' <?php selected(true, in_array('Firefox', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Firefox
           </option>
           <option value="Microsoft Edge" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-edge.png', $this->pluginFile); ?>\" alt=\"Microsoft Edge\"/>"}' <?php selected(true, in_array('Microsoft Edge', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-edge.png', $this->pluginFile); ?>\" alt=\"Microsoft Edge\"/>"}' <?php selected(true, in_array('Microsoft Edge', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Edge
           </option>
           <option value="Opera" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/img/icons/icon-opera.png', $this->pluginFile); ?>\" alt=\"Opera\"/>"}' <?php selected(true, in_array('Opera', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
+            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-opera.png', $this->pluginFile); ?>\" alt=\"Opera\"/>"}' <?php selected(true, in_array('Opera', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
             Opera
           </option>
         </select>
@@ -204,7 +204,7 @@ if (!defined('ABSPATH')) {
       <!-- End Skip First Visit -->
       <!-- Timeout -->
       <div id="settingOverlayTimeout">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Timeout', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -270,7 +270,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Button Shortcode -->
       <div id="settingButtonShortcode">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Installation Button Shortcode', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -284,7 +284,7 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <button type="button" class="[--trigger:focus] hs-tooltip relative py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-mono rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" data-clipboard-content="[pwa-install-button]" data-clipboard-success-text="<?php _e('Copied', $this->textDomain); ?>">
+        <button type="button" class="[--trigger:focus] hs-tooltip relative py-2 px-3 flex justify-center items-center gap-x-2 text-sm font-mono rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" data-clipboard-content="[pwa-install-button]" data-clipboard-success-text="<?php _e('Copied', $this->textDomain); ?>">
           [pwa-install-button]
           <span class="border-s ps-3.5 dark:border-neutral-700">
             <svg class="clipboard-default size-4 group-hover:rotate-6 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -303,7 +303,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Shortcode -->
       <!-- Button Text -->
       <div id="settingButtonText">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Text', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -322,7 +322,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Text -->
       <!-- Button Text Color -->
       <div id="settingTextColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Text Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -341,7 +341,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Text Color -->
       <!-- Background Color -->
       <div id="settingButtonBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">

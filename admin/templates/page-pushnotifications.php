@@ -109,7 +109,7 @@ if (!defined('ABSPATH')) {
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
                   <div class="flex items-center gap-x-1.5">
-                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-safari.png" />
+                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/media/icons/icon-safari.png" />
                     <div class="grow space-y-1">
                       <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Safari</span>
                     </div>
@@ -191,7 +191,7 @@ if (!defined('ABSPATH')) {
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
                   <div class="flex items-center gap-x-1.5">
-                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/img/icons/icon-chrome.png" />
+                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/media/icons/icon-chrome.png" />
                     <div class="grow space-y-1">
                       <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Chrome</span>
                     </div>
@@ -293,7 +293,7 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6">
       <!-- Time To Live (TTL) -->
       <div id="settingTimeToLive">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Time To Live (TTL)', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -331,7 +331,7 @@ if (!defined('ABSPATH')) {
       <!-- End Time To Live (TTL) -->
       <!-- Batch Size -->
       <div id="settingBatchSize">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Batch Size', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -398,7 +398,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Prompt Message -->
       <div id="settingPromptMessage">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Prompt Message', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -417,7 +417,7 @@ if (!defined('ABSPATH')) {
       <!-- End Prompt Message -->
       <!-- Background Color -->
       <div id="settingPrompBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -436,7 +436,7 @@ if (!defined('ABSPATH')) {
       <!-- End Background Color -->
       <!-- Text Color -->
       <div id="settingPrompTextColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Text Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -506,7 +506,7 @@ if (!defined('ABSPATH')) {
     }'>
       <!-- Background Color -->
       <div id="settingButtonBackgroundColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Background Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -525,7 +525,7 @@ if (!defined('ABSPATH')) {
       <!-- End Background Color -->
       <!-- Bell Icon Color -->
       <div id="settingButtonBellIconColor">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Bell Icon Color', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -544,7 +544,7 @@ if (!defined('ABSPATH')) {
       <!-- End Bell Icon Color -->
       <!-- Button Position -->
       <div id="settingPushButtonPosition">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Position', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -571,7 +571,7 @@ if (!defined('ABSPATH')) {
       <!-- End Button Position -->
       <!-- Button Behavior -->
       <div id="settingPushButtonBehavior">
-        <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Button Behavior', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -665,7 +665,7 @@ if (!defined('ABSPATH')) {
           "state": "checked",
           "mode": "visibility"
         }'>
-          <label class="flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
             <?php _e('Post Types', $this->textDomain); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -907,7 +907,7 @@ if (!defined('ABSPATH')) {
           "state": "checked",
           "mode": "visibility"
         }'>
-          <label class="flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
             <?php _e('Interval', $this->textDomain); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1011,7 +1011,7 @@ if (!defined('ABSPATH')) {
           "state": "checked",
           "mode": "visibility"
         }'>
-          <label class="flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
             <?php _e('Roles', $this->textDomain); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1074,7 +1074,7 @@ if (!defined('ABSPATH')) {
           "state": "checked",
           "mode": "visibility"
         }'>
-          <label class="flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
             <?php _e('Roles', $this->textDomain); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1103,7 +1103,7 @@ if (!defined('ABSPATH')) {
           "state": "checked",
           "mode": "visibility"
         }'>
-          <label class="flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
             <?php _e('Threshold', $this->textDomain); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1379,7 +1379,7 @@ if (!defined('ABSPATH')) {
       <div class="p-4 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
         <div class="space-y-6">
           <div>
-            <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Notification Image', $this->textDomain); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1428,7 +1428,7 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
           <div>
-            <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Notification Title', $this->textDomain); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1445,7 +1445,7 @@ if (!defined('ABSPATH')) {
             <input name="pushTitle" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Title', $this->textDomain); ?>" autocomplete="off" autofocus required>
           </div>
           <div>
-            <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Notification Message', $this->textDomain); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1462,7 +1462,7 @@ if (!defined('ABSPATH')) {
             <textarea name="pushMessage" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Message', $this->textDomain); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required></textarea>
           </div>
           <div>
-            <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Notification URL', $this->textDomain); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle ms-1 flex">
@@ -1479,7 +1479,7 @@ if (!defined('ABSPATH')) {
             <input name="pushUrl" type="url" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification URL', $this->textDomain); ?>" autocomplete="off" required>
           </div>
           <div>
-            <label class="flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
               <?php _e('Action Buttons', $this->textDomain); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle ms-1 flex">

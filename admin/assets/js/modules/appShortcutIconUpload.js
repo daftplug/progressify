@@ -1,5 +1,3 @@
-//appShortcutsIconUpload.js
-
 import { validateAttachment } from './utils.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
