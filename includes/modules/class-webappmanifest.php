@@ -245,7 +245,7 @@ class WebAppManifest
     // Screenshots
     $screenshots = Plugin::getSetting('webAppManifest[appIdentity][appScreenshots]');
     if (!empty($screenshots) && is_array($screenshots)) {
-      foreach ($screenshots as $screenshotId) {
+      foreach ($screenshots as $screenshotKey => $screenshotId) {
         $screenshotId = intval($screenshotId);
         if (wp_attachment_is_image($screenshotId)) {
           $image_src = wp_get_attachment_image_src($screenshotId, 'full');
@@ -254,6 +254,8 @@ class WebAppManifest
               'src' => $image_src[0],
               'sizes' => $image_src[1] . 'x' . $image_src[2],
               'type' => get_post_mime_type($screenshotId),
+              'form_factor' => 'wide',
+              'label' => 'Screenshot ' . $screenshotKey + 1,
             ];
           }
         }
@@ -263,13 +265,15 @@ class WebAppManifest
     if (empty($manifest['screenshots'])) {
       $startPage = trailingslashit(Plugin::getSetting('webAppManifest[displaySettings][startPage]'));
       $manifest['screenshots'][] = [
-        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334',
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334&format=png',
         'sizes' => '750x1334',
+        'form_factor' => 'narrow',
         'type' => 'image/png',
       ];
       $manifest['screenshots'][] = [
-        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800',
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800&format=png',
         'sizes' => '1280x800',
+        'form_factor' => 'wide',
         'type' => 'image/png',
       ];
     }

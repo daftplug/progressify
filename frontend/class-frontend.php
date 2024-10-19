@@ -2,6 +2,8 @@
 
 namespace DaftPlug\Progressify;
 
+use DeviceDetector\DeviceDetector;
+
 if (!defined('ABSPATH')) {
   exit();
 }
@@ -57,7 +59,7 @@ class Frontend
   {
     $this->dependencies[] = 'jquery';
 
-    wp_enqueue_script("{$this->slug}-frontend", plugins_url('admin/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
+    wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
     // Ensure the script is loaded as a module
     add_filter(
@@ -84,10 +86,27 @@ class Frontend
         'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0],
         'slug' => $this->slug,
         'settings' => $this->settings,
-        'deviceData' => [
-          'isSmartphone' => Plugin::isPlatform('smartphone'),
-          'isTablet' => Plugin::isPlatform('tablet'),
-          'isDesktop' => Plugin::isPlatform('desktop'),
+        'userData' => [
+          'device' => [
+            'isMobile' => Plugin::isPlatform('mobile'),
+            'isTablet' => Plugin::isPlatform('tablet'),
+            'isDesktop' => Plugin::isPlatform('desktop'),
+          ],
+          'os' => [
+            'isAndroid' => Plugin::isPlatform('android'),
+            'isIos' => Plugin::isPlatform('ios'),
+            'isWindows' => Plugin::isPlatform('windows'),
+          ],
+          'platform' => [
+            'isPwa' => Plugin::isPlatform('pwa'),
+          ],
+          'browser' => [
+            'isChrome' => Plugin::isPlatform('chrome'),
+            'isSafari' => Plugin::isPlatform('safari'),
+            'isFirefox' => Plugin::isPlatform('firefox'),
+            'isOpera' => Plugin::isPlatform('opera'),
+            'isEdge' => Plugin::isPlatform('edge'),
+          ],
         ],
       ])
     );

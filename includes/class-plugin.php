@@ -370,14 +370,26 @@ class Plugin
     $dd->parse();
 
     switch (strtolower($platform)) {
-      case 'smartphone':
-        $detected = $dd->isSmartphone();
+      case 'mobile':
+        $detected = $dd->isMobile();
         break;
       case 'tablet':
         $detected = $dd->isTablet();
         break;
       case 'desktop':
-        $detected = $dd->getDeviceName() == 'desktop';
+        $detected = $dd->isDesktop();
+        break;
+      case 'android':
+        $detected = $dd->getOs('name') == 'Android';
+        break;
+      case 'ios':
+        $detected = $dd->getOs('name') == 'iOS';
+        break;
+      case 'windows':
+        $detected = $dd->getOs('name') == 'Windows';
+        break;
+      case 'pwa':
+        $detected = isset($_GET['isPwa']) && $_GET['isPwa'] == 'true';
         break;
       case 'chrome':
       case 'safari':

@@ -561,8 +561,16 @@ if (!defined('ABSPATH')) {
             <div class="flex-grow">
               <input name="webAppManifest[advancedFeatures][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut Name', $this->textDomain); ?>">
             </div>
-            <div class="flex-grow">
-              <input name="webAppManifest[advancedFeatures][appShortcuts][url]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut URL', $this->textDomain); ?>">
+            <div class="flex-grow w-1/3">
+              <select name="webAppManifest[advancedFeatures][appShortcuts][url]" data-dp-select='{
+                "placeholder": "<?php _e('Select Shortcut Page', $this->textDomain); ?>"
+              }' class="">
+                <option value=""><?php _e('Select Shortcut Page', $this->textDomain); ?></option>
+                <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
+                <?php foreach (get_pages() as $wpPage): ?>
+                <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
             <div class="flex-none flex items-center ml-1.5">
               <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="appShortcut">

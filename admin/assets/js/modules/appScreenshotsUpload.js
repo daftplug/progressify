@@ -15,7 +15,7 @@ export function handleAppScreenshotsUpload() {
   const dropzone = settingAppScreenshots.find('[data-attachment-dropzone]');
   const maxFiles = 5;
 
-  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=750&vph=1334`, `https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=1280&vph=800`];
+  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=750&vph=1334&format=png`, `https://s0.wp.com/mshots/v1/${jsVars.settings.startPage}?vpw=1280&vph=800&format=png`];
 
   function initializeScreenshots() {
     const savedScreenshots = jsVars.settings.webAppManifest?.appIdentity?.appScreenshots || [];
