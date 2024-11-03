@@ -46,7 +46,7 @@ if (!class_exists('ProgressifyUiComponents')) {
       $this->capability = 'manage_options';
       $this->settings = $config['settings'];
 
-      if (daftplugInstantify::getSetting('pwaPreloader') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaPreloader') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaPreloaderPlatforms')) && daftplugInstantify::isPwaPage()))) {
         if (function_exists('wp_body_open')) {
           add_action('wp_body_open', [$this, 'renderPreloader']);
         } else {
@@ -58,26 +58,26 @@ if (!class_exists('ProgressifyUiComponents')) {
         }
       }
 
-      if (daftplugInstantify::getSetting('pwaNavigationTabBar') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaNavigationTabBar') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_html", [$this, 'renderNavigationTabBar']);
         if (daftplugInstantify::isWooCommerceActive()) {
           add_filter('woocommerce_add_to_cart_fragments', [$this, 'refreshCartItemsCount']);
         }
       }
 
-      if (daftplugInstantify::getSetting('pwaScrollProgressBar') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaScrollProgressBar') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaScrollProgressBarPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_html", [$this, 'renderScrollProgressBar']);
       }
 
-      if (daftplugInstantify::getSetting('pwaWebShareButton') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaWebShareButton') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaWebShareButtonPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_html", [$this, 'renderWebShareButton']);
       }
 
-      if (daftplugInstantify::getSetting('pwaToastMessages') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaToastMessages') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaToastMessagesPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_js", [$this, 'handleToastMessages']);
       }
 
-      if (daftplugInstantify::getSetting('pwaSwipeNavigation') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaSwipeNavigation') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaSwipeNavigationPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_js_vars", [$this, 'addSwipeJsVars']);
       }
     }

@@ -62,7 +62,7 @@ if (!class_exists('ProgressifyAppCapabilities')) {
         add_filter("{$this->optionName}_pwa_manifest", [$this, 'addWebShareTargetToManifest']);
       }
 
-      if (daftplugInstantify::getSetting('pwaAdaptiveLoading') == 'on' && !daftplugInstantify::isAmpPluginActive() && daftplugInstantify::getSetting('amp') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('mobile')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPwaPage()))) {
+      if (daftplugInstantify::getSetting('pwaAdaptiveLoading') == 'on' && !daftplugInstantify::isAmpPluginActive() && daftplugInstantify::getSetting('amp') == 'on' && ((in_array('desktop', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('desktop')) || (in_array('mobile', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaAdaptiveLoadingPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_js_vars", [$this, 'addAmpUrlJsVars']);
       }
 

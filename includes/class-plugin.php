@@ -370,34 +370,31 @@ class Plugin
     $dd->parse();
 
     switch (strtolower($platform)) {
-      case 'mobile':
-        $detected = $dd->isMobile();
-        break;
+      case 'smartphone':
       case 'tablet':
-        $detected = $dd->isTablet();
-        break;
       case 'desktop':
-        $detected = $dd->isDesktop();
+        $deviceName = strtolower($dd->getDeviceName('name'));
+        $detected = strpos($deviceName, strtolower($platform)) !== false;
         break;
       case 'android':
-        $detected = $dd->getOs('name') == 'Android';
-        break;
       case 'ios':
-        $detected = $dd->getOs('name') == 'iOS';
-        break;
       case 'windows':
-        $detected = $dd->getOs('name') == 'Windows';
-        break;
-      case 'pwa':
-        $detected = isset($_GET['isPwa']) && $_GET['isPwa'] == 'true';
+      case 'linux':
+      case 'mac':
+        $osName = strtolower($dd->getOs('name'));
+        $detected = strpos($osName, strtolower($platform)) !== false;
         break;
       case 'chrome':
       case 'safari':
       case 'firefox':
       case 'opera':
       case 'edge':
+      case 'duckduckgo':
         $browserName = strtolower($dd->getClient('name'));
         $detected = $dd->isBrowser() && strpos($browserName, strtolower($platform)) !== false;
+        break;
+      case 'pwa':
+        $detected = isset($_GET['isPwa']) && $_GET['isPwa'] == 'true';
         break;
       default:
         $detected = false;

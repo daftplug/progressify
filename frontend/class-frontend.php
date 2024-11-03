@@ -91,7 +91,7 @@ class Frontend
         'settings' => $this->settings,
         'userData' => [
           'device' => [
-            'isMobile' => Plugin::isPlatform('mobile'),
+            'isSmartphone' => Plugin::isPlatform('smartphone'),
             'isTablet' => Plugin::isPlatform('tablet'),
             'isDesktop' => Plugin::isPlatform('desktop'),
           ],
@@ -99,10 +99,8 @@ class Frontend
             'isAndroid' => Plugin::isPlatform('android'),
             'isIos' => Plugin::isPlatform('ios'),
             'isWindows' => Plugin::isPlatform('windows'),
-            'isMacos' => Plugin::isPlatform('macos'),
-          ],
-          'platform' => [
-            'isPwa' => Plugin::isPlatform('pwa'),
+            'isLinux' => Plugin::isPlatform('linux'),
+            'isMac' => Plugin::isPlatform('mac'),
           ],
           'browser' => [
             'isChrome' => Plugin::isPlatform('chrome'),
@@ -110,6 +108,10 @@ class Frontend
             'isFirefox' => Plugin::isPlatform('firefox'),
             'isOpera' => Plugin::isPlatform('opera'),
             'isEdge' => Plugin::isPlatform('edge'),
+            'isDuckduckgo' => Plugin::isPlatform('duckduckgo'),
+          ],
+          'platform' => [
+            'isPwa' => Plugin::isPlatform('pwa'),
           ],
         ],
       ])
