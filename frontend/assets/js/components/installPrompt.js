@@ -399,6 +399,7 @@ class PwaInstallPrompt extends HTMLElement {
       appsGrid: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M638-468 468-638q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l170-170q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l170 170q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L694-468q-6 6-13 8.5t-15 2.5q-8 0-15-2.5t-13-8.5Zm-518-92v-240q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v240q0 17-11.5 28.5T400-520H160q-17 0-28.5-11.5T120-560Zm400 400v-240q0-17 11.5-28.5T560-440h240q17 0 28.5 11.5T840-400v240q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-240q0-17 11.5-28.5T160-440h240q17 0 28.5 11.5T440-400v240q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-440h160v-160H200v160Zm467 48 113-113-113-113-113 113 113 113Zm-67 352h160v-160H600v160Zm-400 0h160v-160H200v160Zm160-400Zm194-65ZM360-360Zm240 0Z"/></svg>',
       directionDown: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M200-120q-17 0-28.5-11.5T160-160q0-17 11.5-28.5T200-200h560q17 0 28.5 11.5T800-160q0 17-11.5 28.5T760-120H200Zm280-177q-8 0-15-2.5t-13-8.5L308-452q-11-11-11-28t11-28q11-11 28-11t28 11l76 76v-368q0-17 11.5-28.5T480-840q17 0 28.5 11.5T520-800v368l76-76q11-11 28-11t28 11q11 11 11 28t-11 28L508-308q-6 6-13 8.5t-15 2.5Z"/></svg>',
       addToHomeScreen: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M320-40q-33 0-56.5-23.5T240-120v-120q0-17 11.5-28.5T280-280q17 0 28.5 11.5T320-240h400v-480H320q0 17-11.5 28.5T280-680q-17 0-28.5-11.5T240-720v-120q0-33 23.5-56.5T320-920h400q33 0 56.5 23.5T800-840v720q0 33-23.5 56.5T720-40H320Zm0-120v40h400v-40H320Zm80-344L204-308q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196H240q-17 0-28.5-11.5T200-600q0-17 11.5-28.5T240-640h200q17 0 28.5 11.5T480-600v200q0 17-11.5 28.5T440-360q-17 0-28.5-11.5T400-400v-104Zm-80-296h400v-40H320v40Zm0 0v-40 40Zm0 640v40-40Z"/></svg>',
+      noInstallSupport: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M792-56 56-792q-11-11-11-28t11-28q11-11 28-11t28 11l736 736q11 11 11 28t-11 28q-11 11-28 11t-28-11ZM200-703l80 80v383h384l96 96v24q0 33-23.5 56.5T680-40H280q-33 0-56.5-23.5T200-120v-583Zm80 543v40h400v-40H280Zm0 0v40-40Zm79-560q-17 0-28-11.5T320-760q0-17 11.5-28.5T360-800h320v-40H260q-17 0-28.5-11.5T220-880q0-17 11.5-28.5T260-920h420q33 0 56.5 23.5T760-840v480q0 17-11.5 28.5T720-320q-17 0-28.5-11.5T680-360v-360H359Zm98-80Z"/></svg>',
     };
 
     const renderStep = (...args) => {
@@ -420,7 +421,9 @@ class PwaInstallPrompt extends HTMLElement {
           renderStep(__('Select "Home Screen"', config.slug), __('Tap the "Install" option from the menu.', config.slug), svg.installMobile);
           renderStep(__('Confirm by Tapping "Add"', config.slug), __('Tap the "Add" text on the browser installation dialog.', config.slug), svg.tapFinger);
         } else if (browser.isEdge) {
-          // Add Edge steps
+          renderStep(__('Tap the Menu Icon', config.slug), __('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.slug), svg.hamburgerMenu);
+          renderStep(__('Select "Add to Phone"', config.slug), __('Tap the "Add to Phone" option from the menu', config.slug), svg.installMobile);
+          renderStep(__('Confirm by Tapping "Install"', config.slug), __('Tap the "Install" text on the browser installation dialog.', config.slug), svg.tapFinger);
         } else {
           renderStep(__('Copy the Page URL', config.slug), __("Click the button below to copy the page's URL.", config.slug), svg.copy, this.renderCopyInstallUrlButton());
           renderStep(__('Open the Google Chrome Browser', config.slug), __('Launch the Google Chrome web browser from your home screen.', config.slug), svg.googleChrome);
@@ -459,6 +462,8 @@ class PwaInstallPrompt extends HTMLElement {
           renderStep(__('Open the Safari Browser', config.slug), __('Launch the Safari web browser from your home screen.', config.slug), svg.safari);
           renderStep(__('Paste and Open the URL', config.slug), __("Paste the copied URL into Safari's address bar and open the page.", config.slug), svg.pasteGo);
         }
+      } else {
+        renderStep(__('Installation Not Supported', config.slug), __('Your operating system does not support web app installation. Please try accessing the website on an Android or iOS mobile device.', config.slug), svg.noInstallSupport);
       }
     } else if (device.isDesktop) {
       if (browser.isChrome) {
@@ -476,6 +481,8 @@ class PwaInstallPrompt extends HTMLElement {
         renderStep(__('Open the Google Chrome Browser', config.slug), __('Launch the Google Chrome web browser from your start menu.', config.slug), svg.googleChrome);
         renderStep(__('Paste and Open the URL', config.slug), __("Paste the copied URL into Google Chrome's address bar and open the page.", config.slug), svg.pasteGo);
       }
+    } else {
+      renderStep(__('Installation Not Supported', config.slug), __('Your device does not support web app installation. Please try accessing the website on a mobile or desktop device.', config.slug), svg.noInstallSupport);
     }
 
     return steps.length ? `<ul class="install-prompt-body-instructions">${steps.join('')}</ul>` : '';
@@ -731,12 +738,12 @@ function performManualInstallation() {
 }
 
 export async function performInstallation() {
-  // if (isNativeInstallAvailable()) {
-  //   const result = await performNativeInstallation();
-  //   if (!result) {
-  //     return performManualInstallation();
-  //   }
-  //   return true;
-  // }
+  if (isNativeInstallAvailable()) {
+    const result = await performNativeInstallation();
+    if (!result) {
+      return performManualInstallation();
+    }
+    return true;
+  }
   return performManualInstallation();
 }
