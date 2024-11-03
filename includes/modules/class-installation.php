@@ -47,7 +47,6 @@ class Installation
     $this->settings = $config['settings'];
 
     add_shortcode('pwa-install-button', [$this, 'renderInstallationButton']);
-    
   }
 
   public function renderInstallationButton($atts)
@@ -56,6 +55,8 @@ class Installation
       return;
     }
 
-    return Frontend::renderPartial('installButton');
+    $installButton = '<pwa-install-button></pwa-install-button>';
+
+    return $installButton;
   }
 }

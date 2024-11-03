@@ -61,6 +61,9 @@ class Frontend
 
     wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
+    wp_enqueue_script('wp-i18n');
+    wp_set_script_translations("{$this->slug}-frontend", $this->textDomain);
+
     // Ensure the script is loaded as a module
     add_filter(
       'script_loader_tag',
@@ -83,7 +86,7 @@ class Frontend
         'homeUrl' => trailingslashit(home_url('/', 'https')),
         'adminUrl' => trailingslashit(admin_url('/', 'https')),
         'currentUrl' => Plugin::getCurrentUrl(false),
-        'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0],
+        'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
         'slug' => $this->slug,
         'settings' => $this->settings,
         'userData' => [
@@ -96,6 +99,7 @@ class Frontend
             'isAndroid' => Plugin::isPlatform('android'),
             'isIos' => Plugin::isPlatform('ios'),
             'isWindows' => Plugin::isPlatform('windows'),
+            'isMacos' => Plugin::isPlatform('macos'),
           ],
           'platform' => [
             'isPwa' => Plugin::isPlatform('pwa'),
@@ -133,7 +137,6 @@ class Frontend
   {
     $partials = [
       'metaTags' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-metatags.php']),
-      'installButton' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-installbutton.php']),
     ];
 
     return $partials;

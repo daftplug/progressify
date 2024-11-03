@@ -137,49 +137,6 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <!-- End Overlay Types -->
-      <!-- Supported Browsers -->
-      <div id="settingOverlaySupportedBrowsers">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Browsers', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the supported web browsers for installation overlays. We recommend to choose all the browsers available to cover as much users as possible.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <select name="installation[overlays][supportedBrowsers]" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Browsers', $this->textDomain); ?>"
-          }' class="hidden">
-          <option value=""><?php _e('Select Browsers', $this->textDomain); ?></option>
-          <option value="Chrome" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-chrome.png', $this->pluginFile); ?>\" alt=\"Chrome\"/>"}' <?php selected(true, in_array('Chrome', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
-            Chrome
-          </option>
-          <option value="Safari" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-safari.png', $this->pluginFile); ?>\" alt=\"Safari\"/>"}' <?php selected(true, in_array('Safari', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
-            Safari
-          </option>
-          <option value="Firefox" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-firefox.png', $this->pluginFile); ?>\" alt=\"Firefox\"/>"}' <?php selected(true, in_array('Firefox', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
-            Firefox
-          </option>
-          <option value="Microsoft Edge" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-edge.png', $this->pluginFile); ?>\" alt=\"Microsoft Edge\"/>"}' <?php selected(true, in_array('Microsoft Edge', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
-            Edge
-          </option>
-          <option value="Opera" data-dp-select-option='{
-            "icon": "<img class=\"flex-shrink-0 size-4 rounded-full\" src=\"<?php echo plugins_url('admin/assets/media/icons/icon-opera.png', $this->pluginFile); ?>\" alt=\"Opera\"/>"}' <?php selected(true, in_array('Opera', (array) Plugin::getSetting('installation[overlays][supportedBrowsers]'))); ?>>
-            Opera
-          </option>
-        </select>
-      </div>
-      <!-- End Supported Browsers -->
       <!-- Skip First Visit -->
       <div id="settingOverlaySkipFirstVisit">
         <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">

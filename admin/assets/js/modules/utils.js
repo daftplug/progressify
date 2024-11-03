@@ -120,16 +120,12 @@ jQuery.fn.daftplugSerialize = function () {
       value = $el.val();
     }
 
-    console.log('Field value:', value); // Debug log
-
     try {
       assignNestedData(data, keys, value);
     } catch (error) {
       console.error('Error assigning data for field:', name, 'with value:', value, 'Error:', error);
     }
   });
-
-  console.log('Final data object:', data); // Debug log
 
   try {
     return JSON.stringify(data);

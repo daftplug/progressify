@@ -230,35 +230,24 @@ class Admin
     }
 
     $newSettings = $request->get_param('settings');
+    $topLevelKey = $request->get_param('topLevelKey');
 
-    if (!is_array($newSettings)) {
+    if (!is_array($newSettings) || !is_string($topLevelKey)) {
       return new \WP_Error('invalid_settings', 'Invalid settings format', ['status' => 400]);
     }
 
     $currentSettings = get_option("{$this->optionName}_settings", []);
-    $mergedSettings = $this->deepMerge($currentSettings, $newSettings);
-    $saved = update_option("{$this->optionName}_settings", $mergedSettings);
+
+    // Replace the entire top-level key
+    $currentSettings[$topLevelKey] = $newSettings[$topLevelKey];
+
+    $saved = update_option("{$this->optionName}_settings", $currentSettings);
 
     if ($saved) {
       return new \WP_REST_Response(['status' => '1'], 200);
     } else {
       return new \WP_Error('save_failed', 'Failed to save settings', ['status' => 500]);
     }
-  }
-
-  private function deepMerge($array1, $array2)
-  {
-    $merged = $array1;
-
-    foreach ($array2 as $key => &$value) {
-      if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
-        $merged[$key] = $this->deepMerge($merged[$key], $value);
-      } else {
-        $merged[$key] = $value;
-      }
-    }
-
-    return $merged;
   }
 
   public function getPostTypes()

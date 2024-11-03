@@ -1,7 +1,7 @@
 import { config } from '../main.js';
-import { performInstallation } from '../components/installPrompt.js';
+import { performInstallation } from '../components/installationPrompt.js';
 
-class PwaInstallButton extends HTMLElement {
+class PwaInstallOverlay extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -10,14 +10,6 @@ class PwaInstallButton extends HTMLElement {
   connectedCallback() {
     this.render();
     this.handleClick();
-  }
-
-  handleClick() {
-    const button = this.shadowRoot.querySelector('.pwa-install-button');
-
-    button.addEventListener('click', async () => {
-      await performInstallation();
-    });
   }
 
   render() {
@@ -54,6 +46,14 @@ class PwaInstallButton extends HTMLElement {
       </style>
       <button class="pwa-install-button">${buttonText}</button>
     `;
+  }
+
+  handleClick() {
+    const button = this.shadowRoot.querySelector('.pwa-install-button');
+
+    button.addEventListener('click', async () => {
+      await performInstallation();
+    });
   }
 }
 

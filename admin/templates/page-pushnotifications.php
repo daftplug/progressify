@@ -109,7 +109,7 @@ if (!defined('ABSPATH')) {
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
                   <div class="flex items-center gap-x-1.5">
-                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/media/icons/icon-safari.png" />
+                    <img class="inline-block size-5" src="<?php echo plugins_url('admin/assets/media/icons/icon-safari.png', $this->pluginFile); ?>" />
                     <div class="grow space-y-1">
                       <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Safari</span>
                     </div>
@@ -191,7 +191,7 @@ if (!defined('ABSPATH')) {
               <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-3">
                   <div class="flex items-center gap-x-1.5">
-                    <img class="inline-block size-5" src="http://localhost:8000/wp-content/plugins/daftplug-progressify/admin/assets/media/icons/icon-chrome.png" />
+                    <img class="inline-block size-5" src="<?php echo plugins_url('admin/assets/media/icons/icon-chrome.png', $this->pluginFile); ?>" />
                     <div class="grow space-y-1">
                       <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">Chrome</span>
                     </div>

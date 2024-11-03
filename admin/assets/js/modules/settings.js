@@ -12,6 +12,10 @@ export function saveSettings(e) {
   e.preventDefault();
   const form = jQuery(e.target);
   const settingsData = form.daftplugSerialize();
+  const parsedSettings = JSON.parse(settingsData);
+
+  // Get the top-level key (e.g., 'webAppManifest')
+  const topLevelKey = Object.keys(parsedSettings)[0];
 
   const saveSettingsBtn = form.find('button[type="submit"]');
   const intractableComponents = daftplugAdmin.find('header, aside, main, footer');
@@ -20,7 +24,8 @@ export function saveSettings(e) {
   intractableComponents.attr('data-disabled', true);
 
   const requestBody = JSON.stringify({
-    settings: JSON.parse(settingsData),
+    settings: parsedSettings,
+    topLevelKey: topLevelKey,
   });
 
   fetch(wpApiSettings.root + slug + '/saveSettings', {
