@@ -16,22 +16,19 @@ export const config = (() => {
 })();
 
 async function initModules() {
-  if (!config.userData.platform.isPwa) {
+  if (config.userData.platform.isBrowser) {
     // Install Url
     const { initInstallUrl } = await import('./modules/installUrl.js');
     initInstallUrl();
 
-    // Install Button
-    if (config.settings.installation?.button?.feature === 'on') {
+    // Installation Overlays and Button
+    if (config.settings.installation?.prompts?.feature === 'on') {
       const { initInstallButton } = await import('./modules/installButton.js');
       initInstallButton();
-    }
 
-    // Install Overlays
-    // if (config.settings.installation?.overlays?.feature === 'on') {
-    //   const { initInstallOverlays } = await import('./modules/installOverlays.js');
-    //   initInstallOverlays();
-    // }
+      const { initInstallOverlays } = await import('./modules/installOverlays.js');
+      initInstallOverlays();
+    }
   }
 }
 

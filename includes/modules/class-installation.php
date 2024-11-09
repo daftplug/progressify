@@ -51,7 +51,7 @@ class Installation
 
   public function renderInstallationButton($atts)
   {
-    if (Plugin::getSetting('installation[button][feature]') !== 'on') {
+    if (Plugin::getSetting('installation[prompts][feature]') !== 'on') {
       return;
     }
 

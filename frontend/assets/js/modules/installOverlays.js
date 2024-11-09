@@ -12,6 +12,14 @@ class PwaInstallOverlay extends HTMLElement {
     this.handleClick();
   }
 
+  handleClick() {
+    const button = this.shadowRoot.querySelector('.pwa-install-button');
+
+    button.addEventListener('click', () => {
+      performInstallation();
+    });
+  }
+
   render() {
     const backgroundColor = config.settings.installation?.button?.backgroundColor;
     const textColor = config.settings.installation?.button?.textColor;
@@ -46,14 +54,6 @@ class PwaInstallOverlay extends HTMLElement {
       </style>
       <button class="pwa-install-button">${buttonText}</button>
     `;
-  }
-
-  handleClick() {
-    const button = this.shadowRoot.querySelector('.pwa-install-button');
-
-    button.addEventListener('click', async () => {
-      await performInstallation();
-    });
   }
 }
 

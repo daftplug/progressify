@@ -391,10 +391,14 @@ class Plugin
       case 'edge':
       case 'duckduckgo':
         $browserName = strtolower($dd->getClient('name'));
-        $detected = $dd->isBrowser() && strpos($browserName, strtolower($platform)) !== false;
+        $detected = self::isPlatform('browser') && strpos($browserName, strtolower($platform)) !== false;
         break;
       case 'pwa':
         $detected = isset($_GET['isPwa']) && $_GET['isPwa'] == 'true';
+        break;
+      case 'browser':
+        $ua = strtolower($userAgent);
+        $detected = $dd->isBrowser() && !strpos($ua, 'fban') !== false && !strpos($ua, 'fbios') !== false && !strpos($ua, 'fb_iab') !== false && !strpos($ua, 'telegram') !== false && !strpos($ua, 'instagram') !== false && !strpos($ua, 'messenger') !== false && !strpos($ua, 'micromessenger') !== false && !strpos($ua, 'webview') !== false && !strpos($ua, 'wv') !== false && !(isset($_GET['isPwa']) && $_GET['isPwa'] == 'true');
         break;
       default:
         $detected = false;

@@ -1,4 +1,4 @@
-import { validateAttachment } from './utils.js';
+import { validateAttachment } from '../components/utils.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 const optionName = daftplugAdmin.attr('data-option-name');

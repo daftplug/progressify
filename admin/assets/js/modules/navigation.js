@@ -1,4 +1,4 @@
-import { navigateTo } from './utils.js';
+import { navigateTo } from '../components/utils.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 

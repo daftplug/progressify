@@ -181,8 +181,6 @@ class PwaInstallPrompt extends HTMLElement {
 
           if (result.outcome === 'accepted') {
             this.remove();
-          } else {
-            this.handleUpdateContent();
           }
         } catch (error) {
           console.error('Native installation failed:', error);
@@ -422,8 +420,8 @@ class PwaInstallPrompt extends HTMLElement {
 
       .install-prompt-loading-text {
         margin-top: 1rem;
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
         color: #374151;
       }
     `);
@@ -449,8 +447,8 @@ class PwaInstallPrompt extends HTMLElement {
         font-size: 0.875rem;
         line-height: 1.25rem;
         border-radius: 0.5rem;
-        background-color: #2563eb;
-        color: white;
+        color: ${config.settings.installation?.prompts?.textColor ?? '#000000'};
+        background-color: ${config.settings.installation?.prompts?.backgroundColor ?? '#000000'};
         transition: all 0.1s ease;
         cursor: pointer;
         outline: none;
@@ -459,7 +457,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       .install-prompt-native-button:hover {
-        background-color: #1d4ed8;
+        opacity: 0.8;
       }
 
       .install-prompt-native-button:focus {
@@ -875,7 +873,7 @@ class PwaInstallPrompt extends HTMLElement {
         <div class="install-prompt-container">
           <div class="install-prompt-header">
             <div class="install-prompt-header-texts">
-              <div class="install-prompt-header-texts_title">${__('Install Web App', config.slug)}</div>
+              <div class="install-prompt-header-texts_title">${config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug)}</div>
             </div>
             <button type="button" class="install-prompt-close" aria-label="Close">
               <svg class="install-prompt-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>

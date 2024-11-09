@@ -1,4 +1,4 @@
-import jQuery from './utils.js';
+import jQuery from '../components/utils.js';
 import showToast from '../components/toast.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');

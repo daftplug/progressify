@@ -15,15 +15,15 @@ class PwaInstallButton extends HTMLElement {
   handleClick() {
     const button = this.shadowRoot.querySelector('.pwa-install-button');
 
-    button.addEventListener('click', async () => {
-      await performInstallation();
+    button.addEventListener('click', () => {
+      performInstallation();
     });
   }
 
   render() {
-    const backgroundColor = config.settings.installation?.button?.backgroundColor;
-    const textColor = config.settings.installation?.button?.textColor;
-    const buttonText = config.settings.installation?.button?.text;
+    const backgroundColor = config.settings.installation?.prompts?.backgroundColor;
+    const textColor = config.settings.installation?.prompts?.textColor;
+    const buttonText = config.settings.installation?.prompts?.text;
 
     this.shadowRoot.innerHTML = `
       <style>
