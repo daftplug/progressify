@@ -17,6 +17,10 @@ export const config = (() => {
 
 async function initModules() {
   if (!config.userData.platform.isPwa) {
+    // Install Url
+    const { initInstallUrl } = await import('./modules/installUrl.js');
+    initInstallUrl();
+
     // Install Button
     if (config.settings.installation?.button?.feature === 'on') {
       const { initInstallButton } = await import('./modules/installButton.js');
