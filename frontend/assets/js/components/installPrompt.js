@@ -24,7 +24,7 @@ const svg = {
   safari:
     '<svg style="width:1.5rem;height:1.5rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5120 5120"><linearGradient x2="0" y2="100%" id="a"><stop offset="0" stop-color="#19d7ff"/><stop offset="1" stop-color="#1e64f0"/></linearGradient><circle cx="2560" cy="2560" r="2240" fill="url(#a)"/><path fill="red" d="M4090 1020 2370 2370l4e2 4e2z"/><path fill="#fff" d="M1020 4090l1350-1720 4e2 4e2z"/><path stroke="#fff" stroke-width="30" d="M2560 540v330m0 3370v330m350-4e3-57 325m-586 3318-57 327M3250 662l-113 310M1984 4138l-113 310m339-3878 57 325m586 3318 57 327M1870 662l113 310m1152 3166 113 310M1552 810l166 286m1685 2918 165 286M1265 1010l212 253m2166 2582 212 253M1015 1258l253 212m2582 2168 253 212M813 1548l286 165m2920 1685 286 165M665 1866l310 113m3166 1150 310 113M574 2202l326 58m3320 588 325 57M545 2555h330m3370 0h330M575 2905l325-57m3320-586 325-57M668 3245l310-113m3165-1152 310-113M815 3563l286-165m2920-1685 286-165M1016 3850l253-212m2580-2166 253-212M1262 41e2l212-253m2166-2582 212-253M1552 43e2l166-286m1685-2918 165-286M2384 548l16 180m320 3656 16 180M2038 610l47 174m950 3544 47 174M1708 730l76 163m1550 3326 77 163M1404 904l103 148m2106 3006 103 148M1135 1130l127 127m2596 2596 127 127M910 14e2l148 103m3006 2107 146 1e2M734 1703l163 76m3326 1550 163 77M614 2033l174 47m3544 950 174 47M553 2380l180 16m3656 320 180 16m-4014 0 180-16m3656-320 180-16M614 3077l174-47m3544-950 174-47M734 3407l163-76m3326-1550 163-76M910 3710l148-103m3006-2107 146-1e2M1404 4206l103-148m2105-3006 104-148M1708 4380l77-163M3335 890l77-163M2038 45e2l47-174m950-3544 47-174m-698 3952 16-180m320-3656 16-180"/></svg>',
   googleChrome:
-    '<svg style="width:1.5rem;height:1.5rem;" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48"><path fill="#4caf50" d="M44,24c0,11.044-8.956,20-20,20S4,35.044,4,24S12.956,4,24,4S44,12.956,44,24z"></path><path fill="#ffc107" d="M24,4v20l8,4l-8.843,16c0.317,0,0.526,0,0.843,0c11.053,0,20-8.947,20-20S35.053,4,24,4z"></path><path fill="#4caf50" d="M44,24c0,11.044-8.956,20-20,20S4,35.044,4,24S12.956,4,24,4S44,12.956,44,24z"></path><path fill="#ffc107" d="M24,4v20l8,4l-8.843,16c0.317,0,0.526,0,0.843,0c11.053,0,20-8.947,20-20S35.053,4,24,4z"></path><path fill="#f44336" d="M41.84,15H24v13l-3-1L7.16,13.26H7.14C10.68,7.69,16.91,4,24,4C31.8,4,38.55,8.48,41.84,15z"></path><path fill="#dd2c00" d="M7.158,13.264l8.843,14.862L21,27L7.158,13.264z"></path><path fill="#558b2f" d="M23.157,44l8.934-16.059L28,25L23.157,44z"></path><path fill="#f9a825" d="M41.865,15H24l-1.579,4.58L41.865,15z"></path><path fill="#fff" d="M33,24c0,4.969-4.031,9-9,9s-9-4.031-9-9s4.031-9,9-9S33,19.031,33,24z"></path><path fill="#2196f3" d="M31,24c0,3.867-3.133,7-7,7s-7-3.133-7-7s3.133-7,7-7S31,20.133,31,24z"></path></svg>',
+    '<svg style="width:1.5rem;height:1.5rem;" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 276 276"><linearGradient id="a" x1="145" x2="34" y1="253" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1e8e3e"/><stop offset="1" stop-color="#34a853"/></linearGradient><linearGradient id="b" x1="111" x2="222" y1="254" y2="62" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcc934"/><stop offset="1" stop-color="#fbbc04"/></linearGradient><linearGradient id="c" x1="17" x2="239" y1="80" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d93025"/><stop offset="1" stop-color="#ea4335"/></linearGradient><circle cx="128" cy="128" r="64" fill="#fff"/><path fill="url(#a)" d="M96 183.4A63.7 63.7 0 0 1 72.6 160L17.2 64A128 128 0 0 0 128 256l55.4-96A64 64 0 0 1 96 183.4Z"/><path fill="url(#b)" d="M192 128a63.7 63.7 0 0 1-8.6 32L128 256A128 128 0 0 0 238.9 64h-111a64 64 0 0 1 64 64Z"/><circle cx="128" cy="128" r="52" fill="#1a73e8"/><path fill="url(#c)" d="M96 72.6a63.7 63.7 0 0 1 32-8.6h110.8a128 128 0 0 0-221.7 0l55.5 96A64 64 0 0 1 96 72.6Z"/></svg>',
   copy: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-520q0-17 11.5-28.5T160-720q17 0 28.5 11.5T200-680v520h400q17 0 28.5 11.5T640-120q0 17-11.5 28.5T600-80H200Zm160-240v-480 480Z"/></svg>',
   pasteGo: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M727-240H520q-17 0-28.5-11.5T480-280q0-17 11.5-28.5T520-320h207l-36-36q-11-11-11-27.5t12-28.5q11-11 28-11t28 11l104 104q12 12 12 28t-12 28L748-148q-12 12-28 11.5T692-149q-11-12-11.5-28t11.5-28l35-35ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v200q0 17-11.5 28.5T800-520q-17 0-28.5-11.5T760-560v-200h-80v80q0 17-11.5 28.5T640-640H320q-17 0-28.5-11.5T280-680v-80h-80v560h160q17 0 28.5 11.5T400-160q0 17-11.5 28.5T360-120H200Zm280-640q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"/></svg>',
   installDesktop: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M320-160v-40H160q-33 0-56.5-23.5T80-280v-480q0-33 23.5-56.5T160-840h280q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H160v480h640v-80q0-17 11.5-28.5T840-400q17 0 28.5 11.5T880-360v80q0 33-23.5 56.5T800-200H640v40q0 17-11.5 28.5T600-120H360q-17 0-28.5-11.5T320-160Zm320-393v-247q0-17 11.5-28.5T680-840q17 0 28.5 11.5T720-800v247l76-75q11-11 27.5-11.5T852-628q11 11 11 28t-11 28L708-428q-12 12-28 12t-28-12L508-572q-11-11-11.5-27.5T508-628q11-11 28-11t28 11l76 75Z"/></svg>',
@@ -139,7 +139,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       // Set a timeout for the check
-      const timeout = setTimeout(() => resolve(false), 2000);
+      const timeout = setTimeout(() => resolve(false), 1700);
 
       // Listen for the event
       window.addEventListener(
@@ -198,7 +198,8 @@ class PwaInstallPrompt extends HTMLElement {
       .install-prompt-body-appinfo_icon {
         border-radius: 9999px;
         border: 1px solid #e5e7eb;
-        flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
         height: 55px;
         width: 55px;
         display: inline-block;
@@ -265,8 +266,12 @@ class PwaInstallPrompt extends HTMLElement {
   renderAppInfo() {
     this.injectStyles(`
       .install-prompt-body-appinfo {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         background: #f3f4f6;
         padding: 0.5rem;
         border-radius: 0.5rem;
@@ -291,13 +296,21 @@ class PwaInstallPrompt extends HTMLElement {
 
   renderCopyInstallUrlButton() {
     this.injectStyles(`
-      .install-prompt-body-instructions_step_copy {
+.install-prompt-body-instructions_step_copy {
         position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        justify-content: center;
-        align-items: center;
-        column-gap: 0.5rem;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-column-gap: 0.5rem;
+           -moz-column-gap: 0.5rem;
+                column-gap: 0.5rem;
         font-size: 0.875rem;
         line-height: 0.875rem;
         padding: 10px 13px;
@@ -305,8 +318,11 @@ class PwaInstallPrompt extends HTMLElement {
         border: 1px solid #e5e7eb;
         background-color: #ffffff;
         color: #1f2937;
-        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         outline: none;
+        -webkit-transition: all .1s ease;
+        -o-transition: all .1s ease;
         transition: all .1s ease;
         cursor: pointer;
         margin-top: 0.5rem;
@@ -318,7 +334,8 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       .install-prompt-body-instructions_step_copy_url {
-        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
         overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
@@ -326,11 +343,18 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       .install-prompt-body-instructions_step_copy_icons {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         border-left: 1px solid #e5e7eb;
-        padding-inline-start: 0.75rem;
+        -webkit-padding-start: 0.75rem;
+                padding-inline-start: 0.75rem;
       }
 
       .install-prompt-body-instructions_step_copy_svg {
@@ -351,6 +375,8 @@ class PwaInstallPrompt extends HTMLElement {
         visibility: hidden;
         position: absolute;
         top: -2rem;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
         z-index: 10;
         padding: 0.25rem 0.5rem;
@@ -360,7 +386,8 @@ class PwaInstallPrompt extends HTMLElement {
         font-weight: 500;
         color: #ffffff;
         border-radius: 0.5rem;
-        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+                box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         cursor: default;
       }
 
@@ -396,11 +423,20 @@ class PwaInstallPrompt extends HTMLElement {
 
   renderLoadingInstallCheck() {
     this.injectStyles(`
-      .install-prompt-loading {
+.install-prompt-loading {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
       }
 
       .install-prompt-loading-spinner {
@@ -409,12 +445,21 @@ class PwaInstallPrompt extends HTMLElement {
         border: 3px solid #f3f4f6;
         border-top-color: #1f2937;
         border-radius: 50%;
-        animation: spinner 0.6s linear infinite;
+        -webkit-animation: spinner 0.6s linear infinite;
+                animation: spinner 0.6s linear infinite;
+      }
+
+      @-webkit-keyframes spinner {
+        to {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
       }
 
       @keyframes spinner {
         to {
-          transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
         }
       }
 
@@ -438,17 +483,25 @@ class PwaInstallPrompt extends HTMLElement {
     this.injectStyles(`
       .install-prompt-native-button {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         gap: 0.5rem;
         padding: 1rem;
         font-weight: 500;
         font-size: 0.875rem;
         line-height: 1.25rem;
         border-radius: 0.5rem;
-        color: ${config.settings.installation?.prompts?.textColor ?? '#000000'};
+        color: ${config.settings.installation?.prompts?.textColor ?? '#ffffff'};
         background-color: ${config.settings.installation?.prompts?.backgroundColor ?? '#000000'};
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
         cursor: pointer;
         outline: none;
@@ -510,9 +563,10 @@ class PwaInstallPrompt extends HTMLElement {
 
   renderStep(stepNumber, title = '', description = '', icon = '', extraHtml = '') {
     this.injectStyles(`
-      .install-prompt-body-instructions_step {
+.install-prompt-body-instructions_step {
         position: relative;
-        padding-inline-start: 2.8rem;
+        -webkit-padding-start: 2.8rem;
+                padding-inline-start: 2.8rem;
         padding-bottom: 2.2rem;
         counter-increment: step 1;
       }
@@ -523,10 +577,16 @@ class PwaInstallPrompt extends HTMLElement {
 
       .install-prompt-body-instructions_step-icon {
         position: absolute;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         inset-inline-start: 0px;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         width: 2rem;
         height: 2rem;
         color: #1f2937;
@@ -537,7 +597,8 @@ class PwaInstallPrompt extends HTMLElement {
       .install-prompt-body-instructions_step-icon svg {
         width: 1.25rem;
         height: 1.25rem;
-        flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
       }
 
       .install-prompt-body-instructions_step-icon:empty::before {
@@ -562,7 +623,9 @@ class PwaInstallPrompt extends HTMLElement {
         bottom: 0.5rem;
         inset-inline-start: 0.95rem;
         width: 1px;
-        transform: translateX(0.5px);
+        -webkit-transform: translateX(0.5px);
+            -ms-transform: translateX(0.5px);
+                transform: translateX(0.5px);
         background-color: #e5e7eb;
       }
 
@@ -703,7 +766,7 @@ class PwaInstallPrompt extends HTMLElement {
 
   render() {
     this.injectStyles(`
-      .install-prompt {
+.install-prompt {
         position: fixed;
         top: 0;
         left: 0;
@@ -711,7 +774,10 @@ class PwaInstallPrompt extends HTMLElement {
         bottom: 0;
         z-index: 9999999;
         background: rgba(0, 0, 0, 0);
-        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+                backdrop-filter: blur(0px);
+        -webkit-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out;
         opacity: 0;
         visibility: hidden;
@@ -719,7 +785,8 @@ class PwaInstallPrompt extends HTMLElement {
 
       .install-prompt.visible {
         background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
         opacity: 1;
         visibility: visible;
       }
@@ -728,29 +795,42 @@ class PwaInstallPrompt extends HTMLElement {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, calc(-50% + 20px));
+        -webkit-transform: translate(-50%, calc(-50% + 20px));
+            -ms-transform: translate(-50%, calc(-50% + 20px));
+                transform: translate(-50%, calc(-50% + 20px));
         background: white;
         border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         max-width: 32rem;
         width: 95%;
         overflow: hidden;
         opacity: 0;
+        -webkit-transition: all 0.15s ease-out;
+        -o-transition: all 0.15s ease-out;
         transition: all 0.15s ease-out;
         z-index: 999999999999999999999;
       }
 
       .install-prompt.visible .install-prompt-container {
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
         opacity: 1;
       }
 
       .install-prompt-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         padding: 0.75rem 1rem;
         gap: 1.5rem;
-        justify-content: space-between;
-        align-items: center;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         border-bottom: 1px solid #e5e7eb;
       }
 
@@ -759,12 +839,22 @@ class PwaInstallPrompt extends HTMLElement {
         line-height: 1.5rem;
         font-weight: 500;
         color: #1f2937;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
 
       .install-prompt-close {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
         display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         width: 2rem;
         height: 2rem;
         color: #1f2937;
@@ -773,8 +863,11 @@ class PwaInstallPrompt extends HTMLElement {
         outline: none;
         border: none;
         cursor: pointer;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
-        flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
       }
 
       .install-prompt-close:hover {
@@ -785,7 +878,8 @@ class PwaInstallPrompt extends HTMLElement {
         display: block;
         width: 1rem;
         height: 1rem;
-        flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
         vertical-align: middle;
       }
 
@@ -816,10 +910,18 @@ class PwaInstallPrompt extends HTMLElement {
 
       .install-prompt-footer_close {
         width: 100%;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
         display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 0.375rem;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-column-gap: 0.375rem;
+           -moz-column-gap: 0.375rem;
+                column-gap: 0.375rem;
         padding: 0.75rem 1rem;
         font-weight: 500;
         font-size: 0.75rem;
@@ -827,6 +929,8 @@ class PwaInstallPrompt extends HTMLElement {
         border-radius: 0.5rem;
         background-color: #ffffff;
         color: #1f2937;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
         cursor: pointer;
         outline: none;
@@ -845,7 +949,9 @@ class PwaInstallPrompt extends HTMLElement {
 
       @media (max-width: 700px) {
         .install-prompt-container {
-          transform: translate(0, calc(100% - 20px));
+          -webkit-transform: translate(0, calc(100% - 20px));
+              -ms-transform: translate(0, calc(100% - 20px));
+                  transform: translate(0, calc(100% - 20px));
           left: 0;
         }
 
@@ -855,7 +961,9 @@ class PwaInstallPrompt extends HTMLElement {
           top: auto;
           bottom: 0;
           left: 0;
-          transform: translate(0, 0);
+          -webkit-transform: translate(0, 0);
+              -ms-transform: translate(0, 0);
+                  transform: translate(0, 0);
           border-top-left-radius: 1rem;
           border-top-right-radius: 1rem;
           border-bottom-left-radius: 0;

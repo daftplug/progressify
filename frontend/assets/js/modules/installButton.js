@@ -21,9 +21,9 @@ class PwaInstallButton extends HTMLElement {
   }
 
   render() {
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor;
-    const textColor = config.settings.installation?.prompts?.textColor;
-    const buttonText = config.settings.installation?.prompts?.text;
+    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
+    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
+    const buttonText = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
 
     this.shadowRoot.innerHTML = `
       <style>
