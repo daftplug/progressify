@@ -3,7 +3,6 @@
 namespace DaftPlug\Progressify\Module;
 
 use DaftPlug\Progressify\Plugin;
-use DaftPlug\Progressify\Frontend;
 
 if (!defined('ABSPATH')) {
   exit();

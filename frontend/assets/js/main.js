@@ -23,9 +23,11 @@ async function initModules() {
 
     // Installation Overlays and Button
     if (config.settings.installation?.prompts?.feature === 'on') {
+      // Installation Button
       const { initInstallButton } = await import('./modules/installButton.js');
       initInstallButton();
 
+      // Installation Overlays
       const { initInstallOverlays } = await import('./modules/installOverlays.js');
       initInstallOverlays();
     }

@@ -57,8 +57,6 @@ class Frontend
 
   public function loadAssets()
   {
-    $this->dependencies[] = 'jquery';
-
     wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
     wp_enqueue_script('wp-i18n');

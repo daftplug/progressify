@@ -38,14 +38,13 @@ class PwaInstallButton extends HTMLElement {
           color: ${textColor};
           vertical-align: middle;
           text-decoration: none;
-          font-size: 15px;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
           font-weight: 500;
-          line-height: 35px;
-          padding: 0 17px;
-          height: 35px;
+          padding: 0.5rem 1rem;
           border: none;
           outline: none;
-          border-radius: 30px;
+          border-radius: 9999px;
           cursor: pointer;
         }
         .pwa-install-button:hover {

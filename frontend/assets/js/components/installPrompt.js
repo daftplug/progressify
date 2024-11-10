@@ -78,11 +78,6 @@ class PwaInstallPrompt extends HTMLElement {
     return urlObject.href;
   }
 
-  hasAppIcon() {
-    const iconUrl = config.iconUrl;
-    return iconUrl && iconUrl !== '' && iconUrl !== '0';
-  }
-
   // Event handlers
   handleRemove() {
     const closeIcon = this.shadowRoot.querySelector('.install-prompt-close');
@@ -766,7 +761,7 @@ class PwaInstallPrompt extends HTMLElement {
 
   render() {
     this.injectStyles(`
-.install-prompt {
+      .install-prompt {
         position: fixed;
         top: 0;
         left: 0;
@@ -953,6 +948,7 @@ class PwaInstallPrompt extends HTMLElement {
               -ms-transform: translate(0, calc(100% - 20px));
                   transform: translate(0, calc(100% - 20px));
           left: 0;
+          top: -100%;
         }
 
         .install-prompt.visible .install-prompt-container {
@@ -973,6 +969,7 @@ class PwaInstallPrompt extends HTMLElement {
     `);
 
     const content = this.renderContent();
+    const promptTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
     const combinedStyles = Array.from(this.styles).join('\n');
 
     this.shadowRoot.innerHTML = `
@@ -981,7 +978,7 @@ class PwaInstallPrompt extends HTMLElement {
         <div class="install-prompt-container">
           <div class="install-prompt-header">
             <div class="install-prompt-header-texts">
-              <div class="install-prompt-header-texts_title">${config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug)}</div>
+              <div class="install-prompt-header-texts_title">${promptTitle}</div>
             </div>
             <button type="button" class="install-prompt-close" aria-label="Close">
               <svg class="install-prompt-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>

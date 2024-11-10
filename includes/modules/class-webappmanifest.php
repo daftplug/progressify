@@ -55,7 +55,6 @@ class WebAppManifest
     add_action('parse_request', [$this, 'generateManifest']);
     add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
-    add_filter("{$this->optionName}_frontend_css", [$this, 'addAccentColor']);
   }
 
   public function generateLaunchScreensAndMakableIcons()
@@ -357,17 +356,6 @@ class WebAppManifest
 
       exit();
     }
-  }
-
-  public function addAccentColor()
-  {
-    echo '
-        :root {
-            accent-color: ' .
-      Plugin::getSetting('webAppManifest[appearance][themeColor]') .
-      ';
-        }
-    ';
   }
 
   public function renderMetaTagsInHeader()

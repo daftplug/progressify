@@ -22,6 +22,12 @@ $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][rela
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="apple-mobile-web-app-title" content="<?php echo $appName; ?>">
 <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'); ?>">
+<style>
+:root {
+  accent-color: <?php echo $themeColor;
+  ?>;
+}
+</style>
 
 <?php
 $relatedApplicationsNotEmpty = !empty($relatedApplications) && !(count($relatedApplications) === 1 && empty($relatedApplications[0]['platform']) && empty($relatedApplications[0]['id']));
