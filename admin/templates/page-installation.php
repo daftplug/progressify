@@ -167,7 +167,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
         <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
-          <img src="<?php echo Plugin::getQrCodeSrc(add_query_arg('performInstallation', 'true', trailingslashit(strtok(home_url('/', 'https'), '?'))), '180x180', 'https://daftplug.com/wp-content/uploads/cropped-1-1-180x180.png'); ?>" />
+          <img src="<?php echo Plugin::getQrCodeSrc(add_query_arg('performInstallation', 'true', trailingslashit(strtok(home_url('/', 'https'), '?'))), '180x180', @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0]); ?>" />
         </div>
       </div>
       <!-- End Installation QR Code -->

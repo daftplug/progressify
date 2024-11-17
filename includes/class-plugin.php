@@ -484,34 +484,40 @@ class Plugin
       // Resize and place QR code
       imagecopyresampled($baseImage, $qrImage, $qrX, $qrY, 0, 0, $newQrWidth, $newQrHeight, $qrOriginalWidth, $qrOriginalHeight);
 
-      // If logo is provided
+      // If logo is provided, try to add it but continue if it fails
       if ($logo) {
-        $logoContent = @file_get_contents($logo);
-        if ($logoContent === false) {
-          throw new \Exception('Failed to read logo file');
+        try {
+          $logoContent = @file_get_contents($logo);
+          if ($logoContent === false) {
+            throw new \Exception('Failed to read logo file');
+          }
+
+          $logoImage = @imagecreatefromstring($logoContent);
+          if (!$logoImage) {
+            throw new \Exception('Invalid logo image format');
+          }
+
+          // Calculate logo size (35% of QR code size) at scaled resolution
+          $logoNewWidth = (int) ($newQrWidth * 0.35);
+          $logoNewHeight = (int) (imagesy($logoImage) * ($logoNewWidth / imagesx($logoImage)));
+
+          // Center logo on QR code
+          $logoX = $qrX + (int) (($newQrWidth - $logoNewWidth) / 2);
+          $logoY = $qrY + (int) (($newQrHeight - $logoNewHeight) / 2);
+
+          // Enable transparency for the logo
+          imagealphablending($logoImage, true);
+          imagesavealpha($logoImage, true);
+
+          // Resize and place logo
+          imagecopyresampled($baseImage, $logoImage, $logoX, $logoY, 0, 0, $logoNewWidth, $logoNewHeight, imagesx($logoImage), imagesy($logoImage));
+
+          imagedestroy($logoImage);
+        } catch (\Exception $e) {
+          // Log the logo error but continue processing
+          error_log('QR code logo processing failed: ' . $e->getMessage());
+          // Continue without the logo
         }
-
-        $logoImage = imagecreatefromstring($logoContent);
-        if (!$logoImage) {
-          throw new \Exception('Invalid logo image format');
-        }
-
-        // Calculate logo size (35% of QR code size) at scaled resolution
-        $logoNewWidth = (int) ($newQrWidth * 0.35);
-        $logoNewHeight = (int) (imagesy($logoImage) * ($logoNewWidth / imagesx($logoImage)));
-
-        // Center logo on QR code
-        $logoX = $qrX + (int) (($newQrWidth - $logoNewWidth) / 2);
-        $logoY = $qrY + (int) (($newQrHeight - $logoNewHeight) / 2);
-
-        // Enable transparency for the logo
-        imagealphablending($logoImage, true);
-        imagesavealpha($logoImage, true);
-
-        // Resize and place logo
-        imagecopyresampled($baseImage, $logoImage, $logoX, $logoY, 0, 0, $logoNewWidth, $logoNewHeight, imagesx($logoImage), imagesy($logoImage));
-
-        imagedestroy($logoImage);
       }
 
       // Clean up QR code image
