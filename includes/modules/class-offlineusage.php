@@ -46,7 +46,7 @@ class OfflineUsage
     $this->dependencies = [];
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
-    $this->workboxVersion = '6.3.0';
+    $this->workboxVersion = '7.3.0';
 
     add_action('parse_request', [$this, 'generateServiceWorker']);
     add_action('wp_head', [$this, 'renderRegisterServiceWorker']);
@@ -209,6 +209,7 @@ class OfflineUsage
             new workbox.cacheableResponse.CacheableResponsePlugin({
               statuses: [0, 200]
             }),
+            new workbox.rangeRequests.RangeRequestsPlugin(),
           ],
         })
       );
