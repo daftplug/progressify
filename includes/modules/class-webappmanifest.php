@@ -2,8 +2,7 @@
 
 namespace DaftPlug\Progressify\Module;
 
-use DaftPlug\Progressify\Plugin;
-use DaftPlug\Progressify\Frontend;
+use DaftPlug\Progressify\{Plugin, Frontend};
 
 if (!defined('ABSPATH')) {
   exit();
@@ -99,6 +98,44 @@ class WebAppManifest
       wp_send_json_error([
         'message' => esc_html__('Launch Screens and Makable Icons generation failed!', $this->textDomain),
       ]);
+    }
+  }
+
+  public function generateWebAppOriginAssociation()
+  {
+    global $wp;
+    global $wp_query;
+
+    if (!$wp_query->is_main_query()) {
+      return;
+    }
+
+    if ($wp->request === '.well-known/web-app-origin-association') {
+      $wp_query->set('.well-known/web-app-origin-association', 1);
+    }
+
+    if ($wp_query->get('.well-known/web-app-origin-association')) {
+      nocache_headers();
+      header('X-Robots-Tag: noindex, follow');
+      header('Content-Type: application/json; charset=utf-8');
+
+      $webAppOriginAssociation = [
+        'web_apps' => [
+          [
+            'manifest' => $this->getManifestUrl(false),
+            'details' => [
+              'paths' => ['/*'],
+            ],
+          ],
+          [
+            'web_app_identity' => Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))),
+          ],
+        ],
+      ];
+
+      wp_send_json($webAppOriginAssociation, 200, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+      exit();
     }
   }
 
@@ -318,44 +355,6 @@ class WebAppManifest
     }
 
     return apply_filters("{$this->optionName}_manifest", $manifest);
-  }
-
-  public function generateWebAppOriginAssociation()
-  {
-    global $wp;
-    global $wp_query;
-
-    if (!$wp_query->is_main_query()) {
-      return;
-    }
-
-    if ($wp->request === '.well-known/web-app-origin-association') {
-      $wp_query->set('.well-known/web-app-origin-association', 1);
-    }
-
-    if ($wp_query->get('.well-known/web-app-origin-association')) {
-      nocache_headers();
-      header('X-Robots-Tag: noindex, follow');
-      header('Content-Type: application/json; charset=utf-8');
-
-      $webAppOriginAssociation = [
-        'web_apps' => [
-          [
-            'manifest' => $this->getManifestUrl(false),
-            'details' => [
-              'paths' => ['/*'],
-            ],
-          ],
-          [
-            'web_app_identity' => Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?'))),
-          ],
-        ],
-      ];
-
-      wp_send_json($webAppOriginAssociation, 200, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-      exit();
-    }
   }
 
   public function renderMetaTagsInHeader()

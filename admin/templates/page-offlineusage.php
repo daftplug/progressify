@@ -167,7 +167,7 @@ if (!defined('ABSPATH')) {
       "mode": "availability"
     }'>
       <!-- Offline Notification -->
-      <div id="settingOfflineNotification" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingOfflineNotification" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="offlineUsage[capabilities][notification]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -200,7 +200,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Offline Notification -->
       <!-- Offline Forms -->
-      <div id="settingOfflineForms" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingOfflineForms" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="offlineUsage[capabilities][forms]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -233,8 +233,8 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Offline Notification -->
       <!-- Offline Google Analytics -->
-      <div id="settinggoogleAnalytics" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="offlineUsage[capabilities][googleAnalytics]" class="cursor-pointer flex gap-x-3">
+      <div id="settinggoogleAnalytics" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+        <label for="offlineUsage[capabilities][googleAnalytics]" class="cursor-pointer flex gap-x-3" data-disabled="true">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <?php _e('Offline Google Analytics', $this->textDomain); ?>
@@ -262,6 +262,9 @@ if (!defined('ABSPATH')) {
           </div>
         </label>
       </div>
+      <p class="!mt-2 text-xs text-red-700">
+        <?php _e('This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4).', $this->textDomain); ?>
+      </p>
       <!-- End Offline Google Analytics -->
     </div>
   </fieldset>

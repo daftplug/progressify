@@ -160,7 +160,7 @@ if (!defined('ABSPATH')) {
         </div>
         <p class="inline-flex items-center gap-x-1 mt-1 text-xs text-gray-500 dark:text-neutral-500"><?php _e('Please be as descriptive as possible regarding the details of this request.', $this->textDomain); ?></p>
       </fieldset>
-      <fieldset class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <fieldset class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="remoteAccess" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">

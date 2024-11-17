@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
       <div class="mt-5">
         <div class="grid grid-cols-3 gap-3">
           <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/icon-chrome.png', $this->pluginFile); ?>" alt="Chrome Logo">
+            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/icon-chrome.png', $this->pluginFile); ?>" alt="Chrome Logo">
             <p class="text-sm text-gray-800 dark:text-neutral-200">
               Chrome
             </p>
@@ -36,7 +36,7 @@ if (!defined('ABSPATH')) {
             </p>
           </div>
           <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/icon-firefox.png', $this->pluginFile); ?>" alt="Firefox Logo">
+            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/icon-firefox.png', $this->pluginFile); ?>" alt="Firefox Logo">
             <p class="text-sm text-gray-800 dark:text-neutral-200">
               Firefox
             </p>
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
             </p>
           </div>
           <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/icon-safari.png', $this->pluginFile); ?>" alt="Safari Logo">
+            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/icon-safari.png', $this->pluginFile); ?>" alt="Safari Logo">
             <p class="text-sm text-gray-800 dark:text-neutral-200">
               Safari
             </p>
@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <div class="mt-5">
-        <div id="pwaFeature" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+        <div id="pwaFeature" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
           <label for="pwa[feature]" class="cursor-pointer flex gap-x-2">
             <svg class="mt-1 shrink-0 size-7 fill-gray-800 dark:fill-neutral-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 28">
               <g stroke-linecap="round" stroke-linejoin="round">

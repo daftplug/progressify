@@ -518,7 +518,7 @@ if (!defined('ABSPATH')) {
       "mode": "availability"
     }'>
       <!-- Biometric Authentication -->
-      <div id="settingBiometricAuthentication " class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingBiometricAuthentication " class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="appCapabilities[advancedWebCapabilities][biometricAuthentication]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -549,7 +549,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Biometric Authentication -->
       <!-- Background Sync -->
-      <div id="settingBackgroundSync" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingBackgroundSync" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="appCapabilities[advancedWebCapabilities][backgroundSync]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -580,7 +580,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Background Sync -->
       <!-- Periodic Background Sync -->
-      <div id="settingPeriodicBackgroundSync" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPeriodicBackgroundSync" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -611,7 +611,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Periodic Background Sync -->
       <!-- Content Indexing -->
-      <div id="settingContentIndexing" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingContentIndexing" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="appCapabilities[advancedWebCapabilities][contentIndexing]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -642,7 +642,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Content Indexing -->
       <!-- Persistent Storage -->
-      <div id="settingPersistentStorage" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPersistentStorage" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="appCapabilities[advancedWebCapabilities][persistentStorage]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">

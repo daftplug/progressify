@@ -2,7 +2,7 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\{Admin, Frontend};
-use DaftPlug\Progressify\Module\{WebAppManifest, Installation};
+use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage};
 use DeviceDetector\DeviceDetector;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{Version, EccLevel};
@@ -37,6 +37,7 @@ class Plugin
   public $Frontend;
   public $WebAppManifest;
   public $Installation;
+  public $OfflineUsage;
 
   public function __construct($config)
   {
@@ -80,6 +81,8 @@ class Plugin
     $this->WebAppManifest = new WebAppManifest($config);
     require_once self::$pluginDirPath . 'includes/modules/class-installation.php';
     $this->Installation = new Installation($config);
+    require_once self::$pluginDirPath . 'includes/modules/class-offlineusage.php';
+    $this->OfflineUsage = new OfflineUsage($config);
   }
 
   public static function getSetting($key)

@@ -631,7 +631,7 @@ if (!defined('ABSPATH')) {
       "mode": "availability"
     }'>
       <!-- New Content -->
-      <div id="settingPushNewContent" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushNewContent" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][wordpress][newContent][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -693,7 +693,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Content -->
       <!-- New Comment -->
       <?php if (Plugin::isWpCommentsEnabled()): ?>
-      <div id="settingPushNewComment" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushNewComment" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][wordpress][newComment]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -729,7 +729,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Wp Comment -->
       <!-- New Product (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooNewProduct" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooNewProduct" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][newProduct]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -765,7 +765,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Product (WooCommerce) -->
       <!-- Price Drop (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooPriceDrop" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooPriceDrop" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][priceDrop]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -801,7 +801,7 @@ if (!defined('ABSPATH')) {
       <!-- End Price Drop (WooCommerce) -->
       <!-- Sale Price (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooSalePrice" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooSalePrice" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][salePrice]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -837,7 +837,7 @@ if (!defined('ABSPATH')) {
       <!-- End Sale Price (WooCommerce) -->
       <!-- Back In Stock (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooBackInStock" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooBackInStock" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][backInStock]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -873,7 +873,7 @@ if (!defined('ABSPATH')) {
       <!-- End Back In Stock (WooCommerce) -->
       <!-- Abandoned Cart (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushAbandonedCart" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushAbandonedCart" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][wordpress][abandonedCart][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -943,7 +943,7 @@ if (!defined('ABSPATH')) {
       <!-- End Abandoned Cart (WooCommerce) -->
       <!-- Order Status Update (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooOrderStatusUpdate" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooOrderStatusUpdate" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][orderStatusUpdate][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -977,7 +977,7 @@ if (!defined('ABSPATH')) {
       <!-- End Order Status Update (WooCommerce) -->
       <!-- New Order (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooNewOrder" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooNewOrder" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][newOrder][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1040,7 +1040,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Order (WooCommerce) -->
       <!-- Low Stock (WooCommerce) -->
       <?php if (Plugin::isPluginActive('woocommerce')): ?>
-      <div id="settingPushWooLowStock" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushWooLowStock" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][lowStock][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1143,7 +1143,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Order (WooCommerce) -->
       <!-- Member Mention (BuddyPress) -->
       <?php if (Plugin::isPluginActive('buddypress')): ?>
-      <div id="settingPushBuddyMention" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushBuddyMention" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][memberMention][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1177,7 +1177,7 @@ if (!defined('ABSPATH')) {
       <!-- End Member Mention (BuddyPress) -->
       <!-- Member Reply (BuddyPress) -->
       <?php if (Plugin::isPluginActive('buddypress')): ?>
-      <div id="settingPushBuddyReply" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushBuddyReply" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][memberReply][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1211,7 +1211,7 @@ if (!defined('ABSPATH')) {
       <!-- End Member Reply (BuddyPress) -->
       <!-- New Message (BuddyPress) -->
       <?php if (Plugin::isPluginActive('buddypress')): ?>
-      <div id="settingPushBuddyNewMessage" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushBuddyNewMessage" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][newMessage][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1245,7 +1245,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Message (BuddyPress) -->
       <!-- Friend Request (BuddyPress) -->
       <?php if (Plugin::isPluginActive('buddypress')): ?>
-      <div id="settingPushBuddyFriendRequest" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushBuddyFriendRequest" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][friendRequest][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1279,7 +1279,7 @@ if (!defined('ABSPATH')) {
       <!-- End Friend Request (BuddyPress) -->
       <!-- Friend Accepted (BuddyPress) -->
       <?php if (Plugin::isPluginActive('buddypress')): ?>
-      <div id="settingPushBuddyFriendAccepted" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushBuddyFriendAccepted" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][friendAccepted]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1313,7 +1313,7 @@ if (!defined('ABSPATH')) {
       <!-- End Friend Accepted (BuddyPress) -->
       <!-- Peepso Notifications (Peepso) -->
       <?php if (Plugin::isPluginActive('peepso')): ?>
-      <div id="settingPushPeepso" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingPushPeepso" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][peepso][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1526,7 +1526,7 @@ if (!defined('ABSPATH')) {
               </button>
             </div>
           </div>
-          <div class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+          <div class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
             <label for="pushVibrate" class="cursor-pointer flex gap-x-3">
               <div class="grow">
                 <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
@@ -1554,7 +1554,7 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
           </div>
-          <div class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+          <div class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
             <label for="pushPersistent" class="cursor-pointer flex gap-x-3">
               <div class="grow">
                 <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
