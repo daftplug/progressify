@@ -728,7 +728,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End New Wp Comment -->
       <!-- New Product (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooNewProduct" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][newProduct]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -764,7 +764,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End New Product (WooCommerce) -->
       <!-- Price Drop (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooPriceDrop" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][priceDrop]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -800,7 +800,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Price Drop (WooCommerce) -->
       <!-- Sale Price (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooSalePrice" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][salePrice]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -836,7 +836,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Sale Price (WooCommerce) -->
       <!-- Back In Stock (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooBackInStock" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][backInStock]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -872,7 +872,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Back In Stock (WooCommerce) -->
       <!-- Abandoned Cart (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushAbandonedCart" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][wordpress][abandonedCart][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -942,7 +942,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Abandoned Cart (WooCommerce) -->
       <!-- Order Status Update (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooOrderStatusUpdate" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][orderStatusUpdate][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -976,7 +976,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Order Status Update (WooCommerce) -->
       <!-- New Order (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooNewOrder" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][newOrder][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1039,7 +1039,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End New Order (WooCommerce) -->
       <!-- Low Stock (WooCommerce) -->
-      <?php if (Plugin::isWooCommerceActive()): ?>
+      <?php if (Plugin::isPluginActive('woocommerce')): ?>
       <div id="settingPushWooLowStock" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][woocommerce][lowStock][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1142,7 +1142,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End New Order (WooCommerce) -->
       <!-- Member Mention (BuddyPress) -->
-      <?php if (Plugin::isBuddyPressActive()): ?>
+      <?php if (Plugin::isPluginActive('buddypress')): ?>
       <div id="settingPushBuddyMention" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][memberMention][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1176,7 +1176,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Member Mention (BuddyPress) -->
       <!-- Member Reply (BuddyPress) -->
-      <?php if (Plugin::isBuddyPressActive()): ?>
+      <?php if (Plugin::isPluginActive('buddypress')): ?>
       <div id="settingPushBuddyReply" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][memberReply][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1210,7 +1210,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Member Reply (BuddyPress) -->
       <!-- New Message (BuddyPress) -->
-      <?php if (Plugin::isBuddyPressActive()): ?>
+      <?php if (Plugin::isPluginActive('buddypress')): ?>
       <div id="settingPushBuddyNewMessage" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][newMessage][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1244,7 +1244,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End New Message (BuddyPress) -->
       <!-- Friend Request (BuddyPress) -->
-      <?php if (Plugin::isBuddyPressActive()): ?>
+      <?php if (Plugin::isPluginActive('buddypress')): ?>
       <div id="settingPushBuddyFriendRequest" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][friendRequest][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1278,7 +1278,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Friend Request (BuddyPress) -->
       <!-- Friend Accepted (BuddyPress) -->
-      <?php if (Plugin::isBuddyPressActive()): ?>
+      <?php if (Plugin::isPluginActive('buddypress')): ?>
       <div id="settingPushBuddyFriendAccepted" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][buddypress][friendAccepted]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
@@ -1312,7 +1312,7 @@ if (!defined('ABSPATH')) {
       <?php endif; ?>
       <!-- End Friend Accepted (BuddyPress) -->
       <!-- Peepso Notifications (Peepso) -->
-      <?php if (Plugin::isPeepsoActive()): ?>
+      <?php if (Plugin::isPluginActive('peepso')): ?>
       <div id="settingPushPeepso" class="bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="pushNotifications[automation][peepso][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">

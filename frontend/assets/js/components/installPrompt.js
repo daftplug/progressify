@@ -187,7 +187,7 @@ class PwaInstallPrompt extends HTMLElement {
 
   // Render methods
   renderAppIcon() {
-    if (!config.iconUrl) return '';
+    if (!config.jsVars.iconUrl) return '';
 
     this.injectStyles(`
       .install-prompt-body-appinfo_icon {
@@ -201,12 +201,12 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const appName = config.settings.webAppManifest.appIdentity.appName;
+    const appName = config.jsVars.settings.webAppManifest.appIdentity.appName;
 
     return `
       <img 
         class="install-prompt-body-appinfo_icon" 
-        src="${config.iconUrl}" 
+        src="${config.jsVars.iconUrl}" 
         alt="${appName}"
         onerror="this.style.display='none'"
       >
@@ -227,7 +227,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const appName = config.settings.webAppManifest.appIdentity.appName;
+    const appName = config.jsVars.settings.webAppManifest.appIdentity.appName;
     return appName
       ? `
       <div class="install-prompt-body-appinfo_appname">${appName}</div>
@@ -250,7 +250,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const description = config.settings.webAppManifest.appIdentity.description;
+    const description = config.jsVars.settings.webAppManifest.appIdentity.description;
     return description
       ? `
       <div class="install-prompt-body-appinfo_description">${description}</div>
@@ -291,7 +291,7 @@ class PwaInstallPrompt extends HTMLElement {
 
   renderCopyInstallUrlButton() {
     this.injectStyles(`
-.install-prompt-body-instructions_step_copy {
+      .install-prompt-body-instructions_step_copy {
         position: relative;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -392,33 +392,33 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const startPage = config.settings.webAppManifest.displaySettings?.startPage;
+    const startPage = config.jsVars.settings.webAppManifest.displaySettings?.startPage;
     return startPage
       ? `
-        <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${this.addParamToUrl(startPage, 'performInstall', 'true')}">
-    <span class="install-prompt-body-instructions_step_copy_url">
-      ${startPage}
-    </span>
-    <span class="install-prompt-body-instructions_step_copy_icons">
-      <svg class="install-prompt-body-instructions_step_copy_svg clipboard-default" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
-        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-      </svg>
-      <svg class="install-prompt-body-instructions_step_copy_svg clipboard-success" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </span>
-    <span class="install-prompt-body-instructions_step_copy_tooltip" role="tooltip">
-      ${__('Copied', config.slug)}
-    </span>
-  </button>
+      <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${this.addParamToUrl(startPage, 'performInstall', 'true')}">
+        <span class="install-prompt-body-instructions_step_copy_url">
+          ${startPage}
+        </span>
+        <span class="install-prompt-body-instructions_step_copy_icons">
+          <svg class="install-prompt-body-instructions_step_copy_svg clipboard-default" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          </svg>
+          <svg class="install-prompt-body-instructions_step_copy_svg clipboard-success" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </span>
+        <span class="install-prompt-body-instructions_step_copy_tooltip" role="tooltip">
+          ${__('Copied', config.slug)}
+        </span>
+      </button>
     `
       : '';
   }
 
   renderLoadingInstallCheck() {
     this.injectStyles(`
-.install-prompt-loading {
+      .install-prompt-loading {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -493,8 +493,8 @@ class PwaInstallPrompt extends HTMLElement {
         font-size: 0.875rem;
         line-height: 1.25rem;
         border-radius: 0.5rem;
-        color: ${config.settings.installation?.prompts?.textColor ?? '#ffffff'};
-        background-color: ${config.settings.installation?.prompts?.backgroundColor ?? '#000000'};
+        color: ${config.jsVars.settings.installation?.prompts?.textColor ?? '#ffffff'};
+        background-color: ${config.jsVars.settings.installation?.prompts?.backgroundColor ?? '#000000'};
         -webkit-transition: all 0.1s ease;
         -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
@@ -519,7 +519,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const { device, os, browser } = config.userData;
+    const { device, os, browser } = config.jsVars.userData;
     let btnIconSvg = '';
     let btnIconText = 'Click to Install';
 
@@ -668,7 +668,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
     `);
 
-    const { device, os, browser } = config.userData;
+    const { device, os, browser } = config.jsVars.userData;
     let steps = [];
     let stepNumber = 1;
 
@@ -943,33 +943,31 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       @media (max-width: 700px) {
-        .install-prompt-container {
-          -webkit-transform: translate(0, calc(100% - 20px));
-              -ms-transform: translate(0, calc(100% - 20px));
-                  transform: translate(0, calc(100% - 20px));
-          left: 0;
-          top: -100%;
-        }
-
-        .install-prompt.visible .install-prompt-container {
-          max-width: 100%;
+       .install-prompt-container {
           width: 100%;
-          top: auto;
+          top: unset;
           bottom: 0;
           left: 0;
-          -webkit-transform: translate(0, 0);
-              -ms-transform: translate(0, 0);
-                  transform: translate(0, 0);
           border-top-left-radius: 1rem;
           border-top-right-radius: 1rem;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
+          -webkit-box-shadow: none;
+                  box-shadow: none;
+          opacity: 1;
+          -webkit-transform: translateY(100%);
+              -ms-transform: translateY(100%);
+                  transform: translateY(100%);
+        } 
+
+        .install-prompt.visible .install-prompt-container {
+          -webkit-transform: translateY(0);
+              -ms-transform: translateY(0);
+                  transform: translateY(0);
         }
       }
     `);
 
     const content = this.renderContent();
-    const promptTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const promptTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
     const combinedStyles = Array.from(this.styles).join('\n');
 
     this.shadowRoot.innerHTML = `

@@ -1,5 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 class PwaInstallButton extends HTMLElement {
   constructor() {
@@ -21,9 +22,9 @@ class PwaInstallButton extends HTMLElement {
   }
 
   render() {
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
-    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
-    const buttonText = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(backgroundColor);
+    const buttonText = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
 
     this.shadowRoot.innerHTML = `
       <style>

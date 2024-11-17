@@ -1,5 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -37,7 +38,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 
   showSnackbar() {
     requestAnimationFrame(() => {
-      const snackbar = this.shadowRoot.querySelector('.snackbar');
+      const snackbar = this.shadowRoot.querySelector('.snackbar-overlay');
       snackbar.classList.add('visible');
       this.startProgressBar();
       this.setupAutoHide();
@@ -45,7 +46,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
   }
 
   startProgressBar() {
-    const progressBar = this.shadowRoot.querySelector('.snackbar-progressbar_inner');
+    const progressBar = this.shadowRoot.querySelector('.snackbar-overlay-progressbar_inner');
     progressBar.style.width = '100%';
     progressBar.offsetHeight;
     requestAnimationFrame(() => {
@@ -55,26 +56,26 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 
   setupAutoHide() {
     setTimeout(() => {
-      const snackbar = this.shadowRoot.querySelector('.snackbar');
+      const snackbar = this.shadowRoot.querySelector('.snackbar-overlay');
       snackbar.classList.remove('visible');
       setTimeout(() => this.remove(), 300);
     }, this.displayDuration);
   }
 
   handlePerformInstallation() {
-    const installButton = this.shadowRoot.querySelector('.snackbar-button_install');
+    const installButton = this.shadowRoot.querySelector('.snackbar-overlay-button_install');
     installButton.addEventListener('click', () => {
       performInstallation();
     });
   }
 
   render() {
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
-    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
-    const snackbarTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(backgroundColor);
+    const snackbarTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
 
     this.injectStyles(`
-      .snackbar {
+      .snackbar-overlay {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -97,12 +98,12 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         overflow: hidden;
       }
 
-      .snackbar.visible {
+      .snackbar-overlay.visible {
         opacity: 1;
         visibility: visible;
       }
 
-      .snackbar-appinfo_title {
+      .snackbar-overlay-appinfo_title {
         font-size: 0.875rem;
         line-height: 1.25rem;
         font-weight: 500;
@@ -113,7 +114,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         -webkit-line-clamp: 1;
       }
 
-      .snackbar-appinfo_description {
+      .snackbar-overlay-appinfo_description {
         font-size: 0.75rem;
         line-height: 1rem;
         font-weight: 400;
@@ -126,7 +127,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         -webkit-line-clamp: 2;
       }
 
-      .snackbar-button_install {
+      .snackbar-overlay-button_install {
         display: inline-block;
         flex-shrink: 0;
         background-color: ${textColor};
@@ -143,7 +144,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         cursor: pointer;
       }
 
-      .snackbar-progressbar {
+      .snackbar-overlay-progressbar {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -153,7 +154,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         overflow: hidden;
       }
 
-      .snackbar-progressbar_inner {
+      .snackbar-overlay-progressbar_inner {
         width: 100%;
         height: 100%;
         background-color: ${textColor}80;
@@ -165,16 +166,16 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="snackbar">
-        <div class="snackbar-appinfo">
-          <div class="snackbar-appinfo_title">${snackbarTitle}</div>
-          <div class="snackbar-appinfo_description">${__('Installing uses no storage and offers a quick way back to our web app.', config.slug)}</div>
+      <div class="snackbar-overlay">
+        <div class="snackbar-overlay-appinfo">
+          <div class="snackbar-overlay-appinfo_title">${snackbarTitle}</div>
+          <div class="snackbar-overlay-appinfo_description">${__('Installing uses no storage and offers a quick way back to our web app.', config.slug)}</div>
         </div>
-        <button type="button" class="snackbar-button_install">
+        <button type="button" class="snackbar-overlay-button_install">
           Install Now
         </button>
-        <div class="snackbar-progressbar">
-          <div class="snackbar-progressbar_inner"></div>
+        <div class="snackbar-overlay-progressbar">
+          <div class="snackbar-overlay-progressbar_inner"></div>
         </div>
       </div>
     `;

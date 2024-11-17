@@ -1,5 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -107,21 +108,21 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
   }
 
   handlePerformInstallation() {
-    const installButton = this.shadowRoot.querySelector('.navigation-menu-button_install');
+    const installButton = this.shadowRoot.querySelector('.navigation-menu-overlay-button_install');
     installButton?.addEventListener('click', () => {
       performInstallation();
     });
   }
 
   render() {
-    const appName = config.settings.webAppManifest.appIdentity.appName ?? '';
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
-    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
-    const bannerTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
-    const appIconHtml = config.iconUrl ? `<img class="navigation-menu-appinfo_icon" src="${config.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
+    const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
+    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(backgroundColor);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
-      .navigation-menu {
+      .navigation-menu-overlay {
         position: relative;
         border-radius: 0.5rem;
         padding: 1rem;
@@ -135,14 +136,14 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         text-transform: none;
       }
 
-      .navigation-menu-appinfo {
+      .navigation-menu-overlay-appinfo {
         display: flex;
         align-items: center;
         gap: 0.75rem;
         flex: 1;
       }
 
-      .navigation-menu-appinfo_icon {
+      .navigation-menu-overlay-appinfo_icon {
         border-radius: 9999px;
         border: 1px solid #e5e7eb;
         flex-shrink: 0;
@@ -151,12 +152,12 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         display: inline-block;
       }
 
-      .navigation-menu-appinfo_texts {
+      .navigation-menu-overlay-appinfo_texts {
         flex: 1;
         min-width: 0;
       }
 
-      .navigation-menu-appinfo_title {
+      .navigation-menu-overlay-appinfo_title {
         font-size: 0.875rem;
         line-height: 1.25rem;
         font-weight: 500;
@@ -167,7 +168,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         -webkit-line-clamp: 1;
       }
 
-      .navigation-menu-appinfo_description {
+      .navigation-menu-overlay-appinfo_description {
         font-size: 0.75rem;
         line-height: 1rem;
         font-weight: 400;
@@ -179,7 +180,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         -webkit-line-clamp: 2;
       }
 
-      .navigation-menu-button_install {
+      .navigation-menu-overlay-button_install {
         display: block;
         background-color: ${textColor};
         color: ${backgroundColor};
@@ -202,15 +203,15 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="navigation-menu">
-        <div class="navigation-menu-appinfo">
+      <div class="navigation-menu-overlay">
+        <div class="navigation-menu-overlay-appinfo">
           ${appIconHtml}
-          <div class="navigation-menu-appinfo_texts">
-            <div class="navigation-menu-appinfo_title">${bannerTitle}</div>
-            <div class="navigation-menu-appinfo_description">${__('Find what you need faster by installing our web app!', config.slug)}</div>
+          <div class="navigation-menu-overlay-appinfo_texts">
+            <div class="navigation-menu-overlay-appinfo_title">${bannerTitle}</div>
+            <div class="navigation-menu-overlay-appinfo_description">${__('Find what you need faster by installing our web app!', config.slug)}</div>
           </div>
         </div>
-        <button type="button" class="navigation-menu-button_install">
+        <button type="button" class="navigation-menu-overlay-button_install">
           ${__('Install Now', config.slug)}
         </button>
       </div>

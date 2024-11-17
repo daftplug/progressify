@@ -115,50 +115,65 @@ class Plugin
     update_option("{$optionName}_settings", self::$settings);
   }
 
-  public static function isWooCommerceActive()
+  public static function isPluginActive($pluginSlug)
   {
     include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('woocommerce/woocommerce.php');
+
+    $paths = [
+      'woocommerce' => 'woocommerce/woocommerce.php',
+      'buddypress' => 'buddypress/bp-loader.php',
+      'peepso' => 'peepso-core/peepso.php',
+      'ultimatemember' => 'ultimate-member/ultimate-member.php',
+      'onesignal' => 'onesignal-free-web-push-notifications/onesignal.php',
+      'webpushr' => 'webpushr-web-push-notifications/push.php',
+      'wprocket' => 'wp-rocket/wp-rocket.php',
+    ];
+
+    return is_plugin_active($paths[strtolower($pluginSlug)] ?? "{$pluginSlug}/{$pluginSlug}.php");
   }
 
-  public static function isBuddyPressActive()
+  public static function isPlatform($platform)
   {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('buddypress/bp-loader.php');
-  }
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    $dd = new DeviceDetector($userAgent);
+    $dd->parse();
 
-  public static function isPeepsoActive()
-  {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('peepso-core/peepso.php');
-  }
+    $platform = strtolower($platform);
 
-  public static function isUltimateMemberActive($extension = '')
-  {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    if (!empty($extension)) {
-      return is_plugin_active("{$extension}/{$extension}.php");
-    } else {
-      return is_plugin_active('ultimate-member/ultimate-member.php');
+    // Device type checks
+    if (in_array($platform, ['smartphone', 'tablet', 'desktop'])) {
+      return strpos(strtolower($dd->getDeviceName('name')), $platform) !== false;
     }
-  }
 
-  public static function isOnesignalActive()
-  {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('onesignal-free-web-push-notifications/onesignal.php');
-  }
+    // OS checks
+    if (in_array($platform, ['android', 'ios', 'windows', 'linux', 'mac'])) {
+      return strpos(strtolower($dd->getOs('name')), $platform) !== false;
+    }
 
-  public static function isWebpushrActive()
-  {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('webpushr-web-push-notifications/push.php');
-  }
+    // Browser checks
+    if (in_array($platform, ['chrome', 'safari', 'firefox', 'opera', 'edge', 'samsung', 'duckduckgo', 'brave', 'qq', 'uc'])) {
+      return self::isPlatform('browser') && strpos(strtolower($dd->getClient('name')), $platform) !== false;
+    }
 
-  public static function isWprocketActive()
-  {
-    include_once ABSPATH . 'wp-admin/includes/plugin.php';
-    return is_plugin_active('wp-rocket/wp-rocket.php');
+    // Special cases
+    if ($platform === 'pwa') {
+      return isset($_GET['isPwa']) && $_GET['isPwa'] === 'true';
+    }
+
+    if ($platform === 'browser') {
+      $ua = strtolower($userAgent);
+      $nonBrowserApps = ['fban', 'fbios', 'fb_iab', 'telegram', 'instagram', 'messenger', 'micromessenger', 'webview', 'wv'];
+
+      foreach ($nonBrowserApps as $app) {
+        if (strpos($ua, $app) !== false) {
+          return false;
+        }
+      }
+
+      return $dd->isBrowser() && !(isset($_GET['isPwa']) && $_GET['isPwa'] === 'true');
+    }
+
+    return false;
   }
 
   public static function isWpCommentsEnabled()
@@ -361,50 +376,6 @@ class Plugin
       'width' => $newWidth,
       'height' => $newHeight,
     ];
-  }
-
-  public static function isPlatform($platform)
-  {
-    $userAgent = $_SERVER['HTTP_USER_AGENT'];
-    $dd = new DeviceDetector($userAgent);
-    $dd->parse();
-
-    switch (strtolower($platform)) {
-      case 'smartphone':
-      case 'tablet':
-      case 'desktop':
-        $deviceName = strtolower($dd->getDeviceName('name'));
-        $detected = strpos($deviceName, strtolower($platform)) !== false;
-        break;
-      case 'android':
-      case 'ios':
-      case 'windows':
-      case 'linux':
-      case 'mac':
-        $osName = strtolower($dd->getOs('name'));
-        $detected = strpos($osName, strtolower($platform)) !== false;
-        break;
-      case 'chrome':
-      case 'safari':
-      case 'firefox':
-      case 'opera':
-      case 'edge':
-      case 'duckduckgo':
-        $browserName = strtolower($dd->getClient('name'));
-        $detected = self::isPlatform('browser') && strpos($browserName, strtolower($platform)) !== false;
-        break;
-      case 'pwa':
-        $detected = isset($_GET['isPwa']) && $_GET['isPwa'] == 'true';
-        break;
-      case 'browser':
-        $ua = strtolower($userAgent);
-        $detected = $dd->isBrowser() && !strpos($ua, 'fban') !== false && !strpos($ua, 'fbios') !== false && !strpos($ua, 'fb_iab') !== false && !strpos($ua, 'telegram') !== false && !strpos($ua, 'instagram') !== false && !strpos($ua, 'messenger') !== false && !strpos($ua, 'micromessenger') !== false && !strpos($ua, 'webview') !== false && !strpos($ua, 'wv') !== false && !(isset($_GET['isPwa']) && $_GET['isPwa'] == 'true');
-        break;
-      default:
-        $detected = false;
-    }
-
-    return $detected;
   }
 
   public static function getQrCodeSrc($data, $size = '200x200', $logo = false)

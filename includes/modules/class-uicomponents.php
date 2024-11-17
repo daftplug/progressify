@@ -60,7 +60,7 @@ if (!class_exists('ProgressifyUiComponents')) {
 
       if (daftplugInstantify::getSetting('pwaNavigationTabBar') == 'on' && ((in_array('mobile', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('somartphone')) || (in_array('tablet', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPlatform('tablet')) || (in_array('pwa', (array) daftplugInstantify::getSetting('pwaNavigationTabBarPlatforms')) && daftplugInstantify::isPwaPage()))) {
         add_filter("{$this->optionName}_public_html", [$this, 'renderNavigationTabBar']);
-        if (daftplugInstantify::isWooCommerceActive()) {
+        if (daftplugInstantify::isPluginActive('woocommerce')) {
           add_filter('woocommerce_add_to_cart_fragments', [$this, 'refreshCartItemsCount']);
         }
       }

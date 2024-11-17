@@ -8,21 +8,18 @@ export const config = (() => {
     daftplugFrontend,
     optionName,
     slug,
-    adminUrl: jsVars.adminUrl,
-    iconUrl: jsVars.iconUrl,
-    settings: jsVars.settings || { settings: {} },
-    userData: jsVars.userData || { userData: {} },
+    jsVars,
   };
 })();
 
 async function initModules() {
-  if (config.userData.platform.isBrowser) {
+  if (config.jsVars.userData.platform.isBrowser) {
     // Install Url
     const { initInstallUrl } = await import('./modules/installUrl.js');
     initInstallUrl();
 
     // Installation Overlays and Button
-    if (config.settings.installation?.prompts?.feature === 'on') {
+    if (config.jsVars.settings.installation?.prompts?.feature === 'on') {
       // Installation Button
       const { initInstallButton } = await import('./modules/installButton.js');
       initInstallButton();

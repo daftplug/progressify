@@ -1,5 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -14,7 +15,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
     this.render();
 
     requestAnimationFrame(() => {
-      const headerBanner = this.shadowRoot.querySelector('.header-banner');
+      const headerBanner = this.shadowRoot.querySelector('.header-banner-overlay');
       headerBanner.classList.add('visible');
     });
 
@@ -27,8 +28,8 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
   }
 
   handleRemove() {
-    const headerBanner = this.shadowRoot.querySelector('.header-banner');
-    const closeButton = this.shadowRoot.querySelector('.header-banner-button_close');
+    const headerBanner = this.shadowRoot.querySelector('.header-banner-overlay');
+    const closeButton = this.shadowRoot.querySelector('.header-banner-overlay-button_close');
 
     const handleClose = () => {
       headerBanner.classList.remove('visible');
@@ -39,21 +40,21 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
   }
 
   handlePerformInstallation() {
-    const installButton = this.shadowRoot.querySelector('.header-banner-button_install');
+    const installButton = this.shadowRoot.querySelector('.header-banner-overlay-button_install');
     installButton.addEventListener('click', () => {
       performInstallation();
     });
   }
 
   render() {
-    const appName = config.settings.webAppManifest.appIdentity.appName ?? '';
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
-    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
-    const bannerTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
-    const appIconHtml = config.iconUrl ? `<img class="header-banner-appinfo_icon" src="${config.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : '';
+    const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
+    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(backgroundColor);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const appIconHtml = config.jsVars.iconUrl ? `<img class="header-banner-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : '';
 
     this.injectStyles(`
-      .header-banner {
+      .header-banner-overlay {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -74,12 +75,12 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         visibility: hidden;
       }
 
-      .header-banner.visible {
+      .header-banner-overlay.visible {
         opacity: 1;
         visibility: visible;
       }
 
-      .header-banner-appinfo {
+      .header-banner-overlay-appinfo {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -89,7 +90,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         gap: 0.75rem;
       }
 
-      .header-banner-appinfo_icon {
+      .header-banner-overlay-appinfo_icon {
         border-radius: 9999px;
         border: 1px solid #e5e7eb;
         -ms-flex-negative: 0;
@@ -99,7 +100,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         display: inline-block;
       }
 
-      .header-banner-appinfo_title {
+      .header-banner-overlay-appinfo_title {
         font-size: 0.875rem;
         line-height: 1.25rem;
         font-weight: 500;
@@ -110,7 +111,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         -webkit-line-clamp: 1;
       }
 
-      .header-banner-appinfo_description {
+      .header-banner-overlay-appinfo_description {
         font-size: 0.75rem;
         line-height: 1rem;
         font-weight: 400;
@@ -123,14 +124,14 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         -webkit-line-clamp: 2;
       }
 
-      .header-banner-buttons {
+      .header-banner-overlay-buttons {
         display: flex;
         align-items: center;
         gap: 0.5rem;
         flex-shrink: 0;
       }
 
-      .header-banner-button_install {
+      .header-banner-overlay-button_install {
         display: inline-block;
         background-color: ${textColor};
         color: ${backgroundColor};
@@ -146,11 +147,11 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         cursor: pointer;
       }
 
-      .header-banner-button_install:hover {
+      .header-banner-overlay-button_install:hover {
         opacity: 0.8;
       }
 
-      .header-banner-button_close {
+      .header-banner-overlay-button_close {
         display: inline-flex;
         background-color: transparent;
         color: ${textColor}cc;
@@ -161,29 +162,29 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         border: none;
       }
 
-      .header-banner-button_close:hover {
+      .header-banner-overlay-button_close:hover {
         background-color: ${textColor}1a;
       }
 
-      .header-banner-button_close svg {
+      .header-banner-overlay-button_close svg {
         width: 1rem;
         height: 1rem;
       }
 
       @media (min-width: 400px) {
-        .header-banner-appinfo_icon {
+        .header-banner-overlay-appinfo_icon {
           height: 45px;
           width: 45px;
         }
       }
 
       @media (min-width: 1200px) {
-        .header-banner {
+        .header-banner-overlay {
           justify-content: center;
           gap: 5rem;
         }
 
-        .header-banner-button_close {
+        .header-banner-overlay-button_close {
           padding: 0.375rem;
         }
       }
@@ -193,19 +194,19 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="header-banner">
-        <div class="header-banner-appinfo">
+      <div class="header-banner-overlay">
+        <div class="header-banner-overlay-appinfo">
           ${appIconHtml}
-          <div class="header-banner-appinfo_texts">
-            <div class="header-banner-appinfo_title">${bannerTitle}</div>
-            <div class="header-banner-appinfo_description">${__("Get our web app. It won't take up space on your device.", config.slug)}</div>
+          <div class="header-banner-overlay-appinfo_texts">
+            <div class="header-banner-overlay-appinfo_title">${bannerTitle}</div>
+            <div class="header-banner-overlay-appinfo_description">${__("Get our web app. It won't take up space on your device.", config.slug)}</div>
           </div>
         </div>
-        <div class="header-banner-buttons">
-          <button type="button" class="header-banner-button_install">
+        <div class="header-banner-overlay-buttons">
+          <button type="button" class="header-banner-overlay-button_install">
             Install Now
           </button>
-          <button type="button" class="header-banner-button_close" aria-label="Close">
+          <button type="button" class="header-banner-overlay-button_close" aria-label="Close">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
           </button>
         </div>

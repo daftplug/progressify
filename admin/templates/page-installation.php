@@ -92,19 +92,19 @@ if (!defined('ABSPATH')) {
             </span>
           </label>
           <!-- End In Feed -->
-          <!-- Post Popup -->
+          <!-- Blog Popup -->
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-            <input type="checkbox" name="installation[prompts][types][postPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][postPopup]'), 'on'); ?>>
+            <input type="checkbox" name="installation[prompts][types][blogPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][blogPopup]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
-              <img src="<?php echo plugins_url('admin/assets/media/icon-post-popup.png', $this->pluginFile); ?>" />
+              <img src="<?php echo plugins_url('admin/assets/media/icon-blog-popup.png', $this->pluginFile); ?>" />
               <span class="block text-center">
-                <?php _e('Post Popup', $this->textDomain); ?>
+                <?php _e('Blog Popup', $this->textDomain); ?>
               </span>
             </span>
           </label>
           <!-- End Post Popup -->
           <!-- WooCommerce Checkout -->
-          <?php if (Plugin::isWooCommerceActive()): ?>
+          <?php if (Plugin::isPluginActive('woocommerce')): ?>
           <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
             <input type="checkbox" name="installation[prompts][types][woocommerceCheckout]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][woocommerceCheckout]'), 'on'); ?>>
             <span class="flex flex-col items-center justify-center gap-y-1.5">
@@ -171,44 +171,6 @@ if (!defined('ABSPATH')) {
         <input name="installation[prompts][text]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Text', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('installation[prompts][text]'); ?>" autocomplete="off" required>
       </div>
       <!-- End Text -->
-      <!-- Text Color -->
-      <div id="settingTextColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Text Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the text color of installation overlays and the button.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="installation[prompts][textColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('installation[prompts][textColor]'); ?>" title="<?php _e('Button Text Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Text Color -->
-      <!-- Background Color -->
-      <div id="settingButtonBackgroundColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Background Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the background color of installation overlays and the button.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="installation[prompts][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('installation[prompts][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Background Color -->
       <!-- Skip First Visit -->
       <div id="settingPromptsSkipFirstVisit">
         <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">

@@ -63,7 +63,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
         add_action('comment_post', [$this, 'doNewCommentPush'], 10, 2);
       }
 
-      if (daftplugInstantify::isWooCommerceActive()) {
+      if (daftplugInstantify::isPluginActive('woocommerce')) {
         if (daftplugInstantify::getSetting('pwaPushWooNewOrder') == 'on') {
           add_action('woocommerce_new_order', [$this, 'doWooNewOrderPush']);
         }
@@ -75,7 +75,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
         }
       }
 
-      if (daftplugInstantify::isBuddyPressActive()) {
+      if (daftplugInstantify::isPluginActive('buddypress')) {
         if (daftplugInstantify::getSetting('pwaPushBpMemberMention') == 'on') {
           add_action('bp_activity_sent_mention_email', [$this, 'doBpMemberMentionPush'], 10, 5);
         }
@@ -94,26 +94,26 @@ if (!class_exists('ProgressifyPushNotifications')) {
         }
       }
 
-      if (daftplugInstantify::isPeepsoActive()) {
+      if (daftplugInstantify::isPluginActive('peepso')) {
         if (daftplugInstantify::getSetting('pwaPushPeepsoNotifications') == 'on') {
           add_filter('peepso_notifications_data_before_add', [$this, 'doPeepsoNotification'], 99);
         }
       }
 
-      if (daftplugInstantify::isUltimateMemberActive() && daftplugInstantify::isUltimateMemberActive('um-notifications')) {
+      if (daftplugInstantify::isPluginActive('ultimatemember') && daftplugInstantify::isPluginActive('um-notifications')) {
         if (daftplugInstantify::getSetting('pwaPushUmNewComment') == 'on' || daftplugInstantify::getSetting('pwaPushUmGuestComment') == 'on' || daftplugInstantify::getSetting('pwaPushUmCommentReply') == 'on') {
           add_action('comment_post', [$this, 'doUmCommentReplyPush'], 10, 2);
         }
         if (daftplugInstantify::getSetting('pwaPushUmProfileView') == 'on' || daftplugInstantify::getSetting('pwaPushUmGuestProfileView') == 'on') {
           add_action('wp_head', [$this, 'doUmProfileViewsPush'], 100);
         }
-        if (daftplugInstantify::isUltimateMemberActive('um-messaging') && daftplugInstantify::getSetting('pwaPushUmPrivateMessage') == 'on') {
+        if (daftplugInstantify::isPluginActive('um-messaging') && daftplugInstantify::getSetting('pwaPushUmPrivateMessage') == 'on') {
           add_action('um_after_new_message', [$this, 'doUmPrivateMessagePush'], 50, 4);
         }
-        if (daftplugInstantify::isUltimateMemberActive('um-followers') && daftplugInstantify::getSetting('pwaPushUmNewFollow') == 'on') {
+        if (daftplugInstantify::isPluginActive('um-followers') && daftplugInstantify::getSetting('pwaPushUmNewFollow') == 'on') {
           add_action('um_followers_after_user_follow', [$this, 'doUmNewFollowPush'], 10, 2);
         }
-        if (daftplugInstantify::isUltimateMemberActive('um-friends')) {
+        if (daftplugInstantify::isPluginActive('um-friends')) {
           if (daftplugInstantify::getSetting('pwaPushUmFriendRequest') == 'on') {
             add_action('um_friends_after_user_friend_request', [$this, 'doUmFriendRequestPush'], 10, 2);
           }
@@ -121,7 +121,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
             add_action('um_friends_after_user_friend', [$this, 'doUmFriendRequestAcceptedPush'], 10, 2);
           }
         }
-        if (daftplugInstantify::isUltimateMemberActive('um-social-activity')) {
+        if (daftplugInstantify::isPluginActive('um-social-activity')) {
           if (daftplugInstantify::getSetting('pwaPushUmWallPost') == 'on') {
             add_action('um_activity_after_wall_post_published', [$this, 'doUmWallPostPush'], 90, 3);
           }
@@ -137,7 +137,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
             add_action('um_friends_new_mention', [$this, 'doUmNewMentionPush'], 10, 3);
           }
         }
-        if (daftplugInstantify::isUltimateMemberActive('um-groups')) {
+        if (daftplugInstantify::isPluginActive('um-groups')) {
           if (daftplugInstantify::getSetting('pwaPushUmGroupApprove') == 'on') {
             add_action('um_groups_after_member_changed_status__approved', [$this, 'doUmGroupApprovePush'], 1, 5);
             add_action('um_groups_after_member_changed_status__hidden_approved', [$this, 'doUmGroupApprovePush'], 1, 5);
@@ -170,13 +170,13 @@ if (!class_exists('ProgressifyPushNotifications')) {
         add_filter(self::$optionName . '_public_html', [$this, 'renderPushPrompt']);
       }
 
-      if (daftplugInstantify::isWooCommerceActive()) {
+      if (daftplugInstantify::isPluginActive('woocommerce')) {
         add_filter('wp_insert_post_data', [$this, 'filterWooCommercePostData'], 10, 2);
         if (daftplugInstantify::getSetting('pwaPushWooOrderStatusUpdate') == 'on') {
           add_action('woocommerce_order_status_changed', [$this, 'doWooOrderStatusUpdatePush'], 10, 4);
         }
       }
-      if (daftplugInstantify::isUltimateMemberActive() && daftplugInstantify::isUltimateMemberActive('um-notifications')) {
+      if (daftplugInstantify::isPluginActive('ultimatemember') && daftplugInstantify::isPluginActive('um-notifications')) {
         if (daftplugInstantify::getSetting('pwaPushUmRoleUpdate') == 'on') {
           add_action('um_after_member_role_upgrade', [$this, 'doUmRoleUpdatePush'], 10, 3);
         }
@@ -338,7 +338,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
       $pwaNoPushWooSalePrice = get_post_meta($post->ID, 'pwaNoPushWooSalePrice', true);
       $pwaNoPushWooBackInStock = get_post_meta($post->ID, 'pwaNoPushWooBackInStock', true);
       wp_nonce_field(self::$optionName . '_no_push_meta_nonce', self::$optionName . '_no_push_meta_nonce');
-      if (daftplugInstantify::isWooCommerceActive() && $post->post_type == 'product') {
+      if (daftplugInstantify::isPluginActive('woocommerce') && $post->post_type == 'product') {
         if (daftplugInstantify::getSetting('pwaPushWooNewProduct') == 'on') { ?>
 <label style="display: block; margin: 5px;">
   <input type="checkbox" name="pwaNoPushWooNewProduct" value="on" <?php checked($pwaNoPushWooNewProduct, 'on'); ?>>
@@ -940,7 +940,7 @@ if (!class_exists('ProgressifyPushNotifications')) {
       $method = $_REQUEST['method'];
       $user = is_user_logged_in() ? get_current_user_id() : 'Unregistered';
       $roles = is_user_logged_in() ? (array) wp_get_current_user()->roles : [];
-      $cartItemCount = daftplugInstantify::isWooCommerceActive() ? WC()->cart->get_cart_contents_count() : 0;
+      $cartItemCount = daftplugInstantify::isPluginActive('woocommerce') ? WC()->cart->get_cart_contents_count() : 0;
       $lastUpdated = date('Y-m-d H:i:s');
 
       switch ($method) {

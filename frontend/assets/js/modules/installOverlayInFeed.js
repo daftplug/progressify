@@ -1,5 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -18,7 +19,7 @@ class PwaInstallOverlayInFeed extends HTMLElement {
 
   findAndAttachToFeed() {
     // Define selectors for feed containers
-    const feedSelectors = ['.post-list', '.posts', '.post-loop', '.blog-posts', '.content-area', '.site-main', '#main', '#content', 'main'];
+    const feedSelectors = ['.post-list', '.posts', '.post-loop', '.blog-posts', '.content-area', '.site-main', '#main', '#content', 'main', '.entry-content'];
 
     let feedContainer = null;
 
@@ -50,14 +51,13 @@ class PwaInstallOverlayInFeed extends HTMLElement {
       return [];
     };
 
-    const insertOverlay = () => {
+    const insertOverlay = (observer) => {
       const feedItems = findFeedItems();
       if (feedItems.length === 0) {
-        console.log('No feed items found');
-        return;
+        return false; // Return false to indicate insertion wasn't possible
       }
 
-      const insertAfterNthItem = 4; // Change this to insert after a different item
+      const insertAfterNthItem = 4;
       if (feedItems.length >= insertAfterNthItem) {
         const targetItem = feedItems[insertAfterNthItem - 1];
 
@@ -73,26 +73,59 @@ class PwaInstallOverlayInFeed extends HTMLElement {
           targetItem.parentNode.insertBefore(overlayWrapper, targetItem.nextSibling);
 
           console.log(`PWA install prompt added to feed after item ${insertAfterNthItem}`);
+
+          // Disconnect observer after successful insertion
+          if (observer) {
+            observer.disconnect();
+            console.log('Feed mutation observer disconnected');
+          }
+
+          return true; // Return true to indicate successful insertion
         }
-      } else {
-        console.log('Not enough feed items to insert overlay');
       }
+
+      return false;
     };
 
-    // Run initially
-    insertOverlay();
+    // Try initial insertion
+    if (insertOverlay()) {
+      return; // Exit if initial insertion was successful
+    }
 
-    // Observe mutations to feed container for dynamically loaded content
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.addedNodes.length > 0) {
-          insertOverlay();
-          break;
-        }
+    // Set up observer only if initial insertion failed
+    let attemptCount = 0;
+    const maxAttempts = 10; // Limit number of attempts
+    let observer = new MutationObserver((mutationsList) => {
+      // Increment attempt counter
+      attemptCount++;
+
+      // Try to insert the overlay
+      if (insertOverlay(observer)) {
+        return; // Observer will be disconnected by insertOverlay
+      }
+
+      // Disconnect after max attempts
+      if (attemptCount >= maxAttempts) {
+        observer.disconnect();
+        console.log(`Feed mutation observer disconnected after ${maxAttempts} attempts`);
       }
     });
 
-    observer.observe(feedContainer, { childList: true, subtree: true });
+    // Use a more specific observation configuration
+    observer.observe(feedContainer, {
+      childList: true, // Watch for direct children changes
+      subtree: false, // Don't watch deep tree changes
+      attributes: false, // Don't watch attributes
+      characterData: false, // Don't watch text content
+    });
+
+    // Set a timeout to disconnect observer after a reasonable time
+    setTimeout(() => {
+      if (observer) {
+        observer.disconnect();
+        console.log('Feed mutation observer disconnected after timeout');
+      }
+    }, 30000); // 30 seconds timeout
   }
 
   injectStyles(css) {
@@ -100,21 +133,21 @@ class PwaInstallOverlayInFeed extends HTMLElement {
   }
 
   handlePerformInstallation() {
-    const installButton = this.shadowRoot.querySelector('.in-feed-button_install');
+    const installButton = this.shadowRoot.querySelector('.in-feed-overlay-button_install');
     installButton?.addEventListener('click', () => {
       performInstallation();
     });
   }
 
   render() {
-    const appName = config.settings.webAppManifest.appIdentity.appName ?? '';
-    const backgroundColor = config.settings.installation?.prompts?.backgroundColor ?? '#000000';
-    const textColor = config.settings.installation?.prompts?.textColor ?? '#ffffff';
-    const bannerTitle = config.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
-    const appIconHtml = config.iconUrl ? `<img class="in-feed-appinfo_icon" src="${config.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
+    const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
+    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(backgroundColor);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const appIconHtml = config.jsVars.iconUrl ? `<img class="in-feed-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
-      .in-feed {
+      .in-feed-overlay {
         position: relative;
         border-radius: 0.5rem;
         padding: 1rem;
@@ -128,14 +161,14 @@ class PwaInstallOverlayInFeed extends HTMLElement {
         text-transform: none;
       }
 
-      .in-feed-appinfo {
+      .in-feed-overlay-appinfo {
         display: flex;
         align-items: center;
         gap: 0.75rem;
         flex: 1;
       }
 
-      .in-feed-appinfo_icon {
+      .in-feed-overlay-appinfo_icon {
         border-radius: 9999px;
         border: 1px solid #e5e7eb;
         flex-shrink: 0;
@@ -144,12 +177,12 @@ class PwaInstallOverlayInFeed extends HTMLElement {
         display: inline-block;
       }
 
-      .in-feed-appinfo_texts {
+      .in-feed-overlay-appinfo_texts {
         flex: 1;
         min-width: 0;
       }
 
-      .in-feed-appinfo_title {
+      .in-feed-overlay-appinfo_title {
         font-size: 0.875rem;
         line-height: 1.25rem;
         font-weight: 500;
@@ -160,7 +193,7 @@ class PwaInstallOverlayInFeed extends HTMLElement {
         -webkit-line-clamp: 1;
       }
 
-      .in-feed-appinfo_description {
+      .in-feed-overlay-appinfo_description {
         font-size: 0.75rem;
         line-height: 1rem;
         font-weight: 400;
@@ -172,7 +205,7 @@ class PwaInstallOverlayInFeed extends HTMLElement {
         -webkit-line-clamp: 2;
       }
 
-      .in-feed-button_install {
+      .in-feed-overlay-button_install {
         display: block;
         background-color: ${textColor};
         color: ${backgroundColor};
@@ -195,15 +228,15 @@ class PwaInstallOverlayInFeed extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="in-feed">
-        <div class="in-feed-appinfo">
+      <div class="in-feed-overlay">
+        <div class="in-feed-overlay-appinfo">
           ${appIconHtml}
-          <div class="in-feed-appinfo_texts">
-            <div class="in-feed-appinfo_title">${bannerTitle}</div>
-            <div class="in-feed-appinfo_description">${__("Keep reading, even when you're on the train!", config.slug)}</div>
+          <div class="in-feed-overlay-appinfo_texts">
+            <div class="in-feed-overlay-appinfo_title">${bannerTitle}</div>
+            <div class="in-feed-overlay-appinfo_description">${__("Keep reading, even when you're on the train!", config.slug)}</div>
           </div>
         </div>
-        <button type="button" class="in-feed-button_install">
+        <button type="button" class="in-feed-overlay-button_install">
           ${__('Install Now', config.slug)}
         </button>
       </div>

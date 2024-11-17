@@ -106,11 +106,21 @@ class Frontend
             'isFirefox' => Plugin::isPlatform('firefox'),
             'isOpera' => Plugin::isPlatform('opera'),
             'isEdge' => Plugin::isPlatform('edge'),
+            'isSamsung' => Plugin::isPlatform('samsung'),
             'isDuckduckgo' => Plugin::isPlatform('duckduckgo'),
+            'isBrave' => Plugin::isPlatform('brave'),
+            'isQq' => Plugin::isPlatform('qq'),
+            'isUc' => Plugin::isPlatform('uc'),
           ],
           'platform' => [
             'isBrowser' => Plugin::isPlatform('browser'),
             'isPwa' => Plugin::isPlatform('pwa'),
+          ],
+        ],
+        'pluginsData' => [
+          'dirUrl' => $this->pluginDirUrl,
+          'isActive' => [
+            'woocommerce' => Plugin::isPluginActive('woocommerce'),
           ],
         ],
       ])
@@ -122,8 +132,7 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
-  ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

@@ -276,11 +276,11 @@ if (!class_exists('ProgressifyOfflineUsage')) {
                                       );
                                   });\n\n";
 
-        if (daftplugInstantify::isOnesignalActive()) {
+        if (daftplugInstantify::isPluginActive('onesignal')) {
           $this->serviceWorker .= "importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');\n";
         }
 
-        if (daftplugInstantify::isWebpushrActive()) {
+        if (daftplugInstantify::isPluginActive('webpushr')) {
           $this->serviceWorker .= "importScripts('https://cdn.webpushr.com/sw-server.min.js');\n";
         }
 
