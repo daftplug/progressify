@@ -81,7 +81,7 @@ class Frontend
       "{$this->optionName}_frontend_js_vars",
       apply_filters("{$this->optionName}_frontend_js_vars", [
         'generalError' => __('An unexpected error occurred', $this->textDomain),
-        'homeUrl' => trailingslashit(home_url('/', 'https')),
+        'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'adminUrl' => trailingslashit(admin_url('/', 'https')),
         'currentUrl' => Plugin::getCurrentUrl(false),
         'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],

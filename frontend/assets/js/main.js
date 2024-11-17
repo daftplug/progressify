@@ -14,12 +14,12 @@ export const config = (() => {
 
 async function initModules() {
   if (config.jsVars.userData.platform.isBrowser) {
-    // Install Url
-    const { initInstallUrl } = await import('./modules/installUrl.js');
-    initInstallUrl();
-
     // Installation Overlays and Button
     if (config.jsVars.settings.installation?.prompts?.feature === 'on') {
+      // Install Url
+      const { initInstallUrl } = await import('./modules/installUrl.js');
+      initInstallUrl();
+
       // Installation Button
       const { initInstallButton } = await import('./modules/installButton.js');
       initInstallButton();

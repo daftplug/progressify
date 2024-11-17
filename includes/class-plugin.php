@@ -1,11 +1,12 @@
 <?php
 namespace DaftPlug\Progressify;
 
-use DaftPlug\Progressify\Admin;
-use DaftPlug\Progressify\Frontend;
-use DaftPlug\Progressify\Module\webAppManifest;
-use DaftPlug\Progressify\Module\Installation;
+use DaftPlug\Progressify\{Admin, Frontend};
+use DaftPlug\Progressify\Module\{WebAppManifest, Installation};
 use DeviceDetector\DeviceDetector;
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\{Version, EccLevel};
+use chillerlan\QRCode\Output\QROutputInterface;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -380,45 +381,167 @@ class Plugin
 
   public static function getQrCodeSrc($data, $size = '200x200', $logo = false)
   {
-    $QrCodeUrl = 'https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=' . $size . '&chl=' . urlencode($data);
-    $QrCode = imagecreatefrompng($QrCodeUrl);
-    if (!$QrCode) {
-      error_log('Failed to create QR code from URL: ' . $QrCodeUrl);
-      return $QrCodeUrl; // Fall back to the URL if QR code image creation fails
+    if (empty($data)) {
+      return '';
     }
 
-    if (!empty($logo) && $logo !== false) {
-      $logo = imagecreatefromstring(file_get_contents($logo));
-      if ($logo === false || gettype($logo) !== 'object' || get_class($logo) !== 'GdImage') {
-        error_log('Failed to load logo image.');
-        ob_start();
-        imagepng($QrCode);
-        imagedestroy($QrCode);
-        $imagedata = ob_get_clean();
-        return 'data:image/png;base64,' . base64_encode($imagedata);
+    // Define a scaling factor for higher resolution rendering
+    $scaleFactor = 4;
+
+    // Parse size input and apply scaling
+    list($width, $height) = explode('x', strtolower($size));
+    $targetWidth = (int) $width;
+    $targetHeight = (int) $height;
+    $scaledWidth = $targetWidth * $scaleFactor;
+    $scaledHeight = $targetHeight * $scaleFactor;
+    $targetSize = max($scaledWidth, $scaledHeight);
+
+    $options = new QROptions([
+      'version' => Version::AUTO,
+      'outputType' => QROutputInterface::GDIMAGE_PNG,
+      'eccLevel' => EccLevel::H,
+      'scale' => max(1, (int) ($targetSize / 33)),
+      'imageBase64' => false,
+      'addQuietzone' => false,
+      'addLogoSpace' => !empty($logo),
+      'logoSpaceWidth' => 0,
+      'logoSpaceHeight' => 0,
+    ]);
+
+    try {
+      // Generate the QR code at scaled resolution
+      $qrcode = (new QRCode($options))->render($data);
+
+      // Define scaled dimensions
+      $padding = 7 * $scaleFactor;
+      $borderWidth = 2 * $scaleFactor;
+      $radius = 8 * $scaleFactor;
+      $totalPadding = $padding * 2 + $borderWidth * 2;
+
+      // Create base image at scaled size
+      $baseImage = imagecreatetruecolor($scaledWidth, $scaledHeight);
+
+      // Enable anti-aliasing for smoother edges
+      imageantialias($baseImage, true);
+
+      // Create colors
+      $white = imagecolorallocate($baseImage, 255, 255, 255);
+      $black = imagecolorallocate($baseImage, 0, 0, 0);
+
+      // Enable alpha blending and save full alpha channel information
+      imagealphablending($baseImage, true);
+      imagesavealpha($baseImage, true);
+
+      // Fill background with white
+      imagefill($baseImage, 0, 0, $white);
+
+      // Helper function to draw a rounded rectangle with smooth corners
+      $drawRoundedRectangle = function ($image, $x, $y, $width, $height, $radius, $color) {
+        // Ensure radius is not larger than half the width or height
+        $radius = min($radius, abs($width) / 2, abs($height) / 2);
+
+        // Draw the central rectangle
+        imagefilledrectangle($image, $x + $radius, $y, $x + $width - $radius, $y + $height, $color);
+        imagefilledrectangle($image, $x, $y + $radius, $x + $width, $y + $height - $radius, $color);
+
+        // Draw the four corners
+        imagefilledellipse($image, $x + $radius, $y + $radius, $radius * 2, $radius * 2, $color); // Top-left
+        imagefilledellipse($image, $x + $width - $radius, $y + $radius, $radius * 2, $radius * 2, $color); // Top-right
+        imagefilledellipse($image, $x + $radius, $y + $height - $radius, $radius * 2, $radius * 2, $color); // Bottom-left
+        imagefilledellipse($image, $x + $width - $radius, $y + $height - $radius, $radius * 2, $radius * 2, $color); // Bottom-right
+      };
+
+      // Draw outer black border with rounded corners
+      $drawRoundedRectangle($baseImage, 0, 0, $scaledWidth - 1, $scaledHeight - 1, $radius, $black);
+
+      // Draw inner white area with rounded corners
+      $innerWidth = $scaledWidth - 2 * $borderWidth;
+      $innerHeight = $scaledHeight - 2 * $borderWidth;
+      $innerRadius = max(0, $radius - $borderWidth);
+      $drawRoundedRectangle($baseImage, $borderWidth, $borderWidth, $innerWidth - 1, $innerHeight - 1, $innerRadius, $white);
+
+      // Process QR code
+      $qrImage = imagecreatefromstring($qrcode);
+      if (!$qrImage) {
+        throw new \Exception('Failed to create QR code image from string');
       }
 
-      $QrCodeWidth = imagesx($QrCode);
-      $QrCodeHeight = imagesy($QrCode);
-      $logoWidth = imagesx($logo);
-      $logoHeight = imagesy($logo);
-      $logoQrWidth = $QrCodeWidth / 3.7;
-      $scale = $logoWidth / $logoQrWidth;
-      $logoQrHeight = $logoHeight / $scale;
-      imagecopyresampled($QrCode, $logo, $QrCodeWidth / 2.73, $QrCodeHeight / 2.73, 0, 0, $logoQrWidth, $logoQrHeight, $logoWidth, $logoHeight);
+      // Calculate QR code size to fit within padding
+      $qrSize = $scaledWidth - $totalPadding; // Assuming targetWidth == targetHeight
+
+      // Ensure the QR code fits within the allocated space
+      $qrOriginalWidth = imagesx($qrImage);
+      $qrOriginalHeight = imagesy($qrImage);
+      $qrScale = min($qrSize / $qrOriginalWidth, $qrSize / $qrOriginalHeight);
+
+      $newQrWidth = (int) ($qrOriginalWidth * $qrScale);
+      $newQrHeight = (int) ($qrOriginalHeight * $qrScale);
+
+      // Calculate placement coordinates for QR code
+      $qrX = (int) ($borderWidth + $padding + ($qrSize - $newQrWidth) / 2);
+      $qrY = (int) ($borderWidth + $padding + ($qrSize - $newQrHeight) / 2);
+
+      // Resize and place QR code
+      imagecopyresampled($baseImage, $qrImage, $qrX, $qrY, 0, 0, $newQrWidth, $newQrHeight, $qrOriginalWidth, $qrOriginalHeight);
+
+      // If logo is provided
+      if ($logo) {
+        $logoContent = @file_get_contents($logo);
+        if ($logoContent === false) {
+          throw new \Exception('Failed to read logo file');
+        }
+
+        $logoImage = imagecreatefromstring($logoContent);
+        if (!$logoImage) {
+          throw new \Exception('Invalid logo image format');
+        }
+
+        // Calculate logo size (35% of QR code size) at scaled resolution
+        $logoNewWidth = (int) ($newQrWidth * 0.35);
+        $logoNewHeight = (int) (imagesy($logoImage) * ($logoNewWidth / imagesx($logoImage)));
+
+        // Center logo on QR code
+        $logoX = $qrX + (int) (($newQrWidth - $logoNewWidth) / 2);
+        $logoY = $qrY + (int) (($newQrHeight - $logoNewHeight) / 2);
+
+        // Enable transparency for the logo
+        imagealphablending($logoImage, true);
+        imagesavealpha($logoImage, true);
+
+        // Resize and place logo
+        imagecopyresampled($baseImage, $logoImage, $logoX, $logoY, 0, 0, $logoNewWidth, $logoNewHeight, imagesx($logoImage), imagesy($logoImage));
+
+        imagedestroy($logoImage);
+      }
+
+      // Clean up QR code image
+      imagedestroy($qrImage);
+
+      // Create a temporary image for downscaling
+      $finalImageScaled = imagecreatetruecolor($targetWidth, $targetHeight);
+      // Enable alpha blending and save alpha for the final image
+      imagealphablending($finalImageScaled, false);
+      imagesavealpha($finalImageScaled, true);
+      // Fill the temporary image with transparent background
+      $transparent = imagecolorallocatealpha($finalImageScaled, 0, 0, 0, 127);
+      imagefill($finalImageScaled, 0, 0, $transparent);
+
+      // Downscale the image to target size
+      imagecopyresampled($finalImageScaled, $baseImage, 0, 0, 0, 0, $targetWidth, $targetHeight, $scaledWidth, $scaledHeight);
+
+      // Output final image
       ob_start();
-      imagepng($QrCode);
-      imagedestroy($QrCode);
-      imagedestroy($logo);
-      $imagedata = ob_get_clean();
+      imagepng($finalImageScaled);
+      $finalImage = ob_get_clean();
 
-      return 'data:image/png;base64,' . base64_encode($imagedata);
+      // Clean up
+      imagedestroy($baseImage);
+      imagedestroy($finalImageScaled);
+
+      return 'data:image/png;base64,' . base64_encode($finalImage);
+    } catch (\Exception $e) {
+      error_log('QR code generation failed: ' . $e->getMessage());
+      return '';
     }
-
-    ob_start();
-    imagepng($QrCode);
-    imagedestroy($QrCode);
-    $imagedata = ob_get_clean();
-    return 'data:image/png;base64,' . base64_encode($imagedata);
   }
 }
