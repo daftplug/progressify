@@ -416,10 +416,8 @@ class Plugin
       $qrcode = (new QRCode($options))->render($data);
 
       // Define scaled dimensions
-      $padding = 8 * $scaleFactor;
-      $borderWidth = 0 * $scaleFactor;
-      $radius = 8 * $scaleFactor;
-      $totalPadding = $padding * 2 + $borderWidth * 2;
+      $padding = 10 * $scaleFactor;
+      $totalPadding = $padding * 2;
 
       // Create base image at scaled size
       $baseImage = imagecreatetruecolor($scaledWidth, $scaledHeight);
@@ -429,7 +427,6 @@ class Plugin
 
       // Create colors
       $white = imagecolorallocate($baseImage, 255, 255, 255);
-      $black = imagecolorallocate($baseImage, 0, 0, 0);
 
       // Enable alpha blending and save full alpha channel information
       imagealphablending($baseImage, true);
@@ -437,31 +434,6 @@ class Plugin
 
       // Fill background with white
       imagefill($baseImage, 0, 0, $white);
-
-      // Helper function to draw a rounded rectangle with smooth corners
-      $drawRoundedRectangle = function ($image, $x, $y, $width, $height, $radius, $color) {
-        // Ensure radius is not larger than half the width or height
-        $radius = min($radius, abs($width) / 2, abs($height) / 2);
-
-        // Draw the central rectangle
-        imagefilledrectangle($image, $x + $radius, $y, $x + $width - $radius, $y + $height, $color);
-        imagefilledrectangle($image, $x, $y + $radius, $x + $width, $y + $height - $radius, $color);
-
-        // Draw the four corners
-        imagefilledellipse($image, $x + $radius, $y + $radius, $radius * 2, $radius * 2, $color); // Top-left
-        imagefilledellipse($image, $x + $width - $radius, $y + $radius, $radius * 2, $radius * 2, $color); // Top-right
-        imagefilledellipse($image, $x + $radius, $y + $height - $radius, $radius * 2, $radius * 2, $color); // Bottom-left
-        imagefilledellipse($image, $x + $width - $radius, $y + $height - $radius, $radius * 2, $radius * 2, $color); // Bottom-right
-      };
-
-      // Draw outer black border with rounded corners
-      $drawRoundedRectangle($baseImage, 0, 0, $scaledWidth - 1, $scaledHeight - 1, $radius, $black);
-
-      // Draw inner white area with rounded corners
-      $innerWidth = $scaledWidth - 2 * $borderWidth;
-      $innerHeight = $scaledHeight - 2 * $borderWidth;
-      $innerRadius = max(0, $radius - $borderWidth);
-      $drawRoundedRectangle($baseImage, $borderWidth, $borderWidth, $innerWidth - 1, $innerHeight - 1, $innerRadius, $white);
 
       // Process QR code
       $qrImage = imagecreatefromstring($qrcode);
@@ -481,8 +453,8 @@ class Plugin
       $newQrHeight = (int) ($qrOriginalHeight * $qrScale);
 
       // Calculate placement coordinates for QR code
-      $qrX = (int) ($borderWidth + $padding + ($qrSize - $newQrWidth) / 2);
-      $qrY = (int) ($borderWidth + $padding + ($qrSize - $newQrHeight) / 2);
+      $qrX = (int) ($padding + ($qrSize - $newQrWidth) / 2);
+      $qrY = (int) ($padding + ($qrSize - $newQrHeight) / 2);
 
       // Resize and place QR code
       imagecopyresampled($baseImage, $qrImage, $qrX, $qrY, 0, 0, $newQrWidth, $newQrHeight, $qrOriginalWidth, $qrOriginalHeight);

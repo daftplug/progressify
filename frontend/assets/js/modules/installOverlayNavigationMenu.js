@@ -89,8 +89,8 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
 
   render() {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
-    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
-    const textColor = getContrastTextColor(backgroundColor);
+    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(themeColor);
     const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
@@ -99,7 +99,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         position: relative;
         border-radius: 0.5rem;
         padding: 1rem;
-        background-color: ${backgroundColor};
+        background-color: ${themeColor};
         color: ${textColor};
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         -webkit-transition: all 0.2s ease-out;
@@ -156,7 +156,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
       .navigation-menu-overlay-button_install {
         display: block;
         background-color: ${textColor};
-        color: ${backgroundColor};
+        color: ${themeColor};
         vertical-align: middle;
         text-decoration: none;
         font-size: 0.875rem;

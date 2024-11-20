@@ -26,6 +26,8 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 
       requestAnimationFrame(() => {
         const blogPopup = popup.shadowRoot.querySelector('.blog-popup-overlay');
+        document.documentElement.style.paddingRight = `${window.innerWidth - document.documentElement.offsetWidth}px`;
+        document.documentElement.style.overflow = 'hidden';
         blogPopup.classList.add('visible');
       });
     }
@@ -43,7 +45,15 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 
     const handleClose = () => {
       backdrop.classList.remove('visible');
-      setTimeout(() => this.remove(), 300);
+      backdrop.addEventListener(
+        'transitionend',
+        () => {
+          document.documentElement.style.removeProperty('overflow');
+          document.documentElement.style.paddingRight = '';
+          this.remove();
+        },
+        { once: true }
+      );
     };
 
     continueButton.addEventListener('click', handleClose);
@@ -62,8 +72,8 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
   render() {
     const { device, os, browser } = config.jsVars.userData;
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
-    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
-    const textColor = getContrastTextColor(backgroundColor);
+    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(themeColor);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="blog-popup-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : '';
     let browserTitle;
     let browserIcon;
@@ -148,6 +158,8 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
         background-color: #fff;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         -webkit-transition: all 0.15s ease-out;
              -o-transition: all 0.15s ease-out;
                 transition: all 0.15s ease-out;
@@ -278,7 +290,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
       }
 
       .blog-popup-overlay-button.-install {
-        background-color: ${backgroundColor};
+        background-color: ${themeColor};
         color: ${textColor};
       }
 

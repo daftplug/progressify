@@ -55,10 +55,19 @@ async function initModules() {
     }
   }
 
-  // Offline Notification
-  if (config.jsVars.settings.offlineUsage?.capabilities?.notification === 'on') {
-    const { initOfflineNotification } = await import('./modules/offlineNotification.js');
-    initOfflineNotification();
+  // Offline Capabilities
+  if (config.jsVars.settings.offlineUsage?.capabilities?.feature === 'on') {
+    // Offline Notification
+    if (config.jsVars.settings.offlineUsage?.capabilities?.notification === 'on') {
+      const { initOfflineNotification } = await import('./modules/offlineNotification.js');
+      initOfflineNotification();
+    }
+
+    // Offline Forms
+    if (config.jsVars.settings.offlineUsage?.capabilities?.forms === 'on') {
+      const { initOfflineForms } = await import('./modules/offlineForms.js');
+      initOfflineForms();
+    }
   }
 }
 

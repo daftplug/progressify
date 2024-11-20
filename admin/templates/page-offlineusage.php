@@ -212,13 +212,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Allows users to fill out and submit forms even when offline, with the data being automatically sent once the connection is restored.', $this->textDomain); ?>
+                    <?php _e('Allow users to submit forms offline with their consent. Submissions are saved locally and processed automatically when they reconnect to the internet.', $this->textDomain); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Allows offline form submission, auto-sending data when reconnected.', $this->textDomain); ?>
+              <?php _e('Allow users to submit forms offline and process when reconnected.', $this->textDomain); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -233,7 +233,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Offline Notification -->
       <!-- Offline Google Analytics -->
-      <div id="settinggoogleAnalytics" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+      <div id="settingGoogleAnalytics" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
         <label for="offlineUsage[capabilities][googleAnalytics]" class="cursor-pointer flex gap-x-3" data-disabled="true">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">

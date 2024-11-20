@@ -1,4 +1,5 @@
 import { config } from '../main.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -45,16 +46,7 @@ class PwaInstallPrompt extends HTMLElement {
   }
 
   async connectedCallback() {
-    // Initial render
     this.render();
-
-    // Show popup
-    requestAnimationFrame(() => {
-      const prompt = this.shadowRoot.querySelector('.install-prompt');
-      prompt.classList.add('visible');
-    });
-
-    // Setup handlers
     this.handleRemove();
     this.handleClipboard();
     this.handleNativeInstall();
@@ -65,6 +57,24 @@ class PwaInstallPrompt extends HTMLElement {
       this.setAttribute('loaded', '');
       this.handleUpdateContent();
     }
+  }
+
+  static show() {
+    let prompt = document.querySelector('pwa-install-overlay-header-banner');
+
+    if (!prompt) {
+      prompt = document.createElement('pwa-install-prompt');
+      config.daftplugFrontend.appendChild(prompt);
+
+      requestAnimationFrame(() => {
+        const installPrompt = prompt.shadowRoot.querySelector('.install-prompt');
+        document.documentElement.style.paddingRight = `${window.innerWidth - document.documentElement.offsetWidth}px`;
+        document.documentElement.style.overflow = 'hidden';
+        installPrompt.classList.add('visible');
+      });
+    }
+
+    return prompt;
   }
 
   // Utility methods
@@ -86,7 +96,15 @@ class PwaInstallPrompt extends HTMLElement {
 
     const handleClose = () => {
       backdrop.classList.remove('visible');
-      setTimeout(() => this.remove(), 300);
+      backdrop.addEventListener(
+        'transitionend',
+        () => {
+          document.documentElement.style.removeProperty('overflow');
+          document.documentElement.style.paddingRight = '';
+          this.remove();
+        },
+        { once: true }
+      );
     };
 
     closeIcon.addEventListener('click', handleClose);
@@ -475,6 +493,9 @@ class PwaInstallPrompt extends HTMLElement {
   }
 
   renderNativeInstallButton() {
+    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(themeColor);
+
     this.injectStyles(`
       .install-prompt-native-button {
         width: 100%;
@@ -493,8 +514,8 @@ class PwaInstallPrompt extends HTMLElement {
         font-size: 0.875rem;
         line-height: 1.25rem;
         border-radius: 0.5rem;
-        color: ${config.jsVars.settings.installation?.prompts?.textColor ?? '#ffffff'};
-        background-color: ${config.jsVars.settings.installation?.prompts?.backgroundColor ?? '#000000'};
+        color: ${textColor};
+        background-color: ${themeColor};
         -webkit-transition: all 0.1s ease;
         -o-transition: all 0.1s ease;
         transition: all 0.1s ease;
@@ -558,7 +579,7 @@ class PwaInstallPrompt extends HTMLElement {
 
   renderStep(stepNumber, title = '', description = '', icon = '', extraHtml = '') {
     this.injectStyles(`
-.install-prompt-body-instructions_step {
+      .install-prompt-body-instructions_step {
         position: relative;
         -webkit-padding-start: 2.8rem;
                 padding-inline-start: 2.8rem;
@@ -778,7 +799,7 @@ class PwaInstallPrompt extends HTMLElement {
         visibility: hidden;
       }
 
-      .install-prompt.visible {
+      .install-prompt.visible {      
         background: rgba(0, 0, 0, 0.7);
         -webkit-backdrop-filter: blur(5px);
                 backdrop-filter: blur(5px);
@@ -945,11 +966,14 @@ class PwaInstallPrompt extends HTMLElement {
       @media (max-width: 700px) {
        .install-prompt-container {
           width: 100%;
+          max-width: 100%;
           top: unset;
           bottom: 0;
           left: 0;
           border-top-left-radius: 1rem;
           border-top-right-radius: 1rem;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
           -webkit-box-shadow: none;
                   box-shadow: none;
           opacity: 1;
@@ -1008,7 +1032,5 @@ export function performInstallation() {
     customElements.define('pwa-install-prompt', PwaInstallPrompt);
   }
 
-  // Create and show prompt
-  const promptInstance = document.createElement('pwa-install-prompt');
-  config.daftplugFrontend.appendChild(promptInstance);
+  PwaInstallPrompt.show();
 }

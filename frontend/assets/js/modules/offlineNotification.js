@@ -82,9 +82,15 @@ class PwaOfflineNotification extends HTMLElement {
         position: fixed;
         top: 0;
         left: 50%;
-        transform: translateX(-50%) translateY(-100%);
+        -webkit-transform: translateX(-50%) translateY(-100%);
+            -ms-transform: translateX(-50%) translateY(-100%);
+                transform: translateX(-50%) translateY(-100%);
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         padding: 0.75rem 1rem;
         gap: 0.75rem;
         width: 30rem;
@@ -93,15 +99,20 @@ class PwaOfflineNotification extends HTMLElement {
         color: ${textColor};
         border: 1px solid ${textColor}15;
         border-radius: 0.75rem;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        -webkit-box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         z-index: 9999999999999999;
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
       }
 
       .offline-notification.visible {
         opacity: 1;
-        transform: translateX(-50%) translateY(1rem);
+        -webkit-transform: translateX(-50%) translateY(1rem);
+            -ms-transform: translateX(-50%) translateY(1rem);
+                transform: translateX(-50%) translateY(1rem);
       }
 
       .offline-notification_icon {
@@ -113,7 +124,8 @@ class PwaOfflineNotification extends HTMLElement {
       }
 
       .offline-notification_icon.spinner {
-        animation: spin 1s linear infinite;
+        -webkit-animation: spin 1s linear infinite;
+                animation: spin 1s linear infinite;
         border: 3px solid ${themeColor};
         border-top-color: transparent;
       }
@@ -128,9 +140,17 @@ class PwaOfflineNotification extends HTMLElement {
         line-height: 1.25rem;
       }
 
+      @-webkit-keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+
       @keyframes spin {
         to {
-          transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
         }
       }
     `);
@@ -154,6 +174,11 @@ export function initOfflineNotification() {
     customElements.define('pwa-offline-notification', PwaOfflineNotification);
   }
 
+  // Check initial state
+  if (!navigator.onLine) {
+    PwaOfflineNotification.showReconnecting();
+  }
+
   window.addEventListener('offline', () => {
     PwaOfflineNotification.showReconnecting();
   });
@@ -161,9 +186,4 @@ export function initOfflineNotification() {
   window.addEventListener('online', () => {
     PwaOfflineNotification.showReconnected();
   });
-
-  // Check initial state
-  if (!navigator.onLine) {
-    PwaOfflineNotification.showReconnecting();
-  }
 }

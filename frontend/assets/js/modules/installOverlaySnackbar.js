@@ -74,8 +74,8 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
   }
 
   render() {
-    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
-    const textColor = getContrastTextColor(backgroundColor);
+    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(themeColor);
     const snackbarTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
 
     this.injectStyles(`
@@ -91,7 +91,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         border-radius: 0.5rem;
         z-index: 99999;
         padding: 1rem;
-        background-color: ${backgroundColor};
+        background-color: ${themeColor};
         color: ${textColor};
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
         transition: all 0.2s ease-out;
@@ -133,7 +133,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         display: inline-block;
         flex-shrink: 0;
         background-color: ${textColor};
-        color: ${backgroundColor};
+        color: ${themeColor};
         vertical-align: middle;
         text-decoration: none;
         font-size: 0.875rem;
@@ -152,7 +152,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         left: 0;
         width: 100%;
         height: 4px;
-        background-color: ${backgroundColor};
+        background-color: ${themeColor};
         overflow: hidden;
       }
 
