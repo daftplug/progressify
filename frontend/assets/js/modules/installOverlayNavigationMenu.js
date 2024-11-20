@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -12,95 +12,68 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
   }
 
   connectedCallback() {
-    this.findAndAttachToMenu();
     this.render();
     this.handlePerformInstallation();
   }
 
-  findAndAttachToMenu() {
-    const mobileMenuSelectors = [
-      // Common mobile menu containers
-      '.wp-block-navigation',
-      '#ast-mobile-header',
-      '#mobile-menu',
-      '.mobile-menu',
-      '.mobile-navigation',
-      '[class*="mobile-header"]',
-      '[id*="mobile-header"]',
-      '[class*="mobile-menu"]',
-      '[id*="mobile-menu"]',
-      'nav',
-      'header',
-    ];
+  static findVisibleMenuElement(element) {
+    if (element.tagName.toLowerCase() === 'ul' && window.getComputedStyle(element).display !== 'none' && element.querySelector('li')) {
+      return element;
+    }
+    for (const child of element.children) {
+      const found = this.findVisibleMenuElement(child);
+      if (found) {
+        return found;
+      }
+    }
+    return null;
+  }
 
-    let mobileContainer = null;
+  static findMobileMenu() {
+    const mobileMenuSelectors = ['.wp-block-navigation', '#ast-mobile-header', '#mobile-menu', '.mobile-menu', '.mobile-navigation', '[class*="mobile-header"]', '[id*="mobile-header"]', '[class*="mobile-menu"]', '[id*="mobile-menu"]', 'nav', 'header'];
 
-    // Find the mobile menu container
+    // Find visible mobile container
     for (const selector of mobileMenuSelectors) {
       const elements = document.querySelectorAll(selector);
       for (const element of elements) {
-        // Check if the element is visible
         if (window.getComputedStyle(element).display !== 'none') {
-          mobileContainer = element;
-          break;
+          const menuElement = this.findVisibleMenuElement(element);
+          if (menuElement) {
+            return { container: element, menu: menuElement };
+          }
         }
-      }
-      if (mobileContainer) {
-        break;
       }
     }
 
-    if (!mobileContainer) {
-      console.log('No mobile menu found');
-      return;
-    }
+    return null;
+  }
 
-    // Recursive function to find a visible 'ul' element with 'li' children
-    function findVisibleMenuElement(element) {
-      if (element.tagName.toLowerCase() === 'ul' && window.getComputedStyle(element).display !== 'none' && element.querySelector('li')) {
-        return element;
-      }
-      for (const child of element.children) {
-        const found = findVisibleMenuElement(child);
-        if (found) {
-          return found;
-        }
-      }
-      return null;
-    }
+  static show() {
+    let overlay = document.querySelector('pwa-install-overlay-navigation-menu');
 
-    const menuElement = findVisibleMenuElement(mobileContainer);
+    if (!overlay) {
+      const menuData = this.findMobileMenu();
 
-    if (menuElement) {
-      // Remove existing instances if any, but not 'this'
-      const existingInstances = document.querySelectorAll('pwa-install-overlay-navigation-menu');
-      existingInstances.forEach((el) => {
-        if (el !== this) {
-          el.remove();
-        }
-      });
+      if (menuData?.menu) {
+        overlay = document.createElement('pwa-install-overlay-navigation-menu');
 
-      // Check if 'this' is already in the menu to prevent re-attachment
-      if (!menuElement.contains(this)) {
-        // Create new menu item
+        // Create menu item
         const menuItem = document.createElement('li');
         menuItem.className = 'menu-item pwa-install-menu-item';
 
         // Copy classes from existing menu items for consistency
-        const existingMenuItem = menuElement.querySelector('li');
+        const existingMenuItem = menuData.menu.querySelector('li');
         if (existingMenuItem) {
           const classesToCopy = Array.from(existingMenuItem.classList).filter((cls) => !cls.includes('current') && !cls.includes('active'));
           menuItem.classList.add(...classesToCopy);
         }
 
-        menuItem.appendChild(this);
-        menuElement.appendChild(menuItem);
-
-        console.log('PWA install prompt added to mobile menu:', menuElement);
+        menuItem.appendChild(overlay);
+        menuData.menu.appendChild(menuItem);
       }
-    } else {
-      console.log('No menu element found within the mobile container');
     }
+
+    return overlay;
   }
 
   injectStyles(css) {
@@ -220,17 +193,23 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
 }
 
 export async function initInstallOverlayNavigationMenu() {
+  const { device, os, browser } = config.jsVars.userData;
+  const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+
+  if (!isMobileDevice || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-navigation-menu')) {
     customElements.define('pwa-install-overlay-navigation-menu', PwaInstallOverlayNavigationMenu);
   }
 
-  // Create instance
-  const navigationMenuInstance = document.createElement('pwa-install-overlay-navigation-menu');
-  navigationMenuInstance.findAndAttachToMenu();
+  // Try initial insertion
+  PwaInstallOverlayNavigationMenu.show();
 
   // Try again after a delay for dynamically loaded menus
   setTimeout(() => {
-    const existingInstance = document.querySelector('pwa-install-overlay-navigation-menu');
-    existingInstance?.findAndAttachToMenu();
+    PwaInstallOverlayNavigationMenu.show();
   }, 1000);
 }

@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -12,18 +12,16 @@ class PwaInstallOverlayInFeed extends HTMLElement {
   }
 
   connectedCallback() {
-    this.findAndAttachToFeed();
     this.render();
     this.handlePerformInstallation();
   }
 
-  findAndAttachToFeed() {
-    // Define selectors for feed containers
+  static async findFeedContainer() {
     const feedSelectors = ['.post-list', '.posts', '.post-loop', '.blog-posts', '.content-area', '.site-main', '#main', '#content', 'main', '.entry-content'];
+    const feedItemSelectors = ['.post', '.entry', '.article', '.blog-post', '.hentry', 'article'];
 
+    // Find container
     let feedContainer = null;
-
-    // Find the feed container
     for (const selector of feedSelectors) {
       const element = document.querySelector(selector);
       if (element) {
@@ -32,100 +30,39 @@ class PwaInstallOverlayInFeed extends HTMLElement {
       }
     }
 
-    if (!feedContainer) {
-      console.log('No feed container found');
-      return;
+    if (!feedContainer) return null;
+
+    // Find feed items
+    let feedItems = null;
+    for (const selector of feedItemSelectors) {
+      const items = feedContainer.querySelectorAll(selector);
+      if (items.length > 0) {
+        feedItems = items;
+        break;
+      }
     }
 
-    // Define selectors for feed items
-    const feedItemSelectors = ['.post', '.entry', '.article', '.blog-post', '.hentry', 'article'];
+    return { feedContainer, feedItems };
+  }
 
-    // Function to find feed items within the container
-    const findFeedItems = () => {
-      for (const selector of feedItemSelectors) {
-        const items = feedContainer.querySelectorAll(selector);
-        if (items.length > 0) {
-          return items;
-        }
+  static async show() {
+    let overlay = document.querySelector('pwa-install-overlay-in-feed');
+
+    if (!overlay) {
+      overlay = document.createElement('pwa-install-overlay-in-feed');
+
+      // Try to find and insert into feed
+      const feed = await this.findFeedContainer();
+      if (feed && feed.feedItems?.length >= 4) {
+        const targetItem = feed.feedItems[3]; // Insert after 4th item
+        const overlayWrapper = document.createElement('div');
+        overlayWrapper.className = 'pwa-install-overlay-wrapper';
+        overlayWrapper.appendChild(overlay);
+        targetItem.parentNode.insertBefore(overlayWrapper, targetItem.nextSibling);
       }
-      return [];
-    };
-
-    const insertOverlay = (observer) => {
-      const feedItems = findFeedItems();
-      if (feedItems.length === 0) {
-        return false; // Return false to indicate insertion wasn't possible
-      }
-
-      const insertAfterNthItem = 4;
-      if (feedItems.length >= insertAfterNthItem) {
-        const targetItem = feedItems[insertAfterNthItem - 1];
-
-        // Check if overlay is already inserted
-        if (!feedContainer.querySelector('pwa-install-overlay-in-feed')) {
-          const overlayWrapper = document.createElement('div');
-          overlayWrapper.className = 'pwa-install-overlay-wrapper';
-
-          // Append the overlay element to the wrapper
-          overlayWrapper.appendChild(this);
-
-          // Insert the wrapper after the target item
-          targetItem.parentNode.insertBefore(overlayWrapper, targetItem.nextSibling);
-
-          console.log(`PWA install prompt added to feed after item ${insertAfterNthItem}`);
-
-          // Disconnect observer after successful insertion
-          if (observer) {
-            observer.disconnect();
-            console.log('Feed mutation observer disconnected');
-          }
-
-          return true; // Return true to indicate successful insertion
-        }
-      }
-
-      return false;
-    };
-
-    // Try initial insertion
-    if (insertOverlay()) {
-      return; // Exit if initial insertion was successful
     }
 
-    // Set up observer only if initial insertion failed
-    let attemptCount = 0;
-    const maxAttempts = 10; // Limit number of attempts
-    let observer = new MutationObserver((mutationsList) => {
-      // Increment attempt counter
-      attemptCount++;
-
-      // Try to insert the overlay
-      if (insertOverlay(observer)) {
-        return; // Observer will be disconnected by insertOverlay
-      }
-
-      // Disconnect after max attempts
-      if (attemptCount >= maxAttempts) {
-        observer.disconnect();
-        console.log(`Feed mutation observer disconnected after ${maxAttempts} attempts`);
-      }
-    });
-
-    // Use a more specific observation configuration
-    observer.observe(feedContainer, {
-      childList: true, // Watch for direct children changes
-      subtree: false, // Don't watch deep tree changes
-      attributes: false, // Don't watch attributes
-      characterData: false, // Don't watch text content
-    });
-
-    // Set a timeout to disconnect observer after a reasonable time
-    setTimeout(() => {
-      if (observer) {
-        observer.disconnect();
-        console.log('Feed mutation observer disconnected after timeout');
-      }
-    }, 30000); // 30 seconds timeout
+    return overlay;
   }
 
   injectStyles(css) {
@@ -245,17 +182,23 @@ class PwaInstallOverlayInFeed extends HTMLElement {
 }
 
 export async function initInstallOverlayInFeed() {
+  const { device, os, browser } = config.jsVars.userData;
+  const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+
+  if (!isMobileDevice || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-in-feed')) {
     customElements.define('pwa-install-overlay-in-feed', PwaInstallOverlayInFeed);
   }
 
-  // Create instance
-  const inFeedInstance = document.createElement('pwa-install-overlay-in-feed');
-  inFeedInstance.findAndAttachToFeed();
+  // Try initial insertion
+  PwaInstallOverlayInFeed.show();
 
   // Try again after a delay for dynamically loaded feeds
   setTimeout(() => {
-    const existingInstance = document.querySelector('pwa-install-overlay-in-feed');
-    existingInstance?.findAndAttachToFeed();
+    PwaInstallOverlayInFeed.show();
   }, 1000);
 }

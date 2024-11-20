@@ -86,14 +86,18 @@ class OfflineUsage
 
   public function buildServiceworkerData()
   {
+    $isOfflineCacheEnabled = Plugin::getSetting('offlineUsage[cache][feature]') == 'on';
     $offlinePage = Plugin::getSetting('offlineUsage[cache][fallbackPage]');
     $cachingStrategy = Plugin::getSetting('offlineUsage[cache][strategy]');
     $cacheExpiration = intval(Plugin::getSetting('offlineUsage[cache][expirationTime]')) ?: 10;
 
-    $serviceworker = $this->getWorkboxConfig($this->workboxVersion);
-    $serviceworker .= $this->getBasicEventListeners($offlinePage);
-    $serviceworker .= $this->getRoutingRules($offlinePage, $cachingStrategy, $cacheExpiration);
-    $serviceworker .= $this->getCacheCleanupLogic();
+    $serviceworker = '';
+    if ($isOfflineCacheEnabled) {
+      $serviceworker = $this->getWorkboxConfig($this->workboxVersion);
+      $serviceworker .= $this->getBasicEventListeners($offlinePage);
+      $serviceworker .= $this->getRoutingRules($offlinePage, $cachingStrategy, $cacheExpiration);
+      $serviceworker .= $this->getCacheCleanupLogic();
+    }
     $serviceworker .= $this->getThirdPartyIntegrations();
 
     return apply_filters("{$this->optionName}_serviceworker", $serviceworker);
@@ -260,7 +264,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
       const registration = await navigator.serviceWorker.register(
-        <?php echo $this->getServiceWorkerUrl(); ?>, {
+        <?php echo $this->getServiceWorkerUrl(true); ?>, {
           scope: <?php echo wp_json_encode($scope); ?>
         }
       );
@@ -282,7 +286,7 @@ if ('serviceWorker' in navigator) {
 
   public static function getServiceWorkerUrl($encoded = true)
   {
-    $serviceWorkerUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . '/serviceworker.js');
+    $serviceWorkerUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'serviceworker.js');
     return $encoded ? wp_json_encode($serviceWorkerUrl) : $serviceWorkerUrl;
   }
 }

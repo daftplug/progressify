@@ -19,15 +19,46 @@ async function initModules() {
       // Install Url
       const { initInstallUrl } = await import('./modules/installUrl.js');
       initInstallUrl();
-
       // Installation Button
       const { initInstallButton } = await import('./modules/installButton.js');
       initInstallButton();
-
-      // Installation Overlays
-      const { initInstallOverlays } = await import('./modules/installOverlays.js');
-      initInstallOverlays();
+      // Installation Overlay - Header Banner
+      if (config.jsVars.settings.installation?.prompts?.types?.headerBanner === 'on') {
+        const { initInstallOverlayHeaderBanner } = await import('./modules/installOverlayHeaderBanner.js');
+        initInstallOverlayHeaderBanner();
+      }
+      // Installation Overlay - Snackbar
+      if (config.jsVars.settings.installation?.prompts?.types?.snackbar === 'on') {
+        const { initInstallOverlaySnackbar } = await import('./modules/installOverlaySnackbar.js');
+        initInstallOverlaySnackbar();
+      }
+      // Installation Overlay - Blog Popup
+      if (config.jsVars.settings.installation?.prompts?.types?.blogPopup === 'on') {
+        const { initInstallOverlayBlogPopup } = await import('./modules/installOverlayBlogPopup.js');
+        initInstallOverlayBlogPopup();
+      }
+      // Installation Overlay - Navigation Menu
+      if (config.jsVars.settings.installation?.prompts?.types?.navigationMenu === 'on') {
+        const { initInstallOverlayNavigationMenu } = await import('./modules/installOverlayNavigationMenu.js');
+        initInstallOverlayNavigationMenu();
+      }
+      // Installation Overlay - In Feed
+      if (config.jsVars.settings.installation?.prompts?.types?.inFeed === 'on') {
+        const { initInstallOverlayInFeed } = await import('./modules/installOverlayInFeed.js');
+        initInstallOverlayInFeed();
+      }
+      // Installation Overlay - Woocommerce Checkout
+      if (config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout === 'on') {
+        const { initInstallOverlayWoocommerceCheckout } = await import('./modules/installOverlayWoocommerceCheckout.js');
+        initInstallOverlayWoocommerceCheckout();
+      }
     }
+  }
+
+  // Offline Notification
+  if (config.jsVars.settings.offlineUsage?.capabilities?.notification === 'on') {
+    const { initOfflineNotification } = await import('./modules/offlineNotification.js');
+    initOfflineNotification();
   }
 }
 

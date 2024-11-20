@@ -82,7 +82,7 @@ class Frontend
       apply_filters("{$this->optionName}_frontend_js_vars", [
         'generalError' => __('An unexpected error occurred', $this->textDomain),
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
-        'adminUrl' => trailingslashit(admin_url('/', 'https')),
+        'ajaxUrl' => admin_url('admin-ajax.php'),
         'currentUrl' => Plugin::getCurrentUrl(false),
         'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
         'slug' => $this->slug,
@@ -132,7 +132,8 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
+  ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

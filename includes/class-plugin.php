@@ -416,8 +416,8 @@ class Plugin
       $qrcode = (new QRCode($options))->render($data);
 
       // Define scaled dimensions
-      $padding = 7 * $scaleFactor;
-      $borderWidth = 2 * $scaleFactor;
+      $padding = 8 * $scaleFactor;
+      $borderWidth = 0 * $scaleFactor;
       $radius = 8 * $scaleFactor;
       $totalPadding = $padding * 2 + $borderWidth * 2;
 

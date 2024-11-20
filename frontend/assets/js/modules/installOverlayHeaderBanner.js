@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -13,14 +13,24 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 
   connectedCallback() {
     this.render();
-
-    requestAnimationFrame(() => {
-      const headerBanner = this.shadowRoot.querySelector('.header-banner-overlay');
-      headerBanner.classList.add('visible');
-    });
-
     this.handleRemove();
     this.handlePerformInstallation();
+  }
+
+  static show() {
+    let banner = document.querySelector('pwa-install-overlay-header-banner');
+
+    if (!banner) {
+      banner = document.createElement('pwa-install-overlay-header-banner');
+      config.daftplugFrontend.appendChild(banner);
+
+      requestAnimationFrame(() => {
+        const headerBanner = banner.shadowRoot.querySelector('.header-banner-overlay');
+        headerBanner.classList.add('visible');
+      });
+    }
+
+    return banner;
   }
 
   injectStyles(css) {
@@ -216,10 +226,18 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 }
 
 export async function initInstallOverlayHeaderBanner() {
+  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+  const hasSeenOverlay = getCookie('pwa_header_banner_overlay_shown');
+
+  if (hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-header-banner')) {
     customElements.define('pwa-install-overlay-header-banner', PwaInstallOverlayHeaderBanner);
   }
 
-  const headerBannerInstance = document.createElement('pwa-install-overlay-header-banner');
-  config.daftplugFrontend.appendChild(headerBannerInstance);
+  PwaInstallOverlayHeaderBanner.show();
+  setCookie(`pwa_header_banner_overlay_shown`, 'true', timeout);
 }

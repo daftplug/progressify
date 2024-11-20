@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isSingleBlogPost, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -9,35 +9,32 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.styles = new Set();
-    this.hasShown = false;
-    this.scrollPercentTrigger = 10;
   }
 
   connectedCallback() {
     this.render();
-    this.handleShowOnScroll();
     this.handleRemove();
     this.handlePerformInstallation();
   }
 
-  injectStyles(css) {
-    this.styles.add(css);
+  static show() {
+    let popup = document.querySelector('pwa-install-overlay-blog-popup');
+
+    if (!popup) {
+      popup = document.createElement('pwa-install-overlay-blog-popup');
+      config.daftplugFrontend.appendChild(popup);
+
+      requestAnimationFrame(() => {
+        const blogPopup = popup.shadowRoot.querySelector('.blog-popup-overlay');
+        blogPopup.classList.add('visible');
+      });
+    }
+
+    return popup;
   }
 
-  handleShowOnScroll() {
-    window.addEventListener('scroll', () => {
-      if (this.hasShown) return;
-
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent >= this.scrollPercentTrigger) {
-        requestAnimationFrame(() => {
-          const blogPopup = this.shadowRoot.querySelector('.blog-popup-overlay');
-          blogPopup.classList.add('visible');
-        });
-
-        this.hasShown = true;
-      }
-    });
+  injectStyles(css) {
+    this.styles.add(css);
   }
 
   handleRemove() {
@@ -328,10 +325,29 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 }
 
 export async function initInstallOverlayBlogPopup() {
+  let hasTriggered = false;
+  const scrollPercentTrigger = 10;
+  const { device, os, browser } = config.jsVars.userData;
+  const isMobileDevice = device.isSmartphone || device.isTablet;
+  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+  const hasSeenOverlay = getCookie('pwa_blog_popup_overlay_shown');
+
+  if (!isMobileDevice || !isSingleBlogPost() || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-blog-popup')) {
     customElements.define('pwa-install-overlay-blog-popup', PwaInstallOverlayBlogPopup);
   }
 
-  const blogPopupInstance = document.createElement('pwa-install-overlay-blog-popup');
-  config.daftplugFrontend.appendChild(blogPopupInstance);
+  window.addEventListener('scroll', () => {
+    if (hasTriggered) return;
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    if (scrollPercent >= scrollPercentTrigger) {
+      PwaInstallOverlayBlogPopup.show();
+      hasTriggered = true;
+      setCookie(`pwa_blog_popup_overlay_shown`, 'true', timeout);
+    }
+  });
 }

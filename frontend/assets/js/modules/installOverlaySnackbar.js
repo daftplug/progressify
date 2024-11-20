@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -9,60 +9,64 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.styles = new Set();
-    this.hasShown = false;
     this.displayDuration = 7000;
-    this.scrollPercentTrigger = 30;
   }
 
   connectedCallback() {
     this.render();
-    this.setupScrollListener();
-    this.handlePerformInstallation();
+    this.setupInstallHandler();
+  }
+
+  static show() {
+    let snackbar = document.querySelector('pwa-install-overlay-snackbar');
+
+    if (!snackbar) {
+      snackbar = document.createElement('pwa-install-overlay-snackbar');
+      config.daftplugFrontend.appendChild(snackbar);
+
+      requestAnimationFrame(() => {
+        const snackbarElement = snackbar.shadowRoot.querySelector('.snackbar-overlay');
+        snackbarElement.classList.add('visible');
+        snackbar.startProgressBar();
+        snackbar.setupAutoHide();
+      });
+    }
+
+    return snackbar;
   }
 
   injectStyles(css) {
     this.styles.add(css);
   }
 
-  setupScrollListener() {
-    window.addEventListener('scroll', () => {
-      if (this.hasShown) return;
-
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent >= this.scrollPercentTrigger) {
-        this.showSnackbar();
-        this.hasShown = true;
-      }
-    });
-  }
-
-  showSnackbar() {
-    requestAnimationFrame(() => {
-      const snackbar = this.shadowRoot.querySelector('.snackbar-overlay');
-      snackbar.classList.add('visible');
-      this.startProgressBar();
-      this.setupAutoHide();
-    });
-  }
-
   startProgressBar() {
     const progressBar = this.shadowRoot.querySelector('.snackbar-overlay-progressbar_inner');
     progressBar.style.width = '100%';
-    progressBar.offsetHeight;
+    progressBar.offsetHeight; // Force reflow
     requestAnimationFrame(() => {
       progressBar.style.width = '0%';
     });
   }
 
   setupAutoHide() {
-    setTimeout(() => {
+    if (this._hideTimeout) {
+      clearTimeout(this._hideTimeout);
+    }
+
+    this._hideTimeout = setTimeout(() => {
       const snackbar = this.shadowRoot.querySelector('.snackbar-overlay');
       snackbar.classList.remove('visible');
-      setTimeout(() => this.remove(), 300);
+      snackbar.addEventListener(
+        'transitionend',
+        () => {
+          this.remove();
+        },
+        { once: true }
+      );
     }, this.displayDuration);
   }
 
-  handlePerformInstallation() {
+  setupInstallHandler() {
     const installButton = this.shadowRoot.querySelector('.snackbar-overlay-button_install');
     installButton.addEventListener('click', () => {
       performInstallation();
@@ -90,8 +94,6 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         background-color: ${backgroundColor};
         color: ${textColor};
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        -webkit-transition: all 0.2s ease-out;
-        -o-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out;
         opacity: 0;
         visibility: hidden;
@@ -183,10 +185,29 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 }
 
 export async function initInstallOverlaySnackbar() {
+  let hasTriggered = false;
+  const scrollPercentTrigger = 30;
+  const { device, os, browser } = config.jsVars.userData;
+  const isMobileDevice = device.isSmartphone || device.isTablet;
+  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+  const hasSeenOverlay = getCookie('pwa_snackbar_overlay_shown');
+
+  if (!isMobileDevice || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-snackbar')) {
     customElements.define('pwa-install-overlay-snackbar', PwaInstallOverlaySnackbar);
   }
 
-  const snackbarInstance = document.createElement('pwa-install-overlay-snackbar');
-  config.daftplugFrontend.appendChild(snackbarInstance);
+  window.addEventListener('scroll', () => {
+    if (hasTriggered) return;
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    if (scrollPercent >= scrollPercentTrigger) {
+      PwaInstallOverlaySnackbar.show();
+      hasTriggered = true;
+      setCookie(`pwa_snackbar_overlay_shown`, 'true', timeout);
+    }
+  });
 }

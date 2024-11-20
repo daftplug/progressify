@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -12,94 +12,36 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
   }
 
   connectedCallback() {
-    this.findAndAttachToCheckout();
     this.render();
     this.handlePerformInstallation();
   }
 
-  findAndAttachToCheckout() {
-    // Define selectors for checkout forms
+  static findCheckoutForm() {
     const checkoutFormSelectors = ['form.wc-block-checkout__form', 'form.woocommerce-checkout'];
 
-    let checkoutForm = null;
-
-    // Find the checkout form
     for (const selector of checkoutFormSelectors) {
-      const element = document.querySelector(selector);
-      if (element) {
-        checkoutForm = element;
-        break;
+      const form = document.querySelector(selector);
+      if (form) {
+        return form;
       }
     }
 
-    const insertOverlay = (observer) => {
-      // Check if overlay is already inserted
-      if (!document.querySelector('pwa-install-overlay-woocommerce-checkout')) {
-        // Insert the wrapper after the checkout form
-        checkoutForm.parentNode.insertBefore(this, checkoutForm.nextSibling);
+    return null;
+  }
 
-        console.log('PWA install prompt added after checkout form');
+  static show() {
+    let overlay = document.querySelector('pwa-install-overlay-woocommerce-checkout');
 
-        // Disconnect observer after successful insertion
-        if (observer) {
-          observer.disconnect();
-          console.log('Mutation observer disconnected');
-          return true;
-        }
+    if (!overlay) {
+      const checkoutForm = this.findCheckoutForm();
+
+      if (checkoutForm) {
+        overlay = document.createElement('pwa-install-overlay-woocommerce-checkout');
+        checkoutForm.parentNode.insertBefore(overlay, checkoutForm.nextSibling);
       }
-      return false;
-    };
-
-    if (checkoutForm) {
-      // If form exists, insert immediately and don't set up observer
-      insertOverlay();
-    } else {
-      console.log('No checkout form found, setting up observer');
-
-      // Only set up observer if no form is found initially
-      let attemptCount = 0;
-      const maxAttempts = 10;
-
-      const observer = new MutationObserver((mutations) => {
-        // Increment attempt counter
-        attemptCount++;
-
-        for (const mutation of mutations) {
-          if (mutation.addedNodes.length > 0) {
-            // Check if a new checkout form was added
-            const newForm = document.querySelector('form.wc-block-checkout__form') || document.querySelector('form.woocommerce-checkout');
-
-            if (newForm) {
-              checkoutForm = newForm;
-              insertOverlay(observer);
-              break;
-            }
-          }
-        }
-
-        // Disconnect after max attempts
-        if (attemptCount >= maxAttempts) {
-          observer.disconnect();
-          console.log('Checkout observer disconnected after max attempts');
-        }
-      });
-
-      // Start observing with more specific config
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: false, // Don't watch attributes
-        characterData: false, // Don't watch text content
-      });
-
-      // Backup timeout to ensure observer doesn't run indefinitely
-      setTimeout(() => {
-        if (observer) {
-          observer.disconnect();
-          console.log('Checkout observer disconnected after timeout');
-        }
-      }, 30000); // 30 second timeout
     }
+
+    return overlay;
   }
 
   injectStyles(css) {
@@ -220,17 +162,25 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
 }
 
 export async function initInstallOverlayWoocommerceCheckout() {
+  const { device, os, browser } = config.jsVars.userData;
+  const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
+  const isWoocommerceActive = config.jsVars.pluginsData.isActive?.woocommerce;
+  const isCheckoutPage = document.body.classList.contains('woocommerce-checkout');
+
+  if (!isWoocommerceActive || !isMobileDevice || !isCheckoutPage || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+    return;
+  }
+
   if (!customElements.get('pwa-install-overlay-woocommerce-checkout')) {
     customElements.define('pwa-install-overlay-woocommerce-checkout', PwaInstallOverlayWoocommerceCheckout);
   }
 
-  // Create instance
-  const woocommerceCheckoutInstance = document.createElement('pwa-install-overlay-woocommerce-checkout');
-  woocommerceCheckoutInstance.findAndAttachToCheckout();
+  // Try initial insertion
+  PwaInstallOverlayWoocommerceCheckout.show();
 
-  // Try again after a delay for dynamically loaded checkouts
+  // Try again after a delay for dynamically loaded feeds
   setTimeout(() => {
-    const existingInstance = document.querySelector('pwa-install-overlay-woocommerce-checkout');
-    existingInstance?.findAndAttachToCheckout();
+    PwaInstallOverlayWoocommerceCheckout.show();
   }, 1000);
 }
