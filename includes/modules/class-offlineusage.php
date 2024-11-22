@@ -2,7 +2,7 @@
 
 namespace DaftPlug\Progressify\Module;
 
-use DaftPlug\Progressify\Plugin;
+use DaftPlug\Progressify\{Plugin, Frontend};
 
 if (!defined('ABSPATH')) {
   exit();
@@ -71,8 +71,8 @@ class OfflineUsage
       header('Content-Type: application/javascript; charset=utf-8');
       header('Service-Worker-Allowed: /');
 
-      $cacheKey = hash('crc32', json_encode($this->settings) . $this->version);
       $serviceworker = $this->buildServiceworkerData();
+      $cacheKey = hash('crc32', $serviceworker . $this->version);
 
       echo "
         const CACHE_VERSION = '{$cacheKey}';
@@ -87,15 +87,20 @@ class OfflineUsage
   public function buildServiceworkerData()
   {
     $isOfflineCacheEnabled = Plugin::getSetting('offlineUsage[cache][feature]') == 'on';
-    $offlinePage = Plugin::getSetting('offlineUsage[cache][fallbackPage]');
+    $isCustomOfflinePageEnabled = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on';
+    $offlinePage = $isCustomOfflinePageEnabled ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : Frontend::renderPartial('offlineFallbackPage');
     $cachingStrategy = Plugin::getSetting('offlineUsage[cache][strategy]');
     $cacheExpiration = intval(Plugin::getSetting('offlineUsage[cache][expirationTime]')) ?: 10;
+    $fallbackData = [
+      'content' => $offlinePage,
+      'isCustomPage' => $isCustomOfflinePageEnabled,
+    ];
 
     $serviceworker = '';
     if ($isOfflineCacheEnabled) {
-      $serviceworker = $this->getWorkboxConfig($this->workboxVersion);
-      $serviceworker .= $this->getBasicEventListeners($offlinePage);
-      $serviceworker .= $this->getRoutingRules($offlinePage, $cachingStrategy, $cacheExpiration);
+      $serviceworker = $this->loadWorkbox($this->workboxVersion);
+      $serviceworker .= $this->getBasicEventListeners($fallbackData);
+      $serviceworker .= $this->getRoutingRules($cachingStrategy, $cacheExpiration);
       $serviceworker .= $this->getCacheCleanupLogic();
     }
     $serviceworker .= $this->getThirdPartyIntegrations();
@@ -103,24 +108,17 @@ class OfflineUsage
     return apply_filters("{$this->optionName}_serviceworker", $serviceworker);
   }
 
-  private function getWorkboxConfig($workboxVersion)
+  private function loadWorkbox($workboxVersion)
   {
-    $workboxConfig = "
+    $loadWorkbox = "
       importScripts('https://storage.googleapis.com/workbox-cdn/releases/{$workboxVersion}/workbox-sw.js');
-
-      workbox.core.setCacheNameDetails({
-          prefix: CACHE_PREFIX,
-          suffix: 'v{$this->version}',
-          precache: 'precache',
-          runtime: 'runtime'
-      });
 
       workbox.loadModule('workbox-cacheable-response');
       workbox.loadModule('workbox-range-requests');
     ";
 
     // if (Plugin::getSetting('offlineUsage[capabilities][googleAnalytics]') === 'on') {
-    //   $workboxConfig .= "
+    //   $loadWorkbox .= "
     //     workbox.loadModule('workbox-google-analytics');
 
     //     const gaConfig = {
@@ -139,12 +137,23 @@ class OfflineUsage
     //   \n\n";
     // }
 
-    return $workboxConfig;
+    return $loadWorkbox;
   }
 
-  private function getBasicEventListeners($offlinePage)
+  private function getBasicEventListeners($fallbackData)
   {
+    $fallbackContent = $fallbackData['isCustomPage']
+      ? "fetch('{$fallbackData['content']}', {credentials: 'same-origin'}).then(response => response)"
+      : "new Response(`{$fallbackData['content']}`, {
+          headers: {'Content-Type': 'text/html;charset=utf-8'}
+        })";
+
     $basicEventListeners = "
+      const cacheName = {
+        pages: CACHE_PREFIX + '-pages-' + CACHE_VERSION,
+        resources: CACHE_PREFIX + '-resources-' + CACHE_VERSION
+      };
+  
       workbox.core.skipWaiting();
       workbox.core.clientsClaim();
       
@@ -153,13 +162,22 @@ class OfflineUsage
           self.skipWaiting();
         }
       });
-
+  
       self.addEventListener('install', async(event) => {
         event.waitUntil(
-          caches.open(CACHE_PREFIX + '-html').then((cache) => cache.add(new Request('{$offlinePage}', {credentials: 'same-origin'})))
+          caches.open(cacheName.pages).then((cache) => {
+            return Promise.resolve({$fallbackContent})
+              .then(response => {
+                // Store with consistent key name
+                return cache.put('offline-fallback', response);
+              })
+              .catch(error => {
+                console.error('Failed to cache offline page:', error);
+              });
+          })
         );
       });
-
+  
       if (workbox.navigationPreload.isSupported()) {
         workbox.navigationPreload.enable();
       }
@@ -168,7 +186,7 @@ class OfflineUsage
     return $basicEventListeners;
   }
 
-  private function getRoutingRules($offlinePage, $cachingStrategy, $cacheExpiration)
+  private function getRoutingRules($cachingStrategy, $cacheExpiration)
   {
     $routingRules = "
       workbox.routing.registerRoute(/wp-admin(.*)|wp-json(.*)|(.*)preview=true(.*)/,
@@ -181,7 +199,7 @@ class OfflineUsage
         async (params) => {
           try {
             const response = await new workbox.strategies.{$cachingStrategy}({
-              cacheName: CACHE_PREFIX + '-html',
+              cacheName: cacheName.pages,
               plugins: [
                 new workbox.expiration.ExpirationPlugin({
                   maxEntries: 50,
@@ -192,10 +210,29 @@ class OfflineUsage
                 }),
               ],
             }).handle(params);
-            return response || await caches.match('{$offlinePage}');
+            
+            if (response) return response;
+            
+            console.log('Page not in cache, returning offline fallback');
+            const cache = await caches.open(cacheName.pages);
+            const fallback = await cache.match('offline-fallback');
+            
+            if (!fallback) {
+              console.error('Offline fallback not found in cache');
+              return new Response('Site is offline', {
+                status: 200,
+                headers: {'Content-Type': 'text/html'}
+              });
+            }
+            
+            return fallback;
           } catch (error) {
-            console.log('catch:', error);
-            return await caches.match('{$offlinePage}');
+            console.error('Cache handling error:', error);
+            const cache = await caches.open(cacheName.pages);
+            return await cache.match('offline-fallback') || new Response('Site is offline', {
+              status: 200,
+              headers: {'Content-Type': 'text/html'}
+            });
           }
         }
       );
@@ -204,7 +241,7 @@ class OfflineUsage
     $routingRules .= "
       workbox.routing.registerRoute(({event}) => event.request.destination !== 'document',
         new workbox.strategies.{$cachingStrategy}({
-          cacheName: CACHE_PREFIX + '-all-resources',
+          cacheName: cacheName.resources,
           plugins: [
             new workbox.expiration.ExpirationPlugin({
               maxEntries: 30,
@@ -227,13 +264,23 @@ class OfflineUsage
     $cacheCleanupLogic = "
       self.addEventListener('activate', event => {
         event.waitUntil(
-          caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-              if (key.startsWith(CACHE_PREFIX) && !key.includes(CACHE_VERSION)) {
-                return caches.delete(key);
-              }
-            })
-          ))
+          (async () => {
+            // Claim clients immediately
+            clients.claim();
+
+            const cacheNames = await caches.keys();
+            const expectedCacheNames = [cacheName.pages, cacheName.resources];
+
+            // Delete all caches that don't match the current version
+            await Promise.all(
+              cacheNames.map(name => {
+                if (name.startsWith(CACHE_PREFIX) && !expectedCacheNames.includes(name)) {
+                  console.log('Deleting old cache:', name);
+                  return caches.delete(name);
+                }
+              })
+            );
+          })()
         );
       });
     ";

@@ -149,6 +149,7 @@ class Frontend
   {
     $partials = [
       'metaTags' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-metatags.php']),
+      'offlineFallbackPage' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['partials', 'render-offlinefallbackpage.php']),
     ];
 
     return $partials;
@@ -156,6 +157,8 @@ class Frontend
 
   public static function renderPartial($key)
   {
-    include_once self::$partials[$key];
+    ob_start();
+    include self::$partials[$key];
+    return ob_get_clean();
   }
 }

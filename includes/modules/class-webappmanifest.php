@@ -359,7 +359,7 @@ class WebAppManifest
 
   public function renderMetaTagsInHeader()
   {
-    return Frontend::renderPartial('metaTags');
+    echo Frontend::renderPartial('metaTags');
   }
 
   public static function getManifestUrl($encoded = true)

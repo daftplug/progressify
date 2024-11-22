@@ -33,32 +33,66 @@ if (!defined('ABSPATH')) {
       "state": "checked",
       "mode": "availability"
     }'>
-      <!-- Offline Fallback Page -->
-      <div id="settingOfflineFallbackPage">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Offline Fallback Page', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the special offline fallback page for your web application. This page will show up your users when they navigate your website without an internet connection and the requested page won\'t be in cache.', $this->textDomain); ?>
-              </span>
-            </button>
+      <!-- Custom Offline Fallback Page -->
+      <div id="settingCustomOfflineFallbackPage" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+        <label for="offlineUsage[cache][customFallbackPage][feature]" class="cursor-pointer flex gap-x-3">
+          <div class="grow">
+            <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
+              <?php _e('Custom Offline Fallback Page', $this->textDomain); ?>
+              <div class="hs-tooltip inline-block [--placement:top]">
+                <button type="button" class="hs-tooltip-toggle ms-1 flex">
+                  <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                  </svg>
+                  <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                    <?php _e('Enable this if you want to select the special offline fallback page for your web application, instead of using default one. This page will show up your users when they navigate your website without an internet connection and the requested page won\'t be in cache.', $this->textDomain); ?>
+                  </span>
+                </button>
+              </div>
+            </h3>
+            <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
+              <?php _e('Select a custom offline fallback page instead of default one.', $this->textDomain); ?>
+            </p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="relative inline-block">
+              <input type="checkbox" id="offlineUsage[cache][customFallbackPage][feature]" name="offlineUsage[cache][customFallbackPage][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 checked:before:float-none before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]'), 'on'); ?>>
+            </div>
           </div>
         </label>
-        <select name="offlineUsage[cache][fallbackPage]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Offline Fallback Page', $this->textDomain); ?>"
+        <div class="mt-4" data-dp-dependant-markup='{
+          "target": "offlineUsage[cache][customFallbackPage][feature]",
+          "state": "checked",
+          "mode": "visibility"
         }'>
-          <option value=""><?php _e('Select Offline Fallback Page', $this->textDomain); ?></option>
-          <?php foreach (get_pages() as $wpPage): ?>
-          <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('offlineUsage[cache][fallbackPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
-          <?php endforeach; ?>
-        </select>
+          <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
+            <?php _e('Offline Fallback Page', $this->textDomain); ?>
+            <div class="hs-tooltip inline-block [--placement:top]">
+              <button type="button" class="hs-tooltip-toggle ms-1 flex">
+                <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                </svg>
+                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                  <?php _e('Select a custom offline fallback page.', $this->textDomain); ?>
+                </span>
+              </button>
+            </div>
+          </label>
+          <select name="offlineUsage[cache][customFallbackPage][page]" required="true" data-dp-select='{
+            "placeholder": "<?php _e('Select Offline Fallback Page', $this->textDomain); ?>",
+            "size": "xs"
+          }'>
+            <option value=""><?php _e('Select Offline Fallback Page', $this->textDomain); ?></option>
+            <?php foreach (get_pages() as $wpPage): ?>
+            <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
       </div>
-      <!-- End Offline Fallback Page -->
+      <!-- End Custom Offline Fallback Page -->
       <!-- Caching Strategy -->
       <div id="settingCachingStrategy">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -251,7 +285,7 @@ if (!defined('ABSPATH')) {
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Tracks offline interactions and syncs with Google Analytics when reconnected.', $this->textDomain); ?>
+              <?php _e('Tracks users offline and syncs with Google Analytics when reconnected.', $this->textDomain); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
