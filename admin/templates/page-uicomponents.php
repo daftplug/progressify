@@ -31,85 +31,9 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[navigationTabBar][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
-      <!-- Background Color -->
-      <div id="settingNavTabBackgroundColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Background Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the background color of navigation tab bar.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[navigationTabBar][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[navigationTabBar][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Background Color -->
-      <!-- Icon Color -->
-      <div id="settingNavTabIconColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Icon Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the color of icons in navigation tab bar.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[navigationTabBar][iconColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[navigationTabBar][iconColor]'); ?>" title="<?php _e('Icon Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Icon Color -->
-      <!-- Active Icon Color -->
-      <div id="settingNavTabActiveIconColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Active Icon Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the color of active icon in navigation tab bar.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[navigationTabBar][activeIconColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[navigationTabBar][activeIconColor]'); ?>" title="<?php _e('Icon Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Active Icon Color -->
-      <!-- Active Icon Background Color -->
-      <div id="settingNavTabActiveBackgroundIconColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Active Icon Background Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the background color of active icon in navigation tab bar.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[navigationTabBar][activeIconBackgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[navigationTabBar][activeIconBackgroundColor]'); ?>" title="<?php _e('Icon Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Active Icon Color -->
       <!-- Supported Platforms -->
       <div id="settingNavTabSupportedPlatforms">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -128,7 +52,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="uiComponents[navigationTabBar][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
-          }'>
+        }'>
           <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedPlatforms]'))); ?>>
@@ -175,8 +99,8 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="flex-grow">
               <select name="uiComponents[navigationTabBar][navigationItems][page]" data-dp-select='{
-                  "placeholder": "<?php _e('Select Page', $this->textDomain); ?>"
-                }'>
+                "placeholder": "<?php _e('Select Page', $this->textDomain); ?>"
+              }'>
                 <option value=""><?php _e('Select Page', $this->textDomain); ?></option>
                 <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
                 <?php foreach (get_pages() as $wpPage): ?>
@@ -239,7 +163,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[scrollProgressBar][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Platforms -->
@@ -310,7 +234,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[darkMode][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Switch Button Position -->
@@ -377,7 +301,7 @@ if (!defined('ABSPATH')) {
         <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
           <label class="flex items-center gap-x-1.5 cursor-pointer">
             <input type="checkbox" name="uiComponents[darkMode][batteryLow]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('uiComponents[darkMode][batteryLow]'), 'on'); ?>>
-            <span class="text-sm dark:text-neutral-400"><?php _e('Auto-enable Dark Mode if if your user\'s device battery level is low.', $this->textDomain); ?></span>
+            <span class="text-sm dark:text-neutral-400"><?php _e('Auto-enable Dark Mode if your user\'s device battery level is low.', $this->textDomain); ?></span>
           </label>
         </div>
       </div>
@@ -454,47 +378,9 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[webShareButton][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
-      <!-- Button Icon Color -->
-      <div id="settingWebShareButtonIconColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Button Icon Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the share icon color on your web share button.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[webShareButton][iconColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[webShareButton][iconColor]'); ?>" title="<?php _e('Button Icon Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Button Icon Color -->
-      <!-- Button Background Color -->
-      <div id="settingWebShareButtonBackgroundColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Button Background Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the background color of your web share button.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[webShareButton][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[webShareButton][backgroundColor]'); ?>" title="<?php _e('Button Background Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Button Background Color -->
       <!-- Button Position -->
       <div id="settingWebShareButtonPosition">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -594,28 +480,9 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[pullDownNavigation][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
-      <!-- Background Color -->
-      <div id="settingPullDownNavigationBackgroundColor">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Background Color', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the background color of pull down navigation touchscreen gesture.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <input name="uiComponents[pullDownNavigation][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('uiComponents[pullDownNavigation][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->textDomain); ?>" required>
-      </div>
-      <!-- End Background Color -->
       <!-- Supported Platforms -->
       <div id="settingPullDownNavigationPlatforms">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -684,7 +551,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[swipeNavigation][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Platforms -->
@@ -755,7 +622,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[shakeToRefresh][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Platforms -->
@@ -823,7 +690,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[loader][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Loader Type -->
@@ -936,7 +803,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[inactiveBlur][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Platforms -->
@@ -1003,7 +870,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "uiComponents[toastMessages][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Platforms -->

@@ -9,6 +9,7 @@ export function handleSelect() {
     const self = jQuery(this);
     const config = JSON.parse(self.attr('data-dp-select'));
     const size = config.size || 'sm';
+    const hasSearch = config.hasSearch || false;
     const sizeClasses = {
       xs: 'text-xs',
       sm: 'text-sm',
@@ -65,8 +66,19 @@ export function handleSelect() {
      <button type="button" data-dp-select-toggle="" class="truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 ps-3 pe-7 flex items-center text-start bg-white border border-gray-200 text-gray-500 ${textSizeClass} rounded-lg shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
         <span class="text-gray-400">${config.placeholder}</span>
       </button>
-      <div data-dp-select-dropdown="" class="absolute mt-3 z-50 min-w-44 max-h-72 p-1 space-y-0.5 overflow-hidden overflow-y-auto bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 top-full hidden">
-        ${optionTags}
+      <div data-dp-select-dropdown="" class="absolute mt-3 z-50 min-w-44 max-h-72 ${hasSearch ? 'pb-1 px-1' : 'p-1'} space-y-0.5 overflow-hidden overflow-y-auto bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 top-full hidden">
+        ${
+          hasSearch
+            ? `
+          <div class="bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900">
+            <input type="text" class="block w-full text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3" placeholder="Search..." data-dp-select-search="">
+          </div>
+        `
+            : ''
+        }
+        <div class="space-y-0.5" data-dp-select-options="">
+          ${optionTags}
+        </div>
       </div>
       <div class="absolute top-1/2 end-3 -translate-y-1/2">
         <svg class="flex-shrink-0 size-3.5 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -78,13 +90,57 @@ export function handleSelect() {
 
     const toggle = wrapper.find('[data-dp-select-toggle]');
     const dropdown = wrapper.find('[data-dp-select-dropdown]');
+    const searchInput = dropdown.find('[data-dp-select-search]');
+    const optionsContainer = dropdown.find('[data-dp-select-options]');
 
     toggle.on('click', function (event) {
       event.stopPropagation();
       daftplugAdmin.find('[data-dp-select-dropdown]').not(dropdown).addClass('hidden');
       dropdown.toggleClass('hidden');
+      if (!dropdown.hasClass('hidden') && hasSearch) {
+        setTimeout(() => searchInput.focus(), 0);
+        searchInput.val('');
+        optionsContainer.find('[data-value]').removeClass('hidden');
+        optionsContainer.find('.no-results-message').remove();
+      }
       positionDropdown(dropdown, toggle);
     });
+
+    if (hasSearch) {
+      searchInput.on('input', function () {
+        const searchTerm = jQuery(this).val().toLowerCase();
+        let hasVisibleOptions = false;
+
+        optionsContainer.find('[data-value]').each(function () {
+          const option = jQuery(this);
+          const title = option.find('[data-title]').text().toLowerCase();
+          const description = option.find('[data-description]').text().toLowerCase();
+          const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+          option.toggleClass('hidden', !matchesSearch);
+          if (matchesSearch) {
+            hasVisibleOptions = true;
+          }
+        });
+
+        // Remove existing no results message if it exists
+        optionsContainer.find('.no-results-message').remove();
+
+        // Add no results message if needed
+        if (!hasVisibleOptions) {
+          optionsContainer.find('.no-results-message').remove();
+          optionsContainer.append(`
+            <div class="no-results-message py-2 px-4 text-sm text-gray-500 dark:text-neutral-400 text-center">
+              No results found
+            </div>
+          `);
+        }
+      });
+
+      // Prevent dropdown from closing when clicking on search input
+      searchInput.on('click keydown keyup', function (event) {
+        event.stopPropagation();
+      });
+    }
 
     dropdown.on('click', '[data-value]', function (event) {
       event.stopPropagation();
@@ -101,6 +157,10 @@ export function handleSelect() {
       } else {
         selectedValues = [selectedValue];
         dropdown.addClass('hidden');
+        if (hasSearch) {
+          searchInput.val('');
+          optionsContainer.find('[data-value]').removeClass('hidden');
+        }
       }
 
       self.val(selectedValues).trigger('change');
@@ -118,10 +178,15 @@ export function handleSelect() {
     window.addEventListener('scroll', () => handleDropdownPositioning(dropdown, toggle));
     window.addEventListener('resize', () => handleDropdownPositioning(dropdown, toggle));
 
-    // Add event listener for clicks outside the dropdown
+    // Also handle clearing the no results message when dropdown closes
     document.addEventListener('click', function (event) {
       if (!dropdown.hasClass('hidden') && !dropdown.is(event.target) && !toggle.is(event.target) && dropdown.has(event.target).length === 0 && toggle.has(event.target).length === 0) {
         dropdown.addClass('hidden');
+        if (hasSearch) {
+          searchInput.val('');
+          optionsContainer.find('[data-value]').removeClass('hidden');
+          optionsContainer.find('.no-results-message').remove(); // Remove no results message
+        }
       }
     });
 
