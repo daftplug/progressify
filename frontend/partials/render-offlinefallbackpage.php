@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Offline</title>
+  <title><?php _e("You're Offline", self::$textDomain); ?></title>
   <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -14,87 +14,87 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f6f7;
-    color: #333;
+    background-color: #f3f4f6;
   }
 
-  .offline-container {
+  .offline-fallback {
     text-align: center;
-    padding: 2rem;
-    max-width: 90%;
-    width: 400px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 0 1rem;
+    max-width: 300px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 
-  .icon {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 1.5rem;
-    fill: #6366f1;
-  }
-
-  h1 {
-    margin: 0 0 1rem;
+  .offline-fallback_title {
+    display: block;
     font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
     color: #1f2937;
   }
 
-  p {
-    margin: 0 0 1.5rem;
-    line-height: 1.5;
-    color: #6b7280;
+  .offline-fallback_message {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #4b5563;
+    text-wrap: balance;
   }
 
-  button {
-    background-color: #6366f1;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
+  .offline-fallback_button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    outline: none;
     cursor: pointer;
-    transition: background-color 0.2s;
   }
 
-  button:hover {
-    background-color: #4f46e5;
+  .offline-fallback_button:hover,
+  .offline-fallback_button:focus {
+    outline: none;
+    background-color: #f9fafb;
   }
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #1f2937;
-      color: #f3f4f6;
-    }
-
-    .offline-container {
-      background: #374151;
-    }
-
-    h1 {
-      color: #f3f4f6;
-    }
-
-    p {
-      color: #d1d5db;
-    }
+  .offline-fallback_button svg {
+    width: 1.25rem;
+    height: auto;
+    color: #1f2937;
   }
   </style>
 </head>
 
 <body>
-  <div class="offline-container">
-    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1.428 4.887A11.978 11.978 0 0112 0c4.411 0 8.246 2.386 10.307 5.937a1 1 0 01-1.732.996A9.979 9.979 0 0012 2a9.98 9.98 0 00-8.771 5.215 1 1 0 01-1.801-.867v-.461zM22.572 19.113A11.978 11.978 0 0112 24a11.978 11.978 0 01-10.572-6.332 1 1 0 011.732-.997A9.98 9.98 0 0012 22a9.98 9.98 0 008.771-5.215 1 1 0 011.801.867v.461zM2.5 12a1 1 0 011-1h17a1 1 0 110 2h-17a1 1 0 01-1-1z" />
-    </svg>
-    <h1>You're Offline</h1>
-    <p>It looks like you lost your internet connection. Check your connection and try again.</p>
-    <button onclick="window.location.reload()">Try Again</button>
+  <div class="offline-fallback">
+    <div class="offline-fallback_title"><?php _e("You're Offline", self::$textDomain); ?></div>
+    <div class="offline-fallback_message">
+      <?php _e('It looks like you lost your internet connection. Please check your connection to reconnect.', self::$textDomain); ?>
+    </div>
+    <button type="button" onclick="window.location.reload()" class="offline-fallback_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
+        <path d="m2 22 3-3" />
+        <path d="M7.5 13.5 10 11" />
+        <path d="M10.5 16.5 13 14" />
+        <path d="m18 3-4 4h6l-4 4" />
+      </svg>
+      <?php _e('Reconnect', self::$textDomain); ?>
+    </button>
   </div>
-
   <script>
-  // Check if we're offline and add event listeners for online/offline status
   window.addEventListener('online', function() {
     window.location.reload();
   });
