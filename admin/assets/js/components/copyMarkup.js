@@ -33,7 +33,7 @@ function handleCopyMarkup() {
     }
 
     reindexElements(wrapperElement, wrapper, target);
-    populateInitialValues(wrapperElement, wrapper, target);
+    populateInitialValues(wrapperElement, target);
     checkLimit();
 
     // Handle the copy markup button click
@@ -99,7 +99,7 @@ function reindexElements(wrapperElement, wrapper, target) {
   });
 }
 
-function populateInitialValues(wrapperElement, wrapper, target) {
+function populateInitialValues(wrapperElement, target) {
   const elements = wrapperElement.find(`[data-dp-copy-markup-target^="${target}"]`);
 
   elements.each(function (index, el) {
@@ -137,7 +137,16 @@ function populateInitialValues(wrapperElement, wrapper, target) {
 
           // Get the value using index and key
           if (value && Array.isArray(value) && value[index] && typeof value[index] === 'object' && key in value[index]) {
-            formEl.val(value[index][key]);
+            const settingValue = value[index][key];
+
+            // For select elements, handle differently
+            if (formEl.is('select')) {
+              formEl.find('option').removeAttr('selected');
+              formEl.find(`option[value="${settingValue}"]`).attr('selected', 'selected');
+              formEl.val(settingValue).trigger('change');
+            } else {
+              formEl.val(settingValue);
+            }
           }
         }
       }

@@ -74,7 +74,6 @@ if (!defined('ABSPATH')) {
         <select name="appCapabilities[ajaxify][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[ajaxify][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -286,7 +285,6 @@ if (!defined('ABSPATH')) {
         <select name="appCapabilities[vibration][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[vibration][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -395,7 +393,6 @@ if (!defined('ABSPATH')) {
         <select name="appCapabilities[idleDetection][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[idleDetection][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -465,7 +462,6 @@ if (!defined('ABSPATH')) {
         <select name="appCapabilities[screenWakeLock][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('appCapabilities[screenWakeLock][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -541,8 +537,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][biometricAuthentication]" name="appCapabilities[advancedWebCapabilities][biometricAuthentication]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]'), 'on'); ?>>
+              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][biometricAuthentication]" name="appCapabilities[advancedWebCapabilities][biometricAuthentication]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -572,8 +568,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][backgroundSync]" name="appCapabilities[advancedWebCapabilities][backgroundSync]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][backgroundSync]'), 'on'); ?>>
+              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][backgroundSync]" name="appCapabilities[advancedWebCapabilities][backgroundSync]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][backgroundSync]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -603,8 +599,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]" name="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][periodicBackgroundSync]'), 'on'); ?>>
+              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]" name="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][periodicBackgroundSync]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -634,8 +630,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][contentIndexing]" name="appCapabilities[advancedWebCapabilities][contentIndexing]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][contentIndexing]'), 'on'); ?>>
+              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][contentIndexing]" name="appCapabilities[advancedWebCapabilities][contentIndexing]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][contentIndexing]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -664,8 +660,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][persistentStorage]" name="appCapabilities[advancedWebCapabilities][persistentStorage]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][persistentStorage]'), 'on'); ?>>
+              <input type="checkbox" id="appCapabilities[advancedWebCapabilities][persistentStorage]" name="appCapabilities[advancedWebCapabilities][persistentStorage]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][persistentStorage]'), 'on'); ?>>
             </div>
           </div>
         </label>

@@ -53,7 +53,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[navigationTabBar][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
         }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -84,24 +83,491 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Add items to the navigation tab bar. Progressify is using Font Awesome icons, so you have to enter desired icon class in Icon field. Example: fas fa-home', $this->textDomain); ?>
+                <?php _e('Add items to the navigation tab bar by selecting the icon, label (optional) and the page.', $this->textDomain); ?>
               </span>
             </button>
           </div>
         </label>
         <div class="space-y-3" data-dp-copy-markup-wrapper="navigationItems">
           <div class="flex gap-2" data-dp-copy-markup-target="navigationItem">
-            <div class="flex-none w-1/4">
-              <input name="uiComponents[navigationTabBar][navigationItems][icon]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Icon Class', $this->textDomain); ?>">
+            <div class="flex-none w-[70px]">
+              <select name="uiComponents[navigationTabBar][navigationItems][icon]" required="true" data-dp-select='{
+                "placeholder": "<?php _e('Icon', $this->textDomain); ?>",
+                "showIconOnly": true,
+                "hasSearch": true
+              }'>
+                <option value="activity" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/activity.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Activity', $this->textDomain); ?></option>
+                <option value="alarm-clock" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/alarm-clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Alarm Clock', $this->textDomain); ?></option>
+                <option value="album" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/album.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Album', $this->textDomain); ?></option>
+                <option value="archive" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/archive.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Archive', $this->textDomain); ?></option>
+                <option value="award" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/award.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Award', $this->textDomain); ?></option>
+                <option value="bed" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bed.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bed', $this->textDomain); ?></option>
+                <option value="bell-concierge" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bell-concierge.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bell Concierge', $this->textDomain); ?></option>
+                <option value="bell" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bell.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bell', $this->textDomain); ?></option>
+                <option value="bird" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bird.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bird', $this->textDomain); ?></option>
+                <option value="bitcoin" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bitcoin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bitcoin', $this->textDomain); ?></option>
+                <option value="bluetooth" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bluetooth.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bluetooth', $this->textDomain); ?></option>
+                <option value="bone" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bone', $this->textDomain); ?></option>
+                <option value="book" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/book.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Book', $this->textDomain); ?></option>
+                <option value="bookmark" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bookmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bookmark', $this->textDomain); ?></option>
+                <option value="bot" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/bot.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Bot', $this->textDomain); ?></option>
+                <option value="box" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/box.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Box', $this->textDomain); ?></option>
+                <option value="briefcase-business" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/briefcase-business.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Briefcase Business', $this->textDomain); ?></option>
+                <option value="briefcase-medical" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/briefcase-medical.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Briefcase Medical', $this->textDomain); ?></option>
+                <option value="broom" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/broom.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Broom', $this->textDomain); ?></option>
+                <option value="brush" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/brush.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Brush', $this->textDomain); ?></option>
+                <option value="burger" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/burger.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Burger', $this->textDomain); ?></option>
+                <option value="calendar" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/calendar.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Calendar', $this->textDomain); ?></option>
+                <option value="camera" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/camera.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Camera', $this->textDomain); ?></option>
+                <option value="car" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/car.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Car', $this->textDomain); ?></option>
+                <option value="cat" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/cat.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Cat', $this->textDomain); ?></option>
+                <option value="chart-line" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/chart-line.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Chart Line', $this->textDomain); ?></option>
+                <option value="chart-pie" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/chart-pie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Chart Pie', $this->textDomain); ?></option>
+                <option value="clock" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Clock', $this->textDomain); ?></option>
+                <option value="cloud" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/cloud.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Cloud', $this->textDomain); ?></option>
+                <option value="coffee" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/coffee.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Coffee', $this->textDomain); ?></option>
+                <option value="compass" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/compass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Compass', $this->textDomain); ?></option>
+                <option value="cookie" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/cookie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Cookie', $this->textDomain); ?></option>
+                <option value="cpu" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/cpu.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('CPU', $this->textDomain); ?></option>
+                <option value="credit-card" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/credit-card.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Credit Card', $this->textDomain); ?></option>
+                <option value="crown" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/crown.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Crown', $this->textDomain); ?></option>
+                <option value="database" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/database.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Database', $this->textDomain); ?></option>
+                <option value="dices" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/dices.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Dices', $this->textDomain); ?></option>
+                <option value="dna" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/dna.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('DNA', $this->textDomain); ?></option>
+                <option value="dog" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/dog.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Dog', $this->textDomain); ?></option>
+                <option value="dollar-sign" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/dollar-sign.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Dollar Sign', $this->textDomain); ?></option>
+                <option value="download" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/download.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Download', $this->textDomain); ?></option>
+                <option value="drama" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/drama.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Drama', $this->textDomain); ?></option>
+                <option value="drill" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/drill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Drill', $this->textDomain); ?></option>
+                <option value="euro" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/euro.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Euro', $this->textDomain); ?></option>
+                <option value="eye" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/eye.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Eye', $this->textDomain); ?></option>
+                <option value="facebook" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/facebook.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Facebook', $this->textDomain); ?></option>
+                <option value="file" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/file.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('File', $this->textDomain); ?></option>
+                <option value="film" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/film.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Film', $this->textDomain); ?></option>
+                <option value="filter" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/filter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Filter', $this->textDomain); ?></option>
+                <option value="fingerprint" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/fingerprint.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Fingerprint', $this->textDomain); ?></option>
+                <option value="flag" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/flag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Flag', $this->textDomain); ?></option>
+                <option value="flame" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/flame.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Flame', $this->textDomain); ?></option>
+                <option value="flower" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/flower.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Flower', $this->textDomain); ?></option>
+                <option value="folder" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/folder.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Folder', $this->textDomain); ?></option>
+                <option value="gallery-horizontal-end" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gallery-horizontal-end.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gallery Horizontal End', $this->textDomain); ?></option>
+                <option value="gamepad-2" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gamepad-2.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gamepad 2', $this->textDomain); ?></option>
+                <option value="gauge" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gauge.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gauge', $this->textDomain); ?></option>
+                <option value="gavel" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gavel.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gavel', $this->textDomain); ?></option>
+                <option value="gem" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gem.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gem', $this->textDomain); ?></option>
+                <option value="gift" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/gift.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Gift', $this->textDomain); ?></option>
+                <option value="glasses" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/glasses.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Glasses', $this->textDomain); ?></option>
+                <option value="globe" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/globe.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Globe', $this->textDomain); ?></option>
+                <option value="graduation-cap" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/graduation-cap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Graduation Cap', $this->textDomain); ?></option>
+                <option value="hammer" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/hammer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Hammer', $this->textDomain); ?></option>
+                <option value="hand-heart" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/hand-heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Hand Heart', $this->textDomain); ?></option>
+                <option value="headphones" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/headphones.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Headphones', $this->textDomain); ?></option>
+                <option value="heart" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Heart', $this->textDomain); ?></option>
+                <option value="hourglass" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/hourglass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Hourglass', $this->textDomain); ?></option>
+                <option value="house" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/house.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('House', $this->textDomain); ?></option>
+                <option value="image" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/image.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Image', $this->textDomain); ?></option>
+                <option value="info" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/info.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Info', $this->textDomain); ?></option>
+                <option value="instagram" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/instagram.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Instagram', $this->textDomain); ?></option>
+                <option value="key-round" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/key-round.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Key Round', $this->textDomain); ?></option>
+                <option value="landmark" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/landmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Landmark', $this->textDomain); ?></option>
+                <option value="languages" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/languages.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Languages', $this->textDomain); ?></option>
+                <option value="layers" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/layers.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Layers', $this->textDomain); ?></option>
+                <option value="layout-grid" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/layout-grid.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Layout Grid', $this->textDomain); ?></option>
+                <option value="life-buoy" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/life-buoy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Life Buoy', $this->textDomain); ?></option>
+                <option value="link" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/link.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Link', $this->textDomain); ?></option>
+                <option value="linkedin" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/linkedin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('LinkedIn', $this->textDomain); ?></option>
+                <option value="lock" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/lock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Lock', $this->textDomain); ?></option>
+                <option value="mail" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/mail.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Mail', $this->textDomain); ?></option>
+                <option value="map-pin" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/map-pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Map Pin', $this->textDomain); ?></option>
+                <option value="megaphone" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/megaphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Megaphone', $this->textDomain); ?></option>
+                <option value="message-circle" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/message-circle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Message Circle', $this->textDomain); ?></option>
+                <option value="mic" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/mic.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Mic', $this->textDomain); ?></option>
+                <option value="monitor-smartphone" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/monitor-smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Monitor Smartphone', $this->textDomain); ?></option>
+                <option value="moon" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/moon.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Moon', $this->textDomain); ?></option>
+                <option value="music" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/music.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Music', $this->textDomain); ?></option>
+                <option value="navigation" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/navigation.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Navigation', $this->textDomain); ?></option>
+                <option value="network" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/network.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Network', $this->textDomain); ?></option>
+                <option value="newspaper" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/newspaper.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Newspaper', $this->textDomain); ?></option>
+                <option value="palette" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/palette.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Palette', $this->textDomain); ?></option>
+                <option value="paperclip" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/paperclip.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Paperclip', $this->textDomain); ?></option>
+                <option value="paw-print" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/paw-print.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Paw Print', $this->textDomain); ?></option>
+                <option value="pencil" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/pencil.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Pencil', $this->textDomain); ?></option>
+                <option value="percent" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/percent.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Percent', $this->textDomain); ?></option>
+                <option value="phone" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/phone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Phone', $this->textDomain); ?></option>
+                <option value="pill" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/pill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Pill', $this->textDomain); ?></option>
+                <option value="pin" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Pin', $this->textDomain); ?></option>
+                <option value="pizza" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/pizza.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Pizza', $this->textDomain); ?></option>
+                <option value="plane" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/plane.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Plane', $this->textDomain); ?></option>
+                <option value="play" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/play.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Play', $this->textDomain); ?></option>
+                <option value="plus" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/plus.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Plus', $this->textDomain); ?></option>
+                <option value="podcast" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/podcast.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Podcast', $this->textDomain); ?></option>
+                <option value="popcorn" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/popcorn.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Popcorn', $this->textDomain); ?></option>
+                <option value="printer" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/printer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Printer', $this->textDomain); ?></option>
+                <option value="puzzle" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/puzzle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Puzzle', $this->textDomain); ?></option>
+                <option value="rocket" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/rocket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Rocket', $this->textDomain); ?></option>
+                <option value="save" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/save.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Save', $this->textDomain); ?></option>
+                <option value="scale" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/scale.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Scale', $this->textDomain); ?></option>
+                <option value="search" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/search.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Search', $this->textDomain); ?></option>
+                <option value="send" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/send.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Send', $this->textDomain); ?></option>
+                <option value="settings" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/settings.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Settings', $this->textDomain); ?></option>
+                <option value="share" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/share.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Share', $this->textDomain); ?></option>
+                <option value="shield" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/shield.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Shield', $this->textDomain); ?></option>
+                <option value="shirt" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/shirt.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Shirt', $this->textDomain); ?></option>
+                <option value="shopping-bag" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/shopping-bag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Shopping Bag', $this->textDomain); ?></option>
+                <option value="shopping-cart" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/shopping-cart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Shopping Cart', $this->textDomain); ?></option>
+                <option value="skull" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/skull.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Skull', $this->textDomain); ?></option>
+                <option value="sofa" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/sofa.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Sofa', $this->textDomain); ?></option>
+                <option value="sparkles" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Sparkles', $this->textDomain); ?></option>
+                <option value="sprout" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/sprout.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Sprout', $this->textDomain); ?></option>
+                <option value="star" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/star.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Star', $this->textDomain); ?></option>
+                <option value="stethoscope" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/stethoscope.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Stethoscope', $this->textDomain); ?></option>
+                <option value="store" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/store.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Store', $this->textDomain); ?></option>
+                <option value="sun" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/sun.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Sun', $this->textDomain); ?></option>
+                <option value="tag" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/tag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Tag', $this->textDomain); ?></option>
+                <option value="target" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/target.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Target', $this->textDomain); ?></option>
+                <option value="test-tube-diagonal" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/test-tube-diagonal.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Test Tube Diagonal', $this->textDomain); ?></option>
+                <option value="thumbs-up" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/thumbs-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Thumbs Up', $this->textDomain); ?></option>
+                <option value="ticket" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/ticket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Ticket', $this->textDomain); ?></option>
+                <option value="toilet" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/toilet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Toilet', $this->textDomain); ?></option>
+                <option value="trash" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/trash.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Trash', $this->textDomain); ?></option>
+                <option value="tree-pine" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/tree-pine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Tree Pine', $this->textDomain); ?></option>
+                <option value="trending-down" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/trending-down.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Trending Down', $this->textDomain); ?></option>
+                <option value="trending-up" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/trending-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Trending Up', $this->textDomain); ?></option>
+                <option value="triangle-alert" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/triangle-alert.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Triangle Alert', $this->textDomain); ?></option>
+                <option value="trophy" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/trophy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Trophy', $this->textDomain); ?></option>
+                <option value="twitch" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/twitch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Twitch', $this->textDomain); ?></option>
+                <option value="twitter" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/twitter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Twitter', $this->textDomain); ?></option>
+                <option value="upload" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/upload.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Upload', $this->textDomain); ?></option>
+                <option value="user" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/user.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('User', $this->textDomain); ?></option>
+                <option value="utensils" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/utensils.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Utensils', $this->textDomain); ?></option>
+                <option value="video" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/video.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Video', $this->textDomain); ?></option>
+                <option value="volume" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/volume.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Volume', $this->textDomain); ?></option>
+                <option value="wallet" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/wallet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Wallet', $this->textDomain); ?></option>
+                <option value="wand-sparkles" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/wand-sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Wand Sparkles', $this->textDomain); ?></option>
+                <option value="watch" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/watch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Watch', $this->textDomain); ?></option>
+                <option value="wifi" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/wifi.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Wifi', $this->textDomain); ?></option>
+                <option value="wine" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/wine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Wine', $this->textDomain); ?></option>
+                <option value="wrench" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/wrench.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Wrench', $this->textDomain); ?></option>
+                <option value="youtube" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/youtube.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Youtube', $this->textDomain); ?></option>
+                <option value="zap" data-dp-select-option='{
+                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/lucide/zap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
+                }'><?php _e('Zap', $this->textDomain); ?></option>
+              </select>
             </div>
-            <div class="flex-none w-1/4">
+            <div class="flex-none w-1/3">
               <input name="uiComponents[navigationTabBar][navigationItems][label]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Label', $this->textDomain); ?>">
             </div>
             <div class="flex-grow">
               <select name="uiComponents[navigationTabBar][navigationItems][page]" data-dp-select='{
-                "placeholder": "<?php _e('Select Page', $this->textDomain); ?>"
+                "placeholder": "<?php _e('Select Page', $this->textDomain); ?>",
+                "hasSearch": true
               }'>
-                <option value=""><?php _e('Select Page', $this->textDomain); ?></option>
                 <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
                 <?php foreach (get_pages() as $wpPage): ?>
                 <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
@@ -185,7 +651,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[scrollProgressBar][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -256,7 +721,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[darkMode][position]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Switch Button Position', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Switch Button Position', $this->textDomain); ?></option>
           <option value="bottom-right" <?php selected(Plugin::getSetting('uiComponents[darkMode][position]'), 'bottom-right'); ?>><?php esc_html_e('Bottom Right', $this->textDomain); ?></option>
           <option value="bottom-left" <?php selected(Plugin::getSetting('uiComponents[darkMode][position]'), 'bottom-left'); ?>><?php esc_html_e('Bottom Left', $this->textDomain); ?></option>
         </select>
@@ -325,7 +789,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[darkMode][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[darkMode][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -400,7 +863,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[webShareButton][position]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Button Position', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Button Position', $this->textDomain); ?></option>
           <option value="bottom-right" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'bottom-right'); ?>><?php esc_html_e('Bottom Right', $this->textDomain); ?></option>
           <option value="bottom-left" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'bottom-left'); ?>><?php esc_html_e('Bottom Left', $this->textDomain); ?></option>
           <option value="top-right" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'top-right'); ?>><?php esc_html_e('Top Right', $this->textDomain); ?></option>
@@ -427,7 +889,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[webShareButton][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[webShareButton][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -502,7 +963,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[pullDownNavigation][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[pullDownNavigation][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -573,7 +1033,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[swipeNavigation][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[swipeNavigation][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -644,7 +1103,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[shakeToRefresh][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[shakeToRefresh][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -712,7 +1170,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[loader][type]" required="true" data-dp-select='{
             "placeholder": "<?php _e('Select Loader Type', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Loader Type', $this->textDomain); ?></option>
           <option value="default" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'default'); ?> data-dp-select-option='{
             "description": "<?php _e('Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation.', $this->textDomain); ?>"
           }'><?php _e('Default', $this->textDomain); ?></option>
@@ -753,7 +1210,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[loader][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[loader][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -825,7 +1281,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[inactiveBlur][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>
@@ -892,7 +1347,6 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[toastMessages][supportedPlatforms]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Platforms', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Platforms', $this->textDomain); ?></option>
           <option value="mobile" data-dp-select-option='{
             "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('mobile', (array) Plugin::getSetting('uiComponents[toastMessages][supportedPlatforms]'))); ?>>
             <?php _e('Mobile', $this->textDomain); ?>

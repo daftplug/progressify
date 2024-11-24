@@ -198,9 +198,9 @@ if (!defined('ABSPATH')) {
           </div>
         </label>
         <select name="webAppManifest[appIdentity][categories]" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Categories', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Categories', $this->textDomain); ?>",
+          "hasSearch": true
         }'>
-          <option value=""><?php _e('Select Categories', $this->textDomain); ?></option>
           <option value="books" <?php selected(true, in_array('books', (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Books', $this->textDomain); ?></option>
           <option value="business" <?php selected(true, in_array('business', (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Business', $this->textDomain); ?></option>
           <option value="education" <?php selected(true, in_array('education', (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Education', $this->textDomain); ?></option>
@@ -271,9 +271,9 @@ if (!defined('ABSPATH')) {
           </div>
         </label>
         <select name="webAppManifest[displaySettings][startPage]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Start Page', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Start Page', $this->textDomain); ?>",
+          "hasSearch": true
         }'>
-          <option value=""><?php _e('Select Start Page', $this->textDomain); ?></option>
           <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
           <?php foreach (get_pages() as $wpPage): ?>
           <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
@@ -300,7 +300,6 @@ if (!defined('ABSPATH')) {
         <select name="webAppManifest[displaySettings][displayMode]" required="true" data-dp-select='{
             "placeholder": "<?php _e('Select Display Mode', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Display Mode', $this->textDomain); ?></option>
           <option value="standalone" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'standalone'); ?> data-dp-select-option='{
             "description": "<?php _e('Opens the app in a separate window for a native app experience.', $this->textDomain); ?>"
           }'><?php _e('Standalone', $this->textDomain); ?></option>
@@ -331,8 +330,7 @@ if (!defined('ABSPATH')) {
         </label>
         <select name="webAppManifest[displaySettings][orientation]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Orientation', $this->textDomain); ?>"
-          }'>
-          <option value=""><?php _e('Select Orientation', $this->textDomain); ?></option>
+        }'>
           <option value="any" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'any'); ?>><?php esc_html_e('Allow Both', $this->textDomain); ?></option>
           <option value="portrait" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'portrait'); ?>><?php esc_html_e('Portrait', $this->textDomain); ?></option>
           <option value="landscape" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'landscape'); ?>><?php esc_html_e('Landscape', $this->textDomain); ?></option>
@@ -379,7 +377,6 @@ if (!defined('ABSPATH')) {
         <select name="webAppManifest[appearance][iosStatusBarStyle]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select iOS Status Bar Style', $this->textDomain); ?>"
         }'>
-          <option value=""><?php _e('Select iOS Status Bar Style', $this->textDomain); ?></option>
           <option value="default" <?php selected(Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'default'); ?>><?php esc_html_e('White bar with black text', $this->textDomain); ?></option>
           <option value="light-content" <?php selected(Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'light-content'); ?>><?php esc_html_e('Black bar with white text', $this->textDomain); ?></option>
           <option value="black-translucent" <?php selected(Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'black-translucent'); ?>><?php esc_html_e('Transparent bar with white text', $this->textDomain); ?></option>
@@ -487,7 +484,6 @@ if (!defined('ABSPATH')) {
               <select name="webAppManifest[advancedFeatures][relatedApplications][platform]" data-dp-select='{
                   "placeholder": "<?php _e('Select Platform', $this->textDomain); ?>"
                 }'>
-                <option value=""><?php _e('Select Platform', $this->textDomain); ?></option>
                 <option value="play" data-dp-select-option='{
                   "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0,0,256,256\" class=\"inline-block size-5\"><g transform=\"translate(-40.96,-40.96) scale(1.32,1.32)\"><g fill=\"#7cb342\" fill-rule=\"nonzero\" stroke=\"none\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"10\" stroke-dasharray=\"\" stroke-dashoffset=\"0\" font-family=\"none\" font-weight=\"none\" font-size=\"none\" text-anchor=\"none\" style=\"mix-blend-mode: normal\"><g transform=\"scale(5.33333,5.33333)\"><path d=\"M12,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM40,29c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM22,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2zM30,40c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2v-9c0,-1.1 0.9,-2 2,-2c1.1,0 2,0.9 2,2z\"></path><path d=\"M14,18v15c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2v-15zM24,8c-6,0 -9.7,3.6 -10,8h20c-0.3,-4.4 -4,-8 -10,-8zM20,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1zM28,13.6c-0.6,0 -1,-0.4 -1,-1c0,-0.6 0.4,-1 1,-1c0.6,0 1,0.4 1,1c0,0.5 -0.4,1 -1,1z\"></path><path d=\"M28.3,10.5c-0.2,0 -0.4,-0.1 -0.6,-0.2c-0.5,-0.3 -0.6,-0.9 -0.3,-1.4l1.7,-2.5c0.3,-0.5 0.9,-0.6 1.4,-0.3c0.5,0.3 0.6,0.9 0.3,1.4l-1.7,2.5c-0.1,0.3 -0.4,0.5 -0.8,0.5zM19.3,10.1c-0.3,0 -0.7,-0.2 -0.8,-0.5l-1.3,-2.1c-0.3,-0.5 -0.2,-1.1 0.3,-1.4c0.5,-0.3 1.1,-0.2 1.4,0.3l1.3,2.1c0.3,0.5 0.2,1.1 -0.3,1.4c-0.2,0.1 -0.4,0.2 -0.6,0.2z\"></path></g></g></g></svg>"
                 }'><?php _e('Android', $this->textDomain); ?></option>
@@ -563,9 +559,9 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="flex-grow w-1/3">
               <select name="webAppManifest[advancedFeatures][appShortcuts][url]" data-dp-select='{
-                "placeholder": "<?php _e('Select Shortcut Page', $this->textDomain); ?>"
+                "placeholder": "<?php _e('Select Shortcut Page', $this->textDomain); ?>",
+                "hasSearch": true
               }' class="">
-                <option value=""><?php _e('Select Shortcut Page', $this->textDomain); ?></option>
                 <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->textDomain); ?></option>
                 <?php foreach (get_pages() as $wpPage): ?>
                 <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>

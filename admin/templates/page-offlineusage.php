@@ -85,7 +85,6 @@ if (!defined('ABSPATH')) {
             "placeholder": "<?php _e('Select Offline Fallback Page', $this->textDomain); ?>",
             "size": "xs"
           }'>
-            <option value=""><?php _e('Select Offline Fallback Page', $this->textDomain); ?></option>
             <?php foreach (get_pages() as $wpPage): ?>
             <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
             <?php endforeach; ?>
@@ -112,7 +111,6 @@ if (!defined('ABSPATH')) {
         <select name="offlineUsage[cache][strategy]" required="true" data-dp-select='{
             "placeholder": "<?php _e('Select Caching Strategy', $this->textDomain); ?>"
           }'>
-          <option value=""><?php _e('Select Caching Strategy', $this->textDomain); ?></option>
           <option value="StaleWhileRevalidate" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
             "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->textDomain); ?>"
           }'><?php _e('Stale While Revalidate', $this->textDomain); ?></option>

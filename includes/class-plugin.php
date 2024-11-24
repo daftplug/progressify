@@ -525,4 +525,22 @@ class Plugin
       return '';
     }
   }
+
+  public static function escapeSvg($svgOrUrl, $classes = 'flex-shrink-0 size-4 fill-gray-400', $isUrl = false)
+  {
+    if ($isUrl) {
+      $path = plugin_dir_path(self::$pluginFile) . str_replace(plugins_url('', self::$pluginFile), '', $svgOrUrl);
+      if (!file_exists($path)) {
+        return '';
+      }
+      $svg = file_get_contents($path);
+    } else {
+      $svg = $svgOrUrl;
+    }
+
+    $svg = preg_replace('/class="[^"]*"/', '', $svg);
+    $svg = str_replace('<svg', '<svg class="' . esc_attr($classes) . '"', $svg);
+
+    return str_replace(['\\', '"', "\n", "\r", "\t"], ['\\\\', '\\"', '', '', ''], $svg);
+  }
 }
