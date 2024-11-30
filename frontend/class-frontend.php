@@ -2,8 +2,6 @@
 
 namespace DaftPlug\Progressify;
 
-use DeviceDetector\DeviceDetector;
-
 if (!defined('ABSPATH')) {
   exit();
 }
@@ -83,7 +81,6 @@ class Frontend
         'generalError' => __('An unexpected error occurred', self::$textDomain),
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'ajaxUrl' => admin_url('admin-ajax.php'),
-        'currentUrl' => Plugin::getCurrentUrl(false),
         'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
         'slug' => $this->slug,
         'settings' => $this->settings,

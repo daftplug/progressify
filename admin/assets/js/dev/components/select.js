@@ -50,8 +50,8 @@ export function handleSelect() {
       const titleClass = description ? 'font-semibold' : '';
 
       optionTags += `
-        <div data-value="${value}" tabindex="${index}" class="group data-[selected=true]:bg-gray-100 dark:data-[selected=true]:bg-neutral-800 py-2 px-4 w-full min-w-max ${textSizeClass} text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200">
-          <div class="flex items-center">
+        <div data-value="${value}" tabindex="${index}" class="group data-[selected=true]:bg-gray-100 dark:data-[selected=true]:bg-neutral-800 py-2 px-4 ${textSizeClass} text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200">
+          <div class="flex items-center min-w-max w-full">
             ${iconMarkup}
             <div class="${titleClass} text-gray-800 dark:text-neutral-200 pr-3 flex-shrink-0" data-title>${title}</div>
             <span class="hidden group-data-[selected=true]:block ms-auto">

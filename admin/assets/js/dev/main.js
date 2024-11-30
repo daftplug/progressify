@@ -1,3 +1,6 @@
+// Preline
+import 'preline/preline';
+
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
 import { initDependentMarkup } from './components/dependentMarkup.js';

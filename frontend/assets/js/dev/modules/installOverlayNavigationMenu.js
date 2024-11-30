@@ -193,11 +193,13 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
 }
 
 export async function initInstallOverlayNavigationMenu() {
-  const { device, os, browser } = config.jsVars.userData;
+  const { device, platform } = config.jsVars.userData;
   const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isBrowser = platform.isBrowser;
+  const isPwa = platform.isPwa;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
 
-  if (!isMobileDevice || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  if (!isMobileDevice || !isBrowser || isPwa || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

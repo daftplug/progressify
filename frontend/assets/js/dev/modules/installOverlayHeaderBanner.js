@@ -214,7 +214,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
         </div>
         <div class="header-banner-overlay-buttons">
           <button type="button" class="header-banner-overlay-button_install">
-            Install Now
+            ${__('Install Now', config.slug)}
           </button>
           <button type="button" class="header-banner-overlay-button_close" aria-label="Close">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
@@ -226,11 +226,14 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 }
 
 export async function initInstallOverlayHeaderBanner() {
+  const { platform } = config.jsVars.userData;
+  const isBrowser = platform.isBrowser;
+  const isPwa = platform.isPwa;
   const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
   const hasSeenOverlay = getCookie('pwa_header_banner_overlay_shown');
 
-  if (hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  if (!isBrowser || isPwa || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

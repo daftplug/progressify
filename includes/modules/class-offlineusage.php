@@ -305,7 +305,12 @@ class OfflineUsage
 
   public function renderRegisterServiceWorker()
   {
-    $scope = $this->getServiceWorkerScope(); ?>
+    if (Plugin::getSetting('offlineUsage[cache][feature]') !== 'on') {
+      return;
+    }
+
+    $scope = $this->getServiceWorkerScope();
+    ?>
 <script type="text/javascript" id="serviceworker">
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
@@ -315,7 +320,6 @@ if ('serviceWorker' in navigator) {
           scope: <?php echo wp_json_encode($scope); ?>
         }
       );
-      console.log('ServiceWorker registration successful with scope:', registration.scope);
     } catch (error) {
       console.error('ServiceWorker registration failed:', error);
     }

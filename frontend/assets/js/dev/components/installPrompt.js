@@ -542,11 +542,11 @@ class PwaInstallPrompt extends HTMLElement {
 
     const { device, os, browser } = config.jsVars.userData;
     let btnIconSvg = '';
-    let btnIconText = 'Click to Install';
+    let btnIconText = __('Click to Install', config.slug);
 
     if (device.isSmartphone || device.isTablet) {
       btnIconSvg = svg.installMobile;
-      btnIconText = 'Tap to Install';
+      btnIconText = __('Tap to Install', config.slug);
     } else if (device.isDesktop) {
       btnIconSvg = svg.installDesktop;
     }
@@ -554,7 +554,7 @@ class PwaInstallPrompt extends HTMLElement {
     return `
       <button type="button" class="install-prompt-native-button" id="native-install-btn">
         ${btnIconSvg}
-        ${__(btnIconText, config.slug)}
+        ${btnIconText}
       </button>
     `;
   }
@@ -1011,7 +1011,7 @@ class PwaInstallPrompt extends HTMLElement {
           </div>
           <div class="install-prompt-footer">
             <button type="button" class="install-prompt-footer_close">
-              Close Dialog
+              ${__('Close Dialog', config.slug)}
             </button>
           </div>
         </div>

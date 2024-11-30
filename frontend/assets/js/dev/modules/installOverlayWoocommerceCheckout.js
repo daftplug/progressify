@@ -162,13 +162,15 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
 }
 
 export async function initInstallOverlayWoocommerceCheckout() {
-  const { device, os, browser } = config.jsVars.userData;
+  const { device, platform } = config.jsVars.userData;
   const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isBrowser = platform.isBrowser;
+  const isPwa = platform.isPwa;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
   const isWoocommerceActive = config.jsVars.pluginsData.isActive?.woocommerce;
   const isCheckoutPage = document.body.classList.contains('woocommerce-checkout');
 
-  if (!isWoocommerceActive || !isMobileDevice || !isCheckoutPage || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  if (!isWoocommerceActive || !isMobileDevice || !isBrowser || isPwa || !isCheckoutPage || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

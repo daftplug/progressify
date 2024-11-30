@@ -151,7 +151,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 4px;
+        height: 0.25rem;
         background-color: ${themeColor};
         overflow: hidden;
       }
@@ -174,7 +174,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
           <div class="snackbar-overlay-appinfo_description">${__('Installing uses no storage and offers a quick way back to our web app.', config.slug)}</div>
         </div>
         <button type="button" class="snackbar-overlay-button_install">
-          Install Now
+          ${__('Install Now', config.slug)}
         </button>
         <div class="snackbar-overlay-progressbar">
           <div class="snackbar-overlay-progressbar_inner"></div>
@@ -187,13 +187,15 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 export async function initInstallOverlaySnackbar() {
   let hasTriggered = false;
   const scrollPercentTrigger = 30;
-  const { device, os, browser } = config.jsVars.userData;
+  const { device, platform } = config.jsVars.userData;
   const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isBrowser = platform.isBrowser;
+  const isPwa = platform.isPwa;
   const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
   const hasSeenOverlay = getCookie('pwa_snackbar_overlay_shown');
 
-  if (!isMobileDevice || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  if (!isMobileDevice || !isBrowser || isPwa || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

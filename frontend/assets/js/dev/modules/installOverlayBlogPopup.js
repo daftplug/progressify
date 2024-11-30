@@ -317,7 +317,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-appinfo_appname">${appName}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -install">
-                Open
+                ${__('Open', config.slug)}
               </button>
             </div>
             <div class="blog-popup-overlay-browserinfo">
@@ -326,7 +326,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-browserinfo_title">${browserTitle}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -continue">
-                Continue
+                ${__('Continue', config.slug)}
               </button>
             </div>     
           </div>
@@ -339,13 +339,17 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 export async function initInstallOverlayBlogPopup() {
   let hasTriggered = false;
   const scrollPercentTrigger = 10;
-  const { device, os, browser } = config.jsVars.userData;
+  const { device, platform } = config.jsVars.userData;
   const isMobileDevice = device.isSmartphone || device.isTablet;
+  const isBrowser = platform.isBrowser;
+  const isPwa = platform.isPwa;
   const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
   const hasSeenOverlay = getCookie('pwa_blog_popup_overlay_shown');
 
-  if (!isMobileDevice || !isSingleBlogPost() || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  config.jsVars.userData.platform.isBrowser && !config.jsVars.userData.platform.isPwa;
+
+  if (!isMobileDevice || !isBrowser || isPwa || !isSingleBlogPost() || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

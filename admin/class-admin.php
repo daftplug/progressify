@@ -70,11 +70,8 @@ class Admin
     if ($hook && $hook == $this->menuId) {
       $this->dependencies[] = 'jquery';
 
-      wp_enqueue_script("{$this->slug}-preline", plugins_url('node_modules/preline/dist/preline.js', $this->pluginFile), $this->dependencies, $this->version, true);
-      $this->dependencies[] = "{$this->slug}-preline";
-
       wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.css', $this->pluginFile), [], $this->version);
-      wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
+      wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/admin.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
       // Ensure the script is loaded as a module
       add_filter(
