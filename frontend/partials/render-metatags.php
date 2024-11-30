@@ -24,8 +24,7 @@ $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][rela
 <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'); ?>">
 <style>
 :root {
-  accent-color: <?php echo $themeColor;
-  ?>;
+  accent-color: <?php echo $themeColor; ?>;
 }
 </style>
 

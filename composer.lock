@@ -1,9 +1,5 @@
 {
-  "_readme": [
-    "This file locks the dependencies of your project to a known state",
-    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-    "This file is @generated automatically"
-  ],
+  "_readme": ["This file locks the dependencies of your project to a known state", "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies", "This file is @generated automatically"],
   "content-hash": "fb0cedafdb05de2ac3c6be643a4f84ed",
   "packages": [
     {
@@ -45,10 +41,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT",
-        "Apache-2.0"
-      ],
+      "license": ["MIT", "Apache-2.0"],
       "authors": [
         {
           "name": "Kazuhiko Arase",
@@ -74,15 +67,7 @@
       ],
       "description": "A QR code generator and reader with a user friendly API. PHP 7.4+",
       "homepage": "https://github.com/chillerlan/php-qrcode",
-      "keywords": [
-        "phpqrcode",
-        "qr",
-        "qr code",
-        "qr-reader",
-        "qrcode",
-        "qrcode-generator",
-        "qrcode-reader"
-      ],
+      "keywords": ["phpqrcode", "qr", "qr code", "qr-reader", "qrcode", "qrcode-generator", "qrcode-reader"],
       "support": {
         "docs": "https://php-qrcode.readthedocs.io",
         "issues": "https://github.com/chillerlan/php-qrcode/issues",
@@ -132,9 +117,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Smiley",
@@ -144,12 +127,7 @@
       ],
       "description": "A container class for immutable settings objects. Not a DI container.",
       "homepage": "https://github.com/chillerlan/php-settings-container",
-      "keywords": [
-        "Settings",
-        "configuration",
-        "container",
-        "helper"
-      ],
+      "keywords": ["Settings", "configuration", "container", "helper"],
       "support": {
         "issues": "https://github.com/chillerlan/php-settings-container/issues",
         "source": "https://github.com/chillerlan/php-settings-container"
@@ -205,14 +183,10 @@
         "psr-4": {
           "DeviceDetector\\": ""
         },
-        "exclude-from-classmap": [
-          "Tests/"
-        ]
+        "exclude-from-classmap": ["Tests/"]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "LGPL-3.0-or-later"
-      ],
+      "license": ["LGPL-3.0-or-later"],
       "authors": [
         {
           "name": "The Matomo Team",
@@ -222,11 +196,7 @@
       ],
       "description": "The Universal Device Detection library, that parses User Agents and detects devices (desktop, tablet, mobile, tv, cars, console, etc.), clients (browsers, media players, mobile apps, feed readers, libraries, etc), operating systems, devices, brands and models.",
       "homepage": "https://matomo.org",
-      "keywords": [
-        "devicedetection",
-        "parser",
-        "useragent"
-      ],
+      "keywords": ["devicedetection", "parser", "useragent"],
       "support": {
         "forum": "https://forum.matomo.org/",
         "issues": "https://github.com/matomo-org/device-detector/issues",
@@ -267,9 +237,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "Serban Ghita",
@@ -280,13 +248,7 @@
       ],
       "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
       "homepage": "https://github.com/serbanghita/Mobile-Detect",
-      "keywords": [
-        "detect mobile devices",
-        "mobile",
-        "mobile detect",
-        "mobile detector",
-        "php mobile detect"
-      ],
+      "keywords": ["detect mobile devices", "mobile", "mobile detect", "mobile detector", "php mobile detect"],
       "support": {
         "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
         "source": "https://github.com/serbanghita/Mobile-Detect/tree/4.8.06"
@@ -326,14 +288,10 @@
         }
       },
       "autoload": {
-        "files": [
-          "Spyc.php"
-        ]
+        "files": ["Spyc.php"]
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "mustangostang",
@@ -342,11 +300,7 @@
       ],
       "description": "A simple YAML loader/dumper class for PHP",
       "homepage": "https://github.com/mustangostang/spyc/",
-      "keywords": [
-        "spyc",
-        "yaml",
-        "yml"
-      ],
+      "keywords": ["spyc", "yaml", "yml"],
       "support": {
         "issues": "https://github.com/mustangostang/spyc/issues",
         "source": "https://github.com/mustangostang/spyc/tree/0.6.3"
@@ -382,9 +336,7 @@
         }
       },
       "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
+      "license": ["MIT"],
       "authors": [
         {
           "name": "PHP-FIG",
@@ -392,13 +344,7 @@
         }
       ],
       "description": "Common interfaces for simple caching",
-      "keywords": [
-        "cache",
-        "caching",
-        "psr",
-        "psr-16",
-        "simple-cache"
-      ],
+      "keywords": ["cache", "caching", "psr", "psr-16", "simple-cache"],
       "support": {
         "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
       },
