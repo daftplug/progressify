@@ -705,7 +705,7 @@ if (!defined('ABSPATH')) {
         <select name="uiComponents[darkMode][type]" required="true" data-dp-select='{
           "placeholder": "<?php _e('Select Switch Button Type', $this->textDomain); ?>"
           }'>
-          <option value="menu-switch" <?php selected(Plugin::getSetting('uiComponents[darkMode][type]'), 'menu'); ?>><?php esc_html_e('Menu Switch', $this->textDomain); ?></option>
+          <option value="menu-switch" <?php selected(Plugin::getSetting('uiComponents[darkMode][type]'), 'menu-switch'); ?>><?php esc_html_e('Menu Switch', $this->textDomain); ?></option>
           <option value="floating-button" <?php selected(Plugin::getSetting('uiComponents[darkMode][type]'), 'floating-button'); ?>><?php esc_html_e('Floating Button', $this->textDomain); ?></option>
         </select>
       </div>

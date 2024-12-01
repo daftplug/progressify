@@ -49,7 +49,7 @@ class PwaDarkMode extends HTMLElement {
     styleSheet.textContent = `
       /* Dark mode CSS variables */
       :root {
-        --dm-transition-time: 0.3s;
+        --dm-transition-time: 0.2s;
         ${Object.entries(this.colorScheme.light)
           .map(([key, value]) => `--dm-${key}: ${value};`)
           .join('\n')}
@@ -310,25 +310,23 @@ class PwaDarkMode extends HTMLElement {
     );
   }
 
-  toggleDarkMode() {
-    if (this.darkMode) {
-      this.disableDarkMode();
-    } else {
-      this.enableDarkMode();
-    }
-  }
-
   updateIcon() {
-    const iconElement = this.shadowRoot.querySelector('.dark-mode-icon');
+    const iconElement = this.shadowRoot.querySelector('.dark-mode-floating-icon, .dark-mode-menu-icon');
     if (iconElement) {
       iconElement.innerHTML = this.darkMode ? this.icons.dark : this.icons.light;
     }
   }
 
   handleModeChange() {
-    const button = this.shadowRoot.querySelector('.dark-mode-switch');
+    const button = this.shadowRoot.querySelector('.dark-mode-floating-button, .dark-mode-menu-button');
     if (button) {
-      button.addEventListener('click', () => this.toggleDarkMode());
+      button.addEventListener('click', () => {
+        if (this.darkMode) {
+          this.disableDarkMode();
+        } else {
+          this.enableDarkMode();
+        }
+      });
     }
 
     // Initialize mode from localStorage or system preference
@@ -341,78 +339,120 @@ class PwaDarkMode extends HTMLElement {
     this.styles.add(css);
   }
 
-  render() {
-    this.icons = {
-      light: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
-      dark: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
-    };
-
-    const isFloating = this.type === 'floating-button';
-
+  renderFloatingButton() {
     this.injectStyles(`
-      .dark-mode-switch {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        padding: ${isFloating ? '12px' : '8px'};
-        background: none;
-        border: none;
-        color: inherit;
-        transition: opacity 0.3s;
+      .dark-mode-floating {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
       }
-
-      .dark-mode-switch:hover {
-        opacity: 0.8;
-      }
-
-      ${
-        isFloating
-          ? `
-        :host {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          z-index: 999;
-        }
-
-        .dark-mode-switch {
-          background: var(--theme-color, #000000);
-          color: var(--text-color, #ffffff);
-          border-radius: 50%;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-      `
-          : ''
-      }
-
-      .dark-mode-icon {
+  
+      .dark-mode-floating-button {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        background: var(--theme-color, #000000);
+        color: var(--text-color, #ffffff);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s, transform 0.2s;
       }
-
-      .dark-mode-label {
-        font-size: 14px;
-        display: ${isFloating ? 'none' : 'block'};
+  
+      .dark-mode-floating-button:hover {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+  
+      .dark-mode-floating-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
       }
     `);
 
+    return `
+      <div class="dark-mode-floating">
+        <button class="dark-mode-floating-button" aria-label="${__('Toggle dark mode')}">
+          <span class="dark-mode-floating-icon">
+            ${this.darkMode ? this.icons.dark : this.icons.light}
+          </span>
+        </button>
+      </div>
+    `;
+  }
+
+  renderMenuSwitch() {
+    this.injectStyles(`
+      .dark-mode-menu {
+        display: flex;
+        align-items: center;
+      }
+  
+      .dark-mode-menu-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        transition: opacity 0.3s;
+        font-family: inherit;
+      }
+  
+      .dark-mode-menu-button:hover {
+        opacity: 0.8;
+      }
+  
+      .dark-mode-menu-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+      }
+  
+      .dark-mode-menu-label {
+        font-size: 14px;
+        font-weight: inherit;
+        white-space: nowrap;
+      }
+    `);
+
+    return `
+      <div class="dark-mode-menu">
+        <button class="dark-mode-menu-button" aria-label="${__('Toggle dark mode')}">
+          <span class="dark-mode-menu-icon">
+            ${this.darkMode ? this.icons.dark : this.icons.light}
+          </span>
+          <span class="dark-mode-menu-label">${__('Dark Mode')}</span>
+        </button>
+      </div>
+    `;
+  }
+
+  render() {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
 
     this.shadowRoot.innerHTML = `
       <style>
-        ${Array.from(this.styles).join('\n')}
         :host {
           --theme-color: ${themeColor};
           --text-color: ${textColor};
         }
+        ${Array.from(this.styles).join('\n')}
       </style>
-      <button class="dark-mode-switch" aria-label="${__('Toggle dark mode')}">
-        <span class="dark-mode-icon">${this.darkMode ? this.icons.dark : this.icons.light}</span>
-        ${!isFloating ? `<span class="dark-mode-label">${__('Dark Mode')}</span>` : ''}
-      </button>
+      ${this.type === 'floating-button' ? this.renderFloatingButton() : this.renderMenuSwitch()}
     `;
   }
 }

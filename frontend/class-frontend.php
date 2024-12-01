@@ -55,7 +55,7 @@ class Frontend
 
   public function loadAssets()
   {
-    wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
+    wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/frontend.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
     wp_enqueue_script('wp-i18n');
     wp_set_script_translations("{$this->slug}-frontend", self::$textDomain);
