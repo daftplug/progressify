@@ -55,7 +55,7 @@ class Frontend
 
   public function loadAssets()
   {
-    wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/frontend.js', $this->pluginFile), $this->dependencies, $this->version, true);
+    wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/dev/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
     wp_enqueue_script('wp-i18n');
     wp_set_script_translations("{$this->slug}-frontend", self::$textDomain);
@@ -129,7 +129,8 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
+  ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

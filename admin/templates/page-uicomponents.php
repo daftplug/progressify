@@ -791,100 +791,8 @@ if (!defined('ABSPATH')) {
     </div>
   </fieldset>
   <!-- End Dark Mode -->
-  <!-- Web Share Button -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionWebShareButton">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
-        <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-          <path
-            d="M723.06-100q-40.48 0-68.73-28.36-28.25-28.36-28.25-68.88 0-7.82 1.5-17.74 1.5-9.92 5.27-17.64l-319.93-188.3q-13.46 17.77-33.67 27.88-20.21 10.12-42.17 10.12-40.45 0-68.77-28.34Q140-439.6 140-480.09q0-40.49 28.31-68.74 28.32-28.25 68.77-28.25 22.5 0 42.21 9.39 19.71 9.38 33.63 27.15l319.93-187.08q-3.77-7.84-5.27-17.2-1.5-9.36-1.5-18.1 0-40.45 28.34-68.77Q682.76-860 723.24-860q40.49 0 68.74 28.29 28.25 28.29 28.25 68.7 0 41.43-28.31 69.3-28.32 27.86-68.77 27.86-22.31 0-41.84-8.65-19.54-8.65-33.77-26.42L328.38-516q2.77 8 4.27 17.96 1.5 9.95 1.5 18.12 0 8.17-1.5 17.08-1.5 8.92-4.27 16.92l319.16 185.84q14.23-15.54 33.08-24.8 18.84-9.27 42.53-9.27 40.45 0 68.77 27.77 28.31 27.78 28.31 68.83t-28.34 69.3Q763.55-100 723.06-100Zm.26-596.62q27.45 0 46.8-19.51 19.34-19.52 19.34-46.96 0-27.45-19.51-46.79-19.52-19.35-46.97-19.35-27.44 0-46.79 19.52-19.34 19.51-19.34 46.96 0 27.44 19.51 46.79 19.52 19.34 46.96 19.34ZM237.25-413.69q27.44 0 46.79-19.52 19.34-19.51 19.34-46.96t-19.51-46.79q-19.52-19.35-46.96-19.35-27.45 0-46.79 19.52-19.35 19.51-19.35 46.96t19.52 46.79q19.51 19.35 46.96 19.35Zm486.07 282.92q27.45 0 46.8-19.52 19.34-19.51 19.34-46.96 0-27.44-19.51-46.79-19.52-19.34-46.97-19.34-27.44 0-46.79 19.51-19.34 19.52-19.34 46.96 0 27.45 19.51 46.79 19.52 19.35 46.96 19.35Zm-.17-632.15ZM237.08-480Zm486.07 282.92Z" />
-        </svg>
-        <div class="grow">
-          <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Web Share Button', $this->textDomain); ?>
-            <div class="relative inline-flex">
-              <input type="checkbox" name="uiComponents[webShareButton][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Plugin::getSetting('uiComponents[webShareButton][feature]'),
-                'on'
-              ); ?>>
-            </div>
-          </label>
-          <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('With the Web Share API, web apps are able to use the same system-provided share capabilities as platform-specific apps. Here you can enable floating share button with the native share functionality for your users.', $this->textDomain); ?>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
-      "target": "uiComponents[webShareButton][feature]",
-      "state": "checked",
-      "mode": "availability"
-    }'>
-      <!-- Button Position -->
-      <div id="settingWebShareButtonPosition">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Switch Button Position', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select position of your web share button on your website.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <select name="uiComponents[webShareButton][position]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Button Position', $this->textDomain); ?>"
-          }'>
-          <option value="bottom-right" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'bottom-right'); ?>><?php esc_html_e('Bottom Right', $this->textDomain); ?></option>
-          <option value="bottom-left" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'bottom-left'); ?>><?php esc_html_e('Bottom Left', $this->textDomain); ?></option>
-          <option value="top-right" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'top-right'); ?>><?php esc_html_e('Top Right', $this->textDomain); ?></option>
-          <option value="top-left" <?php selected(Plugin::getSetting('uiComponents[webShareButton][position]'), 'top-left'); ?>><?php esc_html_e('Top Left', $this->textDomain); ?></option>
-        </select>
-      </div>
-      <!-- End Button Position -->
-      <!-- Supported Devices -->
-      <div id="settingWebShareButtonDevices">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types web share button feature should be active and running.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <select name="uiComponents[webShareButton][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
-          }'>
-          <option value="smartphone" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[webShareButton][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
-          </option>
-          <option value="tablet" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[webShareButton][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
-          </option>
-          <option value="desktop" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"32\" y=\"64\" width=\"448\" height=\"320\" rx=\"32\" ry=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M304 448l-8-64h-80l-8 64h96z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M368 448H144\"/><path d=\"M32 304v48a32.09 32.09 0 0032 32h384a32.09 32.09 0 0032-32v-48zm224 64a16 16 0 1116-16 16 16 0 01-16 16z\"/></svg>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[webShareButton][supportedDevices]'))); ?>>
-            <?php _e('Desktop', $this->textDomain); ?>
-          </option>
-        </select>
-      </div>
-      <!-- End Supported Devices -->
-    </div>
-  </fieldset>
-  <!-- End Web Share Button -->
-  <!-- Pull Down Navigation -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPullDownNavigation">
+  <!-- Pull Down Refresh -->
+  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPullDownRefresh">
     <div class="col-span-full xl:col-span-5">
       <div class="flex gap-x-2 sticky top-14">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -893,27 +801,27 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Pull Down Navigation', $this->textDomain); ?>
+            <?php _e('Pull Down Refresh', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="uiComponents[pullDownNavigation][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Plugin::getSetting('uiComponents[pullDownNavigation][feature]'),
+              <input type="checkbox" name="uiComponents[pullDownRefresh][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
+                Plugin::getSetting('uiComponents[pullDownRefresh][feature]'),
                 'on'
               ); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Pull down navigation touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents or navigate your web app.', $this->textDomain); ?>
+            <?php _e('Pull down refresh touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents of your web app.', $this->textDomain); ?>
           </p>
         </div>
       </div>
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
-      "target": "uiComponents[pullDownNavigation][feature]",
+      "target": "uiComponents[pullDownRefresh][feature]",
       "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Devices -->
-      <div id="settingPullDownNavigationDevices">
+      <div id="settingPullDownRefreshDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
@@ -928,15 +836,15 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="uiComponents[pullDownNavigation][supportedDevices]" required="true" multiple="true" data-dp-select='{
+        <select name="uiComponents[pullDownRefresh][supportedDevices]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[pullDownNavigation][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
             <?php _e('Smartphone', $this->textDomain); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[pullDownNavigation][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
             <?php _e('Tablet', $this->textDomain); ?>
           </option>
         </select>
@@ -944,71 +852,9 @@ if (!defined('ABSPATH')) {
       <!-- End Supported Devices -->
     </div>
   </fieldset>
-  <!-- End Pull Down Navigation -->
-  <!-- Swipe Navigation -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionSwipeNavigation">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
-        <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-          <path
-            d="M480.18-834.62q-93.8 0-177.53 37.89Q218.92-758.85 147-700h126.08q5.74 0 9.41 3.66 3.66 3.65 3.66 9.38t-3.66 9.42q-3.67 3.69-9.41 3.69H147.69q-11.77 0-19.73-7.96-7.96-7.96-7.96-19.73v-125.38q0-5.75 3.66-9.41 3.65-3.67 9.38-3.67t9.42 3.67q3.69 3.66 3.69 9.41v93q74.16-55.85 157.66-91.35 83.5-35.5 176.19-35.5t176.19 35.5q83.5 35.5 157.66 91.35v-93q0-5.75 3.65-9.41 3.66-3.67 9.39-3.67t9.42 3.67q3.69 3.66 3.69 9.41v125.38q0 11.77-7.96 19.73-7.96 7.96-19.73 7.96H686.92q-5.74 0-9.41-3.65-3.66-3.66-3.66-9.39t3.66-9.42q3.67-3.69 9.41-3.69H813q-71.92-58.85-155.48-96.73-83.55-37.89-177.34-37.89ZM471.54-120q-19.12 0-35.95-7.23-16.82-7.23-31.28-20.92L218.92-332.77q-5.3-5.69-5.73-14-.42-8.31 4.81-14.23l.23.54q6.39-8.31 16.19-11.35 9.81-3.04 20.35-.34L380-341.54V-680q0-6.54 4.49-10.96 4.48-4.42 11.11-4.42 6.63 0 10.9 4.42 4.27 4.42 4.27 10.96v344.08q0 13.95-10.85 22.32-10.84 8.37-24.07 4.37l-122.93-33 174 173.22q8.93 8.93 20.8 13.59 11.87 4.65 23.82 4.65H620q45.85 0 77.54-31.69 31.69-31.69 31.69-77.54v-169.23q0-6.54 4.49-10.96 4.48-4.43 11.11-4.43 6.63 0 10.9 4.43 4.27 4.42 4.27 10.96V-260q0 58.31-40.85 99.15-40.84 40.85-99 40.85H471.54Zm40.29-444.62q6.63 0 10.9 4.43 4.27 4.42 4.27 10.96V-400q0 6.54-4.49 10.96-4.48 4.42-11.11 4.42-6.63 0-10.9-4.42-4.27-4.42-4.27-10.96v-149.23q0-6.54 4.49-10.96 4.48-4.43 11.11-4.43Zm116.77 40q6.63 0 10.9 4.43 4.27 4.42 4.27 10.96V-400q0 6.54-4.49 10.96-4.48 4.42-11.11 4.42-6.63 0-10.9-4.42Q613-393.46 613-400v-109.23q0-6.54 4.49-10.96 4.48-4.43 11.11-4.43Zm-57.52 256.54Z" />
-        </svg>
-        <div class="grow">
-          <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Swipe Navigation', $this->textDomain); ?>
-            <div class="relative inline-flex">
-              <input type="checkbox" name="uiComponents[swipeNavigation][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Plugin::getSetting('uiComponents[swipeNavigation][feature]'),
-                'on'
-              ); ?>>
-            </div>
-          </label>
-          <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Swipe Navigation enables users to navigate web pages by swiping on the screen. A left swipe triggers the browser\'s "Back" action, while a right swipe triggers the "Next" action.', $this->textDomain); ?>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
-      "target": "uiComponents[swipeNavigation][feature]",
-      "state": "checked",
-      "mode": "availability"
-    }'>
-      <!-- Supported Devices -->
-      <div id="settingSwipeNavigationDevices">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle ms-1 flex">
-              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types swipe navigation feature should be active and running.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
-        <select name="uiComponents[swipeNavigation][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
-          }'>
-          <option value="smartphone" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[swipeNavigation][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
-          </option>
-          <option value="tablet" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[swipeNavigation][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
-          </option>
-        </select>
-      </div>
-      <!-- End Supported Devices -->
-    </div>
-  </fieldset>
-  <!-- End Swipe Navigation -->
-  <!-- Shake To Refresh -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionShakeToRefresh">
+  <!-- End Pull Down Refresh -->
+  <!-- Shake Refresh -->
+  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionShakeRefresh">
     <div class="col-span-full xl:col-span-5">
       <div class="flex gap-x-2 sticky top-14">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -1017,27 +863,24 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Shake To Refresh', $this->textDomain); ?>
+            <?php _e('Shake Refresh', $this->textDomain); ?>
             <div class="relative inline-flex">
-              <input type="checkbox" name="uiComponents[shakeToRefresh][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
-                Plugin::getSetting('uiComponents[shakeToRefresh][feature]'),
-                'on'
-              ); ?>>
+              <input type="checkbox" name="uiComponents[shakeRefresh][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[shakeRefresh][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Shake to refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen.', $this->textDomain); ?>
+            <?php _e('Shake refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen.', $this->textDomain); ?>
           </p>
         </div>
       </div>
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
-      "target": "uiComponents[shakeToRefresh][feature]",
+      "target": "uiComponents[shakeRefresh][feature]",
       "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Devices -->
-      <div id="settingShakeToRefreshDevices">
+      <div id="settingShakeRefreshDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
@@ -1052,15 +895,15 @@ if (!defined('ABSPATH')) {
             </button>
           </div>
         </label>
-        <select name="uiComponents[shakeToRefresh][supportedDevices]" required="true" multiple="true" data-dp-select='{
+        <select name="uiComponents[shakeRefresh][supportedDevices]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[shakeToRefresh][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
             <?php _e('Smartphone', $this->textDomain); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[shakeToRefresh][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
             <?php _e('Tablet', $this->textDomain); ?>
           </option>
         </select>
@@ -1068,7 +911,7 @@ if (!defined('ABSPATH')) {
       <!-- End Supported Devices -->
     </div>
   </fieldset>
-  <!-- End Shake To Refresh -->
+  <!-- End Shake Refresh -->
   <!-- Loader -->
   <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionLoader">
     <div class="col-span-full xl:col-span-5">

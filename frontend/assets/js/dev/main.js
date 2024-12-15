@@ -12,44 +12,52 @@ export const config = (() => {
   };
 })();
 
-async function initModules() {
+// Load modules
+document.addEventListener('DOMContentLoaded', async function () {
   // Installation Overlays and Button
   if (config.jsVars.settings.installation?.prompts?.feature === 'on') {
     // Install Url
     const { initInstallUrl } = await import('./modules/installUrl.js');
-    initInstallUrl();
+    await initInstallUrl();
+
     // Installation Button
     const { initInstallButton } = await import('./modules/installButton.js');
-    initInstallButton();
+    await initInstallButton();
+
     // Installation Overlay - Header Banner
     if (config.jsVars.settings.installation?.prompts?.types?.headerBanner === 'on') {
       const { initInstallOverlayHeaderBanner } = await import('./modules/installOverlayHeaderBanner.js');
-      initInstallOverlayHeaderBanner();
+      await initInstallOverlayHeaderBanner();
     }
+
     // Installation Overlay - Snackbar
     if (config.jsVars.settings.installation?.prompts?.types?.snackbar === 'on') {
       const { initInstallOverlaySnackbar } = await import('./modules/installOverlaySnackbar.js');
-      initInstallOverlaySnackbar();
+      await initInstallOverlaySnackbar();
     }
+
     // Installation Overlay - Blog Popup
     if (config.jsVars.settings.installation?.prompts?.types?.blogPopup === 'on') {
       const { initInstallOverlayBlogPopup } = await import('./modules/installOverlayBlogPopup.js');
-      initInstallOverlayBlogPopup();
+      await initInstallOverlayBlogPopup();
     }
+
     // Installation Overlay - Navigation Menu
     if (config.jsVars.settings.installation?.prompts?.types?.navigationMenu === 'on') {
       const { initInstallOverlayNavigationMenu } = await import('./modules/installOverlayNavigationMenu.js');
-      initInstallOverlayNavigationMenu();
+      await initInstallOverlayNavigationMenu();
     }
+
     // Installation Overlay - In Feed
     if (config.jsVars.settings.installation?.prompts?.types?.inFeed === 'on') {
       const { initInstallOverlayInFeed } = await import('./modules/installOverlayInFeed.js');
-      initInstallOverlayInFeed();
+      await initInstallOverlayInFeed();
     }
+
     // Installation Overlay - Woocommerce Checkout
     if (config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout === 'on') {
       const { initInstallOverlayWoocommerceCheckout } = await import('./modules/installOverlayWoocommerceCheckout.js');
-      initInstallOverlayWoocommerceCheckout();
+      await initInstallOverlayWoocommerceCheckout();
     }
   }
 
@@ -58,33 +66,43 @@ async function initModules() {
     // Offline Notification
     if (config.jsVars.settings.offlineUsage?.capabilities?.notification === 'on') {
       const { initOfflineNotification } = await import('./modules/offlineNotification.js');
-      initOfflineNotification();
+      await initOfflineNotification();
     }
 
     // Offline Forms
     if (config.jsVars.settings.offlineUsage?.capabilities?.forms === 'on') {
       const { initOfflineForms } = await import('./modules/offlineForms.js');
-      initOfflineForms();
+      await initOfflineForms();
     }
   }
 
   // Navigation Tab Bar
   if (config.jsVars.settings.uiComponents?.navigationTabBar?.feature === 'on') {
     const { initNavigationTabBar } = await import('./modules/navigationTabBar.js');
-    initNavigationTabBar();
+    await initNavigationTabBar();
   }
 
   // Scroll Progress Bar
   if (config.jsVars.settings.uiComponents?.scrollProgressBar?.feature === 'on') {
     const { initScrollProgressBar } = await import('./modules/scrollProgressBar.js');
-    initScrollProgressBar();
+    await initScrollProgressBar();
   }
 
   // Dark Mode
   if (config.jsVars.settings.uiComponents?.darkMode?.feature === 'on') {
     const { initDarkMode } = await import('./modules/darkMode.js');
-    initDarkMode();
+    await initDarkMode();
   }
-}
 
-document.addEventListener('DOMContentLoaded', initModules);
+  // Pull Down Refresh
+  if (config.jsVars.settings.uiComponents?.pullDownRefresh?.feature === 'on') {
+    const { initPullDownRefresh } = await import('./modules/pullDownRefresh.js');
+    await initPullDownRefresh();
+  }
+
+  // Shake Refresh
+  if (config.jsVars.settings.uiComponents?.shakeRefresh?.feature === 'on') {
+    const { initShakeRefresh } = await import('./modules/shakeRefresh.js');
+    await initShakeRefresh();
+  }
+});

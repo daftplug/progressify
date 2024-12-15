@@ -1,5 +1,4 @@
 import { config } from '../main.js';
-import { getContrastTextColor } from '../components/utils.js';
 
 class PwaScrollProgressBar extends HTMLElement {
   constructor() {
@@ -18,7 +17,7 @@ class PwaScrollProgressBar extends HTMLElement {
 
     if (!scrollProgressBar) {
       scrollProgressBar = document.createElement('pwa-scroll-progress-bar');
-      document.body.appendChild(scrollProgressBar);
+      config.daftplugFrontend.appendChild(scrollProgressBar);
     }
 
     return scrollProgressBar;

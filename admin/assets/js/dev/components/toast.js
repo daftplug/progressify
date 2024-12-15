@@ -93,7 +93,7 @@ export default function showToast(title, description, type, position = 'bottom-r
 
   if (autodismiss) {
     const progressBar = jQuery('<div>', {
-      class: 'flex absolute left-0 bottom-0 w-full h-1.5 bg-white overflow-hidden dark:bg-neutral-700',
+      class: 'flex absolute left-0 bottom-0 w-full h-1 bg-white overflow-hidden dark:bg-neutral-700',
       role: 'progressbar',
       'aria-valuenow': '100',
       'aria-valuemin': '0',

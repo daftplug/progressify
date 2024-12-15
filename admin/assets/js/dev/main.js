@@ -1,5 +1,5 @@
 // Preline
-import 'preline/preline';
+import '/wp-content/plugins/daftplug-progressify/node_modules/preline/dist/preline.js';
 
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
@@ -22,7 +22,8 @@ import { initChangelog } from './modules/changelog.js';
 // import { initApexcharts } from './modules/apexcharts.js';
 // import { initInstallationsChart } from './modules/installationsChart.js';
 
-async function initModules() {
+// Load modules
+document.addEventListener('DOMContentLoaded', async function () {
   // Components
   initCopyMarkup();
   initDependentMarkup();
@@ -43,6 +44,4 @@ async function initModules() {
   initChangelog();
   // initApexcharts();
   // initInstallationsChart();
-}
-
-document.addEventListener('DOMContentLoaded', initModules);
+});

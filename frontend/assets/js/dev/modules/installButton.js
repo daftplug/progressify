@@ -68,7 +68,7 @@ class PwaInstallButton extends HTMLElement {
   }
 }
 
-export function initInstallButton() {
+export async function initInstallButton() {
   const { platform } = config.jsVars.userData;
   const isBrowser = platform.isBrowser;
   const isPwa = platform.isPwa;

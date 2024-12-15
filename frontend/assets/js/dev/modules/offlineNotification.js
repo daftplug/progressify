@@ -169,7 +169,7 @@ class PwaOfflineNotification extends HTMLElement {
   }
 }
 
-export function initOfflineNotification() {
+export async function initOfflineNotification() {
   if (!customElements.get('pwa-offline-notification')) {
     customElements.define('pwa-offline-notification', PwaOfflineNotification);
   }

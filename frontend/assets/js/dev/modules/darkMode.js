@@ -10,29 +10,20 @@ class PwaDarkMode extends HTMLElement {
     this.styles = new Set();
     this.darkMode = localStorage.getItem('darkMode') === 'enabled';
     this.type = config.jsVars.settings.uiComponents.darkMode.type;
-    this.colorScheme = {
-      dark: {
-        background: '#1a1a1a',
-        surface: '#2d2d2d',
-        surfaceLighter: '#404040',
-        text: '#ffffff',
-        textSecondary: '#e0e0e0',
-        border: '#404040',
-        link: '#66b3ff',
-        linkVisited: '#b366ff',
-        input: '#2d2d2d',
-      },
-      light: {
-        background: '#ffffff',
-        surface: '#f5f5f5',
-        surfaceLighter: '#e0e0e0',
-        text: '#333333',
-        textSecondary: '#666666',
-        border: '#dddddd',
-        link: '#0066cc',
-        linkVisited: '#551a8b',
-        input: '#ffffff',
-      },
+    this.icons = {
+      light: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
+      dark: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
+    };
+    this.darkColorScheme = {
+      background: '#1c1c1c',
+      surface: '#2d2d2d',
+      surfaceLighter: '#404040',
+      text: '#ffffff',
+      textSecondary: '#e0e0e0',
+      border: '#404040',
+      link: '#66b3ff',
+      linkVisited: '#b366ff',
+      input: '#2d2d2d',
     };
   }
 
@@ -44,114 +35,107 @@ class PwaDarkMode extends HTMLElement {
     this.checkBatteryLevel();
   }
 
+  injectStyles(css) {
+    this.styles.add(css);
+  }
+
   injectGlobalStyles() {
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
       /* Dark mode CSS variables */
-      :root {
-        --dm-transition-time: 0.2s;
-        ${Object.entries(this.colorScheme.light)
-          .map(([key, value]) => `--dm-${key}: ${value};`)
-          .join('\n')}
-      }
-
       :root.dark {
-        ${Object.entries(this.colorScheme.dark)
+        ${Object.entries(this.darkColorScheme)
           .map(([key, value]) => `--dm-${key}: ${value};`)
           .join('\n')}
       }
 
-      :root.dark body {
-        background-color: var(--dm-background);
-        color: var(--dm-text);
+      :root.dark * {
+        background-color: var(--dm-background) !important;
+        color: var(--dm-text) !important;
       }
 
       /* Element specific styles */
-      :root.dark * {
-        transition: background-color var(--dm-transition-time) ease,
-                   color var(--dm-transition-time) ease,
-                   border-color var(--dm-transition-time) ease,
-                   box-shadow var(--dm-transition-time) ease;
-      }
-
       :root.dark img:not([src*=".svg"]),
       :root.dark video,
       :root.dark iframe {
-        opacity: 0.8;
-        filter: brightness(0.9);
+        opacity: 0.8 !important;
+        -webkit-filter: brightness(0.9) !important;
+                filter: brightness(0.9) !important;
       }
 
       :root.dark img[src*=".svg"] {
-        filter: brightness(0.9) invert(1);
+        -webkit-filter: brightness(0.9) invert(1) !important;
+                filter: brightness(0.9) invert(1) !important;
       }
 
       :root.dark input,
       :root.dark textarea,
       :root.dark select {
-        background-color: var(--dm-input);
-        color: var(--dm-text);
-        border-color: var(--dm-border);
+        background-color: var(--dm-input) !important;
+        color: var(--dm-text) !important;
+        border-color: var(--dm-border) !important;
       }
 
       :root.dark a:not([class]) {
-        color: var(--dm-link);
+        color: var(--dm-link) !important;
       }
 
       :root.dark a:not([class]):visited {
-        color: var(--dm-linkVisited);
+        color: var(--dm-linkVisited) !important;
       }
 
       :root.dark [class*="shadow"],
       :root.dark [class*="Shadow"] {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+        -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
       }
 
       :root.dark pre,
       :root.dark code {
-        background-color: var(--dm-surfaceLighter);
+        background-color: var(--dm-surfaceLighter) !important;
       }
 
       :root.dark table,
       :root.dark th,
       :root.dark td {
-        border-color: var(--dm-border);
+        border-color: var(--dm-border) !important;
       }
 
       :root.dark th {
-        background-color: var(--dm-surface);
+        background-color: var(--dm-surface) !important;
       }
 
       :root.dark tr:nth-child(even) {
-        background-color: var(--dm-surfaceLighter);
+        background-color: var(--dm-surfaceLighter) !important;
       }
 
       :root.dark blockquote {
-        background-color: var(--dm-surface);
-        border-left-color: var(--dm-border);
+        background-color: var(--dm-surface) !important;
+        border-left-color: var(--dm-border) !important;
       }
 
       /* Handle common components and frameworks */
-      :root.dark [class*="header"],
-      :root.dark [class*="nav"],
-      :root.dark [class*="footer"] {
-        background-color: var(--dm-surface);
+      :root.dark header,
+      :root.dark nav,
+      :root.dark footer {
+        background-color: var(--dm-surface) !important;
       }
 
       :root.dark [class*="card"],
       :root.dark [class*="panel"],
       :root.dark [class*="box"] {
-        background-color: var(--dm-surface);
-        border-color: var(--dm-border);
+        background-color: var(--dm-surface) !important;
+        border-color: var(--dm-border) !important;
       }
 
       /* Handle WordPress specific elements */
       :root.dark .wp-block-button__link {
-        background-color: var(--dm-surface);
-        color: var(--dm-text);
+        background-color: var(--dm-surface) !important;
+        color: var(--dm-text) !important;
       }
 
       :root.dark .wp-block-quote {
-        border-color: var(--dm-border);
+        border-color: var(--dm-border) !important;
       }
     `;
 
@@ -240,7 +224,7 @@ class PwaDarkMode extends HTMLElement {
         }
       } else {
         // Floating button
-        document.body.appendChild(darkModeSwitch);
+        config.daftplugFrontend.appendChild(darkModeSwitch);
       }
     }
 
@@ -287,6 +271,7 @@ class PwaDarkMode extends HTMLElement {
   enableDarkMode() {
     document.documentElement.classList.add('dark');
     localStorage.setItem('darkMode', 'enabled');
+    this.shadowRoot.querySelector('.dark-mode-floating, .dark-mode-menu').classList.add('-dark');
     this.darkMode = true;
     this.updateIcon();
     this.dispatchEvent(
@@ -300,6 +285,7 @@ class PwaDarkMode extends HTMLElement {
   disableDarkMode() {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('darkMode', 'disabled');
+    this.shadowRoot.querySelector('.dark-mode-floating, .dark-mode-menu').classList.remove('-dark');
     this.darkMode = false;
     this.updateIcon();
     this.dispatchEvent(
@@ -318,9 +304,9 @@ class PwaDarkMode extends HTMLElement {
   }
 
   handleModeChange() {
-    const button = this.shadowRoot.querySelector('.dark-mode-floating-button, .dark-mode-menu-button');
+    const button = this.shadowRoot.querySelector('.dark-mode-floating, .dark-mode-menu');
     if (button) {
-      button.addEventListener('click', () => {
+      button.addEventListener('click', (e) => {
         if (this.darkMode) {
           this.disableDarkMode();
         } else {
@@ -335,8 +321,75 @@ class PwaDarkMode extends HTMLElement {
     }
   }
 
-  injectStyles(css) {
-    this.styles.add(css);
+  renderMenuSwitch() {
+    this.injectStyles(`
+      .dark-mode-menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        position: relative;
+        border-radius: 9999px;
+        width: 40px;
+        height: 22px;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+        border: 1px solid #c2c2c4;
+        background-color: #eff0f3;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .dark-mode-menu.-dark {
+        border: 1px solid #3c3f44;
+        background-color: #272a2f;
+      }
+  
+      .dark-mode-menu-icon {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        position: absolute;
+        left: 1px;
+        width: 12px;
+        height: 12px;
+        padding: 4px;
+        border-radius: 50%;
+        color: #48484e;
+        background-color: #ffffff;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+        -webkit-transition: -webkit-transform .25s !important;
+        transition: -webkit-transform .25s !important;
+        -o-transition: transform .25s !important;
+        transition: transform .25s !important;
+        transition: transform .25s, -webkit-transform .25s !important;
+      }
+
+      .dark-mode-menu.-dark .dark-mode-menu-icon {
+        background-color: #000000;
+        color: #ffffff;
+        -webkit-transform: translate(18px);
+            -ms-transform: translate(18px);
+                transform: translate(18px);
+      }
+    `);
+
+    return `
+      <div class="dark-mode-menu ${this.darkMode ? '-dark' : ''}" aria-label="${__('Toggle dark mode')}">
+        <span class="dark-mode-menu-icon">
+          ${this.darkMode ? this.icons.dark : this.icons.light}
+        </span>
+      </div>
+    `;
   }
 
   renderFloatingButton() {
@@ -346,113 +399,68 @@ class PwaDarkMode extends HTMLElement {
         bottom: 20px;
         right: 20px;
         z-index: 999;
-      }
-  
-      .dark-mode-floating-button {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        padding: 12px;
-        background: var(--theme-color, #000000);
-        color: var(--text-color, #ffffff);
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: #eff0f3;
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        transition: opacity 0.3s, transform 0.2s;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
-  
-      .dark-mode-floating-button:hover {
-        opacity: 0.8;
-        transform: scale(1.05);
+
+      .dark-mode-floating.-dark {
+        background: #000000;
       }
   
       .dark-mode-floating-icon {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        width: 18px;
+        height: 18px;
+        color: #48484e;
+      }
+
+      .dark-mode-floating.-dark .dark-mode-floating-icon {
+        color: #ffffff;
       }
     `);
 
     return `
-      <div class="dark-mode-floating">
-        <button class="dark-mode-floating-button" aria-label="${__('Toggle dark mode')}">
-          <span class="dark-mode-floating-icon">
-            ${this.darkMode ? this.icons.dark : this.icons.light}
-          </span>
-        </button>
-      </div>
-    `;
-  }
-
-  renderMenuSwitch() {
-    this.injectStyles(`
-      .dark-mode-menu {
-        display: flex;
-        align-items: center;
-      }
-  
-      .dark-mode-menu-button {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px;
-        background: none;
-        border: none;
-        color: inherit;
-        cursor: pointer;
-        transition: opacity 0.3s;
-        font-family: inherit;
-      }
-  
-      .dark-mode-menu-button:hover {
-        opacity: 0.8;
-      }
-  
-      .dark-mode-menu-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-      }
-  
-      .dark-mode-menu-label {
-        font-size: 14px;
-        font-weight: inherit;
-        white-space: nowrap;
-      }
-    `);
-
-    return `
-      <div class="dark-mode-menu">
-        <button class="dark-mode-menu-button" aria-label="${__('Toggle dark mode')}">
-          <span class="dark-mode-menu-icon">
-            ${this.darkMode ? this.icons.dark : this.icons.light}
-          </span>
-          <span class="dark-mode-menu-label">${__('Dark Mode')}</span>
-        </button>
+      <div class="dark-mode-floating" aria-label="${__('Toggle dark mode')}">
+        <span class="dark-mode-floating-icon">
+          ${this.darkMode ? this.icons.dark : this.icons.light}
+        </span>
       </div>
     `;
   }
 
   render() {
-    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
-    const textColor = getContrastTextColor(themeColor);
+    const menuSwitch = this.renderMenuSwitch();
+    const floatingButton = this.renderFloatingButton();
+    const combinedStyles = Array.from(this.styles).join('\n');
 
     this.shadowRoot.innerHTML = `
       <style>
-        :host {
-          --theme-color: ${themeColor};
-          --text-color: ${textColor};
-        }
-        ${Array.from(this.styles).join('\n')}
+        ${combinedStyles}
       </style>
-      ${this.type === 'floating-button' ? this.renderFloatingButton() : this.renderMenuSwitch()}
+      ${this.type === 'menu-switch' ? menuSwitch : floatingButton}
     `;
   }
 }
