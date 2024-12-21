@@ -14,6 +14,12 @@ export const config = (() => {
 
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
+  // Loader
+  if (config.jsVars.settings.uiComponents?.loader?.feature === 'on') {
+    const { initLoader } = await import('./modules/loader.js');
+    await initLoader();
+  }
+
   // Installation Overlays and Button
   if (config.jsVars.settings.installation?.prompts?.feature === 'on') {
     // Install Url
@@ -104,5 +110,17 @@ document.addEventListener('DOMContentLoaded', async function () {
   if (config.jsVars.settings.uiComponents?.shakeRefresh?.feature === 'on') {
     const { initShakeRefresh } = await import('./modules/shakeRefresh.js');
     await initShakeRefresh();
+  }
+
+  // Inactive Blur
+  if (config.jsVars.settings.uiComponents?.inactiveBlur?.feature === 'on') {
+    const { initInactiveBlur } = await import('./modules/inactiveBlur.js');
+    await initInactiveBlur();
+  }
+
+  // Toast Messages
+  if (config.jsVars.settings.uiComponents?.toastMessages?.feature === 'on') {
+    const { initToastMessages } = await import('./modules/toastMessages.js');
+    await initToastMessages();
   }
 });

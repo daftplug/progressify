@@ -60,7 +60,7 @@ class PwaInstallPrompt extends HTMLElement {
   }
 
   static show() {
-    let prompt = document.querySelector('pwa-install-overlay-header-banner');
+    let prompt = document.querySelector('pwa-install-prompt');
 
     if (!prompt) {
       prompt = document.createElement('pwa-install-prompt');
@@ -788,7 +788,7 @@ class PwaInstallPrompt extends HTMLElement {
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 9999999;
+        z-index: 99999999999999999999;
         background: rgba(0, 0, 0, 0);
         -webkit-backdrop-filter: blur(0px);
                 backdrop-filter: blur(0px);

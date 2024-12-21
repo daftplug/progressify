@@ -73,7 +73,7 @@ class PwaScrollProgressBar extends HTMLElement {
           top: 0;
           left: 0;
           width: 100%;
-          height: 0.375rem;
+          height: 0.25rem;
           background-color: #ccc;
           z-index: 999999999;
           padding-top: env(safe-area-inset-top);
@@ -83,7 +83,7 @@ class PwaScrollProgressBar extends HTMLElement {
           width: 100%;
           height: 100%;
           background-color: ${themeColor};
-          transition: width 0.05s ease-out;
+          transition: width 0.01s ease-out;
       }
     `);
 

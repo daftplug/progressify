@@ -9,7 +9,7 @@ class PwaDarkMode extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.styles = new Set();
     this.darkMode = localStorage.getItem('darkMode') === 'enabled';
-    this.type = config.jsVars.settings.uiComponents.darkMode.type;
+    this.switchType = config.jsVars.settings.uiComponents.darkMode.type;
     this.icons = {
       light: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>',
       dark: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>',
@@ -168,7 +168,7 @@ class PwaDarkMode extends HTMLElement {
   static findHeader() {
     const headerSelectors = [
       // Desktop selectors
-      'header.site-header',
+      '.site-header',
       '#masthead',
       '.main-header',
       '#site-header',
@@ -200,13 +200,13 @@ class PwaDarkMode extends HTMLElement {
   }
 
   static show() {
-    const type = config.jsVars.settings.uiComponents.darkMode.type;
     let darkModeSwitch = document.querySelector('pwa-dark-mode');
+    const switchType = config.jsVars.settings.uiComponents.darkMode.type;
 
     if (!darkModeSwitch) {
       darkModeSwitch = document.createElement('pwa-dark-mode');
 
-      if (type === 'menu-switch') {
+      if (switchType === 'menu-switch') {
         const headerData = this.findHeader();
         if (headerData?.menu) {
           const menuItem = document.createElement('li');
@@ -452,15 +452,26 @@ class PwaDarkMode extends HTMLElement {
   }
 
   render() {
-    const menuSwitch = this.renderMenuSwitch();
-    const floatingButton = this.renderFloatingButton();
+    let switchContent;
+
+    switch (this.switchType) {
+      case 'menu-switch':
+        switchContent = this.renderMenuSwitch();
+        break;
+      case 'floating-button':
+        switchContent = this.renderFloatingButton();
+        break;
+      default:
+        break;
+    }
+
     const combinedStyles = Array.from(this.styles).join('\n');
 
     this.shadowRoot.innerHTML = `
       <style>
         ${combinedStyles}
       </style>
-      ${this.type === 'menu-switch' ? menuSwitch : floatingButton}
+      ${switchContent}
     `;
   }
 }

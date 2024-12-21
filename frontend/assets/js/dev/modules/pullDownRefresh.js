@@ -23,10 +23,6 @@ class PwaPullDownRefresh extends HTMLElement {
     this.setupEventListeners();
   }
 
-  disconnectedCallback() {
-    this.removeEventListeners();
-  }
-
   static show() {
     let pullDownRefresh = document.querySelector('pwa-pull-down-refresh');
 
@@ -46,12 +42,6 @@ class PwaPullDownRefresh extends HTMLElement {
     document.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
     document.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
     document.addEventListener('touchend', this.handleTouchEnd.bind(this));
-  }
-
-  removeEventListeners() {
-    document.removeEventListener('touchstart', this.handleTouchStart);
-    document.removeEventListener('touchmove', this.handleTouchMove);
-    document.removeEventListener('touchend', this.handleTouchEnd);
   }
 
   handleTouchStart(e) {
@@ -159,8 +149,8 @@ class PwaPullDownRefresh extends HTMLElement {
   }
 
   render() {
-    const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
-    const textColor = getContrastTextColor(backgroundColor);
+    const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
+    const textColor = getContrastTextColor(themeColor);
 
     this.injectStyles(`
       :host {
@@ -172,33 +162,46 @@ class PwaPullDownRefresh extends HTMLElement {
       .pull-down-refresh {
         height: 0;
         visibility: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: ${backgroundColor};
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        background-color: ${themeColor};
         color: ${textColor};
-        gap: 0.75rem;
+        gap: 0.5rem;
         overflow: hidden;
         will-change: height;
       }
 
       .pull-down-refresh_content {
         padding: 1rem;
+       display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         gap: 0.75rem;
         min-height: 60px;
       }
 
       .pull-down-refresh_spinner {
         display: none;
-        width: 1rem;
-        height: 1rem;
+        width: 0.75rem;
+        height: 0.75rem;
         border: 0.1875rem solid ${textColor};
         border-top-color: transparent;
         border-radius: 9999px;
-        animation: spin 1s linear infinite;
+        -webkit-animation: spin 1s linear infinite;
+                animation: spin 1s linear infinite;
       }
 
       .pull-down-refresh_text {
@@ -206,9 +209,17 @@ class PwaPullDownRefresh extends HTMLElement {
         line-height: 1.25rem;
       }
 
+      @-webkit-keyframes spin {
+        to {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+
       @keyframes spin {
         to {
-          transform: rotate(360deg);
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
         }
       }
     `);

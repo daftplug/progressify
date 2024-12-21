@@ -1,5 +1,5 @@
 // Preline
-import '/wp-content/plugins/daftplug-progressify/node_modules/preline/dist/preline.js';
+import '../../../../node_modules/preline/dist/preline.js';
 
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
