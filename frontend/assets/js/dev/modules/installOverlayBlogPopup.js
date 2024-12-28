@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor, isSingleBlogPost, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
+import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -343,13 +343,12 @@ export async function initInstallOverlayBlogPopup() {
   const isMobileDevice = device.isSmartphone || device.isTablet;
   const isBrowser = platform.isBrowser;
   const isPwa = platform.isPwa;
+  const isBlogPost = config.jsVars.pageData.type.isBlogPost;
   const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
   const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
   const hasSeenOverlay = getCookie('pwa_blog_popup_overlay_shown');
 
-  config.jsVars.userData.platform.isBrowser && !config.jsVars.userData.platform.isPwa;
-
-  if (!isMobileDevice || !isBrowser || isPwa || !isSingleBlogPost() || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
+  if (!isMobileDevice || !isBrowser || isPwa || !isBlogPost || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
     return;
   }
 

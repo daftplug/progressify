@@ -2,7 +2,7 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\{Admin, Frontend};
-use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage};
+use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage, UiComponents, AppCapabilities};
 use DeviceDetector\DeviceDetector;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{Version, EccLevel};
@@ -38,6 +38,8 @@ class Plugin
   public $WebAppManifest;
   public $Installation;
   public $OfflineUsage;
+  public $UiComponents;
+  public $AppCapabilities;
 
   public function __construct($config)
   {
@@ -83,6 +85,10 @@ class Plugin
     $this->Installation = new Installation($config);
     require_once self::$pluginDirPath . 'includes/modules/class-offlineusage.php';
     $this->OfflineUsage = new OfflineUsage($config);
+    require_once self::$pluginDirPath . 'includes/modules/class-uicomponents.php';
+    $this->UiComponents = new UiComponents($config);
+    require_once self::$pluginDirPath . 'includes/modules/class-appcapabilities.php';
+    $this->AppCapabilities = new AppCapabilities($config);
   }
 
   public static function getSetting($key)
@@ -178,6 +184,81 @@ class Plugin
     }
 
     return false;
+  }
+
+  public static function isPageBuilder($pageBuilder = null)
+  {
+    $currentBuilder = 'unknown';
+    $post_id = get_the_ID();
+
+    // Elementor detection
+    if ($currentBuilder === 'unknown' && class_exists('\Elementor\Plugin')) {
+      $elementor_data = get_post_meta($post_id, '_elementor_data', true);
+      $is_elementor = false;
+
+      if (!empty($elementor_data)) {
+        $is_elementor = true;
+      } else {
+        try {
+          $elementor = \Elementor\Plugin::instance();
+          if ($elementor && $elementor->documents && $post_id) {
+            $document = $elementor->documents->get($post_id);
+            if ($document && method_exists($document, 'is_built_with_elementor')) {
+              $is_elementor = $document->is_built_with_elementor();
+            }
+          }
+        } catch (\Exception $e) {
+          // Silently fail if Elementor isn't fully initialized
+        }
+      }
+
+      if ($is_elementor) {
+        $currentBuilder = 'elementor';
+      }
+    }
+
+    // Divi detection
+    if ($currentBuilder === 'unknown' && function_exists('et_pb_is_pagebuilder_used')) {
+      if (et_pb_is_pagebuilder_used($post_id) || !empty(et_theme_builder_get_template_layouts())) {
+        $currentBuilder = 'divi';
+      }
+    }
+
+    // Oxygen detection
+    if ($currentBuilder === 'unknown' && defined('CT_VERSION')) {
+      if (!empty(get_post_meta($post_id, 'ct_builder_shortcodes', true)) || (function_exists('ct_template_output') && ct_template_output(true))) {
+        $currentBuilder = 'oxygen';
+      }
+    }
+
+    // Beaver Builder detection
+    if ($currentBuilder === 'unknown' && class_exists('FLBuilder')) {
+      if (class_exists('FLBuilderModel') && method_exists('FLBuilderModel', 'is_builder_enabled') && FLBuilderModel::is_builder_enabled($post_id)) {
+        $currentBuilder = 'beaver';
+      } elseif (class_exists('FLThemeBuilderLayoutData') && method_exists('FLThemeBuilderLayoutData', 'get_current_page_content_ids') && !empty(FLThemeBuilderLayoutData::get_current_page_content_ids())) {
+        $currentBuilder = 'beaver';
+      }
+    }
+
+    // Bricks detection
+    if ($currentBuilder === 'unknown' && defined('BRICKS_VERSION')) {
+      if (!empty(get_post_meta($post_id, 'bricks_data', true))) {
+        $currentBuilder = 'bricks';
+      }
+    }
+
+    // Block editor detection
+    if ($currentBuilder === 'unknown' && function_exists('wp_is_block_theme') && wp_is_block_theme()) {
+      $currentBuilder = 'block-editor';
+    }
+
+    // If a specific builder is passed, return boolean
+    if ($pageBuilder !== null) {
+      return $currentBuilder === $pageBuilder;
+    }
+
+    // Otherwise return the detected builder name
+    return $currentBuilder;
   }
 
   public static function isWpCommentsEnabled()

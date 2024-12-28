@@ -120,6 +120,25 @@ class Frontend
             'woocommerce' => Plugin::isPluginActive('woocommerce'),
           ],
         ],
+        'pageData' => [
+          'builder' => Plugin::isPageBuilder(),
+          'type' => [
+            'isHome' => is_front_page() || is_home(),
+            'isSingle' => is_single(),
+            'isSingular' => is_singular(),
+            'isBlogPost' => is_singular('post'),
+            'isPage' => is_page(),
+            'isSearch' => is_search(),
+            'is404' => is_404(),
+            'isCategory' => is_category(),
+            'isTag' => is_tag(),
+            'isAuthor' => is_author(),
+            'isWooShop' => function_exists('is_shop') && is_shop(),
+            'isWooProduct' => function_exists('is_product') && is_product(),
+            'isWooCart' => function_exists('is_cart') && is_cart(),
+            'isWooCheckout' => function_exists('is_checkout') && is_checkout(),
+          ],
+        ],
       ])
     );
   }
@@ -129,8 +148,7 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
-  ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

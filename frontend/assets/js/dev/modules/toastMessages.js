@@ -1,5 +1,5 @@
 import { config } from '../main.js';
-import { getContrastTextColor, isHomepage, is404, isSearchResults, isSingleBlogPost, isWoocommerceShop, isWoocommerceProduct } from '../components/utils.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -101,22 +101,22 @@ class PwaToastMessages extends HTMLElement {
     let message;
 
     switch (true) {
-      case isHomepage():
+      case config.jsVars.pageData.type.isHome:
         message = __('Homepage Opened', config.slug);
         break;
-      case is404():
+      case config.jsVars.pageData.type.is404:
         message = __('Page Not Found', config.slug);
         break;
-      case isSearchResults():
+      case config.jsVars.pageData.type.isSearch:
         message = __('Search Results', config.slug);
         break;
-      case isSingleBlogPost():
+      case config.jsVars.pageData.type.isBlogPost:
         message = __('Article Opened', config.slug);
         break;
-      case isWoocommerceShop():
+      case config.jsVars.pageData.type.isWooShop:
         message = __('Shop Opened', config.slug);
         break;
-      case isWoocommerceProduct():
+      case config.jsVars.pageData.type.isWooProduct:
         message = __('Product Opened', config.slug);
         break;
       default:

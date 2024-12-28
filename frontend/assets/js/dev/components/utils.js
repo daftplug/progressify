@@ -15,30 +15,6 @@ export const getContrastTextColor = (backgroundColor) => {
   return luminance > 0.5 ? '#000000' : '#ffffff';
 };
 
-export const isHomepage = () => {
-  return document.body.classList.contains('home');
-};
-
-export const is404 = () => {
-  return document.body.classList.contains('error404');
-};
-
-export const isSearchResults = () => {
-  return document.body.classList.contains('search');
-};
-
-export const isSingleBlogPost = () => {
-  return document.body.classList.contains('single-post');
-};
-
-export const isWoocommerceShop = () => {
-  return document.body.classList.contains('woocommerce-shop');
-};
-
-export const isWoocommerceProduct = () => {
-  return document.body.classList.contains('single-product');
-};
-
 export const isReturningVisitor = () => {
   const hadPreviousSession = localStorage.getItem('pwa_has_visited');
 

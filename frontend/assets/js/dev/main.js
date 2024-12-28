@@ -123,4 +123,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     const { initToastMessages } = await import('./modules/toastMessages.js');
     await initToastMessages();
   }
+
+  // Smooth Page Transitions
+  if (config.jsVars.settings.appCapabilities?.smoothPageTransitions?.feature === 'on') {
+    const { initSmoothPageTransitions } = await import('./modules/smoothPageTransitions.js');
+    await initSmoothPageTransitions();
+  }
 });

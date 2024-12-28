@@ -6,8 +6,8 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-  <!-- Ajaxify -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAjaxify">
+  <!-- Smooth Page Transitions -->
+  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionSmoothPageTransitions">
     <div class="col-span-full xl:col-span-5">
       <div class="flex gap-x-2 sticky top-14">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -16,47 +16,87 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Ajaxify', $this->textDomain); ?>
+            <?php _e('Smooth Page Transitions', $this->textDomain); ?>
             <span class="inline-flex items-center leading-none py-0.5 px-1 !-ml-1 mt-1 rounded-full text-[0.55rem] font-medium border border-gray-200 bg-white text-yellow-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-yellow-500">Beta</span>
             <div class="relative inline-flex">
-              <input type="checkbox" name="appCapabilities[ajaxify][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[ajaxify][feature]'), 'on'); ?>>
+              <input type="checkbox" name="appCapabilities[smoothPageTransitions][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Ajaxify brings a true native app like experience by loading your content without reloading entire page. If you want to exclude certain links or forms from Ajaxify, just add no-ajaxy class on the element.', $this->textDomain); ?>
+            <?php _e('This feature provides a true native app-like experience by loading content without reloading the entire page. It enables smooth slide and fade transition animations between pages and displays a progress bar while the page loads.', $this->textDomain); ?>
           </p>
         </div>
       </div>
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
-      "target": "appCapabilities[ajaxify][feature]",
-                  "state": "checked",
+      "target": "appCapabilities[smoothPageTransitions][feature]",
+      "state": "checked",
       "mode": "availability"
     }'>
-      <!-- Ajaxify Forms -->
-      <div id="settingAjaxifyForms">
-        <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Ajaxify Forms', $this->textDomain); ?>
+      <!-- Loading Progress Bar -->
+      <div id="settingLoadingProgressBar" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
+        <label for="appCapabilities[smoothPageTransitions][progressBar]" class="cursor-pointer flex gap-x-3">
+          <div class="grow">
+            <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
+              <?php _e('Loading Progress Bar', $this->textDomain); ?>
+              <div class="hs-tooltip inline-block [--placement:top]">
+                <button type="button" class="hs-tooltip-toggle ms-1 flex">
+                  <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                  </svg>
+                  <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                    <?php _e('Enabling this options shows a page transition progress on top of the screen as the page loads.', $this->textDomain); ?>
+                  </span>
+                </button>
+              </div>
+            </h3>
+            <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
+              <?php _e('Display a progress bar at the top of the screen during page transitions.', $this->textDomain); ?>
+            </p>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="relative inline-block">
+              <input type="checkbox" id="appCapabilities[smoothPageTransitions][progressBar]" name="appCapabilities[smoothPageTransitions][progressBar]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
+                Plugin::getSetting('appCapabilities[smoothPageTransitions][progressBar]'),
+                'on'
+              ); ?>>
+            </div>
+          </div>
+        </label>
+      </div>
+      <!-- End Loading Progress Bar -->
+      <!-- Transition Type -->
+      <div id="settingTransitionType">
+        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+          <?php _e('Transition Type', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle ms-1 flex">
               <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
-              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('By default Ajaxify only applies on links, so only page loadings are ajaxified, but from here you can also ajaxify form submissions.', $this->textDomain); ?> </span>
+              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php _e('Select the type of transition you want your pages to be swipped with.', $this->textDomain); ?>
+              </span>
             </button>
           </div>
-        </div>
-        <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
-          <label class="flex items-center gap-x-1.5 cursor-pointer">
-            <input type="checkbox" name="appCapabilities[ajaxify][forms]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('appCapabilities[ajaxify][forms]'), 'on'); ?>>
-            <span class="text-sm dark:text-neutral-400"><?php _e('Ajaxify form submissions as well.', $this->textDomain); ?></span>
-          </label>
-        </div>
+        </label>
+        <select name="appCapabilities[smoothPageTransitions][transition]" required="true" data-dp-select='{
+            "placeholder": "<?php _e('Select Transition Type', $this->textDomain); ?>"
+          }'>
+          <option value="slide" <?php selected(Plugin::getSetting('appCapabilities[smoothPageTransitions][transition]'), 'slide'); ?> data-dp-select-option='{
+            "description": "<?php _e('Makes the content slide out to one direction, and slide in from the other.', $this->textDomain); ?>"
+          }'><?php _e('Slide', $this->textDomain); ?></option>
+          <option value="fade" <?php selected(Plugin::getSetting('appCapabilities[smoothPageTransitions][transition]'), 'fade'); ?> data-dp-select-option='{
+            "description": "<?php _e('Makes the content fade out when leaving, and fade in when entering.', $this->textDomain); ?>"
+          }'><?php _e('Fade', $this->textDomain); ?></option>
+        </select>
       </div>
-      <!-- End Ajaxify Forms -->
+      <!-- End Transition Type -->
       <!-- Supported Devices -->
-      <div id="settingAjaxifyDevices">
+      <div id="settingSmoothPageTransitionsDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
@@ -66,34 +106,56 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types ajaxify feature should be active and running.', $this->textDomain); ?>
+                <?php _e('Select on what device types smooth page transitions feature should be active and running.', $this->textDomain); ?>
               </span>
             </button>
           </div>
         </label>
-        <select name="appCapabilities[ajaxify][supportedDevices]" required="true" multiple="true" data-dp-select='{
+        <select name="appCapabilities[smoothPageTransitions][supportedDevices]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[ajaxify][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400 -mr-0.5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><rect x=\"128\" y=\"16\" width=\"256\" height=\"480\" rx=\"48\" ry=\"48\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path d=\"M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
             <?php _e('Smartphone', $this->textDomain); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[ajaxify][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"80\" y=\"16\" width=\"352\" height=\"480\" rx=\"48\" ry=\"48\" transform=\"rotate(-90 256 256)\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\"/></svg>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
             <?php _e('Tablet', $this->textDomain); ?>
           </option>
           <option value="desktop" data-dp-select-option='{
-            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"32\" y=\"64\" width=\"448\" height=\"320\" rx=\"32\" ry=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M304 448l-8-64h-80l-8 64h96z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M368 448H144\"/><path d=\"M32 304v48a32.09 32.09 0 0032 32h384a32.09 32.09 0 0032-32v-48zm224 64a16 16 0 1116-16 16 16 0 01-16 16z\"/></svg>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('appCapabilities[ajaxify][supportedDevices]'))); ?>>
+            "icon": "<svg class=\"flex-shrink-0 size-4 fill-gray-400\" xmlns=\"http://www.w3.org/2000/svg\" class=\"ionicon\" viewBox=\"0 0 512 512\"><rect x=\"32\" y=\"64\" width=\"448\" height=\"320\" rx=\"32\" ry=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"32\"/><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M304 448l-8-64h-80l-8 64h96z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"32\" d=\"M368 448H144\"/><path d=\"M32 304v48a32.09 32.09 0 0032 32h384a32.09 32.09 0 0032-32v-48zm224 64a16 16 0 1116-16 16 16 0 01-16 16z\"/></svg>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
             <?php _e('Desktop', $this->textDomain); ?>
           </option>
         </select>
       </div>
       <!-- End Supported Devices -->
+      <!-- Compatibility Mode -->
+      <div id="settingCompatibilityMode">
+        <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
+          <?php _e('Compatibility Mode ', $this->textDomain); ?>
+          <div class="hs-tooltip inline-block [--placement:top]">
+            <button type="button" class="hs-tooltip-toggle ms-1 flex">
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('Enable this only if certain features on your website stop working, and you notice issues where page navigation reloads the entire page instead of transitioning smoothly.', $this->textDomain); ?> </span>
+            </button>
+          </div>
+        </div>
+        <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
+          <label class="flex items-center gap-x-1.5 cursor-pointer">
+            <input type="checkbox" name="appCapabilities[smoothPageTransitions][compatibilityMode]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('appCapabilities[smoothPageTransitions][compatibilityMode]'), 'on'); ?>>
+            <span class="text-sm dark:text-neutral-400"><?php _e('Use custom content wrapper and force script reinitialization.', $this->textDomain); ?></span>
+          </label>
+        </div>
+      </div>
+      <!-- End Compatibility Mode -->
     </div>
   </fieldset>
-  <!-- End Ajaxify -->
+  <!-- End Smooth Page Transitions -->
   <!-- URL Protocol Handler -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAjaxify">
+  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionUrlProtocolHandler">
     <div class="col-span-full xl:col-span-5">
       <div class="flex gap-x-2 sticky top-14">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -259,7 +321,7 @@ if (!defined('ABSPATH')) {
       "mode": "availability"
     }'>
       <!-- Supported Devices -->
-      <div id="settingAjaxifyDevices">
+      <div id="settingVibrationDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
@@ -317,7 +379,7 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[idleDetection][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Threshold -->
@@ -359,7 +421,7 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Threshold -->
       <!-- Supported Devices -->
-      <div id="settingAjaxifyDevices">
+      <div id="settingIdleDetectionDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
@@ -416,11 +478,11 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "appCapabilities[screenWakeLock][feature]",
-                  "state": "checked",
+      "state": "checked",
       "mode": "availability"
     }'>
       <!-- Supported Devices -->
-      <div id="settingAjaxifyDevices">
+      <div id="settingScreenWakeLockDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Supported Devices', $this->textDomain); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
