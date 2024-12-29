@@ -141,4 +141,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     const { initIdleDetection } = await import('./modules/idleDetection.js');
     await initIdleDetection();
   }
+
+  // Screen Wake Lock
+  if (config.jsVars.settings.appCapabilities?.screenWakeLock?.feature === 'on') {
+    const { initScreenWakeLock } = await import('./modules/screenWakeLock.js');
+    await initScreenWakeLock();
+  }
 });
