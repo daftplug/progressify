@@ -129,4 +129,16 @@ document.addEventListener('DOMContentLoaded', async function () {
     const { initSmoothPageTransitions } = await import('./modules/smoothPageTransitions.js');
     await initSmoothPageTransitions();
   }
+
+  // Vibrations
+  if (config.jsVars.settings.appCapabilities?.vibrations?.feature === 'on') {
+    const { initVibrations } = await import('./modules/vibrations.js');
+    await initVibrations();
+  }
+
+  // Idle Detection
+  if (config.jsVars.settings.appCapabilities?.idleDetection?.feature === 'on') {
+    const { initIdleDetection } = await import('./modules/idleDetection.js');
+    await initIdleDetection();
+  }
 });

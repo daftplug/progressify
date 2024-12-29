@@ -46,17 +46,18 @@ class AppCapabilities
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
 
-    add_action('after_setup_theme', [$this, 'handleWrapAllSwup']);
+    add_action('after_setup_theme', [$this, 'wrapAllContentWithSwup']);
+    add_filter("{$this->optionName}_manifest", [$this, 'addUrlProtocolHandlerToManifest']);
+    add_filter("{$this->optionName}_manifest", [$this, 'addWebShareTargetToManifest']);
+    add_filter("{$this->optionName}_frontend_css", [$this, 'injectThemeColorSwupProgressBarCss']);
   }
 
-  public function handleWrapAllSwup()
+  public function wrapAllContentWithSwup()
   {
-    // Don't run if compatibility mode is off or we are on known page builder
     if (Plugin::getSetting('appCapabilities[smoothPageTransitions][compatibilityMode]') !== 'on') {
       return;
     }
 
-    // Don't run for admin pages or AJAX requests
     if (is_admin() || wp_doing_ajax()) {
       return;
     }
@@ -80,5 +81,54 @@ class AppCapabilities
       },
       0
     );
+  }
+
+  public function injectThemeColorSwupProgressBarCss()
+  {
+    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]') !== 'on' || Plugin::getSetting('appCapabilities[smoothPageTransitions][progressBar]') !== 'on') {
+      return;
+    }
+
+    echo '
+      .swup-progress-bar {
+        background-color: ' .
+      Plugin::getSetting('webAppManifest[appearance][themeColor]') .
+      ' !important;
+      }
+    ';
+  }
+
+  public function addUrlProtocolHandlerToManifest($manifest)
+  {
+    if (Plugin::getSetting('appCapabilities[urlProtocolHandler][feature]') !== 'on') {
+      return $manifest;
+    }
+
+    $manifest['protocol_handlers'][] = [
+      'protocol' => 'web+' . Plugin::getSetting('appCapabilities[urlProtocolHandler][protocol]'),
+      'url' => Plugin::getSetting('appCapabilities[urlProtocolHandler][url]'),
+    ];
+
+    return $manifest;
+  }
+
+  public function addWebShareTargetToManifest($manifest)
+  {
+    if (Plugin::getSetting('appCapabilities[webShareTarget][feature]') !== 'on') {
+      return $manifest;
+    }
+
+    $manifest['share_target'] = [
+      'action' => Plugin::getSetting('appCapabilities[webShareTarget][action]'),
+      'method' => 'GET',
+      'enctype' => 'application/x-www-form-urlencoded',
+      'params' => [
+        'title' => 'title',
+        'text' => 'text',
+        'url' => Plugin::getSetting('appCapabilities[webShareTarget][urlQuery]'),
+      ],
+    ];
+
+    return $manifest;
   }
 }
