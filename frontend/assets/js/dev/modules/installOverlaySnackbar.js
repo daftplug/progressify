@@ -89,7 +89,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
         left: 1rem;
         bottom: 1rem;
         border-radius: 0.5rem;
-        z-index: 99999;
+        z-index: 9999999999;
         padding: 1rem;
         background-color: ${themeColor};
         color: ${textColor};

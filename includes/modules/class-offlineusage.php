@@ -61,11 +61,11 @@ class OfflineUsage
       return;
     }
 
-    if ($wp->request === 'serviceworker.js') {
-      $wp_query->set('serviceworker.js', 1);
+    if ($wp->request === 'sw.webworker') {
+      $wp_query->set('sw.webworker', 1);
     }
 
-    if ($wp_query->get('serviceworker.js')) {
+    if ($wp_query->get('sw.webworker')) {
       nocache_headers();
       header('X-Robots-Tag: noindex, follow');
       header('Content-Type: application/javascript; charset=utf-8');
@@ -337,7 +337,7 @@ if ('serviceWorker' in navigator) {
 
   public static function getServiceWorkerUrl($encoded = true)
   {
-    $serviceWorkerUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'serviceworker.js');
+    $serviceWorkerUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . 'sw.webworker');
     return $encoded ? wp_json_encode($serviceWorkerUrl) : $serviceWorkerUrl;
   }
 }

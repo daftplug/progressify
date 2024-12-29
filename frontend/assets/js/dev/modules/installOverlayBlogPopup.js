@@ -131,7 +131,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 9999999;
+        z-index: 9999999999;
         background: rgba(0, 0, 0, 0);
         -webkit-backdrop-filter: blur(0px);
                 backdrop-filter: blur(0px);
@@ -163,7 +163,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
         -webkit-transition: all 0.15s ease-out;
              -o-transition: all 0.15s ease-out;
                 transition: all 0.15s ease-out;
-        z-index: 999999999999999999999;
+        z-index: 9999999999;
         -webkit-transform: translateY(100%);
             -ms-transform: translateY(100%);
                 transform: translateY(100%);
