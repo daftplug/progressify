@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     <header class="h-[46px] px-8 mb-6">
       <!-- Logo -->
       <a class="flex justify-center items-center gap-1 flex-none rounded-xl text-xl font-semibold focus:outline-none [&.disabled]:pointer-events-none [&.disabled]:opacity-50" aria-label="<?php esc_html_e($this->menuTitle, $this->textDomain); ?>" href="#/dashboard/">
-        <img class="flex-none h-auto" src="<?php echo plugins_url('admin/assets/media/icon-logo.png', $this->pluginFile); ?>" alt="<?php esc_html_e($this->menuTitle, $this->textDomain); ?>" />
+        <img class="flex-none h-auto" src="<?php echo plugins_url('admin/assets/media/icons/logo.png', $this->pluginFile); ?>" alt="<?php esc_html_e($this->menuTitle, $this->textDomain); ?>" />
         <span class="flex-none text-xl font-semibold dark:text-white"><?php esc_html_e($this->menuTitle, $this->textDomain); ?></span>
         <span class="inline-flex items-center gap-x-1.5 py-[0.15rem] px-1 mt-1 rounded-full leading-[0.6rem] text-[0.55rem] font-medium border border-gray-200 bg-white text-gray-800 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white"><?php printf(__('v%s', $this->textDomain), $this->version); ?></span>
       </a>
@@ -75,7 +75,7 @@ if (!defined('ABSPATH')) {
           <!-- Generate Mobile Apps Link -->
           <li class="px-5 mb-1.5">
             <a class="w-full flex items-center gap-x-2 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-300 dark:data-[active=true]:text-white dark:focus:bg-neutral-700 data-[active=true]:bg-neutral-100 dark:data-[active=true]:bg-neutral-700 [&.disabled]:pointer-events-none [&.disabled]:opacity-50" href="#/generateMobileApps/" data-page-id="generateMobileApps">
-              <img class="flex-shrink-0 size-[22px] -mr-0.5" src="<?php echo plugins_url('admin/assets/media/icons/icon-androios.png', $this->pluginFile); ?>" alt="Mobile Apps" />
+              <img class="flex-shrink-0 size-[22px] -mr-0.5" src="<?php echo plugins_url('admin/assets/media/icons/androios.png', $this->pluginFile); ?>" alt="Mobile Apps" />
               <span class="bg-clip-text bg-gradient-to-r from-gray-800 to-lime-700 text-transparent font-medium">
                 <?php esc_html_e('Generate Mobile Apps', $this->textDomain); ?>
               </span>

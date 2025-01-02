@@ -2,6 +2,7 @@
   "require": {
     "mobiledetect/mobiledetectlib": "^4.8",
     "matomo/device-detector": "^6.4",
-    "chillerlan/php-qrcode": "^5.0"
+    "chillerlan/php-qrcode": "^5.0",
+    "minishlink/web-push": "^9.0"
   }
 }

@@ -81,46 +81,50 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
     switch (true) {
       case browser.isChrome:
         browserTitle = 'Chrome';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-chrome.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/chrome.png';
         break;
       case browser.isSafari:
         browserTitle = 'Safari';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-safari.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/safari.png';
         break;
       case browser.isFirefox:
         browserTitle = 'Firefox';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-firefox.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/firefox.png';
         break;
       case browser.isOpera:
         browserTitle = 'Opera';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-opera.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/opera.png';
         break;
       case browser.isEdge:
         browserTitle = 'Edge';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-edge.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/edge.png';
         break;
       case browser.isSamsung:
         browserTitle = 'Samsung Browser';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-samsung.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/samsung.png';
+        break;
+      case browser.isYandex:
+        browserTitle = 'Yandex Browser';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/yandex.png';
         break;
       case browser.isDuckduckgo:
         browserTitle = 'DuckDuckGo';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-duckduckgo.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/duckduckgo.png';
         break;
       case browser.isBrave:
         browserTitle = 'Brave';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-brave.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/brave.png';
         break;
       case browser.isQq:
         browserTitle = 'QQ Browser';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-qq.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/qq.png';
         break;
       case browser.isUc:
         browserTitle = 'UC Browser';
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-uc.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/uc.png';
         break;
       default:
-        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/icon-browser.png';
+        browserIcon = config.jsVars.pluginsData.dirUrl + '/frontend/assets/media/icons/browsers/browser.png';
         break;
     }
 
