@@ -72,12 +72,84 @@ class PushNotifications
       'callback' => [$this, 'removeSubscription'],
       'permission_callback' => '__return_true',
     ]);
+
+    register_rest_route($this->slug, '/sendModalPushNotification', [
+      'methods' => 'POST',
+      'callback' => [$this, 'sendModalPushNotification'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+  }
+
+  public function sendModalPushNotification(\WP_REST_Request $request)
+  {
+    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
+      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $notificationData = $request->get_param('notificationData');
+    if (empty($notificationData)) {
+      return new \WP_Error('invalid_data', 'Invalid notification data', ['status' => 400]);
+    }
+
+    $pushNotificationData = [
+      'image' => !empty($notificationData['image']) ? wp_get_attachment_url($notificationData['image']) : '',
+      'title' => sanitize_text_field($notificationData['title']),
+      'body' => sanitize_textarea_field($notificationData['message']),
+      'data' => [
+        'url' => esc_url_raw($notificationData['url']),
+      ],
+      'requireInteraction' => $notificationData['persistent'] === 'on',
+      'vibrate' => $notificationData['vibration'] === 'on' ? [200, 100, 200] : [], // Fixed double $
+      'actions' => [],
+    ];
+
+    // Handle action buttons
+    if (!empty($notificationData['actionButtons'])) {
+      foreach ($notificationData['actionButtons'] as $index => $button) {
+        if (!empty($button['text']) && !empty($button['url'])) {
+          $actionId = 'action' . $index;
+          $pushNotificationData['actions'][] = [
+            'action' => $actionId,
+            'title' => sanitize_text_field($button['text']),
+          ];
+          $pushNotificationData['data']["pushActionButton{$index}Url"] = esc_url_raw($button['url']);
+        }
+      }
+    }
+
+    $sentReport = $this->sendPushNotification('everyone', $pushNotificationData);
+
+    // Process the report
+    $sent = 0;
+    $failed = 0;
+
+    if (is_array($sentReport)) {
+      foreach ($sentReport as $report) {
+        if ($report['status'] === 'success') {
+          $sent++;
+        } else {
+          $failed++;
+        }
+      }
+
+      return new \WP_REST_Response(
+        [
+          'status' => '1',
+          'message' => sprintf(esc_html__('The notification was sent to %d out of %d recipients, with %d failure.', $this->textDomain), $sent, $sent + $failed, $failed),
+        ],
+        200
+      );
+    }
+
+    // Handle error case
+    return new \WP_Error('sending_failed', $sentReport['message'] ?? esc_html__('Sending failed. There was an error on server.', $this->textDomain), ['status' => 500]);
   }
 
   public function createSubscribersTable()
   {
-    global $wpdb;
-    $charset_collate = $wpdb->get_charset_collate();
+    $charset_collate = $this->wpdb->get_charset_collate();
     $sql = "CREATE TABLE IF NOT EXISTS $this->tableName (
       id bigint(20) NOT NULL AUTO_INCREMENT,
       endpoint varchar(500) NOT NULL,
@@ -211,11 +283,11 @@ class PushNotifications
                       self.addEventListener('notificationclick', (event) => {
                         event.notification.close();
                         switch (event.action) {
+                          case 'action0':
+                            event.waitUntil(clients.openWindow(event.notification.data.pushActionButton0Url));
+                          break;
                           case 'action1':
                             event.waitUntil(clients.openWindow(event.notification.data.pushActionButton1Url));
-                          break;
-                          case 'action2':
-                            event.waitUntil(clients.openWindow(event.notification.data.pushActionButton2Url));
                           break;
                           default:
                             event.waitUntil(clients.openWindow(event.notification.data.url));
@@ -515,7 +587,7 @@ class PushNotifications
         'title' => '',
         'badge' => '',
         'body' => '',
-        'icon' => '',
+        'icon' => esc_url_raw(@wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0] ?? ''),
         'image' => '',
         'data' => '',
         'tag' => 'notification',
@@ -559,8 +631,6 @@ class PushNotifications
         $webPush->queueNotification($subscription, json_encode($notificationData));
       }
 
-      // Send notifications and collect reports
-      $reports = [];
       foreach ($webPush->flush() as $report) {
         $endpoint = $report->getRequest()->getUri()->__toString();
 
@@ -572,9 +642,7 @@ class PushNotifications
           ];
         } else {
           // If failed due to expired subscription, remove it
-          if ($report->getReason() === 'expired' || $report->getReason() === 'invalid-subscription') {
-            $this->wpdb->delete($this->tableName, ['endpoint' => $endpoint], ['%s']);
-          }
+          $this->wpdb->delete($this->tableName, ['endpoint' => $endpoint], ['%s']);
 
           $reports[] = [
             'status' => 'failed',

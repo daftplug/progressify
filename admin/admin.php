@@ -99,6 +99,7 @@ class Admin
           'generalError' => __('An unexpected error occurred', $this->textDomain),
           'homeUrl' => trailingslashit(home_url('/', 'https')),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
+          'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
           'slug' => $this->slug,
           'settings' => $this->settings,
         ])

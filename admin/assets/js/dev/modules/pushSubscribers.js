@@ -235,7 +235,7 @@ class SubscriberManager {
 
     switch (action) {
       case 'copy-endpoint':
-        // Implement send individual notification logic or copy endpoint
+        // Implement copy endpoint functionality
         break;
       case 'delete':
         await this.removeSubscriber(endpoint);

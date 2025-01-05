@@ -19,6 +19,7 @@ import { initSupportAttachments } from './modules/supportAttachments.js';
 import { initOverlayBackdropFix } from './modules/overlayBackdropFix.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
+import { initModalPushNotifications } from './modules/modalPushNotifications.js';
 import { initChangelog } from './modules/changelog.js';
 // import { initApexcharts } from './modules/apexcharts.js';
 // import { initInstallationsChart } from './modules/installationsChart.js';
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   initOverlayBackdropFix();
   initPushImageUpload();
   initPushSubscribers();
+  initModalPushNotifications();
   initChangelog();
   // initApexcharts();
   // initInstallationsChart();
