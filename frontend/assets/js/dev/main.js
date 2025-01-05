@@ -1,13 +1,11 @@
 export const config = (() => {
   const daftplugFrontend = document.getElementById('daftplugFrontend');
   const optionName = daftplugFrontend.getAttribute('data-option-name');
-  const slug = daftplugFrontend.getAttribute('data-slug');
   const jsVars = window[optionName + '_frontend_js_vars'] || {};
 
   return {
     daftplugFrontend,
     optionName,
-    slug,
     jsVars,
   };
 })();
@@ -146,5 +144,17 @@ document.addEventListener('DOMContentLoaded', async function () {
   if (config.jsVars.settings.appCapabilities?.screenWakeLock?.feature === 'on') {
     const { initScreenWakeLock } = await import('./modules/screenWakeLock.js');
     await initScreenWakeLock();
+  }
+
+  // Push Notifications Prompt
+  if (config.jsVars.settings.pushNotifications?.prompt?.feature === 'on') {
+    const { initPushNotificationsPrompt } = await import('./modules/pushNotificationsPrompt.js');
+    await initPushNotificationsPrompt();
+  }
+
+  // Push Notifications Button
+  if (config.jsVars.settings.pushNotifications?.button?.feature === 'on') {
+    const { initPushNotificationsButton } = await import('./modules/pushNotificationsButton.js');
+    await initPushNotificationsButton();
   }
 });

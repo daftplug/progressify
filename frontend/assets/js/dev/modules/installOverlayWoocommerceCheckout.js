@@ -59,7 +59,7 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="woocommerce-checkout-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -150,11 +150,11 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
           ${appIconHtml}
           <div class="woocommerce-checkout-overlay-appinfo_texts">
             <div class="woocommerce-checkout-overlay-appinfo_title">${bannerTitle}</div>
-            <div class="woocommerce-checkout-overlay-appinfo_description">${__('Keep track of your orders. Our web app is fast, small and works offline.', config.slug)}</div>
+            <div class="woocommerce-checkout-overlay-appinfo_description">${__('Keep track of your orders. Our web app is fast, small and works offline.', config.jsVars.slug)}</div>
           </div>
         </div>
         <button type="button" class="woocommerce-checkout-overlay-button_install">
-          ${__('Install Now', config.slug)}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

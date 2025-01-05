@@ -58,7 +58,6 @@ export function handleTooltip() {
 function hideAllTooltips() {
   daftplugAdmin.find('[data-dp-tooltip]').each(function () {
     const self = jQuery(this);
-    const tooltip = self.find('[role="tooltip"]');
     self.attr('data-shown', false);
   });
 }

@@ -155,7 +155,7 @@ class PwaShakeRefresh extends HTMLElement {
       <div class="shake-notification" role="alert">
         <div class="shake-notification_spinner" role="status" aria-label="loading"></div>
         <span class="shake-notification_text">
-          ${__('Shake detected! Refreshing the page...', config.slug)}
+          ${__('Shake detected! Refreshing the page...', config.jsVars.slug)}
         </span>
       </div>
     `;

@@ -91,7 +91,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -181,11 +181,11 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
           ${appIconHtml}
           <div class="navigation-menu-overlay-appinfo_texts">
             <div class="navigation-menu-overlay-appinfo_title">${bannerTitle}</div>
-            <div class="navigation-menu-overlay-appinfo_description">${__('Find what you need faster by installing our web app!', config.slug)}</div>
+            <div class="navigation-menu-overlay-appinfo_description">${__('Find what you need faster by installing our web app!', config.jsVars.slug)}</div>
           </div>
         </div>
         <button type="button" class="navigation-menu-overlay-button_install">
-          ${__('Install Now', config.slug)}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

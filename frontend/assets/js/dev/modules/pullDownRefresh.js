@@ -100,9 +100,9 @@ class PwaPullDownRefresh extends HTMLElement {
       refreshContainer.style.height = `${pullDistance}px`;
 
       if (pullDistance > this.threshold) {
-        statusText.textContent = __('Release to refresh', config.slug);
+        statusText.textContent = __('Release to refresh', config.jsVars.slug);
       } else {
-        statusText.textContent = __('Pull down to refresh', config.slug);
+        statusText.textContent = __('Pull down to refresh', config.jsVars.slug);
       }
     }
   }
@@ -122,7 +122,7 @@ class PwaPullDownRefresh extends HTMLElement {
     if (pullDistance > this.threshold) {
       this.refreshing = true;
       refreshContainer.style.height = '60px';
-      statusText.textContent = __('Refreshing...', config.slug);
+      statusText.textContent = __('Refreshing...', config.jsVars.slug);
       spinner.style.display = 'block';
       location.reload();
     } else {
@@ -232,7 +232,7 @@ class PwaPullDownRefresh extends HTMLElement {
         <div class="pull-down-refresh_content">
           <div class="pull-down-refresh_spinner" role="status" aria-label="loading"></div>
           <span class="pull-down-refresh_text">
-            ${__('Pull down to refresh', config.slug)}
+            ${__('Pull down to refresh', config.jsVars.slug)}
           </span>
         </div>
       </div>

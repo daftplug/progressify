@@ -81,6 +81,8 @@ class Frontend
         'generalError' => __('An unexpected error occurred', self::$textDomain),
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'ajaxUrl' => admin_url('admin-ajax.php'),
+        'restUrl' => get_rest_url(),
+        'restNonce' => wp_create_nonce('wp-rest'),
         'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
         'slug' => $this->slug,
         'settings' => $this->settings,
@@ -96,6 +98,9 @@ class Frontend
             'isWindows' => Plugin::isPlatform('windows'),
             'isLinux' => Plugin::isPlatform('linux'),
             'isMac' => Plugin::isPlatform('mac'),
+            'isUbuntu' => Plugin::isPlatform('ubuntu'),
+            'isFreebsd' => Plugin::isPlatform('freebsd'),
+            'isChromeos' => Plugin::isPlatform('chromeos'),
           ],
           'browser' => [
             'isChrome' => Plugin::isPlatform('chrome'),

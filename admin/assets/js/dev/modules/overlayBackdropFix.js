@@ -8,7 +8,7 @@ function handleOverlayOpen() {
   setTimeout(() => {
     const backdropElement = document.querySelector('[data-hs-overlay-backdrop-template]');
     if (backdropElement && backdropElement.parentElement !== daftplugAdmin) {
-      backdropElement.style.zIndex = '999999';
+      backdropElement.style.zIndex = '9999';
       daftplugAdmin.appendChild(backdropElement);
     }
   }, 0);

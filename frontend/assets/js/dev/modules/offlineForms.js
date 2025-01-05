@@ -464,11 +464,11 @@ class PwaOfflineFormHandler extends HTMLElement {
           <div class="offline-form-handler-header">
             <div class="offline-form-handler-header-texts">
               <svg class="offline-form-handler-header-texts_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi-off"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg>
-              <div class="offline-form-handler-header-texts_title">${__('No Internet Connection', config.slug)}</div>
+              <div class="offline-form-handler-header-texts_title">${__('No Internet Connection', config.jsVars.slug)}</div>
             </div>
           </div>
           <div class="offline-form-handler-body">
-            <div class="offline-form-handler-body_message">${__('You’re currently offline. Your form submission data will be saved and be automatically processed in the background when you’re back online within 24 hours. Would you like to proceed?', config.slug)}</div>
+            <div class="offline-form-handler-body_message">${__('You’re currently offline. Your form submission data will be saved and be automatically processed in the background when you’re back online within 24 hours. Would you like to proceed?', config.jsVars.slug)}</div>
           </div>
           <div class="offline-form-handler-footer">
             <div class="offline-form-handler-footer-buttons">

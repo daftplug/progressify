@@ -76,7 +76,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
   render() {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const snackbarTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const snackbarTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
 
     this.injectStyles(`
       .snackbar-overlay {
@@ -171,10 +171,10 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
       <div class="snackbar-overlay">
         <div class="snackbar-overlay-appinfo">
           <div class="snackbar-overlay-appinfo_title">${snackbarTitle}</div>
-          <div class="snackbar-overlay-appinfo_description">${__('Installing uses no storage and offers a quick way back to our web app.', config.slug)}</div>
+          <div class="snackbar-overlay-appinfo_description">${__('Installing uses no storage and offers a quick way back to our web app.', config.jsVars.slug)}</div>
         </div>
         <button type="button" class="snackbar-overlay-button_install">
-          ${__('Install Now', config.slug)}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
         <div class="snackbar-overlay-progressbar">
           <div class="snackbar-overlay-progressbar_inner"></div>

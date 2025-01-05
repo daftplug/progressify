@@ -1,5 +1,4 @@
 import { config } from '../main.js';
-import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 

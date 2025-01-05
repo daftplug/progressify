@@ -2,7 +2,7 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\{Admin, Frontend};
-use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage, UiComponents, AppCapabilities};
+use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage, UiComponents, AppCapabilities, PushNotifications};
 use DeviceDetector\DeviceDetector;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{Version, EccLevel};
@@ -40,6 +40,7 @@ class Plugin
   public $OfflineUsage;
   public $UiComponents;
   public $AppCapabilities;
+  public $PushNotifications;
 
   public function __construct($config)
   {
@@ -70,14 +71,6 @@ class Plugin
       error_log('DaftPlug Progressify: Autoload file not found.');
     }
 
-    // Init Admin
-    require_once self::$pluginDirPath . 'admin/admin.php';
-    $this->Admin = new Admin($config);
-
-    // Init Frontend
-    require_once self::$pluginDirPath . 'frontend/frontend.php';
-    $this->Frontend = new Frontend($config);
-
     // Init Modules
     require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
     $this->WebAppManifest = new WebAppManifest($config);
@@ -89,6 +82,16 @@ class Plugin
     $this->UiComponents = new UiComponents($config);
     require_once self::$pluginDirPath . 'includes/modules/appcapabilities.php';
     $this->AppCapabilities = new AppCapabilities($config);
+    require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
+    $this->PushNotifications = new PushNotifications($config);
+
+    // Init Admin
+    require_once self::$pluginDirPath . 'admin/admin.php';
+    $this->Admin = new Admin($config);
+
+    // Init Frontend
+    require_once self::$pluginDirPath . 'frontend/frontend.php';
+    $this->Frontend = new Frontend($config);
   }
 
   public static function getSetting($key)
@@ -152,17 +155,17 @@ class Plugin
 
     // Device type checks
     if (in_array($platform, ['smartphone', 'tablet', 'desktop'])) {
-      return strpos(strtolower($dd->getDeviceName('name')), $platform) !== false;
+      return strpos(strtolower(str_replace(' ', '', $dd->getDeviceName('name'))), $platform) !== false;
     }
 
     // OS checks
-    if (in_array($platform, ['android', 'ios', 'windows', 'linux', 'mac'])) {
-      return strpos(strtolower($dd->getOs('name')), $platform) !== false;
+    if (in_array($platform, ['android', 'ios', 'windows', 'linux', 'mac', 'ubuntu', 'freebsd', 'chromeos'])) {
+      return strpos(strtolower(str_replace(' ', '', $dd->getOs('name'))), $platform) !== false;
     }
 
     // Browser checks
     if (in_array($platform, ['chrome', 'safari', 'firefox', 'opera', 'edge', 'samsung', 'duckduckgo', 'brave', 'qq', 'uc', 'yandex'])) {
-      return self::isPlatform('browser') && strpos(strtolower($dd->getClient('name')), $platform) !== false;
+      return self::isPlatform('browser') && strpos(strtolower(str_replace(' ', '', $dd->getClient('name'))), $platform) !== false;
     }
 
     // Special cases

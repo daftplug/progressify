@@ -102,25 +102,25 @@ class PwaToastMessages extends HTMLElement {
 
     switch (true) {
       case config.jsVars.pageData.type.isHome:
-        message = __('Homepage Opened', config.slug);
+        message = __('Homepage Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.is404:
-        message = __('Page Not Found', config.slug);
+        message = __('Page Not Found', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isSearch:
-        message = __('Search Results', config.slug);
+        message = __('Search Results', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isBlogPost:
-        message = __('Article Opened', config.slug);
+        message = __('Article Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isWooShop:
-        message = __('Shop Opened', config.slug);
+        message = __('Shop Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isWooProduct:
-        message = __('Product Opened', config.slug);
+        message = __('Product Opened', config.jsVars.slug);
         break;
       default:
-        message = __('Page Opened', config.slug);
+        message = __('Page Opened', config.jsVars.slug);
         break;
     }
 

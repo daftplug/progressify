@@ -60,7 +60,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.slug);
+    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="header-banner-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : '';
 
     this.injectStyles(`
@@ -209,12 +209,12 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
           ${appIconHtml}
           <div class="header-banner-overlay-appinfo_texts">
             <div class="header-banner-overlay-appinfo_title">${bannerTitle}</div>
-            <div class="header-banner-overlay-appinfo_description">${__("Get our web app. It won't take up space on your device.", config.slug)}</div>
+            <div class="header-banner-overlay-appinfo_description">${__("Get our web app. It won't take up space on your device.", config.jsVars.slug)}</div>
           </div>
         </div>
         <div class="header-banner-overlay-buttons">
           <button type="button" class="header-banner-overlay-button_install">
-            ${__('Install Now', config.slug)}
+            ${__('Install Now', config.jsVars.slug)}
           </button>
           <button type="button" class="header-banner-overlay-button_close" aria-label="Close">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
