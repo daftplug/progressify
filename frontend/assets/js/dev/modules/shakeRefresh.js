@@ -163,14 +163,6 @@ class PwaShakeRefresh extends HTMLElement {
 }
 
 export async function initShakeRefresh() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.shakeRefresh.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet));
-
-  if (!isDeviceSupported || !('DeviceMotionEvent' in window)) {
-    return;
-  }
-
   if (!customElements.get('pwa-shake-refresh')) {
     customElements.define('pwa-shake-refresh', PwaShakeRefresh);
   }

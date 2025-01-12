@@ -476,14 +476,6 @@ class PwaDarkMode extends HTMLElement {
 }
 
 export async function initDarkMode() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.darkMode.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet) || (supported === 'desktop' && device.isDesktop));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   if (!customElements.get('pwa-dark-mode')) {
     customElements.define('pwa-dark-mode', PwaDarkMode);
   }

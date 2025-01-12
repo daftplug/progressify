@@ -3,28 +3,7 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 <!-- ========== FOOTER ========== -->
-<footer class="lg:ps-[260px] h-[40px] sm:h-[64px] rounded-b-xl absolute bottom-0 inset-x-0">
-  <div class="p-2 sm:p-5 flex justify-between items-center">
-    <p class="text-xs sm:text-sm text-gray-500 dark:text-neutral-500">
-      © 2024 DaftPlug
-    </p>
-
-    <!-- List -->
-    <ul>
-      <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
-        <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#">
-          <?php esc_html_e('FAQ', $this->textDomain); ?>
-        </a>
-      </li>
-      <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
-        <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#">
-          <?php esc_html_e('License', $this->textDomain); ?>
-        </a>
-      </li>
-    </ul>
-    <!-- End List -->
-  </div>
-
+<footer class="hidden">
   <!-- SVG Icons -->
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
     <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="iconDashboard">

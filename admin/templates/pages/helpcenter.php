@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<div class="grid gap-4 sm:gap-6 lg:grid-cols-2">
+<div class="grid gap-4 sm:gap-6 xl:grid-cols-2">
   <!-- FAQ -->
   <div class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="mb-8">
@@ -125,7 +125,7 @@ if (!defined('ABSPATH')) {
         <?php _e('Before submitting a ticket, please make sure that the FAQ didn\'t help, you\'re using the latest version of the plugin and there are no javascript errors on your website.', $this->textDomain); ?>
       </p>
     </div>
-    <form id="supportForm" name="supportForm" spellcheck="false" autocomplete="off" class="space-y-6">
+    <form id="supportForm" name="supportForm" spellcheck="false" autocomplete="off" class="space-y-5">
       <fieldset>
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
           <?php _e('Your Name', $this->textDomain); ?>

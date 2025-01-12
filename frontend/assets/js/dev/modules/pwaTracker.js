@@ -1,0 +1,121 @@
+import { config } from '../main.js';
+import { initFingerprint } from '../components/fingerprint.js';
+import { hasUrlParam, addParamToUrl } from '../components/utils.js';
+
+// An additional JS based function to make sure we are in PWA mode
+function isPwa() {
+  const displayMode = window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches || window.matchMedia('(display-mode: minimal-ui)').matches || window.navigator.standalone;
+  const isTwa = document.referrer.startsWith('android-app://');
+  const isPwaParam = hasUrlParam('isPwa', 'true');
+
+  return displayMode || isTwa || isPwaParam;
+}
+
+// Appends isPwa query param to internal links
+function appendPwaQueryParamToInternalLinks() {
+  if (hasUrlParam('isPwa', 'true')) {
+    const observer = new MutationObserver((mutations) => {
+      const links = document.querySelectorAll('a[href]');
+
+      links.forEach((link) => {
+        const href = link.getAttribute('href');
+
+        if (!href || href === '#' || href.startsWith('javascript:') || href.startsWith('mailto:')) {
+          return;
+        }
+
+        const isInternalLink = href.includes(window.location.hostname) || href.startsWith('/') || href.startsWith('./') || href.startsWith('../') || !href.includes('://');
+
+        if (isInternalLink) {
+          try {
+            const newUrl = addParamToUrl('isPwa', 'true', href);
+            link.setAttribute('href', newUrl);
+          } catch (error) {
+            console.debug('Failed to process link:', href, error);
+          }
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  } else {
+    const newUrl = addParamToUrl('isPwa', 'true');
+    if (newUrl !== window.location.href) {
+      window.history.replaceState({}, '', newUrl);
+    }
+  }
+}
+
+// Gets visitor ID from FingerprintJS
+async function getPwaUserId() {
+  try {
+    const FingerprintJS = await initFingerprint();
+    const fp = await FingerprintJS.load();
+    const result = await fp.get();
+
+    if (!result?.visitorId) {
+      throw new Error('Failed to get visitor ID');
+    }
+
+    return result.visitorId;
+  } catch (error) {
+    console.error('Failed to get PWA user ID:', error);
+    throw error;
+  }
+}
+
+// Send PWA usage notice for analytics to server
+async function sendPwaUsageNoticeToServer(retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const pwaUserId = await getPwaUserId();
+      const response = await fetch(`${config.jsVars.restUrl}${config.jsVars.slug}/upsertPwaUser`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ pwaUserId }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      if (i === retries - 1) {
+        console.error('Failed to send tracking data after retries:', error);
+        throw error;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1))); // Exponential backoff
+    }
+  }
+}
+
+export async function initPwaTracker() {
+  // Don't proceed if we are not in PWA
+  if (!isPwa()) {
+    return;
+  }
+
+  // Add isPwa class to body for potential usage
+  document.body.classList.add('isPwa');
+
+  // Persist isPwa query param in URLs
+  appendPwaQueryParamToInternalLinks();
+
+  if (sessionStorage.getItem('pwa_session_started')) {
+    return;
+  }
+
+  try {
+    sessionStorage.setItem('pwa_session_started', 'true');
+    await sendPwaUsageNoticeToServer();
+  } catch (error) {
+    console.error('Failed to track PWA session:', error);
+  }
+}

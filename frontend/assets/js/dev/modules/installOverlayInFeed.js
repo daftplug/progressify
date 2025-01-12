@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor, isReturningVisitor } from '../components/utils.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -182,16 +182,6 @@ class PwaInstallOverlayInFeed extends HTMLElement {
 }
 
 export async function initInstallOverlayInFeed() {
-  const { device, platform } = config.jsVars.userData;
-  const isMobileDevice = device.isSmartphone || device.isTablet;
-  const isBrowser = platform.isBrowser;
-  const isPwa = platform.isPwa;
-  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
-
-  if (!isMobileDevice || !isBrowser || isPwa || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
-    return;
-  }
-
   if (!customElements.get('pwa-install-overlay-in-feed')) {
     customElements.define('pwa-install-overlay-in-feed', PwaInstallOverlayInFeed);
   }

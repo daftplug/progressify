@@ -8,11 +8,11 @@ const jsVars = window[optionName + '_admin_js_vars'];
 const { __ } = wp.i18n;
 
 export function initModalPushNotifications() {
-  daftplugAdmin.find('form[id="send-notification-popup"]').on('submit', sendModalPushNotification);
+  daftplugAdmin.find('form[id="send-notification-popup"]').on('submit', doModalPushNotification);
   daftplugAdmin.find('form[id="send-notification-popup"] #previewPushNotification').on('click', previewPushNotification);
 }
 
-function sendModalPushNotification(e) {
+function doModalPushNotification(e) {
   e.preventDefault();
   const form = jQuery(e.target);
   const parsedData = JSON.parse(form.daftplugSerialize());
@@ -26,7 +26,7 @@ function sendModalPushNotification(e) {
     notificationData: parsedData.pushNotifications.notification,
   });
 
-  fetch(wpApiSettings.root + slug + '/sendModalPushNotification', {
+  fetch(wpApiSettings.root + slug + '/doModalPushNotification', {
     method: 'POST',
     headers: {
       'X-WP-Nonce': wpApiSettings.nonce,

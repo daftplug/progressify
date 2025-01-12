@@ -241,14 +241,6 @@ class PwaPullDownRefresh extends HTMLElement {
 }
 
 export async function initPullDownRefresh() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.pullDownRefresh.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   document.body.style.overscrollBehaviorY = 'contain';
 
   if (!customElements.get('pwa-pull-down-refresh')) {

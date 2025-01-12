@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -344,18 +344,6 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 export async function initInstallOverlayBlogPopup() {
   let hasTriggered = false;
   const scrollPercentTrigger = 10;
-  const { device, platform } = config.jsVars.userData;
-  const isMobileDevice = device.isSmartphone || device.isTablet;
-  const isBrowser = platform.isBrowser;
-  const isPwa = platform.isPwa;
-  const isBlogPost = config.jsVars.pageData.type.isBlogPost;
-  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
-  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
-  const hasSeenOverlay = getCookie('pwa_blog_popup_overlay_shown');
-
-  if (!isMobileDevice || !isBrowser || isPwa || !isBlogPost || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
-    return;
-  }
 
   if (!customElements.get('pwa-install-overlay-blog-popup')) {
     customElements.define('pwa-install-overlay-blog-popup', PwaInstallOverlayBlogPopup);
@@ -367,7 +355,6 @@ export async function initInstallOverlayBlogPopup() {
     if (scrollPercent >= scrollPercentTrigger) {
       PwaInstallOverlayBlogPopup.show();
       hasTriggered = true;
-      setCookie(`pwa_blog_popup_overlay_shown`, 'true', timeout);
     }
   });
 }

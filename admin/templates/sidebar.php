@@ -3,17 +3,7 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 <!-- ========== MAIN SIDEBAR ========== -->
-<aside id="hs-pro-sidebar" class="hs-overlay [--auto-close:lg]
-  hs-overlay-open:translate-x-0
-  -translate-x-full transition-all duration-300 transform
-  w-[260px]
-  rounded-l-xl
-  hidden
-  absolute inset-y-0 start-0 z-[60]
-  bg-white border-e border-gray-200
-  lg:block lg:translate-x-0 lg:end-auto lg:bottom-0
-  dark:bg-neutral-800 dark:border-neutral-700
-">
+<aside id="hs-pro-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] rounded-l-xl hidden sticky h-[calc(100svh-130px)] inset-y-0 start-0 lg:z-[9998] z-[10000] bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700">
   <div class="flex flex-col h-full max-h-full py-3">
     <header class="h-[46px] px-8 mb-6">
       <!-- Logo -->
@@ -26,7 +16,7 @@ if (!defined('ABSPATH')) {
     </header>
 
     <!-- Content -->
-    <div class="h-[calc(100%-35px)] lg:h-[calc(100%-93px)] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+    <div class="h-[calc(100%-35px)] lg:h-[calc(100%-93px)] overflow-y-auto [scrollbar-gutter:stable] [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-4 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-2xl [&::-webkit-scrollbar-thumb]:border-[5px] [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:border-white hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-button]:hidden">
       <!-- Nav -->
       <nav class="hs-accordion-group pb-3  w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
         <ul>
@@ -174,7 +164,7 @@ if (!defined('ABSPATH')) {
           <!-- Help Dropdown -->
           <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-60 transition-[opacity,margin] duration opacity-0 hidden z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-900" aria-labelledby="hs-pro-dnhd">
             <div class="p-1">
-              <a class="flex gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" href="#/helpcenter">
+              <a class="flex gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" href="#/helpCenter">
                 <svg class="flex-shrink-0 mt-0.5 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />

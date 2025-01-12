@@ -186,17 +186,6 @@ class PwaPushNotificationsButton extends HTMLElement {
 }
 
 export async function initPushNotificationsButton() {
-  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-    return;
-  }
-
-  const behavior = config.jsVars.settings.pushNotifications.button.behavior;
-  const subscriptionState = await PushNotificationsSubscription.getSubscriptionState();
-
-  if (subscriptionState === 'blocked' || (subscriptionState === 'subscribed' && behavior === 'hidden')) {
-    return;
-  }
-
   if (!customElements.get('pwa-push-notifications-button')) {
     customElements.define('pwa-push-notifications-button', PwaPushNotificationsButton);
   }

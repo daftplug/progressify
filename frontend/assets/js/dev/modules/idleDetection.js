@@ -166,14 +166,6 @@ class PwaIdleDetection extends HTMLElement {
 }
 
 export async function initIdleDetection() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.appCapabilities.idleDetection.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet) || (supported === 'desktop' && device.isDesktop));
-
-  if (!isDeviceSupported || !('IdleDetector' in window)) {
-    return;
-  }
-
   // Register the web component
   if (!customElements.get('pwa-idle-detection')) {
     customElements.define('pwa-idle-detection', PwaIdleDetection);

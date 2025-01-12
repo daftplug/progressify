@@ -1,27 +1,28 @@
 <!-- ========== MAIN CONTENT ========== -->
-<main id="content" class="bg-gray-50 dark:bg-neutral-900 rounded-xl lg:ps-[260px] sm:py-[60px] pb-[45px] pt-[70px]">
+<main id="content" class="w-full bg-gray-50 dark:bg-neutral-900 rounded-xl lg:ps-[260px] pt-[59px] absolute top-0 h-[calc(100svh-130px)] overflow-y-auto">
   <?php foreach ($this->pages as $page): ?>
-  <section class="p-2 sm:p-7 sm:py-0 md:pt-7 space-y-7 hidden data-[active=true]:block animate-[pageFade_.15s]" data-page-id="<?php echo esc_attr($page['id']); ?>">
-    <?php if (!empty($page['pageTitle'])): ?>
-    <!-- Header -->
-    <div>
-      <!-- Heading -->
-      <h1 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white">
-        <?php echo esc_html($page['pageTitle']); ?>
-      </h1>
-      <!-- End Heading -->
-      <?php if (!empty($page['description'])): ?>
-      <!-- Description -->
-      <p class="mt-2 text-sm md:text-base text-gray-500 dark:text-neutral-400">
-        <?php echo esc_html($page['description']); ?>
-      </p>
-      <!-- End Description -->
-      <?php endif; ?>
-    </div>
-    <!-- End Header -->
-    <?php endif; ?>
+  <section class="p-2 sm:p-5 sm:py-0 md:pt-5 space-y-5 hidden data-[active=true]:block animate-[pageFade_.15s]" data-page-id="<?php echo esc_attr($page['id']); ?>">
     <?php include_once $page['template']; ?>
   </section>
   <?php endforeach; ?>
+  <div class="p-2 sm:p-5 flex justify-between items-center">
+    <p class="text-xs sm:text-sm text-gray-500 dark:text-neutral-500">
+      © <?php echo date('Y'); ?> DaftPlug
+    </p>
+    <ul>
+      <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
+        <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#">
+          <?php esc_html_e('FAQ', $this->textDomain); ?>
+        </a>
+      </li>
+      <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
+        <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#">
+          <?php esc_html_e('License', $this->textDomain); ?>
+        </a>
+      </li>
+    </ul>
+  </div>
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
+
+<!-- [scrollbar-gutter:stable] [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-4 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-2xl [&::-webkit-scrollbar-thumb]:border-[5px] [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:border-gray-50 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-button]:hidden -->

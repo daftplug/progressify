@@ -6,11 +6,11 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- App Identity -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppIdentity">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppIdentity">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path d="M360-260h240q8.54 0 14.27-5.73T620-280q0-8.54-5.73-14.27T600-300H360q-8.54 0-14.27 5.73T340-280q0 8.54 5.73 14.27T360-260Zm0-160h240q8.54 0 14.27-5.73T620-440q0-8.54-5.73-14.27T600-460H360q-8.54 0-14.27 5.73T340-440q0 8.54 5.73 14.27T360-420Zm-95.38 300q-27.62 0-46.12-18.5Q200-157 200-184.62v-590.76q0-27.62 18.5-46.12Q237-840 264.62-840h288.53q12.93 0 25.12 5.23 12.19 5.23 20.88 13.92l141.7 141.7q8.69 8.69 13.92 20.88t5.23 25.12v448.53q0 27.62-18.5 46.12Q723-120 695.38-120H264.62ZM560-672.31V-800H264.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v590.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69h430.76q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93V-640H592.31q-13.93 0-23.12-9.19-9.19-9.19-9.19-23.12ZM240-800v160-160 640-640Z" />
         </svg>
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6">
       <!-- App Icon -->
       <div id="settingAppIcon">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -233,12 +233,22 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Categories -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End App Identity -->
   <!-- Display Settings -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionDisplaySettings">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionDisplaySettings">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path
             d="M320-434.62V-410q0 7.67 5 12.68 5.01 5.01 12.66 5.01t12.69-5.01q5.03-5.01 5.03-12.68v-84.62q0-7.66-5-12.67-5-5.02-12.65-5.02t-12.69 5.02q-5.04 5.01-5.04 12.67V-470h-42.31q-7.66 0-12.68 5-5.01 5.01-5.01 12.66t5.01 12.69q5.02 5.03 12.68 5.03H320Zm93.08 0h269.23q7.66 0 12.68-5 5.01-5 5.01-12.65t-5.01-12.69q-5.02-5.04-12.68-5.04H413.08q-7.67 0-12.68 5-5.02 5.01-5.02 12.66t5.02 12.69q5.01 5.03 12.68 5.03ZM640-570h42.31q7.66 0 12.68-5 5.01-5.01 5.01-12.66t-5.01-12.69q-5.02-5.03-12.68-5.03H640V-630q0-7.67-5-12.68-5.01-5.01-12.66-5.01t-12.69 5.01q-5.03 5.01-5.03 12.68v84.62q0 7.66 5 12.67 5 5.02 12.65 5.02t12.69-5.02q5.04-5.01 5.04-12.67V-570Zm-362.31 0h269.23q7.67 0 12.68-5 5.02-5.01 5.02-12.66t-5.02-12.69q-5.01-5.03-12.68-5.03H277.69q-7.66 0-12.68 5-5.01 5-5.01 12.65t5.01 12.69q5.02 5.04 12.68 5.04Zm-93.07 330q-27.62 0-46.12-18.5Q120-277 120-304.62v-430.76q0-27.62 18.5-46.12Q157-800 184.62-800h590.76q27.62 0 46.12 18.5Q840-763 840-735.38v430.76q0 27.62-18.5 46.12Q803-240 775.38-240H600v47.69q0 13.73-9.29 23.02T567.69-160H392.31q-13.73 0-23.02-9.29T360-192.31V-240H184.62Zm0-40h590.76q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93v-430.76q0-9.24-7.69-16.93-7.69-7.69-16.93-7.69H184.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v430.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69ZM160-280v-480 480Z" />
@@ -253,7 +263,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6">
       <!-- Start Page -->
       <div id="settingStartPage">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -338,12 +348,22 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Orientation -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End Display Settings -->
   <!-- Appearance -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppearance">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppearance">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path d="M224.62-160q-26.66 0-45.64-18.98T160-224.62v-510.76q0-26.66 18.98-45.64T224.62-800h510.76q26.66 0 45.64 18.98T800-735.38v510.76q0 26.66-18.98 45.64T735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7V-680H200v455.38q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92ZM480-320q-65.08 0-117.27-33.35-52.19-33.34-78.88-86.65 26.69-53.31 78.88-86.65Q414.92-560 480-560t117.27 33.35q52.19 33.34 78.88 86.65-26.69 53.31-78.88 86.65Q545.08-320 480-320Zm0-35.38q47.54 0 88.54-22.27 41-22.27 69.31-62.35-28.31-40.08-69.31-62.35-41-22.27-88.54-22.27-47.54 0-88.54 22.27-41 22.27-69.31 62.35 28.31 40.08 69.31 62.35 41 22.27 88.54 22.27Zm0-84.62Zm.18 44.62q18.67 0 31.55-13.07 12.89-13.07 12.89-31.73 0-18.67-13.07-31.55-13.07-12.89-31.73-12.89-18.67 0-31.55 13.07-12.89 13.07-12.89 31.73 0 18.67 13.07 31.55 13.07 12.89 31.73 12.89Z" />
         </svg>
@@ -357,7 +377,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6">
       <!-- iOS Status Bar Style -->
       <div id="settingIosStatusBarStyle">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -422,12 +442,22 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Background Color -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End Appearance -->
   <!-- Advanced Features -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAdvancedFeatures">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAdvancedFeatures">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path
             d="M658.46-160q-12.38 0-21.58-9.19-9.19-9.19-9.19-21.58v-290.31q0-12.38 9.19-21.57 9.2-9.2 21.58-9.2h150.77q12.39 0 21.58 9.2 9.19 9.19 9.19 21.57v290.31q0 12.39-9.19 21.58-9.19 9.19-21.58 9.19H658.46Zm0-70.77h150.77v-210.31H658.46v210.31ZM346.15-160q-8.5 0-14.25-5.76t-5.75-14.27q0-8.51 5.75-14.24t14.25-5.73H420v-120H184.62q-26.66 0-45.64-18.98T120-384.62v-350.76q0-26.66 18.98-45.64T184.62-800h510.76q26.66 0 45.64 18.98T760-735.38v123.53q0 8.5-5.76 14.25t-14.27 5.75q-8.51 0-14.24-5.75T720-611.85v-123.53q0-10.77-6.92-17.7-6.93-6.92-17.7-6.92H184.62q-10.77 0-17.7 6.92-6.92 6.93-6.92 17.7v350.76q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92h343.07q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24T527.69-320H460v120h73.85q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24T533.85-160h-187.7ZM440-495.38l55.28 43.99q4.87 4.31 9.6 1.13 4.74-3.18 2.74-8.74l-20.39-71.15 58.46-47.54q4.23-3.46 2.23-8.81-2-5.35-7.72-5.35h-70.35l-22.43-65.7q-1.73-5.6-7.42-5.6-5.69 0-7.42 5.6l-22.43 65.7H339.8q-5.72 0-7.72 5.35t2.23 8.81l58.46 47.54L372.38-459q-2 5.56 2.74 8.74 4.73 3.18 9.6-1.13L440-495.38Zm0-64.62Z" />
@@ -442,7 +472,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-5">
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6">
       <!-- IARC Rating ID -->
       <div id="settingIarcRatingId">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -593,14 +623,16 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End App Shortcuts -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End Advanced Features -->
-  <!-- Save Settings Button -->
-  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-    <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-      <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
-    </span>
-    <?php _e('Save Changes', $this->textDomain); ?>
-  </button>
-  <!-- End Settings Button -->
 </form>

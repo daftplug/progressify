@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -226,21 +226,9 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 }
 
 export async function initInstallOverlayHeaderBanner() {
-  const { platform } = config.jsVars.userData;
-  const isBrowser = platform.isBrowser;
-  const isPwa = platform.isPwa;
-  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
-  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
-  const hasSeenOverlay = getCookie('pwa_header_banner_overlay_shown');
-
-  if (!isBrowser || isPwa || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
-    return;
-  }
-
   if (!customElements.get('pwa-install-overlay-header-banner')) {
     customElements.define('pwa-install-overlay-header-banner', PwaInstallOverlayHeaderBanner);
   }
 
   PwaInstallOverlayHeaderBanner.show();
-  setCookie(`pwa_header_banner_overlay_shown`, 'true', timeout);
 }

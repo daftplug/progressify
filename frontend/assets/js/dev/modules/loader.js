@@ -1100,14 +1100,6 @@ class PwaLoader extends HTMLElement {
 }
 
 export async function initLoader() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.loader.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet) || (supported === 'desktop' && device.isDesktop));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   if (!customElements.get('pwa-loader')) {
     customElements.define('pwa-loader', PwaLoader);
   }

@@ -138,14 +138,6 @@ class PwaToastMessages extends HTMLElement {
 }
 
 export async function initToastMessages() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.toastMessages.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   if (!customElements.get('pwa-toast-messages')) {
     customElements.define('pwa-toast-messages', PwaToastMessages);
   }

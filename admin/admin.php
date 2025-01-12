@@ -62,6 +62,9 @@ class Admin
 
   public function addMenuPage()
   {
+    remove_all_actions('admin_notices');
+    remove_all_actions('all_admin_notices');
+
     $this->menuId = add_menu_page($this->menuTitle, !$this->purchaseCode ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon);
   }
 
@@ -250,7 +253,7 @@ class Admin
 
   public function getPostTypes()
   {
-    $excludes = ['product', 'attachment'];
+    $excludes = ['attachment'];
     $postTypes = get_post_types(
       [
         'public' => true,

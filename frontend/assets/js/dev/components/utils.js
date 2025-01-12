@@ -44,6 +44,30 @@ export const urlBase64ToUint8Array = (base64String) => {
   return outputArray;
 };
 
+export const hasUrlParam = (paramName, paramValue = '', url = window.location.href) => {
+  const urlObject = new URL(url);
+  if (paramValue) {
+    return urlObject.searchParams.get(paramName) === paramValue;
+  }
+  return urlObject.searchParams.has(paramName);
+};
+
+export const addParamToUrl = (paramName, paramValue = '', url = window.location.href) => {
+  const urlObject = new URL(url);
+  if (paramValue === '') {
+    urlObject.searchParams.append(paramName, '');
+    return urlObject.href.replace(`${paramName}=`, paramName);
+  }
+  urlObject.searchParams.set(paramName, paramValue);
+  return urlObject.href;
+};
+
+export const removeParamFromUrl = (paramName, url = window.location.href) => {
+  const urlObject = new URL(url);
+  urlObject.searchParams.delete(paramName);
+  return urlObject.href;
+};
+
 export const setCookie = (name, value, days) => {
   var expires = '';
   if (days) {

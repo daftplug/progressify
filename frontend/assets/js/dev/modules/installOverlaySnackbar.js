@@ -1,6 +1,6 @@
 import { config } from '../main.js';
 import { performInstallation } from '../components/installPrompt.js';
-import { getContrastTextColor, isReturningVisitor, getCookie, setCookie } from '../components/utils.js';
+import { getContrastTextColor } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -187,17 +187,6 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 export async function initInstallOverlaySnackbar() {
   let hasTriggered = false;
   const scrollPercentTrigger = 30;
-  const { device, platform } = config.jsVars.userData;
-  const isMobileDevice = device.isSmartphone || device.isTablet;
-  const isBrowser = platform.isBrowser;
-  const isPwa = platform.isPwa;
-  const timeout = config.jsVars.settings.installation?.prompts?.timeout ?? 1;
-  const isSkipFirstVisitEnabled = config.jsVars.settings.installation?.prompts?.skipFirstVisit === 'on';
-  const hasSeenOverlay = getCookie('pwa_snackbar_overlay_shown');
-
-  if (!isMobileDevice || !isBrowser || isPwa || hasSeenOverlay || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
-    return;
-  }
 
   if (!customElements.get('pwa-install-overlay-snackbar')) {
     customElements.define('pwa-install-overlay-snackbar', PwaInstallOverlaySnackbar);
@@ -209,7 +198,6 @@ export async function initInstallOverlaySnackbar() {
     if (scrollPercent >= scrollPercentTrigger) {
       PwaInstallOverlaySnackbar.show();
       hasTriggered = true;
-      setCookie(`pwa_snackbar_overlay_shown`, 'true', timeout);
     }
   });
 }

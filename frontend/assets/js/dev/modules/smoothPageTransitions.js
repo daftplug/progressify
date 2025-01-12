@@ -58,15 +58,6 @@ export async function initSmoothPageTransitions() {
     containerSelector = '#swup';
   }
 
-  // Supported Devices
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.appCapabilities.smoothPageTransitions.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet) || (supported === 'desktop' && device.isDesktop));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   // Init Swup
   new Swup({
     containers: [containerSelector],

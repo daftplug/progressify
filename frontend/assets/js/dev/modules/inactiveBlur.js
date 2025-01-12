@@ -1,6 +1,3 @@
-import { config } from '../main.js';
-
-// Function to set or unset blur on <html>
 function toggleBlur(isBlur) {
   var val = isBlur ? 'blur(3px)' : 'initial';
   // First, ensure transition is set
@@ -17,14 +14,6 @@ function toggleBlur(isBlur) {
 }
 
 export async function initInactiveBlur() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.inactiveBlur.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   ['visibilitychange', 'pageshow', 'pagehide', 'focus', 'blur', 'resume', 'freeze'].forEach(function (evt) {
     window.addEventListener(evt, function (e) {
       if (

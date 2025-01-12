@@ -6,11 +6,11 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Offline Cache -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionOfflineCache">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionOfflineCache">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path
             d="M735.38-241.53v-93.85q0-6.16-4.61-10.77-4.62-4.62-10.77-4.62-6.15 0-10.77 4.62-4.61 4.61-4.61 10.77v92.76q0 6.61 2.23 12.38 2.23 5.78 7.46 11.01l61.77 61.77q4.46 4.46 10.54 4.84 6.07.39 11.3-4.84 4.46-4.74 4.46-11.06 0-6.33-4.46-10.79l-62.54-62.22ZM224.62-160q-26.66 0-45.64-18.98T160-224.62v-510.76q0-26.66 18.98-45.64T224.62-800h510.76q26.66 0 45.64 18.98T800-735.38v204.61q0 8.5-5.76 14.25t-14.27 5.75q-8.51 0-14.24-5.75T760-530.77v-204.61q0-9.24-7.69-16.93-7.69-7.69-16.93-7.69H224.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v510.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69h204.61q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24T429.23-160H224.62ZM200-239.73V-200v-560V-507.77v-3 271.04Zm100-89.47q0 8.51 5.75 14.24t14.25 5.73h118.38q8.5 0 14.25-5.76t5.75-14.27q0-8.51-5.75-14.24t-14.25-5.73H320q-8.5 0-14.25 5.76-5.75 5.75-5.75 14.27Zm0-150.77q0 8.51 5.75 14.24T320-460h259.23q8.5 0 14.25-5.76t5.75-14.27q0-8.51-5.75-14.24T579.23-500H320q-8.5 0-14.25 5.76T300-479.97Zm0-150.77q0 8.51 5.75 14.24t14.25 5.73h320q8.5 0 14.25-5.76 5.75-5.75 5.75-14.27 0-8.51-5.75-14.24T640-650.77H320q-8.5 0-14.25 5.76T300-630.74ZM720-75.38q-66.85 0-113.42-46.58Q560-168.54 560-235.38q0-66.85 46.58-113.43 46.57-46.57 113.42-46.57t113.42 46.57Q880-302.23 880-235.38q0 66.84-46.58 113.42Q786.85-75.38 720-75.38Z" />
@@ -28,7 +28,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "offlineUsage[cache][feature]",
       "state": "checked",
       "mode": "availability"
@@ -170,12 +170,22 @@ if (!defined('ABSPATH')) {
       </div>
       <!-- End Cache Expiration Time -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End Offline Cache -->
   <!-- Offline Capabilities -->
-  <fieldset class="grid grid-cols-12 gap-5 xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionOfflineCapabilities">
-    <div class="col-span-full xl:col-span-5">
-      <div class="flex gap-x-2 sticky top-14">
+  <fieldset class="grid grid-cols-12 gap-5 2xl:gap-16 py-6 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionOfflineCapabilities">
+    <div class="col-span-full 2xl:col-span-5">
+      <div class="flex gap-x-2 sticky top-6">
         <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path
             d="M233.54-366.69q-8.77-8.77-7.66-21.58Q227-401.08 237-409.15q50.85-42.77 113.23-66.04 62.39-23.27 129.77-23.27 18.15 0 35.42 1.54 17.27 1.53 35.43 5.84 11.92 2 19.46 11.77 7.54 9.77 5.54 21.69-2 11.93-11.77 19.08-9.77 7.16-21.7 5.16-15.15-3.31-30.8-4.97Q495.92-440 480-440q-55.92 0-107.46 18.62-51.54 18.61-94.62 54.07-10.23 7.85-23.04 8.62-12.8.77-21.34-8ZM480-738.46q115.15 0 221.65 41.15Q808.15-656.15 893-579.39q10 8.54 11.12 21.35 1.11 12.81-7.66 21.58-9.54 9.54-22.23 7.88-12.69-1.65-23.46-10.73Q773.46-607 678.69-643.5 583.92-680 480-680t-198.69 36.5Q186.54-607 109.23-539.31q-10.77 9.08-23.46 10.73-12.69 1.66-22.23-7.88-8.77-8.77-7.66-21.58Q57-570.85 67-579.39q84.85-76.76 191.35-117.92 106.5-41.15 221.65-41.15Zm204.15 613.84q-22.77-5-37.5-13.19t-28.03-23.11l-19 7.46q-6.85 2.46-13.2.54-6.34-1.93-10.27-7.54l-2.61-5.54q-3.92-6.62-3.46-13.31.46-6.69 6.84-11.84l14.31-12.08q-6.61-21.23-6.61-41.39 0-20.15 6.61-41.38l-14.31-12.08q-5.61-4.38-6.84-11.34-1.23-6.96 2.69-13.58l4.38-5.77q3.93-5.61 9.77-7.54 5.85-1.92 12.7.54l19 7.46q13.3-15.69 28.03-23.5 14.73-7.81 37.5-12.81l2.16-18.23q1.46-7.07 6.96-12.11 5.5-5.04 12.58-5.04h5.23q7.07 0 12.57 5.15 5.5 5.16 6.97 12.23l2.15 18q22.77 5 37.5 12.81 14.73 7.81 28.04 23.5l19-7.46q6.84-2.46 13.19-.54 6.35 1.93 10.27 7.54l2.61 5.54q3.93 6.61 3.47 13.31-.47 6.69-6.85 11.84L825.69-286q6.62 21.23 6.62 41.38 0 20.16-6.62 41.39L840-191.15q5.62 4.38 6.85 11.34 1.23 6.96-2.7 13.58l-4.38 5.77q-3.92 5.61-9.77 7.54-5.85 1.92-12.69-.54l-19-7.46Q785-146 770.27-137.81q-14.73 8.19-37.5 13.19l-2.15 18.24q-1.47 7.07-6.97 12.11-5.5 5.04-12.57 5.04h-5.23q-7.08 0-12.58-5.15-5.5-5.16-6.96-12.24l-2.16-18Zm24.31-206.15q-35.31 0-60.73 25.42-25.42 25.43-25.42 60.73 0 35.31 25.42 60.74 25.42 25.42 60.73 25.42 35.31 0 60.73-25.42 25.43-25.43 25.43-60.74 0-35.3-25.43-60.73-25.42-25.42-60.73-25.42ZM422.15-197.08q0-23 13.47-39.92 13.46-16.92 34.69-16.92 4.23 0 6.96 3.34Q480-247.23 480-243v92.62q0 4.23-2.35 7.57-2.34 3.35-6.57 3.35-22 0-35.46-17.31-13.47-17.31-13.47-40.31Z" />
@@ -193,7 +203,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
     </div>
-    <div class="col-span-full xl:col-span-7 ml-11 xl:m-0 space-y-6" data-dp-dependant-markup='{
+    <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-6" data-dp-dependant-markup='{
       "target": "offlineUsage[capabilities][feature]",
       "state": "checked",
       "mode": "availability"
@@ -299,14 +309,16 @@ if (!defined('ABSPATH')) {
       </p>
       <!-- End Offline Google Analytics -->
     </div>
+    <!-- Save Settings Button -->
+    <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
+      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+        </span>
+        <?php _e('Save Changes', $this->textDomain); ?>
+      </button>
+    </div>
+    <!-- End Settings Button -->
   </fieldset>
   <!-- End Offline Capabilities -->
-  <!-- Save Settings Button -->
-  <button type="submit" class="rounded-full fixed bottom-8 end-8 z-[9999] group py-2 px-5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-    <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-      <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
-    </span>
-    <?php _e('Save Changes', $this->textDomain); ?>
-  </button>
-  <!-- End Settings Button -->
 </form>

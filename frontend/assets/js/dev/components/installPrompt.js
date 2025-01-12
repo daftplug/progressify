@@ -1,5 +1,5 @@
 import { config } from '../main.js';
-import { getContrastTextColor } from '../components/utils.js';
+import { getContrastTextColor, hasUrlParam, addParamToUrl, removeParamFromUrl } from '../components/utils.js';
 
 const { __ } = wp.i18n;
 
@@ -51,7 +51,6 @@ class PwaInstallPrompt extends HTMLElement {
     this.handleClipboard();
     this.handleNativeInstall();
 
-    // Check capabilities if needed
     if (!this.hasAttribute('loaded')) {
       await this.handleCheckInstallCapabilities();
       this.setAttribute('loaded', '');
@@ -77,18 +76,10 @@ class PwaInstallPrompt extends HTMLElement {
     return prompt;
   }
 
-  // Utility methods
   injectStyles(css) {
     this.styles.add(css);
   }
 
-  addParamToUrl(url, paramName, paramValue) {
-    const urlObject = new URL(url);
-    urlObject.searchParams.set(paramName, paramValue);
-    return urlObject.href;
-  }
-
-  // Event handlers
   handleRemove() {
     const closeIcon = this.shadowRoot.querySelector('.install-prompt-close');
     const closeButton = this.shadowRoot.querySelector('.install-prompt-footer_close');
@@ -203,7 +194,6 @@ class PwaInstallPrompt extends HTMLElement {
     }
   }
 
-  // Render methods
   renderAppIcon() {
     if (!config.jsVars.iconUrl) return '';
 
@@ -413,7 +403,7 @@ class PwaInstallPrompt extends HTMLElement {
     const startPage = config.jsVars.settings.webAppManifest.displaySettings?.startPage;
     return startPage
       ? `
-      <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${this.addParamToUrl(startPage, 'performInstall', 'true')}">
+      <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${addParamToUrl('performInstallation', 'true', startPage)}">
         <span class="install-prompt-body-instructions_step_copy_url">
           ${startPage}
         </span>
@@ -900,7 +890,7 @@ class PwaInstallPrompt extends HTMLElement {
       }
 
       .install-prompt-body {
-        padding: 1.5rem 1rem 2rem 1rem;
+        padding: 1.5rem 1rem;
         overflow-y: auto;
         max-height: 34rem;
       }

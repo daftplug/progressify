@@ -352,16 +352,6 @@ class PwaNavigationTabBar extends HTMLElement {
 }
 
 export async function initNavigationTabBar() {
-  const { device } = config.jsVars.userData;
-  const navigationItems = config.jsVars.settings.uiComponents.navigationTabBar.navigationItems;
-  const supportedDevices = config.jsVars.settings.uiComponents.navigationTabBar.supportedDevices;
-  const hasValidItems = navigationItems?.some((item) => item.icon && item.label && item.page);
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet));
-
-  if (!hasValidItems || !isDeviceSupported) {
-    return;
-  }
-
   if (!customElements.get('pwa-navigation-tab-bar')) {
     customElements.define('pwa-navigation-tab-bar', PwaNavigationTabBar);
   }

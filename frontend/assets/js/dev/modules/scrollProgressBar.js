@@ -99,14 +99,6 @@ class PwaScrollProgressBar extends HTMLElement {
 }
 
 export async function initScrollProgressBar() {
-  const { device } = config.jsVars.userData;
-  const supportedDevices = config.jsVars.settings.uiComponents.scrollProgressBar.supportedDevices;
-  const isDeviceSupported = supportedDevices.some((supported) => (supported === 'smartphone' && device.isSmartphone) || (supported === 'tablet' && device.isTablet) || (supported === 'desktop' && device.isDesktop));
-
-  if (!isDeviceSupported) {
-    return;
-  }
-
   if (!customElements.get('pwa-scroll-progress-bar')) {
     customElements.define('pwa-scroll-progress-bar', PwaScrollProgressBar);
   }

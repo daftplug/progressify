@@ -231,19 +231,10 @@ class PwaPushNotificationsPrompt extends HTMLElement {
 }
 
 export async function initPushNotificationsPrompt() {
-  const timeout = config.jsVars.settings.pushNotifications?.prompt?.timeout ?? 1;
-  const isSkipFirstVisitEnabled = config.jsVars.settings.pushNotifications?.prompt?.skipFirstVisit === 'on';
-  const subscriptionState = await PushNotificationsSubscription.getSubscriptionState();
-  const hasSeenPrompt = getCookie('pwa_push_notifications_prompt_shown');
-
-  if (!('serviceWorker' in navigator) || !('PushManager' in window) || ['subscribed', 'blocked'].includes(subscriptionState) || hasSeenPrompt || (isSkipFirstVisitEnabled && !isReturningVisitor())) {
-    return;
-  }
-
   if (!customElements.get('pwa-push-notifications-prompt')) {
     customElements.define('pwa-push-notifications-prompt', PwaPushNotificationsPrompt);
   }
 
   PwaPushNotificationsPrompt.show();
-  setCookie('pwa_push_notifications_prompt_shown', 'true', timeout);
+  setCookie('pwa_push_notifications_prompt_shown', 'true', config.jsVars.settings.pushNotifications?.prompt?.timeout ?? 1);
 }

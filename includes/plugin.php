@@ -2,7 +2,7 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\{Admin, Frontend};
-use DaftPlug\Progressify\Module\{WebAppManifest, Installation, OfflineUsage, UiComponents, AppCapabilities, PushNotifications};
+use DaftPlug\Progressify\Module\{Dashboard, WebAppManifest, Installation, OfflineUsage, UiComponents, AppCapabilities, PushNotifications};
 use DeviceDetector\DeviceDetector;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{Version, EccLevel};
@@ -35,6 +35,7 @@ class Plugin
 
   public $Admin;
   public $Frontend;
+  public $Dashboard;
   public $WebAppManifest;
   public $Installation;
   public $OfflineUsage;
@@ -72,6 +73,8 @@ class Plugin
     }
 
     // Init Modules
+    require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
+    $this->Dashboard = new Dashboard($config);
     require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
     $this->WebAppManifest = new WebAppManifest($config);
     require_once self::$pluginDirPath . 'includes/modules/installation.php';
@@ -626,5 +629,109 @@ class Plugin
     $svg = str_replace('<svg', '<svg class="' . esc_attr($classes) . '"', $svg);
 
     return str_replace(['\\', '"', "\n", "\r", "\t"], ['\\\\', '\\"', '', '', ''], $svg);
+  }
+
+  public static function getUserData()
+  {
+    $baseIconPath = plugins_url('admin/assets/media/icons/', self::$pluginFile);
+    $unknownIcon = $baseIconPath . 'unknown.png';
+
+    // Platform mappings
+    $platformData = [
+      'devices' => [
+        'smartphone' => ['name' => 'Smartphone', 'icon' => 'devices/smartphone.svg'],
+        'tablet' => ['name' => 'Tablet', 'icon' => 'devices/tablet.svg'],
+        'desktop' => ['name' => 'Desktop', 'icon' => 'devices/desktop.svg'],
+      ],
+      'os' => [
+        'android' => ['name' => 'Android', 'icon' => 'operating-systems/android.png'],
+        'ios' => ['name' => 'iOS', 'icon' => 'operating-systems/ios.png'],
+        'windows' => ['name' => 'Windows', 'icon' => 'operating-systems/windows.png'],
+        'mac' => ['name' => 'Mac', 'icon' => 'operating-systems/mac.png'],
+        'linux' => ['name' => 'Linux', 'icon' => 'operating-systems/linux.png'],
+        'ubuntu' => ['name' => 'Ubuntu', 'icon' => 'operating-systems/ubuntu.png'],
+        'freebsd' => ['name' => 'FreeBSD', 'icon' => 'operating-systems/freebsd.png'],
+        'chromeos' => ['name' => 'Chrome OS', 'icon' => 'operating-systems/chromeos.png'],
+      ],
+      'browsers' => [
+        'chrome' => ['name' => 'Chrome', 'icon' => 'browsers/chrome.png'],
+        'safari' => ['name' => 'Safari', 'icon' => 'browsers/safari.png'],
+        'firefox' => ['name' => 'Firefox', 'icon' => 'browsers/firefox.png'],
+        'opera' => ['name' => 'Opera', 'icon' => 'browsers/opera.png'],
+        'edge' => ['name' => 'Edge', 'icon' => 'browsers/edge.png'],
+        'samsung' => ['name' => 'Samsung Internet', 'icon' => 'browsers/samsunginternet.png'],
+        'duckduckgo' => ['name' => 'DuckDuckGo', 'icon' => 'browsers/duckduckgo.png'],
+        'brave' => ['name' => 'Brave', 'icon' => 'browsers/brave.png'],
+        'qq' => ['name' => 'QQ Browser', 'icon' => 'browsers/qq.png'],
+        'uc' => ['name' => 'UC Browser', 'icon' => 'browsers/uc.png'],
+        'yandex' => ['name' => 'Yandex Browser', 'icon' => 'browsers/yandex.png'],
+      ],
+    ];
+
+    // Get country data
+    $locationData = @file_get_contents('http://ip-api.com/json/', false, stream_context_create(['http' => ['timeout' => 2]]));
+    $locationData = $locationData ? json_decode($locationData, true) : [];
+
+    $userData = [
+      'country' => [
+        'name' => 'Unknown',
+        'icon' => $unknownIcon,
+      ],
+      'device' => [
+        'name' => 'Unknown',
+        'icon' => $unknownIcon,
+      ],
+      'os' => [
+        'name' => 'Unknown',
+        'icon' => $unknownIcon,
+      ],
+      'browser' => [
+        'name' => 'Unknown',
+        'icon' => $unknownIcon,
+      ],
+    ];
+
+    // Set country if available
+    if ($locationData && $locationData['status'] === 'success' && isset($locationData['country'], $locationData['countryCode'])) {
+      $userData['country'] = [
+        'name' => $locationData['country'],
+        'icon' => $baseIconPath . 'flags/' . $locationData['countryCode'] . '.svg',
+      ];
+    }
+
+    // Set device type
+    foreach ($platformData['devices'] as $platform => $data) {
+      if (self::isPlatform($platform)) {
+        $userData['device'] = [
+          'name' => $data['name'],
+          'icon' => $baseIconPath . $data['icon'],
+        ];
+        break;
+      }
+    }
+
+    // Set OS
+    foreach ($platformData['os'] as $platform => $data) {
+      if (self::isPlatform($platform)) {
+        $userData['os'] = [
+          'name' => $data['name'],
+          'icon' => $baseIconPath . $data['icon'],
+        ];
+        break;
+      }
+    }
+
+    // Set browser
+    foreach ($platformData['browsers'] as $platform => $data) {
+      if (self::isPlatform($platform)) {
+        $userData['browser'] = [
+          'name' => $data['name'],
+          'icon' => $baseIconPath . $data['icon'],
+        ];
+        break;
+      }
+    }
+
+    return $userData;
   }
 }
