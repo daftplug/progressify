@@ -168,26 +168,42 @@ class Dashboard
 
   public function fetchPwaUsers(\WP_REST_Request $request)
   {
-    $activeUsers = (int) $this->wpdb->get_var("
-      SELECT COUNT(*)
-      FROM {$this->tableName}
-      WHERE last_open_date >= NOW() - INTERVAL 6 MONTH
-    ");
+    $nowTimestamp = current_time('timestamp');
+    $sixMonthsAgo = gmdate('Y-m-d H:i:s', strtotime('-6 months', $nowTimestamp));
 
-    $browsers = $this->wpdb->get_results("
-      SELECT 
-        browser_name,
-        browser_icon,
-        COUNT(*) as active,
-        ROUND(
-          COUNT(*) * 100.0 / {$activeUsers}
-        ) as percentage
-      FROM {$this->tableName}
-      WHERE last_open_date >= NOW() - INTERVAL 6 MONTH
-      GROUP BY browser_name, browser_icon
-      ORDER BY active DESC
-      LIMIT 3
-    ");
+    $activeUsers = (int) $this->wpdb->get_var(
+      $this->wpdb->prepare(
+        "
+        SELECT COUNT(*) 
+        FROM {$this->tableName}
+        WHERE last_open_date >= %s
+      ",
+        $sixMonthsAgo
+      )
+    );
+
+    $browsers = $this->wpdb->get_results(
+      $this->wpdb->prepare(
+        "
+        SELECT 
+          browser_name,
+          browser_icon,
+          COUNT(*) as active,
+          CASE WHEN %d > 0 
+              THEN ROUND(COUNT(*) * 100.0 / %d) 
+              ELSE 0 
+          END as percentage
+        FROM {$this->tableName}
+        WHERE last_open_date >= %s
+        GROUP BY browser_name, browser_icon
+        ORDER BY active DESC
+        LIMIT 3
+      ",
+        $activeUsers, // %d
+        $activeUsers, // %d
+        $sixMonthsAgo // %s
+      )
+    );
 
     $installations = $this->wpdb->get_results("
       SELECT DATE(first_open_date) as date, COUNT(*) as count

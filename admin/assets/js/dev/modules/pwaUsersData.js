@@ -267,12 +267,12 @@ class PwaUsersDataManager {
   }
 
   updateUI() {
-    this.updateActiveUsers(this.allData.activeUsers);
+    this.updateActiveUsersCount(this.allData.activeUsers);
     this.updateBrowserStats(this.allData.browsers);
     this.updateChart(this.filterInstallationsByPeriod());
   }
 
-  updateActiveUsers(active) {
+  updateActiveUsersCount(active) {
     if (this.activeUsersElement) {
       this.activeUsersElement.textContent = active.toLocaleString();
     }
