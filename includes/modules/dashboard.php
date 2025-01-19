@@ -80,6 +80,14 @@ class Dashboard
       'callback' => [$this, 'upsertPwaUser'],
       'permission_callback' => '__return_true',
     ]);
+
+    register_rest_route($this->slug, '/fetchPwaUsers', [
+      'methods' => 'GET',
+      'callback' => [$this, 'fetchPwaUsers'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
   }
 
   public function upsertPwaUser(\WP_REST_Request $request)
@@ -90,9 +98,6 @@ class Dashboard
     if (empty($pwaUserId)) {
       return new \WP_Error('invalid_data', 'PWA user ID is required', ['status' => 400]);
     }
-
-    // First, clean up expired records (older than 3 months)
-    $this->wpdb->query($this->wpdb->prepare("DELETE FROM {$this->tableName} WHERE last_open_date < %s", date('Y-m-d H:i:s', strtotime('-3 months'))));
 
     // Check if user exists
     $existing_pwa_user = $this->wpdb->get_row($this->wpdb->prepare("SELECT * FROM {$this->tableName} WHERE pwa_user_id = %s", $pwaUserId));
@@ -158,6 +163,56 @@ class Dashboard
         'type' => 'insert',
       ],
       201
+    );
+  }
+
+  public function fetchPwaUsers(\WP_REST_Request $request)
+  {
+    // Get all installations by date
+    $query = "SELECT 
+                  DATE(first_open_date) as date,
+                  COUNT(*) as count
+                FROM {$this->tableName}
+                GROUP BY DATE(first_open_date)
+                ORDER BY date ASC";
+
+    $installations = $this->wpdb->get_results($query);
+
+    // Get browser stats
+    $browserQuery = "SELECT 
+          browser_name,
+          browser_icon,
+          COUNT(*) as active,
+          ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM {$this->tableName})) as percentage
+          FROM {$this->tableName}
+          GROUP BY browser_name, browser_icon
+          ORDER BY active DESC
+          LIMIT 3";
+
+    $browsers = $this->wpdb->get_results($browserQuery);
+
+    // Ensure we always have 3 browser slots
+    $emptyBrowser = [
+      'browser_name' => null,
+      'browser_icon' => null,
+      'active' => 0,
+      'percentage' => 0,
+    ];
+
+    while (count($browsers) < 3) {
+      $browsers[] = (object) $emptyBrowser;
+    }
+
+    return new \WP_REST_Response(
+      [
+        'status' => 'success',
+        'data' => [
+          'installations' => $installations,
+          'browsers' => $browsers,
+          'activeUsers' => (int) $this->wpdb->get_var("SELECT COUNT(*) FROM {$this->tableName}"),
+        ],
+      ],
+      200
     );
   }
 }

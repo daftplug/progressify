@@ -10,49 +10,23 @@ if (!defined('ABSPATH')) {
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="text-lg inline-block font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('Total PWA Users', $this->textDomain); ?>
+        <?php _e('Active PWA Users', $this->textDomain); ?>
       </h2>
     </div>
     <div class="flex flex-col justify-between h-full pb-5 px-5">
       <div>
         <h4 class="text-5xl md:text-6xl font-medium text-blue-600 dark:text-blue-500">
-          <span class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent">
-            1,457
+          <span class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent" id="activePwaUsers">
+            <!-- Here will be dynamically loaded active PWA users number -->
           </span>
         </h4>
-        <p class="mt-5 text-gray-500 dark:text-neutral-500 text-sm">
-          Most of your PWA users (56%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.
+        <p class="mt-5 text-gray-500 dark:text-neutral-500 text-sm" id="browserStatsMessage">
+          <!-- Here will be dynamically loaded message about browser -->
         </p>
       </div>
       <div class="mt-5">
-        <div class="grid grid-cols-3 gap-3">
-          <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/chrome.png', $this->pluginFile); ?>" alt="Chrome Logo">
-            <p class="text-sm text-gray-800 dark:text-neutral-200">
-              Chrome
-            </p>
-            <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-              56%
-            </p>
-          </div>
-          <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/firefox.png', $this->pluginFile); ?>" alt="Firefox Logo">
-            <p class="text-sm text-gray-800 dark:text-neutral-200">
-              Firefox
-            </p>
-            <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-              24%
-            </p>
-          </div>
-          <div class="p-3  bg-gray-100 dark:bg-neutral-700 rounded-lg">
-            <img class="shrink-0 size-7 mb-4" src="<?php echo plugins_url('admin/assets/media/icons/browsers/safari.png', $this->pluginFile); ?>" alt="Safari Logo">
-            <p class="text-sm text-gray-800 dark:text-neutral-200">
-              Safari
-            </p>
-            <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-              17%
-            </p>
-          </div>
+        <div class="grid grid-cols-3 gap-3" id="browserStatsContainer">
+          <!-- Here will be dynamically loaded browsers stats -->
         </div>
       </div>
       <div class="mt-5">
@@ -79,7 +53,7 @@ if (!defined('ABSPATH')) {
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                       <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                     </svg>
-                    <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                    <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
                       <?php _e('It\'s recommended to keep this on, as disabling it will turn off all plugin features. Only turn it off for testing or troubleshooting purposes.', $this->textDomain); ?>
                     </span>
                   </button>
@@ -191,7 +165,7 @@ if (!defined('ABSPATH')) {
                 </svg>
               </div>
             </div>
-            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
               <?php _e('The Background Sync API allows you to register functionality that will occur whenever internet connectivity is next available. In other words, if your app is actively connected to the network, the functionality will occur right away. Otherwise, it will occur whenever your app is next connected to the network.', $this->textDomain); ?>
             </span>
           </div>
@@ -222,7 +196,7 @@ if (!defined('ABSPATH')) {
                 </svg>
               </div>
             </div>
-            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
               <?php _e('Enter a concise summary of your app\'s purpose and main features.', $this->textDomain); ?>
             </span>
           </div>
@@ -253,7 +227,7 @@ if (!defined('ABSPATH')) {
                 </svg>
               </div>
             </div>
-            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
               <?php _e('Enter a concise summary of your app\'s purpose and main features.', $this->textDomain); ?>
             </span>
           </div>
@@ -284,7 +258,7 @@ if (!defined('ABSPATH')) {
                 </svg>
               </div>
             </div>
-            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+            <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
               <?php _e('Enter a concise summary of your app\'s purpose and main features.', $this->textDomain); ?>
             </span>
           </div>
@@ -331,11 +305,11 @@ if (!defined('ABSPATH')) {
     </div>
   </div>
 </div>
-<div class="hidden grid grid-cols-1">
+<div class="grid grid-cols-1">
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="text-lg inline-block font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('PWA Installations Over Time', $this->textDomain); ?>
+        <?php _e('PWA Installations', $this->textDomain); ?>
       </h2>
       <div id="installationPeriod" class="p-0.5 inline-flex border border-gray-200 rounded-lg dark:border-neutral-700">
         <label for="installation-period-last-7-days" class="py-2 px-2.5 text-xs text-gray-800 rounded-md cursor-pointer has-[:checked]:bg-gray-200 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-50 dark:text-neutral-200 dark:has-[:checked]:bg-neutral-700">
@@ -352,6 +326,6 @@ if (!defined('ABSPATH')) {
         </label>
       </div>
     </div>
-    <div id="pwaInstallationsChart" class="min-h-[215px] md:min-h-[315px] pb-3 px-1"></div>
+    <div id="pwaInstallsChart" class="min-h-[215px] md:min-h-[315px] pb-3 px-1"></div>
   </div>
 </div>

@@ -21,8 +21,7 @@ import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
 import { initModalPushNotifications } from './modules/modalPushNotifications.js';
 import { initChangelog } from './modules/changelog.js';
-// import { initApexcharts } from './modules/apexcharts.js';
-// import { initInstallationsChart } from './modules/installationsChart.js';
+import { initPwaUsersData } from './modules/pwaUsersData.js';
 
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
@@ -46,6 +45,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   initPushSubscribers();
   initModalPushNotifications();
   initChangelog();
-  // initApexcharts();
-  // initInstallationsChart();
+  initPwaUsersData();
 });

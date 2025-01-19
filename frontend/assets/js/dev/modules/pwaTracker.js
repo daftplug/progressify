@@ -1,5 +1,5 @@
 import { config } from '../main.js';
-import { initFingerprint } from '../components/fingerprint.js';
+import { getOrCreatePwaUserId } from '../components/pwaUserId.js';
 import { hasUrlParam, addParamToUrl } from '../components/utils.js';
 
 // An additional JS based function to make sure we are in PWA mode
@@ -49,29 +49,11 @@ function appendPwaQueryParamToInternalLinks() {
   }
 }
 
-// Gets visitor ID from FingerprintJS
-async function getPwaUserId() {
-  try {
-    const FingerprintJS = await initFingerprint();
-    const fp = await FingerprintJS.load();
-    const result = await fp.get();
-
-    if (!result?.visitorId) {
-      throw new Error('Failed to get visitor ID');
-    }
-
-    return result.visitorId;
-  } catch (error) {
-    console.error('Failed to get PWA user ID:', error);
-    throw error;
-  }
-}
-
-// Send PWA usage notice for analytics to server
-async function sendPwaUsageNoticeToServer(retries = 3) {
+// Send PWA usage event for analytics to server
+async function sendPwaUsageEventToServer(retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
-      const pwaUserId = await getPwaUserId();
+      const pwaUserId = await getOrCreatePwaUserId();
       const response = await fetch(`${config.jsVars.restUrl}${config.jsVars.slug}/upsertPwaUser`, {
         method: 'PUT',
         credentials: 'include',
@@ -114,7 +96,7 @@ export async function initPwaTracker() {
 
   try {
     sessionStorage.setItem('pwa_session_started', 'true');
-    await sendPwaUsageNoticeToServer();
+    await sendPwaUsageEventToServer();
   } catch (error) {
     console.error('Failed to track PWA session:', error);
   }
