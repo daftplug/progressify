@@ -168,40 +168,33 @@ class Dashboard
 
   public function fetchPwaUsers(\WP_REST_Request $request)
   {
-    // Get all installations by date
-    $query = "SELECT 
-                  DATE(first_open_date) as date,
-                  COUNT(*) as count
-                FROM {$this->tableName}
-                GROUP BY DATE(first_open_date)
-                ORDER BY date ASC";
+    $activeUsers = (int) $this->wpdb->get_var("
+      SELECT COUNT(*)
+      FROM {$this->tableName}
+      WHERE last_open_date >= NOW() - INTERVAL 6 MONTH
+    ");
 
-    $installations = $this->wpdb->get_results($query);
+    $browsers = $this->wpdb->get_results("
+      SELECT 
+        browser_name,
+        browser_icon,
+        COUNT(*) as active,
+        ROUND(
+          COUNT(*) * 100.0 / {$activeUsers}
+        ) as percentage
+      FROM {$this->tableName}
+      WHERE last_open_date >= NOW() - INTERVAL 6 MONTH
+      GROUP BY browser_name, browser_icon
+      ORDER BY active DESC
+      LIMIT 3
+    ");
 
-    // Get browser stats
-    $browserQuery = "SELECT 
-          browser_name,
-          browser_icon,
-          COUNT(*) as active,
-          ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM {$this->tableName})) as percentage
-          FROM {$this->tableName}
-          GROUP BY browser_name, browser_icon
-          ORDER BY active DESC
-          LIMIT 3";
-
-    $browsers = $this->wpdb->get_results($browserQuery);
-
-    // Ensure we always have 3 browser slots
-    $emptyBrowser = [
-      'browser_name' => null,
-      'browser_icon' => null,
-      'active' => 0,
-      'percentage' => 0,
-    ];
-
-    while (count($browsers) < 3) {
-      $browsers[] = (object) $emptyBrowser;
-    }
+    $installations = $this->wpdb->get_results("
+      SELECT DATE(first_open_date) as date, COUNT(*) as count
+      FROM {$this->tableName}
+      GROUP BY DATE(first_open_date)
+      ORDER BY date ASC
+    ");
 
     return new \WP_REST_Response(
       [
@@ -209,7 +202,7 @@ class Dashboard
         'data' => [
           'installations' => $installations,
           'browsers' => $browsers,
-          'activeUsers' => (int) $this->wpdb->get_var("SELECT COUNT(*) FROM {$this->tableName}"),
+          'activeUsers' => $activeUsers,
         ],
       ],
       200

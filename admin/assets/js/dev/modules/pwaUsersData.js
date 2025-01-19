@@ -1,4 +1,4 @@
-import { initLodashApexcharts } from '../components/lodashApexcharts.js';
+import { initApexcharts } from '../components/apexcharts.js';
 
 const daftplugAdmin = document.querySelector('#daftplugAdmin');
 const slug = daftplugAdmin.getAttribute('data-slug');
@@ -19,11 +19,12 @@ class PwaUsersDataManager {
     this.activeUsersElement = daftplugAdmin.querySelector('#activePwaUsers');
     this.browserStatsMessage = daftplugAdmin.querySelector('#browserStatsMessage');
     this.browserStatsContainer = daftplugAdmin.querySelector('#browserStatsContainer');
+    this.chartContainer = daftplugAdmin.querySelector('#pwaInstallsChart');
     this.periodInputs = daftplugAdmin.querySelectorAll('input[name="installationPeriod"]');
   }
 
   init() {
-    initLodashApexcharts();
+    initApexcharts();
     this.setupEventListeners();
     this.loadData();
   }
@@ -59,6 +60,7 @@ class PwaUsersDataManager {
   }
 
   filterInstallationsByPeriod() {
+    // If no installations at all, fallback to generateEmptyDates
     if (!this.allData?.installations.length) {
       return this.generateEmptyDates();
     }
@@ -82,86 +84,118 @@ class PwaUsersDataManager {
         startDate.setDate(1);
         break;
       default:
+        // fallback = last 7 days
         startDate = new Date(today);
         startDate.setDate(startDate.getDate() - 6);
     }
-
     startDate.setHours(0, 0, 0, 0);
 
+    // ------------------------------------
+    // 1) Monthly grouping (last-12-months)
+    // ------------------------------------
     if (this.currentPeriod === 'last-12-months') {
-      // Monthly grouping
+      // Summation by "YYYY-MM"
       const monthlyData = new Map();
       this.allData.installations.forEach((item) => {
-        const date = new Date(item.date);
-        if (date >= startDate && date <= today) {
-          const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-          monthlyData.set(monthKey, (monthlyData.get(monthKey) || 0) + parseInt(item.count));
+        const d = new Date(item.date);
+        if (d >= startDate && d <= today) {
+          const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+          const currentCount = monthlyData.get(key) || 0;
+          monthlyData.set(key, currentCount + parseInt(item.count));
         }
       });
 
-      const months = [];
-      for (let d = new Date(startDate); d <= today; d.setMonth(d.getMonth() + 1)) {
-        const monthKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-        months.push({
-          date: d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' }), // For tooltip
-          shortDate: d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' }), // For x-axis
-          count: monthlyData.get(monthKey) || 0,
+      // Build an array of 12 months from startDate..today
+      const results = [];
+      const tempDate = new Date(startDate);
+
+      while (tempDate <= today) {
+        const key = `${tempDate.getFullYear()}-${String(tempDate.getMonth() + 1).padStart(2, '0')}`;
+        const count = monthlyData.get(key) || 0;
+
+        // shortDate => "Jan 2025"
+        const shortLabel = tempDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
         });
-      }
-      return months;
-    } else {
-      // Daily data
-      const dateArray = [];
-      const currentDate = new Date(startDate);
-
-      while (currentDate <= today) {
-        dateArray.push({
-          date: currentDate.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          }),
-          shortDate: currentDate.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-          }),
-          count: 0,
+        // date => "January 2025"
+        const longLabel = tempDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
         });
-        currentDate.setDate(currentDate.getDate() + 1);
+
+        results.push({
+          date: longLabel, // for tooltip
+          shortDate: shortLabel, // for X axis
+          count,
+        });
+
+        // move to next month
+        tempDate.setMonth(tempDate.getMonth() + 1);
       }
-
-      // Fill in actual data where it exists
-      const installationsMap = new Map(
-        this.allData.installations
-          .filter((item) => {
-            const date = new Date(item.date);
-            return date >= startDate && date <= today;
-          })
-          .map((item) => {
-            const date = new Date(item.date);
-            return [
-              date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              }),
-              parseInt(item.count),
-            ];
-          })
-      );
-
-      return dateArray.map((item) => ({
-        date: item.date,
-        shortDate: item.shortDate,
-        count: installationsMap.get(item.date) || 0,
-      }));
+      return results;
     }
+
+    // ------------------------------------
+    // 2) Daily grouping (7 or 28 days)
+    // ------------------------------------
+    const dateArray = [];
+    const currentDate = new Date(startDate);
+
+    while (currentDate <= today) {
+      // shortDate => "Jan 14"
+      const shortLabel = currentDate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+      });
+      // date => "January 14, 2025"
+      const longLabel = currentDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      dateArray.push({
+        date: longLabel,
+        shortDate: shortLabel,
+        count: 0,
+      });
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    // Fill in actual data from DB, grouped by that same "shortLabel"
+    const installationsMap = new Map(
+      this.allData.installations
+        .filter((item) => {
+          const d = new Date(item.date);
+          return d >= startDate && d <= today;
+        })
+        .map((item) => {
+          const shortKey = new Date(item.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+          });
+          return [shortKey, parseInt(item.count)];
+        })
+    );
+
+    // Merge counts into dateArray
+    const results = dateArray.map((obj) => ({
+      date: obj.date,
+      shortDate: obj.shortDate,
+      count: installationsMap.get(obj.shortDate) || 0,
+    }));
+    return results;
   }
 
   generateEmptyDates() {
+    // If we truly have no data, just produce
+    // daily placeholders for the last 7 days by default
     const dates = [];
     const today = new Date();
-    let days;
+    today.setHours(23, 59, 59, 999);
+
+    let days = 7; // default
 
     switch (this.currentPeriod) {
       case 'last-7-days':
@@ -171,21 +205,65 @@ class PwaUsersDataManager {
         days = 28;
         break;
       case 'last-12-months':
-        days = 365;
-        break;
+        // produce 12 months placeholders
+        return this.generateEmptyMonths();
       default:
         days = 7;
+        break;
     }
 
     for (let i = days; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+
+      const shortLabel = d.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+      });
+      const longLabel = d.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
       dates.push({
-        date: date.toISOString().split('T')[0],
+        date: longLabel,
+        shortDate: shortLabel,
         count: 0,
       });
     }
     return dates;
+  }
+
+  generateEmptyMonths() {
+    const results = [];
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+
+    const start = new Date(today);
+    start.setMonth(start.getMonth() - 11);
+    start.setDate(1);
+    start.setHours(0, 0, 0, 0);
+
+    while (start <= today) {
+      const shortLabel = start.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+      });
+      const longLabel = start.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+      });
+
+      results.push({
+        date: longLabel,
+        shortDate: shortLabel,
+        count: 0,
+      });
+      // next month
+      start.setMonth(start.getMonth() + 1);
+    }
+    return results;
   }
 
   updateUI() {
@@ -244,10 +322,11 @@ class PwaUsersDataManager {
       return __(`Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app.`, slug);
     }
 
-    const topBrowser = browsers[0];
+    const validBrowsers = browsers.filter((b) => b.browser_name);
+    const topBrowser = validBrowsers[0];
 
-    // Check if we have multiple browsers with 50%
-    if (browsers.length >= 2 && topBrowser.percentage === 50) {
+    // If we truly have 2 or more actual browsers in use...
+    if (validBrowsers.length >= 2 && topBrowser.percentage == 50) {
       return __(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, slug);
     }
 
@@ -263,255 +342,226 @@ class PwaUsersDataManager {
   }
 
   updateChart(installations) {
-    const dates = installations.map((item) => item.shortDate);
+    const axisLabels = installations.map((item) => item.shortDate);
     const counts = installations.map((item) => item.count);
-    const emptyData = counts.every((count) => count === 0);
+    const emptyData = counts.every((c) => c === 0);
 
     if (!this.chart) {
-      this.chart = this.createChart(dates, counts, installations);
-    } else {
-      this.chart.updateOptions({
-        xaxis: {
-          categories: dates,
-          type: 'category',
-          tickPlacement: 'on',
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          crosshairs: {
-            stroke: {
-              dashArray: 0,
-            },
-            dropShadow: {
-              show: false,
-            },
-          },
-          tooltip: {
-            enabled: false,
-          },
-          labels: {
-            style: {
-              colors: '#9ca3af',
-              fontSize: '13px',
-              fontFamily: 'Inter, ui-sans-serif',
-              fontWeight: 400,
-            },
-          },
-        },
-        tooltip: {
-          y: {
-            formatter: (value) => `${value >= 1000 ? `${value / 1000}k` : value || 0}`,
-          },
-          custom: function (props) {
-            const { dataPointIndex } = props;
-            const title = installations[dataPointIndex].date;
-
-            return buildTooltip(props, {
-              title,
-              mode: props.w.config.theme.mode,
-              valuePrefix: '',
-              hasCategory: false,
-              hasTextLabel: true,
-              wrapperExtClasses: 'min-w-[130px]',
-              labelDivider: ':',
-              labelExtClasses: 'ms-2',
-            });
-          },
-        },
-        yaxis: {
-          labels: {
-            align: 'left',
-            minWidth: 0,
-            maxWidth: 140,
-            style: {
-              colors: '#9ca3af',
-              fontSize: '12px',
-              fontFamily: 'Inter, ui-sans-serif',
-              fontWeight: 400,
-            },
-            formatter: (value) => (value >= 1000 ? `${value / 1000}k` : value),
-          },
-          min: emptyData ? 0 : undefined,
-          max: emptyData ? 10 : undefined,
-        },
-      });
-
-      this.chart.updateSeries([
-        {
-          name: __(`PWA Installs`, slug),
-          data: counts,
-        },
-      ]);
+      this.chart = this.createChart(axisLabels, counts, installations);
+      return;
     }
-  }
 
-  createChart(dates, counts, installations) {
-    const emptyData = counts.every((count) => count === 0);
-
-    return buildChart(
-      '#pwaInstallsChart',
-      (mode) => ({
-        chart: {
-          height: 300,
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-          zoom: {
-            enabled: false,
-          },
-        },
+    this.chart.updateOptions(
+      {
         series: [
           {
-            name: __(`PWA Installs`, slug),
+            name: __('PWA Installs', slug),
             data: counts,
           },
         ],
-        legend: {
-          show: false,
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: 'smooth',
-          width: 2,
-        },
-        fill: {
-          type: 'gradient',
-          gradient: {
-            type: 'vertical',
-            shadeIntensity: 1,
-            opacityFrom: 0.2,
-            opacityTo: 0.8,
-          },
-        },
         xaxis: {
-          type: 'category',
-          tickPlacement: 'on',
-          categories: dates,
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          crosshairs: {
-            stroke: {
-              dashArray: 0,
-            },
-            dropShadow: {
-              show: false,
-            },
-          },
-          tooltip: {
-            enabled: false,
-          },
-          labels: {
-            style: {
-              colors: '#9ca3af',
-              fontSize: '13px',
-              fontFamily: 'Inter, ui-sans-serif',
-              fontWeight: 400,
-            },
-          },
+          categories: axisLabels, // short label
         },
         yaxis: {
+          min: emptyData ? 0 : undefined,
+          max: emptyData ? 10 : undefined,
           labels: {
             align: 'left',
-            minWidth: 0,
-            maxWidth: 140,
             style: {
               colors: '#9ca3af',
               fontSize: '12px',
               fontFamily: 'Inter, ui-sans-serif',
               fontWeight: 400,
             },
-            formatter: (value) => (value >= 1000 ? `${value / 1000}k` : value),
+            formatter: (val) => (val >= 1000 ? `${val / 1000}k` : val),
           },
-          min: emptyData ? 0 : undefined,
-          max: emptyData ? 10 : undefined, // Give some range even when empty
         },
         tooltip: {
-          y: {
-            formatter: (value) => `${value >= 1000 ? `${value / 1000}k` : value || 0}`,
-          },
-          custom: function (props) {
-            const { dataPointIndex } = props;
-            const title = installations[dataPointIndex].date;
+          custom: ({ series, seriesIndex, dataPointIndex }) => {
+            if (dataPointIndex == null || dataPointIndex < 0 || dataPointIndex >= installations.length) {
+              return '';
+            }
+            // Full label in tooltip
+            const dateLabel = installations[dataPointIndex].date;
+            const installCount = series[seriesIndex][dataPointIndex] || 0;
 
-            return buildTooltip(props, {
-              title,
-              mode: props.w.config.theme.mode,
-              valuePrefix: '',
-              hasCategory: false,
-              hasTextLabel: true,
-              wrapperExtClasses: 'min-w-[130px]',
-              labelDivider: ':',
-              labelExtClasses: 'ms-2',
-            });
+            return `
+              <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md dark:bg-neutral-800 dark:border-neutral-700 min-w-32">
+                <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg dark:!bg-neutral-800 dark:!border-neutral-700 dark:text-neutral-200 ">
+                  ${dateLabel}
+                </div>
+                <div class="apexcharts-tooltip-series-group !flex !justify-between order-1 text-[12px]">
+                  <span class="flex items-center">
+                    <span class="apexcharts-tooltip-marker !w-2.5 !h-2.5 !me-1.5 !rounded-sm bg-blue-600"></span>
+                    <div class="apexcharts-tooltip-text">
+                      <div class="apexcharts-tooltip-y-group !py-0.5">
+                        <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto dark:text-neutral-400">
+                          ${__('PWA Installs', slug)}:
+                        </span>
+                      </div>
+                    </div>
+                  </span>
+                  <span class="apexcharts-tooltip-text-y-label text-gray-500 dark:text-neutral-400 ms-2">
+                    ${installCount}
+                  </span>
+                </div>
+              </div>
+            `;
           },
         },
-        responsive: [
-          {
-            breakpoint: 568,
-            options: {
-              chart: {
-                height: 200,
-              },
+      },
+      true,
+      true
+    );
+  }
+
+  createChart(dates, counts, installations) {
+    const emptyData = counts.every((c) => c === 0);
+
+    const chartOptions = {
+      chart: {
+        type: 'area',
+        height: 300,
+        toolbar: { show: false },
+        zoom: { enabled: false },
+      },
+      series: [
+        {
+          name: __('PWA Installs', slug),
+          data: counts,
+        },
+      ],
+      dataLabels: {
+        enabled: false,
+      },
+      colors: ['#2563eb'],
+      stroke: {
+        curve: 'smooth',
+        width: 2,
+        colors: ['#2563eb'],
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          type: 'vertical',
+          shadeIntensity: 1,
+          gradientToColors: ['#2563eb'],
+          opacityFrom: 0.5,
+          opacityTo: 0.0,
+          stops: [0, 90, 100],
+        },
+      },
+      legend: {
+        show: false,
+      },
+      grid: {
+        borderColor: '#e5e7eb',
+      },
+      xaxis: {
+        type: 'category',
+        tickPlacement: 'on',
+        categories: dates, // short label
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+        crosshairs: {
+          stroke: {
+            dashArray: 0,
+          },
+          dropShadow: {
+            show: false,
+          },
+        },
+        tooltip: {
+          enabled: false,
+        },
+        labels: {
+          style: {
+            colors: '#9ca3af',
+            fontSize: '13px',
+            fontFamily: 'Inter, ui-sans-serif',
+            fontWeight: 400,
+          },
+        },
+      },
+      yaxis: {
+        min: emptyData ? 0 : undefined,
+        max: emptyData ? 10 : undefined,
+        labels: {
+          align: 'left',
+          style: {
+            colors: '#9ca3af',
+            fontSize: '12px',
+            fontFamily: 'Inter, ui-sans-serif',
+            fontWeight: 400,
+          },
+          formatter: (val) => (val >= 1000 ? `${val / 1000}k` : val),
+        },
+      },
+      tooltip: {
+        custom: ({ series, seriesIndex, dataPointIndex }) => {
+          if (dataPointIndex == null || dataPointIndex < 0 || dataPointIndex >= installations.length) {
+            return '';
+          }
+          const dateLabel = installations[dataPointIndex].date;
+          const installCount = series[seriesIndex][dataPointIndex] || 0;
+
+          return `
+            <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md dark:bg-neutral-800 dark:border-neutral-700 min-w-32">
+              <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg dark:!bg-neutral-800 dark:!border-neutral-700 dark:text-neutral-200 ">
+                ${dateLabel}
+              </div>
+              <div class="apexcharts-tooltip-series-group !flex !justify-between order-1 text-[12px]">
+                <span class="flex items-center">
+                  <span class="apexcharts-tooltip-marker !w-2.5 !h-2.5 !me-1.5 !rounded-sm" style="background: #2563eb"></span>
+                  <div class="apexcharts-tooltip-text">
+                    <div class="apexcharts-tooltip-y-group !py-0.5">
+                      <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto dark:text-neutral-400">
+                        ${__('PWA Installs', slug)}:
+                      </span>
+                    </div>
+                  </div>
+                </span>
+                <span class="apexcharts-tooltip-text-y-label text-gray-500 dark:text-neutral-400 ms-2">
+                  ${installCount}
+                </span>
+              </div>
+            </div>
+          `;
+        },
+      },
+      responsive: [
+        {
+          breakpoint: 568,
+          options: {
+            chart: {
+              height: 200,
+            },
+            xaxis: {
               labels: {
                 style: {
-                  colors: '#9ca3af',
                   fontSize: '11px',
-                  fontFamily: 'Inter, ui-sans-serif',
-                  fontWeight: 400,
                 },
                 offsetX: -2,
-                formatter: (title) => title.slice(0, 3),
               },
-              yaxis: {
-                labels: {
-                  align: 'left',
-                  minWidth: 0,
-                  maxWidth: 140,
-                  style: {
-                    colors: '#9ca3af',
-                    fontSize: '11px',
-                    fontFamily: 'Inter, ui-sans-serif',
-                    fontWeight: 400,
-                  },
-                  formatter: (value) => (value >= 1000 ? `${value / 1000}k` : value),
+            },
+            yaxis: {
+              labels: {
+                style: {
+                  fontSize: '11px',
                 },
               },
             },
           },
-        ],
-      }),
-      {
-        colors: ['#2563eb', '#9333ea'],
-        fill: {
-          gradient: {
-            stops: [0, 90, 100],
-          },
         },
-        grid: {
-          borderColor: '#e5e7eb',
-        },
-      },
-      {
-        colors: ['#3b82f6', '#a855f7'],
-        fill: {
-          gradient: {
-            stops: [100, 90, 0],
-          },
-        },
-        grid: {
-          borderColor: '#404040',
-        },
-      }
-    );
+      ],
+    };
+
+    const chart = new ApexCharts(this.chartContainer, chartOptions);
+    chart.render();
+    return chart;
   }
 }
