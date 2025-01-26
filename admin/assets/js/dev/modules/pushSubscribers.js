@@ -1,5 +1,4 @@
 const daftplugAdmin = document.querySelector('#daftplugAdmin');
-const optionName = daftplugAdmin.getAttribute('data-option-name');
 const slug = daftplugAdmin.getAttribute('data-slug');
 const { __ } = wp.i18n;
 
@@ -44,16 +43,24 @@ class SubscriberManager {
       this.isLoading = true;
       this.toggleLoadingState(true);
 
-      const response = await fetch(`${ajaxurl}?action=${optionName}_fetch_push_notifications_subscribers&page=${page}`, { credentials: 'same-origin' });
+      const url = new URL(`${wpApiSettings.root}${slug}/fetchPushNotificationsSubscribers`);
+      url.searchParams.append('page', page);
+
+      const response = await fetch(url, {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'X-WP-Nonce': wpApiSettings.nonce,
+        },
+      });
+
+      if (!response.ok) throw new Error('Failed to load subscribers');
 
       const result = await response.json();
-
-      if (!result.success) {
-        throw new Error(result.data?.message || 'Failed to load subscribers');
+      if (result.status === 'success') {
+        this.updateSubscribersList(result.data);
+        this.updatePagination(result.data);
       }
-
-      this.updateSubscribersList(result.data);
-      this.updatePagination(result.data);
     } catch (error) {
       console.error('Error loading subscribers:', error);
     } finally {

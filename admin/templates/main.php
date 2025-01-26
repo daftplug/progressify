@@ -5,7 +5,7 @@
     <?php include_once $page['template']; ?>
   </section>
   <?php endforeach; ?>
-  <div class="p-2 sm:p-5 flex justify-between items-center">
+  <div class="mt-auto p-2 sm:p-5 flex justify-between items-center">
     <p class="text-xs sm:text-sm text-gray-500 dark:text-neutral-500">
       © <?php echo date('Y'); ?> DaftPlug
     </p>
@@ -24,5 +24,3 @@
   </div>
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
-
-<!-- [scrollbar-gutter:stable] [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-4 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-2xl [&::-webkit-scrollbar-thumb]:border-[5px] [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:border-gray-50 hover:[&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-button]:hidden -->

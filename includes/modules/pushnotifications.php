@@ -50,7 +50,6 @@ class PushNotifications
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_filter("{$this->optionName}_frontend_js_vars", [$this, 'addPublicVapidKeyToFrontJs']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addPushJsToServiceWorker']);
-    add_action("wp_ajax_{$this->optionName}_fetch_push_notifications_subscribers", [$this, 'fetchPushNotificationsSubscribers']);
     add_action('transition_post_status', [$this, 'doNewContentPush'], 10, 3);
     add_action('save_post', [$this, 'doWooPriceStockPush'], 10, 2);
     add_filter('wp_insert_post_data', [$this, 'filterWoocommercePostData'], 10, 2);
@@ -89,6 +88,14 @@ class PushNotifications
     register_rest_route($this->slug, '/doModalPushNotification', [
       'methods' => 'POST',
       'callback' => [$this, 'doModalPushNotification'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+
+    register_rest_route($this->slug, '/fetchPushNotificationsSubscribers', [
+      'methods' => 'GET',
+      'callback' => [$this, 'fetchPushNotificationsSubscribers'],
       'permission_callback' => function () {
         return current_user_can($this->capability);
       },
@@ -152,15 +159,11 @@ class PushNotifications
     return false;
   }
 
-  public function fetchPushNotificationsSubscribers()
+  public function fetchPushNotificationsSubscribers(\WP_REST_Request $request)
   {
-    $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-    $data = $this->getSubscribers($page);
-    wp_send_json_success($data);
-  }
+    $page = sanitize_text_field($request->get_param('page'));
+    $per_page = 7;
 
-  public function getSubscribers($page = 1, $per_page = 7)
-  {
     $offset = ($page - 1) * $per_page;
     $total = (int) $this->wpdb->get_var("SELECT COUNT(*) FROM {$this->tableName}");
 
@@ -168,35 +171,41 @@ class PushNotifications
     $subscribers = $this->wpdb->get_results(
       $this->wpdb->prepare(
         "SELECT 
-                  id,
-                  endpoint,
-                  auth_key,
-                  p256dh_key,
-                  content_encoding,
-                  country_name,
-                  country_icon,
-                  device_name,
-                  device_icon,
-                  os_name,
-                  os_icon,
-                  browser_name,
-                  browser_icon,
-                  wp_user_id,
-                  DATE_FORMAT(date, '%b %e, %Y') as date
-              FROM {$this->tableName} 
-              ORDER BY date DESC 
-              LIMIT %d OFFSET %d",
+            id,
+            endpoint,
+            auth_key,
+            p256dh_key,
+            content_encoding,
+            country_name,
+            country_icon,
+            device_name,
+            device_icon,
+            os_name,
+            os_icon,
+            browser_name,
+            browser_icon,
+            wp_user_id,
+            DATE_FORMAT(date, '%b %e, %Y') as date
+        FROM {$this->tableName} 
+        ORDER BY date DESC 
+        LIMIT %d OFFSET %d",
         $per_page,
         $offset
       ),
       ARRAY_A
     );
 
-    return [
-      'subscribers' => $subscribers ?: [],
-      'total' => $total, // This is already cast to int
-      'pages' => $total > 0 ? ceil($total / $per_page) : 1,
-    ];
+    return new \WP_REST_Response(
+      [
+        'status' => 'success',
+        'data' => [
+          'subscribers' => $subscribers ?: [],
+          'total' => $total, // This is already cast to int
+          'pages' => $total > 0 ? ceil($total / $per_page) : 1,
+        ],
+      ],
+      200
+    );
   }
 
   public function getVapidKeys()

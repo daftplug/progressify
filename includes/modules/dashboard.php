@@ -170,7 +170,7 @@ class Dashboard
         'message' => 'Successfully added new PWA user',
         'type' => 'insert',
       ],
-      201
+      200
     );
   }
 
@@ -237,7 +237,8 @@ class Dashboard
   {
     $allActionItems = [
       'mobileApps' => [
-        'condition' => true, // TODO: Implement real detection if the user has purchased mobile apps or not
+        'weight' => 15,
+        'condition' => false, // TODO: Implement real detection if the user has purchased mobile apps or not
         'title' => esc_html__('Generate Android and iOS mobile apps', $this->textDomain),
         'icon' => '<img class="shrink-0 size-5" src="' . plugins_url('admin/assets/media/icons/androios.png', $this->pluginFile) . '" alt="Mobile Apps" />',
         'action' => [
@@ -356,18 +357,49 @@ class Dashboard
       ],
     ];
 
+    $definedWeight = 0;
+    $itemsWithoutWeight = 0;
+
+    foreach ($allActionItems as $item) {
+      if (isset($item['weight'])) {
+        $definedWeight += $item['weight'];
+      } else {
+        $itemsWithoutWeight++;
+      }
+    }
+
+    // Calculate default weight for remaining items
+    $remainingWeight = 100 - $definedWeight;
+    $defaultWeight = $itemsWithoutWeight > 0 ? $remainingWeight / $itemsWithoutWeight : 0;
+
+    // Assign default weight to items without defined weight
+    foreach ($allActionItems as $key => &$item) {
+      if (!isset($item['weight'])) {
+        $item['weight'] = $defaultWeight;
+      }
+    }
+
     // Filter action items that need attention (where condition is true)
     $actionItems = array_filter($allActionItems, function ($item) {
       return $item['condition'];
     });
 
-    // Calculate score based on remaining action items
-    $totalItems = count($allActionItems);
-    $remainingItems = count($actionItems);
-    $completedItems = $totalItems - $remainingItems;
+    // Calculate weighted score
+    $completedWeight = array_reduce(
+      array_keys($allActionItems),
+      function ($carry, $key) use ($actionItems, $allActionItems) {
+        // If item is not in actionItems (meaning condition is false/completed),
+        // add its weight to the completed weight
+        if (!isset($actionItems[$key])) {
+          $carry += $allActionItems[$key]['weight'];
+        }
+        return $carry;
+      },
+      0
+    );
 
-    // Calculate score percentage (0 items = 100%, all items = 0%)
-    $scorePercent = ($completedItems / $totalItems) * 100;
+    // Calculate score percentage based on weights
+    $scorePercent = $completedWeight;
 
     // Determine score result based on percentage
     $scoreResult = match (true) {
