@@ -4,14 +4,9 @@ const daftplugAdmin = document.querySelector('#daftplugAdmin');
 const slug = daftplugAdmin.getAttribute('data-slug');
 const { __ } = wp.i18n;
 
-export function initPwaUsersData() {
-  const pwaUsersDataManager = new PwaUsersDataManager();
-  pwaUsersDataManager.init();
-}
-
 class PwaUsersDataManager {
   constructor() {
-    this.allData = null;
+    this.usersData = null;
     this.currentPeriod = 'last-7-days';
     this.chart = null;
 
@@ -40,7 +35,7 @@ class PwaUsersDataManager {
 
   async loadData() {
     try {
-      const response = await fetch(`${wpApiSettings.root}${slug}/fetchPwaUsers`, {
+      const response = await fetch(`${wpApiSettings.root}${slug}/fetchPwaUsersData`, {
         credentials: 'same-origin',
         headers: {
           'X-WP-Nonce': wpApiSettings.nonce,
@@ -51,7 +46,7 @@ class PwaUsersDataManager {
 
       const result = await response.json();
       if (result.status === 'success') {
-        this.allData = result.data;
+        this.usersData = result.data;
         this.updateUI();
       }
     } catch (error) {
@@ -61,7 +56,7 @@ class PwaUsersDataManager {
 
   filterInstallationsByPeriod() {
     // If no installations at all, fallback to generateEmptyDates
-    if (!this.allData?.installations.length) {
+    if (!this.usersData?.installations.length) {
       return this.generateEmptyDates();
     }
 
@@ -96,7 +91,7 @@ class PwaUsersDataManager {
     if (this.currentPeriod === 'last-12-months') {
       // Summation by "YYYY-MM"
       const monthlyData = new Map();
-      this.allData.installations.forEach((item) => {
+      this.usersData.installations.forEach((item) => {
         const d = new Date(item.date);
         if (d >= startDate && d <= today) {
           const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
@@ -165,7 +160,7 @@ class PwaUsersDataManager {
 
     // Fill in actual data from DB, grouped by that same "shortLabel"
     const installationsMap = new Map(
-      this.allData.installations
+      this.usersData.installations
         .filter((item) => {
           const d = new Date(item.date);
           return d >= startDate && d <= today;
@@ -267,8 +262,8 @@ class PwaUsersDataManager {
   }
 
   updateUI() {
-    this.updateActiveUsersCount(this.allData.activeUsers);
-    this.updateBrowserStats(this.allData.browsers);
+    this.updateActiveUsersCount(this.usersData.activeUsers);
+    this.updateBrowserStats(this.usersData.browsers);
     this.updateChart(this.filterInstallationsByPeriod());
   }
 
@@ -330,11 +325,11 @@ class PwaUsersDataManager {
       return __(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, slug);
     }
 
-    const prefix = topBrowser.percentage === 100 ? 'All' : 'Most';
+    const prefix = topBrowser.percentage == 100 ? __('All', slug) : __('Most', slug);
 
-    if (topBrowser.browser_name === 'Chrome') {
+    if (topBrowser.browser_name == 'Chrome') {
       return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.`, slug);
-    } else if (topBrowser.browser_name === 'Unknown') {
+    } else if (topBrowser.browser_name == 'Unknown') {
       return __(`${prefix} of your PWA users (${topBrowser.percentage}%) browsers are unidentifiable, suggesting they are not using a popular browser, which could affect their PWA experience.`, slug);
     } else {
       return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using ${topBrowser.browser_name} browser. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, slug);
@@ -564,4 +559,9 @@ class PwaUsersDataManager {
     chart.render();
     return chart;
   }
+}
+
+export function initPwaUsersData() {
+  const pwaUsersDataManager = new PwaUsersDataManager();
+  pwaUsersDataManager.init();
 }

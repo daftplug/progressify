@@ -98,13 +98,15 @@ class OfflineUsage
       'isCustomPage' => $isCustomOfflinePageEnabled,
     ];
 
-    $serviceworker = '';
+    $serviceworker = $this->loadWorkbox($this->workboxVersion);
+    $serviceworker .= $this->getBasicEventListeners();
+
     if ($isOfflineCacheEnabled) {
-      $serviceworker = $this->loadWorkbox($this->workboxVersion);
-      $serviceworker .= $this->getBasicEventListeners($fallbackData);
+      $serviceworker .= $this->getOfflinePageCaching($fallbackData);
       $serviceworker .= $this->getRoutingRules($cachingStrategy, $cacheExpiration);
       $serviceworker .= $this->getCacheCleanupLogic();
     }
+
     $serviceworker .= $this->getThirdPartyIntegrations();
 
     return apply_filters("{$this->optionName}_serviceworker", $serviceworker);
@@ -112,12 +114,7 @@ class OfflineUsage
 
   private function loadWorkbox($workboxVersion)
   {
-    $loadWorkbox = "
-      importScripts('https://storage.googleapis.com/workbox-cdn/releases/{$workboxVersion}/workbox-sw.js');
-
-      workbox.loadModule('workbox-cacheable-response');
-      workbox.loadModule('workbox-range-requests');
-    ";
+    return "importScripts('https://storage.googleapis.com/workbox-cdn/releases/{$workboxVersion}/workbox-sw.js');";
 
     // if (Plugin::getSetting('offlineUsage[capabilities][googleAnalytics]') === 'on') {
     //   $loadWorkbox .= "
@@ -138,65 +135,61 @@ class OfflineUsage
     //     workbox.googleAnalytics.initialize(gaConfig);
     //   \n\n";
     // }
-
-    return $loadWorkbox;
   }
 
-  private function getBasicEventListeners($fallbackData)
+  private function getBasicEventListeners()
+  {
+    return "
+      self.addEventListener('install', () => self.skipWaiting());
+      self.addEventListener('activate', () => self.clients.claim());
+      self.addEventListener('message', (event) => {
+        if (event.data?.type === 'SKIP_WAITING') {
+          self.skipWaiting();
+        }
+      });
+    ";
+  }
+
+  private function getOfflinePageCaching($fallbackData)
   {
     $fallbackContent = $fallbackData['isCustomPage']
       ? "fetch('{$fallbackData['content']}', {credentials: 'same-origin'}).then(response => response)"
       : "new Response(`{$fallbackData['content']}`, {
-          headers: {'Content-Type': 'text/html;charset=utf-8'}
-        })";
+            headers: {'Content-Type': 'text/html;charset=utf-8'}
+          })";
 
-    $basicEventListeners = "
+    return "
+      workbox.loadModule('workbox-cacheable-response');
+      workbox.loadModule('workbox-range-requests');
+
+      if (workbox.navigationPreload.isSupported()) {
+          workbox.navigationPreload.enable();
+      }
+
       const cacheName = {
         pages: CACHE_PREFIX + '-pages-' + CACHE_VERSION,
         resources: CACHE_PREFIX + '-resources-' + CACHE_VERSION
       };
   
-      workbox.core.skipWaiting();
-      workbox.core.clientsClaim();
-      
-      self.addEventListener('message', (event) => {
-        if (event.data && event.data.type === 'SKIP_WAITING') {
-          self.skipWaiting();
-        }
-      });
-  
       self.addEventListener('install', async(event) => {
         event.waitUntil(
           caches.open(cacheName.pages).then((cache) => {
             return Promise.resolve({$fallbackContent})
-              .then(response => {
-                // Store with consistent key name
-                return cache.put('offline-fallback', response);
-              })
-              .catch(error => {
-                console.error('Failed to cache offline page:', error);
-              });
+              .then(response => cache.put('offline-fallback', response))
+              .catch(error => console.error('Failed to cache offline page:', error));
           })
         );
       });
-  
-      if (workbox.navigationPreload.isSupported()) {
-        workbox.navigationPreload.enable();
-      }
     ";
-
-    return $basicEventListeners;
   }
 
   private function getRoutingRules($cachingStrategy, $cacheExpiration)
   {
-    $routingRules = "
+    return "
       workbox.routing.registerRoute(/wp-admin(.*)|wp-json(.*)|(.*)preview=true(.*)/,
         new workbox.strategies.NetworkOnly()
       );
-    ";
 
-    $routingRules .= "
       workbox.routing.registerRoute(({event}) => event.request.destination === 'document',
         async (params) => {
           try {
@@ -238,9 +231,7 @@ class OfflineUsage
           }
         }
       );
-    ";
 
-    $routingRules .= "
       workbox.routing.registerRoute(({event}) => event.request.destination !== 'document',
         new workbox.strategies.{$cachingStrategy}({
           cacheName: cacheName.resources,
@@ -257,13 +248,11 @@ class OfflineUsage
         })
       );
     ";
-
-    return $routingRules;
   }
 
   private function getCacheCleanupLogic()
   {
-    $cacheCleanupLogic = "
+    return "
       self.addEventListener('activate', event => {
         event.waitUntil(
           (async () => {
@@ -286,33 +275,22 @@ class OfflineUsage
         );
       });
     ";
-
-    return $cacheCleanupLogic;
   }
 
   private function getThirdPartyIntegrations()
   {
-    $integrations = '';
-
     if (Plugin::isPluginActive('onesignal')) {
-      $integrations .= "importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');";
+      return "importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');";
     }
 
     if (Plugin::isPluginActive('webpushr')) {
-      $integrations .= "importScripts('https://cdn.webpushr.com/sw-server.min.js');";
+      return "importScripts('https://cdn.webpushr.com/sw-server.min.js');";
     }
-
-    return $integrations;
   }
 
   public function renderRegisterServiceWorker()
   {
-    if (Plugin::getSetting('offlineUsage[cache][feature]') !== 'on') {
-      return;
-    }
-
-    $scope = $this->getServiceWorkerScope();
-    ?>
+    $scope = $this->getServiceWorkerScope(); ?>
 <script type="text/javascript" id="serviceworker">
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {

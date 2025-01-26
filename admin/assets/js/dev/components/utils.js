@@ -1,11 +1,10 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
-export function navigateTo(pageId, subPageId = '') {
+export function navigateToPage(pageId, subPageId = '') {
   const allPages = daftplugAdmin.find('section[data-page-id]');
   const allMenuItems = daftplugAdmin.find('a[data-page-id]');
   const allSubpages = daftplugAdmin.find('article[data-subpage-id]');
   const allSubmenuItems = daftplugAdmin.find('a[data-subpage-id]');
-
   const page = allPages.filter(`[data-page-id="${pageId}"]`);
   const menuItem = allMenuItems.filter(`[data-page-id="${pageId}"]`);
   const subPage = allSubpages.filter(`[data-subpage-id="${pageId}-${subPageId}"]`);
@@ -16,32 +15,144 @@ export function navigateTo(pageId, subPageId = '') {
   const firstSubmenuItem = menuItem.find('a[data-subpage-id]').first();
   const errorPage = allPages.filter('[data-page-id="error"]');
 
-  if (page.length) {
-    allPages.removeAttr('data-active');
-    page.attr('data-active', 'true');
-    if (hasSubpages) {
-      if (subPageId !== '') {
-        if (subPage.length) {
-          allSubpages.add(allSubmenuItems).add(allMenuItems).removeAttr('data-active');
-          subPage.add(submenuItem).attr('data-active', 'true');
+  return new Promise((resolve) => {
+    // Function to update URL hash without triggering hashchange event
+    const updateHash = (hash) => {
+      const currentHash = location.hash;
+      if (currentHash !== hash) {
+        // Temporarily remove hashchange listener to prevent infinite loop
+        jQuery(window).off('hashchange', window.handleHashChange);
+        location.hash = hash;
+        // Restore hashchange listener after a short delay
+        setTimeout(() => {
+          jQuery(window).on('hashchange', window.handleHashChange);
+        }, 0);
+      }
+    };
+
+    if (page.length) {
+      allPages.removeAttr('data-active');
+      page.attr('data-active', 'true');
+      if (hasSubpages) {
+        if (subPageId !== '') {
+          if (subPage.length) {
+            allSubpages.add(allSubmenuItems).add(allMenuItems).removeAttr('data-active');
+            subPage.add(submenuItem).attr('data-active', 'true');
+            updateHash(`#/${pageId}-${subPageId}/`);
+          } else {
+            allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
+            errorPage.attr('data-active', 'true');
+            updateHash('#/error/');
+          }
         } else {
-          allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
-          errorPage.attr('data-active', 'true');
+          firstSubpage.add(firstSubmenuItem).attr('data-active', 'true');
+          if (firstSubpageId) {
+            const [firstPageId, firstSubId] = firstSubpageId.split('-');
+            updateHash(`#/${firstPageId}-${firstSubId}/`);
+          }
         }
       } else {
-        firstSubpage.add(firstSubmenuItem).attr('data-active', 'true');
-        if (firstSubpageId) {
-          location.hash = `#/${firstSubpageId}/`;
-        }
+        allMenuItems.add(allSubmenuItems).removeAttr('data-active');
+        menuItem.attr('data-active', 'true');
+        updateHash(`#/${pageId}/`);
       }
     } else {
-      allMenuItems.add(allSubmenuItems).removeAttr('data-active');
-      menuItem.attr('data-active', 'true');
+      allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
+      errorPage.attr('data-active', 'true');
+      updateHash('#/error/');
     }
-  } else {
-    allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
-    errorPage.attr('data-active', 'true');
-  }
+
+    // Dispatch pageChange event
+    window.dispatchEvent(new CustomEvent('pageChange'));
+
+    setTimeout(resolve, 0);
+  });
+}
+
+export function highlightElement(selector) {
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  const originalStyles = {
+    zIndex: element.style.zIndex,
+    position: element.style.position,
+    background: element.style.background,
+    boxShadow: element.style.boxShadow,
+    borderRadius: element.style.borderRadius,
+  };
+
+  const createOverlay = () => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      transition: opacity 0.3s ease-in-out;
+      z-index: 999999;
+      pointer-events: none;
+    `;
+    return overlay;
+  };
+
+  const spotlight = () => {
+    return new Promise((resolve) => {
+      const overlay = createOverlay();
+      daftplugAdmin.get(0).appendChild(overlay);
+      element.style.cssText = `
+        z-index: 9999999999999999999 !important;
+        position: relative !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 0 15px #ffffff !important;
+        border-radius: 4px !important;
+      `;
+
+      requestAnimationFrame(() => {
+        overlay.style.opacity = '1';
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          overlay.addEventListener(
+            'transitionend',
+            () => {
+              Object.keys(originalStyles).forEach((key) => {
+                element.style[key] = originalStyles[key];
+              });
+              overlay.remove();
+              resolve();
+            },
+            { once: true }
+          );
+        }, 1000);
+      });
+    });
+  };
+
+  const scrollIntoViewPromise = new Promise((resolve) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          resolve();
+        }
+      },
+      {
+        threshold: 1.0,
+        rootMargin: '-10% 0px',
+      }
+    );
+
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    observer.observe(element);
+  });
+
+  scrollIntoViewPromise
+    .then(() => spotlight())
+    .catch((error) => {
+      console.error('Error during highlight animation:', error);
+    });
 }
 
 // Validates attachments

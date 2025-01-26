@@ -24,10 +24,15 @@ if (!defined('ABSPATH')) {
         <path d="M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24M296 216v160M376 296H216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
       </g>
     </symbol>
-    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="iconOfflineUsage">
-      <g stroke-linecap="round" stroke-linejoin="round">
-        <path d="M332.41 310.59a115 115 0 00-152.8 0M393.46 249.54a201.26 201.26 0 00-274.92 0M447.72 182.11a288 288 0 00-383.44 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-        <path d="M256 416a32 32 0 1132-32 32 32 0 01-32 32z" />
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="iconOfflineUsage">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h.01" />
+        <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+        <path d="M5 12.859a10 10 0 0 1 5.17-2.69" />
+        <path d="M19 12.859a10 10 0 0 0-2.007-1.523" />
+        <path d="M2 8.82a15 15 0 0 1 4.177-2.643" />
+        <path d="M22 8.82a15 15 0 0 0-11.288-3.764" />
+        <path d="m2 2 20 20" />
       </g>
     </symbol>
     <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="iconUiComponents">
@@ -38,7 +43,7 @@ if (!defined('ABSPATH')) {
         <rect x="288" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
       </g>
     </symbol>
-    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="iconAppCapabiilities">
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="iconAppCapabilities">
       <g stroke-linecap="round" stroke-linejoin="round">
         <path d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
       </g>

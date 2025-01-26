@@ -2,7 +2,7 @@
 
 namespace DaftPlug\Progressify\Module;
 
-use DaftPlug\Progressify\{Plugin, Frontend};
+use DaftPlug\Progressify\{Plugin};
 
 if (!defined('ABSPATH')) {
   exit();

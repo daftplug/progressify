@@ -22,6 +22,7 @@ import { initPushSubscribers } from './modules/pushSubscribers.js';
 import { initModalPushNotifications } from './modules/modalPushNotifications.js';
 import { initChangelog } from './modules/changelog.js';
 import { initPwaUsersData } from './modules/pwaUsersData.js';
+import { initPwaScoreData } from './modules/pwaScoreData.js';
 
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
@@ -46,4 +47,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   initModalPushNotifications();
   initChangelog();
   initPwaUsersData();
+  initPwaScoreData();
 });

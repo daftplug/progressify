@@ -236,5 +236,4 @@ export async function initPushNotificationsPrompt() {
   }
 
   PwaPushNotificationsPrompt.show();
-  setCookie('pwa_push_notifications_prompt_shown', 'true', config.jsVars.settings.pushNotifications?.prompt?.timeout ?? 1);
 }

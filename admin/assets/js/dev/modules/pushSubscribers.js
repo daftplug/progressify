@@ -3,14 +3,6 @@ const optionName = daftplugAdmin.getAttribute('data-option-name');
 const slug = daftplugAdmin.getAttribute('data-slug');
 const { __ } = wp.i18n;
 
-export function initPushSubscribers() {
-  const pushSubscribers = daftplugAdmin.querySelector('#pushNotificationsSubscribers');
-  if (!pushSubscribers) return;
-
-  const subscriberManager = new SubscriberManager(pushSubscribers);
-  subscriberManager.init();
-}
-
 class SubscriberManager {
   constructor(container) {
     this.container = container;
@@ -266,4 +258,12 @@ class SubscriberManager {
       console.error('Error removing subscriber:', error);
     }
   }
+}
+
+export function initPushSubscribers() {
+  const pushSubscribers = daftplugAdmin.querySelector('#pushNotificationsSubscribers');
+  if (!pushSubscribers) return;
+
+  const subscriberManager = new SubscriberManager(pushSubscribers);
+  subscriberManager.init();
 }

@@ -149,11 +149,11 @@ class Admin
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'uicomponents.php']),
       ],
       [
-        'id' => 'appCapabiilities',
+        'id' => 'appCapabilities',
         'menuTitle' => esc_html__('App Capabilities', $this->textDomain),
         'pageTitle' => esc_html__('App Capabilities', $this->textDomain),
         'description' => esc_html__('Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience.', $this->textDomain),
-        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'appcapabiilities.php']),
+        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'appcapabilities.php']),
       ],
       [
         'id' => 'pushNotifications',

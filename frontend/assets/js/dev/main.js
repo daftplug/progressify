@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initInstallButton();
 
     // Installation Overlays
-    if (settings?.installation?.prompts?.skipFirstVisit === 'on' && isReturningVisitor()) {
+    if (settings?.installation?.prompts?.skipFirstVisit !== 'on' || isReturningVisitor()) {
       // Installation Overlay - Header Banner
       if (settings?.installation?.prompts?.types?.headerBanner === 'on' && !getCookie('pwa_header_banner_overlay_shown')) {
         const { initInstallOverlayHeaderBanner } = await import('./modules/installOverlayHeaderBanner.js');
@@ -164,9 +164,10 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   // Push Notifications Prompt
-  if (settings?.pushNotifications?.prompt?.feature === 'on' && 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window && !['subscribed', 'blocked'].includes(await PushNotificationsSubscription.getSubscriptionState()) && !getCookie('pwa_push_notifications_prompt_shown') && settings?.pushNotifications?.prompt?.skipFirstVisit === 'on' && isReturningVisitor()) {
+  if (settings?.pushNotifications?.prompt?.feature === 'on' && 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window && !['subscribed', 'blocked'].includes(await PushNotificationsSubscription.getSubscriptionState()) && !getCookie('pwa_push_notifications_prompt_shown') && (settings?.pushNotifications?.prompt?.skipFirstVisit !== 'on' || isReturningVisitor())) {
     const { initPushNotificationsPrompt } = await import('./modules/pushNotificationsPrompt.js');
     await initPushNotificationsPrompt();
+    setCookie('pwa_push_notifications_prompt_shown', 'true', settings?.pushNotifications?.prompt?.timeout ?? 1);
   }
 
   // Push Notifications Button
