@@ -3,6 +3,7 @@
 namespace DaftPlug\Progressify\Module;
 
 use DaftPlug\Progressify\{Plugin, Frontend};
+use DaftPlug\Progressify\Module\WebAppManifest;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
 use Minishlink\WebPush\VAPID;
@@ -584,7 +585,7 @@ class PushNotifications
         'title' => '',
         'badge' => '',
         'body' => '',
-        'icon' => esc_url_raw(@wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0] ?? ''),
+        'icon' => esc_url_raw(WebAppManifest::getPwaIconUrl('rounded')),
         'image' => '',
         'data' => '',
         'tag' => 'notification',

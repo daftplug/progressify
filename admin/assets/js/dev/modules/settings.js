@@ -1,4 +1,5 @@
 import jQuery from '../components/utils.js';
+import generateAndSendPwaAssets from '../components/pwaAssetGenerator.js';
 import showToast from '../components/toast.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
@@ -8,7 +9,7 @@ export function initSettings() {
   daftplugAdmin.find('form[name="settingsForm"]').on('submit', saveSettings);
 }
 
-export function saveSettings(e) {
+export async function saveSettings(e) {
   e.preventDefault();
   const form = jQuery(e.target);
   const settingsData = form.daftplugSerialize();
@@ -28,33 +29,46 @@ export function saveSettings(e) {
     topLevelKey: topLevelKey,
   });
 
-  fetch(wpApiSettings.root + slug + '/saveSettings', {
-    method: 'POST',
-    headers: {
-      'X-WP-Nonce': wpApiSettings.nonce,
-      'Content-Type': 'application/json',
-    },
-    body: requestBody,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((response) => {
-      saveSettingsBtn.removeAttr('data-saving');
-      intractableComponents.removeAttr('data-disabled');
-
-      if (response.status === '1') {
-        showToast('Success', 'Your changes have been saved successfully!', 'success', 'top-right', true, false);
-      } else {
-        showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
-      }
-    })
-    .catch((error) => {
-      saveSettingsBtn.removeAttr('data-saving');
-      intractableComponents.removeAttr('data-disabled');
-      showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
+  try {
+    const response = await fetch(wpApiSettings.root + slug + '/saveSettings', {
+      method: 'POST',
+      headers: {
+        'X-WP-Nonce': wpApiSettings.nonce,
+        'Content-Type': 'application/json',
+      },
+      body: requestBody,
     });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    saveSettingsBtn.removeAttr('data-saving');
+    intractableComponents.removeAttr('data-disabled');
+
+    if (data.status === 'success') {
+      showToast('Success', 'Your changes have been saved successfully!', 'success', 'top-right', true, false);
+
+      if (topLevelKey === 'webAppManifest') {
+        const iconUrl = daftplugAdmin.find('#settingAppIcon').find('[data-attachment-holder]').attr('src');
+        const backgroundColor = parsedSettings.webAppManifest.appearance.backgroundColor;
+
+        try {
+          await generateAndSendPwaAssets(iconUrl, backgroundColor);
+        } catch (error) {
+          console.error('Failed to generate PWA assets:', error);
+          showToast('Warning', 'Settings saved but PWA assets generation failed!', 'warning', 'top-right', true, false);
+        }
+      }
+    } else {
+      showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
+    }
+  } catch (error) {
+    console.error('Save failed:', error);
+    saveSettingsBtn.removeAttr('data-saving');
+    intractableComponents.removeAttr('data-disabled');
+    showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
+  }
 }

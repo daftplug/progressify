@@ -20,8 +20,8 @@ class WebAppManifest
   public $pluginBasename;
   public $pluginDirUrl;
   public $pluginDirPath;
-  public $pluginUploadDir;
-  public $pluginUploadUrl;
+  public static $pluginUploadDir;
+  public static $pluginUploadUrl;
   public $menuTitle;
   public $menuIcon;
   public $menuId;
@@ -42,8 +42,8 @@ class WebAppManifest
     $this->pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
     $this->pluginDirPath = $config['plugin_dir_path'];
-    $this->pluginUploadDir = $config['plugin_upload_dir'];
-    $this->pluginUploadUrl = $config['plugin_upload_url'];
+    self::$pluginUploadDir = $config['plugin_upload_dir'];
+    self::$pluginUploadUrl = $config['plugin_upload_url'];
     $this->menuTitle = $config['menu_title'];
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
@@ -52,55 +52,123 @@ class WebAppManifest
     $this->settings = $config['settings'];
     self::$manifestName = 'manifest.webmanifest';
 
-    add_action("wp_ajax_{$this->optionName}_generate_launch_screens_and_maskable_icons", [$this, 'generateLaunchScreensAndMakableIcons']);
+    add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'generateManifest']);
     add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
   }
 
-  public function generateLaunchScreensAndMakableIcons()
+  public function registerRoutes()
   {
-    if (isset($this->settings['webAppManifest[appIdentity][appIcon]'])) {
-      if (isset($_POST['launchScreen']) && !empty($_POST['launchScreen']) && (isset($_POST['maskableIcon']) && !empty($_POST['maskableIcon']))) {
-        $launchScreen = substr($_POST['launchScreen'], strpos($_POST['launchScreen'], ',') + 1);
-        $maskableIcon = substr($_POST['maskableIcon'], strpos($_POST['maskableIcon'], ',') + 1);
-        $decodedLaunchScreen = base64_decode($launchScreen);
-        $decodedMaskableIcon = base64_decode($maskableIcon);
-        $launchScreenName = $this->pluginUploadDir . 'img-apple-launch.png';
-        $maskableIconName = $this->pluginUploadDir . 'icon-maskable.png';
+    register_rest_route($this->slug, '/savePwaAssets', [
+      'methods' => 'POST',
+      'callback' => [$this, 'savePwaAssets'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+  }
 
-        Plugin::putContent($launchScreenName, $decodedLaunchScreen);
-        Plugin::putContent($maskableIconName, $decodedMaskableIcon);
-
-        if (file_exists($launchScreenName)) {
-          $launchScreenImage = wp_get_image_editor($launchScreenName);
-          if (!is_wp_error($launchScreenImage)) {
-            $sizesArray = [['width' => 640, 'height' => 1136, 'crop' => true], ['width' => 750, 'height' => 1334, 'crop' => true], ['width' => 828, 'height' => 1792, 'crop' => true], ['width' => 1125, 'height' => 2436, 'crop' => true], ['width' => 1170, 'height' => 2532, 'crop' => true], ['width' => 1179, 'height' => 2256, 'crop' => true], ['width' => 1242, 'height' => 2208, 'crop' => true], ['width' => 1242, 'height' => 2688, 'crop' => true], ['width' => 1284, 'height' => 2778, 'crop' => true], ['width' => 1290, 'height' => 2796, 'crop' => true], ['width' => 1536, 'height' => 2048, 'crop' => true], ['width' => 1620, 'height' => 2160, 'crop' => true], ['width' => 1640, 'height' => 2360, 'crop' => true], ['width' => 1668, 'height' => 2224, 'crop' => true], ['width' => 1668, 'height' => 2388, 'crop' => true], ['width' => 2048, 'height' => 2732, 'crop' => true]];
-
-            $launchScreenImage->multi_resize($sizesArray);
-            $launchScreenImage->save();
-          }
-        }
-
-        if (file_exists($maskableIconName)) {
-          $maskableIconImage = wp_get_image_editor($maskableIconName);
-          if (!is_wp_error($maskableIconImage)) {
-            $sizesArray = [['width' => 192, 'height' => 192, 'crop' => true], ['width' => 180, 'height' => 180, 'crop' => true]];
-
-            $maskableIconImage->multi_resize($sizesArray);
-            $maskableIconImage->save();
-          }
-        }
-
-        wp_send_json_success([
-          'message' => esc_html__('Launch Screens and Makable Icons are generated successfully!', $this->textDomain),
-        ]);
+  public function savePwaAssets(\WP_REST_Request $request)
+  {
+    try {
+      if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
+        return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
       }
-    } else {
-      wp_send_json_error([
-        'message' => esc_html__('Launch Screens and Makable Icons generation failed!', $this->textDomain),
-      ]);
+
+      // Get parameters
+      $splashScreens = $request->get_param('splashScreens');
+      $roundedIcon = $request->get_param('roundedIcon');
+      $maskableIcon = $request->get_param('maskableIcon');
+
+      // Validate input
+      if (!$splashScreens || !$maskableIcon || !$roundedIcon) {
+        return new \WP_Error('invalid_input', 'Missing required assets', ['status' => 400]);
+      }
+
+      // Ensure directories exist
+      $dirs = [self::$pluginUploadDir . 'splash-screens/', self::$pluginUploadDir . 'pwa-icons/'];
+
+      foreach ($dirs as $dir) {
+        if (!file_exists($dir)) {
+          wp_mkdir_p($dir);
+        }
+      }
+
+      // Save icons
+      $iconPaths = [
+        'rounded' => self::$pluginUploadDir . 'pwa-icons/icon-rounded.png',
+        'maskable' => self::$pluginUploadDir . 'pwa-icons/icon-maskable.png',
+      ];
+
+      $this->saveIcon($roundedIcon, $iconPaths['rounded']);
+      $this->saveIcon($maskableIcon, $iconPaths['maskable']);
+
+      // Process maskable icon variants
+      $this->processMaskableIconVariants($iconPaths['maskable']);
+
+      // Save and process splash screens
+      foreach ($splashScreens as $name => $base64Data) {
+        $orientation = str_ends_with($name, '_landscape') ? 'landscape' : 'portrait';
+        $deviceName = str_replace(['_landscape', '_portrait'], '', $name);
+
+        $filename = sprintf('%s-%s.png', $deviceName, $orientation);
+
+        $path = self::$pluginUploadDir . 'splash-screens/' . $filename;
+        $this->saveIcon($base64Data, $path);
+      }
+
+      return new \WP_REST_Response(
+        [
+          'status' => 'success',
+          'message' => 'PWA assets saved successfully',
+        ],
+        200
+      );
+    } catch (\Exception $e) {
+      return new \WP_Error('save_failed', $e->getMessage(), ['status' => 500]);
     }
+  }
+
+  private function saveIcon($base64Data, $path)
+  {
+    // Decode base64 data
+    $imageData = base64_decode($base64Data);
+
+    if (!$imageData) {
+      throw new \Exception('Invalid base64 data for ' . basename($path));
+    }
+
+    // Save the file
+    if (!Plugin::putContent($path, $imageData)) {
+      throw new \Exception('Failed to save ' . basename($path));
+    }
+
+    return true;
+  }
+
+  private function processMaskableIconVariants($sourcePath)
+  {
+    if (!file_exists($sourcePath)) {
+      throw new \Exception('Source maskable icon not found');
+    }
+
+    $editor = wp_get_image_editor($sourcePath);
+    if (is_wp_error($editor)) {
+      throw new \Exception('Failed to create image editor for maskable icon');
+    }
+
+    // Define maskable icon sizes
+    $sizes = [['width' => 192, 'height' => 192, 'crop' => true], ['width' => 180, 'height' => 180, 'crop' => true], ['width' => 512, 'height' => 512, 'crop' => true]];
+
+    // Generate variants
+    $resized = $editor->multi_resize($sizes);
+
+    if (is_wp_error($resized)) {
+      throw new \Exception('Failed to generate maskable icon variants');
+    }
+
+    return true;
   }
 
   public function generateWebAppOriginAssociation()
@@ -233,51 +301,34 @@ class WebAppManifest
     }
 
     // Icons
-    $appIcon = Plugin::getSetting('webAppManifest[appIdentity][appIcon]');
-    $iconSizes = [180, 192, 512];
+    if (wp_attachment_is_image(intval(Plugin::getSetting('webAppManifest[appIdentity][appIcon]')))) {
+      $manifest['icons'][] = [
+        'src' => self::getPwaIconUrl('rounded'),
+        'sizes' => '512x512',
+        'type' => 'image/png',
+        'purpose' => 'any',
+      ];
 
-    if (wp_attachment_is_image(intval($appIcon))) {
-      $iconSrc = wp_get_attachment_image_src($appIcon, 'full');
-      $iconWidth = $iconSrc[1];
+      $manifest['icons'][] = [
+        'src' => self::getPwaIconUrl('maskable', 180),
+        'sizes' => '180x180',
+        'type' => 'image/png',
+        'purpose' => 'maskable',
+      ];
 
-      foreach ($iconSizes as $iconSize) {
-        if ($iconWidth < $iconSize) {
-          continue;
-        }
+      $manifest['icons'][] = [
+        'src' => self::getPwaIconUrl('maskable', 192),
+        'sizes' => '192x192',
+        'type' => 'image/png',
+        'purpose' => 'maskable',
+      ];
 
-        $newIcon = Plugin::resizeImage($appIcon, $iconSize, $iconSize, 'png', true);
-
-        if ($newIcon === false || $newIcon['width'] != $iconSize) {
-          continue;
-        }
-
-        $manifest['icons'][] = [
-          'src' => $newIcon['url'],
-          'sizes' => "{$iconSize}x{$iconSize}",
-          'type' => 'image/png',
-          'purpose' => 'any',
-        ];
-
-        $maskableIconFilename = "icon-maskable-{$iconSize}x{$iconSize}.png";
-        $maskableIconPath = $this->pluginUploadDir . $maskableIconFilename;
-        $maskableIconUrl = $this->pluginUploadUrl . $maskableIconFilename;
-
-        if (file_exists($maskableIconPath)) {
-          $manifest['icons'][] = [
-            'src' => $maskableIconUrl,
-            'sizes' => "{$iconSize}x{$iconSize}",
-            'type' => 'image/png',
-            'purpose' => 'maskable',
-          ];
-        } else {
-          $manifest['icons'][] = [
-            'src' => $newIcon['url'],
-            'sizes' => "{$iconSize}x{$iconSize}",
-            'type' => 'image/png',
-            'purpose' => 'maskable',
-          ];
-        }
-      }
+      $manifest['icons'][] = [
+        'src' => self::getPwaIconUrl('maskable'),
+        'sizes' => '512x512',
+        'type' => 'image/png',
+        'purpose' => 'maskable',
+      ];
     }
 
     // Screenshots
@@ -373,5 +424,61 @@ class WebAppManifest
     }
 
     return $manifestUrl;
+  }
+
+  public static function getPwaIconUrl($type = 'maskable', $size = '')
+  {
+    // Check if we have a valid app icon set
+    if (!wp_attachment_is_image(intval(Plugin::getSetting('webAppManifest[appIdentity][appIcon]')))) {
+      return '';
+    }
+
+    // Construct the filename
+    if ($type === 'maskable' && $size !== '') {
+      $filename = sprintf('icon-%s-%sx%s.png', $type, $size, $size);
+    } else {
+      $filename = sprintf('icon-%s.png', $type);
+    }
+
+    // Build paths
+    $iconPath = self::$pluginUploadDir . 'pwa-icons/' . $filename;
+    $iconUrl = self::$pluginUploadUrl . 'pwa-icons/' . $filename;
+
+    // Check if file exists and return URL with version hash
+    if (file_exists($iconPath)) {
+      // Add version hash to prevent caching issues
+      $version = hash('crc32', filemtime($iconPath));
+      return $iconUrl . '?v=' . $version;
+    }
+
+    return '';
+  }
+
+  public static function getSplashScreenUrl($name)
+  {
+    // Check if we have a valid app icon set (required for splash screens)
+    if (!wp_attachment_is_image(intval(Plugin::getSetting('webAppManifest[appIdentity][appIcon]')))) {
+      return '';
+    }
+
+    // Parse device name and orientation from the provided name
+    $orientation = str_ends_with($name, '_landscape') ? 'landscape' : 'portrait';
+    $deviceName = str_replace(['_landscape', '_portrait'], '', $name);
+
+    // Construct the filename
+    $filename = sprintf('%s-%s.png', $deviceName, $orientation);
+
+    // Build paths
+    $splashScreenPath = self::$pluginUploadDir . 'splash-screens/' . $filename;
+    $splashScreenUrl = self::$pluginUploadUrl . 'splash-screens/' . $filename;
+
+    // Check if file exists and return URL with version hash
+    if (file_exists($splashScreenPath)) {
+      // Add version hash to prevent caching issues
+      $version = hash('crc32', filemtime($splashScreenPath));
+      return $splashScreenUrl . '?v=' . $version;
+    }
+
+    return '';
   }
 }

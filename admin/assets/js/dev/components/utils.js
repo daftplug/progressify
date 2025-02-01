@@ -155,7 +155,6 @@ export function highlightElement(selector) {
     });
 }
 
-// Validates attachments
 export function validateAttachment(attachment, mimes, maxWidth, minWidth, maxHeight, minHeight) {
   const errors = [];
 
@@ -186,7 +185,6 @@ export function validateAttachment(attachment, mimes, maxWidth, minWidth, maxHei
   return errors;
 }
 
-// SerializeForm
 jQuery.fn.daftplugSerialize = function () {
   var data = {};
 

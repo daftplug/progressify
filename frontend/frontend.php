@@ -2,6 +2,8 @@
 
 namespace DaftPlug\Progressify;
 
+use DaftPlug\Progressify\Module\WebAppManifest;
+
 if (!defined('ABSPATH')) {
   exit();
 }
@@ -83,7 +85,7 @@ class Frontend
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'restUrl' => get_rest_url(),
         'restNonce' => wp_create_nonce('wp-rest'),
-        'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
+        'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
         'slug' => $this->slug,
         'settings' => $this->settings,
         'userData' => [

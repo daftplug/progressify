@@ -3,6 +3,7 @@
 namespace DaftPlug\Progressify\Module;
 
 use DaftPlug\Progressify\{Plugin};
+use DaftPlug\Progressify\Module\WebAppManifest;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -343,7 +344,7 @@ class AppCapabilities
                     description: document.querySelector('meta[name=\"description\"]')?.content || '',
                     icons: [{
                         src: " .
-      wp_json_encode(@wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0]) .
+      WebAppManifest::getPwaIconUrl('maskable', 180) .
       ",
                         sizes: '150x150',
                         type: 'image/png',

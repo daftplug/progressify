@@ -1,6 +1,7 @@
 <?php
 
 namespace DaftPlug\Progressify;
+use DaftPlug\Progressify\Module\WebAppManifest;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -65,7 +66,35 @@ class Admin
     remove_all_actions('admin_notices');
     remove_all_actions('all_admin_notices');
 
-    $this->menuId = add_menu_page($this->menuTitle, !$this->purchaseCode ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon);
+    // TODO: Remove the (1) notification icon if activation is passed.
+    $this->menuId = add_menu_page($this->menuTitle, !$this->purchaseCode ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon, 55);
+
+    $this->addMenuSeparators();
+  }
+
+  private function addMenuSeparators()
+  {
+    global $menu;
+
+    $position = null;
+    foreach ($menu as $key => $item) {
+      if (isset($item[2]) && $item[2] === $this->slug) {
+        $position = $key;
+        break;
+      }
+    }
+
+    if ($position !== null) {
+      if (!isset($menu[$position - 1])) {
+        $menu[$position - 1] = ['', 'read', 'separator-' . $this->slug . '-top', '', 'wp-menu-separator ' . $this->slug];
+      }
+
+      if (!isset($menu[$position + 1])) {
+        $menu[$position + 1] = ['', 'read', 'separator-' . $this->slug . '-bottom', '', 'wp-menu-separator ' . $this->slug];
+      }
+
+      ksort($menu);
+    }
   }
 
   public function loadAssets($hook)
@@ -102,7 +131,7 @@ class Admin
           'generalError' => __('An unexpected error occurred', $this->textDomain),
           'homeUrl' => trailingslashit(home_url('/', 'https')),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
-          'iconUrl' => @wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), [150, 150])[0],
+          'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
           'slug' => $this->slug,
           'settings' => $this->settings,
         ])
@@ -245,7 +274,7 @@ class Admin
     $saved = update_option("{$this->optionName}_settings", $currentSettings);
 
     if ($saved) {
-      return new \WP_REST_Response(['status' => '1'], 200);
+      return new \WP_REST_Response(['status' => 'success'], 200);
     } else {
       return new \WP_Error('save_failed', 'Failed to save settings', ['status' => 500]);
     }

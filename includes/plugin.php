@@ -529,7 +529,7 @@ class Plugin
       }
 
       // Calculate QR code size to fit within padding
-      $qrSize = $scaledWidth - $totalPadding; // Assuming targetWidth == targetHeight
+      $qrSize = $scaledWidth - $totalPadding;
 
       // Ensure the QR code fits within the allocated space
       $qrOriginalWidth = imagesx($qrImage);
@@ -549,12 +549,35 @@ class Plugin
       // If logo is provided, try to add it but continue if it fails
       if ($logo) {
         try {
-          $logoContent = @file_get_contents($logo);
-          if ($logoContent === false) {
-            throw new \Exception('Failed to read logo file');
+          // Handle WordPress attachment
+          if (is_numeric($logo)) {
+            $attachment_path = get_attached_file($logo);
+            if (!$attachment_path || !file_exists($attachment_path)) {
+              throw new \Exception('Attachment file not found');
+            }
+            $logoContent = file_get_contents($attachment_path);
+          } else {
+            // Try to convert URL to local path if it's rounded PWA icon
+            $pwa_icon_url = WebAppManifest::getPwaIconUrl('rounded');
+            $pwa_icon_path = self::$pluginUploadDir . 'pwa-icons/icon-rounded.png';
+
+            if ($logo == $pwa_icon_url && file_exists($pwa_icon_path)) {
+              $logoContent = file_get_contents($pwa_icon_path);
+            } else {
+              // Fallback to direct URL with WordPress filters
+              $logoContent = wp_remote_get($logo);
+              if (is_wp_error($logoContent)) {
+                throw new \Exception('Failed to fetch remote logo');
+              }
+              $logoContent = wp_remote_retrieve_body($logoContent);
+            }
           }
 
-          $logoImage = @imagecreatefromstring($logoContent);
+          if (empty($logoContent)) {
+            throw new \Exception('Empty logo content');
+          }
+
+          $logoImage = imagecreatefromstring($logoContent);
           if (!$logoImage) {
             throw new \Exception('Invalid logo image format');
           }
@@ -576,7 +599,6 @@ class Plugin
 
           imagedestroy($logoImage);
         } catch (\Exception $e) {
-          // Log the logo error but continue processing
           error_log('QR code logo processing failed: ' . $e->getMessage());
           // Continue without the logo
         }
@@ -669,7 +691,7 @@ class Plugin
     ];
 
     // Get country data
-    $locationData = @file_get_contents('http://ip-api.com/json/', false, stream_context_create(['http' => ['timeout' => 2]]));
+    $locationData = @file_get_contents('https://get.geojs.io/v1/ip/country.json', false, stream_context_create(['http' => ['timeout' => 2]]));
     $locationData = $locationData ? json_decode($locationData, true) : [];
 
     $userData = [
@@ -692,10 +714,10 @@ class Plugin
     ];
 
     // Set country if available
-    if ($locationData && $locationData['status'] === 'success' && isset($locationData['country'], $locationData['countryCode'])) {
+    if ($locationData && $locationData['status'] === 'success' && isset($locationData['name'], $locationData['country'])) {
       $userData['country'] = [
-        'name' => $locationData['country'],
-        'icon' => $baseIconPath . 'flags/' . strtolower($locationData['countryCode']) . '.svg',
+        'name' => $locationData['name'],
+        'icon' => $baseIconPath . 'flags/' . strtolower($locationData['country']) . '.svg',
       ];
     }
 

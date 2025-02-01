@@ -177,7 +177,7 @@ class Dashboard
   public function fetchPwaUsersData()
   {
     $nowTimestamp = current_time('timestamp');
-    $sixMonthsAgo = gmdate('Y-m-d H:i:s', strtotime('-6 months', $nowTimestamp));
+    $ninetyDaysAgo = gmdate('Y-m-d H:i:s', strtotime('-90 days', $nowTimestamp));
 
     $activeUsers = (int) $this->wpdb->get_var(
       $this->wpdb->prepare(
@@ -186,7 +186,7 @@ class Dashboard
         FROM {$this->tableName}
         WHERE last_open_date >= %s
       ",
-        $sixMonthsAgo
+        $ninetyDaysAgo
       )
     );
 
@@ -207,9 +207,9 @@ class Dashboard
         ORDER BY active DESC
         LIMIT 3
       ",
-        $activeUsers, // %d
-        $activeUsers, // %d
-        $sixMonthsAgo // %s
+        $activeUsers,
+        $activeUsers,
+        $ninetyDaysAgo
       )
     );
 
@@ -237,8 +237,8 @@ class Dashboard
   {
     $allActionItems = [
       'mobileApps' => [
-        'weight' => 15,
-        'condition' => false, // TODO: Implement real detection if the user has purchased mobile apps or not
+        'weight' => 10,
+        'condition' => true, // TODO: Implement real detection if the user has purchased mobile apps or not
         'title' => esc_html__('Generate Android and iOS mobile apps', $this->textDomain),
         'icon' => '<img class="shrink-0 size-5" src="' . plugins_url('admin/assets/media/icons/androios.png', $this->pluginFile) . '" alt="Mobile Apps" />',
         'action' => [
@@ -247,6 +247,7 @@ class Dashboard
         ],
       ],
       'https' => [
+        'weight' => 25,
         'condition' => !is_ssl(),
         'title' => esc_html__('Enable secure HTTPS on your server', $this->textDomain),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
@@ -256,6 +257,7 @@ class Dashboard
         ],
       ],
       'appIcon' => [
+        'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][appIcon]'),
         'title' => esc_html__('Upload and select your PWA App Icon', $this->textDomain),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>',
@@ -266,6 +268,7 @@ class Dashboard
         ],
       ],
       'appName' => [
+        'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][appName]'),
         'title' => esc_html__('Define your PWA web app Name', $this->textDomain),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>',
@@ -276,6 +279,7 @@ class Dashboard
         ],
       ],
       'shortName' => [
+        'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][shortName]'),
         'title' => esc_html__('Define your PWA web app Short Name', $this->textDomain),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 15 4-8 4 8"/><path d="M4 13h6"/><circle cx="18" cy="12" r="3"/><path d="M21 9v6"/></svg>',
