@@ -95,6 +95,8 @@ class Plugin
     // Init Frontend
     require_once self::$pluginDirPath . 'frontend/frontend.php';
     $this->Frontend = new Frontend($config);
+
+    // TODO: Init default settings.
   }
 
   public static function getSetting($key)

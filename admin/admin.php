@@ -192,10 +192,10 @@ class Admin
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'pushnotifications.php']),
       ],
       [
-        'id' => 'generateMobileApps',
-        'pageTitle' => esc_html__('Generate Native Mobile Apps', $this->textDomain),
-        'description' => esc_html__('Create Android, iOS, Windows, and Meta store-ready apps that mirror your website in real-time, requiring no extra maintenance, and publish them to the Google Play Store, App Store, Microsoft Store, and Meta Quest app store.', $this->textDomain),
-        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'generatemobileapps.php']),
+        'id' => 'publishOnAppStores',
+        'pageTitle' => esc_html__('Publish on App Stores', $this->textDomain),
+        'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->textDomain),
+        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishonappstores.php']),
       ],
       [
         'id' => 'helpCenter',

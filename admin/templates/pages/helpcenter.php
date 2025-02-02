@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 ?>
 <div class="grid gap-4 sm:gap-6 xl:grid-cols-2">
   <!-- FAQ -->
-  <div class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+  <div class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="mb-8">
       <h2 class="font-semibold text-xl text-gray-800 dark:text-neutral-200">
         <?php _e('Frequently Asked Questions', $this->textDomain); ?>
