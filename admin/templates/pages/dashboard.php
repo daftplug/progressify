@@ -43,6 +43,7 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <div class="mt-5">
+        <!-- TODO: Implement global feature toggle-->
         <div id="pwaFeature" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
           <label for="pwa[feature]" class="cursor-pointer flex gap-x-2">
             <svg class="mt-1 shrink-0 size-7 fill-gray-800 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 28">
@@ -139,7 +140,7 @@ if (!defined('ABSPATH')) {
               </span>
             </div>
             <div class="inline-flex items-center">
-              <span class="inline-block shrink-0 size-2.5 bg-teal-400 rounded-sm me-1.5"></span>
+              <span class="inline-block shrink-0 size-2.5 bg-green-400 rounded-sm me-1.5"></span>
               <span class="text-sm text-gray-800 dark:text-neutral-200">
                 <?php _e('Excellent', $this->textDomain); ?>
               </span>

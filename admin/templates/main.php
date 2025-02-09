@@ -1,5 +1,5 @@
 <!-- ========== MAIN CONTENT ========== -->
-<main id="content" class="flex flex-col w-full bg-gray-50 dark:bg-neutral-900 rounded-xl lg:ps-[260px] pt-[59px] absolute top-0 h-[calc(100svh-130px)] overflow-y-auto">
+<main id="content" class="flex flex-col w-full bg-gray-50 dark:bg-neutral-900 rounded-xl xl:ps-[260px] pt-[59px] absolute top-0 h-[calc(100svh-100px)] overflow-y-auto">
   <?php foreach ($this->pages as $page): ?>
   <section class="p-2 sm:p-5 sm:py-0 md:pt-5 space-y-5 hidden data-[active=true]:block animate-[pageFade_.15s]" data-page-id="<?php echo esc_attr($page['id']); ?>">
     <?php include_once $page['template']; ?>

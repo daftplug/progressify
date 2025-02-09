@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
+<!-- TODO: Review entire page and finalize it -->
 <div class="grid gap-4 sm:gap-6 xl:grid-cols-2">
   <!-- FAQ -->
   <div class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">

@@ -40,7 +40,7 @@ export function handleSelect() {
       let descriptionMarkup = '';
 
       if (icon) {
-        iconMarkup = `<div class="me-1 flex shrink-0" data-icon>${icon}</div>`;
+        iconMarkup = `<div class="me-1.5 flex shrink-0" data-icon>${icon}</div>`;
       }
 
       if (description) {
@@ -357,7 +357,7 @@ function updateCustomSelect(select, toggle, dropdown, selectedValues, placeholde
 
         return `
           <div class="inline-flex items-center">
-            ${selectedIcon ? `<div class="me-1 flex shrink-0">${selectedIcon}</div>` : ''}
+            ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ''}
             <div class="text-gray-800 dark:text-neutral-200 truncate">${selectedTitle}</div>
             ${index < displayedItems.length - 1 ? '<span class="text-gray-800 dark:text-neutral-200 me-1">,</span>' : ''}
           </div>
@@ -384,7 +384,7 @@ function updateCustomSelect(select, toggle, dropdown, selectedValues, placeholde
     } else {
       toggle.html(`
         <div class="flex items-center">
-          ${selectedIcon ? `<div class="me-1 flex shrink-0">${selectedIcon}</div>` : ''}
+          ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ''}
           <div class="text-gray-800 dark:text-neutral-200 truncate">${selectedTitle}</div>
         </div>
       `);

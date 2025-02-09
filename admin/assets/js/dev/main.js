@@ -23,6 +23,8 @@ import { initModalPushNotifications } from './modules/modalPushNotifications.js'
 import { initChangelog } from './modules/changelog.js';
 import { initPwaUsersData } from './modules/pwaUsersData.js';
 import { initPwaScoreData } from './modules/pwaScoreData.js';
+import { initPublishOnAppStores } from './modules/publishAppStores.js';
+import { initSearch } from './modules/search.js';
 
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
@@ -48,4 +50,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   initChangelog();
   initPwaUsersData();
   initPwaScoreData();
+  initPublishOnAppStores();
+  initSearch();
 });

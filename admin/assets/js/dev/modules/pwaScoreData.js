@@ -77,14 +77,14 @@ class PwaScoreDataManager {
         indicatorBgColorClass = 'before:bg-yellow-500';
         break;
       case 'Excellent':
-        indicatorBgColorClass = 'before:bg-teal-500';
+        indicatorBgColorClass = 'before:bg-green-500';
         break;
       default:
         break;
     }
 
     this.pwaScoreProgressbar.innerHTML = `
-      <div class="flex items-center w-full h-2.5 bg-gradient-to-r from-red-500 via-yellow-400 via-90% to-teal-400 rounded-full dark:bg-neutral-700 before:relative before:start-[--progressVal] before:w-2 before:h-5 ${indicatorBgColorClass} before:border-2 before:border-white before:rounded-full before:dark:border-neutral-800" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${scorePercent}" style="--progressVal: calc(${scorePercent}% - 0.5rem / 2);"></div>
+      <div class="flex items-center w-full h-2.5 bg-gradient-to-r from-red-500 via-yellow-400 via-90% to-green-400 rounded-full dark:bg-neutral-700 before:relative before:start-[--progressVal] before:w-2 before:h-5 ${indicatorBgColorClass} before:border-2 before:border-white before:rounded-full before:dark:border-neutral-800" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${scorePercent}" style="--progressVal: calc(${scorePercent}% - 0.5rem / 2);"></div>
     `;
   }
 
@@ -106,8 +106,8 @@ class PwaScoreDataManager {
         resultIconClass = 'bg-yellow-500';
         break;
       case 'Excellent':
-        resultColorClass = `bg-teal-100 text-teal-800 dark:bg-teal-500/10 dark:text-teal-500`;
-        resultIconClass = 'bg-teal-500';
+        resultColorClass = `bg-green-100 text-green-800 dark:bg-green-500/10 dark:text-green-500`;
+        resultIconClass = 'bg-green-500';
         break;
       default:
         break;
@@ -181,7 +181,7 @@ class PwaScoreDataManager {
                 ${actionItem.icon}
               </span>
               <div class="grow">
-                <span class="${isPublishOnAppStores ? 'bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600 text-transparent font-semibold' : ''}">${actionItem.title}</span>
+                <span class="${isPublishOnAppStores ? 'bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 text-transparent font-semibold' : ''}">${actionItem.title}</span>
               </div>
               ${isHover ? `<span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">${actionItem.action.tooltip}</span>` : ''}
               ${isClick ? `<svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>` : `<svg class="shrink-0 size-3 mr-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path></svg>`}

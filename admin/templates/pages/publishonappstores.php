@@ -1,22 +1,17 @@
 <?php
-use DaftPlug\Progressify\Plugin;
-
 if (!defined('ABSPATH')) {
   exit();
-}
-?>
+} ?>
 
+<script src="https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 <div class="p-5 md:p-8 flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white"><?php _e('Publish on App Stores', $this->textDomain); ?></h2>
+    <h2 class="text-3xl font-bold md:text-4xl md:leading-tight dark:text-white"><?php _e('Publish on App Stores', $this->textDomain); ?></h2>
     <p class="mt-3 text-gray-600 dark:text-neutral-400 text-sm"><?php _e('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->textDomain); ?></p>
   </div>
-
-  <!-- TODO: Finalize publish app store section responsiveness, content and functionality -->
-  <div class="mt-6 grid sm:grid-cols-1 lg:grid-cols-3 lg:gap-6 gap-4">
-    <!-- Card -->
-    <div class="p-4 sm:p-6 bg-white border border-gray-200 rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-      <div class="flex justify-between items-center gap-x-2 mb-3">
+  <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-6 gap-4">
+    <div class="flex flex-col rounded-xl relative z-[1] min-h-full p-6 md:p-7 bg-white border border-gray-200 dark:bg-neutral-800 dark:border-neutral-700">
+      <div class="mb-3 sm:mb-5">
         <div class="flex items-center space-x-5">
           <div class="relative inline-block shrink-0">
             <img class="size-11" src="<?php echo plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile); ?>" alt="Play Store" />
@@ -25,64 +20,59 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android', $this->textDomain); ?></div>
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('Android', $this->textDomain); ?>
-      </h3>
-      <div class="mt-4 flex items-center gap-x-0.5">
-        <span class="text-xl font-normal text-gray-800 dark:text-neutral-200">$</span>
-        <p class="text-gray-800 font-semibold text-3xl dark:text-neutral-200">
-          24
-        </p>
+      <div class="text-gray-800 dark:text-neutral-200 mb-2">
+        <div class="inline-flex text-5xl font-semibold">
+          <span class="text-2xl align-top me-1">$</span>29
+        </div>
       </div>
-      <p class="mt-1 text-xs text-gray-500 dark:text-neutral-500">
-        <?php _e('One-time payment', $this->textDomain); ?>
-      </p>
-      <div class="mt-5">
-        <button type="button" class="w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500" data-hs-overlay="#hs-pro-dutprom" aria-expanded="false">
-          <?php _e('Get Android App', $this->textDomain); ?>
-        </button>
+      <div class="mb-5">
+        <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
+          <?php _e('Perfect for bringing your web app to Android devices through the Google Play Store.', $this->textDomain); ?>
+        </div>
       </div>
-      <ul class="mt-5 space-y-1">
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+      <div class="paypalButtonsContainer w-full" data-button-color="silver" data-product-name="Android App" data-price="29">
+        <div class="paypalButtons"></div>
+        <div class="paypalResponse"></div>
+      </div>
+      <ul class="mt-5 flex flex-col gap-y-2">
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Android app package', $this->textDomain); ?>
+            <?php _e('Includes an Android app package', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Publishable on Google Play Store', $this->textDomain); ?>
+            <?php _e('Publish on Google Play Store', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach 2.5+ billion devices', $this->textDomain); ?>
+            <?php _e('Reach 2.5+ billion Android users', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('No Updates Required', $this->textDomain); ?>
+            <?php _e('No app updates required', $this->textDomain); ?>
           </span>
         </li>
       </ul>
     </div>
-    <!-- End Card -->
-
-    <!-- Card -->
-    <div class="p-4 sm:p-6 bg-white border-2 border-blue-600 shadow-xl rounded-xl dark:bg-neutral-800 dark:border-blue-700">
-      <div class="flex justify-between items-center gap-x-2 mb-3">
+    <div class="flex flex-col rounded-xl relative z-[1] min-h-full p-6 md:p-7 bg-white border-2 border-blue-600 shadow-xl dark:bg-neutral-800 dark:border-blue-700">
+      <div class="mb-3 sm:mb-5">
         <div class="flex items-center space-x-5">
           <div class="relative inline-block shrink-0">
             <img class="size-11" src="<?php echo plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile); ?>" alt="Play Store" />
@@ -97,67 +87,71 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
-        <span class="inline-flex items-center gap-1.5 py-1.5 px-2 text-xs font-medium bg-blue-100 text-blue-800 rounded-md dark:bg-blue-500/10 dark:text-blue-500">
-          <?php _e('Most Popular', $this->textDomain); ?>
-        </span>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android and iOS', $this->textDomain); ?></div>
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('Android and iOS', $this->textDomain); ?>
-      </h3>
-      <div class="mt-4 flex items-center gap-x-0.5">
-        <span class="text-xl font-normal text-gray-800 dark:text-neutral-200">$</span>
-        <p class="text-gray-800 font-semibold text-3xl dark:text-neutral-200">
-          48
-        </p>
+      <div class="relative text-gray-800 dark:text-neutral-200 mb-2">
+        <div class="inline-flex text-5xl font-semibold">
+          <div class="inline-flex flex-wrap items-center gap-3">
+            <div class="inline-flex flex-wrap items-center pe-2 border-e border-dashed border-gray-300 dark:border-gray-600">
+              <span class="text-2xl self-start me-1">$</span>48
+            </div>
+            <span class="grid">
+              <span class="text-xs leading-tight text-gray-800 dark:text-neutral-200">
+                <?php _e('Early Supporter Discount Applied', $this->textDomain); ?>
+              </span>
+              <s class="text-2xl leading-6 font-normal text-gray-400 dark:text-neutral-500">
+                <span>$</span><span>59</span>
+              </s>
+            </span>
+          </div>
+        </div>
       </div>
-      <p class="mt-1 text-xs text-gray-500 dark:text-neutral-500">
-        <?php _e('One-time payment', $this->textDomain); ?>
-      </p>
-      <div class="mt-5">
-        <button type="button" class="w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500" data-hs-overlay="#hs-pro-dutprom" aria-expanded="false">
-          <?php _e('Get Android and iOS Apps', $this->textDomain); ?>
-        </button>
+      <div class="mb-5">
+        <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
+          <?php _e('Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store.', $this->textDomain); ?>
+        </div>
       </div>
-      <ul class="mt-5 space-y-1">
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+      <div class="paypalButtonsContainer w-full" data-button-color="blue" data-product-name="Android and iOS Apps" data-price="48">
+        <div class="paypalButtons"></div>
+        <div class="paypalResponse"></div>
+      </div>
+      <ul class="mt-5 flex flex-col gap-y-2">
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Android and iOS app packages', $this->textDomain); ?>
+            <?php _e('Everything from the Android plan', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Publishable on Google Play and App Store', $this->textDomain); ?>
+            <?php _e('Plus an iOS app package', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach 4+ billion Android & Apple devices', $this->textDomain); ?>
+            <?php _e('Also publish on Apple App Store', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('No Updates Required', $this->textDomain); ?>
+            <?php _e('Reach an additional 1.5+ billion iOS users', $this->textDomain); ?>
           </span>
         </li>
       </ul>
     </div>
-    <!-- End Card -->
-
-    <!-- Card -->
-    <div class="p-4 sm:p-6 bg-white border border-gray-200 rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-      <div class="flex justify-between items-center gap-x-2 mb-3">
+    <div class="hidden 2xl:flex flex-col rounded-xl relative z-[1] min-h-full p-6 md:p-7 bg-white border border-gray-200 dark:bg-neutral-800 dark:border-neutral-700" id="desktopPlan">
+      <div class="mb-3 sm:mb-5">
         <div class="flex items-center space-x-5">
           <div class="relative inline-block shrink-0">
             <img class="size-11" src="<?php echo plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile); ?>" alt="Play Store" />
@@ -178,81 +172,64 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android, iOS and Windows', $this->textDomain); ?></div>
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('Android, iOS and Windows', $this->textDomain); ?>
-      </h3>
-      <div class="mt-4 flex items-center gap-x-0.5">
-        <span class="text-xl font-normal text-gray-800 dark:text-neutral-200">$</span>
-        <p class="text-gray-800 font-semibold text-3xl dark:text-neutral-200">
-          67
-        </p>
+      <div class="text-gray-800 dark:text-neutral-200 mb-2">
+        <div class="inline-flex text-5xl font-semibold">
+          <span class="text-2xl align-top me-1">$</span>79
+        </div>
       </div>
-      <p class="mt-1 text-xs text-gray-500 dark:text-neutral-500">
-        One-time payment
-      </p>
-      <div class="mt-5">
-        <button type="button" class="w-full py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500" data-hs-overlay="#hs-pro-dutprom" aria-expanded="false">
-          Get Android App
-        </button>
+      <div class="mb-5">
+        <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
+          <?php _e('Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices.', $this->textDomain); ?>
+        </div>
       </div>
-      <ul class="mt-5 space-y-1">
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+      <div class="paypalButtonsContainer w-full" data-button-color="gold" data-product-name="Android, iOS and Windows Apps" data-price="79">
+        <div class="paypalButtons"></div>
+        <div class="paypalResponse"></div>
+      </div>
+      <ul class="mt-5 flex flex-col gap-y-2">
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Android, iOS and Microsoft app packages', $this->textDomain); ?>
+            <?php _e('Everything from the Android and iOS plans', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Publish on Google Play, App Store and Microsoft Store', $this->textDomain); ?>
+            <?php _e('Plus a Windows app package', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach 4.5+ billion Android, Apple and Windows devices', $this->textDomain); ?>
+            <?php _e('Also publish on Microsoft Store', $this->textDomain); ?>
           </span>
         </li>
-        <li class="flex gap-x-2">
-          <svg class="shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
+        <li class="flex space-x-2 items-center m-0">
+          <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('No Updates Required', $this->textDomain); ?>
+            <?php _e('Reach an additional 500+ million Windows users', $this->textDomain); ?>
           </span>
         </li>
       </ul>
     </div>
-    <!-- End Card -->
   </div>
-
-
-
-  <div class="mt-6 flex justify-center items-center gap-x-3">
+  <div class="flex 2xl:hidden mt-6 justify-center items-center gap-x-3" id="showDesktopPlan">
     <p class="text-sm text-gray-500 dark:text-neutral-500">
-      Need a custom plan?
+      <?php _e('Need a desktop app?', $this->textDomain); ?>
     </p>
-    <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" href="#" target="_parent">
-      Get in touch
-    </a>
+    <button type="button" class="py-2 px-3 inline-flex cursor-pointer items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" onclick="document.getElementById('desktopPlan').classList.remove('hidden'); document.getElementById('showDesktopPlan').classList.add('hidden');">
+      <?php _e('Show Desktop Plan', $this->textDomain); ?>
+    </button>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
