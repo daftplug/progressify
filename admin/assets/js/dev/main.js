@@ -15,7 +15,6 @@ import { initSettings } from './modules/settings.js';
 import { initAppIconUpload } from './modules/appIconUpload.js';
 import { initAppShortcutIconUpload } from './modules/appShortcutIconUpload.js';
 import { initAppScreenshotsUpload } from './modules/appScreenshotsUpload.js';
-import { initSupportAttachments } from './modules/supportAttachments.js';
 import { initOverlayBackdropFix } from './modules/overlayBackdropFix.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
@@ -25,6 +24,7 @@ import { initPwaUsersData } from './modules/pwaUsersData.js';
 import { initPwaScoreData } from './modules/pwaScoreData.js';
 import { initPublishOnAppStores } from './modules/publishAppStores.js';
 import { initSearch } from './modules/search.js';
+import { initSupportRequest } from './modules/supportRequest.js';
 
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   initAppShortcutIconUpload();
   initAppScreenshotsUpload();
   initInputValidation();
-  initSupportAttachments();
   initOverlayBackdropFix();
   initPushImageUpload();
   initPushSubscribers();
@@ -52,4 +51,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   initPwaScoreData();
   initPublishOnAppStores();
   initSearch();
+  initSupportRequest();
 });

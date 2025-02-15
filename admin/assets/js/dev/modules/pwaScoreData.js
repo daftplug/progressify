@@ -168,7 +168,7 @@ class PwaScoreDataManager {
     this.pwaScoreActions.innerHTML = `
     <div class="relative mt-5 flex flex-col">
       <h3 class="mb-1.5 text-sm text-gray-500 dark:text-neutral-200">${__(`Action Items`, slug)}</h3>
-      <div class="flex flex-col w-full action-items-container [&:not(.expanded)_.action-item:nth-child(n+5)]:hidden ${actionItems.length > 4 ? '[&:not(.expanded)]:after:absolute [&:not(.expanded)]:after:w-full [&:not(.expanded)]:after:h-[7.5rem] [&:not(.expanded)]:after:bottom-0 [&:not(.expanded)]:after:bg-gradient-to-t [&:not(.expanded)]:after:from-white [&:not(.expanded)]:after:to-transparent [&:not(.expanded)]:after:z-20' : ''}">
+      <div class="flex flex-col w-full action-items-container [&:not(.expanded)_.action-item:nth-child(n+3)]:hidden ${actionItems.length > 2 ? '[&:not(.expanded)]:after:absolute [&:not(.expanded)]:after:w-full [&:not(.expanded)]:after:h-12 [&:not(.expanded)]:after:bottom-0 [&:not(.expanded)]:after:bg-gradient-to-t [&:not(.expanded)]:after:from-white [&:not(.expanded)]:after:to-transparent [&:not(.expanded)]:after:z-20' : ''}">
         ${actionItems
           .map((actionItem) => {
             const isHover = actionItem.action.type === 'hover';
@@ -191,7 +191,7 @@ class PwaScoreDataManager {
           .join('')}
       </div>
       ${
-        actionItems.length > 4
+        actionItems.length > 2
           ? `
         <button onclick="this.previousElementSibling.classList.add('expanded');this.remove();" class="absolute z-30 bottom-0 self-center py-1.5 px-2.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-blue-500">
           <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg>

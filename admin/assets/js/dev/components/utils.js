@@ -210,8 +210,6 @@ jQuery.fn.daftplugSerialize = function () {
     var name = $el.attr('name');
     if (!name) return;
 
-    console.log('Processing field:', name); // Debug log
-
     var keys = name.split('[').map((key) => key.replace(']', ''));
     var value;
 

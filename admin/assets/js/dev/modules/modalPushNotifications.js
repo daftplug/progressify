@@ -36,22 +36,21 @@ function doModalPushNotification(e) {
   })
     .then((response) => response.json())
     .then((response) => {
-      sendNotificationBtn.removeAttr('data-sending');
-      intractableComponents.removeAttr('data-disabled');
-
       if (response.status === '1') {
-        showToast('Success', response.message, 'success', 'top-right', false, true);
         form.trigger('reset');
         form.find('[data-file-delete-btn]').trigger('click');
         form.find('[data-dp-copy-markup-delete="actionButton1"]').trigger('click');
+        showToast('Success', response.message, 'success', 'top-right', false, true);
       } else {
         throw new Error(response.message || 'Server error');
       }
     })
     .catch((error) => {
+      showToast('Fail', error.message || __('Sending failed. There was an error on server.', slug), 'fail', 'top-right', true, false);
+    })
+    .finally(() => {
       sendNotificationBtn.removeAttr('data-sending');
       intractableComponents.removeAttr('data-disabled');
-      showToast('Fail', error.message || __('Sending failed. There was an error on server.', slug), 'fail', 'top-right', true, false);
     });
 }
 

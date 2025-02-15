@@ -53,7 +53,7 @@ function buildSettingsItems() {
       // Create search item HTML
       searchItemsHTML += `
         <div data-hs-combo-box-output-item='{"group": {"name": "settings", "title": "Settings"}}' tabindex="0">
-          <div class="py-2 px-3 flex items-center gap-x-1.5 cursor-pointer hover:bg-gray-100 rounded-lg dark:hover:bg-neutral-700" data-navigate-to-page="${pageId}" data-highlight-element="#${fieldsetId}">
+          <div class="py-2 px-3 flex items-center gap-x-2 cursor-pointer hover:bg-gray-100 rounded-lg dark:hover:bg-neutral-700" data-navigate-to-page="${pageId}" data-highlight-element="#${fieldsetId}">
             ${fieldsetIcon.prop('outerHTML')}
             <span class="text-sm truncate text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="${fieldsetTitle}" data-hs-combo-box-value="">${fieldsetTitle}</span>
             <span class="ms-auto truncate text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="${pageTitle}" data-hs-combo-box-value="">${pageTitle}</span>

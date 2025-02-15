@@ -14,10 +14,7 @@ export async function saveSettings(e) {
   const form = jQuery(e.target);
   const settingsData = form.daftplugSerialize();
   const parsedSettings = JSON.parse(settingsData);
-
-  // Get the top-level key (e.g., 'webAppManifest')
   const topLevelKey = Object.keys(parsedSettings)[0];
-
   const saveSettingsBtn = form.find('button[type="submit"]');
   const intractableComponents = daftplugAdmin.find('header, aside, main, footer');
 
@@ -45,9 +42,6 @@ export async function saveSettings(e) {
 
     const data = await response.json();
 
-    saveSettingsBtn.removeAttr('data-saving');
-    intractableComponents.removeAttr('data-disabled');
-
     if (data.status === 'success') {
       showToast('Success', 'Your changes have been saved successfully!', 'success', 'top-right', true, false);
 
@@ -67,8 +61,9 @@ export async function saveSettings(e) {
     }
   } catch (error) {
     console.error('Save failed:', error);
+    showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
+  } finally {
     saveSettingsBtn.removeAttr('data-saving');
     intractableComponents.removeAttr('data-disabled');
-    showToast('Fail', 'Your changes have failed to be saved!', 'fail', 'top-right', true, false);
   }
 }

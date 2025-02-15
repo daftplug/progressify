@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 <!-- ========== MAIN SIDEBAR ========== -->
-<aside id="hs-pro-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] rounded-l-xl hidden sticky h-[calc(100svh-130px)] inset-y-0 start-0 xl:z-[9998] z-[10000] bg-white border-e border-gray-200 xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 dark:bg-neutral-800 dark:border-neutral-700">
+<aside id="hs-pro-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] rounded-l-xl hidden sticky h-[calc(100svh-100px)] inset-y-0 start-0 xl:z-[9998] z-[10000] bg-white border-e border-gray-200 xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 dark:bg-neutral-800 dark:border-neutral-700">
   <div class="flex flex-col h-full max-h-full py-3">
     <header class="h-[46px] px-8 mb-6">
       <!-- Logo -->
