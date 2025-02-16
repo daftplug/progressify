@@ -654,7 +654,7 @@ if (!defined('ABSPATH')) {
       <!-- End Back In Stock (WooCommerce) -->
       <!-- Order Status Update (WooCommerce) -->
       <div id="settingPushWooOrderStatusUpdate" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][woocommerce][orderStatusUpdate][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][woocommerce][orderStatusUpdate]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
@@ -677,8 +677,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][woocommerce][orderStatusUpdate][feature]" name="pushNotifications[automation][woocommerce][orderStatusUpdate][feature]"
-                class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][orderStatusUpdate][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][woocommerce][orderStatusUpdate]" name="pushNotifications[automation][woocommerce][orderStatusUpdate]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][orderStatusUpdate]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -686,7 +686,7 @@ if (!defined('ABSPATH')) {
       <!-- End Order Status Update (WooCommerce) -->
       <!-- New Order (WooCommerce) -->
       <div id="settingPushWooNewOrder" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][woocommerce][newOrder][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][woocommerce][newOrder]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
@@ -709,8 +709,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][woocommerce][newOrder][feature]" name="pushNotifications[automation][woocommerce][newOrder][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][newOrder][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][woocommerce][newOrder]" name="pushNotifications[automation][woocommerce][newOrder]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][newOrder]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -718,7 +718,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Order (WooCommerce) -->
       <!-- Low Stock (WooCommerce) -->
       <div id="settingPushWooLowStock" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][woocommerce][lowStock][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][woocommerce][lowStock]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
@@ -741,8 +741,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][woocommerce][lowStock][feature]" name="pushNotifications[automation][woocommerce][lowStock][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][lowStock][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][woocommerce][lowStock]" name="pushNotifications[automation][woocommerce][lowStock]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][woocommerce][lowStock]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -752,7 +752,7 @@ if (!defined('ABSPATH')) {
       <?php if (Plugin::isPluginActive('buddypress')): ?>
       <!-- Member Mention (BuddyPress) -->
       <div id="settingPushBuddyMention" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][buddypress][memberMention][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][buddypress][memberMention]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
@@ -775,8 +775,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][buddypress][memberMention][feature]" name="pushNotifications[automation][buddypress][memberMention][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][memberMention][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][buddypress][memberMention]" name="pushNotifications[automation][buddypress][memberMention]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][memberMention]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -784,7 +784,7 @@ if (!defined('ABSPATH')) {
       <!-- End Member Mention (BuddyPress) -->
       <!-- Member Reply (BuddyPress) -->
       <div id="settingPushBuddyReply" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][buddypress][memberReply][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][buddypress][memberReply]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
@@ -807,8 +807,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][buddypress][memberReply][feature]" name="pushNotifications[automation][buddypress][memberReply][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][memberReply][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][buddypress][memberReply]" name="pushNotifications[automation][buddypress][memberReply]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][memberReply]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -816,7 +816,7 @@ if (!defined('ABSPATH')) {
       <!-- End Member Reply (BuddyPress) -->
       <!-- New Message (BuddyPress) -->
       <div id="settingPushBuddyNewMessage" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][buddypress][newMessage][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][buddypress][newMessage]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
@@ -839,8 +839,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][buddypress][newMessage][feature]" name="pushNotifications[automation][buddypress][newMessage][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][newMessage][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][buddypress][newMessage]" name="pushNotifications[automation][buddypress][newMessage]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][newMessage]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -848,7 +848,7 @@ if (!defined('ABSPATH')) {
       <!-- End New Message (BuddyPress) -->
       <!-- Friend Request (BuddyPress) -->
       <div id="settingPushBuddyFriendRequest" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][buddypress][friendRequest][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][buddypress][friendRequest]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
@@ -871,8 +871,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][buddypress][friendRequest][feature]" name="pushNotifications[automation][buddypress][friendRequest][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][friendRequest][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][buddypress][friendRequest]" name="pushNotifications[automation][buddypress][friendRequest]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][friendRequest]'), 'on'); ?>>
             </div>
           </div>
         </label>
@@ -880,7 +880,7 @@ if (!defined('ABSPATH')) {
       <!-- End Friend Request (BuddyPress) -->
       <!-- Friend Accepted (BuddyPress) -->
       <div id="settingPushBuddyFriendAccepted" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3 dark:bg-neutral-800 dark:border-neutral-700">
-        <label for="pushNotifications[automation][buddypress][friendAccepted][feature]" class="cursor-pointer flex gap-x-3">
+        <label for="pushNotifications[automation][buddypress][friendAccepted]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
@@ -903,8 +903,8 @@ if (!defined('ABSPATH')) {
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
-              <input type="checkbox" id="pushNotifications[automation][buddypress][friendAccepted][feature]" name="pushNotifications[automation][buddypress][friendAccepted][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
-                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][friendAccepted][feature]'), 'on'); ?>>
+              <input type="checkbox" id="pushNotifications[automation][buddypress][friendAccepted]" name="pushNotifications[automation][buddypress][friendAccepted]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
+                <?php checked(Plugin::getSetting('pushNotifications[automation][buddypress][friendAccepted]'), 'on'); ?>>
             </div>
           </div>
         </label>

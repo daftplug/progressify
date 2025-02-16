@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 
-// TODO: migrate this to frontend JS
+// TODO: migrate this to frontend JS for uniformity
 $manifestUrl = WebAppManifest::getManifestUrl(false);
 $appName = trim(Plugin::getSetting('webAppManifest[appIdentity][appName]'));
 $smallMaskableAppIcon = WebAppManifest::getPwaIconUrl('maskable', 180);
@@ -73,7 +73,8 @@ $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][rela
 <!-- Accent Color -->
 <style>
 :root {
-  accent-color: <?php echo $themeColor; ?>;
+  accent-color: <?php echo $themeColor;
+  ?>;
 }
 </style>
 
@@ -133,5 +134,6 @@ if ($relatedApplicationsNotEmpty) {
     }
   }
 }
+
 
 ?>

@@ -66,10 +66,10 @@ if (!defined('ABSPATH')) {
       <div class="p-3 block border border-gray-200 rounded-xl dark:border-neutral-700 shrink-0 group">
         <div class="flex items-start justify-between gap-x-4">
           <div class="flex items-center max-w-[70%] gap-x-2">
-            <?php echo Plugin::getSetting('webAppManifest[appIdentity][appIcon]') ? '<img class="inline-block shrink-0 size-[55px] rounded-full border border-gray-200 shadow-sm" src="' . WebAppManifest::getPwaIconUrl('maskable', 180) . '">' : '<div class="inline-block shrink-0 size-[55px] rounded-full bg-gray-400"></div>'; ?>
+            <?php echo Plugin::getSetting('webAppManifest[appIdentity][appIcon]') ? '<img class="inline-block shrink-0 size-[55px] rounded-full border border-gray-200 shadow-sm" src="' . WebAppManifest::getPwaIconUrl('maskable', 180) . '">' : '<div class="inline-block shrink-0 size-[55px] rounded-full bg-gray-200"></div>'; ?>
             <div class="space-y-0.5">
-              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1 empty:bg-gray-500 empty:rounded-full empty:h-2 empty:w-20"><?php echo Plugin::getSetting('webAppManifest[appIdentity][appName]'); ?></h3>
-              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1 empty:bg-gray-300 empty:rounded-full empty:h-1 empty:w-60 empty:!mt-2.5"><?php echo Plugin::getSetting('webAppManifest[appIdentity][description]'); ?></p>
+              <h3 class="text-base font-semibold text-gray-800 dark:text-white line-clamp-1 empty:bg-gray-300 empty:rounded-full empty:h-1.5 empty:w-20"><?php echo Plugin::getSetting('webAppManifest[appIdentity][appName]'); ?></h3>
+              <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1 empty:bg-gray-200 empty:rounded-full empty:h-1 empty:w-60 empty:!mt-2.5"><?php echo Plugin::getSetting('webAppManifest[appIdentity][description]'); ?></p>
             </div>
           </div>
           <div id="pwaScoreResult">

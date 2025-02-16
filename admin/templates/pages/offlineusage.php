@@ -103,7 +103,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('All network requests are cached by Progressify, so that your website can serve content from the browser cache if available and display requested content as fast as possible. Here you are able to manually change the caching strategy for some request types. We recommend you to set it on Stale While Revalidate to improve performance and always update users with latest version of your website in their cache.', $this->textDomain); ?>
+                <?php _e('All network requests are cached by Progressify, so that your website can serve content from the browser cache if available and display requested content as fast as possible. Here you are able to manually change the caching strategy for some request types. We recommend you to set it on Network First for always showing latest version of your website while updating the cache in the background and serving the last cached response when the network request fails.', $this->textDomain); ?>
               </span>
             </button>
           </div>
@@ -111,12 +111,12 @@ if (!defined('ABSPATH')) {
         <select name="offlineUsage[cache][strategy]" required="true" data-dp-select='{
             "placeholder": "<?php _e('Select Caching Strategy', $this->textDomain); ?>"
           }'>
-          <option value="StaleWhileRevalidate" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
-            "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->textDomain); ?>"
-          }'><?php _e('Stale While Revalidate', $this->textDomain); ?></option>
           <option value="NetworkFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'NetworkFirst'); ?> data-dp-select-option='{
             "description": "<?php _e('Fetches from the network first and caches the response. Uses the last cached response if the network request fails.', $this->textDomain); ?>"
           }'><?php _e('Network-First', $this->textDomain); ?></option>
+          <option value="StaleWhileRevalidate" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
+            "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->textDomain); ?>"
+          }'><?php _e('Stale While Revalidate', $this->textDomain); ?></option>
           <option value="CacheFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'CacheFirst'); ?> data-dp-select-option='{
             "description": "<?php _e('Uses a cached response first. If unavailable, fetches from the network and caches the response.', $this->textDomain); ?>"
           }'><?php _e('Cache-First', $this->textDomain); ?></option>

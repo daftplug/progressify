@@ -27,10 +27,12 @@ class Plugin
   public static $pluginDirUrl;
   public static $pluginUploadDir;
   public static $pluginUploadUrl;
+  public $menuTitle;
   public static $verifyUrl;
   public static $itemId;
   public static $website;
   public $capability;
+  public $defaultSettings;
   public static $settings;
 
   public $Admin;
@@ -58,6 +60,7 @@ class Plugin
     self::$pluginDirUrl = $config['plugin_dir_url'];
     self::$pluginUploadDir = $config['plugin_upload_dir'];
     self::$pluginUploadUrl = $config['plugin_upload_url'];
+    $this->menuTitle = $config['menu_title'];
     self::$verifyUrl = $config['verify_url'];
     self::$itemId = $config['item_id'];
 
@@ -96,7 +99,234 @@ class Plugin
     require_once self::$pluginDirPath . 'frontend/frontend.php';
     $this->Frontend = new Frontend($config);
 
-    // TODO: Init default settings.
+    // Init default settings
+    $this->defaultSettings = [
+      'webAppManifest' => [
+        'appIdentity' => [
+          'appIcon' => get_option('site_icon') && file_exists(get_attached_file(get_option('site_icon'))) ? get_option('site_icon') : '',
+          'appScreenshots' => '',
+          'appName' => get_bloginfo('name') ?: '',
+          'shortName' => mb_substr(get_bloginfo('name') ?: '', 0, 12, 'UTF-8'),
+          'description' => get_bloginfo('description') ?: '',
+          'categories' => [],
+        ],
+        'displaySettings' => [
+          'startPage' => trailingslashit(strtok(home_url('/', 'https'), '?')),
+          'displayMode' => 'standalone',
+          'orientation' => 'any',
+        ],
+        'appearance' => [
+          'iosStatusBarStyle' => 'default',
+          'themeColor' => '#000000',
+          'backgroundColor' => '#ffffff',
+        ],
+        'advancedFeatures' => [
+          'iarcRatingId' => '',
+          'relatedApplications' => [],
+          'appShortcuts' => [],
+        ],
+      ],
+      'installation' => [
+        'prompts' => [
+          'feature' => 'on',
+          'types' => [
+            'headerBanner' => 'on',
+            'snackbar' => 'off',
+            'navigationMenu' => 'on',
+            'inFeed' => 'off',
+            'blogPopup' => 'off',
+            'woocommerceCheckout' => 'off',
+          ],
+          'text' => 'Install Web App',
+          'skipFirstVisit' => 'off',
+          'timeout' => 2,
+        ],
+      ],
+      'offlineUsage' => [
+        'cache' => [
+          'feature' => 'on',
+          'customFallbackPage' => [
+            'feature' => 'off',
+            'page' => '',
+          ],
+          'strategy' => 'NetworkFirst',
+          'expirationTime' => 10,
+        ],
+        'capabilities' => [
+          'feature' => 'on',
+          'notification' => 'on',
+          'forms' => 'off',
+          'googleAnalytics' => 'off',
+        ],
+      ],
+      'uiComponents' => [
+        'navigationTabBar' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+          'navigationItems' => [],
+        ],
+        'scrollProgressBar' => [
+          'feature' => 'on',
+          'supportedDevices' => ['smartphone', 'tablet', 'desktop'],
+        ],
+        'darkMode' => [
+          'feature' => 'off',
+          'type' => '',
+          'osAware' => 'off',
+          'batteryLow' => 'off',
+          'supportedDevices' => [],
+        ],
+        'pullDownRefresh' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+        'shakeRefresh' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+        'loader' => [
+          'feature' => 'on',
+          'type' => 'default',
+          'supportedDevices' => ['smartphone', 'tablet', 'desktop'],
+        ],
+        'inactiveBlur' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+        'toastMessages' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+      ],
+      'appCapabilities' => [
+        'smoothPageTransitions' => [
+          'feature' => 'off',
+          'progressBar' => 'off',
+          'transition' => '',
+          'supportedDevices' => [],
+          'compatibilityMode' => 'off',
+        ],
+        'urlProtocolHandler' => [
+          'feature' => 'off',
+          'protocol' => '',
+          'url' => '',
+        ],
+        'webShareTarget' => [
+          'feature' => 'off',
+          'action' => '',
+          'urlQuery' => '',
+        ],
+        'vibrations' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+        'idleDetection' => [
+          'feature' => 'off',
+          'threshold' => 10,
+          'supportedDevices' => [],
+        ],
+        'screenWakeLock' => [
+          'feature' => 'off',
+          'supportedDevices' => [],
+        ],
+        'advancedWebCapabilities' => [
+          'feature' => 'on',
+          'biometricAuthentication' => 'off',
+          'backgroundSync' => 'on',
+          'periodicBackgroundSync' => 'on',
+          'contentIndexing' => 'off',
+          'persistentStorage' => 'off',
+        ],
+      ],
+      'pushNotifications' => [
+        'settings' => [
+          'timeToLive' => 2419200,
+          'batchSize' => 1000,
+        ],
+        'prompt' => [
+          'feature' => 'off',
+          'message' => 'Would you like to enable notifications to stay updated with important alerts and updates?',
+          'skipFirstVisit' => 'off',
+          'timeout' => '2',
+        ],
+        'button' => [
+          'feature' => 'on',
+          'position' => 'bottom-left',
+          'behavior' => 'shown',
+        ],
+        'automation' => [
+          'feature' => 'off',
+          'wordpress' => [
+            'newContent' => [
+              'feature' => 'off',
+              'postTypes' => [],
+            ],
+            'newComment' => 'off',
+          ],
+          'woocommerce' => [
+            'priceDrop' => 'off',
+            'salePrice' => 'off',
+            'backInStock' => 'off',
+            'orderStatusUpdate' => 'off',
+            'newOrder' => 'off',
+            'lowStock' => 'off',
+          ],
+          'buddypress' => [
+            'memberMention' => 'off',
+            'memberReply' => 'off',
+            'newMessage' => 'off',
+            'friendRequest' => 'off',
+            'friendAccepted' => 'off',
+          ],
+        ],
+      ],
+    ];
+
+    add_action('plugins_loaded', [$this, 'loadTextDomain']);
+    add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
+    register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
+  }
+
+  public function onActivate()
+  {
+    // PHP version check
+    if (version_compare(PHP_VERSION, '8.0', '<')) {
+      $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.0 to function properly.', $this->textDomain), $this->menuTitle), __('If you have trouble fixing this, please contact us on', $this->textDomain));
+      wp_die($message, 'Plugin Activation Error', [
+        'back_link' => true,
+        'text_direction' => 'ltr',
+        'response' => 200,
+      ]);
+    }
+
+    // Required extensions check
+    $required_extensions = ['mbstring', 'openssl', 'curl', 'dom', 'iconv', 'libxml', 'spl'];
+    foreach ($required_extensions as $extension) {
+      if (!extension_loaded($extension)) {
+        $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s features require <i>%s</i> extension to function properly.', $this->textDomain), $this->menuTitle, $extension), __('If you have trouble fixing this, please contact us on', $this->textDomain));
+        wp_die($message, 'Plugin Activation Error', [
+          'back_link' => true,
+          'text_direction' => 'ltr',
+          'response' => 200,
+        ]);
+      }
+    }
+
+    // Add default settings
+    add_option("{$this->optionName}_settings", $this->defaultSettings);
+  }
+
+  public function loadTextDomain()
+  {
+    load_plugin_textdomain($this->textDomain, false, dirname($this->pluginBasename) . '/languages/');
+  }
+
+  public function addPluginActionLinks($links)
+  {
+    $slug = self::$slug;
+    $links[] = '<a href="' . esc_url(admin_url("admin.php?page={$slug}")) . '">Settings</a>';
+
+    return $links;
   }
 
   public static function getSetting($key)

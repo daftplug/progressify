@@ -492,20 +492,25 @@ if (!defined('ABSPATH')) {
       <!-- End IARC Rating ID -->
       <!-- Related Applications -->
       <div id="settingRelatedApplications">
-        <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Related Applications', $this->textDomain); ?>
-          <div class="hs-tooltip inline-block [--placement:top]">
-            <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-              <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-              </svg>
-              <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request generation of them by clicking the "Generate Native Apps" button on the navigation menu.', $this->textDomain); ?>
-              </span>
-            </button>
-          </div>
-        </label>
+        <div class="flex flex-col mb-1.5">
+          <label class="inline-flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <?php _e('Related Applications', $this->textDomain); ?>
+            <div class="hs-tooltip inline-block [--placement:top]">
+              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
+                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                </svg>
+                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                  <?php _e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request them by clicking the "Publish on App Stores" button on the header or navigation menu.', $this->textDomain); ?>
+                </span>
+              </button>
+            </div>
+          </label>
+          <p class="inline-flex items-center gap-x-1 mt-0.5 text-xs text-gray-500 dark:text-neutral-500">
+            <?php printf(__('Don\'t have native apps? Get them and %1$spublish on app stores%2$s', $this->textDomain), '<a class="relative bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 text-transparent font-medium focus:outline-none after:absolute after:-bottom-px after:left-0 after:transition-all after:bg-gradient-to-r after:from-blue-600 after:to-green-600 after:w-0 after:h-0.5 hover:after:w-full" href="#/publishOnAppStores/">', '</a>'); ?>
+          </p>
+        </div>
         <div class="space-y-3" data-dp-copy-markup-wrapper="relatedApplications">
           <div class="flex gap-2" data-dp-copy-markup-target="relatedApplication">
             <div class="flex-none w-1/4">
@@ -513,7 +518,7 @@ if (!defined('ABSPATH')) {
                 <option value="play" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile); ?>\" alt=\"Android Logo\"/>"}'>
                   <?php _e('Android', $this->textDomain); ?>
                 </option>
-                <option value="itunes" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/ios.png', $this->pluginFile); ?>\" alt=\"iOS Logo\"/>"}'>
+                <option value="itunes" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile); ?>\" alt=\"Mac Logo\"/>"}'>
                   <?php _e('iOS', $this->textDomain); ?>
                 </option>
                 <option value="windows" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/windows.png', $this->pluginFile); ?>\" alt=\"Windows Logo\"/>"}'>

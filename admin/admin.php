@@ -290,6 +290,7 @@ class Admin
     }
   }
 
+  // TODO: Perform license check before sending the form
   public function submitSupportRequest(\WP_REST_Request $request)
   {
     @ini_set('display_errors', 0);
@@ -541,3 +542,6 @@ class Admin
     return array_values($postTypes);
   }
 }
+
+// TODO: Implement plugin license check and activation
+// TODO: Implement plugin update checking

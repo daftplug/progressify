@@ -840,7 +840,7 @@ class PushNotifications
 
   public function doWooOrderStatusUpdatePush($orderId, $oldStatus, $newStatus, $order)
   {
-    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][orderStatusUpdate][feature]') != 'on' || $oldStatus == $newStatus) {
+    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][orderStatusUpdate]') != 'on' || $oldStatus == $newStatus) {
       return;
     }
 
@@ -909,7 +909,7 @@ class PushNotifications
 
   public function doWooNewOrderPush($orderId)
   {
-    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][newOrder][feature]') != 'on' || !$orderId) {
+    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][newOrder]') != 'on' || !$orderId) {
       return;
     }
 
@@ -947,7 +947,7 @@ class PushNotifications
 
   public function doWooLowStockPush($orderId)
   {
-    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][lowStock][feature]') != 'on' || !$orderId) {
+    if (!Plugin::isPluginActive('woocommerce') || Plugin::getSetting('pushNotifications[automation][woocommerce][lowStock]') != 'on' || !$orderId) {
       return;
     }
 
@@ -1017,7 +1017,7 @@ class PushNotifications
 
   public function doBpMemberMentionPush($activity, $subject, $message, $content, $receiverUserId)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberMention][feature]') != 'on' || !$activity) {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberMention]') != 'on' || !$activity) {
       return;
     }
 
@@ -1043,7 +1043,7 @@ class PushNotifications
 
   public function doBpMemberCommentPush($activity, $commentId, $commenterId, $params)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberReply][feature]') != 'on' || !$activity) {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberReply]') != 'on' || !$activity) {
       return;
     }
 
@@ -1067,7 +1067,7 @@ class PushNotifications
 
   public function doBpMemberReplyPush($activity, $commentId, $commenterId, $params)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberReply][feature]') != 'on' || !$activity) {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][memberReply]') != 'on' || !$activity) {
       return;
     }
 
@@ -1091,7 +1091,7 @@ class PushNotifications
 
   public function doBpNewMessagePush($params)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][newMessage][feature]') != 'on' || !$params) {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][newMessage]') != 'on' || !$params) {
       return;
     }
 
@@ -1121,7 +1121,7 @@ class PushNotifications
 
   public function doBpFriendRequestPush($id, $userId, $friendId, $friendship)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][friendRequest][feature]') != 'on') {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][friendRequest]') != 'on') {
       return;
     }
 
@@ -1147,7 +1147,7 @@ class PushNotifications
 
   public function doBpFriendAcceptedPush($id, $userId, $friendId, $friendship)
   {
-    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][friendAccepted][feature]') != 'on') {
+    if (!Plugin::isPluginActive('buddypress') || Plugin::getSetting('pushNotifications[automation][buddypress][friendAccepted]') != 'on') {
       return;
     }
 
