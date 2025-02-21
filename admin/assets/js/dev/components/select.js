@@ -19,6 +19,8 @@ export function handleSelect() {
       lg: 'text-lg',
     };
     const textSizeClass = sizeClasses[size] || sizeClasses.sm;
+    const toggleClasses = config.toggleClasses ? `${config.toggleClasses} ${textSizeClass}` : `truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 ps-3 pe-7 flex items-center text-start flex-nowrap bg-white border border-gray-200 text-gray-500 ${textSizeClass} rounded-lg shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700`;
+
     const isMultiple = self.attr('multiple') !== undefined;
 
     const hasSelectedOption = self.find('option:selected[selected]').length > 0;
@@ -71,7 +73,7 @@ export function handleSelect() {
     const wrapper = self.parent('.relative');
 
     wrapper.append(`
-      <button type="button" data-dp-select-toggle class="truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 ps-3 pe-7 flex items-center text-start flex-nowrap bg-white border border-gray-200 text-gray-500 ${textSizeClass} rounded-lg shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+      <button type="button" data-dp-select-toggle class="${toggleClasses}">
         <span class="text-gray-400">${placeholder}</span>
       </button>
       <div data-dp-select-dropdown class="absolute mt-3 z-50 min-w-44 max-h-72 ${hasSearch ? 'pb-1 px-1' : 'p-1'} space-y-0.5 overflow-hidden overflow-y-auto bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 top-full hidden dark:bg-neutral-900 dark:border dark:border-neutral-700">

@@ -24,8 +24,9 @@ class Admin
   public $menuTitle;
   public $menuIcon;
   public $menuId;
+  public $domain;
   protected $dependencies;
-  public $purchaseCode;
+  public $licenseKey;
   public $capability;
   public $settings;
   public $verifyUrl;
@@ -51,10 +52,11 @@ class Admin
     $this->menuTitle = $config['menu_title'];
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
-    $this->purchaseCode = get_option("{$this->optionName}_purchase_code");
+    $this->licenseKey = get_option("{$this->optionName}_license_key");
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->pages = $this->generatePages();
+    $this->domain = Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
 
     add_action('admin_menu', [$this, 'addMenuPage']);
     add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
@@ -68,8 +70,7 @@ class Admin
     remove_all_actions('admin_notices');
     remove_all_actions('all_admin_notices');
 
-    // TODO: Remove the (1) notification icon if activation is passed.
-    $this->menuId = add_menu_page($this->menuTitle, !$this->purchaseCode ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon, 55);
+    $this->menuId = add_menu_page($this->menuTitle, !$this->licenseKey ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon, 55);
 
     $this->addMenuSeparators();
   }
@@ -147,80 +148,65 @@ class Admin
       [
         'id' => 'dashboard',
         'menuTitle' => esc_html__('Dashboard', $this->textDomain),
-        'pageTitle' => esc_html__('Dashboard', $this->textDomain),
         'description' => esc_html__('View your PWA\'s performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'dashboard.php']),
       ],
       [
         'id' => 'webAppManifest',
         'menuTitle' => esc_html__('Web App Manifest', $this->textDomain),
-        'pageTitle' => esc_html__('Web App Manifest', $this->textDomain),
         'description' => esc_html__('The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user\'s device. This file is necessary for enabling the "Add to Home Screen" prompt, enhancing the integration of your web app with the user\'s device.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'webappmanifest.php']),
       ],
       [
         'id' => 'installation',
         'menuTitle' => esc_html__('Installation', $this->textDomain),
-        'pageTitle' => esc_html__('Installation', $this->textDomain),
         'description' => esc_html__('Installation features allows displaying prompts that encourage users to add your website to their home screens. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'installation.php']),
       ],
       [
         'id' => 'offlineUsage',
         'menuTitle' => esc_html__('Offline Usage', $this->textDomain),
-        'pageTitle' => esc_html__('Offline Usage', $this->textDomain),
         'description' => esc_html__('Enhance your web app with offline support and reliable performance, enabling users to access previously viewed pages even without an internet connection or on low connectivity.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'offlineusage.php']),
       ],
       [
         'id' => 'uiComponents',
         'menuTitle' => esc_html__('UI Components', $this->textDomain),
-        'pageTitle' => esc_html__('UI Components', $this->textDomain),
         'description' => esc_html__('Enhance the user experience by adding interactive elements and features that make your web app look and feel more like a native application, including options like pull-down refresh, a navigation tab bar, dark mode, and toast messages.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'uicomponents.php']),
       ],
       [
         'id' => 'appCapabilities',
         'menuTitle' => esc_html__('App Capabilities', $this->textDomain),
-        'pageTitle' => esc_html__('App Capabilities', $this->textDomain),
         'description' => esc_html__('Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'appcapabilities.php']),
       ],
       [
         'id' => 'pushNotifications',
         'menuTitle' => esc_html__('Push Notifications', $this->textDomain),
-        'pageTitle' => esc_html__('Push Notifications', $this->textDomain),
         'description' => esc_html__('Push notifications allow your web app to send messages directly to users\' devices, providing a powerful tool for engaging users with timely updates, alerts, and personalized content. This feature helps keep your audience informed and connected, even when they are not actively using the app.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'pushnotifications.php']),
       ],
       [
         'id' => 'publishOnAppStores',
-        'pageTitle' => esc_html__('Publish on App Stores', $this->textDomain),
         'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishonappstores.php']),
       ],
       [
         'id' => 'helpCenter',
-        'pageTitle' => esc_html__('Help Center', $this->textDomain),
-        'description' => esc_html__('We understand all the importance of product support for our customers. That’s why we are ready to solve all your issues and answer any questions related to our plugin.', $this->textDomain),
+        'description' => esc_html__('We understand all the importance of product support for our customers. That\'s why we are ready to solve all your issues and answer any questions related to our plugin.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'helpcenter.php']),
       ],
       [
         'id' => 'changelog',
-        'pageTitle' => esc_html__('What\'s New', $this->textDomain),
         'description' => esc_html__('See what\'s new added, changed, fixed, improved or updated.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'changelog.php']),
       ],
       [
         'id' => 'tools',
-        'pageTitle' => esc_html__('Tools', $this->textDomain),
         'description' => esc_html__('Control what to do with your settings and data, reset/export/import settings or deactivate license to activate the plugin on another website.', $this->textDomain),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'tools.php']),
       ],
-      // [
-      //   'id' => 'activation',
-      //   'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']),
-      // ],
       [
         'id' => 'error',
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'error.php']),
@@ -235,10 +221,14 @@ class Admin
     ?>
 <div id="daftplugAdmin" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <div class="relative mr-6 mt-6 rounded-xl bg-gray-50 shadow-[0_5px_25px_0_rgba(0,0,0,.1)]">
+    <?php if (!$this->licenseKey): ?>
+    <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
+    <?php else: ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'header.php']); ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'sidebar.php']); ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'main.php']); ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'footer.php']); ?>
+    <?php endif; ?>
   </div>
 </div>
 <?php
@@ -246,6 +236,14 @@ class Admin
 
   public function registerRoutes()
   {
+    register_rest_route($this->slug, '/requestLicenseProcessing', [
+      'methods' => 'POST',
+      'callback' => [$this, 'requestLicenseProcessing'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+
     register_rest_route($this->slug, '/saveSettings', [
       'methods' => 'POST',
       'callback' => [$this, 'saveSettings'],
@@ -261,6 +259,47 @@ class Admin
         return current_user_can($this->capability);
       },
     ]);
+  }
+
+  public function requestLicenseProcessing(\WP_REST_Request $request)
+  {
+    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
+      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $licenseKey = $request->get_param('licenseKey');
+    $action = $request->get_param('action');
+
+    if (!is_string($licenseKey) || !is_string($action)) {
+      return new \WP_Error('invalid_request', 'Invalid request format', ['status' => 400]);
+    }
+
+    $licenseResponse = $this->daftplugProcessLicense($licenseKey, $action);
+
+    if (is_wp_error($licenseResponse)) {
+      return new \WP_Error('server_error', 'There was an error verifying your license key. Please try again.', ['status' => 500]);
+    }
+
+    if ($action === 'activate') {
+      if ($licenseResponse->valid) {
+        update_option("{$this->optionName}_license_key", $licenseKey);
+        return new \WP_REST_Response(['status' => 'success'], $licenseResponse->code);
+      } else {
+        delete_option("{$this->optionName}_license_key");
+        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], $licenseResponse->code);
+      }
+    }
+
+    if ($action === 'deactivate') {
+      if ($licenseResponse->valid) {
+        delete_option("{$this->optionName}_license_key");
+        return new \WP_REST_Response(['status' => 'success'], $licenseResponse->code);
+      } else {
+        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], $licenseResponse->code);
+      }
+    }
+
+    return new \WP_Error('invalid_action', 'Invalid action', ['status' => 400]);
   }
 
   public function saveSettings(\WP_REST_Request $request)
@@ -290,13 +329,55 @@ class Admin
     }
   }
 
-  // TODO: Perform license check before sending the form
+  public function daftplugProcessLicense($licenseKey, $action)
+  {
+    @ini_set('display_errors', 0);
+    error_reporting(0);
+
+    $params = [
+      'sslverify' => false,
+      'body' => [
+        'action' => $action,
+        'slug' => urlencode($this->slug ?? ''),
+        'item_id' => urlencode($this->itemId ?? ''),
+        'license_key' => urlencode($licenseKey ?? ''),
+        'domain' => $this->domain ?? '',
+      ],
+      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
+    ];
+
+    $response = wp_remote_get($this->verifyUrl, $params);
+
+    if (is_wp_error($response)) {
+      return $response;
+    }
+
+    $body = wp_remote_retrieve_body($response);
+    $result = json_decode($body);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+      return new WP_Error('invalid_json', 'Invalid JSON response from server');
+    }
+
+    return $result;
+  }
+
   public function submitSupportRequest(\WP_REST_Request $request)
   {
     @ini_set('display_errors', 0);
 
     if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
       return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $licenseResponse = $this->daftplugProcessLicense($this->licenseKey, 'verify');
+    if (is_wp_error($licenseResponse)) {
+      return new \WP_Error('server_error', 'There was an error verifying your license. Please try again.', ['status' => 500]);
+    }
+
+    if (!$licenseResponse->valid) {
+      delete_option("{$this->optionName}_license_key");
+      return new \WP_Error('invalid_license', 'Your license key appears to be invalid. Please check your license key and try again.', ['status' => 403]);
     }
 
     $supportRequest = $request->get_param('supportRequest');

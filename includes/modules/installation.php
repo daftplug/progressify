@@ -23,7 +23,6 @@ class Installation
   public $pluginUploadDir;
   public $pluginUploadUrl;
   protected $dependencies;
-  public $purchaseCode;
   public $capability;
   public $settings;
 
@@ -41,7 +40,6 @@ class Installation
     $this->pluginUploadDir = $config['plugin_upload_dir'];
     $this->pluginUploadUrl = $config['plugin_upload_url'];
     $this->dependencies = [];
-    $this->purchaseCode = get_option("{$this->optionName}_purchase_code");
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
 

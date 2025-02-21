@@ -949,7 +949,7 @@ class Plugin
     if ($locationData && $locationData['status'] === 'success' && isset($locationData['name'], $locationData['country'])) {
       $userData['country'] = [
         'name' => $locationData['name'],
-        'icon' => $baseIconPath . 'flags/' . strtolower($locationData['country']) . '.svg',
+        'icon' => $baseIconPath . 'flags/4x3/' . strtolower($locationData['country']) . '.svg',
       ];
     }
 

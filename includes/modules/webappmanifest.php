@@ -26,7 +26,6 @@ class WebAppManifest
   public $menuIcon;
   public $menuId;
   protected $dependencies;
-  public $purchaseCode;
   public $capability;
   public $settings;
   public static $manifestName;
@@ -47,7 +46,6 @@ class WebAppManifest
     $this->menuTitle = $config['menu_title'];
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
-    $this->purchaseCode = get_option("{$this->optionName}_purchase_code");
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     self::$manifestName = 'manifest.webmanifest';

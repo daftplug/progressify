@@ -138,9 +138,9 @@ class SubscriberManager {
         <td class="size-px whitespace-nowrap">
           <div class="px-6 py-2.5">
             <div class="flex items-center gap-x-1.5">
-              <img class="inline-block border rounded-full size-6" src="${subscriber.country_icon}" alt="${subscriber.country_name}" />
+              <img class="inline-block w-auto h-5 rounded" src="${subscriber.country_icon}" alt="${subscriber.country_name}" />
               <div class="grow">
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">${subscriber.country_name}</span>
+                <span class="block text-sm text-gray-800 dark:text-neutral-200">${subscriber.country_name}</span>
               </div>
             </div>
           </div>

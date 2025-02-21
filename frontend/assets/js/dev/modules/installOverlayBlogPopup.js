@@ -260,7 +260,6 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
       .blog-popup-overlay-appinfo_icon,
       .blog-popup-overlay-browserinfo_icon {
         border-radius: 9999px;
-        border: 1px solid #e5e7eb;
         -ms-flex-negative: 0;
             flex-shrink: 0;
         height: 48px;

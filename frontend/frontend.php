@@ -23,7 +23,6 @@ class Frontend
   public $pluginUploadDir;
   public $pluginUploadUrl;
   protected $dependencies;
-  public $purchaseCode;
   public $settings;
   public $html;
   public $css;
@@ -156,7 +155,8 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
+  ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

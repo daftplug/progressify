@@ -36,6 +36,8 @@ new Plugin([
   'menu_title' => __('Progressify'),
   'menu_icon' => plugins_url('admin/assets/media/icons/menu.png', __FILE__),
   'settings' => get_option('daftplug_progressify_settings', true),
-  'verify_url' => 'https://daftplug.com/wp-json/daftplugify/purchase-verify/',
+  'verify_url' => 'https://daftplug.com/wp-json/daftplugify/process-license/',
   'item_id' => '25757693',
 ]);
+
+// TODO: Implement PHP obfuscation in the build process
