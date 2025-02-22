@@ -28,8 +28,8 @@ class Plugin
   public static $pluginUploadDir;
   public static $pluginUploadUrl;
   public $menuTitle;
-  public static $verifyUrl;
-  public static $itemId;
+  public static $licenseEndpoint;
+  public static $envatoItemId;
   public static $website;
   public $capability;
   public $defaultSettings;
@@ -61,8 +61,8 @@ class Plugin
     self::$pluginUploadDir = $config['plugin_upload_dir'];
     self::$pluginUploadUrl = $config['plugin_upload_url'];
     $this->menuTitle = $config['menu_title'];
-    self::$verifyUrl = $config['verify_url'];
-    self::$itemId = $config['item_id'];
+    self::$licenseEndpoint = $config['license_endpoint'];
+    self::$envatoItemId = $config['envato_item_id'];
 
     $this->capability = 'manage_options';
 
@@ -290,8 +290,8 @@ class Plugin
   public function onActivate()
   {
     // PHP version check
-    if (version_compare(PHP_VERSION, '8.0', '<')) {
-      $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.0 to function properly.', $this->textDomain), $this->menuTitle), __('If you have trouble fixing this, please contact us on', $this->textDomain));
+    if (version_compare(PHP_VERSION, '8.2', '<')) {
+      $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.2 to function properly.', $this->textDomain), $this->menuTitle), __('If you have trouble fixing this, please contact us on', $this->textDomain));
       wp_die($message, 'Plugin Activation Error', [
         'back_link' => true,
         'text_direction' => 'ltr',

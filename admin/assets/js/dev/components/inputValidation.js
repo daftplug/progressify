@@ -1,7 +1,7 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initInputValidation() {
-  jQuery(window).on('load', validateInputs);
+  validateInputs();
 }
 
 export function validateInputs() {

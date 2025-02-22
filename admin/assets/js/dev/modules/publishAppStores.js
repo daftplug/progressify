@@ -18,6 +18,11 @@ function initPayPalButton(container, productName, price, buttonColor) {
   const paypalButtons = container.find('.paypalButtons');
   const paypalResponse = container.find('.paypalResponse');
 
+  // Check if already initialized
+  if (paypalButtons.data('initialized')) {
+    return;
+  }
+
   paypal
     .Buttons({
       style: {
@@ -82,4 +87,7 @@ function initPayPalButton(container, productName, price, buttonColor) {
       },
     })
     .render(paypalButtons.get(0));
+
+  // Mark as initialized
+  paypalButtons.data('initialized', true);
 }

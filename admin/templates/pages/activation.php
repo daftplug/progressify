@@ -81,7 +81,7 @@ if (!defined('ABSPATH')) {
               </button>
             </div>
           </label>
-          <input name="licenseKey" type="text" class="shadow-sm py-2.5 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Your License Key', $this->textDomain); ?>" autocomplete="off" required>
+          <input id="licenseKey" name="licenseKey" type="text" class="shadow-sm py-2.5 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Your License Key', $this->textDomain); ?>" autocomplete="off" required>
         </fieldset>
         <button type="submit" class="group py-2.5 px-3 w-full inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[activating=true]:opacity-50 data-[activating=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[activating=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">

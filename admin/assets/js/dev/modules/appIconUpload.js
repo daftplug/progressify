@@ -3,7 +3,7 @@ import { validateAttachment } from '../components/utils.js';
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initAppIconUpload() {
-  jQuery(window).on('load', handleAppIconUpload);
+  handleAppIconUpload();
 }
 
 export function handleAppIconUpload() {

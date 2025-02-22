@@ -62,9 +62,6 @@ export function navigateToPage(pageId, subPageId = '') {
       updateHash('#/error/');
     }
 
-    // Dispatch pageChange event
-    window.dispatchEvent(new CustomEvent('pageChange'));
-
     setTimeout(resolve, 0);
   });
 }

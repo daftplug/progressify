@@ -9,7 +9,7 @@ Author URI: https://daftplug.com/
 Text Domain: daftplug-progressify
 Domain Path: /languages
 Requires at least: 5.0
-Requires PHP: 7.0
+Requires PHP: 8.2
 */
 
 use DaftPlug\Progressify\Plugin;
@@ -36,8 +36,8 @@ new Plugin([
   'menu_title' => __('Progressify'),
   'menu_icon' => plugins_url('admin/assets/media/icons/menu.png', __FILE__),
   'settings' => get_option('daftplug_progressify_settings', true),
-  'verify_url' => 'https://daftplug.com/wp-json/daftplugify/process-license/',
-  'item_id' => '25757693',
+  'license_endpoint' => 'https://daftplug.com/wp-json/daftplugify/v1/process-license',
+  'envato_item_id' => '25757693',
 ]);
 
 // TODO: Implement PHP obfuscation in the build process

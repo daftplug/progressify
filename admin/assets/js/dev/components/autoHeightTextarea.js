@@ -1,6 +1,5 @@
 export function initTextareaAutoHeight() {
-  window.addEventListener('load', handleTextareaAutoHeight);
-  window.addEventListener('pageChange', handleTextareaAutoHeight);
+  handleTextareaAutoHeight();
 }
 
 export function handleTextareaAutoHeight() {

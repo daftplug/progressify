@@ -5,7 +5,7 @@ const optionName = daftplugAdmin.attr('data-option-name');
 const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initCopyMarkup() {
-  window.addEventListener('load', () => handleCopyMarkup());
+  handleCopyMarkup();
 }
 
 function handleCopyMarkup() {

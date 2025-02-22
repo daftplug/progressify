@@ -1,5 +1,5 @@
 export function initClipboard() {
-  jQuery(window).on('load', handleClipboard);
+  handleClipboard();
 }
 
 export function handleClipboard() {

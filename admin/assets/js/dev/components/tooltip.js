@@ -1,7 +1,7 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initTooltip() {
-  window.addEventListener('load', () => handleTooltip());
+  handleTooltip();
 }
 
 export function handleTooltip() {

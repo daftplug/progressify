@@ -1,7 +1,7 @@
 const $daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initChangelog() {
-  jQuery(window).on('load', handleChangelog);
+  handleChangelog();
 }
 
 export function handleChangelog() {

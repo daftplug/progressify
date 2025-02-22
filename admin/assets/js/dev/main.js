@@ -27,40 +27,71 @@ import { initPublishOnAppStores } from './modules/publishAppStores.js';
 import { initSupportRequest } from './modules/supportRequest.js';
 import { initChangelog } from './modules/changelog.js';
 
+// Track which modules have been initialized
+const initializedModules = new Set();
+
 // Core modules that should always be initialized
-const coreModules = [initProcessLicense, initCopyMarkup, initDependentMarkup, initSelect, initClipboard, initTextareaAutoHeight, initInputValidation, initNavigation, initOverlayBackdropFix, initSearch, initSettings];
+const coreModules = [
+  { init: initProcessLicense, name: 'processLicense' },
+  { init: initCopyMarkup, name: 'copyMarkup' },
+  { init: initDependentMarkup, name: 'dependentMarkup' },
+  { init: initSelect, name: 'select' },
+  { init: initClipboard, name: 'clipboard' },
+  { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
+  { init: initInputValidation, name: 'inputValidation' },
+  { init: initNavigation, name: 'navigation' },
+  { init: initOverlayBackdropFix, name: 'overlayBackdropFix' },
+  { init: initSearch, name: 'search' },
+  { init: initSettings, name: 'settings' },
+  { init: initAppIconUpload, name: 'appIconUpload' },
+  { init: initAppShortcutIconUpload, name: 'appShortcutIconUpload' },
+  { init: initAppScreenshotsUpload, name: 'appScreenshotsUpload' },
+  { init: initPwaScoreData, name: 'pwaScoreData' },
+];
 
 // Hash-based module mapping
 const moduleMap = {
-  '#/dashboard/': [initPwaUsersData, initPwaScoreData],
-  '#/webAppManifest/': [initAppIconUpload, initAppShortcutIconUpload, initAppScreenshotsUpload],
-  '#/pushNotifications/': [initPushImageUpload, initPushSubscribers, initModalPushNotifications],
-  '#/publishOnAppStores/': initPublishOnAppStores,
-  '#/helpCenter/': initSupportRequest,
-  '#/changelog/': initChangelog,
+  '#/dashboard/': [{ init: initPwaUsersData, name: 'pwaUsersData' }],
+  '#/pushNotifications/': [
+    { init: initPushImageUpload, name: 'pushImageUpload' },
+    { init: initPushSubscribers, name: 'pushSubscribers' },
+    { init: initModalPushNotifications, name: 'modalPushNotifications' },
+  ],
+  '#/publishOnAppStores/': [{ init: initPublishOnAppStores, name: 'publishOnAppStores' }],
+  '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
+  '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
 };
 
-// Load modules based on current hash
+// Initialize modules for current hash
 const loadHashModules = () => {
   const currentHash = window.location.hash || '#/';
 
-  // Initialize core modules
-  coreModules.forEach((module) => module());
-
-  // Initialize hash-specific modules
+  // Initialize hash-specific modules if not already initialized
   Object.entries(moduleMap).forEach(([hash, modules]) => {
     if (currentHash.startsWith(hash)) {
-      if (Array.isArray(modules)) {
-        modules.forEach((module) => module());
-      } else {
-        modules();
-      }
+      modules.forEach((module) => {
+        if (!initializedModules.has(module.name)) {
+          module.init();
+          initializedModules.add(module.name);
+        }
+      });
     }
   });
 };
 
-// Load modules
-document.addEventListener('DOMContentLoaded', loadHashModules);
+// Initialize on page load
+window.addEventListener('load', () => {
+  // Initialize core modules once
+  coreModules.forEach((module) => {
+    if (!initializedModules.has(module.name)) {
+      module.init();
+      initializedModules.add(module.name);
+    }
+  });
 
-// Listen for hash changes
+  // Load hash-specific modules
+  loadHashModules();
+});
+
+// Handle hash changes
 window.addEventListener('hashchange', loadHashModules);

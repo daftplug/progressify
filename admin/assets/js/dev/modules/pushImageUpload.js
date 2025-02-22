@@ -3,7 +3,7 @@ import { validateAttachment } from '../components/utils.js';
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initPushImageUpload() {
-  jQuery(window).on('load', handlePushImageUpload);
+  handlePushImageUpload();
 }
 
 export function handlePushImageUpload() {

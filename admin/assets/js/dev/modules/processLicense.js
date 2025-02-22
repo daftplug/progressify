@@ -24,17 +24,14 @@ async function sendLicenseProcessRequest(licenseKey, action) {
     });
 
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      const errorText = await response.text();
+      throw new Error(`Network response was not ok (${response.status}): ${errorText}`);
     }
 
     const data = await response.json();
-
-    try {
-      return data;
-    } catch (error) {
-      throw new Error('Invalid JSON response from server');
-    }
+    return data;
   } catch (error) {
+    console.error(error);
     return error;
   }
 }
@@ -51,18 +48,15 @@ async function activateLicense(e) {
 
     console.log(response);
 
-    if (response.status === 'error') {
-      showToast('Fail', response.error, 'fail', 'top-right', true, false);
-    } else if (response.data && response.data.status === 'success') {
+    if (response.status === 'success') {
       showToast('Success', 'License has been activated successfully!', 'success', 'top-right', true, false);
       location.reload();
-    } else if (response.code === 'invalid_license') {
+    } else if (response.status === 'fail') {
       showToast('Fail', response.message, 'fail', 'top-right', true, false);
     } else {
       showToast('Fail', 'An unexpected error occurred', 'fail', 'top-right', true, false);
     }
   } catch (error) {
-    console.error('License activation error:', error);
     showToast('Fail', 'Failed to process license request. Please try again.', 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-activating');

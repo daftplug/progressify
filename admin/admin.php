@@ -29,8 +29,8 @@ class Admin
   public $licenseKey;
   public $capability;
   public $settings;
-  public $verifyUrl;
-  public $itemId;
+  public $licenseEndpoint;
+  public $envatoItemId;
   public $pages;
 
   public function __construct($config)
@@ -47,8 +47,8 @@ class Admin
     $this->pluginDirPath = $config['plugin_dir_path'];
     $this->pluginUploadDir = $config['plugin_upload_dir'];
     $this->pluginUploadUrl = $config['plugin_upload_url'];
-    $this->verifyUrl = $config['verify_url'];
-    $this->itemId = $config['item_id'];
+    $this->licenseEndpoint = $config['license_endpoint'];
+    $this->envatoItemId = $config['envato_item_id'];
     $this->menuTitle = $config['menu_title'];
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
@@ -277,29 +277,59 @@ class Admin
     $licenseResponse = $this->daftplugProcessLicense($licenseKey, $action);
 
     if (is_wp_error($licenseResponse)) {
-      return new \WP_Error('server_error', 'There was an error verifying your license key. Please try again.', ['status' => 500]);
+      return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->get_error_message()], 200);
     }
 
     if ($action === 'activate') {
       if ($licenseResponse->valid) {
         update_option("{$this->optionName}_license_key", $licenseKey);
-        return new \WP_REST_Response(['status' => 'success'], $licenseResponse->code);
+        return new \WP_REST_Response(['status' => 'success'], 200);
       } else {
         delete_option("{$this->optionName}_license_key");
-        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], $licenseResponse->code);
+        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], 200);
       }
     }
 
     if ($action === 'deactivate') {
       if ($licenseResponse->valid) {
         delete_option("{$this->optionName}_license_key");
-        return new \WP_REST_Response(['status' => 'success'], $licenseResponse->code);
+        return new \WP_REST_Response(['status' => 'success'], 200);
       } else {
-        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], $licenseResponse->code);
+        return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->error], 200);
       }
     }
 
     return new \WP_Error('invalid_action', 'Invalid action', ['status' => 400]);
+  }
+
+  public function daftplugProcessLicense($licenseKey, $action)
+  {
+    @ini_set('display_errors', 0);
+    error_reporting(0);
+
+    $params = [
+      'method' => 'POST',
+      'sslverify' => false,
+      'body' => [
+        'license_key' => $licenseKey,
+        'action' => $action,
+        'slug' => $this->slug,
+        'domain' => $this->domain,
+        'envato_item_id' => $this->envatoItemId,
+      ],
+      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
+    ];
+
+    $response = wp_remote_post($this->licenseEndpoint, $params);
+
+    if (is_wp_error($response)) {
+      return $response;
+    }
+
+    $body = wp_remote_retrieve_body($response);
+    $result = json_decode($body);
+
+    return $result;
   }
 
   public function saveSettings(\WP_REST_Request $request)
@@ -327,39 +357,6 @@ class Admin
     } else {
       return new \WP_Error('save_failed', 'Failed to save settings', ['status' => 500]);
     }
-  }
-
-  public function daftplugProcessLicense($licenseKey, $action)
-  {
-    @ini_set('display_errors', 0);
-    error_reporting(0);
-
-    $params = [
-      'sslverify' => false,
-      'body' => [
-        'action' => $action,
-        'slug' => urlencode($this->slug ?? ''),
-        'item_id' => urlencode($this->itemId ?? ''),
-        'license_key' => urlencode($licenseKey ?? ''),
-        'domain' => $this->domain ?? '',
-      ],
-      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
-    ];
-
-    $response = wp_remote_get($this->verifyUrl, $params);
-
-    if (is_wp_error($response)) {
-      return $response;
-    }
-
-    $body = wp_remote_retrieve_body($response);
-    $result = json_decode($body);
-
-    if (json_last_error() !== JSON_ERROR_NONE) {
-      return new WP_Error('invalid_json', 'Invalid JSON response from server');
-    }
-
-    return $result;
   }
 
   public function submitSupportRequest(\WP_REST_Request $request)

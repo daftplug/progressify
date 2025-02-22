@@ -1,7 +1,7 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initSelect() {
-  jQuery(window).on('load', handleSelect);
+  handleSelect();
 }
 
 export function handleSelect() {

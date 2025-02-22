@@ -1,7 +1,7 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initDependentMarkup() {
-  jQuery(window).on('load', handleDependentMarkup);
+  handleDependentMarkup();
 }
 
 export function handleDependentMarkup() {
