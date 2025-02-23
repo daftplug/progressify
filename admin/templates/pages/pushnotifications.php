@@ -13,10 +13,10 @@ if (!defined('ABSPATH')) {
         <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
           <div>
             <h2 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Push Notifications Subscribers', $this->textDomain); ?>
+              <?php _e('Push Notifications Subscribers', $this->slug); ?>
             </h2>
             <p class="text-sm text-gray-600 dark:text-neutral-400">
-              <?php _e('List of your users who are subscribed for push notifications.', $this->textDomain); ?>
+              <?php _e('List of your users who are subscribed for push notifications.', $this->slug); ?>
             </p>
           </div>
           <div>
@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
               </svg>
-              <?php _e('Send Push Notification', $this->textDomain); ?>
+              <?php _e('Send Push Notification', $this->slug); ?>
             </button>
           </div>
         </div>
@@ -35,35 +35,35 @@ if (!defined('ABSPATH')) {
               <th scope="col" class="ps-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    <?php _e('Country', $this->textDomain); ?>
+                    <?php _e('Country', $this->slug); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="ps-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    <?php _e('Operating System', $this->textDomain); ?>
+                    <?php _e('Operating System', $this->slug); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    <?php _e('Browser', $this->textDomain); ?>
+                    <?php _e('Browser', $this->slug); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    <?php _e('Date', $this->textDomain); ?>
+                    <?php _e('Date', $this->slug); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-end">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                    <?php _e('Actions', $this->textDomain); ?>
+                    <?php _e('Actions', $this->slug); ?>
                   </span>
                 </div>
               </th>
@@ -76,7 +76,7 @@ if (!defined('ABSPATH')) {
         <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-neutral-700">
           <div>
             <p class="text-sm text-gray-600 dark:text-neutral-400">
-              <?php _e('Total:', $this->textDomain); ?> <span class="font-semibold text-gray-800 dark:text-neutral-200" id="totalSubscribers"></span>
+              <?php _e('Total:', $this->slug); ?> <span class="font-semibold text-gray-800 dark:text-neutral-200" id="totalSubscribers"></span>
             </p>
           </div>
           <div>
@@ -85,10 +85,10 @@ if (!defined('ABSPATH')) {
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m15 18-6-6 6-6" />
                 </svg>
-                <?php _e('Prev', $this->textDomain); ?>
+                <?php _e('Prev', $this->slug); ?>
               </button>
               <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]::opacity-50 data-[disabled=true]::pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800" id="nextButton">
-                <?php _e('Next', $this->textDomain); ?>
+                <?php _e('Next', $this->slug); ?>
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m9 18 6-6-6-6" />
                 </svg>
@@ -114,10 +114,10 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Push Notifications Settings', $this->textDomain); ?>
+            <?php _e('Push Notifications Settings', $this->slug); ?>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('The push notifications setting gives you full control over self-hosted notifications service configuration on your server. Here you\'ll have an ability to adjust some values that can potentially improve notifications performance and avoid your server resource overload.', $this->textDomain); ?>
+            <?php _e('The push notifications setting gives you full control over self-hosted notifications service configuration on your server. Here you\'ll have an ability to adjust some values that can potentially improve notifications performance and avoid your server resource overload.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -126,7 +126,7 @@ if (!defined('ABSPATH')) {
       <!-- Time To Live (TTL) -->
       <div id="settingTimeToLive">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Time To Live (TTL)', $this->textDomain); ?>
+          <?php _e('Time To Live (TTL)', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -134,7 +134,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Time To Live (TTL, in seconds) is how long a push message is retained by the push service (eg. Mozilla) in case the user\'s browser is not yet accessible (eg. is not connected). You may want to use a very long time for important notifications. The default TTL is 4 weeks. However, if you send multiple nonessential notifications, set a TTL of 0: the push notification will be delivered only if the user is currently connected. In other cases, you should use a minimum of one day if your users have multiple time zones, and if they don\'t several hours will suffice.', $this->textDomain); ?>
+                <?php _e('Time To Live (TTL, in seconds) is how long a push message is retained by the push service (eg. Mozilla) in case the user\'s browser is not yet accessible (eg. is not connected). You may want to use a very long time for important notifications. The default TTL is 4 weeks. However, if you send multiple nonessential notifications, set a TTL of 0: the push notification will be delivered only if the user is currently connected. In other cases, you should use a minimum of one day if your users have multiple time zones, and if they don\'t several hours will suffice.', $this->slug); ?>
               </span>
             </button>
           </div>
@@ -164,7 +164,7 @@ if (!defined('ABSPATH')) {
       <!-- Batch Size -->
       <div id="settingBatchSize">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Batch Size', $this->textDomain); ?>
+          <?php _e('Batch Size', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -172,7 +172,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('If you send a lot of notifications at a time, you may get memory overflows. In order to fix this, Instantify sends notifications in batches. The default size is 1000. Depending on your server configuration (memory), you may want to decrease this number. Higher values require a longer script execution time.', $this->textDomain); ?>
+                <?php _e('If you send a lot of notifications at a time, you may get memory overflows. In order to fix this, Instantify sends notifications in batches. The default size is 1000. Depending on your server configuration (memory), you may want to decrease this number. Higher values require a longer script execution time.', $this->slug); ?>
               </span>
             </button>
           </div>
@@ -204,9 +204,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -222,13 +222,13 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Push Notifications Prompt', $this->textDomain); ?>
+            <?php _e('Push Notifications Prompt', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="pushNotifications[prompt][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('pushNotifications[prompt][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('The push notifications prompt is nice simple prompt with your website logo and a message that will ask your users to subscribe push notifications on your website.', $this->textDomain); ?>
+            <?php _e('The push notifications prompt is nice simple prompt with your website logo and a message that will ask your users to subscribe push notifications on your website.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -241,7 +241,7 @@ if (!defined('ABSPATH')) {
       <!-- Prompt Message -->
       <div id="settingPromptMessage">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Prompt Message', $this->textDomain); ?>
+          <?php _e('Prompt Message', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -249,32 +249,32 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Enter the message you want to show your users on push prompt.', $this->textDomain); ?>
+                <?php _e('Enter the message you want to show your users on push prompt.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
-        <textarea name="pushNotifications[prompt][message]" class="resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Message', $this->textDomain); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo Plugin::getSetting('pushNotifications[prompt][message]'); ?></textarea>
+        <textarea name="pushNotifications[prompt][message]" class="resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo Plugin::getSetting('pushNotifications[prompt][message]'); ?></textarea>
       </div>
       <!-- End Prompt Message -->
       <!-- Skip First Visit -->
       <div id="settingPushSkipFirstVisit">
         <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Skip First Visit', $this->textDomain); ?>
+          <?php _e('Skip First Visit', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
-              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('If enabled, users who are visiting the website for the first time will not get the push notifications prompt.', $this->textDomain); ?> </span>
+              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('If enabled, users who are visiting the website for the first time will not get the push notifications prompt.', $this->slug); ?> </span>
             </button>
           </div>
         </div>
         <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
           <label class="flex items-center gap-x-1.5 cursor-pointer">
             <input type="checkbox" name="pushNotifications[prompt][skipFirstVisit]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('pushNotifications[prompt][skipFirstVisit]'), 'on'); ?>>
-            <span class="text-sm dark:text-neutral-400"><?php _e('Show prompt to returning visitors only.', $this->textDomain); ?></span>
+            <span class="text-sm dark:text-neutral-400"><?php _e('Show prompt to returning visitors only.', $this->slug); ?></span>
           </label>
         </div>
       </div>
@@ -282,7 +282,7 @@ if (!defined('ABSPATH')) {
       <!-- Timeout -->
       <div id="settingPushPromptTimeout">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Timeout', $this->textDomain); ?>
+          <?php _e('Timeout', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -290,7 +290,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Choose how many days to wait to show push notification prompt again if it was dismissed.', $this->textDomain); ?>
+                <?php _e('Choose how many days to wait to show push notification prompt again if it was dismissed.', $this->slug); ?>
               </span>
             </button>
           </div>
@@ -323,9 +323,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -341,13 +341,13 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Push Notifications Button', $this->textDomain); ?>
+            <?php _e('Push Notifications Button', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="pushNotifications[button][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('pushNotifications[button][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('The push notifications button is a custom subscription button on your website to increase opt-in rate and allow your users to fully control when they want to subscribe and unsubscribe for your push notifications.', $this->textDomain); ?>
+            <?php _e('The push notifications button is a custom subscription button on your website to increase opt-in rate and allow your users to fully control when they want to subscribe and unsubscribe for your push notifications.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -360,7 +360,7 @@ if (!defined('ABSPATH')) {
       <!-- Button Position -->
       <div id="settingPushButtonPosition">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Button Position', $this->textDomain); ?>
+          <?php _e('Button Position', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -368,25 +368,25 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select position of your push notifications button on your website.', $this->textDomain); ?>
+                <?php _e('Select position of your push notifications button on your website.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="pushNotifications[button][position]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Button Position', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Button Position', $this->slug); ?>"
           }'>
-          <option value="bottom-right" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'bottom-right'); ?>><?php esc_html_e('Bottom Right', $this->textDomain); ?></option>
-          <option value="bottom-left" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'bottom-left'); ?>><?php esc_html_e('Bottom Left', $this->textDomain); ?></option>
-          <option value="top-right" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'top-right'); ?>><?php esc_html_e('Top Right', $this->textDomain); ?></option>
-          <option value="top-left" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'top-left'); ?>><?php esc_html_e('Top Left', $this->textDomain); ?></option>
+          <option value="bottom-right" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'bottom-right'); ?>><?php esc_html_e('Bottom Right', $this->slug); ?></option>
+          <option value="bottom-left" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'bottom-left'); ?>><?php esc_html_e('Bottom Left', $this->slug); ?></option>
+          <option value="top-right" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'top-right'); ?>><?php esc_html_e('Top Right', $this->slug); ?></option>
+          <option value="top-left" <?php selected(Plugin::getSetting('pushNotifications[button][position]'), 'top-left'); ?>><?php esc_html_e('Top Left', $this->slug); ?></option>
         </select>
       </div>
       <!-- End Button Position -->
       <!-- Button Behavior -->
       <div id="settingPushButtonBehavior">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Button Behavior', $this->textDomain); ?>
+          <?php _e('Button Behavior', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -394,20 +394,20 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select behavior of your push notifications button after users subscribe for push notifications.', $this->textDomain); ?>
+                <?php _e('Select behavior of your push notifications button after users subscribe for push notifications.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="pushNotifications[button][behavior]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Button Behavior', $this->textDomain); ?>"
+            "placeholder": "<?php _e('Select Button Behavior', $this->slug); ?>"
           }'>
           <option value="shown" <?php selected(Plugin::getSetting('pushNotifications[button][behavior]'), 'shown'); ?> data-dp-select-option='{
-            "description": "<?php _e('Keep shown after user subscribes for notifications, allowing them to unsubscribe by clicking on the button again.', $this->textDomain); ?>"
-          }'><?php _e('Keep Shown After Subscription', $this->textDomain); ?></option>
+            "description": "<?php _e('Keep shown after user subscribes for notifications, allowing them to unsubscribe by clicking on the button again.', $this->slug); ?>"
+          }'><?php _e('Keep Shown After Subscription', $this->slug); ?></option>
           <option value="hidden" <?php selected(Plugin::getSetting('pushNotifications[button][behavior]'), 'hidden'); ?> data-dp-select-option='{
-            "description": "<?php _e('Hide after user subscribes for notifications. Users will still be able to unsubscribe from browser settings.', $this->textDomain); ?>"
-          }'><?php _e('Hide After Subscription', $this->textDomain); ?></option>
+            "description": "<?php _e('Hide after user subscribes for notifications. Users will still be able to unsubscribe from browser settings.', $this->slug); ?>"
+          }'><?php _e('Hide After Subscription', $this->slug); ?></option>
         </select>
       </div>
       <!-- End Button Behavior -->
@@ -416,9 +416,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -434,7 +434,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Push Notifications Automation', $this->textDomain); ?>
+            <?php _e('Push Notifications Automation', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="pushNotifications[automation][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('pushNotifications[automation][feature]'),
@@ -443,7 +443,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Automation allows sending predefined push notifications automatically, triggered on certain events like publishing new post to re-engage your users and increase conversion.', $this->textDomain); ?>
+            <?php _e('Automation allows sending predefined push notifications automatically, triggered on certain events like publishing new post to re-engage your users and increase conversion.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -459,7 +459,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#207196] text-white">WordPress</span>
-              <?php _e('New Content', $this->textDomain); ?>
+              <?php _e('New Content', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -467,13 +467,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to website users when new content is published. Notification will include content title, text and featured image.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to website users when new content is published. Notification will include content title, text and featured image.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when new content is published.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when new content is published.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -489,7 +489,7 @@ if (!defined('ABSPATH')) {
           "mode": "visibility"
         }'>
           <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Post Types', $this->textDomain); ?>
+            <?php _e('Post Types', $this->slug); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                 <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -497,13 +497,13 @@ if (!defined('ABSPATH')) {
                   <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                 </svg>
                 <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select supported post types for new content published notification.', $this->textDomain); ?>
+                  <?php _e('Select supported post types for new content published notification.', $this->slug); ?>
                 </span>
               </button>
             </div>
           </label>
           <select name="pushNotifications[automation][wordpress][newContent][postTypes]" multiple="true" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Post Types', $this->textDomain); ?>",
+            "placeholder": "<?php _e('Select Post Types', $this->slug); ?>",
             "size": "xs"
           }'>
             <?php foreach (array_map('get_post_type_object', $this->getPostTypes()) as $postType): ?>
@@ -520,7 +520,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#207196] text-white">WordPress</span>
-              <?php _e('New Comment', $this->textDomain); ?>
+              <?php _e('New Comment', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -528,13 +528,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when a new comment or reply is posted where they have commented. Note that it will only work if you have enabled native WordPress comments on posts.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when a new comment or reply is posted where they have commented. Note that it will only work if you have enabled native WordPress comments on posts.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Notifies users of new comments or replies on threads they\'ve participated in.', $this->textDomain); ?>
+              <?php _e('Notifies users of new comments or replies on threads they\'ve participated in.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -556,7 +556,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('Price Drop', $this->textDomain); ?>
+              <?php _e('Price Drop', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -564,13 +564,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to website users when the product price drops. Notification will include product title and featured image.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to website users when the product price drops. Notification will include product title and featured image.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when the product price drops.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when the product price drops.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -590,7 +590,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('Sale Price', $this->textDomain); ?>
+              <?php _e('Sale Price', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -598,13 +598,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to website users when the sale price is added to the product. Notification will include product title and featured image.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to website users when the sale price is added to the product. Notification will include product title and featured image.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when sale price is added to product.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when sale price is added to product.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -624,7 +624,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('Back In Stock', $this->textDomain); ?>
+              <?php _e('Back In Stock', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -632,13 +632,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to website users when the product is back in stock. Notification will include product title and featured image.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to website users when the product is back in stock. Notification will include product title and featured image.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when product is back in stock.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when product is back in stock.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -658,7 +658,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('Order Status Update', $this->textDomain); ?>
+              <?php _e('Order Status Update', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -666,13 +666,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to website users when the order status is updated. Notification will include what status change details.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to website users when the order status is updated. Notification will include what status change details.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when the order status is updated.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when the order status is updated.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -690,7 +690,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('New Order', $this->textDomain); ?>
+              <?php _e('New Order', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -698,13 +698,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to admins when new order is placed. Notification will include order details.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to admins when new order is placed. Notification will include order details.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to admins when new order is placed.', $this->textDomain); ?>
+              <?php _e('Sends notification to admins when new order is placed.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -722,7 +722,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#7f54b3] text-white">WooCommerce</span>
-              <?php _e('Low Stock', $this->textDomain); ?>
+              <?php _e('Low Stock', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -730,13 +730,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to admins when a product is low in stock. Notification will include product details.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to admins when a product is low in stock. Notification will include product details.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to admins when a product is low in stock.', $this->textDomain); ?>
+              <?php _e('Sends notification to admins when a product is low in stock.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -756,7 +756,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
-              <?php _e('Member Mention', $this->textDomain); ?>
+              <?php _e('Member Mention', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -764,13 +764,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when a member mentions someone in an update @username.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when a member mentions someone in an update @username.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when they are mentioned by a member.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when they are mentioned by a member.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -788,7 +788,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
-              <?php _e('Member Reply', $this->textDomain); ?>
+              <?php _e('Member Reply', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -796,13 +796,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when a member replies to an update or comment.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when a member replies to an update or comment.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when a member replies.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when a member replies.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -820,7 +820,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
-              <?php _e('New Message', $this->textDomain); ?>
+              <?php _e('New Message', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -828,13 +828,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when a new message is received in their DMs.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when a new message is received in their DMs.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when a new message is received.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when a new message is received.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -852,7 +852,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
-              <?php _e('Friend Request', $this->textDomain); ?>
+              <?php _e('Friend Request', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -860,13 +860,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when a new friend request is received.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when a new friend request is received.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when a new friend request is received.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when a new friend request is received.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -884,7 +884,7 @@ if (!defined('ABSPATH')) {
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
               <span class="inline-flex items-center leading-none py-[0.2rem] px-[0.3rem] mr-1.5 mt-px rounded-full text-[0.55rem] font-medium bg-[#d84800] text-white">BuddyPress</span>
-              <?php _e('Friend Accepted', $this->textDomain); ?>
+              <?php _e('Friend Accepted', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -892,13 +892,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Sends automatic notification to users when the friend request is accepted.', $this->textDomain); ?>
+                    <?php _e('Sends automatic notification to users when the friend request is accepted.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Sends notification to users when the friend request is accepted.', $this->textDomain); ?>
+              <?php _e('Sends notification to users when the friend request is accepted.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -916,9 +916,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -934,7 +934,7 @@ if (!defined('ABSPATH')) {
       <div class="py-2.5 px-4 flex justify-between items-center border-b dark:border-neutral-700">
         <div class="flex items-center gap-x-1.5">
           <h3 id="send-notification-popup-label" class="text-base font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Send Push Notification', $this->textDomain); ?>
+            <?php _e('Send Push Notification', $this->slug); ?>
           </h3>
           <div class="hs-tooltip">
             <div class="hs-tooltip-toggle cursor-help mt-0.5">
@@ -944,7 +944,7 @@ if (!defined('ABSPATH')) {
                 <path d="M12 17h.01"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip" data-popper-placement="top" style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(88px, -573px);">
-                <?php _e('The push notification will be sent to all of your subscribers.', $this->textDomain); ?>
+                <?php _e('The push notification will be sent to all of your subscribers.', $this->slug); ?>
               </span>
             </div>
           </div>
@@ -960,7 +960,7 @@ if (!defined('ABSPATH')) {
         <div class="space-y-6">
           <div>
             <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Notification Image', $this->textDomain); ?>
+              <?php _e('Notification Image', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -968,7 +968,7 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Select the image of notification. it will be displayed as large image on notification.', $this->textDomain); ?>
+                    <?php _e('Select the image of notification. it will be displayed as large image on notification.', $this->slug); ?>
                   </span>
                 </button>
               </div>
@@ -982,7 +982,7 @@ if (!defined('ABSPATH')) {
                 </svg>
               </span>
               <div class="group flex relative items-center justify-center">
-                <img class="flex-shrink-0 size-20 rounded-full hidden" src="" alt="<?php _e('Notification Image', $this->textDomain); ?>" data-attachment-holder="" />
+                <img class="flex-shrink-0 size-20 rounded-full hidden" src="" alt="<?php _e('Notification Image', $this->slug); ?>" data-attachment-holder="" />
                 <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 rounded-full transition cursor-pointer">
                   <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
                     <svg class="flex-shrink-0 size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1001,7 +1001,7 @@ if (!defined('ABSPATH')) {
                       <polyline points="17 8 12 3 7 8"></polyline>
                       <line x1="12" x2="12" y1="3" y2="15"></line>
                     </svg>
-                    <?php _e('Select Image', $this->textDomain); ?>
+                    <?php _e('Select Image', $this->slug); ?>
                   </button>
                 </div>
               </div>
@@ -1009,7 +1009,7 @@ if (!defined('ABSPATH')) {
           </div>
           <div>
             <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Notification Title', $this->textDomain); ?>
+              <?php _e('Notification Title', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1017,16 +1017,16 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Enter the title of your notification.', $this->textDomain); ?>
+                    <?php _e('Enter the title of your notification.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </label>
-            <input name="pushNotifications[notification][title]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Title', $this->textDomain); ?>" autocomplete="off" autofocus required>
+            <input name="pushNotifications[notification][title]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Title', $this->slug); ?>" autocomplete="off" autofocus required>
           </div>
           <div>
             <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Notification Message', $this->textDomain); ?>
+              <?php _e('Notification Message', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1034,16 +1034,16 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Enter the message of your notification.', $this->textDomain); ?>
+                    <?php _e('Enter the message of your notification.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </label>
-            <textarea name="pushNotifications[notification][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Message', $this->textDomain); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required></textarea>
+            <textarea name="pushNotifications[notification][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required></textarea>
           </div>
           <div>
             <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Notification URL', $this->textDomain); ?>
+              <?php _e('Notification URL', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1051,16 +1051,16 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Enter the URL of your notification. Your users will be redirected to this URL after they click on your notification.', $this->textDomain); ?>
+                    <?php _e('Enter the URL of your notification. Your users will be redirected to this URL after they click on your notification.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </label>
-            <input name="pushNotifications[notification][url]" type="url" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification URL', $this->textDomain); ?>" autocomplete="off" required>
+            <input name="pushNotifications[notification][url]" type="url" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Notification URL', $this->slug); ?>" autocomplete="off" required>
           </div>
           <div>
             <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Action Buttons', $this->textDomain); ?>
+              <?php _e('Action Buttons', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1068,7 +1068,7 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Notification action buttons are interactive elements that let users respond directly from the notification. You can add up to two action buttons per notification. However, not all browsers support action buttons, so they will only be displayed for users with compatible browsers.', $this->textDomain); ?>
+                    <?php _e('Notification action buttons are interactive elements that let users respond directly from the notification. You can add up to two action buttons per notification. However, not all browsers support action buttons, so they will only be displayed for users with compatible browsers.', $this->slug); ?>
                   </span>
                 </button>
               </div>
@@ -1076,10 +1076,10 @@ if (!defined('ABSPATH')) {
             <div class="space-y-3" data-dp-copy-markup-wrapper="actionButtons">
               <div class="flex gap-2" data-dp-copy-markup-target="actionButton">
                 <div class="flex-grow">
-                  <input name="pushNotifications[notification][actionButtons][text]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action Button Text', $this->textDomain); ?>">
+                  <input name="pushNotifications[notification][actionButtons][text]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action Button Text', $this->slug); ?>">
                 </div>
                 <div class="flex-grow">
-                  <input name="pushNotifications[notification][actionButtons][url]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action Button URL', $this->textDomain); ?>">
+                  <input name="pushNotifications[notification][actionButtons][url]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action Button URL', $this->slug); ?>">
                 </div>
                 <div class="flex-none flex items-center ml-1.5">
                   <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="pushActionButton">
@@ -1102,7 +1102,7 @@ if (!defined('ABSPATH')) {
                   <path d="M5 12h14" />
                   <path d="M12 5v14" />
                 </svg>
-                <?php _e('Add Action Button', $this->textDomain); ?>
+                <?php _e('Add Action Button', $this->slug); ?>
               </button>
             </div>
           </div>
@@ -1110,7 +1110,7 @@ if (!defined('ABSPATH')) {
             <label for="pushNotifications[notification][vibration]" class="cursor-pointer flex gap-x-3">
               <div class="grow">
                 <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-                  <?php _e('Vibration', $this->textDomain); ?>
+                  <?php _e('Vibration', $this->slug); ?>
                   <div class="hs-tooltip inline-block [--placement:top]">
                     <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                       <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1118,13 +1118,13 @@ if (!defined('ABSPATH')) {
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                       </svg>
                       <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                        <?php _e('Allows notification to vibrate the user\'s device as soon as it\'s delivered. This will only work on the mobile and tablet devices as desktop devices do not have vibrations.', $this->textDomain); ?>
+                        <?php _e('Allows notification to vibrate the user\'s device as soon as it\'s delivered. This will only work on the mobile and tablet devices as desktop devices do not have vibrations.', $this->slug); ?>
                       </span>
                     </button>
                   </div>
                 </h3>
                 <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-                  <?php _e('If enabled, your notification will vibrate the user\'s device upon delivery.', $this->textDomain); ?>
+                  <?php _e('If enabled, your notification will vibrate the user\'s device upon delivery.', $this->slug); ?>
                 </p>
               </div>
               <div class="flex justify-between items-center">
@@ -1138,7 +1138,7 @@ if (!defined('ABSPATH')) {
             <label for="pushNotifications[notification][persistent]" class="cursor-pointer flex gap-x-3">
               <div class="grow">
                 <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-                  <?php _e('Persistent', $this->textDomain); ?>
+                  <?php _e('Persistent', $this->slug); ?>
                   <div class="hs-tooltip inline-block [--placement:top]">
                     <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                       <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -1146,13 +1146,13 @@ if (!defined('ABSPATH')) {
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                       </svg>
                       <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                        <?php _e('Your notification will not hide automatically after some time and it will require user interaction to be dismissed.', $this->textDomain); ?>
+                        <?php _e('Your notification will not hide automatically after some time and it will require user interaction to be dismissed.', $this->slug); ?>
                       </span>
                     </button>
                   </div>
                 </h3>
                 <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-                  <?php _e('If enabled, the notification will remain visible until the user interacts with it.', $this->textDomain); ?>
+                  <?php _e('If enabled, the notification will remain visible until the user interacts with it.', $this->slug); ?>
                 </p>
               </div>
               <div class="flex justify-between items-center">
@@ -1166,13 +1166,13 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
         <button type="button" class="py-2 px-3 inline-flex justify-center items-center text-start bg-white border border-gray-200 text-gray-800 text-sm font-medium rounded-lg shadow-sm align-middle hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" id="previewPushNotification">
-          <?php _e('Preview Notification', $this->textDomain); ?>
+          <?php _e('Preview Notification', $this->slug); ?>
         </button>
         <button type="submit" class="group py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-blue-600 border border-blue-600 text-white text-sm font-medium rounded-lg shadow-sm align-middle hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-blue-300 dark:focus:ring-blue-500">
           <span class="hidden group-data-[sending=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Sending...', $this->textDomain); ?></span>
+            <span class="sr-only"><?php _e('Sending...', $this->slug); ?></span>
           </span>
-          <?php _e('Send Push Notification', $this->textDomain); ?>
+          <?php _e('Send Push Notification', $this->slug); ?>
         </button>
       </div>
     </div>

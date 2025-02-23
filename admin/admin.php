@@ -13,7 +13,6 @@ class Admin
   public $description;
   public $slug;
   public $version;
-  public $textDomain;
   public $optionName;
   public $pluginFile;
   public $pluginBasename;
@@ -39,7 +38,6 @@ class Admin
     $this->description = $config['description'];
     $this->slug = $config['slug'];
     $this->version = $config['version'];
-    $this->textDomain = $config['text_domain'];
     $this->optionName = $config['option_name'];
     $this->pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
@@ -132,7 +130,7 @@ class Admin
         "{$this->slug}-admin",
         "{$this->optionName}_admin_js_vars",
         apply_filters("{$this->optionName}_admin_js_vars", [
-          'generalError' => __('An unexpected error occurred', $this->textDomain),
+          'generalError' => esc_html__('An unexpected error occurred', $this->slug),
           'homeUrl' => trailingslashit(home_url('/', 'https')),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
           'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
@@ -148,64 +146,64 @@ class Admin
     $pages = [
       [
         'id' => 'dashboard',
-        'menuTitle' => esc_html__('Dashboard', $this->textDomain),
-        'description' => esc_html__('View your PWA\'s performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control.', $this->textDomain),
+        'menuTitle' => esc_html__('Dashboard', $this->slug),
+        'description' => esc_html__('View your PWA\'s performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'dashboard.php']),
       ],
       [
         'id' => 'webAppManifest',
-        'menuTitle' => esc_html__('Web App Manifest', $this->textDomain),
-        'description' => esc_html__('The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user\'s device. This file is necessary for enabling the "Add to Home Screen" prompt, enhancing the integration of your web app with the user\'s device.', $this->textDomain),
+        'menuTitle' => esc_html__('Web App Manifest', $this->slug),
+        'description' => esc_html__('The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user\'s device. This file is necessary for enabling the "Add to Home Screen" prompt, enhancing the integration of your web app with the user\'s device.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'webappmanifest.php']),
       ],
       [
         'id' => 'installation',
-        'menuTitle' => esc_html__('Installation', $this->textDomain),
-        'description' => esc_html__('Installation features allows displaying prompts that encourage users to add your website to their home screens. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application.', $this->textDomain),
+        'menuTitle' => esc_html__('Installation', $this->slug),
+        'description' => esc_html__('Installation features allows displaying prompts that encourage users to add your website to their home screens. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'installation.php']),
       ],
       [
         'id' => 'offlineUsage',
-        'menuTitle' => esc_html__('Offline Usage', $this->textDomain),
-        'description' => esc_html__('Enhance your web app with offline support and reliable performance, enabling users to access previously viewed pages even without an internet connection or on low connectivity.', $this->textDomain),
+        'menuTitle' => esc_html__('Offline Usage', $this->slug),
+        'description' => esc_html__('Enhance your web app with offline support and reliable performance, enabling users to access previously viewed pages even without an internet connection or on low connectivity.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'offlineusage.php']),
       ],
       [
         'id' => 'uiComponents',
-        'menuTitle' => esc_html__('UI Components', $this->textDomain),
-        'description' => esc_html__('Enhance the user experience by adding interactive elements and features that make your web app look and feel more like a native application, including options like pull-down refresh, a navigation tab bar, dark mode, and toast messages.', $this->textDomain),
+        'menuTitle' => esc_html__('UI Components', $this->slug),
+        'description' => esc_html__('Enhance the user experience by adding interactive elements and features that make your web app look and feel more like a native application, including options like pull-down refresh, a navigation tab bar, dark mode, and toast messages.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'uicomponents.php']),
       ],
       [
         'id' => 'appCapabilities',
-        'menuTitle' => esc_html__('App Capabilities', $this->textDomain),
-        'description' => esc_html__('Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience.', $this->textDomain),
+        'menuTitle' => esc_html__('App Capabilities', $this->slug),
+        'description' => esc_html__('Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'appcapabilities.php']),
       ],
       [
         'id' => 'pushNotifications',
-        'menuTitle' => esc_html__('Push Notifications', $this->textDomain),
-        'description' => esc_html__('Push notifications allow your web app to send messages directly to users\' devices, providing a powerful tool for engaging users with timely updates, alerts, and personalized content. This feature helps keep your audience informed and connected, even when they are not actively using the app.', $this->textDomain),
+        'menuTitle' => esc_html__('Push Notifications', $this->slug),
+        'description' => esc_html__('Push notifications allow your web app to send messages directly to users\' devices, providing a powerful tool for engaging users with timely updates, alerts, and personalized content. This feature helps keep your audience informed and connected, even when they are not actively using the app.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'pushnotifications.php']),
       ],
       [
         'id' => 'publishOnAppStores',
-        'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->textDomain),
+        'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishonappstores.php']),
       ],
       [
         'id' => 'helpCenter',
-        'description' => esc_html__('We understand all the importance of product support for our customers. That\'s why we are ready to solve all your issues and answer any questions related to our plugin.', $this->textDomain),
+        'description' => esc_html__('We understand all the importance of product support for our customers. That\'s why we are ready to solve all your issues and answer any questions related to our plugin.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'helpcenter.php']),
       ],
       [
         'id' => 'changelog',
-        'description' => esc_html__('See what\'s new added, changed, fixed, improved or updated.', $this->textDomain),
+        'description' => esc_html__('See what\'s new added, changed, fixed, improved or updated.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'changelog.php']),
       ],
       [
         'id' => 'tools',
-        'description' => esc_html__('Control what to do with your settings and data, reset/export/import settings or deactivate license to activate the plugin on another website.', $this->textDomain),
+        'description' => esc_html__('Control what to do with your settings and data, reset/export/import settings or deactivate license to activate the plugin on another website.', $this->slug),
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'tools.php']),
       ],
       [

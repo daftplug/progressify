@@ -17,13 +17,13 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Offline Cache', $this->textDomain); ?>
+            <?php _e('Offline Cache', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="offlineUsage[cache][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('offlineUsage[cache][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Configure offline caching settings, including the fallback page, caching strategy, and cache expiry time, to ensure seamless offline functionality.', $this->textDomain); ?>
+            <?php _e('Configure offline caching settings, including the fallback page, caching strategy, and cache expiry time, to ensure seamless offline functionality.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -38,7 +38,7 @@ if (!defined('ABSPATH')) {
         <label for="offlineUsage[cache][customFallbackPage][feature]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Custom Offline Fallback Page', $this->textDomain); ?>
+              <?php _e('Custom Offline Fallback Page', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -46,13 +46,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Enable this if you want to select the special offline fallback page for your web application, instead of using default one. This page will show up your users when they navigate your website without an internet connection and the requested page won\'t be in cache.', $this->textDomain); ?>
+                    <?php _e('Enable this if you want to select the special offline fallback page for your web application, instead of using default one. This page will show up your users when they navigate your website without an internet connection and the requested page won\'t be in cache.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Select a custom offline fallback page instead of default one.', $this->textDomain); ?>
+              <?php _e('Select a custom offline fallback page instead of default one.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -68,7 +68,7 @@ if (!defined('ABSPATH')) {
           "mode": "visibility"
         }'>
           <label class="inline-flex items-center mb-1.5 text-xs font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Offline Fallback Page', $this->textDomain); ?>
+            <?php _e('Offline Fallback Page', $this->slug); ?>
             <div class="hs-tooltip inline-block [--placement:top]">
               <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                 <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -76,13 +76,13 @@ if (!defined('ABSPATH')) {
                   <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                 </svg>
                 <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select a custom offline fallback page.', $this->textDomain); ?>
+                  <?php _e('Select a custom offline fallback page.', $this->slug); ?>
                 </span>
               </button>
             </div>
           </label>
           <select name="offlineUsage[cache][customFallbackPage][page]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Offline Fallback Page', $this->textDomain); ?>",
+            "placeholder": "<?php _e('Select Offline Fallback Page', $this->slug); ?>",
             "size": "xs"
           }'>
             <?php foreach (get_pages() as $wpPage): ?>
@@ -95,7 +95,7 @@ if (!defined('ABSPATH')) {
       <!-- Caching Strategy -->
       <div id="settingCachingStrategy">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Caching Strategy', $this->textDomain); ?>
+          <?php _e('Caching Strategy', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -103,36 +103,36 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('All network requests are cached by Progressify, so that your website can serve content from the browser cache if available and display requested content as fast as possible. Here you are able to manually change the caching strategy for some request types. We recommend you to set it on Network First for always showing latest version of your website while updating the cache in the background and serving the last cached response when the network request fails.', $this->textDomain); ?>
+                <?php _e('All network requests are cached by Progressify, so that your website can serve content from the browser cache if available and display requested content as fast as possible. Here you are able to manually change the caching strategy for some request types. We recommend you to set it on Network First for always showing latest version of your website while updating the cache in the background and serving the last cached response when the network request fails.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="offlineUsage[cache][strategy]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Caching Strategy', $this->textDomain); ?>"
+            "placeholder": "<?php _e('Select Caching Strategy', $this->slug); ?>"
           }'>
           <option value="NetworkFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'NetworkFirst'); ?> data-dp-select-option='{
-            "description": "<?php _e('Fetches from the network first and caches the response. Uses the last cached response if the network request fails.', $this->textDomain); ?>"
-          }'><?php _e('Network-First', $this->textDomain); ?></option>
+            "description": "<?php _e('Fetches from the network first and caches the response. Uses the last cached response if the network request fails.', $this->slug); ?>"
+          }'><?php _e('Network-First', $this->slug); ?></option>
           <option value="StaleWhileRevalidate" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'StaleWhileRevalidate'); ?> data-dp-select-option='{
-            "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->textDomain); ?>"
-          }'><?php _e('Stale While Revalidate', $this->textDomain); ?></option>
+            "description": "<?php _e('Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth.', $this->slug); ?>"
+          }'><?php _e('Stale While Revalidate', $this->slug); ?></option>
           <option value="CacheFirst" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'CacheFirst'); ?> data-dp-select-option='{
-            "description": "<?php _e('Uses a cached response first. If unavailable, fetches from the network and caches the response.', $this->textDomain); ?>"
-          }'><?php _e('Cache-First', $this->textDomain); ?></option>
+            "description": "<?php _e('Uses a cached response first. If unavailable, fetches from the network and caches the response.', $this->slug); ?>"
+          }'><?php _e('Cache-First', $this->slug); ?></option>
           <option value="NetworkOnly" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'NetworkOnly'); ?> data-dp-select-option='{
-            "description": "<?php _e('Does not cache anything. Always uses the network and passes the response to the browser.', $this->textDomain); ?>"
-          }'><?php _e('Network-Only', $this->textDomain); ?></option>
+            "description": "<?php _e('Does not cache anything. Always uses the network and passes the response to the browser.', $this->slug); ?>"
+          }'><?php _e('Network-Only', $this->slug); ?></option>
           <option value="CacheOnly" <?php selected(Plugin::getSetting('offlineUsage[cache][strategy]'), 'CacheOnly'); ?> data-dp-select-option='{
-            "description": "<?php _e('Always uses a pre-populated cached response, never requesting from the network. Updates only when cache settings change or cache expires.', $this->textDomain); ?>"
-          }'><?php _e('Cache-Only', $this->textDomain); ?></option>
+            "description": "<?php _e('Always uses a pre-populated cached response, never requesting from the network. Updates only when cache settings change or cache expires.', $this->slug); ?>"
+          }'><?php _e('Cache-Only', $this->slug); ?></option>
         </select>
       </div>
       <!-- End Caching Strategy -->
       <!-- Cache Expiration Time -->
       <div id="settingCacheExpirationTime">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Cache Expiration Time', $this->textDomain); ?>
+          <?php _e('Cache Expiration Time', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -140,7 +140,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Define how many days should cached content be remained in the browser cache storage. We recommend you to leave it on default as browser cache is updated automatically if your caching strategy is StaleWhileRevalidate but if you are using CacheFirst strategy, then lower expiration times might be a right choice.', $this->textDomain); ?>
+                <?php _e('Define how many days should cached content be remained in the browser cache storage. We recommend you to leave it on default as browser cache is updated automatically if your caching strategy is StaleWhileRevalidate but if you are using CacheFirst strategy, then lower expiration times might be a right choice.', $this->slug); ?>
               </span>
             </button>
           </div>
@@ -174,9 +174,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -192,13 +192,13 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Offline Capabilities', $this->textDomain); ?>
+            <?php _e('Offline Capabilities', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="offlineUsage[capabilities][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('offlineUsage[capabilities][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Enhance your web app\'s offline functionality by enabling features such as offline forms, offline notifications, and offline Google Analytics, ensuring a seamless user experience even without internet connectivity.', $this->textDomain); ?>
+            <?php _e('Enhance your web app\'s offline functionality by enabling features such as offline forms, offline notifications, and offline Google Analytics, ensuring a seamless user experience even without internet connectivity.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -213,7 +213,7 @@ if (!defined('ABSPATH')) {
         <label for="offlineUsage[capabilities][notification]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Offline Notification', $this->textDomain); ?>
+              <?php _e('Offline Notification', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -221,13 +221,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('A live reconnecting notification for your users when they go offline or their connection interrupts on your website.', $this->textDomain); ?>
+                    <?php _e('A live reconnecting notification for your users when they go offline or their connection interrupts on your website.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Display a live reconnecting notification if connection interrupts.', $this->textDomain); ?>
+              <?php _e('Display a live reconnecting notification if connection interrupts.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -246,7 +246,7 @@ if (!defined('ABSPATH')) {
         <label for="offlineUsage[capabilities][forms]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Offline Forms', $this->textDomain); ?>
+              <?php _e('Offline Forms', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -254,13 +254,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Allow users to submit forms offline with their consent. Submissions are saved locally and processed automatically when they reconnect to the internet.', $this->textDomain); ?>
+                    <?php _e('Allow users to submit forms offline with their consent. Submissions are saved locally and processed automatically when they reconnect to the internet.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Allow users to submit forms offline and process when reconnected.', $this->textDomain); ?>
+              <?php _e('Allow users to submit forms offline and process when reconnected.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -279,7 +279,7 @@ if (!defined('ABSPATH')) {
         <label for="offlineUsage[capabilities][googleAnalytics]" class="cursor-pointer flex gap-x-3" data-disabled="true">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Offline Google Analytics', $this->textDomain); ?>
+              <?php _e('Offline Google Analytics', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -287,13 +287,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Tracks user interactions and page views while offline, and syncs the data with Google Analytics once the connection is restored.', $this->textDomain); ?>
+                    <?php _e('Tracks user interactions and page views while offline, and syncs the data with Google Analytics once the connection is restored.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Tracks users offline and syncs with Google Analytics when reconnected.', $this->textDomain); ?>
+              <?php _e('Tracks users offline and syncs with Google Analytics when reconnected.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -305,7 +305,7 @@ if (!defined('ABSPATH')) {
         </label>
       </div>
       <p class="!mt-2 text-xs text-red-700">
-        <?php _e('This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4).', $this->textDomain); ?>
+        <?php _e('This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4).', $this->slug); ?>
       </p>
       <!-- End Offline Google Analytics -->
     </div>
@@ -313,9 +313,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->

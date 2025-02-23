@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="flex items-center text-lg font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('Active PWA Users', $this->textDomain); ?>
+        <?php _e('Active PWA Users', $this->slug); ?>
         <div class="hs-tooltip inline-block [--placement:top]">
           <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
             <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
               <path d="M12 17h.01" />
             </svg>
             <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-              <?php _e('Number of users who installed your web app and are actively using it as PWA.', $this->textDomain); ?>
+              <?php _e('Number of users who installed your web app and are actively using it as PWA.', $this->slug); ?>
             </span>
           </button>
         </div>
@@ -47,7 +47,7 @@ if (!defined('ABSPATH')) {
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="flex items-center text-lg font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('PWA Scorecard', $this->textDomain); ?>
+        <?php _e('PWA Scorecard', $this->slug); ?>
         <div class="hs-tooltip inline-block [--placement:top]">
           <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
             <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) {
               <path d="M12 17h.01" />
             </svg>
             <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-              <?php _e('The scorecard shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score.', $this->textDomain); ?>
+              <?php _e('The scorecard shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score.', $this->slug); ?>
             </span>
           </button>
         </div>
@@ -81,25 +81,25 @@ if (!defined('ABSPATH')) {
             <div class="inline-flex items-center">
               <span class="inline-block shrink-0 size-2.5 bg-red-500 rounded-sm me-1.5"></span>
               <span class="text-sm text-gray-800 dark:text-neutral-200">
-                <?php _e('Bad', $this->textDomain); ?>
+                <?php _e('Bad', $this->slug); ?>
               </span>
             </div>
             <div class="inline-flex items-center">
               <span class="inline-block shrink-0 size-2.5 bg-orange-500 rounded-sm me-1.5"></span>
               <span class="text-sm text-gray-800 dark:text-neutral-200">
-                <?php _e('Average', $this->textDomain); ?>
+                <?php _e('Average', $this->slug); ?>
               </span>
             </div>
             <div class="inline-flex items-center">
               <span class="inline-block shrink-0 size-2.5 bg-yellow-200 rounded-sm me-1.5"></span>
               <span class="text-sm text-gray-800 dark:text-neutral-200">
-                <?php _e('Good', $this->textDomain); ?>
+                <?php _e('Good', $this->slug); ?>
               </span>
             </div>
             <div class="inline-flex items-center">
               <span class="inline-block shrink-0 size-2.5 bg-green-400 rounded-sm me-1.5"></span>
               <span class="text-sm text-gray-800 dark:text-neutral-200">
-                <?php _e('Excellent', $this->textDomain); ?>
+                <?php _e('Excellent', $this->slug); ?>
               </span>
             </div>
           </div>
@@ -118,7 +118,7 @@ if (!defined('ABSPATH')) {
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-5 pb-3 flex justify-between items-center">
       <h2 class="flex items-center text-lg font-semibold text-gray-800 dark:text-neutral-200">
-        <?php _e('PWA Installations', $this->textDomain); ?>
+        <?php _e('PWA Installations', $this->slug); ?>
         <div class="hs-tooltip inline-block [--placement:top]">
           <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
             <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -127,22 +127,22 @@ if (!defined('ABSPATH')) {
               <path d="M12 17h.01" />
             </svg>
             <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-              <?php _e('The chart displays the historical data of your web app installations over time.', $this->textDomain); ?>
+              <?php _e('The chart displays the historical data of your web app installations over time.', $this->slug); ?>
             </span>
           </button>
         </div>
       </h2>
       <div id="installationPeriod" class="p-0.5 inline-flex border border-gray-200 rounded-lg dark:border-neutral-700">
         <label for="installation-period-last-7-days" class="py-2 px-2.5 text-xs text-gray-800 rounded-md cursor-pointer has-[:checked]:bg-gray-200 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-50 dark:text-neutral-200 dark:has-[:checked]:bg-neutral-700">
-          <?php _e('Last 7 Days', $this->textDomain); ?>
+          <?php _e('Last 7 Days', $this->slug); ?>
           <input id="installation-period-last-7-days" name="installationPeriod" type="radio" class="hidden" value="last-7-days" checked>
         </label>
         <label for="installation-period-last-28-days" class="py-2 px-2.5 text-xs text-gray-800 rounded-md cursor-pointer has-[:checked]:bg-gray-200 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-50 dark:text-neutral-200 dark:has-[:checked]:bg-neutral-700">
-          <?php _e('Last 28 Days', $this->textDomain); ?>
+          <?php _e('Last 28 Days', $this->slug); ?>
           <input id="installation-period-last-28-days" name="installationPeriod" type="radio" class="hidden" value="last-28-days">
         </label>
         <label for="installation-period-last-12-months" class="py-2 px-2.5 text-xs text-gray-800 rounded-md cursor-pointer has-[:checked]:bg-gray-200 has-[:disabled]:pointer-events-none has-[:disabled]:opacity-50 dark:text-neutral-200 dark:has-[:checked]:bg-neutral-700">
-          <?php _e('Last 12 Months', $this->textDomain); ?>
+          <?php _e('Last 12 Months', $this->slug); ?>
           <input id="installation-period-last-12-months" name="installationPeriod" type="radio" class="hidden" value="last-12-months">
         </label>
       </div>

@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Smooth Page Transitions', $this->textDomain); ?>
+            <?php _e('Smooth Page Transitions', $this->slug); ?>
             <span class="inline-flex items-center leading-none py-0.5 px-1 !-ml-1 mt-1 rounded-full text-[0.55rem] font-medium border border-gray-200 bg-white text-yellow-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-yellow-500">Beta</span>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[smoothPageTransitions][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('This feature provides a true native app-like experience by loading content without reloading the entire page. It enables smooth slide and fade transition animations between pages and displays a progress bar while the page loads.', $this->textDomain); ?>
+            <?php _e('This feature provides a true native app-like experience by loading content without reloading the entire page. It enables smooth slide and fade transition animations between pages and displays a progress bar while the page loads.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[smoothPageTransitions][progressBar]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Loading Progress Bar', $this->textDomain); ?>
+              <?php _e('Loading Progress Bar', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -47,13 +47,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Enabling this options shows a page transition progress on top of the screen as the page loads.', $this->textDomain); ?>
+                    <?php _e('Enabling this options shows a page transition progress on top of the screen as the page loads.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Display a progress bar at the top of the screen during page transitions.', $this->textDomain); ?>
+              <?php _e('Display a progress bar at the top of the screen during page transitions.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -70,7 +70,7 @@ if (!defined('ABSPATH')) {
       <!-- Transition Type -->
       <div id="settingTransitionType">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Transition Type', $this->textDomain); ?>
+          <?php _e('Transition Type', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -78,27 +78,27 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select the type of transition you want your pages to be swiped with.', $this->textDomain); ?>
+                <?php _e('Select the type of transition you want your pages to be swiped with.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="appCapabilities[smoothPageTransitions][transition]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Transition Type', $this->textDomain); ?>"
+            "placeholder": "<?php _e('Select Transition Type', $this->slug); ?>"
           }'>
           <option value="slide" <?php selected(Plugin::getSetting('appCapabilities[smoothPageTransitions][transition]'), 'slide'); ?> data-dp-select-option='{
-            "description": "<?php _e('Makes the content slide out to one direction, and slide in from the other.', $this->textDomain); ?>"
-          }'><?php _e('Slide', $this->textDomain); ?></option>
+            "description": "<?php _e('Makes the content slide out to one direction, and slide in from the other.', $this->slug); ?>"
+          }'><?php _e('Slide', $this->slug); ?></option>
           <option value="fade" <?php selected(Plugin::getSetting('appCapabilities[smoothPageTransitions][transition]'), 'fade'); ?> data-dp-select-option='{
-            "description": "<?php _e('Makes the content fade out when leaving, and fade in when entering.', $this->textDomain); ?>"
-          }'><?php _e('Fade', $this->textDomain); ?></option>
+            "description": "<?php _e('Makes the content fade out when leaving, and fade in when entering.', $this->slug); ?>"
+          }'><?php _e('Fade', $this->slug); ?></option>
         </select>
       </div>
       <!-- End Transition Type -->
       <!-- Supported Devices -->
       <div id="settingSmoothPageTransitionsDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
+          <?php _e('Supported Devices', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -106,25 +106,25 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types smooth page transitions feature should be active and running.', $this->textDomain); ?>
+                <?php _e('Select on what device types smooth page transitions feature should be active and running.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="appCapabilities[smoothPageTransitions][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
+            <?php _e('Smartphone', $this->slug); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
+            <?php _e('Tablet', $this->slug); ?>
           </option>
           <option value="desktop" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('appCapabilities[smoothPageTransitions][supportedDevices]'))); ?>>
-            <?php _e('Desktop', $this->textDomain); ?>
+            <?php _e('Desktop', $this->slug); ?>
           </option>
         </select>
       </div>
@@ -132,21 +132,21 @@ if (!defined('ABSPATH')) {
       <!-- Compatibility Mode -->
       <div id="settingCompatibilityMode">
         <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Compatibility Mode ', $this->textDomain); ?>
+          <?php _e('Compatibility Mode ', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
-              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('Enable this only if certain features on your website stop working, and you notice issues where page navigation reloads the entire page instead of transitioning smoothly.', $this->textDomain); ?> </span>
+              <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('Enable this only if certain features on your website stop working, and you notice issues where page navigation reloads the entire page instead of transitioning smoothly.', $this->slug); ?> </span>
             </button>
           </div>
         </div>
         <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
           <label class="flex items-center gap-x-1.5 cursor-pointer">
             <input type="checkbox" name="appCapabilities[smoothPageTransitions][compatibilityMode]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('appCapabilities[smoothPageTransitions][compatibilityMode]'), 'on'); ?>>
-            <span class="text-sm dark:text-neutral-400"><?php _e('Use custom content wrapper and force script reinitialization.', $this->textDomain); ?></span>
+            <span class="text-sm dark:text-neutral-400"><?php _e('Use custom content wrapper and force script reinitialization.', $this->slug); ?></span>
           </label>
         </div>
       </div>
@@ -156,9 +156,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -174,7 +174,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('URL Protocol Handler', $this->textDomain); ?>
+            <?php _e('URL Protocol Handler', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[urlProtocolHandler][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('appCapabilities[urlProtocolHandler][feature]'),
@@ -183,7 +183,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('The URL Protocol Handler feature allows PWAs to open specific protocol links for a seamless user experience. When a PWA is registered as a protocol handler, clicking a link with the specified scheme will open the PWA, receiving the URL.', $this->textDomain); ?>
+            <?php _e('The URL Protocol Handler feature allows PWAs to open specific protocol links for a seamless user experience. When a PWA is registered as a protocol handler, clicking a link with the specified scheme will open the PWA, receiving the URL.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -196,7 +196,7 @@ if (!defined('ABSPATH')) {
       <!-- Protocol -->
       <div id="settingProtocol">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Protocol', $this->textDomain); ?>
+          <?php _e('Protocol', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -204,18 +204,18 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Enter the protocol to be handled by your PWA web app. For example, if your website is a music streaming app, your protocol will be <code>music</code>, so when a user shares a link to a song like <code>web+<strong>music</strong>://song=123</code> and the user clicks on it, your music streaming PWA will automatically launch in a standalone window.', $this->textDomain); ?>
+                <?php _e('Enter the protocol to be handled by your PWA web app. For example, if your website is a music streaming app, your protocol will be <code>music</code>, so when a user shares a link to a song like <code>web+<strong>music</strong>://song=123</code> and the user clicks on it, your music streaming PWA will automatically launch in a standalone window.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
-        <input name="appCapabilities[urlProtocolHandler][protocol]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Protocol', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('appCapabilities[urlProtocolHandler][protocol]'); ?>" autocomplete="off" required>
+        <input name="appCapabilities[urlProtocolHandler][protocol]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Protocol', $this->slug); ?>" value="<?php echo Plugin::getSetting('appCapabilities[urlProtocolHandler][protocol]'); ?>" autocomplete="off" required>
       </div>
       <!-- End Protocol -->
       <!-- URL -->
       <div id="settingProtocolUrl">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('URL', $this->textDomain); ?>
+          <?php _e('URL', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -223,12 +223,12 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Enter the URL of your web app protocol handler. This URL must include <code>%s</code>, as a placeholder that will be replaced with the escaped URL to be handled. For example, if your website is a music streaming app, and you will set <code>music</code> as a protocol, and your app handles music URLs like this <code>song=123</code> then your URL for handler will be <code>song=%s</code>. So when a user shares a link to a song like <code>web+music://<strong>song=123</strong></code> and the user clicks on it, your music streaming PWA will automatically launch in a standalone window.', $this->textDomain); ?>
+                <?php _e('Enter the URL of your web app protocol handler. This URL must include <code>%s</code>, as a placeholder that will be replaced with the escaped URL to be handled. For example, if your website is a music streaming app, and you will set <code>music</code> as a protocol, and your app handles music URLs like this <code>song=123</code> then your URL for handler will be <code>song=%s</code>. So when a user shares a link to a song like <code>web+music://<strong>song=123</strong></code> and the user clicks on it, your music streaming PWA will automatically launch in a standalone window.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
-        <input name="appCapabilities[urlProtocolHandler][url]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter URL', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('appCapabilities[urlProtocolHandler][url]'); ?>" autocomplete="off" required>
+        <input name="appCapabilities[urlProtocolHandler][url]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter URL', $this->slug); ?>" value="<?php echo Plugin::getSetting('appCapabilities[urlProtocolHandler][url]'); ?>" autocomplete="off" required>
       </div>
       <!-- End URL -->
     </div>
@@ -236,9 +236,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -254,7 +254,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Web Share Target', $this->textDomain); ?>
+            <?php _e('Web Share Target', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[webShareTarget][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('appCapabilities[webShareTarget][feature]'),
@@ -263,7 +263,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Web Share Target feature adds a system-level share target picker and allows your web app to register as a share target to receive shared data from other sites or apps via share URL scheme. The feature is most useful if your website is a social networking app.', $this->textDomain); ?>
+            <?php _e('Web Share Target feature adds a system-level share target picker and allows your web app to register as a share target to receive shared data from other sites or apps via share URL scheme. The feature is most useful if your website is a social networking app.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -276,7 +276,7 @@ if (!defined('ABSPATH')) {
       <!-- Share Action -->
       <div id="settingShareAction">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Share Action', $this->textDomain); ?>
+          <?php _e('Share Action', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -284,18 +284,18 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Enter the action of your web app. Action is a URL or your share URL scheme that accepts parameters and opens a share dialog. For example Facebook share action is <code>/sharer/</code> and Facebook full share URL is https://www.facebook.com<code>/sharer/</code>?u=https://example.com/', $this->textDomain); ?>
+                <?php _e('Enter the action of your web app. Action is a URL or your share URL scheme that accepts parameters and opens a share dialog. For example Facebook share action is <code>/sharer/</code> and Facebook full share URL is https://www.facebook.com<code>/sharer/</code>?u=https://example.com/', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
-        <input name="appCapabilities[webShareTarget][action]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('appCapabilities[webShareTarget][action]'); ?>" autocomplete="off" required>
+        <input name="appCapabilities[webShareTarget][action]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Action', $this->slug); ?>" value="<?php echo Plugin::getSetting('appCapabilities[webShareTarget][action]'); ?>" autocomplete="off" required>
       </div>
       <!-- End Share Action -->
       <!-- URL Query -->
       <div id="settingUrlQuery">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('URL Query', $this->textDomain); ?>
+          <?php _e('URL Query', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -303,12 +303,12 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Enter the URL query parameter of your web app. It is a query parameter that gets sharable URL as a value and inserts it into the share dialog. For example Facebook URL query parameter is <code>u</code> and Facebook full share URL is https://www.facebook.com/sharer/?<code>u</code>=https://example.com/', $this->textDomain); ?>
+                <?php _e('Enter the URL query parameter of your web app. It is a query parameter that gets sharable URL as a value and inserts it into the share dialog. For example Facebook URL query parameter is <code>u</code> and Facebook full share URL is https://www.facebook.com/sharer/?<code>u</code>=https://example.com/', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
-        <input name="appCapabilities[webShareTarget][urlQuery]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter URL Query', $this->textDomain); ?>" value="<?php echo Plugin::getSetting('appCapabilities[webShareTarget][urlQuery]'); ?>" autocomplete="off" required>
+        <input name="appCapabilities[webShareTarget][urlQuery]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter URL Query', $this->slug); ?>" value="<?php echo Plugin::getSetting('appCapabilities[webShareTarget][urlQuery]'); ?>" autocomplete="off" required>
       </div>
       <!-- End URL Query -->
     </div>
@@ -316,9 +316,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -334,13 +334,13 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Vibrations', $this->textDomain); ?>
+            <?php _e('Vibrations', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[vibrations][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('appCapabilities[vibrations][feature]'), 'on'); ?>>
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Vibrations feature creates vibes on tapping for mobile users. That can help mobile users recognize when they are tapping and clicking on your website.', $this->textDomain); ?>
+            <?php _e('Vibrations feature creates vibes on tapping for mobile users. That can help mobile users recognize when they are tapping and clicking on your website.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -353,7 +353,7 @@ if (!defined('ABSPATH')) {
       <!-- Supported Devices -->
       <div id="settingVibrationsDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
+          <?php _e('Supported Devices', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -361,21 +361,21 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types vibrations feature should be active and running.', $this->textDomain); ?>
+                <?php _e('Select on what device types vibrations feature should be active and running.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="appCapabilities[vibrations][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[vibrations][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
+            <?php _e('Smartphone', $this->slug); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[vibrations][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
+            <?php _e('Tablet', $this->slug); ?>
           </option>
         </select>
       </div>
@@ -385,9 +385,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -403,7 +403,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Idle Detection', $this->textDomain); ?>
+            <?php _e('Idle Detection', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[idleDetection][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('appCapabilities[idleDetection][feature]'),
@@ -412,7 +412,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('The Idle Detection notifies your website when a user is idle, indicating such things as lack of interaction with the keyboard, mouse, screen, activation of a screensaver, locking of the screen, or moving to a different screen. If enabled, your website will prompt your users to update contents if the user is detected to be in an idle state.', $this->textDomain); ?>
+            <?php _e('The Idle Detection notifies your website when a user is idle, indicating such things as lack of interaction with the keyboard, mouse, screen, activation of a screensaver, locking of the screen, or moving to a different screen. If enabled, your website will prompt your users to update contents if the user is detected to be in an idle state.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -425,7 +425,7 @@ if (!defined('ABSPATH')) {
       <!-- Threshold -->
       <div id="settingIdleThreshold">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Threshold', $this->textDomain); ?>
+          <?php _e('Threshold', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -433,7 +433,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Choose how many minutes to wait until the user is considered idle.', $this->textDomain); ?>
+                <?php _e('Choose how many minutes to wait until the user is considered idle.', $this->slug); ?>
               </span>
             </button>
           </div>
@@ -463,7 +463,7 @@ if (!defined('ABSPATH')) {
       <!-- Supported Devices -->
       <div id="settingIdleDetectionDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
+          <?php _e('Supported Devices', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -471,25 +471,25 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types Idle Detection feature should be active and running.', $this->textDomain); ?>
+                <?php _e('Select on what device types Idle Detection feature should be active and running.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="appCapabilities[idleDetection][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[idleDetection][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
+            <?php _e('Smartphone', $this->slug); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[idleDetection][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
+            <?php _e('Tablet', $this->slug); ?>
           </option>
           <option value="desktop" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('appCapabilities[idleDetection][supportedDevices]'))); ?>>
-            <?php _e('Desktop', $this->textDomain); ?>
+            <?php _e('Desktop', $this->slug); ?>
           </option>
         </select>
       </div>
@@ -499,9 +499,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -516,7 +516,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Screen Wake Lock', $this->textDomain); ?>
+            <?php _e('Screen Wake Lock', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[screenWakeLock][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('appCapabilities[screenWakeLock][feature]'),
@@ -525,7 +525,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Screen wake lock provides a way to prevent device from dimming or locking the screen when your web application needs to keep running. This capability enables new experiences that, until now, required a platform-specific app.', $this->textDomain); ?>
+            <?php _e('Screen wake lock provides a way to prevent device from dimming or locking the screen when your web application needs to keep running. This capability enables new experiences that, until now, required a platform-specific app.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -538,7 +538,7 @@ if (!defined('ABSPATH')) {
       <!-- Supported Devices -->
       <div id="settingScreenWakeLockDevices">
         <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-          <?php _e('Supported Devices', $this->textDomain); ?>
+          <?php _e('Supported Devices', $this->slug); ?>
           <div class="hs-tooltip inline-block [--placement:top]">
             <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
               <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -546,25 +546,25 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php _e('Select on what device types Screen Wake Lock feature should be active and running.', $this->textDomain); ?>
+                <?php _e('Select on what device types Screen Wake Lock feature should be active and running.', $this->slug); ?>
               </span>
             </button>
           </div>
         </label>
         <select name="appCapabilities[screenWakeLock][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->textDomain); ?>"
+          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
           }'>
           <option value="smartphone" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('appCapabilities[screenWakeLock][supportedDevices]'))); ?>>
-            <?php _e('Smartphone', $this->textDomain); ?>
+            <?php _e('Smartphone', $this->slug); ?>
           </option>
           <option value="tablet" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('appCapabilities[screenWakeLock][supportedDevices]'))); ?>>
-            <?php _e('Tablet', $this->textDomain); ?>
+            <?php _e('Tablet', $this->slug); ?>
           </option>
           <option value="desktop" data-dp-select-option='{
             "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('appCapabilities[screenWakeLock][supportedDevices]'))); ?>>
-            <?php _e('Desktop', $this->textDomain); ?>
+            <?php _e('Desktop', $this->slug); ?>
           </option>
         </select>
       </div>
@@ -574,9 +574,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->
@@ -592,7 +592,7 @@ if (!defined('ABSPATH')) {
         </svg>
         <div class="grow">
           <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-            <?php _e('Advanced Web Capabilities', $this->textDomain); ?>
+            <?php _e('Advanced Web Capabilities', $this->slug); ?>
             <div class="relative inline-flex">
               <input type="checkbox" name="appCapabilities[advancedWebCapabilities][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                 Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]'),
@@ -601,7 +601,7 @@ if (!defined('ABSPATH')) {
             </div>
           </label>
           <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-            <?php _e('Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience.', $this->textDomain); ?>
+            <?php _e('Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience.', $this->slug); ?>
           </p>
         </div>
       </div>
@@ -616,7 +616,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[advancedWebCapabilities][biometricAuthentication]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Biometric Authentication', $this->textDomain); ?>
+              <?php _e('Biometric Authentication', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -624,13 +624,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device\'s built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey.', $this->textDomain); ?>
+                    <?php _e('The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device\'s built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Allow login with Touch ID, Face ID or with other device\'s built-in authenticator.', $this->textDomain); ?>
+              <?php _e('Allow login with Touch ID, Face ID or with other device\'s built-in authenticator.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -647,7 +647,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[advancedWebCapabilities][backgroundSync]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Background Sync', $this->textDomain); ?>
+              <?php _e('Background Sync', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -655,13 +655,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Background sync lets you defer actions until the user has stable connectivity. This ensures that crucial requests made while your web app is offline can be replayed when the user comes back online.', $this->textDomain); ?>
+                    <?php _e('Background sync lets you defer actions until the user has stable connectivity. This ensures that crucial requests made while your web app is offline can be replayed when the user comes back online.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Defer actions and requests until the user has stable connectivity.', $this->textDomain); ?>
+              <?php _e('Defer actions and requests until the user has stable connectivity.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -678,7 +678,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[advancedWebCapabilities][periodicBackgroundSync]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Periodic Background Sync', $this->textDomain); ?>
+              <?php _e('Periodic Background Sync', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -686,13 +686,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Periodic Background Sync enables web applications to periodically synchronize data in the background, bringing web apps closer to the behavior of a platform-specific app. It lets your website to always show fresh content in PWA by downloading data in the background when the app or page is not being used.', $this->textDomain); ?>
+                    <?php _e('Periodic Background Sync enables web applications to periodically synchronize data in the background, bringing web apps closer to the behavior of a platform-specific app. It lets your website to always show fresh content in PWA by downloading data in the background when the app or page is not being used.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Periodically sync data in the background to always show fresh content in PWA.', $this->textDomain); ?>
+              <?php _e('Periodically sync data in the background to always show fresh content in PWA.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -709,7 +709,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[advancedWebCapabilities][contentIndexing]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Content Indexing', $this->textDomain); ?>
+              <?php _e('Content Indexing', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -717,13 +717,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Content Indexing allows web applications to add URLs and metadata of offline-capable pages to a local index maintained by the browser. This improves the offline experience and discoverability of already-cached pages by enabling the browser to surface those pages when users are likely to want to view them. These pages could also be used to improve on-device search and augment browsing history.', $this->textDomain); ?>
+                    <?php _e('Content Indexing allows web applications to add URLs and metadata of offline-capable pages to a local index maintained by the browser. This improves the offline experience and discoverability of already-cached pages by enabling the browser to surface those pages when users are likely to want to view them. These pages could also be used to improve on-device search and augment browsing history.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Add URLs of offline-capable pages to a local index maintained by the browser.', $this->textDomain); ?>
+              <?php _e('Add URLs of offline-capable pages to a local index maintained by the browser.', $this->slug); ?>
             </p>
           </div>
           <div class="flex justify-between items-center">
@@ -740,7 +740,7 @@ if (!defined('ABSPATH')) {
         <label for="appCapabilities[advancedWebCapabilities][persistentStorage]" class="cursor-pointer flex gap-x-3">
           <div class="grow">
             <h3 class="flex items-center text-sm text-gray-800 font-semibold dark:text-white">
-              <?php _e('Persistent Storage', $this->textDomain); ?>
+              <?php _e('Persistent Storage', $this->slug); ?>
               <div class="hs-tooltip inline-block [--placement:top]">
                 <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
                   <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -748,13 +748,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Persistent storage allows your web app to request persistent storage, ensuring that important data is reliably stored on the user\'s device without being automatically cleared, even under storage pressure. It can help protect critical data from eviction, and reduce the chance of data loss.', $this->textDomain); ?>
+                    <?php _e('Persistent storage allows your web app to request persistent storage, ensuring that important data is reliably stored on the user\'s device without being automatically cleared, even under storage pressure. It can help protect critical data from eviction, and reduce the chance of data loss.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </h3>
             <p class="mt-0.5 text-xs text-gray-500 dark:text-neutral-400">
-              <?php _e('Mark cached website content as persistent to prevent deletion.', $this->textDomain); ?>
+              <?php _e('Mark cached website content as persistent to prevent deletion.', $this->slug); ?>
           </div>
           <div class="flex justify-between items-center">
             <div class="relative inline-block">
@@ -770,9 +770,9 @@ if (!defined('ABSPATH')) {
     <div class="col-span-full 2xl:-mt-8 mt-3 flex flex-1 justify-end items-center gap-2">
       <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
         <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php _e('Saving...', $this->textDomain); ?></span>
+          <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
         </span>
-        <?php _e('Save Changes', $this->textDomain); ?>
+        <?php _e('Save Changes', $this->slug); ?>
       </button>
     </div>
     <!-- End Settings Button -->

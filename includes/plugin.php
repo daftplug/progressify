@@ -16,9 +16,8 @@ class Plugin
 {
   public $name;
   public $description;
-  public static $slug;
   public $version;
-  public $textDomain;
+  public static $slug;
   public $optionName;
   public static $pluginOptionName;
   public static $pluginFile;
@@ -52,7 +51,6 @@ class Plugin
     $this->description = $config['description'];
     self::$slug = $config['slug'];
     $this->version = $config['version'];
-    $this->textDomain = $config['text_domain'];
     $this->optionName = $config['option_name'];
     self::$pluginOptionName = $config['option_name'];
     self::$pluginFile = $config['plugin_file'];
@@ -306,7 +304,7 @@ class Plugin
   {
     // PHP version check
     if (version_compare(PHP_VERSION, '8.2', '<')) {
-      $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.2 to function properly.', $this->textDomain), $this->menuTitle), __('If you have trouble fixing this, please contact us on', $this->textDomain));
+      $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.2 to function properly.', self::$slug), $this->menuTitle), __('If you have trouble fixing this, please contact us on', self::$slug));
       wp_die($message, 'Plugin Activation Error', [
         'back_link' => true,
         'text_direction' => 'ltr',
@@ -318,7 +316,7 @@ class Plugin
     $required_extensions = ['mbstring', 'openssl', 'curl', 'dom', 'iconv', 'libxml', 'spl'];
     foreach ($required_extensions as $extension) {
       if (!extension_loaded($extension)) {
-        $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s features require <i>%s</i> extension to function properly.', $this->textDomain), $this->menuTitle, $extension), __('If you have trouble fixing this, please contact us on', $this->textDomain));
+        $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s features require <i>%s</i> extension to function properly.', self::$slug), $this->menuTitle, $extension), __('If you have trouble fixing this, please contact us on', self::$slug));
         wp_die($message, 'Plugin Activation Error', [
           'back_link' => true,
           'text_direction' => 'ltr',
@@ -350,7 +348,7 @@ class Plugin
   public static function onUninstall()
   {
     $optionName = self::$pluginOptionName;
-    self::daftplugProcessLicense(self::$licenseKey, 'validate');
+    self::daftplugProcessLicense(self::$licenseKey, 'deactivate');
     delete_option("{$optionName}_license_key");
     delete_option("{$optionName}_settings");
   }
@@ -365,13 +363,12 @@ class Plugin
 
   public function loadTextDomain()
   {
-    load_plugin_textdomain($this->textDomain, false, dirname($this->pluginBasename) . '/languages/');
+    load_plugin_textdomain(self::$slug, false, dirname($this->pluginBasename) . '/languages/');
   }
 
   public function addPluginActionLinks($links)
   {
-    $slug = self::$slug;
-    $links[] = '<a href="' . esc_url(admin_url("admin.php?page={$slug}")) . '">Settings</a>';
+    $links[] = '<a href="' . esc_url(admin_url('admin.php?page=' . self::$slug)) . '">Settings</a>';
 
     return $links;
   }

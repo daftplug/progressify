@@ -12,7 +12,7 @@
     "production:build-admin-css": "npx tailwindcss -i ./admin/assets/css/admin-dev.css -o ./admin/assets/css/admin.css --postcss",
     "production:build-admin-js": "microbundle -i ./admin/assets/js/dev/main.js -o ./dist/daftplug-progressify/admin/assets/js/admin.js --format modern --no-sourcemap --pkg-main false --external none",
     "production:build-frontend-js": "microbundle -i ./frontend/assets/js/dev/main.js -o ./dist/daftplug-progressify/frontend/assets/js/frontend.js --format modern --no-sourcemap --pkg-main false --external none",
-    "production:generate-pot": "docker compose exec wordpress wp i18n make-pot /var/www/html/wp-content/plugins/daftplug-progressify /var/www/html/wp-content/plugins/daftplug-progressify/languages/daftplug-progressify.pot --domain=daftplug-progressify",
+    "production:generate-pot": "docker compose exec wordpress wp i18n make-pot /var/www/html/wp-content/plugins/daftplug-progressify /var/www/html/wp-content/plugins/daftplug-progressify/languages/daftplug-progressify.pot --ignore-domain --allow-root --exclude=node_modules/*,vendor/*,includes/libs/*",
     "production:copy-root-files": "ncp daftplug-progressify.php ./dist/daftplug-progressify/daftplug-progressify.php && ncp index.php ./dist/daftplug-progressify/index.php",
     "production:copy-folders": "ncp ./admin ./dist/daftplug-progressify/admin && ncp ./includes ./dist/daftplug-progressify/includes && ncp ./languages ./dist/daftplug-progressify/languages && ncp ./frontend ./dist/daftplug-progressify/frontend && ncp ./vendor ./dist/daftplug-progressify/vendor",
     "production:replace-admin-js-path": "replace '/dev/main.js' '/admin.js' ./dist/daftplug-progressify/admin/admin.php",

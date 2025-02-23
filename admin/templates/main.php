@@ -12,12 +12,12 @@
     <ul>
       <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
         <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#/helpCenter/">
-          <?php esc_html_e('FAQ', $this->textDomain); ?>
+          <?php esc_html_e('FAQ', $this->slug); ?>
         </a>
       </li>
       <li class="inline-block relative pe-5 text-xs sm:text-sm text-gray-500 align-middle last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:w-px before:h-3.5 before:bg-gray-400 before:rotate-[18deg] dark:text-neutral-500 dark:before:bg-neutral-600">
         <a class="hover:text-blue-600 focus:outline-none focus:underline dark:hover:text-neutral-200" href="#/changelog">
-          <?php esc_html_e('Changelog', $this->textDomain); ?>
+          <?php esc_html_e('Changelog', $this->slug); ?>
         </a>
       </li>
     </ul>

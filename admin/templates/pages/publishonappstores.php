@@ -6,8 +6,8 @@ if (!defined('ABSPATH')) {
 <script src="https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 <div class="p-5 md:p-8 flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white"><?php _e('Publish on App Stores', $this->textDomain); ?></h2>
-    <p class="mt-3 text-gray-600 dark:text-neutral-400 text-sm"><?php _e('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->textDomain); ?></p>
+    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white"><?php _e('Publish on App Stores', $this->slug); ?></h2>
+    <p class="mt-3 text-gray-600 dark:text-neutral-400 text-sm"><?php _e('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->slug); ?></p>
   </div>
   <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-6 gap-4">
     <div class="flex flex-col rounded-xl relative z-[1] min-h-full p-6 md:p-7 bg-white border border-gray-200 dark:bg-neutral-800 dark:border-neutral-700">
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
-        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android', $this->textDomain); ?></div>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android', $this->slug); ?></div>
       </div>
       <div class="text-gray-800 dark:text-neutral-200 mb-2">
         <div class="inline-flex text-5xl font-semibold">
@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="mb-5">
         <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
-          <?php _e('Perfect for bringing your web app to Android devices through the Google Play Store.', $this->textDomain); ?>
+          <?php _e('Perfect for bringing your web app to Android devices through the Google Play Store.', $this->slug); ?>
         </div>
       </div>
       <div class="paypalButtonsContainer w-full" data-button-color="silver" data-product-name="Android App" data-price="29">
@@ -42,7 +42,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Includes an Android app package', $this->textDomain); ?>
+            <?php _e('Includes an Android app package', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Publish on Google Play Store', $this->textDomain); ?>
+            <?php _e('Publish on Google Play Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -58,7 +58,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach 2.5+ billion Android users', $this->textDomain); ?>
+            <?php _e('Reach 2.5+ billion Android users', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -66,7 +66,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('No app updates required', $this->textDomain); ?>
+            <?php _e('No app updates required', $this->slug); ?>
           </span>
         </li>
       </ul>
@@ -87,7 +87,7 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
-        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android and iOS', $this->textDomain); ?></div>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android and iOS', $this->slug); ?></div>
       </div>
       <div class="relative text-gray-800 dark:text-neutral-200 mb-2">
         <div class="inline-flex text-5xl font-semibold">
@@ -97,7 +97,7 @@ if (!defined('ABSPATH')) {
             </div>
             <span class="grid">
               <span class="text-xs leading-tight text-gray-800 dark:text-neutral-200">
-                <?php _e('Early Supporter Discount Applied', $this->textDomain); ?>
+                <?php _e('Early Supporter Discount Applied', $this->slug); ?>
               </span>
               <s class="text-2xl leading-6 font-normal text-gray-400 dark:text-neutral-500">
                 <span>$</span><span>59</span>
@@ -108,7 +108,7 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="mb-5">
         <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
-          <?php _e('Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store.', $this->textDomain); ?>
+          <?php _e('Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store.', $this->slug); ?>
         </div>
       </div>
       <div class="paypalButtonsContainer w-full" data-button-color="blue" data-product-name="Android and iOS Apps" data-price="48">
@@ -121,7 +121,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Everything from the Android plan', $this->textDomain); ?>
+            <?php _e('Everything from the Android plan', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -129,7 +129,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Plus an iOS app package', $this->textDomain); ?>
+            <?php _e('Plus an iOS app package', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -137,7 +137,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Also publish on Apple App Store', $this->textDomain); ?>
+            <?php _e('Also publish on Apple App Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -145,7 +145,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach an additional 1.5+ billion iOS users', $this->textDomain); ?>
+            <?php _e('Reach an additional 1.5+ billion iOS users', $this->slug); ?>
           </span>
         </li>
       </ul>
@@ -172,7 +172,7 @@ if (!defined('ABSPATH')) {
             </div>
           </div>
         </div>
-        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android, iOS and Windows', $this->textDomain); ?></div>
+        <div class="mt-3 text-xl font-semibold text-gray-800 dark:text-neutral-200"><?php _e('Android, iOS and Windows', $this->slug); ?></div>
       </div>
       <div class="text-gray-800 dark:text-neutral-200 mb-2">
         <div class="inline-flex text-5xl font-semibold">
@@ -181,7 +181,7 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="mb-5">
         <div class="sm:min-h-[40px] text-sm text-gray-700 dark:text-neutral-300">
-          <?php _e('Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices.', $this->textDomain); ?>
+          <?php _e('Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices.', $this->slug); ?>
         </div>
       </div>
       <div class="paypalButtonsContainer w-full" data-button-color="gold" data-product-name="Android, iOS and Windows Apps" data-price="79">
@@ -194,7 +194,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Everything from the Android and iOS plans', $this->textDomain); ?>
+            <?php _e('Everything from the Android and iOS plans', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -202,7 +202,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Plus a Windows app package', $this->textDomain); ?>
+            <?php _e('Plus a Windows app package', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -210,7 +210,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Also publish on Microsoft Store', $this->textDomain); ?>
+            <?php _e('Also publish on Microsoft Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -218,7 +218,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Reach an additional 500+ million Windows users', $this->textDomain); ?>
+            <?php _e('Reach an additional 500+ million Windows users', $this->slug); ?>
           </span>
         </li>
       </ul>
@@ -226,10 +226,10 @@ if (!defined('ABSPATH')) {
   </div>
   <div class="flex 2xl:hidden mt-6 justify-center items-center gap-x-3" id="showDesktopPlan">
     <p class="text-sm text-gray-500 dark:text-neutral-500">
-      <?php _e('Need a desktop app?', $this->textDomain); ?>
+      <?php _e('Need a desktop app?', $this->slug); ?>
     </p>
     <button type="button" class="py-2 px-3 inline-flex cursor-pointer items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" onclick="document.getElementById('desktopPlan').classList.remove('hidden'); document.getElementById('showDesktopPlan').classList.add('hidden');">
-      <?php _e('Show Desktop Plan', $this->textDomain); ?>
+      <?php _e('Show Desktop Plan', $this->slug); ?>
     </button>
   </div>
 </div>

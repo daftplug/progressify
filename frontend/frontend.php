@@ -14,7 +14,6 @@ class Frontend
   public $description;
   public $slug;
   public $version;
-  public static $textDomain;
   public $optionName;
   public $pluginFile;
   public $pluginBasename;
@@ -35,7 +34,6 @@ class Frontend
     $this->description = $config['description'];
     $this->slug = $config['slug'];
     $this->version = $config['version'];
-    self::$textDomain = $config['text_domain'];
     $this->optionName = $config['option_name'];
     $this->pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
@@ -59,7 +57,7 @@ class Frontend
     wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/dev/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
     wp_enqueue_script('wp-i18n');
-    wp_set_script_translations("{$this->slug}-frontend", self::$textDomain);
+    wp_set_script_translations("{$this->slug}-frontend", $this->slug);
 
     // Ensure the script is loaded as a module
     add_filter(
@@ -79,7 +77,7 @@ class Frontend
       "{$this->slug}-frontend",
       "{$this->optionName}_frontend_js_vars",
       apply_filters("{$this->optionName}_frontend_js_vars", [
-        'generalError' => __('An unexpected error occurred', self::$textDomain),
+        'generalError' => __('An unexpected error occurred', $this->slug),
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'restUrl' => get_rest_url(),
@@ -155,8 +153,7 @@ class Frontend
     ?>
 <div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
   <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css);
-  ?>
+  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
   </style>
   <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
   <script type="text/javascript">

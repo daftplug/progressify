@@ -16,7 +16,6 @@ class PushNotifications
 {
   public $slug;
   public $version;
-  public $textDomain;
   public $optionName;
   public $pluginFile;
   public $pluginBasename;
@@ -34,7 +33,6 @@ class PushNotifications
     global $wpdb;
     $this->slug = $config['slug'];
     $this->version = $config['version'];
-    $this->textDomain = $config['text_domain'];
     $this->optionName = $config['option_name'];
     $this->pluginFile = $config['plugin_file'];
     $this->pluginBasename = $config['plugin_basename'];
@@ -714,14 +712,14 @@ class PushNotifications
       return new \WP_REST_Response(
         [
           'status' => '1',
-          'message' => sprintf(esc_html__('The notification was sent to %d out of %d recipients, with %d failure.', $this->textDomain), $sent, $sent + $failed, $failed),
+          'message' => sprintf(esc_html__('The notification was sent to %d out of %d recipients, with %d failure.', $this->slug), $sent, $sent + $failed, $failed),
         ],
         200
       );
     }
 
     // Handle error case
-    return new \WP_Error('sending_failed', $sentReport['message'] ?? esc_html__('Sending failed. There was an error on server.', $this->textDomain), ['status' => 500]);
+    return new \WP_Error('sending_failed', $sentReport['message'] ?? esc_html__('Sending failed. There was an error on server.', $this->slug), ['status' => 500]);
   }
 
   public function doNewContentPush($new_status, $old_status, $post)
@@ -742,7 +740,7 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => sprintf(__('New %s - %s', $this->textDomain), $postTypeLabel, $post->post_title),
+      'title' => sprintf(__('New %s - %s', $this->slug), $postTypeLabel, $post->post_title),
       'body' => substr(strip_tags($post->post_content), 0, 77) . '...',
       'data' => ['url' => trailingslashit(get_permalink($post->ID))],
     ];
@@ -767,18 +765,18 @@ class PushNotifications
     $wooNotifications = [
       'priceDrop' => [
         'condition' => get_transient($this->optionName . '_dropped_price'),
-        'title' => sprintf(__('Price Drop - %s', $this->textDomain), $post->post_title),
-        'body' => sprintf(__('Price dropped from %s to %s', $this->textDomain), get_transient($this->optionName . '_regular_price'), get_transient($this->optionName . '_dropped_price')),
+        'title' => sprintf(__('Price Drop - %s', $this->slug), $post->post_title),
+        'body' => sprintf(__('Price dropped from %s to %s', $this->slug), get_transient($this->optionName . '_regular_price'), get_transient($this->optionName . '_dropped_price')),
       ],
       'salePrice' => [
         'condition' => get_transient($this->optionName . '_sale_price'),
-        'title' => sprintf(__('New Sale Price - %s', $this->textDomain), $post->post_title),
-        'body' => sprintf(__('New Sale Price: %s', $this->textDomain), get_transient($this->optionName . '_sale_price')),
+        'title' => sprintf(__('New Sale Price - %s', $this->slug), $post->post_title),
+        'body' => sprintf(__('New Sale Price: %s', $this->slug), get_transient($this->optionName . '_sale_price')),
       ],
       'backInStock' => [
         'condition' => get_transient($this->optionName . '_back_in_stock'),
-        'title' => sprintf(__('Back In Stock - %s', $this->textDomain), $post->post_title),
-        'body' => sprintf(__('%s is now back in stock', $this->textDomain), $post->post_title),
+        'title' => sprintf(__('Back In Stock - %s', $this->slug), $post->post_title),
+        'body' => sprintf(__('%s is now back in stock', $this->slug), $post->post_title),
       ],
     ];
 
@@ -845,8 +843,8 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => __('Your Order Status Updated', $this->textDomain),
-      'body' => sprintf(__('Your order (ID %s) status has updated from %s to %s. Click on this notification to see the order.', $this->textDomain), $orderId, $oldStatus, $newStatus),
+      'title' => __('Your Order Status Updated', $this->slug),
+      'body' => sprintf(__('Your order (ID %s) status has updated from %s to %s. Click on this notification to see the order.', $this->slug), $orderId, $oldStatus, $newStatus),
       'data' => [
         'url' => trailingslashit($order->get_view_order_url()),
       ],
@@ -895,7 +893,7 @@ class PushNotifications
     $commentContent = wp_trim_words($comment->comment_content, 20, '...');
 
     $notificationData = [
-      'title' => sprintf(__('New Comment By %s', $this->textDomain), $comment->comment_author),
+      'title' => sprintf(__('New Comment By %s', $this->slug), $comment->comment_author),
       'body' => $commentContent,
       'icon' => get_avatar_url($comment->user_id),
       'data' => [
@@ -933,8 +931,8 @@ class PushNotifications
     $customer_name = $order->get_formatted_billing_full_name();
 
     $notificationData = [
-      'title' => sprintf(__('New Order #%s', $this->textDomain), $order->get_order_number()),
-      'body' => sprintf(__('New order from %s for %s%s (%d items)', $this->textDomain), $customer_name, $wooCurrency, $order->get_total(), $items_count),
+      'title' => sprintf(__('New Order #%s', $this->slug), $order->get_order_number()),
+      'body' => sprintf(__('New order from %s for %s%s (%d items)', $this->slug), $customer_name, $wooCurrency, $order->get_total(), $items_count),
       'data' => [
         'url' => $order->get_edit_order_url(),
       ],
@@ -1002,8 +1000,8 @@ class PushNotifications
 
     foreach ($low_stock_items as $item) {
       $notificationData = [
-        'title' => sprintf(__('Low Stock Alert: %s', $this->textDomain), $item['name']),
-        'body' => sprintf(__('Stock level: %d (Threshold: %d)%s. SKU: %s', $this->textDomain), $item['stock'], $item['threshold'], $item['stock'] === 0 ? ' - OUT OF STOCK' : '', $item['sku'] ?: 'N/A'),
+        'title' => sprintf(__('Low Stock Alert: %s', $this->slug), $item['name']),
+        'body' => sprintf(__('Stock level: %d (Threshold: %d)%s. SKU: %s', $this->slug), $item['stock'], $item['threshold'], $item['stock'] === 0 ? ' - OUT OF STOCK' : '', $item['sku'] ?: 'N/A'),
         'data' => [
           'url' => $item['url'],
         ],
@@ -1028,10 +1026,10 @@ class PushNotifications
       return;
     }
 
-    $body = sprintf(__('%s has just mentioned you in a %s', $this->textDomain), $currentUser->display_name, $activity->type == 'activity_comment' ? 'comment' : 'update');
+    $body = sprintf(__('%s has just mentioned you in a %s', $this->slug), $currentUser->display_name, $activity->type == 'activity_comment' ? 'comment' : 'update');
 
     $notificationData = [
-      'title' => sprintf(__('New mention from %s', $this->textDomain), $currentUser->display_name),
+      'title' => sprintf(__('New mention from %s', $this->slug), $currentUser->display_name),
       'body' => $body,
       'data' => [
         'url' => get_permalink(get_option('bp-pages')['members']) . $friendDetail->user_nicename . '/activity/mentions/',
@@ -1055,8 +1053,8 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => sprintf(__('New comment from %s', $this->textDomain), $currentUser->display_name),
-      'body' => sprintf(__('%s has just commented on your post.', $this->textDomain), $currentUser->display_name),
+      'title' => sprintf(__('New comment from %s', $this->slug), $currentUser->display_name),
+      'body' => sprintf(__('%s has just commented on your post.', $this->slug), $currentUser->display_name),
       'data' => [
         'url' => get_permalink(get_option('bp-pages')['members']) . $receiverDetail->user_nicename . '/activity/' . $activity->id . '/#acomment-' . $commentId,
       ],
@@ -1079,8 +1077,8 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => sprintf(__('New reply from %s', $this->textDomain), $currentUser->display_name),
-      'body' => sprintf(__('%s has just replied to you.', $this->textDomain), $currentUser->display_name),
+      'title' => sprintf(__('New reply from %s', $this->slug), $currentUser->display_name),
+      'body' => sprintf(__('%s has just replied to you.', $this->slug), $currentUser->display_name),
       'data' => [
         'url' => get_permalink(get_option('bp-pages')['activity']) . 'p/' . $activity->item_id . '/#acomment-' . $commentId,
       ],
@@ -1107,7 +1105,7 @@ class PushNotifications
       }
 
       $notificationData = [
-        'title' => sprintf(__('New message from %s', $this->textDomain), $senderDetail->display_name),
+        'title' => sprintf(__('New message from %s', $this->slug), $senderDetail->display_name),
         'body' => wp_trim_words(wp_strip_all_tags($params->message), 20, '...'),
         'data' => [
           'url' => get_permalink(get_option('bp-pages')['members']) . $recipientDetail->user_nicename . '/messages/view/' . $params->thread_id,
@@ -1133,8 +1131,8 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => sprintf(__('New friend request from %s', $this->textDomain), $currentUser->display_name),
-      'body' => sprintf(__('%s has just sent you a friend request.', $this->textDomain), $currentUser->display_name),
+      'title' => sprintf(__('New friend request from %s', $this->slug), $currentUser->display_name),
+      'body' => sprintf(__('%s has just sent you a friend request.', $this->slug), $currentUser->display_name),
       'data' => [
         'url' => get_permalink(get_option('bp-pages')['members']) . $friendDetail->user_nicename . '/friends/requests/?new',
       ],
@@ -1159,8 +1157,8 @@ class PushNotifications
     }
 
     $notificationData = [
-      'title' => sprintf(__('Friend request accepted', $this->textDomain)),
-      'body' => sprintf(__('%s has just accepted your friend request.', $this->textDomain), $currentUser->display_name),
+      'title' => sprintf(__('Friend request accepted', $this->slug)),
+      'body' => sprintf(__('%s has just accepted your friend request.', $this->slug), $currentUser->display_name),
       'data' => [
         'url' => get_permalink(get_option('bp-pages')['members']) . $friendDetail->user_nicename . '/friends',
       ],
