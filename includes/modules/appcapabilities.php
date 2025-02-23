@@ -163,7 +163,7 @@ class AppCapabilities
     $serviceWorker .= "
       workbox.loadModule('workbox-background-sync');
       workbox.routing.registerRoute(
-          new RegExp('.*'),
+          new RegExp('^(?!.*wp-admin).*$'),
           new workbox.strategies.NetworkOnly({
               plugins: [
                   new workbox.backgroundSync.BackgroundSyncPlugin('backgroundSyncQueue', {

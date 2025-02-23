@@ -43,15 +43,19 @@ const coreModules = [
   { init: initOverlayBackdropFix, name: 'overlayBackdropFix' },
   { init: initSearch, name: 'search' },
   { init: initSettings, name: 'settings' },
-  { init: initAppIconUpload, name: 'appIconUpload' },
-  { init: initAppShortcutIconUpload, name: 'appShortcutIconUpload' },
-  { init: initAppScreenshotsUpload, name: 'appScreenshotsUpload' },
-  { init: initPwaScoreData, name: 'pwaScoreData' },
 ];
 
 // Hash-based module mapping
 const moduleMap = {
-  '#/dashboard/': [{ init: initPwaUsersData, name: 'pwaUsersData' }],
+  '#/dashboard/': [
+    { init: initPwaUsersData, name: 'pwaUsersData' },
+    { init: initPwaScoreData, name: 'pwaScoreData' },
+  ],
+  '#/webAppManifest/': [
+    { init: initAppIconUpload, name: 'appIconUpload' },
+    { init: initAppShortcutIconUpload, name: 'appShortcutIconUpload' },
+    { init: initAppScreenshotsUpload, name: 'appScreenshotsUpload' },
+  ],
   '#/pushNotifications/': [
     { init: initPushImageUpload, name: 'pushImageUpload' },
     { init: initPushSubscribers, name: 'pushSubscribers' },

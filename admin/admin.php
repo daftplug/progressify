@@ -369,14 +369,14 @@ class Admin
       return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
     }
 
-    $licenseResponse = $this->daftplugProcessLicense($this->licenseKey, 'verify');
+    $licenseResponse = $this->daftplugProcessLicense($this->licenseKey, 'validate');
     if (is_wp_error($licenseResponse)) {
       return new \WP_Error('server_error', 'There was an error verifying your license. Please try again.', ['status' => 500]);
     }
 
     if (!$licenseResponse->valid) {
       delete_option("{$this->optionName}_license_key");
-      return new \WP_Error('invalid_license', 'Your license key appears to be invalid. Please check your license key and try again.', ['status' => 403]);
+      return new \WP_Error('invalid_license', 'Your license key is invalid. You can not request support with an invalid license key.', ['status' => 403]);
     }
 
     $supportRequest = $request->get_param('supportRequest');
@@ -483,7 +483,7 @@ class Admin
                   .container { max-width: 800px; margin: 0 auto; padding: 20px; }
                   .header { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
                   .section { margin-bottom: 25px; }
-                  .problem-description { background: #fff; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0; }
+                  .problem-description { background: #fff; padding: 15px; border-left: 4px solid #000; margin: 10px 0; }
                   .debug-section { background: #f8f9fa; padding: 15px; border-radius: 5px; }
                   .debug-section p { margin: 5px 0; }
                   .plugins-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
@@ -492,8 +492,8 @@ class Admin
                   .settings-tree { background: #f8f9fa; padding: 15px; border-radius: 5px; }
                   .settings-tree ul { list-style: none; margin: 0; padding-left: 20px; }
                   .settings-tree > ul { padding-left: 0; }
-                  .settings-value { color: #0066cc; }
-                  h2, h3 { color: #007bff; margin-bottom: 10px; }
+                  .settings-value { color: #000; font-weight: 700; }
+                  h2, h3 { color: #000; margin-bottom: 10px; }
                   .attachments-info { color: #666; font-style: italic; }
               </style>
           </head>

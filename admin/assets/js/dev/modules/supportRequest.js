@@ -116,8 +116,7 @@ async function sendSupportRequest(e) {
       showToast('Fail', 'Support request have failed to be submitted!', 'fail', 'top-right', true, false);
     }
   } catch (error) {
-    console.error('Submit failed:', error);
-    showToast('Fail', 'Support request have failed to be submitted!', 'fail', 'top-right', true, false);
+    showToast('Fail', error.message, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-submitting');
     intractableComponents.removeAttr('data-disabled');
