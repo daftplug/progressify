@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) {
   exit();
 }
 
-// TODO: migrate this to frontend JS for uniformity
 $manifestUrl = WebAppManifest::getManifestUrl(false);
 $appName = trim(Plugin::getSetting('webAppManifest[appIdentity][appName]'));
 $smallMaskableAppIcon = WebAppManifest::getPwaIconUrl('maskable', 180);

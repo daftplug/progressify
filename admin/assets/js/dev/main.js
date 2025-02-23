@@ -91,6 +91,9 @@ window.addEventListener('load', () => {
 
   // Load hash-specific modules
   loadHashModules();
+
+  // Remove loading state after page is loaded
+  document.querySelector('#daftplugAdmin .-daftplugLoading').classList.remove('-daftplugLoading');
 });
 
 // Handle hash changes

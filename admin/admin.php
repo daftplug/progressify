@@ -63,6 +63,8 @@ class Admin
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('admin_post_delete_support_access', [$this, 'handleSupportAccountDeletion']);
     add_action('admin_bar_menu', [$this, 'addSupportAccountDeleteButton'], 100);
+    add_filter('pre_set_site_transient_update_plugins', [$this, 'checkIfUpdateIsAvailable']);
+    add_filter('plugins_api', [$this, 'getPluginUpdateInfo'], 10, 3);
   }
 
   public function addMenuPage()
@@ -220,7 +222,7 @@ class Admin
   {
     ?>
 <div id="daftplugAdmin" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
-  <div class="relative mr-6 mt-6 rounded-xl bg-gray-50 shadow-[0_5px_25px_0_rgba(0,0,0,.1)]">
+  <div class="relative mr-6 mt-6 rounded-xl bg-gray-50 shadow-[0_5px_25px_0_rgba(0,0,0,.1)] -daftplugLoading">
     <?php if (!$this->licenseKey): ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
     <?php else: ?>
@@ -603,6 +605,45 @@ class Admin
     return $html . '</ul>';
   }
 
+  public function checkIfUpdateIsAvailable($transient)
+  {
+    $result = $this->daftplugProcessLicense($this->licenseKey, 'update');
+
+    if (!$transient) {
+      return false;
+    }
+
+    if (empty($transient->response)) {
+      $transient->response = [];
+    }
+
+    if ($result && empty($result->error) && !empty($result->data) && version_compare($this->version, $result->data->new_version, '<')) {
+      $result->data->plugin = $this->pluginBasename;
+      $transient->response[$this->pluginBasename] = $result->data;
+    }
+
+    return $transient;
+  }
+
+  public function getPluginUpdateInfo($result, $action, $args)
+  {
+    $result = false;
+
+    if (isset($args->slug) && $args->slug === $this->slug) {
+      $info = $this->daftplugProcessLicense($this->licenseKey, 'update');
+
+      if (is_object($info) && empty($info->error) && !empty($info->data)) {
+        if (!empty($info->data->sections)) {
+          $info->data->sections = (array) $info->data->sections;
+        }
+
+        $result = $info->data;
+      }
+    }
+
+    return $result;
+  }
+
   public function getPostTypes()
   {
     $excludes = ['attachment'];
@@ -620,6 +661,3 @@ class Admin
     return array_values($postTypes);
   }
 }
-
-// TODO: Implement plugin license check and activation
-// TODO: Implement plugin update checking
