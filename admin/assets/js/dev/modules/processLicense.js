@@ -31,7 +31,6 @@ async function sendLicenseProcessRequest(licenseKey, action) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error);
     return error;
   }
 }
@@ -46,11 +45,10 @@ async function activateLicense(e) {
   try {
     const response = await sendLicenseProcessRequest(licenseKey, 'activate');
 
-    console.log(response);
-
     if (response.status === 'success') {
       showToast('Success', 'License has been activated successfully!', 'success', 'top-right', true, false);
-      location.reload();
+      window.location.hash = '#/dashboard/';
+      window.location.reload();
     } else if (response.status === 'fail') {
       showToast('Fail', response.message, 'fail', 'top-right', true, false);
     } else {

@@ -11,13 +11,13 @@ if (get_option("{$optionName}_license_key")) {
   $params = [
     'sslverify' => false,
     'body' => [
-      'action' => 'deactivate',
       'license_key' => get_option("{$optionName}_license_key"),
+      'action' => 'deactivate',
     ],
     'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
   ];
 
-  wp_remote_post('https://daftplug.com/wp-json/daftplugify/process-license/', $params);
+  wp_remote_post('https://daftplug.com/wp-json/daftplugify/v1/process-license/', $params);
 }
 
 foreach ($options as $option) {

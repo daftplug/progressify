@@ -56,7 +56,6 @@ class Admin
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->pages = $this->generatePages();
-    $this->domain = Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
 
     add_action('admin_menu', [$this, 'addMenuPage']);
     add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
@@ -276,7 +275,7 @@ class Admin
       return new \WP_Error('invalid_request', 'Invalid request format', ['status' => 400]);
     }
 
-    $licenseResponse = $this->daftplugProcessLicense($licenseKey, $action);
+    $licenseResponse = Plugin::daftplugProcessLicense($licenseKey, $action);
 
     if (is_wp_error($licenseResponse)) {
       return new \WP_REST_Response(['status' => 'fail', 'message' => $licenseResponse->get_error_message()], 200);
@@ -302,36 +301,6 @@ class Admin
     }
 
     return new \WP_Error('invalid_action', 'Invalid action', ['status' => 400]);
-  }
-
-  public function daftplugProcessLicense($licenseKey, $action)
-  {
-    @ini_set('display_errors', 0);
-    error_reporting(0);
-
-    $params = [
-      'method' => 'POST',
-      'sslverify' => false,
-      'body' => [
-        'license_key' => $licenseKey,
-        'action' => $action,
-        'slug' => $this->slug,
-        'domain' => $this->domain,
-        'envato_item_id' => $this->envatoItemId,
-      ],
-      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
-    ];
-
-    $response = wp_remote_post($this->licenseEndpoint, $params);
-
-    if (is_wp_error($response)) {
-      return $response;
-    }
-
-    $body = wp_remote_retrieve_body($response);
-    $result = json_decode($body);
-
-    return $result;
   }
 
   public function saveSettings(\WP_REST_Request $request)
@@ -369,12 +338,8 @@ class Admin
       return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
     }
 
-    $licenseResponse = $this->daftplugProcessLicense($this->licenseKey, 'validate');
-    if (is_wp_error($licenseResponse)) {
-      return new \WP_Error('server_error', 'There was an error verifying your license. Please try again.', ['status' => 500]);
-    }
-
-    if (!$licenseResponse->valid) {
+    $licenseResponse = Plugin::daftplugProcessLicense($this->licenseKey, 'validate');
+    if (!is_wp_error($licenseResponse) && !$licenseResponse->valid) {
       delete_option("{$this->optionName}_license_key");
       return new \WP_Error('invalid_license', 'Your license key is invalid. You can not request support with an invalid license key.', ['status' => 403]);
     }
@@ -607,7 +572,7 @@ class Admin
 
   public function checkIfUpdateIsAvailable($transient)
   {
-    $result = $this->daftplugProcessLicense($this->licenseKey, 'update');
+    $result = Plugin::daftplugProcessLicense($this->licenseKey, 'update');
 
     if (!$transient) {
       return false;
@@ -630,7 +595,7 @@ class Admin
     $result = false;
 
     if (isset($args->slug) && $args->slug === $this->slug) {
-      $info = $this->daftplugProcessLicense($this->licenseKey, 'update');
+      $info = Plugin::daftplugProcessLicense($this->licenseKey, 'update');
 
       if (is_object($info) && empty($info->error) && !empty($info->data)) {
         if (!empty($info->data->sections)) {

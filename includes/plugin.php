@@ -30,7 +30,8 @@ class Plugin
   public $menuTitle;
   public static $licenseEndpoint;
   public static $envatoItemId;
-  public static $website;
+  public static $domain;
+  public static $licenseKey;
   public $capability;
   public $defaultSettings;
   public static $settings;
@@ -63,7 +64,8 @@ class Plugin
     $this->menuTitle = $config['menu_title'];
     self::$licenseEndpoint = $config['license_endpoint'];
     self::$envatoItemId = $config['envato_item_id'];
-
+    self::$domain = self::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
+    self::$licenseKey = get_option("{$this->optionName}_license_key");
     $this->capability = 'manage_options';
 
     self::$settings = $config['settings'];
@@ -282,9 +284,21 @@ class Plugin
       ],
     ];
 
+    if (get_transient("{$this->optionName}_updated")) {
+      update_option("{$this->optionName}_settings", wp_parse_args(self::$settings, $this->defaultSettings));
+      delete_transient("{$this->optionName}_updated");
+    }
+
+    if (!wp_next_scheduled("{$this->optionName}_validate_license_schedule")) {
+      wp_schedule_event(time(), 'weekly', "{$this->optionName}_validate_license_schedule");
+    }
+
     add_action('plugins_loaded', [$this, 'loadTextDomain']);
     add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
     register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
+    add_action('upgrader_process_complete', [$this, 'onUpdate'], 10, 2);
+    register_deactivation_hook(self::$pluginFile, [$this, 'onDeactivate']);
+    add_action("{$this->optionName}_validate_license_schedule", [$this, 'checkLicenseValidity']);
   }
 
   public function onActivate()
@@ -316,6 +330,30 @@ class Plugin
     add_option("{$this->optionName}_settings", $this->defaultSettings);
   }
 
+  public function onUpdate($upgraderObject, $options)
+  {
+    if ($options['action'] == 'update' && $options['type'] == 'plugin' && isset($options['plugins'])) {
+      foreach ($options['plugins'] as $plugin) {
+        if ($plugin == $this->pluginBasename) {
+          set_transient("{$this->optionName}_updated", 'yes', 3600);
+        }
+      }
+    }
+  }
+
+  public function onDeactivate()
+  {
+    // Do nothing, just deactivate the plugin.
+  }
+
+  public function checkLicenseValidity()
+  {
+    $licenseResponse = self::daftplugProcessLicense(self::$licenseKey, 'validate');
+    if (!is_wp_error($licenseResponse) && !$licenseResponse->valid) {
+      delete_option("{$this->optionName}_license_key");
+    }
+  }
+
   public function loadTextDomain()
   {
     load_plugin_textdomain($this->textDomain, false, dirname($this->pluginBasename) . '/languages/');
@@ -327,6 +365,35 @@ class Plugin
     $links[] = '<a href="' . esc_url(admin_url("admin.php?page={$slug}")) . '">Settings</a>';
 
     return $links;
+  }
+
+  public static function daftplugProcessLicense($licenseKey, $action)
+  {
+    @ini_set('display_errors', 0);
+    error_reporting(0);
+
+    $params = [
+      'sslverify' => false,
+      'body' => [
+        'license_key' => $licenseKey,
+        'action' => $action,
+        'slug' => self::$slug,
+        'domain' => self::$domain,
+        'envato_item_id' => self::$envatoItemId,
+      ],
+      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
+    ];
+
+    $response = wp_remote_post(self::$licenseEndpoint, $params);
+
+    if (is_wp_error($response)) {
+      return $response;
+    }
+
+    $body = wp_remote_retrieve_body($response);
+    $result = json_decode($body);
+
+    return $result;
   }
 
   public static function getSetting($key)

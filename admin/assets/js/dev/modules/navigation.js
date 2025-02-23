@@ -9,14 +9,11 @@ export function initNavigation() {
 }
 
 export function handleLoad() {
-  const activationPage = daftplugAdmin.find('[data-page-id="activation"]');
-  if (!activationPage.length) {
-    if (location.hash) {
-      const [pageId, subPageId] = location.hash.replace(/#|\//g, '').split('-');
-      navigateToPage(pageId, subPageId);
-    } else {
-      navigateToPage('dashboard');
-    }
+  if (location.hash) {
+    const [pageId, subPageId] = location.hash.replace(/#|\//g, '').split('-');
+    navigateToPage(pageId, subPageId);
+  } else {
+    navigateToPage('dashboard');
   }
 }
 
