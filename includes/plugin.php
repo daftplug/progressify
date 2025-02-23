@@ -168,8 +168,8 @@ class Plugin
           'navigationItems' => [],
         ],
         'scrollProgressBar' => [
-          'feature' => 'on',
-          'supportedDevices' => ['smartphone', 'tablet', 'desktop'],
+          'feature' => 'off',
+          'supportedDevices' => [],
         ],
         'darkMode' => [
           'feature' => 'off',
@@ -298,6 +298,7 @@ class Plugin
     register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
     add_action('upgrader_process_complete', [$this, 'onUpdate'], 10, 2);
     register_deactivation_hook(self::$pluginFile, [$this, 'onDeactivate']);
+    register_uninstall_hook(self::$pluginFile, [self::class, 'onUninstall']);
     add_action("{$this->optionName}_validate_license_schedule", [$this, 'checkLicenseValidity']);
   }
 
@@ -344,6 +345,14 @@ class Plugin
   public function onDeactivate()
   {
     // Do nothing, just deactivate the plugin.
+  }
+
+  public static function onUninstall()
+  {
+    $optionName = self::$pluginOptionName;
+    self::daftplugProcessLicense(self::$licenseKey, 'validate');
+    delete_option("{$optionName}_license_key");
+    delete_option("{$optionName}_settings");
   }
 
   public function checkLicenseValidity()
@@ -989,8 +998,19 @@ class Plugin
       ],
     ];
 
-    // Get country data
-    $locationData = @file_get_contents('https://get.geojs.io/v1/ip/country.json', false, stream_context_create(['http' => ['timeout' => 2]]));
+    // Get visitor's real IP address
+    $visitor_ip = '';
+    $ip_headers = ['HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR'];
+    foreach ($ip_headers as $header) {
+      if (!empty($_SERVER[$header])) {
+        $ip_array = array_map('trim', explode(',', $_SERVER[$header]));
+        $visitor_ip = $ip_array[0];
+        break;
+      }
+    }
+
+    // Get country data using visitor's IP
+    $locationData = @file_get_contents("https://get.geojs.io/v1/ip/country/{$visitor_ip}.json", false, stream_context_create(['http' => ['timeout' => 2]]));
     $locationData = $locationData ? json_decode($locationData, true) : [];
 
     $userData = [
@@ -1013,7 +1033,7 @@ class Plugin
     ];
 
     // Set country if available
-    if ($locationData && $locationData['status'] === 'success' && isset($locationData['name'], $locationData['country'])) {
+    if ($locationData && isset($locationData['name'], $locationData['country'])) {
       $userData['country'] = [
         'name' => $locationData['name'],
         'icon' => $baseIconPath . 'flags/4x3/' . strtolower($locationData['country']) . '.svg',

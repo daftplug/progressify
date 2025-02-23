@@ -39,5 +39,3 @@ new Plugin([
   'license_endpoint' => 'https://daftplug.com/wp-json/daftplugify/v1/process-license/',
   'envato_item_id' => '25757693',
 ]);
-
-// TODO: Implement PHP obfuscation in the build process

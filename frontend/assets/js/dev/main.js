@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   // Loader
-  if (settings?.uiComponents?.loader?.feature === 'on' && settings?.uiComponents?.loader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
+  if (settings?.appCapabilities?.smoothPageTransitions?.feature === 'off' && settings?.uiComponents?.loader?.feature === 'on' && settings?.uiComponents?.loader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
     const { initLoader } = await import('./modules/loader.js');
     await initLoader();
   }

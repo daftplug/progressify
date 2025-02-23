@@ -12,7 +12,8 @@
     "production:build-admin-css": "npx tailwindcss -i ./admin/assets/css/admin-dev.css -o ./admin/assets/css/admin.css --postcss",
     "production:build-admin-js": "microbundle -i ./admin/assets/js/dev/main.js -o ./dist/daftplug-progressify/admin/assets/js/admin.js --format modern --no-sourcemap --pkg-main false --external none",
     "production:build-frontend-js": "microbundle -i ./frontend/assets/js/dev/main.js -o ./dist/daftplug-progressify/frontend/assets/js/frontend.js --format modern --no-sourcemap --pkg-main false --external none",
-    "production:copy-root-files": "ncp daftplug-progressify.php ./dist/daftplug-progressify/daftplug-progressify.php && ncp uninstall.php ./dist/daftplug-progressify/uninstall.php && ncp index.php ./dist/daftplug-progressify/index.php",
+    "production:generate-pot": "docker compose exec wordpress wp i18n make-pot /var/www/html/wp-content/plugins/daftplug-progressify /var/www/html/wp-content/plugins/daftplug-progressify/languages/daftplug-progressify.pot --domain=daftplug-progressify",
+    "production:copy-root-files": "ncp daftplug-progressify.php ./dist/daftplug-progressify/daftplug-progressify.php && ncp index.php ./dist/daftplug-progressify/index.php",
     "production:copy-folders": "ncp ./admin ./dist/daftplug-progressify/admin && ncp ./includes ./dist/daftplug-progressify/includes && ncp ./languages ./dist/daftplug-progressify/languages && ncp ./frontend ./dist/daftplug-progressify/frontend && ncp ./vendor ./dist/daftplug-progressify/vendor",
     "production:replace-admin-js-path": "replace '/dev/main.js' '/admin.js' ./dist/daftplug-progressify/admin/admin.php",
     "production:replace-frontend-js-path": "replace '/dev/main.js' '/frontend.js' ./dist/daftplug-progressify/frontend/frontend.php",
@@ -20,7 +21,7 @@
     "production:remove-admin-dev-js-folder": "rimraf ./dist/daftplug-progressify/admin/assets/js/dev/",
     "production:remove-frontend-dev-js-folder": "rimraf ./dist/daftplug-progressify/frontend/assets/js/dev/",
     "production:zip": "cd dist && bestzip ../dist/daftplug-progressify.zip daftplug-progressify",
-    "prod": "run-s production:clean production:make-dist production:build-admin-css production:build-admin-js production:build-frontend-js production:copy-root-files production:copy-folders production:replace-admin-js-path production:replace-frontend-js-path production:remove-admin-dev-css production:remove-admin-dev-js-folder production:remove-frontend-dev-js-folder production:zip",
+    "prod": "run-s production:clean production:make-dist production:build-admin-css production:build-admin-js production:build-frontend-js production:generate-pot production:copy-root-files production:copy-folders production:replace-admin-js-path production:replace-frontend-js-path production:remove-admin-dev-css production:remove-admin-dev-js-folder production:remove-frontend-dev-js-folder production:zip",
     "lint:format": "prettier ./** --write",
     "lint": "run-p \"lint:**\""
   },
@@ -36,8 +37,8 @@
     "microbundle": "^0.15.1",
     "mkdirp": "^3.0.1",
     "ncp": "^2.0.0",
+    "node-wp-i18n": "^1.2.7",
     "npm-run-all": "^4.1.5",
-    "onchange": "^7.1.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-wrap": "^0.0.4",
@@ -48,14 +49,8 @@
     "tailwindcss": "^3.4.10"
   },
   "dependencies": {
-    "@swup/head-plugin": "^2.3.1",
-    "@swup/scripts-plugin": "^2.1.0",
-    "@swup/slide-theme": "^2.0.1",
     "@tailwindcss/forms": "^0.5.7",
-    "apexcharts": "^3.53.0",
-    "lodash": "^4.17.21",
     "postcss-prefix-selector": "^1.16.1",
-    "preline": "^2.1.0",
-    "swup": "^4.8.1"
+    "preline": "^2.1.0"
   }
 }
