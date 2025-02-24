@@ -10,11 +10,13 @@ export function initSearch() {
   const searchItems = buildSettingsItems();
   searchItemsWrapper.append(searchItems);
 
+  const searchComboBox = new HSComboBox(document.getElementById('searchComboBox'));
+  searchComboBox.getCurrentData();
+
   // Handle search item clicks
   searchItemsWrapper.on('click', '[data-navigate-to-page]', function (e) {
     const pageId = jQuery(this).data('navigate-to-page');
     const highlightElementSelector = jQuery(this).data('highlight-element');
-    const searchComboBox = new HSComboBox(document.getElementById('searchComboBox'));
 
     searchComboBox.close();
 
