@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-02T13:48:00+00:00\n"
+"POT-Creation-Date: 2025-03-02T15:36:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -2762,16 +2762,16 @@ msgstr ""
 msgid "Progressify"
 msgstr ""
 
-#: frontend/partials/offlinefallbackpage.php:7
-#: frontend/partials/offlinefallbackpage.php:82
+#: frontend/partials/offlinefallbackpage.php:11
+#: frontend/partials/offlinefallbackpage.php:86
 msgid "You're Offline"
 msgstr ""
 
-#: frontend/partials/offlinefallbackpage.php:84
+#: frontend/partials/offlinefallbackpage.php:88
 msgid "It looks like you lost your internet connection. Please check your connection to reconnect."
 msgstr ""
 
-#: frontend/partials/offlinefallbackpage.php:94
+#: frontend/partials/offlinefallbackpage.php:98
 msgid "Reconnect"
 msgstr ""
 

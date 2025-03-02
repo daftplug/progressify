@@ -37,12 +37,8 @@ const coreModules = [
   { init: initDependentMarkup, name: 'dependentMarkup' },
   { init: initSelect, name: 'select' },
   { init: initClipboard, name: 'clipboard' },
-  { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
   { init: initInputValidation, name: 'inputValidation' },
   { init: initNavigation, name: 'navigation' },
-  { init: initOverlayBackdropFix, name: 'overlayBackdropFix' },
-  { init: initSearch, name: 'search' },
-  { init: initSettings, name: 'settings' },
 ];
 
 // Hash-based module mapping
@@ -64,6 +60,13 @@ const moduleMap = {
   '#/publishOnAppStores/': [{ init: initPublishOnAppStores, name: 'publishOnAppStores' }],
   '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
   '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
+
+  '!#/error/': [
+    { init: initSearch, name: 'search' },
+    { init: initSettings, name: 'settings' },
+    { init: initOverlayBackdropFix, name: 'overlayBackdropFix' },
+    { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
+  ],
 };
 
 // Initialize modules for current hash
@@ -72,7 +75,20 @@ const loadHashModules = () => {
 
   // Initialize hash-specific modules if not already initialized
   Object.entries(moduleMap).forEach(([hash, modules]) => {
-    if (currentHash.startsWith(hash)) {
+    // Check if this is a negative condition (hash starts with !)
+    if (hash.startsWith('!')) {
+      const excludeHash = hash.substring(1); // Remove the ! character
+      // Initialize modules only if current hash does NOT start with the specified hash
+      if (!currentHash.startsWith(excludeHash)) {
+        modules.forEach((module) => {
+          if (!initializedModules.has(module.name)) {
+            module.init();
+            initializedModules.add(module.name);
+          }
+        });
+      }
+    } else if (currentHash.startsWith(hash)) {
+      // Regular positive hash condition
       modules.forEach((module) => {
         if (!initializedModules.has(module.name)) {
           module.init();
