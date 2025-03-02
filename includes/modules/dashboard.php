@@ -415,6 +415,9 @@ class Dashboard
     // Calculate score percentage based on weights
     $scorePercent = $completedWeight;
 
+    // Round to 2 decimal places to avoid floating point precision issues
+    $scorePercent = round($scorePercent, 2);
+
     // Determine score result based on percentage
     $scoreResult = match (true) {
       $scorePercent >= 100 => 'Excellent',
