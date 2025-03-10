@@ -2,7 +2,7 @@ const daftplugAdmin = jQuery('#daftplugAdmin');
 const slug = daftplugAdmin.attr('data-slug');
 const { __ } = wp.i18n;
 
-export function initPublishOnAppStores() {
+export function initPublishToAppStores() {
   const paypalContainers = daftplugAdmin.find('.paypalButtonsContainer');
   paypalContainers.each(function (e) {
     const self = jQuery(this);

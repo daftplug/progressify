@@ -9,8 +9,8 @@ if (!defined('ABSPATH')) {
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Installation Prompts -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionInstallationPrompts">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M452.31-300h255.38q13.93 0 23.12-9.19 9.19-9.19 9.19-23.12v-163.07q0-13.93-9.19-23.12-9.19-9.19-23.12-9.19H452.31q-13.93 0-23.12 9.19-9.19 9.19-9.19 23.12v163.07q0 13.93 9.19 23.12 9.19 9.19 23.12 9.19ZM184.62-200q-27.62 0-46.12-18.5Q120-237 120-264.62v-430.76q0-27.62 18.5-46.12Q157-760 184.62-760h590.76q27.62 0 46.12 18.5Q840-723 840-695.38v430.76q0 27.62-18.5 46.12Q803-200 775.38-200H184.62Zm0-40h590.76q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93v-430.76q0-9.24-7.69-16.93-7.69-7.69-16.93-7.69H184.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v430.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69ZM160-240v-480 480Z" />
@@ -28,7 +28,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "installation[prompts][feature]",
       "state": "checked",
       "mode": "availability"
@@ -256,7 +256,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Installation QR Code -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>

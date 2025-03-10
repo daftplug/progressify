@@ -133,7 +133,7 @@ class Admin
           'generalError' => esc_html__('An unexpected error occurred', $this->slug),
           'homeUrl' => trailingslashit(home_url('/', 'https')),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
-          'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
+          'iconUrl' => $this->licenseKey ? WebAppManifest::getPwaIconUrl('maskable', 180) : '',
           'slug' => $this->slug,
           'settings' => $this->settings,
         ])
@@ -187,9 +187,9 @@ class Admin
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'pushnotifications.php']),
       ],
       [
-        'id' => 'publishOnAppStores',
+        'id' => 'publishToAppStores',
         'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->slug),
-        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishonappstores.php']),
+        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishtoappstores.php']),
       ],
       [
         'id' => 'helpCenter',
@@ -501,6 +501,7 @@ class Admin
     // Send email
     $headers = ['From: ' . $supportRequest['personName'] . ' <' . $supportRequest['personEmail'] . '>', 'Reply-To: ' . $supportRequest['personEmail'], 'Content-Type: text/html; charset=UTF-8'];
 
+    // TODO: Support request should send the data to daftplug.com to create a ticket via email instead of direct email
     $emailSent = wp_mail('support@daftplug.com', "[$this->name] New Support Request", $emailContent, $headers, $attachments);
 
     // Clean up attachment files

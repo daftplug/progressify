@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 <script src="https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 <div class="p-5 md:p-8 flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white"><?php _e('Publish on App Stores', $this->slug); ?></h2>
+    <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white"><?php _e('Publish to App Stores', $this->slug); ?></h2>
     <p class="mt-3 text-gray-600 dark:text-neutral-400 text-sm"><?php _e('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->slug); ?></p>
   </div>
   <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-6 gap-4">
@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Publish on Google Play Store', $this->slug); ?>
+            <?php _e('Publish to Google Play Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -137,7 +137,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Also publish on Apple App Store', $this->slug); ?>
+            <?php _e('Also publish to Apple App Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">
@@ -210,7 +210,7 @@ if (!defined('ABSPATH')) {
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
           <span class="text-sm text-gray-800 dark:text-neutral-200">
-            <?php _e('Also publish on Microsoft Store', $this->slug); ?>
+            <?php _e('Also publish to Microsoft Store', $this->slug); ?>
           </span>
         </li>
         <li class="flex space-x-2 items-center m-0">

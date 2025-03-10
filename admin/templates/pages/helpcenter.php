@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
           <div id="hs-basic-bordered-collapse-one" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-bordered-heading-one">
             <div class="pb-4 px-5">
               <p class="text-sm text-gray-800 dark:text-neutral-200">
-                <?php _e('Progressive Web Apps (PWA) are web apps built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. They combine the broad reach of web apps with the rich capabilities of platform-specific apps to enhance the user experience.', $this->slug); ?>
+                <?php _e('Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. They combine the broad reach of web apps with the rich capabilities of platform-specific apps to enhance the user experience.', $this->slug); ?>
               </p>
             </div>
           </div>

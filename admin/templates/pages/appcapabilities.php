@@ -8,8 +8,8 @@ if (!defined('ABSPATH')) {
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Smooth Page Transitions -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionSmoothPageTransitions">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
         "target": "appCapabilities[smoothPageTransitions][feature]",
         "state": "checked",
         "mode": "availability"
@@ -153,7 +153,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Compatibility Mode -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -166,8 +166,8 @@ if (!defined('ABSPATH')) {
   <!-- End Smooth Page Transitions -->
   <!-- URL Protocol Handler -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionUrlProtocolHandler">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -189,7 +189,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[urlProtocolHandler][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -233,7 +233,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End URL -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -246,8 +246,8 @@ if (!defined('ABSPATH')) {
   <!-- End URL Protocol Handler -->
   <!-- Web Share Target -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionWebShareTarget">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -269,7 +269,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[webShareTarget][feature]",
       "state": "checked",
       "mode": "availability"
@@ -313,7 +313,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End URL Query -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -326,8 +326,8 @@ if (!defined('ABSPATH')) {
   <!-- End Web Share Target -->
   <!-- Vibrations -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionVibrations">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -347,7 +347,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[vibrations][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -383,7 +383,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -396,8 +396,8 @@ if (!defined('ABSPATH')) {
   <!-- End Vibrations -->
   <!-- Idle Detection -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionIdleDetection">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -419,7 +419,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[idleDetection][feature]",
       "state": "checked",
       "mode": "availability"
@@ -498,7 +498,7 @@ if (!defined('ABSPATH')) {
         <!-- End Supported Devices -->
       </div>
       <!-- Save Settings Button -->
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -511,8 +511,8 @@ if (!defined('ABSPATH')) {
   <!-- End Idle Detection -->
   <!-- Screen Wake Lock -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionScreenWakeLock">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M403.08-333.85q-14.72 0-24.29-9.56-9.56-9.56-9.56-24.28v-113.85q0-14.72 9.56-24.28 9.57-9.56 24.29-9.56H410v-40q0-29.93 20.42-50.35 20.43-20.42 50.35-20.42t50.35 20.42q20.42 20.42 20.42 50.35v40h6.92q13.95 0 23.13 9.56t9.18 24.28v114.08q0 13.98-9.59 23.79-9.6 9.82-24.26 9.82H403.08Zm33.07-181.53h89.23v-40q0-18.47-13.07-30.81-13.08-12.35-31.54-12.35t-31.54 12.41q-13.08 12.4-13.08 30.75v40ZM295.38-80q-23.05 0-39.22-16.16Q240-112.33 240-135.38v-689.24q0-23.05 16.16-39.22Q272.33-880 295.38-880h369.24q23.05 0 39.22 16.16Q720-847.67 720-824.62v689.24q0 23.05-16.16 39.22Q687.67-80 664.62-80H295.38Zm-24.61-86.15v30.77q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h369.24q9.23 0 16.92-7.69 7.69-7.69 7.69-16.92v-30.77H270.77Zm0-30.77h418.46v-566.16H270.77v566.16Zm0-596.93h418.46v-30.77q0-9.23-7.69-16.92-7.69-7.69-16.92-7.69H295.38q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v30.77Zm0 0V-849.23v55.38Zm0 627.7V-110.77v-55.38Z" />
@@ -533,7 +533,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[screenWakeLock][feature]",
       "state": "checked",
       "mode": "availability"
@@ -573,7 +573,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -586,8 +586,8 @@ if (!defined('ABSPATH')) {
   <!-- End Screen Wake Lock -->
   <!-- Advanced Web Capabilities -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAdvancedWebCapabilities">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -609,7 +609,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "appCapabilities[advancedWebCapabilities][feature]",
                   "state": "checked",
       "mode": "availability"
@@ -769,7 +769,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Persistent Storage -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>

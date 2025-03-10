@@ -8,8 +8,8 @@ if (!defined('ABSPATH')) {
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Navigation Tab Bar -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionNavigationTabBar">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M215.38-160q-23.05 0-39.22-16.16Q160-192.33 160-215.38v-529.24q0-23.05 16.16-39.22Q192.33-800 215.38-800h529.24q23.05 0 39.22 16.16Q800-767.67 800-744.62v529.24q0 23.05-16.16 39.22Q767.67-160 744.62-160H215.38Zm-24.61-175.38h578.46v-409.24q0-9.23-7.69-16.92-7.69-7.69-16.92-7.69H215.38q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v409.24Zm0 30.76v89.24q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h529.24q9.23 0 16.92-7.69 7.69-7.69 7.69-16.92v-89.24H190.77Zm0 0v113.85-113.85Z" />
@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[navigationTabBar][feature]",
       "state": "checked",
       "mode": "availability"
@@ -594,7 +594,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Navigation Items -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -607,8 +607,8 @@ if (!defined('ABSPATH')) {
   <!-- End Navigation Tab Bar -->
   <!-- Scroll Progress Bar -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionScrollProgressBar">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -630,7 +630,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[scrollProgressBar][feature]",
       "state": "checked",
       "mode": "availability"
@@ -669,7 +669,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -682,8 +682,8 @@ if (!defined('ABSPATH')) {
   <!-- End Scroll Progress Bar -->
   <!-- Dark Mode -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionDarkMode">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M482.31-160q-133.08 0-226.54-93.46-93.46-93.46-93.46-226.54 0-97.31 51.81-176.69 51.8-79.39 150.03-120.23 16.16-5.77 27.08-4.46 10.92 1.3 18.15 8.46 6.47 6.92 7.89 17.69 1.42 10.77-2.73 24.61-4.39 17.62-6.31 34.89-1.92 17.28-1.92 35.73 0 106.67 74.66 181.33Q555.64-404 662.31-404q25 0 45.04-3.73 20.03-3.73 35.11-4.04 14.31-1.85 23.39.69 9.07 2.54 14.34 8.23 4.73 5.7 5.04 15.31.31 9.62-4.69 22.92-34.69 90.24-113.69 147.43-79 57.19-184.54 57.19Zm0-30.77q97.46 0 172.69-57.5t101.38-140.81q-21.92 7.93-45.8 11.89-23.89 3.96-48.27 3.96-119.48 0-203.12-83.65-83.65-83.64-83.65-203.12 0-22.46 3.84-45.73 3.85-23.27 13-49.81-87.23 29.31-143.26 105.43-56.04 76.13-56.04 170.11 0 120.54 84.34 204.88 84.35 84.35 204.89 84.35Zm-7.08-282.38Z" />
@@ -701,7 +701,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[darkMode][feature]",
       "state": "checked",
       "mode": "availability"
@@ -809,7 +809,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -822,8 +822,8 @@ if (!defined('ABSPATH')) {
   <!-- End Dark Mode -->
   <!-- Pull Down Refresh -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPullDownRefresh">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -845,7 +845,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[pullDownRefresh][feature]",
       "state": "checked",
       "mode": "availability"
@@ -881,7 +881,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -894,8 +894,8 @@ if (!defined('ABSPATH')) {
   <!-- End Pull Down Refresh -->
   <!-- Shake Refresh -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionShakeRefresh">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -914,7 +914,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[shakeRefresh][feature]",
       "state": "checked",
       "mode": "availability"
@@ -950,7 +950,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -963,8 +963,8 @@ if (!defined('ABSPATH')) {
   <!-- End Shake Refresh -->
   <!-- Loader -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionLoader">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -983,7 +983,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[loader][feature]",
       "state": "checked",
       "mode": "availability"
@@ -1063,7 +1063,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -1076,8 +1076,8 @@ if (!defined('ABSPATH')) {
   <!-- End Loader -->
   <!-- Inactive Blur -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionInactiveBlur">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -1096,7 +1096,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[inactiveBlur][feature]",
       "state": "checked",
       "mode": "availability"
@@ -1132,7 +1132,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -1145,8 +1145,8 @@ if (!defined('ABSPATH')) {
   <!-- End Inactive Blur -->
   <!-- Toast Messages -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionToastMessages">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M275.38-260h409.24q6.57 0 10.98-4.46 4.4-4.46 4.4-11.11 0-6.66-4.4-10.93-4.41-4.27-10.98-4.27H275.38q-6.57 0-10.98 4.46-4.4 4.46-4.4 11.11 0 6.66 4.4 10.93 4.41 4.27 10.98 4.27Zm-60 100q-23.05 0-39.22-16.16Q160-192.33 160-215.38v-529.24q0-23.05 16.16-39.22Q192.33-800 215.38-800h529.24q23.05 0 39.22 16.16Q800-767.67 800-744.62v529.24q0 23.05-16.16 39.22Q767.67-160 744.62-160H215.38Zm0-30.77h529.24q9.23 0 16.92-7.69 7.69-7.69 7.69-16.92v-529.24q0-9.23-7.69-16.92-7.69-7.69-16.92-7.69H215.38q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v529.24q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69Zm-24.61-578.46v578.46-578.46Z" />
@@ -1165,7 +1165,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "uiComponents[toastMessages][feature]",
       "state": "checked",
       "mode": "availability"
@@ -1201,7 +1201,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Supported Devices -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>

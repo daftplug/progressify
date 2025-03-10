@@ -1,22 +1,22 @@
 # Copyright (C) 2025 DaftPlug
-# This file is distributed under the same license as the DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress plugin.
+# This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) for WordPress plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress 1.0.0\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) for WordPress 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-02T15:59:16+00:00\n"
+"POT-Creation-Date: 2025-03-10T14:43:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
 #. Plugin Name of the plugin
 #: daftplug-progressify.php
 #: daftplug-progressify.php:24
-msgid "DaftPlug Progressify - Progressive Web Apps (PWA) for WordPress"
+msgid "DaftPlug Progressify - Progressive Web App (PWA) for WordPress"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -27,7 +27,7 @@ msgstr ""
 #. Description of the plugin
 #: daftplug-progressify.php
 #: daftplug-progressify.php:25
-msgid "Enhance your website with Progressive Web Apps (PWA) features and take the user experience to the next level with future of mobile web."
+msgid "Enhance your website with Progressive Web App (PWA) features and take the user experience to the next level with future of mobile web."
 msgstr ""
 
 #. Author of the plugin
@@ -103,7 +103,7 @@ msgid "Push notifications allow your web app to send messages directly to users'
 msgstr ""
 
 #: admin/admin.php:191
-#: admin/templates/pages/publishonappstores.php:10
+#: admin/templates/pages/publishtoappstores.php:10
 msgid "Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users."
 msgstr ""
 
@@ -129,9 +129,9 @@ msgid "Search"
 msgstr ""
 
 #: admin/templates/header.php:98
-#: admin/templates/pages/publishonappstores.php:9
+#: admin/templates/pages/publishtoappstores.php:9
 #: admin/templates/sidebar.php:72
-msgid "Publish on App Stores"
+msgid "Publish to App Stores"
 msgstr ""
 
 #: admin/templates/main.php:15
@@ -353,10 +353,10 @@ msgstr ""
 #: admin/templates/pages/uicomponents.php:1069
 #: admin/templates/pages/uicomponents.php:1138
 #: admin/templates/pages/uicomponents.php:1207
-#: admin/templates/pages/webappmanifest.php:238
-#: admin/templates/pages/webappmanifest.php:353
-#: admin/templates/pages/webappmanifest.php:447
-#: admin/templates/pages/webappmanifest.php:633
+#: admin/templates/pages/webappmanifest.php:237
+#: admin/templates/pages/webappmanifest.php:352
+#: admin/templates/pages/webappmanifest.php:446
+#: admin/templates/pages/webappmanifest.php:632
 msgid "Saving..."
 msgstr ""
 
@@ -382,10 +382,10 @@ msgstr ""
 #: admin/templates/pages/uicomponents.php:1071
 #: admin/templates/pages/uicomponents.php:1140
 #: admin/templates/pages/uicomponents.php:1209
-#: admin/templates/pages/webappmanifest.php:240
-#: admin/templates/pages/webappmanifest.php:355
-#: admin/templates/pages/webappmanifest.php:449
-#: admin/templates/pages/webappmanifest.php:635
+#: admin/templates/pages/webappmanifest.php:239
+#: admin/templates/pages/webappmanifest.php:354
+#: admin/templates/pages/webappmanifest.php:448
+#: admin/templates/pages/webappmanifest.php:634
 msgid "Save Changes"
 msgstr ""
 
@@ -642,7 +642,7 @@ msgid "What are Progressive Web Apps?"
 msgstr ""
 
 #: admin/templates/pages/helpcenter.php:36
-msgid "Progressive Web Apps (PWA) are web apps built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. They combine the broad reach of web apps with the rich capabilities of platform-specific apps to enhance the user experience."
+msgid "Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. They combine the broad reach of web apps with the rich capabilities of platform-specific apps to enhance the user experience."
 msgstr ""
 
 #: admin/templates/pages/helpcenter.php:50
@@ -977,88 +977,88 @@ msgstr ""
 msgid "This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4)."
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:23
-#: admin/templates/pages/webappmanifest.php:520
+#: admin/templates/pages/publishtoappstores.php:23
+#: admin/templates/pages/webappmanifest.php:519
 msgid "Android"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:32
+#: admin/templates/pages/publishtoappstores.php:32
 msgid "Perfect for bringing your web app to Android devices through the Google Play Store."
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:45
+#: admin/templates/pages/publishtoappstores.php:45
 msgid "Includes an Android app package"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:53
-msgid "Publish on Google Play Store"
+#: admin/templates/pages/publishtoappstores.php:53
+msgid "Publish to Google Play Store"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:61
+#: admin/templates/pages/publishtoappstores.php:61
 msgid "Reach 2.5+ billion Android users"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:69
+#: admin/templates/pages/publishtoappstores.php:69
 msgid "No app updates required"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:90
+#: admin/templates/pages/publishtoappstores.php:90
 msgid "Android and iOS"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:100
+#: admin/templates/pages/publishtoappstores.php:100
 msgid "Early Supporter Discount Applied"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:111
+#: admin/templates/pages/publishtoappstores.php:111
 msgid "Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store."
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:124
+#: admin/templates/pages/publishtoappstores.php:124
 msgid "Everything from the Android plan"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:132
+#: admin/templates/pages/publishtoappstores.php:132
 msgid "Plus an iOS app package"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:140
-msgid "Also publish on Apple App Store"
+#: admin/templates/pages/publishtoappstores.php:140
+msgid "Also publish to Apple App Store"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:148
+#: admin/templates/pages/publishtoappstores.php:148
 msgid "Reach an additional 1.5+ billion iOS users"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:175
+#: admin/templates/pages/publishtoappstores.php:175
 msgid "Android, iOS and Windows"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:184
+#: admin/templates/pages/publishtoappstores.php:184
 msgid "Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices."
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:197
+#: admin/templates/pages/publishtoappstores.php:197
 msgid "Everything from the Android and iOS plans"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:205
+#: admin/templates/pages/publishtoappstores.php:205
 msgid "Plus a Windows app package"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:213
-msgid "Also publish on Microsoft Store"
+#: admin/templates/pages/publishtoappstores.php:213
+msgid "Also publish to Microsoft Store"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:221
+#: admin/templates/pages/publishtoappstores.php:221
 msgid "Reach an additional 500+ million Windows users"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:229
+#: admin/templates/pages/publishtoappstores.php:229
 msgid "Need a desktop app?"
 msgstr ""
 
-#: admin/templates/pages/publishonappstores.php:232
+#: admin/templates/pages/publishtoappstores.php:232
 msgid "Show Desktop Plan"
 msgstr ""
 
@@ -1886,12 +1886,12 @@ msgid "Moon"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:358
-#: admin/templates/pages/webappmanifest.php:217
+#: admin/templates/pages/webappmanifest.php:216
 msgid "Music"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:361
-#: admin/templates/pages/webappmanifest.php:218
+#: admin/templates/pages/webappmanifest.php:217
 msgid "Navigation"
 msgstr ""
 
@@ -2157,8 +2157,8 @@ msgid "Select Page"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:564
-#: admin/templates/pages/webappmanifest.php:286
-#: admin/templates/pages/webappmanifest.php:597
+#: admin/templates/pages/webappmanifest.php:285
+#: admin/templates/pages/webappmanifest.php:596
 msgid "Home Page"
 msgstr ""
 
@@ -2346,403 +2346,403 @@ msgstr ""
 msgid "Select on what device types toast messages feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:21
+#: admin/templates/pages/webappmanifest.php:20
 msgid "App Identity"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:24
+#: admin/templates/pages/webappmanifest.php:23
 msgid "Define the core identifiers of your app such as the name, short name, icon, description, and categories which represent your app across devices and platforms."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:33
-#: admin/templates/pages/webappmanifest.php:55
-#: admin/templates/pages/webappmanifest.php:586
+#: admin/templates/pages/webappmanifest.php:32
+#: admin/templates/pages/webappmanifest.php:54
+#: admin/templates/pages/webappmanifest.php:585
 msgid "App Icon"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:41
+#: admin/templates/pages/webappmanifest.php:40
 msgid "Upload an icon representing your app, used for home screen and app listings. Ideally your web app icon should be the logo of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:74
+#: admin/templates/pages/webappmanifest.php:73
 msgid "Select Icon"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:78
+#: admin/templates/pages/webappmanifest.php:77
 msgid "Minimum 100x100 PNG, JPG, JPEG, or WEBP image."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:87
+#: admin/templates/pages/webappmanifest.php:86
 msgid "App Screenshots"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:95
+#: admin/templates/pages/webappmanifest.php:94
 msgid "Upload screenshots of your app to showcase its features and user interface in app stores. By default, we auto-generate one mobile and one desktop version screenshot of your homepage, but you can add up to 5 screenshots of different screens and sizes."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:113
+#: admin/templates/pages/webappmanifest.php:112
 msgid "Drop your screenshots here or"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:116
+#: admin/templates/pages/webappmanifest.php:115
 msgid "browse"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:120
+#: admin/templates/pages/webappmanifest.php:119
 msgid "Select up to 5 screenshots."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:129
+#: admin/templates/pages/webappmanifest.php:128
 msgid "App Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:137
+#: admin/templates/pages/webappmanifest.php:136
 msgid "Specify the full name of your web application, typically matching your business or service name."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:142
+#: admin/templates/pages/webappmanifest.php:141
 msgid "Enter App Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:148
+#: admin/templates/pages/webappmanifest.php:147
 msgid "Short Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:156
+#: admin/templates/pages/webappmanifest.php:155
 msgid "Provide a brief version (up to 12 characters) of your app’s name for display on home screens and dashboards."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:161
+#: admin/templates/pages/webappmanifest.php:160
 msgid "Enter Short Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:167
+#: admin/templates/pages/webappmanifest.php:166
 msgid "Description"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:175
+#: admin/templates/pages/webappmanifest.php:174
 msgid "Enter a concise summary of your app's purpose and main features."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:180
+#: admin/templates/pages/webappmanifest.php:179
 msgid "Enter Description"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:186
+#: admin/templates/pages/webappmanifest.php:185
 msgid "Categories"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:194
+#: admin/templates/pages/webappmanifest.php:193
 msgid "The categories describe the expected application categories to which the web application belongs. It's used as a hint to catalogs or store listing web applications. We recommend not to choose more than 3 categories."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:200
+#: admin/templates/pages/webappmanifest.php:199
 msgid "Select Categories"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:203
+#: admin/templates/pages/webappmanifest.php:202
 msgid "Books"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:204
+#: admin/templates/pages/webappmanifest.php:203
 msgid "Business"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:205
+#: admin/templates/pages/webappmanifest.php:204
 msgid "Education"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:206
+#: admin/templates/pages/webappmanifest.php:205
 msgid "Entertainment"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:207
+#: admin/templates/pages/webappmanifest.php:206
 msgid "Finance"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:208
+#: admin/templates/pages/webappmanifest.php:207
 msgid "Fitness"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:209
+#: admin/templates/pages/webappmanifest.php:208
 msgid "Food"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:210
+#: admin/templates/pages/webappmanifest.php:209
 msgid "Games"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:211
+#: admin/templates/pages/webappmanifest.php:210
 msgid "Government"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:212
+#: admin/templates/pages/webappmanifest.php:211
 msgid "Health"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:213
+#: admin/templates/pages/webappmanifest.php:212
 msgid "Kids"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:214
+#: admin/templates/pages/webappmanifest.php:213
 msgid "Lifestyle"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:215
+#: admin/templates/pages/webappmanifest.php:214
 msgid "Magazines"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:216
+#: admin/templates/pages/webappmanifest.php:215
 msgid "Medical"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:219
+#: admin/templates/pages/webappmanifest.php:218
 msgid "News"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:220
+#: admin/templates/pages/webappmanifest.php:219
 msgid "Personalization"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:221
+#: admin/templates/pages/webappmanifest.php:220
 msgid "Photo"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:222
+#: admin/templates/pages/webappmanifest.php:221
 msgid "Politics"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:223
+#: admin/templates/pages/webappmanifest.php:222
 msgid "Productivity"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:224
+#: admin/templates/pages/webappmanifest.php:223
 msgid "Security"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:225
+#: admin/templates/pages/webappmanifest.php:224
 msgid "Shopping"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:226
+#: admin/templates/pages/webappmanifest.php:225
 msgid "Social"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:227
+#: admin/templates/pages/webappmanifest.php:226
 msgid "Sports"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:228
+#: admin/templates/pages/webappmanifest.php:227
 msgid "Travel"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:229
+#: admin/templates/pages/webappmanifest.php:228
 msgid "Utilities"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:230
+#: admin/templates/pages/webappmanifest.php:229
 msgid "Weather"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:257
+#: admin/templates/pages/webappmanifest.php:256
 msgid "Display Settings"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:260
+#: admin/templates/pages/webappmanifest.php:259
 msgid "Customize how your app appears and behaves on user screens, including the startup page, display layout, and screen orientation."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:269
+#: admin/templates/pages/webappmanifest.php:268
 msgid "Start Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:277
+#: admin/templates/pages/webappmanifest.php:276
 msgid "Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:283
+#: admin/templates/pages/webappmanifest.php:282
 msgid "Select Start Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:296
+#: admin/templates/pages/webappmanifest.php:295
 msgid "Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:304
+#: admin/templates/pages/webappmanifest.php:303
 msgid "Choose how your app displays. We recommend choosing \"Standalone\", as it provides a native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:310
+#: admin/templates/pages/webappmanifest.php:309
 msgid "Select Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:313
+#: admin/templates/pages/webappmanifest.php:312
 msgid "Opens the app in a separate window for a native app experience."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:314
+#: admin/templates/pages/webappmanifest.php:313
 msgid "Standalone"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:316
+#: admin/templates/pages/webappmanifest.php:315
 msgid "Expands the app to cover the entire screen, hiding browser UI."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:317
+#: admin/templates/pages/webappmanifest.php:316
 msgid "Fullscreen"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:319
+#: admin/templates/pages/webappmanifest.php:318
 msgid "Displays the app with minimal browser UI for a cleaner interface."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:320
+#: admin/templates/pages/webappmanifest.php:319
 msgid "Minimal UI"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:327
+#: admin/templates/pages/webappmanifest.php:326
 msgid "Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:335
+#: admin/templates/pages/webappmanifest.php:334
 msgid "Select the preferred screen orientation. We recommend choosing \"Portrait\", as it provides a more native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:341
+#: admin/templates/pages/webappmanifest.php:340
 msgid "Select Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:343
+#: admin/templates/pages/webappmanifest.php:342
 msgid "Allow Both"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:344
+#: admin/templates/pages/webappmanifest.php:343
 msgid "Portrait"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:345
+#: admin/templates/pages/webappmanifest.php:344
 msgid "Landscape"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:371
+#: admin/templates/pages/webappmanifest.php:370
 msgid "Appearance"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:374
+#: admin/templates/pages/webappmanifest.php:373
 msgid "Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:383
+#: admin/templates/pages/webappmanifest.php:382
 msgid "iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:391
+#: admin/templates/pages/webappmanifest.php:390
 msgid "Specify the style of the status bar for your app on iOS devices."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:397
+#: admin/templates/pages/webappmanifest.php:396
 msgid "Select iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:399
+#: admin/templates/pages/webappmanifest.php:398
 msgid "White bar with black text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:400
+#: admin/templates/pages/webappmanifest.php:399
 msgid "Black bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:401
+#: admin/templates/pages/webappmanifest.php:400
 msgid "Transparent bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:408
-#: admin/templates/pages/webappmanifest.php:421
+#: admin/templates/pages/webappmanifest.php:407
+#: admin/templates/pages/webappmanifest.php:420
 msgid "Theme Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:416
+#: admin/templates/pages/webappmanifest.php:415
 msgid "Define the primary color theme for the browser's toolbar and app's header. It should be the same as the main color palette of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:427
-#: admin/templates/pages/webappmanifest.php:440
+#: admin/templates/pages/webappmanifest.php:426
+#: admin/templates/pages/webappmanifest.php:439
 msgid "Background Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:435
+#: admin/templates/pages/webappmanifest.php:434
 msgid "Choose a background color that displays during app startup and loading. It should be the same as the background color of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:466
+#: admin/templates/pages/webappmanifest.php:465
 msgid "Advanced Features"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:469
+#: admin/templates/pages/webappmanifest.php:468
 msgid "Expand your app’s functionality with advanced features like age ratings, related applications, and customizable shortcuts to various app functions."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:478
+#: admin/templates/pages/webappmanifest.php:477
 msgid "IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:486
+#: admin/templates/pages/webappmanifest.php:485
 msgid "International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:491
+#: admin/templates/pages/webappmanifest.php:490
 msgid "Enter IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:498
+#: admin/templates/pages/webappmanifest.php:497
 msgid "Related Applications"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:506
-msgid "Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don't have a native application for your web app, you can request them by clicking the \"Publish on App Stores\" button on the header or navigation menu."
+#: admin/templates/pages/webappmanifest.php:505
+msgid "Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don't have a native application for your web app, you can request them by clicking the \"Publish to App Stores\" button on the header or navigation menu."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:512
-msgid "Don't have native apps? Get them and %1$spublish on app stores%2$s"
+#: admin/templates/pages/webappmanifest.php:511
+msgid "Don't have native apps? Get them and %1$spublish to app stores%2$s"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:518
+#: admin/templates/pages/webappmanifest.php:517
 msgid "Select Platform"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:523
+#: admin/templates/pages/webappmanifest.php:522
 msgid "iOS"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:526
+#: admin/templates/pages/webappmanifest.php:525
 msgid "Windows"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:531
+#: admin/templates/pages/webappmanifest.php:530
 msgid "Enter App ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:554
+#: admin/templates/pages/webappmanifest.php:553
 msgid "Add Related Application"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:562
+#: admin/templates/pages/webappmanifest.php:561
 msgid "App Shortcuts"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:570
+#: admin/templates/pages/webappmanifest.php:569
 msgid "App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's desktop, or long pressing the app's launcher icon on Android."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:590
+#: admin/templates/pages/webappmanifest.php:589
 msgid "Enter Shortcut Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:594
+#: admin/templates/pages/webappmanifest.php:593
 msgid "Select Shortcut Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:624
+#: admin/templates/pages/webappmanifest.php:623
 msgid "Add App Shortcut"
 msgstr ""
 
@@ -2776,7 +2776,7 @@ msgid "Reconnect"
 msgstr ""
 
 #: includes/modules/dashboard.php:240
-msgid "Publish your web app on app stores"
+msgid "Publish your web app to stores"
 msgstr ""
 
 #: includes/modules/dashboard.php:251
@@ -2940,16 +2940,16 @@ msgstr ""
 msgid "%s has just accepted your friend request."
 msgstr ""
 
-#: includes/plugin.php:307
+#: includes/plugin.php:309
 msgid "⚠️ %s requires PHP version at least 8.2 to function properly."
 msgstr ""
 
-#: includes/plugin.php:307
-#: includes/plugin.php:319
+#: includes/plugin.php:309
+#: includes/plugin.php:321
 msgid "If you have trouble fixing this, please contact us on"
 msgstr ""
 
-#: includes/plugin.php:319
+#: includes/plugin.php:321
 msgid "⚠️ %s features require <i>%s</i> extension to function properly."
 msgstr ""
 

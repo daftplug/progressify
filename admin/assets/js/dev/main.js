@@ -23,7 +23,7 @@ import { initAppScreenshotsUpload } from './modules/appScreenshotsUpload.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
 import { initModalPushNotifications } from './modules/modalPushNotifications.js';
-import { initPublishOnAppStores } from './modules/publishAppStores.js';
+import { initPublishToAppStores } from './modules/publishAppStores.js';
 import { initSupportRequest } from './modules/supportRequest.js';
 import { initChangelog } from './modules/changelog.js';
 
@@ -57,10 +57,9 @@ const moduleMap = {
     { init: initPushSubscribers, name: 'pushSubscribers' },
     { init: initModalPushNotifications, name: 'modalPushNotifications' },
   ],
-  '#/publishOnAppStores/': [{ init: initPublishOnAppStores, name: 'publishOnAppStores' }],
+  '#/publishToAppStores/': [{ init: initPublishToAppStores, name: 'publishToAppStores' }],
   '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
   '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
-
   '!#/error/': [
     { init: initSearch, name: 'search' },
     { init: initSettings, name: 'settings' },

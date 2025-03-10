@@ -1,7 +1,6 @@
 <?php
 
 use DaftPlug\Progressify\Plugin;
-use DaftPlug\Progressify\Module\WebAppManifest;
 
 if (!defined('ABSPATH')) {
   exit();
@@ -10,8 +9,8 @@ if (!defined('ABSPATH')) {
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- App Identity -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppIdentity">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M360-260h240q8.54 0 14.27-5.73T620-280q0-8.54-5.73-14.27T600-300H360q-8.54 0-14.27 5.73T340-280q0 8.54 5.73 14.27T360-260Zm0-160h240q8.54 0 14.27-5.73T620-440q0-8.54-5.73-14.27T600-460H360q-8.54 0-14.27 5.73T340-440q0 8.54 5.73 14.27T360-420Zm-95.38 300q-27.62 0-46.12-18.5Q200-157 200-184.62v-590.76q0-27.62 18.5-46.12Q237-840 264.62-840h288.53q12.93 0 25.12 5.23 12.19 5.23 20.88 13.92l141.7 141.7q8.69 8.69 13.92 20.88t5.23 25.12v448.53q0 27.62-18.5 46.12Q723-120 695.38-120H264.62ZM560-672.31V-800H264.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v590.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69h430.76q9.24 0 16.93-7.69 7.69-7.69 7.69-16.93V-640H592.31q-13.93 0-23.12-9.19-9.19-9.19-9.19-23.12ZM240-800v160-160 640-640Z" />
@@ -26,7 +25,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7">
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
         <!-- App Icon -->
         <div id="settingAppIcon">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -232,7 +231,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Categories -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -245,8 +244,8 @@ if (!defined('ABSPATH')) {
   <!-- End App Identity -->
   <!-- Display Settings -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionDisplaySettings">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -262,7 +261,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7">
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
         <!-- Start Page -->
         <div id="settingStartPage">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -347,7 +346,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Orientation -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -360,8 +359,8 @@ if (!defined('ABSPATH')) {
   <!-- End Display Settings -->
   <!-- Appearance -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppearance">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path d="M224.62-160q-26.66 0-45.64-18.98T160-224.62v-510.76q0-26.66 18.98-45.64T224.62-800h510.76q26.66 0 45.64 18.98T800-735.38v510.76q0 26.66-18.98 45.64T735.38-160H224.62Zm0-40h510.76q10.77 0 17.7-6.92 6.92-6.93 6.92-17.7V-680H200v455.38q0 10.77 6.92 17.7 6.93 6.92 17.7 6.92ZM480-320q-65.08 0-117.27-33.35-52.19-33.34-78.88-86.65 26.69-53.31 78.88-86.65Q414.92-560 480-560t117.27 33.35q52.19 33.34 78.88 86.65-26.69 53.31-78.88 86.65Q545.08-320 480-320Zm0-35.38q47.54 0 88.54-22.27 41-22.27 69.31-62.35-28.31-40.08-69.31-62.35-41-22.27-88.54-22.27-47.54 0-88.54 22.27-41 22.27-69.31 62.35 28.31 40.08 69.31 62.35 41 22.27 88.54 22.27Zm0-84.62Zm.18 44.62q18.67 0 31.55-13.07 12.89-13.07 12.89-31.73 0-18.67-13.07-31.55-13.07-12.89-31.73-12.89-18.67 0-31.55 13.07-12.89 13.07-12.89 31.73 0 18.67 13.07 31.55 13.07 12.89 31.73 12.89Z" />
@@ -376,7 +375,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7">
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
         <!-- iOS Status Bar Style -->
         <div id="settingIosStatusBarStyle">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -441,7 +440,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Background Color -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -454,8 +453,8 @@ if (!defined('ABSPATH')) {
   <!-- End Appearance -->
   <!-- Advanced Features -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAdvancedFeatures">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -471,7 +470,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7">
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
         <!-- IARC Rating ID -->
         <div id="settingIarcRatingId">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -503,13 +502,13 @@ if (!defined('ABSPATH')) {
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                   </svg>
                   <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request them by clicking the "Publish on App Stores" button on the header or navigation menu.', $this->slug); ?>
+                    <?php _e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request them by clicking the "Publish to App Stores" button on the header or navigation menu.', $this->slug); ?>
                   </span>
                 </button>
               </div>
             </label>
             <p class="inline-flex items-center gap-x-1 mt-0.5 text-xs text-gray-500 dark:text-neutral-500">
-              <?php printf(__('Don\'t have native apps? Get them and %1$spublish on app stores%2$s', $this->slug), '<a class="relative bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 text-transparent font-medium focus:outline-none after:absolute after:-bottom-px after:left-0 after:transition-all after:bg-gradient-to-r after:from-green-600 after:to-blue-600 after:w-0 after:h-0.5 hover:after:w-full" href="#/publishOnAppStores/">', '</a>'); ?>
+              <?php printf(__('Don\'t have native apps? Get them and %1$spublish to app stores%2$s', $this->slug), '<a class="relative bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 text-transparent font-medium focus:outline-none after:absolute after:-bottom-px after:left-0 after:transition-all after:bg-gradient-to-r after:from-green-600 after:to-blue-600 after:w-0 after:h-0.5 hover:after:w-full" href="#/publishToAppStores/">', '</a>'); ?>
             </p>
           </div>
           <div class="space-y-3" data-dp-copy-markup-wrapper="relatedApplications">
@@ -627,7 +626,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End App Shortcuts -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>

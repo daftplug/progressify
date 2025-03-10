@@ -106,8 +106,8 @@ if (!defined('ABSPATH')) {
 <form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Push Notifications Settings -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushNotificationSettings">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -123,7 +123,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7">
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
         <!-- Time To Live (TTL) -->
         <div id="settingTimeToLive">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -201,7 +201,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Batch Size -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -214,8 +214,8 @@ if (!defined('ABSPATH')) {
   <!-- End Push Notifications Settings -->
   <!-- Push Notifications Prompt -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushPrompt">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -234,7 +234,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "pushNotifications[prompt][feature]",
       "state": "checked",
       "mode": "availability"
@@ -320,7 +320,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Timeout -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -333,8 +333,8 @@ if (!defined('ABSPATH')) {
   <!-- End Push Notifications Prompt -->
   <!-- Push Notifications Button -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushButton">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -353,7 +353,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "pushNotifications[button][feature]",
       "state": "checked",
       "mode": "availability"
@@ -413,7 +413,7 @@ if (!defined('ABSPATH')) {
         </div>
         <!-- End Button Behavior -->
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
@@ -426,8 +426,8 @@ if (!defined('ABSPATH')) {
   <!-- End Push Notifications Button -->
   <!-- Push Notifications Automation -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPushAutomatoin">
-    <div class="grid grid-cols-12 max-2xl:max-w-screen-sm gap-7 2xl:gap-16">
-      <div class="col-span-full 2xl:col-span-5">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
           <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
             <path
@@ -449,7 +449,7 @@ if (!defined('ABSPATH')) {
           </div>
         </div>
       </div>
-      <div class="col-span-full 2xl:col-span-7 ml-11 2xl:m-0 space-y-7" data-dp-dependant-markup='{
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
       "target": "pushNotifications[automation][feature]",
       "state": "checked",
       "mode": "availability"
@@ -913,7 +913,7 @@ if (!defined('ABSPATH')) {
         <!-- End Friend Accepted (BuddyPress) -->
         <?php endif; ?>
       </div>
-      <div class="col-span-full 2xl:-mt-8 mt-1 flex flex-1 justify-end items-center gap-2">
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
             <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>

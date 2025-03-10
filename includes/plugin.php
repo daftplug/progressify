@@ -75,29 +75,35 @@ class Plugin
       error_log('DaftPlug Progressify: Autoload file not found.');
     }
 
-    // Init Modules
-    require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
-    $this->Dashboard = new Dashboard($config);
-    require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
-    $this->WebAppManifest = new WebAppManifest($config);
-    require_once self::$pluginDirPath . 'includes/modules/installation.php';
-    $this->Installation = new Installation($config);
-    require_once self::$pluginDirPath . 'includes/modules/offlineusage.php';
-    $this->OfflineUsage = new OfflineUsage($config);
-    require_once self::$pluginDirPath . 'includes/modules/uicomponents.php';
-    $this->UiComponents = new UiComponents($config);
-    require_once self::$pluginDirPath . 'includes/modules/appcapabilities.php';
-    $this->AppCapabilities = new AppCapabilities($config);
-    require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
-    $this->PushNotifications = new PushNotifications($config);
-
     // Init Admin
     require_once self::$pluginDirPath . 'admin/admin.php';
     $this->Admin = new Admin($config);
 
-    // Init Frontend
-    require_once self::$pluginDirPath . 'frontend/frontend.php';
-    $this->Frontend = new Frontend($config);
+    if (self::$licenseKey && !isset($_GET['noprogressify'])) {
+      // Init Modules
+      require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
+      $this->Dashboard = new Dashboard($config);
+      require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
+      $this->WebAppManifest = new WebAppManifest($config);
+      require_once self::$pluginDirPath . 'includes/modules/installation.php';
+      $this->Installation = new Installation($config);
+      require_once self::$pluginDirPath . 'includes/modules/offlineusage.php';
+      $this->OfflineUsage = new OfflineUsage($config);
+      require_once self::$pluginDirPath . 'includes/modules/uicomponents.php';
+      $this->UiComponents = new UiComponents($config);
+      require_once self::$pluginDirPath . 'includes/modules/appcapabilities.php';
+      $this->AppCapabilities = new AppCapabilities($config);
+      require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
+      $this->PushNotifications = new PushNotifications($config);
+
+      // Init Frontend
+      require_once self::$pluginDirPath . 'frontend/frontend.php';
+      $this->Frontend = new Frontend($config);
+
+      if (!wp_next_scheduled("{$this->optionName}_validate_license_schedule")) {
+        wp_schedule_event(time(), 'weekly', "{$this->optionName}_validate_license_schedule");
+      }
+    }
 
     // Init default settings
     $this->defaultSettings = [
@@ -285,10 +291,6 @@ class Plugin
     if (get_transient("{$this->optionName}_updated")) {
       update_option("{$this->optionName}_settings", wp_parse_args(self::$settings, $this->defaultSettings));
       delete_transient("{$this->optionName}_updated");
-    }
-
-    if (!wp_next_scheduled("{$this->optionName}_validate_license_schedule")) {
-      wp_schedule_event(time(), 'weekly', "{$this->optionName}_validate_license_schedule");
     }
 
     add_action('plugins_loaded', [$this, 'loadTextDomain']);
