@@ -23,7 +23,7 @@ import { initAppScreenshotsUpload } from './modules/appScreenshotsUpload.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
 import { initModalPushNotifications } from './modules/modalPushNotifications.js';
-import { initPublishToAppStores } from './modules/publishAppStores.js';
+import { initPublishToAppStores } from './modules/publishToAppStores.js';
 import { initSupportRequest } from './modules/supportRequest.js';
 import { initChangelog } from './modules/changelog.js';
 
