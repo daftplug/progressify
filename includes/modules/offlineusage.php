@@ -48,10 +48,21 @@ class OfflineUsage
     $this->workboxVersion = '7.3.0';
     self::$serviceWorkerName = 'serviceworker.js';
 
-    add_action('init', [$this, 'generateServiceWorkerFile']);
+    add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'renderServiceWorker']);
     add_action('parse_request', [$this, 'renderOfflineFallbackPage']);
     add_action('wp_head', [$this, 'renderRegisterServiceWorker']);
+  }
+
+  public function registerRoutes()
+  {
+    register_rest_route($this->slug, '/generateServiceWorkerFile', [
+      'methods' => 'POST',
+      'callback' => [$this, 'generateServiceWorkerFile'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
   }
 
   public function renderOfflineFallbackPage()
@@ -97,7 +108,7 @@ class OfflineUsage
       header('Content-Type: application/javascript; charset=utf-8');
       header('Service-Worker-Allowed: /');
 
-      include $this->generateServiceWorkerFile();
+      include $this->pluginUploadDir . self::$serviceWorkerName;
 
       exit();
     }
@@ -105,23 +116,33 @@ class OfflineUsage
 
   public function generateServiceWorkerFile()
   {
-    // Build the service worker content.
-    $serviceWorkerContent = $this->buildServiceworkerData();
+    try {
+      // Build the service worker content.
+      $serviceWorkerContent = $this->buildServiceworkerData();
 
-    // Generate a cache key based on content and plugin version.
-    $cacheKey = hash('crc32', $serviceWorkerContent . $this->version);
-    $safe_slug = sanitize_key($this->slug);
+      // Generate a cache key based on content and plugin version.
+      $cacheKey = hash('crc32', $serviceWorkerContent . $this->version);
+      $safe_slug = sanitize_key($this->slug);
 
-    // Create header variables (they will be part of the file).
-    $header = "const CACHE_VERSION = '" . esc_js($cacheKey) . "';\n";
-    $header .= "const CACHE_PREFIX = '" . esc_js($safe_slug) . "';\n";
+      // Create header variables (they will be part of the file).
+      $header = "const CACHE_VERSION = '" . esc_js($cacheKey) . "';\n";
+      $header .= "const CACHE_PREFIX = '" . esc_js($safe_slug) . "';\n";
 
-    $finalContent = $header . $serviceWorkerContent;
-    $serviceWorkerPath = $this->pluginUploadDir . self::$serviceWorkerName;
+      $finalContent = $header . $serviceWorkerContent;
+      $serviceWorkerPath = $this->pluginUploadDir . self::$serviceWorkerName;
 
-    Plugin::putContent($serviceWorkerPath, $finalContent);
+      Plugin::putContent($serviceWorkerPath, $finalContent);
 
-    return $serviceWorkerPath;
+      return new \WP_REST_Response(
+        [
+          'status' => 'success',
+          'message' => 'Service worker file generated successfully',
+        ],
+        200
+      );
+    } catch (\Exception $e) {
+      return new \WP_Error('save_failed', $e->getMessage(), ['status' => 500]);
+    }
   }
 
   public function buildServiceworkerData()
