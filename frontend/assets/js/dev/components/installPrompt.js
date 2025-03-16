@@ -63,7 +63,7 @@ class PwaInstallPrompt extends HTMLElement {
 
     if (!prompt) {
       prompt = document.createElement('pwa-install-prompt');
-      config.daftplugFrontend.appendChild(prompt);
+      document.body.appendChild(prompt);
 
       requestAnimationFrame(() => {
         const installPrompt = prompt.shadowRoot.querySelector('.install-prompt');

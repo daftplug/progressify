@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+<form name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- App Identity -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionAppIdentity">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
@@ -17,10 +17,10 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <h5 class="text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('App Identity', $this->slug); ?>
+              <?php esc_html_e('App Identity', $this->slug); ?>
             </h5>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Define the core identifiers of your app such as the name, short name, icon, description, and categories which represent your app across devices and platforms.', $this->slug); ?>
+              <?php esc_html_e('Define the core identifiers of your app such as the name, short name, icon, description, and categories which represent your app across devices and platforms.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -29,18 +29,16 @@ if (!defined('ABSPATH')) {
         <!-- App Icon -->
         <div id="settingAppIcon">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('App Icon', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Upload an icon representing your app, used for home screen and app listings. Ideally your web app icon should be the logo of your website.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('App Icon', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Upload an icon representing your app, used for home screen and app listings. Ideally your web app icon should be the logo of your website.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <div class="flex flex-wrap items-center gap-3">
             <span class="flex flex-shrink-0 justify-center items-center size-20 border-2 border-dotted border-gray-300 text-gray-400 rounded-full dark:border-neutral-700 dark:text-neutral-600" data-attachment-placeholder="">
@@ -51,9 +49,9 @@ if (!defined('ABSPATH')) {
               </svg>
             </span>
             <div class="group flex relative items-center justify-center">
-              <img class="flex-shrink-0 size-20 rounded-full hidden border border-gray-200 shadow-sm" src="<?php echo wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0] ?? ''; ?>" alt="<?php _e('App Icon', $this->slug); ?>" data-attachment-holder="" />
+              <img class="flex-shrink-0 size-20 rounded-full hidden border border-gray-200 shadow-sm" src="<?php echo esc_url(wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0] ?? ''); ?>" alt="<?php esc_html_e('App Icon', $this->slug); ?>" data-attachment-holder="" />
               <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 rounded-full transition cursor-pointer">
-                <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
                   <svg class="flex-shrink-0 size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6 6 18"></path> getPwaIconUrl
                     <path d="M6 6 18 18"></path>
@@ -63,18 +61,18 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="relative grow">
               <div class="flex items-center gap-x-2">
-                <input type="text" name="webAppManifest[appIdentity][appIcon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" value="<?php echo Plugin::getSetting('webAppManifest[appIdentity][appIcon]'); ?>" data-file-upload-input="" data-mimes="jpg,jpeg,png,webp" data-min-width="100" data-max-width="" data-min-height="100" data-max-height="" required>
+                <input type="text" name="webAppManifest[appIdentity][appIcon]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[appIdentity][appIcon]')); ?>" data-file-upload-input="" data-mimes="jpg,jpeg,png,webp" data-min-width="100" data-max-width="" data-min-height="100" data-max-height="" required>
                 <button data-file-upload-btn="" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" x2="12" y1="3" y2="15"></line>
                   </svg>
-                  <?php _e('Select Icon', $this->slug); ?>
+                  <?php esc_html_e('Select Icon', $this->slug); ?>
                 </button>
               </div>
               <p class="mt-2 text-xs text-gray-500 dark:text-neutral-500">
-                <?php _e('Minimum 100x100 PNG, JPG, JPEG, or WEBP image.', $this->slug); ?>
+                <?php esc_html_e('Minimum 100x100 PNG, JPG, JPEG, or WEBP image.', $this->slug); ?>
               </p>
             </div>
           </div>
@@ -83,18 +81,16 @@ if (!defined('ABSPATH')) {
         <!-- App Screenshots -->
         <div id="settingAppScreenshots">
           <label class="items-center flex mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('App Screenshots', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Upload screenshots of your app to showcase its features and user interface in app stores. By default, we auto-generate one mobile and one desktop version screenshot of your homepage, but you can add up to 5 screenshots of different screens and sizes.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('App Screenshots', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Upload screenshots of your app to showcase its features and user interface in app stores. By default, we auto-generate one mobile and one desktop version screenshot of your homepage, but you can add up to 5 screenshots of different screens and sizes.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-1.5 [&:not(:has(img))]:hidden" data-screenshots-container="">
           </div>
@@ -109,14 +105,14 @@ if (!defined('ABSPATH')) {
               </svg>
               <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600">
                 <span class="pe-1 font-medium text-gray-800 dark:text-neutral-200">
-                  <?php _e('Drop your screenshots here or', $this->slug); ?>
+                  <?php esc_html_e('Drop your screenshots here or', $this->slug); ?>
                 </span>
                 <div class="relative cursor-pointer font-semibold text-blue-600 hover:text-blue-700 rounded-lg decoration-2 hover:underline focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 dark:bg-neutral-800 dark:text-blue-500 dark:hover:text-blue-600" data-file-upload="">
-                  <span><?php _e('browse', $this->slug); ?></span>
+                  <span><?php esc_html_e('browse', $this->slug); ?></span>
                 </div>
               </div>
               <p class="mt-1 text-xs text-gray-400 dark:text-neutral-400">
-                <?php _e('Select up to 5 screenshots.', $this->slug); ?>
+                <?php esc_html_e('Select up to 5 screenshots.', $this->slug); ?>
               </p>
             </div>
           </div>
@@ -125,78 +121,70 @@ if (!defined('ABSPATH')) {
         <!-- Name -->
         <div id="settingAppName">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('App Name', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Specify the full name of your web application, typically matching your business or service name.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('App Name', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Specify the full name of your web application, typically matching your business or service name.', $this->slug); ?>
+              </span>
+            </button>
           </label>
-          <input name="webAppManifest[appIdentity][appName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App Name', $this->slug); ?>" value="<?php echo Plugin::getSetting('webAppManifest[appIdentity][appName]'); ?>" autocomplete="off" required>
+          <input name="webAppManifest[appIdentity][appName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter App Name', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[appIdentity][appName]')); ?>" autocomplete="off" required>
         </div>
         <!-- End App Name -->
         <!-- Short Name -->
         <div id="settingShortName">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Short Name', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Provide a brief version (up to 12 characters) of your app’s name for display on home screens and dashboards.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Short Name', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Provide a brief version (up to 12 characters) of your app’s name for display on home screens and dashboards.', $this->slug); ?>
+              </span>
+            </button>
           </label>
-          <input name="webAppManifest[appIdentity][shortName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Short Name', $this->slug); ?>" value="<?php echo Plugin::getSetting('webAppManifest[appIdentity][shortName]'); ?>" maxlength="12" autocomplete="off" required>
+          <input name="webAppManifest[appIdentity][shortName]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Short Name', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[appIdentity][shortName]')); ?>" maxlength="12" autocomplete="off" required>
         </div>
         <!-- End Short Name -->
         <!-- Description -->
         <div id="settingDescription">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Description', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Enter a concise summary of your app\'s purpose and main features.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Description', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Enter a concise summary of your app\'s purpose and main features.', $this->slug); ?>
+              </span>
+            </button>
           </label>
-          <textarea name="webAppManifest[appIdentity][description]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Description', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo Plugin::getSetting('webAppManifest[appIdentity][description]'); ?></textarea>
+          <textarea name="webAppManifest[appIdentity][description]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Description', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4" required><?php echo esc_attr(Plugin::getSetting('webAppManifest[appIdentity][description]')); ?></textarea>
         </div>
         <!-- End Description -->
         <!-- Categories -->
         <div id="settingCategories">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Categories', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('The categories describe the expected application categories to which the web application belongs. It\'s used as a hint to catalogs or store listing web applications. We recommend not to choose more than 3 categories.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Categories', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('The categories describe the expected application categories to which the web application belongs. It\'s used as a hint to catalogs or store listing web applications. We recommend not to choose more than 3 categories.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="webAppManifest[appIdentity][categories]" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Categories', $this->slug); ?>",
+          "placeholder": "<?php esc_html_e('Select Categories', $this->slug); ?>",
           "hasSearch": true
         }'>
             <option value="books" <?php selected(true, in_array('books', (array) Plugin::getSetting('webAppManifest[appIdentity][categories]'))); ?>><?php esc_html_e('Books', $this->slug); ?></option>
@@ -234,9 +222,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -253,10 +241,10 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <h5 class="text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Display Settings', $this->slug); ?>
+              <?php esc_html_e('Display Settings', $this->slug); ?>
             </h5>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Customize how your app appears and behaves on user screens, including the startup page, display layout, and screen orientation.', $this->slug); ?>
+              <?php esc_html_e('Customize how your app appears and behaves on user screens, including the startup page, display layout, and screen orientation.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -265,26 +253,24 @@ if (!defined('ABSPATH')) {
         <!-- Start Page -->
         <div id="settingStartPage">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Start Page', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Start Page', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="webAppManifest[displaySettings][startPage]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Start Page', $this->slug); ?>",
+          "placeholder": "<?php esc_html_e('Select Start Page', $this->slug); ?>",
           "hasSearch": true
         }'>
-            <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
+            <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
             <?php foreach (get_pages() as $wpPage): ?>
-            <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+            <option value="<?php echo esc_url(get_page_link($wpPage->ID)); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo esc_html($wpPage->post_title); ?></option>
             <?php endforeach; ?>
           </select>
         </div>
@@ -292,52 +278,48 @@ if (!defined('ABSPATH')) {
         <!-- Display Mode -->
         <div id="settingDisplayMode">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Display Mode', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Choose how your app displays. We recommend choosing "Standalone", as it provides a native app feeling.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Display Mode', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Choose how your app displays. We recommend choosing "Standalone", as it provides a native app feeling.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="webAppManifest[displaySettings][displayMode]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Display Mode', $this->slug); ?>"
+            "placeholder": "<?php esc_html_e('Select Display Mode', $this->slug); ?>"
           }'>
             <option value="standalone" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'standalone'); ?> data-dp-select-option='{
-            "description": "<?php _e('Opens the app in a separate window for a native app experience.', $this->slug); ?>"
-          }'><?php _e('Standalone', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Opens the app in a separate window for a native app experience.', $this->slug); ?>"
+          }'><?php esc_html_e('Standalone', $this->slug); ?></option>
             <option value="fullscreen" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'fullscreen'); ?> data-dp-select-option='{
-            "description": "<?php _e('Expands the app to cover the entire screen, hiding browser UI.', $this->slug); ?>"
-          }'><?php _e('Fullscreen', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Expands the app to cover the entire screen, hiding browser UI.', $this->slug); ?>"
+          }'><?php esc_html_e('Fullscreen', $this->slug); ?></option>
             <option value="minimal-ui" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'minimal-ui'); ?> data-dp-select-option='{
-            "description": "<?php _e('Displays the app with minimal browser UI for a cleaner interface.', $this->slug); ?>"
-          }'><?php _e('Minimal UI', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Displays the app with minimal browser UI for a cleaner interface.', $this->slug); ?>"
+          }'><?php esc_html_e('Minimal UI', $this->slug); ?></option>
           </select>
         </div>
         <!-- End Display Mode -->
         <!-- Orientation -->
         <div id="settingOrientation">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Orientation', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select the preferred screen orientation. We recommend choosing "Portrait", as it provides a more native app feeling.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Orientation', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select the preferred screen orientation. We recommend choosing "Portrait", as it provides a more native app feeling.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="webAppManifest[displaySettings][orientation]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Orientation', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Orientation', $this->slug); ?>"
         }'>
             <option value="any" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'any'); ?>><?php esc_html_e('Allow Both', $this->slug); ?></option>
             <option value="portrait" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'portrait'); ?>><?php esc_html_e('Portrait', $this->slug); ?></option>
@@ -349,9 +331,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -367,10 +349,10 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <h5 class="text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Appearance', $this->slug); ?>
+              <?php esc_html_e('Appearance', $this->slug); ?>
             </h5>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding.', $this->slug); ?>
+              <?php esc_html_e('Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -379,21 +361,19 @@ if (!defined('ABSPATH')) {
         <!-- iOS Status Bar Style -->
         <div id="settingIosStatusBarStyle">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('iOS Status Bar Style', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Specify the style of the status bar for your app on iOS devices.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('iOS Status Bar Style', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Specify the style of the status bar for your app on iOS devices.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="webAppManifest[appearance][iosStatusBarStyle]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select iOS Status Bar Style', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select iOS Status Bar Style', $this->slug); ?>"
         }'>
             <option value="default" <?php selected(Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'default'); ?>><?php esc_html_e('White bar with black text', $this->slug); ?></option>
             <option value="light-content" <?php selected(Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]'), 'light-content'); ?>><?php esc_html_e('Black bar with white text', $this->slug); ?></option>
@@ -404,48 +384,44 @@ if (!defined('ABSPATH')) {
         <!-- Theme Color -->
         <div id="settingThemeColor">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Theme Color', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Define the primary color theme for the browser\'s toolbar and app\'s header. It should be the same as the main color palette of your website.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Theme Color', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Define the primary color theme for the browser\'s toolbar and app\'s header. It should be the same as the main color palette of your website.', $this->slug); ?>
+              </span>
+            </button>
           </label>
-          <input name="webAppManifest[appearance][themeColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('webAppManifest[appearance][themeColor]'); ?>" title="<?php _e('Theme Color', $this->slug); ?>" required>
+          <input name="webAppManifest[appearance][themeColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[appearance][themeColor]')); ?>" title="<?php esc_html_e('Theme Color', $this->slug); ?>" required>
         </div>
         <!-- End Theme Color -->
         <!-- Background Color -->
         <div id="settingBackgroundColor">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Background Color', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Choose a background color that displays during app startup and loading. It should be the same as the background color of your website.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Background Color', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Choose a background color that displays during app startup and loading. It should be the same as the background color of your website.', $this->slug); ?>
+              </span>
+            </button>
           </label>
-          <input name="webAppManifest[appearance][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo Plugin::getSetting('webAppManifest[appearance][backgroundColor]'); ?>" title="<?php _e('Background Color', $this->slug); ?>" required>
+          <input name="webAppManifest[appearance][backgroundColor]" type="color" class="p-1 h-[38px] w-full shadow-sm block bg-white border border-gray-200 cursor-pointer rounded-lg data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[appearance][backgroundColor]')); ?>" title="<?php esc_html_e('Background Color', $this->slug); ?>" required>
         </div>
         <!-- End Background Color -->
       </div>
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -462,10 +438,10 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <h5 class="text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Advanced Features', $this->slug); ?>
+              <?php esc_html_e('Advanced Features', $this->slug); ?>
             </h5>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Expand your app’s functionality with advanced features like age ratings, related applications, and customizable shortcuts to various app functions.', $this->slug); ?>
+              <?php esc_html_e('Expand your app’s functionality with advanced features like age ratings, related applications, and customizable shortcuts to various app functions.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -474,60 +450,56 @@ if (!defined('ABSPATH')) {
         <!-- IARC Rating ID -->
         <div id="settingIarcRatingId">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('IARC Rating ID', $this->slug); ?>
-            <a class="hs-tooltip inline-block [--placement:top]" href="https://www.globalratings.com/about.aspx" target="_blank">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information.', $this->slug); ?>
-                </span>
-              </button>
+            <?php esc_html_e('IARC Rating ID', $this->slug); ?>
+            <a href="https://www.globalratings.com/about.aspx" target="_blank" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information.', $this->slug); ?>
+              </span>
             </a>
           </label>
-          <input name="webAppManifest[advancedFeatures][iarcRatingId]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter IARC Rating ID', $this->slug); ?>" value="<?php echo Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]'); ?>">
+          <input name="webAppManifest[advancedFeatures][iarcRatingId]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter IARC Rating ID', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[advancedFeatures][iarcRatingId]')); ?>">
         </div>
         <!-- End IARC Rating ID -->
         <!-- Related Applications -->
         <div id="settingRelatedApplications">
           <div class="flex flex-col mb-1.5">
             <label class="inline-flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-              <?php _e('Related Applications', $this->slug); ?>
-              <div class="hs-tooltip inline-block [--placement:top]">
-                <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                  <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                  </svg>
-                  <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                    <?php _e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request them by clicking the "Publish to App Stores" button on the header or navigation menu.', $this->slug); ?>
-                  </span>
-                </button>
-              </div>
+              <?php esc_html_e('Related Applications', $this->slug); ?>
+              <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+                <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                </svg>
+                <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                  <?php esc_html_e('Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don\'t have a native application for your web app, you can request them by clicking the "Publish to App Stores" button on the header or navigation menu.', $this->slug); ?>
+                </span>
+              </button>
             </label>
             <p class="inline-flex items-center gap-x-1 mt-0.5 text-xs text-gray-500 dark:text-neutral-500">
-              <?php printf(__('Don\'t have native apps? Get them and %1$spublish to app stores%2$s', $this->slug), '<a class="relative bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 text-transparent font-medium focus:outline-none after:absolute after:-bottom-px after:left-0 after:transition-all after:bg-gradient-to-r after:from-green-600 after:to-blue-600 after:w-0 after:h-0.5 hover:after:w-full" href="#/publishToAppStores/">', '</a>'); ?>
+              <?php printf(esc_html__('Don\'t have native apps? Get them and %1$spublish to app stores%2$s', $this->slug), '<a class="relative bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 text-transparent font-medium focus:outline-none after:absolute after:-bottom-px after:left-0 after:transition-all after:bg-gradient-to-r after:from-green-600 after:to-blue-600 after:w-0 after:h-0.5 hover:after:w-full" href="#/publishToAppStores/">', '</a>'); ?>
             </p>
           </div>
           <div class="space-y-3" data-dp-copy-markup-wrapper="relatedApplications">
             <div class="flex gap-2" data-dp-copy-markup-target="relatedApplication">
               <div class="flex-none w-1/4">
-                <select name="webAppManifest[advancedFeatures][relatedApplications][platform]" data-dp-select='{"placeholder": "<?php _e('Select Platform', $this->slug); ?>"}'>
-                  <option value="play" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile); ?>\" alt=\"Android Logo\"/>"}'>
-                    <?php _e('Android', $this->slug); ?>
+                <select name="webAppManifest[advancedFeatures][relatedApplications][platform]" data-dp-select='{"placeholder": "<?php esc_html_e('Select Platform', $this->slug); ?>"}'>
+                  <option value="play" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile)); ?>\" alt=\"Android Logo\"/>"}'>
+                    <?php esc_html_e('Android', $this->slug); ?>
                   </option>
-                  <option value="itunes" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile); ?>\" alt=\"Mac Logo\"/>"}'>
-                    <?php _e('iOS', $this->slug); ?>
+                  <option value="itunes" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile)); ?>\" alt=\"Mac Logo\"/>"}'>
+                    <?php esc_html_e('iOS', $this->slug); ?>
                   </option>
-                  <option value="windows" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo plugins_url('admin/assets/media/icons/operating-systems/windows.png', $this->pluginFile); ?>\" alt=\"Windows Logo\"/>"}'>
-                    <?php _e('Windows', $this->slug); ?>
+                  <option value="windows" data-dp-select-option='{"icon": "<img class=\"inline-block size-5\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/windows.png', $this->pluginFile)); ?>\" alt=\"Windows Logo\"/>"}'>
+                    <?php esc_html_e('Windows', $this->slug); ?>
                   </option>
                 </select>
               </div>
               <div class="flex-grow">
-                <input name="webAppManifest[advancedFeatures][relatedApplications][id]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter App ID', $this->slug); ?>">
+                <input name="webAppManifest[advancedFeatures][relatedApplications][id]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter App ID', $this->slug); ?>">
               </div>
               <div class="flex-none flex items-center ml-1.5">
                 <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200 dark:bg-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" data-dp-copy-markup-delete="relatedApplication">
@@ -550,7 +522,7 @@ if (!defined('ABSPATH')) {
                 <path d="M5 12h14" />
                 <path d="M12 5v14" />
               </svg>
-              <?php _e('Add Related Application', $this->slug); ?>
+              <?php esc_html_e('Add Related Application', $this->slug); ?>
             </button>
           </div>
         </div>
@@ -558,18 +530,16 @@ if (!defined('ABSPATH')) {
         <!-- App Shortcuts -->
         <div id="settingAppShortcuts">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('App Shortcuts', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user\'s desktop, or long pressing the app\'s launcher icon on Android.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('App Shortcuts', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user\'s desktop, or long pressing the app\'s launcher icon on Android.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <div class="space-y-3" data-dp-copy-markup-wrapper="appShortcuts">
             <div class="flex gap-2" data-dp-copy-markup-target="appShortcut">
@@ -582,20 +552,20 @@ if (!defined('ABSPATH')) {
                     <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                   </svg>
                   <span data-attachment-loader="appShortcutIcon" class="animate-spin size-4 border-[3px] border-current border-t-transparent text-blue-600 rounded-full hidden" role="status" aria-label="loading"></span>
-                  <img class="flex-shrink-0 size-5 rounded-full hidden" alt="<?php _e('App Icon', $this->slug); ?>" data-attachment-holder="appShortcutIcon" />
+                  <img class="flex-shrink-0 size-5 rounded-full hidden" alt="<?php esc_html_e('App Icon', $this->slug); ?>" data-attachment-holder="appShortcutIcon" />
                 </button>
               </div>
               <div class="flex-grow">
-                <input name="webAppManifest[advancedFeatures][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Shortcut Name', $this->slug); ?>">
+                <input name="webAppManifest[advancedFeatures][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Shortcut Name', $this->slug); ?>">
               </div>
               <div class="flex-grow w-1/3">
                 <select name="webAppManifest[advancedFeatures][appShortcuts][url]" data-dp-select='{
-                "placeholder": "<?php _e('Select Shortcut Page', $this->slug); ?>",
+                "placeholder": "<?php esc_html_e('Select Shortcut Page', $this->slug); ?>",
                 "hasSearch": true
               }' class="">
-                  <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
+                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
                   <?php foreach (get_pages() as $wpPage): ?>
-                  <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+                  <option value="<?php echo esc_url(get_page_link($wpPage->ID)); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), get_page_link($wpPage->ID)); ?>><?php echo esc_html($wpPage->post_title); ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -620,7 +590,7 @@ if (!defined('ABSPATH')) {
                 <path d="M5 12h14" />
                 <path d="M12 5v14" />
               </svg>
-              <?php _e('Add App Shortcut', $this->slug); ?>
+              <?php esc_html_e('Add App Shortcut', $this->slug); ?>
             </button>
           </div>
         </div>
@@ -629,9 +599,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>

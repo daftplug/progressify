@@ -25,7 +25,7 @@ class PwaOfflineFormHandler extends HTMLElement {
     if (!handler) {
       handler = document.createElement('pwa-offline-form-handler');
       handler.formData = formData;
-      config.daftplugFrontend.appendChild(handler);
+      document.body.appendChild(handler);
 
       requestAnimationFrame(() => {
         const backdrop = handler.shadowRoot.querySelector('.offline-form-handler');

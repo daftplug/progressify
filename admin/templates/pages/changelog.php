@@ -18,5 +18,5 @@ if (!defined('ABSPATH')) {
       <li>Some feature is working differently now.</li>
     </ul>
   </div> -->
-  <div data-version="v1.0.0" data-date="February 28, 2025" data-title="Initial Release" data-description="Progressify is launched as the most advanced and feature-rich PWA WordPress plugin in the world 😅."></div>
+  <div data-version="v1.0.0" data-date="March 12, 2025" data-title="Initial Release" data-description="Progressify is launched as the most advanced and feature-rich PWA WordPress plugin in the world 😅."></div>
 </div>

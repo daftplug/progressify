@@ -49,8 +49,8 @@ class WebAppManifest
     self::$manifestName = 'manifest.webmanifest';
 
     add_action('rest_api_init', [$this, 'registerRoutes']);
-    add_action('parse_request', [$this, 'generateManifest']);
-    add_action('parse_request', [$this, 'generateWebAppOriginAssociation']);
+    add_action('parse_request', [$this, 'renderManifest']);
+    add_action('parse_request', [$this, 'renderWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
   }
 
@@ -83,7 +83,7 @@ class WebAppManifest
       }
 
       // Ensure directories exist
-      $dirs = [self::$pluginUploadDir . 'splash-screens/', self::$pluginUploadDir . 'pwa-icons/'];
+      $dirs = [self::$pluginUploadDir . 'splash-screens/', self::$pluginUploadDir . 'pwa-icons/', self::$pluginUploadDir . 'qr-codes/'];
 
       foreach ($dirs as $dir) {
         if (!file_exists($dir)) {
@@ -97,8 +97,8 @@ class WebAppManifest
         'maskable' => self::$pluginUploadDir . 'pwa-icons/icon-maskable.png',
       ];
 
-      $this->saveIcon($roundedIcon, $iconPaths['rounded']);
-      $this->saveIcon($maskableIcon, $iconPaths['maskable']);
+      $this->saveImage($roundedIcon, $iconPaths['rounded'], true);
+      $this->saveImage($maskableIcon, $iconPaths['maskable'], true);
 
       // Process maskable icon variants
       $this->processMaskableIconVariants($iconPaths['maskable']);
@@ -111,8 +111,12 @@ class WebAppManifest
         $filename = sprintf('%s-%s.png', $deviceName, $orientation);
 
         $path = self::$pluginUploadDir . 'splash-screens/' . $filename;
-        $this->saveIcon($base64Data, $path);
+        $this->saveImage($base64Data, $path, true);
       }
+
+      // Generate and save QR code
+      $installationQrCodeData = Plugin::generateQrCode(add_query_arg('performInstallation', 'true', trailingslashit(strtok(home_url('/', 'https'), '?'))), '160x160', $roundedIcon);
+      $this->saveImage($installationQrCodeData, self::$pluginUploadDir . 'qr-codes/qr-pwa-installation.png', false);
 
       return new \WP_REST_Response(
         [
@@ -126,18 +130,19 @@ class WebAppManifest
     }
   }
 
-  private function saveIcon($base64Data, $path)
+  private function saveImage($imageData, $path, $isBase64 = true)
   {
-    // Decode base64 data
-    $imageData = base64_decode($base64Data);
+    if ($isBase64 && is_string($imageData)) {
+      $imageData = base64_decode($imageData);
+    }
 
     if (!$imageData) {
-      throw new \Exception('Invalid base64 data for ' . basename($path));
+      throw new \Exception('Invalid image data for ' . esc_html(basename($path)));
     }
 
     // Save the file
     if (!Plugin::putContent($path, $imageData)) {
-      throw new \Exception('Failed to save ' . basename($path));
+      throw new \Exception('Failed to save ' . esc_html(basename($path)));
     }
 
     return true;
@@ -167,7 +172,7 @@ class WebAppManifest
     return true;
   }
 
-  public function generateWebAppOriginAssociation()
+  public function renderWebAppOriginAssociation()
   {
     global $wp;
     global $wp_query;
@@ -205,7 +210,7 @@ class WebAppManifest
     }
   }
 
-  public function generateManifest()
+  public function renderManifest()
   {
     global $wp;
     global $wp_query;
@@ -408,7 +413,7 @@ class WebAppManifest
 
   public function renderMetaTagsInHeader()
   {
-    echo Frontend::renderPartial('metaTags');
+    Frontend::renderPartial('metaTags');
   }
 
   public static function getManifestUrl($encoded = true)
@@ -473,6 +478,27 @@ class WebAppManifest
       // Add version hash to prevent caching issues
       $version = hash('crc32', filemtime($splashScreenPath));
       return $splashScreenUrl . '?v=' . $version;
+    }
+
+    return '';
+  }
+
+  public static function getInstallationQrCodeUrl()
+  {
+    // Check if we have a valid app icon set (required for splash screens)
+    if (!wp_attachment_is_image(intval(Plugin::getSetting('webAppManifest[appIdentity][appIcon]')))) {
+      return '';
+    }
+
+    // Build paths
+    $qrCodePath = self::$pluginUploadDir . 'qr-codes/qr-pwa-installation.png';
+    $qrCodeUrl = self::$pluginUploadUrl . 'qr-codes/qr-pwa-installation.png';
+
+    // Check if file exists and return URL with version hash
+    if (file_exists($qrCodePath)) {
+      // Add version hash to prevent caching issues
+      $version = hash('crc32', filemtime($qrCodePath));
+      return $qrCodeUrl . '?v=' . $version;
     }
 
     return '';

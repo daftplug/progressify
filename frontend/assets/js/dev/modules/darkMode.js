@@ -223,7 +223,7 @@ class PwaDarkMode extends HTMLElement {
         }
       } else {
         // Floating button
-        config.daftplugFrontend.appendChild(darkModeSwitch);
+        document.body.appendChild(darkModeSwitch);
       }
     }
 

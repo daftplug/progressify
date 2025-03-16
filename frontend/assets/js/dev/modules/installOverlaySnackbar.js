@@ -22,7 +22,7 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
 
     if (!snackbar) {
       snackbar = document.createElement('pwa-install-overlay-snackbar');
-      config.daftplugFrontend.appendChild(snackbar);
+      document.body.appendChild(snackbar);
 
       requestAnimationFrame(() => {
         const snackbarElement = snackbar.shadowRoot.querySelector('.snackbar-overlay');

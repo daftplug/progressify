@@ -17,7 +17,7 @@ class PwaScrollProgressBar extends HTMLElement {
 
     if (!scrollProgressBar) {
       scrollProgressBar = document.createElement('pwa-scroll-progress-bar');
-      config.daftplugFrontend.appendChild(scrollProgressBar);
+      document.body.appendChild(scrollProgressBar);
     }
 
     return scrollProgressBar;

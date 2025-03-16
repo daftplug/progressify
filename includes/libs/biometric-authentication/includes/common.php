@@ -5,21 +5,14 @@ use Nyholm\Psr7Server\ServerRequestCreator;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 if (!defined('ABSPATH')) {
-  die;
+  die();
 }
 
-
 if (!function_exists('plwp_create_server_request')) {
-
   function plwp_create_server_request()
   {
     $psr17Factory = new Psr17Factory();
-    $creator = new ServerRequestCreator(
-      $psr17Factory,
-      $psr17Factory,
-      $psr17Factory,
-      $psr17Factory
-    );
+    $creator = new ServerRequestCreator($psr17Factory, $psr17Factory, $psr17Factory, $psr17Factory);
 
     $serverRequest = $creator->fromGlobals();
 
@@ -35,7 +28,7 @@ if (!function_exists('plwp_session_id')) {
         $uuid = $_COOKIE['plwps'];
       } else {
         $uuid = wp_generate_uuid4();
-        setcookie("plwps", $uuid, time() + MINUTE_IN_SECONDS * 5, COOKIEPATH, COOKIE_DOMAIN);
+        setcookie('plwps', $uuid, time() + MINUTE_IN_SECONDS * 5, COOKIEPATH, COOKIE_DOMAIN);
       }
     } else {
       $uuid = get_current_user_id();
@@ -52,7 +45,7 @@ if (!function_exists('plwp_session_delete')) {
     delete_transient($uuid . '_register');
 
     unset($_COOKIE['plwps']);
-    setcookie('plwps', '', time() - (15 * 60));
+    setcookie('plwps', '', time() - 15 * 60);
   }
 }
 if (!function_exists('plwp_session_set')) {
@@ -74,7 +67,7 @@ if (!function_exists('plwp_starts_with')) {
   {
     $length = strlen($needle);
 
-    return (substr($haystack, 0, $length) === $needle);
+    return substr($haystack, 0, $length) === $needle;
   }
 }
 
@@ -82,9 +75,9 @@ if (!function_exists('plwp_ends_with')) {
   function plwp_ends_with($haystack, $needle)
   {
     $length = strlen($needle);
-    $start  = $length * -1; // negative
+    $start = $length * -1; // negative
 
-    return (substr($haystack, $start) === $needle);
+    return substr($haystack, $start) === $needle;
   }
 }
 
@@ -97,10 +90,7 @@ if (!function_exists('plwp_is_localhost')) {
 if (!function_exists('plwp_is_localhost_by_address')) {
   function plwp_is_localhost_by_address($url)
   {
-    if (
-      false !== strpos($url, '127.0.0.1') ||
-      false !== strpos($url, 'localhost')
-    ) {
+    if (false !== strpos($url, '127.0.0.1') || false !== strpos($url, 'localhost')) {
       return true;
     }
 
@@ -111,7 +101,6 @@ if (!function_exists('plwp_is_localhost_by_address')) {
 if (!function_exists('plwp_cant_work')) {
   function plwp_cant_work()
   {
-
     if (!is_ssl()) {
       if (plwp_is_localhost()) {
         return false;
@@ -128,11 +117,11 @@ if (!function_exists('plwp_verify_none')) {
   function plwp_verify_none($key)
   {
     if (!wp_verify_nonce($_GET['nonce'], 'plwp_' . $key)) {
-      wp_send_json_error(array(
+      wp_send_json_error([
         'redirect_to' => wp_login_url(),
-        'message' => __("Bad Nonce, page will be reloaded", 'daftplug-instantify')
-      ));
-      exit;
+        'message' => __('Bad Nonce, page will be reloaded', 'daftplug-progressify'),
+      ]);
+      exit();
     }
   }
 }
@@ -140,24 +129,20 @@ if (!function_exists('plwp_verify_none')) {
 if (!function_exists('plwp_user_entity_to_array')) {
   function plwp_user_entity_to_array($userEntity)
   {
-    return array(
+    return [
       'id' => $userEntity->getId(),
       'displayName' => $userEntity->getDisplayName(),
       'name' => $userEntity->getName(),
-      'icon' => $userEntity->getIcon()
-    );
+      'icon' => $userEntity->getIcon(),
+    ];
   }
 }
 if (!function_exists('plwp_create_user_entity')) {
   function plwp_create_user_entity($user)
   {
-    $name = $user->user_firstname ? (ucfirst($user->user_firstname) . ' ' . ucfirst($user->user_lastname)) : ucfirst($user->user_nicename);
+    $name = $user->user_firstname ? ucfirst($user->user_firstname) . ' ' . ucfirst($user->user_lastname) : ucfirst($user->user_nicename);
 
-    $userEntity = new PublicKeyCredentialUserEntity(
-      $user->user_login,
-      $user->ID,
-      $name
-    );
+    $userEntity = new PublicKeyCredentialUserEntity($user->user_login, $user->ID, $name);
 
     return $userEntity;
   }

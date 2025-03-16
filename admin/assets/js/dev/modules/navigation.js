@@ -3,23 +3,22 @@ import { navigateToPage } from '../components/utils.js';
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initNavigation() {
-  window.handleHashChange = handleHashChange; // Make it accessible for the navigation function
-  jQuery(window).on('load', handleLoad);
-  jQuery(window).on('hashchange', handleHashChange);
+  window.handleHashChange = handleNavigation;
+  jQuery(window).on('load', handleNavigation);
+  jQuery(window).on('hashchange', handleNavigation);
 }
 
-export function handleLoad() {
+function handleNavigation() {
+  if (daftplugAdmin.find('main[data-page-id="activation"]').length) {
+    navigateToPage('activation');
+    return;
+  }
+
   if (location.hash) {
-    const [pageId, subPageId] = location.hash.replace(/#|\//g, '').split('-');
+    const hashValue = location.hash.replace(/#|\//g, '');
+    const [pageId, subPageId] = hashValue.split('-');
     navigateToPage(pageId, subPageId);
   } else {
     navigateToPage('dashboard');
-  }
-}
-
-export function handleHashChange() {
-  if (location.hash) {
-    const [pageId, subPageId] = location.hash.replace(/#|\//g, '').split('-');
-    navigateToPage(pageId, subPageId);
   }
 }

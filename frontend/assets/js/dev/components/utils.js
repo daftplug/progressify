@@ -4,10 +4,10 @@ export const getContrastTextColor = (backgroundColor) => {
   const temp = document.createElement('div');
   temp.style.backgroundColor = backgroundColor;
   temp.style.display = 'none';
-  config.daftplugFrontend.appendChild(temp);
+  document.body.appendChild(temp);
 
   const computedColor = window.getComputedStyle(temp).backgroundColor;
-  config.daftplugFrontend.removeChild(temp);
+  document.body.removeChild(temp);
 
   const [r, g, b] = computedColor.match(/\d+/g).map(Number);
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;

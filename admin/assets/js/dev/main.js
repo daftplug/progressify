@@ -1,6 +1,3 @@
-// Preline
-import '../../../../node_modules/preline/dist/preline.js';
-
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
 import { initDependentMarkup } from './components/dependentMarkup.js';
@@ -8,13 +5,16 @@ import { initSelect } from './components/select.js';
 import { initClipboard } from './components/clipboard.js';
 import { initTextareaAutoHeight } from './components/autoHeightTextarea.js';
 import { initInputValidation } from './components/inputValidation.js';
+import { initTooltip } from './components/tooltip.js';
+import { initOverlay } from './components/overlay.js';
+import { initDropdown } from './components/dropdown.js';
+import { initThemeMode } from './components/themeMode.js';
 
 // Modules
 import { initProcessLicense } from './modules/processLicense.js';
 import { initNavigation } from './modules/navigation.js';
 import { initSettings } from './modules/settings.js';
 import { initSearch } from './modules/search.js';
-import { initOverlayBackdropFix } from './modules/overlayBackdropFix.js';
 import { initPwaUsersData } from './modules/pwaUsersData.js';
 import { initPwaScoreData } from './modules/pwaScoreData.js';
 import { initAppIconUpload } from './modules/appIconUpload.js';
@@ -32,17 +32,28 @@ const initializedModules = new Set();
 
 // Core modules that should always be initialized
 const coreModules = [
-  { init: initProcessLicense, name: 'processLicense' },
-  { init: initCopyMarkup, name: 'copyMarkup' },
-  { init: initDependentMarkup, name: 'dependentMarkup' },
-  { init: initSelect, name: 'select' },
-  { init: initClipboard, name: 'clipboard' },
+  { init: initTooltip, name: 'tooltip' },
+  { init: initOverlay, name: 'overlay' },
   { init: initInputValidation, name: 'inputValidation' },
   { init: initNavigation, name: 'navigation' },
+  { init: initDropdown, name: 'dropdown' },
+  { init: initSelect, name: 'select' },
+  { init: initThemeMode, name: 'themeMode' },
+];
+
+// Common modules that should be loaded on all pages except activation and error
+const commonModules = [
+  { init: initSearch, name: 'search' },
+  { init: initSettings, name: 'settings' },
+  { init: initClipboard, name: 'clipboard' },
+  { init: initCopyMarkup, name: 'copyMarkup' },
+  { init: initDependentMarkup, name: 'dependentMarkup' },
+  { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
 ];
 
 // Hash-based module mapping
 const moduleMap = {
+  '#/activation/': [{ init: initProcessLicense, name: 'processLicense' }],
   '#/dashboard/': [
     { init: initPwaUsersData, name: 'pwaUsersData' },
     { init: initPwaScoreData, name: 'pwaScoreData' },
@@ -60,34 +71,44 @@ const moduleMap = {
   '#/publishToAppStores/': [{ init: initPublishToAppStores, name: 'publishToAppStores' }],
   '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
   '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
-  '!#/error/': [
-    { init: initSearch, name: 'search' },
-    { init: initSettings, name: 'settings' },
-    { init: initOverlayBackdropFix, name: 'overlayBackdropFix' },
-    { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
-  ],
 };
 
-// Initialize modules for current hash
-const loadHashModules = () => {
+// Initialize modules in the desired order
+const initializeModules = () => {
+  // Check if we're on the activation page by DOM element
+  const activationElement = document.querySelector('#daftplugAdmin main[data-page-id="activation"]');
+  const isActivationPage = activationElement !== null;
+
+  // If we're on activation page but hash doesn't reflect it, update the hash
+  if (isActivationPage && !window.location.hash.startsWith('#/activation/')) {
+    // Set the hash without triggering another hashchange event
+    history.replaceState(null, null, '#/activation/');
+  }
+
+  // Get current hash after possible update
   const currentHash = window.location.hash || '#/';
 
-  // Initialize hash-specific modules if not already initialized
-  Object.entries(moduleMap).forEach(([hash, modules]) => {
-    // Check if this is a negative condition (hash starts with !)
-    if (hash.startsWith('!')) {
-      const excludeHash = hash.substring(1); // Remove the ! character
-      // Initialize modules only if current hash does NOT start with the specified hash
-      if (!currentHash.startsWith(excludeHash)) {
-        modules.forEach((module) => {
-          if (!initializedModules.has(module.name)) {
-            module.init();
-            initializedModules.add(module.name);
-          }
-        });
+  // Initialize common modules (except on activation and error pages)
+  if (!isActivationPage && !currentHash.startsWith('#/error/')) {
+    commonModules.forEach((module) => {
+      if (!initializedModules.has(module.name)) {
+        module.init();
+        initializedModules.add(module.name);
       }
-    } else if (currentHash.startsWith(hash)) {
-      // Regular positive hash condition
+    });
+  }
+
+  // Initialize core modules
+  coreModules.forEach((module) => {
+    if (!initializedModules.has(module.name)) {
+      module.init();
+      initializedModules.add(module.name);
+    }
+  });
+
+  // Initialize hash-specific modules
+  Object.entries(moduleMap).forEach(([hash, modules]) => {
+    if (currentHash.startsWith(hash)) {
       modules.forEach((module) => {
         if (!initializedModules.has(module.name)) {
           module.init();
@@ -99,21 +120,25 @@ const loadHashModules = () => {
 };
 
 // Initialize on page load
-window.addEventListener('load', () => {
-  // Initialize core modules once
-  coreModules.forEach((module) => {
-    if (!initializedModules.has(module.name)) {
-      module.init();
-      initializedModules.add(module.name);
-    }
-  });
+window.addEventListener('DOMContentLoaded', () => {
+  // Explicitly call handleNavigation to ensure initial page routing
+  if (typeof window.handleHashChange === 'function') {
+    window.handleHashChange();
+  }
+});
 
-  // Load hash-specific modules
-  loadHashModules();
+window.addEventListener('load', () => {
+  // Initialize all remaining modules in the correct order
+  initializeModules();
 
   // Remove loading state after page is loaded
   document.querySelector('#daftplugAdmin .-daftplugLoading').classList.remove('-daftplugLoading');
 });
 
-// Handle hash changes
-window.addEventListener('hashchange', loadHashModules);
+// Handle hash changes - ensure navigation happens first
+window.addEventListener('hashchange', () => {
+  if (typeof window.handleHashChange === 'function') {
+    window.handleHashChange();
+  }
+  setTimeout(initializeModules, 0);
+});

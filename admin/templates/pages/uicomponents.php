@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<form id="settingsForm" name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+<form name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
   <!-- Navigation Tab Bar -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionNavigationTabBar">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Navigation Tab Bar', $this->slug); ?>
+              <?php esc_html_e('Navigation Tab Bar', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[navigationTabBar][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                   Plugin::getSetting('uiComponents[navigationTabBar][feature]'),
@@ -25,42 +25,40 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Navigation tab bar provides app like experience by adding tabbed navigation menu bar on the bottom of your web app when accessed from mobile devices.', $this->slug); ?>
+              <?php esc_html_e('Navigation tab bar provides app like experience by adding tabbed navigation menu bar on the bottom of your web app when accessed from mobile devices.', $this->slug); ?>
             </p>
           </div>
         </div>
       </div>
       <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
-      "target": "uiComponents[navigationTabBar][feature]",
-      "state": "checked",
-      "mode": "availability"
-    }'>
+        "target": "uiComponents[navigationTabBar][feature]",
+        "state": "checked",
+        "mode": "availability"
+      }'>
         <!-- Supported Devices -->
         <div id="settingNavTabSupportedDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types navigation tab bar feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types navigation tab bar feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[navigationTabBar][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
         }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[navigationTabBar][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -68,502 +66,500 @@ if (!defined('ABSPATH')) {
         <!-- Navigation Items -->
         <div id="settingNavTabNavigationItems">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Navigation Items', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Add items to the navigation tab bar by selecting the icon, label and the page.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Navigation Items', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Add items to the navigation tab bar by selecting the icon, label and the page.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <div class="space-y-3" data-dp-copy-markup-wrapper="navigationItems">
             <div class="flex gap-2" data-dp-copy-markup-target="navigationItem">
               <div class="flex-none w-[70px]">
                 <select name="uiComponents[navigationTabBar][navigationItems][icon]" required="true" data-dp-select='{
-                "placeholder": "<?php _e('Icon', $this->slug); ?>",
+                "placeholder": "<?php esc_html_e('Icon', $this->slug); ?>",
                 "showIconOnly": true,
                 "hasSearch": true
               }'>
                   <option value="activity" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/activity.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Activity', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/activity.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Activity', $this->slug); ?></option>
                   <option value="alarm-clock" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/alarm-clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Alarm Clock', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/alarm-clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Alarm Clock', $this->slug); ?></option>
                   <option value="album" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/album.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Album', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/album.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Album', $this->slug); ?></option>
                   <option value="archive" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/archive.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Archive', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/archive.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Archive', $this->slug); ?></option>
                   <option value="award" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/award.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Award', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/award.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Award', $this->slug); ?></option>
                   <option value="bed" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bed.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bed', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bed.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bed', $this->slug); ?></option>
                   <option value="bell" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bell.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bell', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bell.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bell', $this->slug); ?></option>
                   <option value="bird" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bird.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bird', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bird.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bird', $this->slug); ?></option>
                   <option value="bitcoin" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bitcoin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bitcoin', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bitcoin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bitcoin', $this->slug); ?></option>
                   <option value="bluetooth" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bluetooth.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bluetooth', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bluetooth.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bluetooth', $this->slug); ?></option>
                   <option value="bone" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bone', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bone', $this->slug); ?></option>
                   <option value="book" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/book.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Book', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/book.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Book', $this->slug); ?></option>
                   <option value="bookmark" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bookmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bookmark', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bookmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bookmark', $this->slug); ?></option>
                   <option value="bot" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bot.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Bot', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/bot.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Bot', $this->slug); ?></option>
                   <option value="box" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/box.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Box', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/box.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Box', $this->slug); ?></option>
                   <option value="briefcase-business" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/briefcase-business.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Briefcase Business', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/briefcase-business.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Briefcase Business', $this->slug); ?></option>
                   <option value="briefcase-medical" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/briefcase-medical.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Briefcase Medical', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/briefcase-medical.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Briefcase Medical', $this->slug); ?></option>
                   <option value="broom" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/broom.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Broom', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/broom.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Broom', $this->slug); ?></option>
                   <option value="brush" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/brush.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Brush', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/brush.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Brush', $this->slug); ?></option>
                   <option value="burger" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/burger.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Burger', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/burger.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Burger', $this->slug); ?></option>
                   <option value="calendar" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/calendar.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Calendar', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/calendar.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Calendar', $this->slug); ?></option>
                   <option value="camera" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/camera.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Camera', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/camera.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Camera', $this->slug); ?></option>
                   <option value="car" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/car.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Car', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/car.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Car', $this->slug); ?></option>
                   <option value="cat" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cat.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Cat', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cat.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Cat', $this->slug); ?></option>
                   <option value="chart-line" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/chart-line.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Chart Line', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/chart-line.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Chart Line', $this->slug); ?></option>
                   <option value="chart-pie" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/chart-pie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Chart Pie', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/chart-pie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Chart Pie', $this->slug); ?></option>
                   <option value="clock" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Clock', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/clock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Clock', $this->slug); ?></option>
                   <option value="cloud" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cloud.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Cloud', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cloud.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Cloud', $this->slug); ?></option>
                   <option value="coffee" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/coffee.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Coffee', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/coffee.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Coffee', $this->slug); ?></option>
                   <option value="compass" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/compass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Compass', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/compass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Compass', $this->slug); ?></option>
                   <option value="concierge-bell" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/concierge-bell.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Concierge Bell', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/concierge-bell.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Concierge Bell', $this->slug); ?></option>
                   <option value="cookie" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cookie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Cookie', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cookie.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Cookie', $this->slug); ?></option>
                   <option value="cpu" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cpu.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('CPU', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/cpu.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('CPU', $this->slug); ?></option>
                   <option value="credit-card" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/credit-card.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Credit Card', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/credit-card.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Credit Card', $this->slug); ?></option>
                   <option value="crown" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/crown.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Crown', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/crown.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Crown', $this->slug); ?></option>
                   <option value="database" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/database.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Database', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/database.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Database', $this->slug); ?></option>
                   <option value="dices" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dices.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Dices', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dices.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Dices', $this->slug); ?></option>
                   <option value="dna" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dna.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('DNA', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dna.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('DNA', $this->slug); ?></option>
                   <option value="dog" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dog.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Dog', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dog.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Dog', $this->slug); ?></option>
                   <option value="dollar-sign" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dollar-sign.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Dollar Sign', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/dollar-sign.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Dollar Sign', $this->slug); ?></option>
                   <option value="download" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/download.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Download', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/download.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Download', $this->slug); ?></option>
                   <option value="drama" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/drama.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Drama', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/drama.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Drama', $this->slug); ?></option>
                   <option value="drill" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/drill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Drill', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/drill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Drill', $this->slug); ?></option>
                   <option value="euro" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/euro.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Euro', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/euro.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Euro', $this->slug); ?></option>
                   <option value="eye" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/eye.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Eye', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/eye.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Eye', $this->slug); ?></option>
                   <option value="facebook" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/facebook.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Facebook', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/facebook.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Facebook', $this->slug); ?></option>
                   <option value="file" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/file.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('File', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/file.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('File', $this->slug); ?></option>
                   <option value="film" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/film.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Film', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/film.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Film', $this->slug); ?></option>
                   <option value="filter" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/filter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Filter', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/filter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Filter', $this->slug); ?></option>
                   <option value="fingerprint" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/fingerprint.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Fingerprint', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/fingerprint.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Fingerprint', $this->slug); ?></option>
                   <option value="flag" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Flag', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Flag', $this->slug); ?></option>
                   <option value="flame" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flame.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Flame', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flame.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Flame', $this->slug); ?></option>
                   <option value="flower" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flower.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Flower', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/flower.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Flower', $this->slug); ?></option>
                   <option value="folder" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/folder.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Folder', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/folder.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Folder', $this->slug); ?></option>
                   <option value="gallery-horizontal-end" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gallery-horizontal-end.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gallery Horizontal End', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gallery-horizontal-end.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gallery Horizontal End', $this->slug); ?></option>
                   <option value="gamepad" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gamepad.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gamepad', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gamepad.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gamepad', $this->slug); ?></option>
                   <option value="gauge" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gauge.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gauge', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gauge.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gauge', $this->slug); ?></option>
                   <option value="gavel" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gavel.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gavel', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gavel.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gavel', $this->slug); ?></option>
                   <option value="gem" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gem.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gem', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gem.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gem', $this->slug); ?></option>
                   <option value="gift" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gift.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Gift', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/gift.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Gift', $this->slug); ?></option>
                   <option value="glasses" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/glasses.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Glasses', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/glasses.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Glasses', $this->slug); ?></option>
                   <option value="globe" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/globe.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Globe', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/globe.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Globe', $this->slug); ?></option>
                   <option value="graduation-cap" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/graduation-cap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Graduation Cap', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/graduation-cap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Graduation Cap', $this->slug); ?></option>
                   <option value="hammer" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hammer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Hammer', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hammer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Hammer', $this->slug); ?></option>
                   <option value="hand-heart" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hand-heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Hand Heart', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hand-heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Hand Heart', $this->slug); ?></option>
                   <option value="headphones" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/headphones.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Headphones', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/headphones.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Headphones', $this->slug); ?></option>
                   <option value="heart" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Heart', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/heart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Heart', $this->slug); ?></option>
                   <option value="hourglass" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hourglass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Hourglass', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/hourglass.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Hourglass', $this->slug); ?></option>
                   <option value="house" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/house.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('House', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/house.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('House', $this->slug); ?></option>
                   <option value="image" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/image.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Image', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/image.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Image', $this->slug); ?></option>
                   <option value="info" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/info.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Info', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/info.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Info', $this->slug); ?></option>
                   <option value="instagram" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/instagram.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Instagram', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/instagram.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Instagram', $this->slug); ?></option>
                   <option value="key-round" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/key-round.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Key Round', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/key-round.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Key Round', $this->slug); ?></option>
                   <option value="landmark" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/landmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Landmark', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/landmark.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Landmark', $this->slug); ?></option>
                   <option value="languages" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/languages.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Languages', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/languages.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Languages', $this->slug); ?></option>
                   <option value="layers" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/layers.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Layers', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/layers.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Layers', $this->slug); ?></option>
                   <option value="layout-grid" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/layout-grid.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Layout Grid', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/layout-grid.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Layout Grid', $this->slug); ?></option>
                   <option value="life-buoy" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/life-buoy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Life Buoy', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/life-buoy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Life Buoy', $this->slug); ?></option>
                   <option value="link" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/link.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Link', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/link.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Link', $this->slug); ?></option>
                   <option value="linkedin" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/linkedin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('LinkedIn', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/linkedin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('LinkedIn', $this->slug); ?></option>
                   <option value="lock" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/lock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Lock', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/lock.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Lock', $this->slug); ?></option>
                   <option value="mail" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/mail.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Mail', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/mail.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Mail', $this->slug); ?></option>
                   <option value="map-pin" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/map-pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Map Pin', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/map-pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Map Pin', $this->slug); ?></option>
                   <option value="megaphone" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/megaphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Megaphone', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/megaphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Megaphone', $this->slug); ?></option>
                   <option value="message-circle" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/message-circle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Message Circle', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/message-circle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Message Circle', $this->slug); ?></option>
                   <option value="mic" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/mic.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Mic', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/mic.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Mic', $this->slug); ?></option>
                   <option value="monitor-smartphone" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/monitor-smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Monitor Smartphone', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/monitor-smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Monitor Smartphone', $this->slug); ?></option>
                   <option value="moon" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/moon.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Moon', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/moon.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Moon', $this->slug); ?></option>
                   <option value="music" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/music.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Music', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/music.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Music', $this->slug); ?></option>
                   <option value="navigation" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/navigation.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Navigation', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/navigation.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Navigation', $this->slug); ?></option>
                   <option value="network" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/network.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Network', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/network.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Network', $this->slug); ?></option>
                   <option value="newspaper" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/newspaper.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Newspaper', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/newspaper.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Newspaper', $this->slug); ?></option>
                   <option value="palette" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/palette.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Palette', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/palette.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Palette', $this->slug); ?></option>
                   <option value="paperclip" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/paperclip.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Paperclip', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/paperclip.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Paperclip', $this->slug); ?></option>
                   <option value="paw-print" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/paw-print.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Paw Print', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/paw-print.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Paw Print', $this->slug); ?></option>
                   <option value="pencil" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pencil.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Pencil', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pencil.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Pencil', $this->slug); ?></option>
                   <option value="percent" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/percent.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Percent', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/percent.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Percent', $this->slug); ?></option>
                   <option value="phone" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/phone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Phone', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/phone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Phone', $this->slug); ?></option>
                   <option value="pill" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Pill', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pill.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Pill', $this->slug); ?></option>
                   <option value="pin" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Pin', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pin.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Pin', $this->slug); ?></option>
                   <option value="pizza" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pizza.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Pizza', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/pizza.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Pizza', $this->slug); ?></option>
                   <option value="plane" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/plane.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Plane', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/plane.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Plane', $this->slug); ?></option>
                   <option value="play" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/play.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Play', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/play.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Play', $this->slug); ?></option>
                   <option value="plus" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/plus.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Plus', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/plus.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Plus', $this->slug); ?></option>
                   <option value="podcast" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/podcast.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Podcast', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/podcast.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Podcast', $this->slug); ?></option>
                   <option value="popcorn" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/popcorn.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Popcorn', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/popcorn.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Popcorn', $this->slug); ?></option>
                   <option value="printer" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/printer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Printer', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/printer.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Printer', $this->slug); ?></option>
                   <option value="puzzle" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/puzzle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Puzzle', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/puzzle.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Puzzle', $this->slug); ?></option>
                   <option value="rocket" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/rocket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Rocket', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/rocket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Rocket', $this->slug); ?></option>
                   <option value="save" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/save.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Save', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/save.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Save', $this->slug); ?></option>
                   <option value="scale" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/scale.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Scale', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/scale.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Scale', $this->slug); ?></option>
                   <option value="search" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/search.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Search', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/search.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Search', $this->slug); ?></option>
                   <option value="send" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/send.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Send', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/send.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Send', $this->slug); ?></option>
                   <option value="settings" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/settings.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Settings', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/settings.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Settings', $this->slug); ?></option>
                   <option value="share" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/share.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Share', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/share.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Share', $this->slug); ?></option>
                   <option value="shield" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shield.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Shield', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shield.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Shield', $this->slug); ?></option>
                   <option value="shirt" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shirt.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Shirt', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shirt.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Shirt', $this->slug); ?></option>
                   <option value="shopping-bag" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shopping-bag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Shopping Bag', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shopping-bag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Shopping Bag', $this->slug); ?></option>
                   <option value="shopping-cart" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shopping-cart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Shopping Cart', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/shopping-cart.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Shopping Cart', $this->slug); ?></option>
                   <option value="skull" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/skull.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Skull', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/skull.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Skull', $this->slug); ?></option>
                   <option value="sofa" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sofa.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Sofa', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sofa.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Sofa', $this->slug); ?></option>
                   <option value="sparkles" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Sparkles', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Sparkles', $this->slug); ?></option>
                   <option value="sprout" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sprout.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Sprout', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sprout.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Sprout', $this->slug); ?></option>
                   <option value="star" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/star.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Star', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/star.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Star', $this->slug); ?></option>
                   <option value="stethoscope" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/stethoscope.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Stethoscope', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/stethoscope.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Stethoscope', $this->slug); ?></option>
                   <option value="store" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/store.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Store', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/store.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Store', $this->slug); ?></option>
                   <option value="sun" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sun.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Sun', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/sun.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Sun', $this->slug); ?></option>
                   <option value="tag" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/tag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Tag', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/tag.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Tag', $this->slug); ?></option>
                   <option value="target" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/target.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Target', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/target.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Target', $this->slug); ?></option>
                   <option value="test-tube-diagonal" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/test-tube-diagonal.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Test Tube Diagonal', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/test-tube-diagonal.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Test Tube Diagonal', $this->slug); ?></option>
                   <option value="thumbs-up" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/thumbs-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Thumbs Up', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/thumbs-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Thumbs Up', $this->slug); ?></option>
                   <option value="ticket" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/ticket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Ticket', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/ticket.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Ticket', $this->slug); ?></option>
                   <option value="toilet" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/toilet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Toilet', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/toilet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Toilet', $this->slug); ?></option>
                   <option value="trash" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trash.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Trash', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trash.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Trash', $this->slug); ?></option>
                   <option value="tree-pine" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/tree-pine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Tree Pine', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/tree-pine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Tree Pine', $this->slug); ?></option>
                   <option value="trending-down" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trending-down.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Trending Down', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trending-down.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Trending Down', $this->slug); ?></option>
                   <option value="trending-up" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trending-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Trending Up', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trending-up.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Trending Up', $this->slug); ?></option>
                   <option value="triangle-alert" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/triangle-alert.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Triangle Alert', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/triangle-alert.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Triangle Alert', $this->slug); ?></option>
                   <option value="trophy" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trophy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Trophy', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/trophy.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Trophy', $this->slug); ?></option>
                   <option value="twitch" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/twitch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Twitch', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/twitch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Twitch', $this->slug); ?></option>
                   <option value="twitter" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/twitter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Twitter', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/twitter.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Twitter', $this->slug); ?></option>
                   <option value="upload" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/upload.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Upload', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/upload.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Upload', $this->slug); ?></option>
                   <option value="user" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/user.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('User', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/user.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('User', $this->slug); ?></option>
                   <option value="utensils" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/utensils.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Utensils', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/utensils.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Utensils', $this->slug); ?></option>
                   <option value="video" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/video.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Video', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/video.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Video', $this->slug); ?></option>
                   <option value="volume" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/volume.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Volume', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/volume.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Volume', $this->slug); ?></option>
                   <option value="wallet" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wallet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Wallet', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wallet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Wallet', $this->slug); ?></option>
                   <option value="wand-sparkles" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wand-sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Wand Sparkles', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wand-sparkles.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Wand Sparkles', $this->slug); ?></option>
                   <option value="watch" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/watch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Watch', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/watch.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Watch', $this->slug); ?></option>
                   <option value="wifi" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wifi.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Wifi', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wifi.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Wifi', $this->slug); ?></option>
                   <option value="wine" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Wine', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wine.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Wine', $this->slug); ?></option>
                   <option value="wrench" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wrench.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Wrench', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/wrench.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Wrench', $this->slug); ?></option>
                   <option value="youtube" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/youtube.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Youtube', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/youtube.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Youtube', $this->slug); ?></option>
                   <option value="zap" data-dp-select-option='{
-                  "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/zap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true); ?>"
-                }'><?php _e('Zap', $this->slug); ?></option>
+                  "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/navigation-items/zap.svg', Plugin::$pluginFile), 'flex-shrink-0 size-5 text-gray-600', true)); ?>"
+                }'><?php esc_html_e('Zap', $this->slug); ?></option>
                 </select>
               </div>
               <div class="flex-none w-1/3">
-                <input name="uiComponents[navigationTabBar][navigationItems][label]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php _e('Enter Label', $this->slug); ?>">
+                <input name="uiComponents[navigationTabBar][navigationItems][label]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Label', $this->slug); ?>">
               </div>
               <div class="flex-grow">
                 <select name="uiComponents[navigationTabBar][navigationItems][page]" data-dp-select='{
-                "placeholder": "<?php _e('Select Page', $this->slug); ?>",
+                "placeholder": "<?php esc_html_e('Select Page', $this->slug); ?>",
                 "hasSearch": true
               }'>
-                  <option value="<?php echo trailingslashit(strtok(home_url('/', 'https'), '?')); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
+                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
                   <?php foreach (get_pages() as $wpPage): ?>
-                  <option value="<?php echo get_page_link($wpPage->ID); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_page_link($wpPage->ID)); ?>><?php echo $wpPage->post_title; ?></option>
+                  <option value="<?php echo esc_url(get_page_link($wpPage->ID)); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_page_link($wpPage->ID)); ?>><?php echo esc_html($wpPage->post_title); ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -588,7 +584,7 @@ if (!defined('ABSPATH')) {
                 <path d="M5 12h14" />
                 <path d="M12 5v14" />
               </svg>
-              <?php _e('Add Navigation Item', $this->slug); ?>
+              <?php esc_html_e('Add Navigation Item', $this->slug); ?>
             </button>
           </p>
         </div>
@@ -597,9 +593,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -616,7 +612,7 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Scroll Progress Bar', $this->slug); ?>
+              <?php esc_html_e('Scroll Progress Bar', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[scrollProgressBar][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                   Plugin::getSetting('uiComponents[scrollProgressBar][feature]'),
@@ -625,7 +621,7 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Scroll Progress Bar feature creates a progress bar on top of the page that indicates the scroll progress percentage of the page.', $this->slug); ?>
+              <?php esc_html_e('Scroll Progress Bar feature creates a progress bar on top of the page that indicates the scroll progress percentage of the page.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -638,32 +634,30 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingScrollProgressBarDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types scroll progress bar feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types scroll progress bar feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[scrollProgressBar][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"
-          }' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>><?php _e('Smartphone', $this->slug); ?></option>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"
+          }' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>><?php esc_html_e('Smartphone', $this->slug); ?></option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
             <option value="desktop" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>>
-              <?php _e('Desktop', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true)); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[scrollProgressBar][supportedDevices]'))); ?>>
+              <?php esc_html_e('Desktop', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -672,9 +666,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -690,13 +684,13 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Dark Mode', $this->slug); ?>
+              <?php esc_html_e('Dark Mode', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[darkMode][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[darkMode][feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Dark mode adds a switch to your website, allowing users to toggle to a dark version. It can also auto-enable if the user\'s device is set to Dark Mode or has a low battery, helping save energy.', $this->slug); ?>
+              <?php esc_html_e('Dark mode adds a switch to your website, allowing users to toggle to a dark version. It can also auto-enable if the user\'s device is set to Dark Mode or has a low battery, helping save energy.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -709,21 +703,19 @@ if (!defined('ABSPATH')) {
         <!-- Switch Button Type -->
         <div id="settingDarkModeButtonType">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Switch Button Type', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select type of your dark mode switch button.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Switch Button Type', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select type of your dark mode switch button.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[darkMode][type]" required="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Switch Button Type', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Switch Button Type', $this->slug); ?>"
           }'>
             <option value="menu-switch" <?php selected(Plugin::getSetting('uiComponents[darkMode][type]'), 'menu-switch'); ?>><?php esc_html_e('Menu Switch', $this->slug); ?></option>
             <option value="floating-button" <?php selected(Plugin::getSetting('uiComponents[darkMode][type]'), 'floating-button'); ?>><?php esc_html_e('Floating Button', $this->slug); ?></option>
@@ -733,21 +725,21 @@ if (!defined('ABSPATH')) {
         <!-- OS Aware Dark Mode -->
         <div id="settingOsAwareDarkMode">
           <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('OS Aware Dark Mode', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('OS aware dark mode automatically switches your website to a dark mode if your user\'s device OS theme preference is set to Dark in display settings.', $this->slug); ?> </span>
-              </button>
-            </div>
+            <?php esc_html_e('OS Aware Dark Mode', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('OS aware dark mode automatically switches your website to a dark mode if your user\'s device OS theme preference is set to Dark in display settings.', $this->slug); ?>
+              </span>
+            </button>
           </div>
           <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
             <label class="flex items-center gap-x-1.5 cursor-pointer">
               <input type="checkbox" name="uiComponents[darkMode][osAware]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('uiComponents[darkMode][osAware]'), 'on'); ?>>
-              <span class="text-sm dark:text-neutral-400"><?php _e('Auto-enable Dark Mode if the user\'s device is set to Dark Mode.', $this->slug); ?></span>
+              <span class="text-sm dark:text-neutral-400"><?php esc_html_e('Auto-enable Dark Mode if the user\'s device is set to Dark Mode.', $this->slug); ?></span>
             </label>
           </div>
         </div>
@@ -755,21 +747,21 @@ if (!defined('ABSPATH')) {
         <!-- Battery Low Dark Mode -->
         <div id="settingBatteryLowDarkMode">
           <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Battery Low Dark Mode', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content invisible absolute z-[100] inline-block max-w-xs rounded bg-gray-900 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 sm:max-w-lg dark:bg-neutral-700" role="tooltip"> <?php _e('Battery low dark mode automatically switches your website to a dark mode if your user\'s device battery level is less than 10%, thus saving their battery from draining fast.', $this->slug); ?> </span>
-              </button>
-            </div>
+            <?php esc_html_e('Battery Low Dark Mode', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Battery low dark mode automatically switches your website to a dark mode if your user\'s device battery level is less than 10%, thus saving their battery from draining fast.', $this->slug); ?>
+              </span>
+            </button>
           </div>
           <div class="flex gap-x-3 rounded-lg bg-white dark:border-neutral-700 dark:bg-neutral-800">
             <label class="flex items-center gap-x-1.5 cursor-pointer">
               <input type="checkbox" name="uiComponents[darkMode][batteryLow]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" <?php checked(Plugin::getSetting('uiComponents[darkMode][batteryLow]'), 'on'); ?>>
-              <span class="text-sm dark:text-neutral-400"><?php _e('Auto-enable Dark Mode if your user\'s device battery level is low.', $this->slug); ?></span>
+              <span class="text-sm dark:text-neutral-400"><?php esc_html_e('Auto-enable Dark Mode if your user\'s device battery level is low.', $this->slug); ?></span>
             </label>
           </div>
         </div>
@@ -777,33 +769,31 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingDarkModeDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types dark mode feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types dark mode feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[darkMode][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
             <option value="desktop" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
-              <?php _e('Desktop', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true)); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[darkMode][supportedDevices]'))); ?>>
+              <?php esc_html_e('Desktop', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -812,9 +802,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -831,7 +821,7 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Pull Down Refresh', $this->slug); ?>
+              <?php esc_html_e('Pull Down Refresh', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[pullDownRefresh][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
                   Plugin::getSetting('uiComponents[pullDownRefresh][feature]'),
@@ -840,7 +830,7 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Pull down refresh touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents of your web app.', $this->slug); ?>
+              <?php esc_html_e('Pull down refresh touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents of your web app.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -853,29 +843,27 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingPullDownRefreshDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types pull down navigation feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types pull down navigation feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[pullDownRefresh][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[pullDownRefresh][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -884,9 +872,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -903,13 +891,13 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Shake Refresh', $this->slug); ?>
+              <?php esc_html_e('Shake Refresh', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[shakeRefresh][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[shakeRefresh][feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Shake refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen.', $this->slug); ?>
+              <?php esc_html_e('Shake refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -922,29 +910,27 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingShakeRefreshDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types swipe navigation feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types swipe navigation feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[shakeRefresh][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[shakeRefresh][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -953,9 +939,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -972,13 +958,13 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Loader', $this->slug); ?>
+              <?php esc_html_e('Loader', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[loader][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[loader][feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Loader feature gives you ability to show a nice loader animation between page loadings. Loader appears at the start of page load and disappears after it is fully loaded.', $this->slug); ?>
+              <?php esc_html_e('Loader feature gives you ability to show a nice loader animation between page loadings. Loader appears at the start of page load and disappears after it is fully loaded.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -991,73 +977,69 @@ if (!defined('ABSPATH')) {
         <!-- Loader Type -->
         <div id="settingLoaderType">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Loader Type', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select the type of loader you want on your website.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Loader Type', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select the type of loader you want on your website.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[loader][type]" required="true" data-dp-select='{
-            "placeholder": "<?php _e('Select Loader Type', $this->slug); ?>"
+            "placeholder": "<?php esc_html_e('Select Loader Type', $this->slug); ?>"
           }'>
             <option value="default" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'default'); ?> data-dp-select-option='{
-            "description": "<?php _e('Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation.', $this->slug); ?>"
-          }'><?php _e('Default', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation.', $this->slug); ?>"
+          }'><?php esc_html_e('Default', $this->slug); ?></option>
             <option value="skeleton" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'skeleton'); ?> data-dp-select-option='{
-            "description": "<?php _e('Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance.', $this->slug); ?>"
-          }'><?php _e('Skeleton', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance.', $this->slug); ?>"
+          }'><?php esc_html_e('Skeleton', $this->slug); ?></option>
             <option value="spinner" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'spinner'); ?> data-dp-select-option='{
-            "description": "<?php _e('Displays spinning circles as the loading animation, indicating that the page is loading with a familiar, straightforward visual.', $this->slug); ?>"
-          }'><?php _e('Spinner', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Displays spinning circles as the loading animation, indicating that the page is loading with a familiar, straightforward visual.', $this->slug); ?>"
+          }'><?php esc_html_e('Spinner', $this->slug); ?></option>
             <option value="redirect" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'redirect'); ?> data-dp-select-option='{
-            "description": "<?php _e('Features a flying man icon moving across a yellow background, offering a fun and playful loading experience that entertains users while they wait.', $this->slug); ?>"
-          }'><?php _e('Redirect', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Features a flying man icon moving across a yellow background, offering a fun and playful loading experience that entertains users while they wait.', $this->slug); ?>"
+          }'><?php esc_html_e('Redirect', $this->slug); ?></option>
             <option value="percent" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'percent'); ?> data-dp-select-option='{
-            "description": "<?php _e('Displays the loading percentage and a progress bar, giving users a clear and precise indication of the page loading progress.', $this->slug); ?>"
-          }'><?php _e('Percent', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Displays the loading percentage and a progress bar, giving users a clear and precise indication of the page loading progress.', $this->slug); ?>"
+          }'><?php esc_html_e('Percent', $this->slug); ?></option>
             <option value="fade" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'fade'); ?> data-dp-select-option='{
-            "description": "<?php _e('Smooth transition with fade in and fade out effects, creating a seamless and visually appealing loading experience.', $this->slug); ?>"
-          }'><?php _e('Fade', $this->slug); ?></option>
+            "description": "<?php esc_html_e('Smooth transition with fade in and fade out effects, creating a seamless and visually appealing loading experience.', $this->slug); ?>"
+          }'><?php esc_html_e('Fade', $this->slug); ?></option>
           </select>
         </div>
         <!-- End Loader Type -->
         <!-- Supported Devices -->
         <div id="settingLoaderDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types loader feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types loader feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[loader][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
             <option value="desktop" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
-              <?php _e('Desktop', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true)); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+              <?php esc_html_e('Desktop', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -1066,9 +1048,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -1085,13 +1067,13 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Inactive Blur', $this->slug); ?>
+              <?php esc_html_e('Inactive Blur', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[inactiveBlur][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[inactiveBlur][feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Inactive Blur feature blurs the website when it\'s not focused, so when the user switches to another tab in browser or will minimize your website as a background task your website will be blurred.', $this->slug); ?>
+              <?php esc_html_e('Inactive Blur feature blurs the website when it\'s not focused, so when the user switches to another tab in browser or will minimize your website as a background task your website will be blurred.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -1104,29 +1086,27 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingInactiveBlurDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types inactive blur feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types inactive blur feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[inactiveBlur][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[inactiveBlur][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -1135,9 +1115,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>
@@ -1153,14 +1133,14 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php _e('Toast Messages', $this->slug); ?>
+              <?php esc_html_e('Toast Messages', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="uiComponents[toastMessages][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
                   <?php checked(Plugin::getSetting('uiComponents[toastMessages][feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php _e('Toast messages provide simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. Toasts automatically disappear after a timeout.', $this->slug); ?>
+              <?php esc_html_e('Toast messages provide simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. Toasts automatically disappear after a timeout.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -1173,29 +1153,27 @@ if (!defined('ABSPATH')) {
         <!-- Supported Devices -->
         <div id="settingToastMessagesDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php _e('Supported Devices', $this->slug); ?>
-            <div class="hs-tooltip inline-block [--placement:top]">
-              <button type="button" class="hs-tooltip-toggle cursor-help ms-1 flex" tabindex="-1">
-                <svg class="inline-block size-3 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[999999999999] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  <?php _e('Select on what device types toast messages feature should be active and running.', $this->slug); ?>
-                </span>
-              </button>
-            </div>
+            <?php esc_html_e('Supported Devices', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select on what device types toast messages feature should be active and running.', $this->slug); ?>
+              </span>
+            </button>
           </label>
           <select name="uiComponents[toastMessages][supportedDevices]" required="true" multiple="true" data-dp-select='{
-          "placeholder": "<?php _e('Select Devices', $this->slug); ?>"
+          "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[toastMessages][supportedDevices]'))); ?>>
-              <?php _e('Smartphone', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[toastMessages][supportedDevices]'))); ?>>
+              <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[toastMessages][supportedDevices]'))); ?>>
-              <?php _e('Tablet', $this->slug); ?>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[toastMessages][supportedDevices]'))); ?>>
+              <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
           </select>
         </div>
@@ -1204,9 +1182,9 @@ if (!defined('ABSPATH')) {
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-            <span class="sr-only"><?php _e('Saving...', $this->slug); ?></span>
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
           </span>
-          <?php _e('Save Changes', $this->slug); ?>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
         </button>
       </div>
     </div>

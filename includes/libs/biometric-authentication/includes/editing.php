@@ -11,7 +11,7 @@ function plwp_show_user_profile_list($profileuser)
     check_admin_referer('plwp_remove_token_' . $user_id);
 
     if ($user_id !== get_current_user_id() && !current_user_can('edit_users')) {
-      wp_die(__('Sorry, you are not allowed to edit this user.'));
+      wp_die(esc_html__('Sorry, you are not allowed to edit this user.'));
     }
 
     PublicKeyCredentialSourceRepository::removeCred($_REQUEST['key']);
@@ -21,52 +21,52 @@ function plwp_show_user_profile_list($profileuser)
 
   $remove_url = add_query_arg('action', 'plwp_remove_token', get_edit_user_link($user_id));
   ?>
-  <h2><?php _e('Biometric Authentication Credentials'); ?></h2>
-  <table id="wtl" class="form-table" role="presentation">
-    <tr id="password" class="user-pass1-wrap">
-      <th><label><?php _e('Registered Tokens'); ?></label></th>
-      <td>
-        <table class="wp-list-table widefat fixed striped pages">
-          <thead>
-            <tr>
-              <td scope="col" class="manage-column column-author"><?php _e('Token'); ?></td>
-              <td scope="col" class="manage-column column-author"><?php _e('Created'); ?></td>
-            </tr>
-          </thead>
+<h2><?php esc_html_e('Biometric Authentication Credentials'); ?></h2>
+<table id="wtl" class="form-table" role="presentation">
+  <tr id="password" class="user-pass1-wrap">
+    <th><label><?php esc_html_e('Registered Tokens'); ?></label></th>
+    <td>
+      <table class="wp-list-table widefat fixed striped pages">
+        <thead>
+          <tr>
+            <td scope="col" class="manage-column column-author"><?php esc_html_e('Token'); ?></td>
+            <td scope="col" class="manage-column column-author"><?php esc_html_e('Created'); ?></td>
+          </tr>
+        </thead>
 
-          <tbody id="the-list">
-            <?php if (!count($items)): ?>
-              <tr class="no-items">
-                <td class="colspanchange" colspan="2"><?php _e('No credentials found.'); ?></td>
-              </tr>
-            <?php else: ?>
-              <?php foreach ($items as $key => $item): ?>
-                <?php
-                $remove = add_query_arg('key', urlencode($key), $remove_url);
-                $remove = add_query_arg('_wpnonce', wp_create_nonce('plwp_remove_token_' . $user_id), $remove);
-                ?>
-                <tr class="iedit author-self level-0 type-plc hentry">
-                  <td class="title column-title has-row-actions column-primary page-title">
-                    <strong><?php esc_html_e($key); ?></strong>
+        <tbody id="the-list">
+          <?php if (!count($items)): ?>
+          <tr class="no-items">
+            <td class="colspanchange" colspan="2"><?php esc_html_e('No credentials found.'); ?></td>
+          </tr>
+          <?php else: ?>
+          <?php foreach ($items as $key => $item): ?>
+          <?php
+          $remove = add_query_arg('key', urlencode($key), $remove_url);
+          $remove = add_query_arg('_wpnonce', wp_create_nonce('plwp_remove_token_' . $user_id), $remove);
+          ?>
+          <tr class="iedit author-self level-0 type-plc hentry">
+            <td class="title column-title has-row-actions column-primary page-title">
+              <strong><?php esc_html_e($key); ?></strong>
 
-                    <div class="row-actions">
-                      <span class="trash">
-                        <a href="<?php esc_attr_e($remove); ?>#wtl" onclick="if(!confirm('<?php echo esc_js(__('Do you want to remove?', 'daftplug-instantify')); ?>')) { return false; }" class="submitdelete"><?php _e('Remove', 'daftplug-instantify'); ?></a>
-                    </div>
-                  </td>
-                  <td class="date column-date"><?php _e('Active'); ?><br><span><?php esc_html_e(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $item->getCounter())); ?></span></td>
-                </tr>
-              <?php endforeach; ?>
-            <?php endif; ?>
-          </tbody>
-        </table>
-        <?php if ($user_id === get_current_user_id()): ?>
-          <br />
-          <a type="button" class="button" href="<?php esc_attr_e(add_query_arg('redirect_to', get_edit_user_link($user_id), plwp_get_url_attach_touch())); ?>"><?php _e('Register New Token', 'daftplug-instantify'); ?></a>
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
+              <div class="row-actions">
+                <span class="trash">
+                  <a href="<?php esc_attr_e($remove); ?>#wtl" onclick="if(!confirm('<?php echo esc_js(__('Do you want to remove?', 'daftplug-progressify')); ?>')) { return false; }" class="submitdelete"><?php esc_html_e('Remove', 'daftplug-progressify'); ?></a>
+              </div>
+            </td>
+            <td class="date column-date"><?php esc_html_e('Active'); ?><br><span><?php esc_html_e(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $item->getCounter())); ?></span></td>
+          </tr>
+          <?php endforeach; ?>
+          <?php endif; ?>
+        </tbody>
+      </table>
+      <?php if ($user_id === get_current_user_id()): ?>
+      <br />
+      <a type="button" class="button" href="<?php esc_attr_e(add_query_arg('redirect_to', get_edit_user_link($user_id), plwp_get_url_attach_touch())); ?>"><?php esc_html_e('Register New Token', 'daftplug-progressify'); ?></a>
+      <?php endif; ?>
+    </td>
+  </tr>
+</table>
 <?php
 }
 

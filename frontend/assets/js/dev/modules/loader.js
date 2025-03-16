@@ -44,7 +44,7 @@ class PwaLoader extends HTMLElement {
 
     if (!loader) {
       loader = document.createElement('pwa-loader');
-      config.daftplugFrontend.appendChild(loader);
+      document.body.appendChild(loader);
     }
 
     return loader;

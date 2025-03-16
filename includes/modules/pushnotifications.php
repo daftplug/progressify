@@ -44,8 +44,7 @@ class PushNotifications
     $this->wpdb = $wpdb;
     $this->tableName = $wpdb->prefix . $this->optionName . '_push_notifications_subscribers';
 
-    register_activation_hook($this->pluginFile, [$this, 'createSubscribersTable']);
-    register_activation_hook($this->pluginFile, [$this, 'generateVapidKeys']);
+    add_action('init', [$this, 'createSubscribersTable']);
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_filter("{$this->optionName}_frontend_js_vars", [$this, 'addPublicVapidKeyToFrontJs']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addPushJsToServiceWorker']);
@@ -160,51 +159,79 @@ class PushNotifications
 
   public function fetchPushNotificationsSubscribers(\WP_REST_Request $request)
   {
-    $page = sanitize_text_field($request->get_param('page'));
-    $per_page = 7;
+    try {
+      // First verify the table exists
+      $tableExists = $this->wpdb->get_var($this->wpdb->prepare('SHOW TABLES LIKE %s', $this->tableName));
 
-    $offset = ($page - 1) * $per_page;
-    $total = (int) $this->wpdb->get_var("SELECT COUNT(*) FROM {$this->tableName}");
+      if (!$tableExists) {
+        // Create table if it doesn't exist
+        $this->createSubscribersTable();
+      }
 
-    // Simplified date formatting query
-    $subscribers = $this->wpdb->get_results(
-      $this->wpdb->prepare(
-        "SELECT 
-            id,
-            endpoint,
-            auth_key,
-            p256dh_key,
-            content_encoding,
-            country_name,
-            country_icon,
-            device_name,
-            device_icon,
-            os_name,
-            os_icon,
-            browser_name,
-            browser_icon,
-            wp_user_id,
-            DATE_FORMAT(date, '%b %e, %Y') as date
-        FROM {$this->tableName} 
-        ORDER BY date DESC 
-        LIMIT %d OFFSET %d",
-        $per_page,
-        $offset
-      ),
-      ARRAY_A
-    );
-
-    return new \WP_REST_Response(
-      [
+      // Default empty response
+      $response = [
         'status' => 'success',
         'data' => [
-          'subscribers' => $subscribers ?: [],
-          'total' => $total, // This is already cast to int
-          'pages' => $total > 0 ? ceil($total / $per_page) : 1,
+          'subscribers' => [],
+          'total' => 0,
+          'pages' => 1,
         ],
-      ],
-      200
-    );
+      ];
+
+      $page = max(1, (int) sanitize_text_field($request->get_param('page')));
+      $per_page = 7;
+      $offset = ($page - 1) * $per_page;
+
+      // Only query if table exists
+      if ($tableExists) {
+        $total = (int) $this->wpdb->get_var("SELECT COUNT(*) FROM {$this->tableName}");
+
+        $subscribers =
+          $this->wpdb->get_results(
+            $this->wpdb->prepare(
+              "SELECT 
+                        id,
+                        endpoint,
+                        auth_key,
+                        p256dh_key,
+                        content_encoding,
+                        country_name,
+                        country_icon,
+                        device_name,
+                        device_icon,
+                        os_name,
+                        os_icon,
+                        browser_name,
+                        browser_icon,
+                        wp_user_id,
+                        DATE_FORMAT(date, '%b %e, %Y') as date
+                    FROM {$this->tableName} 
+                    ORDER BY date DESC 
+                    LIMIT %d OFFSET %d",
+              $per_page,
+              $offset
+            ),
+            ARRAY_A
+          ) ?:
+          [];
+
+        $response['data'] = [
+          'subscribers' => $subscribers,
+          'total' => $total,
+          'pages' => $total > 0 ? ceil($total / $per_page) : 1,
+        ];
+      }
+
+      return new \WP_REST_Response($response, 200);
+    } catch (\Exception $e) {
+      return new \WP_REST_Response(
+        [
+          'status' => 'error',
+          'message' => $e->getMessage(),
+        ],
+        500
+      );
+    }
   }
 
   public function getVapidKeys()

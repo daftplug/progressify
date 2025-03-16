@@ -48,14 +48,13 @@ class AppCapabilities
     add_action('after_setup_theme', [$this, 'wrapAllContentWithSwup']);
     add_filter("{$this->optionName}_manifest", [$this, 'addUrlProtocolHandlerToManifest']);
     add_filter("{$this->optionName}_manifest", [$this, 'addWebShareTargetToManifest']);
-    add_filter("{$this->optionName}_frontend_css", [$this, 'injectThemeColorSwupProgressBarCss']);
     add_action('plugin_loaded', [$this, 'initBiometricAuthentication']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addBackgroundSyncToServiceWorker']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addPeriodicBackgroundSyncToServiceWorker']);
-    add_filter("{$this->optionName}_frontend_js", [$this, 'renderPeriodicSyncRegistration']);
+    add_filter('wp_footer', [$this, 'renderPeriodicSyncRegistration']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addContentIndexingToServiceWorker']);
-    add_filter("{$this->optionName}_frontend_js", [$this, 'renderContentIndexing']);
-    add_filter("{$this->optionName}_frontend_js", [$this, 'renderPersistentStorage']);
+    add_filter('wp_footer', [$this, 'renderContentIndexing']);
+    add_filter('wp_footer', [$this, 'renderPersistentStorage']);
   }
 
   public function wrapAllContentWithSwup()
@@ -83,26 +82,10 @@ class AppCapabilities
           }
         }
 
-        echo $content;
+        echo esc_html($content);
       },
       0
     );
-  }
-
-  public function injectThemeColorSwupProgressBarCss($css)
-  {
-    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]') !== 'on' || Plugin::getSetting('appCapabilities[smoothPageTransitions][progressBar]') !== 'on') {
-      return;
-    }
-
-    $css .=
-      '.swup-progress-bar {
-          background-color: ' .
-      Plugin::getSetting('webAppManifest[appearance][themeColor]') .
-      ' !important;
-            }';
-
-    return $css;
   }
 
   public function addUrlProtocolHandlerToManifest($manifest)
@@ -238,44 +221,42 @@ class AppCapabilities
     return $serviceWorker;
   }
 
-  public function renderPeriodicSyncRegistration($js)
+  public function renderPeriodicSyncRegistration()
   {
     if (Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][periodicBackgroundSync]') !== 'on') {
-      return $js;
+      return;
+    } ?>
+<script>
+window.addEventListener('load', async function() {
+  try {
+    if (!('serviceWorker' in navigator)) {
+      return;
     }
+    const registration = await navigator.serviceWorker.ready;
 
-    $js .= "
-      window.addEventListener('load', async function() {
-        try {
-          if (!('serviceWorker' in navigator)) {
-            return;
-          }
-          const registration = await navigator.serviceWorker.ready;
-          
-          if (!('periodicSync' in registration)) {
-            console.log('Periodic sync not supported');
-            return;
-          }
-          const status = await navigator.permissions.query({
-            name: 'periodic-background-sync',
-          });
-          if (status.state === 'granted') {
-            try {
-              await registration.periodicSync.register('content-sync', {
-                minInterval: 24 * 60 * 60 * 1000 // 24 hours
-              });
-              console.log('Periodic sync registered');
-            } catch (error) {
-              console.error('Periodic sync registration failed:', error);
-            }
-          }
-        } catch (error) {
-          console.error('Periodic sync setup failed:', error);
-        }
-      });
-    ";
-
-    return $js;
+    if (!('periodicSync' in registration)) {
+      console.log('Periodic sync not supported');
+      return;
+    }
+    const status = await navigator.permissions.query({
+      name: 'periodic-background-sync',
+    });
+    if (status.state === 'granted') {
+      try {
+        await registration.periodicSync.register('content-sync', {
+          minInterval: 24 * 60 * 60 * 1000 // 24 hours
+        });
+        console.log('Periodic sync registered');
+      } catch (error) {
+        console.error('Periodic sync registration failed:', error);
+      }
+    }
+  } catch (error) {
+    console.error('Periodic sync setup failed:', error);
+  }
+});
+</script>
+<?php
   }
 
   public function addContentIndexingToServiceWorker($serviceWorker)
@@ -313,128 +294,121 @@ class AppCapabilities
     return $serviceWorker;
   }
 
-  public function renderContentIndexing($js)
+  public function renderContentIndexing()
   {
     if (Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][contentIndexing]') !== 'on') {
-      return $js;
+      return;
+    } ?>
+<script>
+window.addEventListener('load', async function() {
+  try {
+    if (!('serviceWorker' in navigator)) {
+      return;
     }
 
-    $js .=
-      "
-        window.addEventListener('load', async function() {
-            try {
-                if (!('serviceWorker' in navigator)) {
-                    return;
-                }
+    const registration = await navigator.serviceWorker.ready;
 
-                const registration = await navigator.serviceWorker.ready;
-                
-                if (!('index' in registration)) {
-                    console.log('Content indexing not supported');
-                    return;
-                }
+    if (!('index' in registration)) {
+      console.log('Content indexing not supported');
+      return;
+    }
 
-                // Get the current page metadata
-                const pageMetadata = {
-                    id: window.location.href,
-                    url: window.location.href,
-                    title: document.title,
-                    description: document.querySelector('meta[name=\"description\"]')?.content || '',
-                    icons: [{
-                        src: " .
-      WebAppManifest::getPwaIconUrl('maskable', 180) .
-      ",
-                        sizes: '150x150',
-                        type: 'image/png',
-                    }],
-                    category: 'article'
-                };
+    // Get the current page metadata
+    const pageMetadata = {
+      id: window.location.href,
+      url: window.location.href,
+      title: document.title,
+      description: document.querySelector('meta[name=\"description\"]')?.content || '',
+      icons: [{
+        src: "<?php echo esc_url(WebAppManifest::getPwaIconUrl('maskable', 180)); ?>",
+        sizes: '150x150',
+        type: 'image/png',
+      }],
+      category: 'article'
+    };
 
-                // Check if the page is cached before adding to index
-                const cacheNames = await caches.keys();
-                const htmlCaches = cacheNames.filter(name => name.endsWith('-html'));
-                
-                for (const cacheName of htmlCaches) {
-                    const cache = await caches.open(cacheName);
-                    const keys = await cache.keys();
-                    const isPageCached = keys.some(key => key.url === window.location.href);
-                    
-                    if (isPageCached) {
-                        await registration.index.add(pageMetadata);
-                        console.log('Page added to content index:', pageMetadata.url);
-                        break;
-                    }
-                }
+    // Check if the page is cached before adding to index
+    const cacheNames = await caches.keys();
+    const htmlCaches = cacheNames.filter(name => name.endsWith('-html'));
 
-                // Remove from index when page is unloaded
-                window.addEventListener('unload', async () => {
-                    try {
-                        await registration.index.delete(pageMetadata.id);
-                        console.log('Page removed from content index:', pageMetadata.url);
-                    } catch (error) {
-                        console.error('Error removing from content index:', error);
-                    }
-                });
+    for (const cacheName of htmlCaches) {
+      const cache = await caches.open(cacheName);
+      const keys = await cache.keys();
+      const isPageCached = keys.some(key => key.url === window.location.href);
 
-            } catch (error) {
-                console.error('Content indexing setup failed:', error);
-            }
-        });
-    ";
+      if (isPageCached) {
+        await registration.index.add(pageMetadata);
+        console.log('Page added to content index:', pageMetadata.url);
+        break;
+      }
+    }
 
-    return $js;
+    // Remove from index when page is unloaded
+    window.addEventListener('unload', async () => {
+      try {
+        await registration.index.delete(pageMetadata.id);
+        console.log('Page removed from content index:', pageMetadata.url);
+      } catch (error) {
+        console.error('Error removing from content index:', error);
+      }
+    });
+
+  } catch (error) {
+    console.error('Content indexing setup failed:', error);
+  }
+});
+</script>
+<?php
   }
 
-  public function renderPersistentStorage($js)
+  public function renderPersistentStorage()
   {
     if (Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][persistentStorage]') !== 'on') {
-      return $js;
+      return;
+    } ?>
+<script>
+async function requestPersistentStorage() {
+  try {
+    if (!('storage' in navigator) || !('persist' in navigator.storage)) {
+      console.log('Persistent storage not supported');
+      return false;
     }
 
-    $js .= "
-      async function requestPersistentStorage() {
-        try {
-          if (!('storage' in navigator) || !('persist' in navigator.storage)) {
-            console.log('Persistent storage not supported');
-            return false;
-          }
-  
-          const isPersisted = await navigator.storage.persisted();
-          if (isPersisted) {
-            console.log('Storage persistence already granted');
-            return true;
-          }
-  
-          // First try the Storage API directly
-          let persisted = await navigator.storage.persist();
-          if (persisted) {
-            console.log('Storage persistence granted');
-            
-            if ('estimate' in navigator.storage) {
-              const estimate = await navigator.storage.estimate();
-              console.log('Storage quota:', Math.round(estimate.quota / 1024 / 1024), 'MB');
-              console.log('Storage usage:', Math.round(estimate.usage / 1024 / 1024), 'MB');
-            }
-            return true;
-          }
-  
-          console.log('Storage persistence not granted. The site may need to be installed as a PWA or meet other browser requirements.');
-          return false;
-        } catch (error) {
-          console.error('Error requesting persistent storage:', error);
-          return false;
-        }
-      }
-  
-      // Try requesting when the page loads
-      requestPersistentStorage();
-  
-      // Also try again if the page becomes installed as a PWA
-      window.addEventListener('appinstalled', () => {
-        requestPersistentStorage();
-      });
-    ";
+    const isPersisted = await navigator.storage.persisted();
+    if (isPersisted) {
+      console.log('Storage persistence already granted');
+      return true;
+    }
 
-    return $js;
+    // First try the Storage API directly
+    let persisted = await navigator.storage.persist();
+    if (persisted) {
+      console.log('Storage persistence granted');
+
+      if ('estimate' in navigator.storage) {
+        const estimate = await navigator.storage.estimate();
+        console.log('Storage quota:', Math.round(estimate.quota / 1024 / 1024), 'MB');
+        console.log('Storage usage:', Math.round(estimate.usage / 1024 / 1024), 'MB');
+      }
+      return true;
+    }
+
+    console.log('Storage persistence not granted. The site may need to be installed as a PWA or meet other browser requirements.');
+    return false;
+  } catch (error) {
+    console.error('Error requesting persistent storage:', error);
+    return false;
+  }
+}
+
+// Try requesting when the page loads
+requestPersistentStorage();
+
+// Also try again if the page becomes installed as a PWA
+window.addEventListener('appinstalled', () => {
+  requestPersistentStorage();
+});
+</script>
+<?php
   }
 }

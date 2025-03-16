@@ -20,7 +20,7 @@ class PwaIdleDetection extends HTMLElement {
 
     if (!idleDetection) {
       idleDetection = document.createElement('pwa-idle-detection');
-      config.daftplugFrontend.appendChild(idleDetection);
+      document.body.appendChild(idleDetection);
     }
 
     requestAnimationFrame(() => {

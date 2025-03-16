@@ -8,7 +8,6 @@ export function handleClipboard() {
   clipboardButtons.forEach((button) => {
     button.addEventListener('click', function () {
       const content = this.getAttribute('data-clipboard-content');
-      const successText = this.getAttribute('data-clipboard-success-text');
 
       // Copy to clipboard
       navigator.clipboard
@@ -17,21 +16,16 @@ export function handleClipboard() {
           // Show success state
           const defaultIcon = this.querySelector('.clipboard-default');
           const successIcon = this.querySelector('.clipboard-success');
-          const tooltip = this.querySelector('.hs-tooltip-content');
 
           defaultIcon.classList.add('hidden');
           successIcon.classList.remove('hidden');
-          tooltip.textContent = successText;
-          tooltip.classList.remove('hidden', 'invisible');
-          tooltip.classList.add('hs-tooltip-shown');
+          button.setAttribute('data-shown', 'true');
 
           // Reset after 2 seconds
           setTimeout(() => {
             defaultIcon.classList.remove('hidden');
             successIcon.classList.add('hidden');
-            tooltip.classList.add('hidden', 'invisible');
-            tooltip.classList.remove('hs-tooltip-shown');
-            tooltip.textContent = ''; // Clear tooltip text
+            button.removeAttribute('data-shown');
           }, 2000);
         })
         .catch((err) => {

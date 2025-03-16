@@ -288,25 +288,25 @@ class PwaUsersDataManager {
       this.browserStatsContainer.innerHTML = [
         ...validBrowsers.map(
           (browser) => `
-                <div class="p-3 bg-gray-100 dark:bg-neutral-700 rounded-lg">
-                    <img class="shrink-0 size-7 mb-4" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
-                    <p class="text-sm text-gray-800 dark:text-neutral-200">
-                        ${browser.browser_name}
-                    </p>
-                    <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-                        ${browser.percentage}%
-                    </p>
-                </div>
+            <div class="p-3 bg-gray-100 dark:bg-neutral-700 rounded-lg">
+                <img class="shrink-0 size-7 mb-4" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
+                <p class="text-sm text-gray-800 dark:text-neutral-200">
+                    ${browser.browser_name}
+                </p>
+                <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
+                    ${browser.percentage}%
+                </p>
+            </div>
             `
         ),
         ...Array(emptySlots).fill(`
-                <div class="p-3 border border-dashed border-gray-200 dark:border-neutral-700 rounded-lg">
-                    <div class="shrink-0 size-7 mb-4 rounded-full bg-gray-200"></div>
-                    <p class="text-sm text-gray-800 dark:text-neutral-200 bg-gray-200 rounded-full h-2 w-16"></p>
-                    <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-                        0
-                    </p>
-                </div>
+            <div class="p-3 border border-dashed border-gray-200 dark:border-neutral-700 rounded-lg">
+                <div class="shrink-0 size-7 mb-4 rounded-full bg-gray-200"></div>
+                <p class="text-sm text-gray-800 dark:text-neutral-200 bg-gray-200 rounded-full h-2 w-16"></p>
+                <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
+                    0
+                </p>
+            </div>
             `),
       ].join('');
     }

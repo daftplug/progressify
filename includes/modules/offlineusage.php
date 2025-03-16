@@ -46,13 +46,39 @@ class OfflineUsage
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->workboxVersion = '7.3.0';
-    self::$serviceWorkerName = 'sw.webworker';
+    self::$serviceWorkerName = 'serviceworker.js';
 
-    add_action('parse_request', [$this, 'generateServiceWorker']);
+    add_action('init', [$this, 'generateServiceWorkerFile']);
+    add_action('parse_request', [$this, 'renderServiceWorker']);
+    add_action('parse_request', [$this, 'renderOfflineFallbackPage']);
     add_action('wp_head', [$this, 'renderRegisterServiceWorker']);
   }
 
-  public function generateServiceWorker()
+  public function renderOfflineFallbackPage()
+  {
+    global $wp;
+    global $wp_query;
+
+    if (!$wp_query->is_main_query()) {
+      return;
+    }
+
+    if ($wp->request === 'offline-fallback') {
+      $wp_query->set('offline-fallback', 1);
+    }
+
+    if ($wp_query->get('offline-fallback')) {
+      nocache_headers();
+      header('X-Robots-Tag: noindex, follow');
+      header('Content-Type: text/html; charset=utf-8');
+
+      Frontend::renderPartial('offlineFallbackPage');
+
+      exit();
+    }
+  }
+
+  public function renderServiceWorker()
   {
     global $wp;
     global $wp_query;
@@ -71,40 +97,47 @@ class OfflineUsage
       header('Content-Type: application/javascript; charset=utf-8');
       header('Service-Worker-Allowed: /');
 
-      $serviceworker = $this->buildServiceworkerData();
-      $cacheKey = hash('crc32', $serviceworker . $this->version);
-
-      echo "
-        const CACHE_VERSION = '{$cacheKey}';
-        const CACHE_PREFIX = '{$this->slug}';
-        {$serviceworker}
-      ";
+      include $this->generateServiceWorkerFile();
 
       exit();
     }
   }
 
+  public function generateServiceWorkerFile()
+  {
+    // Build the service worker content.
+    $serviceWorkerContent = $this->buildServiceworkerData();
+
+    // Generate a cache key based on content and plugin version.
+    $cacheKey = hash('crc32', $serviceWorkerContent . $this->version);
+    $safe_slug = sanitize_key($this->slug);
+
+    // Create header variables (they will be part of the file).
+    $header = "const CACHE_VERSION = '" . esc_js($cacheKey) . "';\n";
+    $header .= "const CACHE_PREFIX = '" . esc_js($safe_slug) . "';\n";
+
+    $finalContent = $header . $serviceWorkerContent;
+    $serviceWorkerPath = $this->pluginUploadDir . self::$serviceWorkerName;
+
+    Plugin::putContent($serviceWorkerPath, $finalContent);
+
+    return $serviceWorkerPath;
+  }
+
   public function buildServiceworkerData()
   {
     $isOfflineCacheEnabled = Plugin::getSetting('offlineUsage[cache][feature]') == 'on';
-    $isCustomOfflinePageEnabled = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on';
-    $offlinePage = $isCustomOfflinePageEnabled ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : Frontend::renderPartial('offlineFallbackPage');
+    $offlineFallbackPage = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on' ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : home_url('/offline-fallback');
     $cachingStrategy = Plugin::getSetting('offlineUsage[cache][strategy]');
     $cacheExpiration = intval(Plugin::getSetting('offlineUsage[cache][expirationTime]')) ?: 10;
-    $fallbackData = [
-      'content' => $offlinePage,
-      'isCustomPage' => $isCustomOfflinePageEnabled,
-    ];
 
     $serviceworker = $this->loadWorkbox($this->workboxVersion);
     $serviceworker .= $this->getBasicEventListeners();
-
     if ($isOfflineCacheEnabled) {
-      $serviceworker .= $this->getOfflinePageCaching($fallbackData);
+      $serviceworker .= $this->getOfflinePageCaching($offlineFallbackPage);
       $serviceworker .= $this->getRoutingRules($cachingStrategy, $cacheExpiration);
       $serviceworker .= $this->getCacheCleanupLogic();
     }
-
     $serviceworker .= $this->getThirdPartyIntegrations();
 
     return apply_filters("{$this->optionName}_serviceworker", $serviceworker);
@@ -148,14 +181,8 @@ class OfflineUsage
     ";
   }
 
-  private function getOfflinePageCaching($fallbackData)
+  private function getOfflinePageCaching($offlineFallbackPage)
   {
-    $fallbackContent = $fallbackData['isCustomPage']
-      ? "fetch('{$fallbackData['content']}', {credentials: 'same-origin'}).then(response => response)"
-      : "new Response(`{$fallbackData['content']}`, {
-            headers: {'Content-Type': 'text/html;charset=utf-8'}
-          })";
-
     return "
       workbox.loadModule('workbox-cacheable-response');
       workbox.loadModule('workbox-range-requests');
@@ -172,7 +199,7 @@ class OfflineUsage
       self.addEventListener('install', async(event) => {
         event.waitUntil(
           caches.open(cacheName.pages).then((cache) => {
-            return Promise.resolve({$fallbackContent})
+            return Promise.resolve(fetch('{$offlineFallbackPage}', {credentials: 'same-origin'}).then(response => response))
               .then(response => cache.put('offline-fallback', response))
               .catch(error => console.error('Failed to cache offline page:', error));
           })
@@ -288,14 +315,14 @@ class OfflineUsage
 
   public function renderRegisterServiceWorker()
   {
-    $scope = $this->getServiceWorkerScope(); ?>
+    ?>
 <script type="text/javascript" id="serviceworker">
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
       const registration = await navigator.serviceWorker.register(
-        <?php echo $this->getServiceWorkerUrl(true); ?>, {
-          scope: <?php echo wp_json_encode($scope); ?>
+        '<?php echo esc_url($this->getServiceWorkerUrl(true)); ?>', {
+          scope: '<?php echo esc_url($this->getServiceWorkerScope()); ?>'
         }
       );
     } catch (error) {
@@ -310,7 +337,7 @@ if ('serviceWorker' in navigator) {
   private function getServiceWorkerScope()
   {
     $homeUrlParts = wp_parse_url(trailingslashit(strtok(home_url('/', 'https'), '?')));
-    return isset($homeUrlParts['path']) ? $homeUrlParts['path'] : '/';
+    return isset($homeUrlParts['path']) ? wp_json_encode($homeUrlParts['path']) : '/';
   }
 
   public static function getServiceWorkerUrl($encoded = true)

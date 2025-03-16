@@ -6,13 +6,6 @@ export function handleTextareaAutoHeight() {
   const textareas = document.querySelectorAll('textarea');
 
   textareas.forEach((textarea) => {
-    const overlay = textarea.closest('.hs-overlay');
-
-    if (overlay) {
-      const { element } = HSOverlay.getInstance(overlay, true);
-      element.on('open', () => adjustTextareaHeight(textarea));
-    }
-
     // Remove any inline height style
     textarea.style.removeProperty('height');
 

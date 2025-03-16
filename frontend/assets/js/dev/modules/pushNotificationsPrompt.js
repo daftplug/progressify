@@ -35,7 +35,7 @@ class PwaPushNotificationsPrompt extends HTMLElement {
 
     if (!pushNotificationsPrompt) {
       pushNotificationsPrompt = document.createElement('pwa-push-notifications-prompt');
-      config.daftplugFrontend.appendChild(pushNotificationsPrompt);
+      document.body.appendChild(pushNotificationsPrompt);
     }
 
     requestAnimationFrame(() => {

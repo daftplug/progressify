@@ -37,6 +37,7 @@ export async function initSmoothPageTransitions() {
     const { initSwupProgressBarPlugin } = await import('../components/swup.js');
     initSwupProgressBarPlugin();
     swupPlugins.push(new SwupProgressPlugin());
+    document.head.insertAdjacentHTML('beforeend', '<style>.swup-progress-bar { background-color: ' + config.jsVars.settings.webAppManifest.appearance.themeColor + ' !important; }</style>');
   }
 
   // Transition Type

@@ -178,7 +178,7 @@ class PwaNavigationTabBar extends HTMLElement {
 
     if (!navigationTabBar) {
       navigationTabBar = document.createElement('pwa-navigation-tab-bar');
-      config.daftplugFrontend.appendChild(navigationTabBar);
+      document.body.appendChild(navigationTabBar);
     }
 
     return navigationTabBar;

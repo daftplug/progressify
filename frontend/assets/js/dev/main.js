@@ -2,12 +2,10 @@ import { isReturningVisitor, getCookie, setCookie } from './components/utils.js'
 import PushNotificationsSubscription from './components/pushNotificationsSubscription.js';
 
 export const config = (() => {
-  const daftplugFrontend = document.getElementById('daftplugFrontend');
-  const optionName = daftplugFrontend.getAttribute('data-option-name');
+  const optionName = 'daftplug_progressify';
   const jsVars = window[optionName + '_frontend_js_vars'] || {};
 
   return {
-    daftplugFrontend,
     optionName,
     jsVars,
   };

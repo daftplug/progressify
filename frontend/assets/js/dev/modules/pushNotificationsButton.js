@@ -28,7 +28,7 @@ class PwaPushNotificationsButton extends HTMLElement {
 
     if (!pushNotificationsButton) {
       pushNotificationsButton = document.createElement('pwa-push-notifications-button');
-      config.daftplugFrontend.appendChild(pushNotificationsButton);
+      document.body.appendChild(pushNotificationsButton);
     }
 
     return pushNotificationsButton;

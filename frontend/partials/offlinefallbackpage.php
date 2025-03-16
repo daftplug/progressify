@@ -8,7 +8,7 @@ use DaftPlug\Progressify\Plugin; ?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php _e("You're Offline", Plugin::$slug); ?></title>
+  <title><?php esc_html_e("You're Offline", Plugin::$slug); ?></title>
   <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -83,9 +83,9 @@ use DaftPlug\Progressify\Plugin; ?>
 
 <body>
   <div class="offline-fallback">
-    <div class="offline-fallback_title"><?php _e("You're Offline", Plugin::$slug); ?></div>
+    <div class="offline-fallback_title"><?php esc_html_e("You're Offline", Plugin::$slug); ?></div>
     <div class="offline-fallback_message">
-      <?php _e('It looks like you lost your internet connection. Please check your connection to reconnect.', Plugin::$slug); ?>
+      <?php esc_html_e('It looks like you lost your internet connection. Please check your connection to reconnect.', Plugin::$slug); ?>
     </div>
     <button type="button" onclick="window.location.reload()" class="offline-fallback_button">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -95,7 +95,7 @@ use DaftPlug\Progressify\Plugin; ?>
         <path d="M10.5 16.5 13 14" />
         <path d="m18 3-4 4h6l-4 4" />
       </svg>
-      <?php _e('Reconnect', Plugin::$slug); ?>
+      <?php esc_html_e('Reconnect', Plugin::$slug); ?>
     </button>
   </div>
   <script>

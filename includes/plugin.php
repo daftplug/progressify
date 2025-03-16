@@ -307,7 +307,7 @@ class Plugin
     // PHP version check
     if (version_compare(PHP_VERSION, '8.2', '<')) {
       $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s requires PHP version at least 8.2 to function properly.', self::$slug), $this->menuTitle), __('If you have trouble fixing this, please contact us on', self::$slug));
-      wp_die($message, 'Plugin Activation Error', [
+      wp_die(wp_kses_post($message), esc_html('Plugin Activation Error'), [
         'back_link' => true,
         'text_direction' => 'ltr',
         'response' => 200,
@@ -319,7 +319,7 @@ class Plugin
     foreach ($required_extensions as $extension) {
       if (!extension_loaded($extension)) {
         $message = sprintf('<p>%s %s <i>support@daftplug.com</i></p>', sprintf(__('⚠️ %s features require <i>%s</i> extension to function properly.', self::$slug), $this->menuTitle, $extension), __('If you have trouble fixing this, please contact us on', self::$slug));
-        wp_die($message, 'Plugin Activation Error', [
+        wp_die(wp_kses_post($message), esc_html('Plugin Activation Error'), [
           'back_link' => true,
           'text_direction' => 'ltr',
           'response' => 200,
@@ -641,7 +641,7 @@ class Plugin
       WP_Filesystem();
     }
 
-    if (!$wp_filesystem->put_contents($file, $content, 0644)) {
+    if (!$wp_filesystem->put_contents($file, $content, FS_CHMOD_FILE)) {
       return false;
     }
 
@@ -776,10 +776,17 @@ class Plugin
     ];
   }
 
-  public static function getQrCodeSrc($data, $size = '200x200', $logo = false)
+  public static function generateQrCode($data, $size = '200x200', $logo = false)
   {
     if (empty($data)) {
-      return '';
+      return false;
+    }
+
+    // Initialize WP Filesystem
+    global $wp_filesystem;
+    if (empty($wp_filesystem)) {
+      require_once ABSPATH . 'wp-admin/includes/file.php';
+      WP_Filesystem();
     }
 
     // Define a scaling factor for higher resolution rendering
@@ -856,20 +863,32 @@ class Plugin
       // If logo is provided, try to add it but continue if it fails
       if ($logo) {
         try {
-          // Handle WordPress attachment
-          if (is_numeric($logo)) {
+          // Check if logo is a base64 encoded string
+          if (is_string($logo)) {
+            $logoContent = base64_decode($logo);
+            if (empty($logoContent)) {
+              throw new \Exception('Invalid base64 image data');
+            }
+          } elseif (is_numeric($logo)) {
             $attachment_path = get_attached_file($logo);
             if (!$attachment_path || !file_exists($attachment_path)) {
               throw new \Exception('Attachment file not found');
             }
-            $logoContent = file_get_contents($attachment_path);
+
+            $logoContent = $wp_filesystem->get_contents($attachment_path);
+            if ($logoContent === false) {
+              throw new \Exception('Failed to read attachment file');
+            }
           } else {
             // Try to convert URL to local path if it's rounded PWA icon
             $pwa_icon_url = WebAppManifest::getPwaIconUrl('rounded');
             $pwa_icon_path = self::$pluginUploadDir . 'pwa-icons/icon-rounded.png';
 
             if ($logo == $pwa_icon_url && file_exists($pwa_icon_path)) {
-              $logoContent = file_get_contents($pwa_icon_path);
+              $logoContent = $wp_filesystem->get_contents($pwa_icon_path);
+              if ($logoContent === false) {
+                throw new \Exception('Failed to read PWA icon file');
+              }
             } else {
               // Fallback to direct URL with WordPress filters
               $logoContent = wp_remote_get($logo);
@@ -926,19 +945,18 @@ class Plugin
       // Downscale the image to target size
       imagecopyresampled($finalImageScaled, $baseImage, 0, 0, 0, 0, $targetWidth, $targetHeight, $scaledWidth, $scaledHeight);
 
-      // Output final image
       ob_start();
       imagepng($finalImageScaled);
-      $finalImage = ob_get_clean();
+      $imageData = ob_get_clean();
 
       // Clean up
       imagedestroy($baseImage);
       imagedestroy($finalImageScaled);
 
-      return 'data:image/png;base64,' . base64_encode($finalImage);
+      return $imageData;
     } catch (\Exception $e) {
       error_log('QR code generation failed: ' . $e->getMessage());
-      return '';
+      return false;
     }
   }
 
@@ -949,7 +967,18 @@ class Plugin
       if (!file_exists($path)) {
         return '';
       }
-      $svg = file_get_contents($path);
+
+      // Initialize WP Filesystem
+      global $wp_filesystem;
+      if (empty($wp_filesystem)) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        WP_Filesystem();
+      }
+
+      $svg = $wp_filesystem->get_contents($path);
+      if ($svg === false) {
+        return '';
+      }
     } else {
       $svg = $svgOrUrl;
     }
@@ -1009,8 +1038,16 @@ class Plugin
     }
 
     // Get country data using visitor's IP
-    $locationData = @file_get_contents("https://get.geojs.io/v1/ip/country/{$visitor_ip}.json", false, stream_context_create(['http' => ['timeout' => 2]]));
-    $locationData = $locationData ? json_decode($locationData, true) : [];
+    $response = wp_remote_get("https://get.geojs.io/v1/ip/country/{$visitor_ip}.json", [
+      'timeout' => 2,
+      'sslverify' => true,
+    ]);
+
+    $locationData = [];
+    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+      $body = wp_remote_retrieve_body($response);
+      $locationData = $body ? json_decode($body, true) : [];
+    }
 
     $userData = [
       'country' => [

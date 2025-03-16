@@ -22,7 +22,7 @@ class PwaInstallOverlayHeaderBanner extends HTMLElement {
 
     if (!banner) {
       banner = document.createElement('pwa-install-overlay-header-banner');
-      config.daftplugFrontend.appendChild(banner);
+      document.body.appendChild(banner);
 
       requestAnimationFrame(() => {
         const headerBanner = banner.shadowRoot.querySelector('.header-banner-overlay');

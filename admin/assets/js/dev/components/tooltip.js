@@ -5,24 +5,69 @@ export function initTooltip() {
 }
 
 export function handleTooltip() {
-  daftplugAdmin.find('[data-dp-tooltip]').each(function () {
+  // Initial setup for existing elements
+  setupTooltips();
+
+  // Setup MutationObserver for dynamically added elements
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            // Only process Element nodes
+            const $element = jQuery(node);
+            if ($element.is('[data-dp-tooltip]') || $element.find('[data-dp-tooltip]').length > 0) {
+              setupTooltips($element);
+            }
+          }
+        });
+      }
+    });
+  });
+
+  // Start observing the document with the configured parameters
+  observer.observe(daftplugAdmin[0], { childList: true, subtree: true });
+}
+
+function setupTooltips(container = daftplugAdmin) {
+  const tooltips = container.is('[data-dp-tooltip]') ? container : container.find('[data-dp-tooltip]');
+
+  tooltips.each(function () {
     const self = jQuery(this);
+
+    // Skip if already initialized
+    if (self.data('tooltip-initialized')) {
+      return;
+    }
+
+    const content = self.find('.dp-tooltip-content');
     const config = JSON.parse(self.attr('data-dp-tooltip'));
-    const tooltipText = config.text || '';
     const trigger = config.trigger || 'hover';
     const placement = config.placement || 'top';
 
-    const tooltip = jQuery(`
-      <span class="group-data-[shown=true]:opacity-100 group-data-[shown=true]:visible opacity-0 transition-opacity inline-block absolute invisible max-w-xs sm:max-w-lg z-[100] py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-        ${tooltipText}
-      </span>
-    `);
+    let positionClasses = '';
 
-    self.append(tooltip);
+    switch (placement) {
+      case 'top':
+        positionClasses = 'bottom-6 left-1/2 -translate-x-1/2';
+        break;
+      case 'bottom':
+        positionClasses = 'top-6 left-1/2 -translate-x-1/2';
+        break;
+      case 'left':
+        positionClasses = 'right-6 top-1/2 -translate-y-1/2';
+        break;
+      case 'right':
+        positionClasses = 'left-6 top-1/2 -translate-y-1/2';
+        break;
+      default:
+        positionClasses = 'bottom-6 left-1/2 -translate-x-1/2';
+    }
+
+    content.addClass(positionClasses);
 
     const showTooltip = () => {
       self.attr('data-shown', true);
-      positionTooltip(tooltip, self, placement);
     };
 
     const hideTooltip = () => {
@@ -50,8 +95,8 @@ export function handleTooltip() {
       });
     }
 
-    window.addEventListener('scroll', () => handleTooltipPositioning(tooltip, self, placement));
-    window.addEventListener('resize', () => handleTooltipPositioning(tooltip, self, placement));
+    // Mark as initialized
+    self.data('tooltip-initialized', true);
   });
 }
 
@@ -60,60 +105,4 @@ function hideAllTooltips() {
     const self = jQuery(this);
     self.attr('data-shown', false);
   });
-}
-
-function positionTooltip(tooltip, element, placement) {
-  const tooltipHeight = tooltip.outerHeight();
-  const tooltipWidth = tooltip.outerWidth();
-  const elementRect = element[0].getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
-  const viewportWidth = window.innerWidth;
-
-  let top, left;
-
-  const calculateTopPlacement = () => ({
-    top: elementRect.top - tooltipHeight - 5,
-    left: elementRect.left + elementRect.width / 2 - tooltipWidth / 2,
-  });
-
-  const calculateBottomPlacement = () => ({
-    top: elementRect.bottom + 5,
-    left: elementRect.left + elementRect.width / 2 - tooltipWidth / 2,
-  });
-
-  const calculateLeftPlacement = () => ({
-    top: elementRect.top + elementRect.height / 2 - tooltipHeight / 2,
-    left: elementRect.left - tooltipWidth - 5,
-  });
-
-  const calculateRightPlacement = () => ({
-    top: elementRect.top + elementRect.height / 2 - tooltipHeight / 2,
-    left: elementRect.right + 5,
-  });
-
-  if (placement === 'top' && elementRect.top >= tooltipHeight) {
-    ({ top, left } = calculateTopPlacement());
-  } else if (placement === 'bottom' && viewportHeight - elementRect.bottom >= tooltipHeight) {
-    ({ top, left } = calculateBottomPlacement());
-  } else if (placement === 'left' && elementRect.left >= tooltipWidth) {
-    ({ top, left } = calculateLeftPlacement());
-  } else if (placement === 'right' && viewportWidth - elementRect.right >= tooltipWidth) {
-    ({ top, left } = calculateRightPlacement());
-  } else if (elementRect.top >= tooltipHeight) {
-    ({ top, left } = calculateTopPlacement());
-  } else if (viewportHeight - elementRect.bottom >= tooltipHeight) {
-    ({ top, left } = calculateBottomPlacement());
-  } else if (elementRect.left >= tooltipWidth) {
-    ({ top, left } = calculateLeftPlacement());
-  } else {
-    ({ top, left } = calculateRightPlacement());
-  }
-
-  tooltip.css({ top: `${top}px`, left: `${left}px` });
-}
-
-function handleTooltipPositioning(tooltip, element, placement) {
-  if (element.attr('data-shown') === 'true') {
-    positionTooltip(tooltip, element, placement);
-  }
 }

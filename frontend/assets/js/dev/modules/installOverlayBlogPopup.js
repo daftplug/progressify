@@ -22,7 +22,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
 
     if (!popup) {
       popup = document.createElement('pwa-install-overlay-blog-popup');
-      config.daftplugFrontend.appendChild(popup);
+      document.body.appendChild(popup);
 
       requestAnimationFrame(() => {
         const blogPopup = popup.shadowRoot.querySelector('.blog-popup-overlay');

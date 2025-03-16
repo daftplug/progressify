@@ -20,7 +20,7 @@ class PwaShakeRefresh extends HTMLElement {
 
     if (!shakeRefresh) {
       shakeRefresh = document.createElement('pwa-shake-refresh');
-      config.daftplugFrontend.appendChild(shakeRefresh);
+      document.body.appendChild(shakeRefresh);
     }
 
     return shakeRefresh;

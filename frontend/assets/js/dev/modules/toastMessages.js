@@ -23,7 +23,7 @@ class PwaToastMessages extends HTMLElement {
 
     if (!toastMessages) {
       toastMessages = document.createElement('pwa-toast-messages');
-      config.daftplugFrontend.appendChild(toastMessages);
+      document.body.appendChild(toastMessages);
     }
 
     requestAnimationFrame(() => {

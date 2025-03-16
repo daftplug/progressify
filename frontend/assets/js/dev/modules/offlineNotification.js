@@ -23,7 +23,7 @@ class PwaOfflineNotification extends HTMLElement {
 
     if (!offlineNotification) {
       offlineNotification = document.createElement('pwa-offline-notification');
-      config.daftplugFrontend.appendChild(offlineNotification);
+      document.body.appendChild(offlineNotification);
     }
 
     requestAnimationFrame(() => {

@@ -49,7 +49,6 @@ class Frontend
     self::$partials = $this->generatePartials();
 
     add_action('wp_enqueue_scripts', [$this, 'loadAssets']);
-    add_action('wp_footer', [$this, 'addFrontendCssHtmlJs'], 70);
   }
 
   public function loadAssets()
@@ -148,23 +147,6 @@ class Frontend
     );
   }
 
-  public function addFrontendCssHtmlJs()
-  {
-    ?>
-<div id="daftplugFrontend" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
-  <style type="text/css">
-  <?php echo apply_filters("{$this->optionName}_frontend_css", $this->css); ?>
-  </style>
-  <?php echo apply_filters("{$this->optionName}_frontend_html", $this->html); ?>
-  <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    <?php echo apply_filters("{$this->optionName}_frontend_js", $this->js); ?>
-  });
-  </script>
-</div>
-<?php
-  }
-
   private static function generatePartials()
   {
     $partials = [
@@ -177,8 +159,6 @@ class Frontend
 
   public static function renderPartial($key)
   {
-    ob_start();
     include self::$partials[$key];
-    return ob_get_clean();
   }
 }

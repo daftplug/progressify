@@ -23,7 +23,6 @@ class Admin
   public $menuTitle;
   public $menuIcon;
   public $menuId;
-  public $domain;
   protected $dependencies;
   public $licenseKey;
   public $capability;
@@ -104,7 +103,27 @@ class Admin
     if ($hook && $hook == $this->menuId) {
       $this->dependencies[] = 'jquery';
 
+      // load paypal script
+      wp_enqueue_script("{$this->slug}-paypal", 'https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD', $this->dependencies, null, true);
+      $this->dependencies[] = "{$this->slug}-paypal";
+
+      // load admin styles and scripts
       wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.css', $this->pluginFile), [], $this->version);
+      wp_add_inline_style(
+        "{$this->slug}-admin",
+        '
+        #wpcontent {
+          padding-left: 0 !important;
+        }
+        #wpfooter {
+          display: none !important;
+        }
+        #wpbody-content {
+          padding-bottom: 0 !important;
+        }
+      '
+      );
+
       wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/dev/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
 
       // Ensure the script is loaded as a module
@@ -119,7 +138,6 @@ class Admin
         10,
         3
       );
-
       $this->dependencies[] = "{$this->slug}-admin";
 
       // WP media
@@ -218,8 +236,8 @@ class Admin
   public function createAdminPage()
   {
     ?>
-<div id="daftplugAdmin" data-option-name="<?php echo $this->optionName; ?>" data-slug="<?php echo $this->slug; ?>">
-  <div class="relative mr-6 mt-6 rounded-xl bg-gray-50 shadow-[0_5px_25px_0_rgba(0,0,0,.1)] -daftplugLoading">
+<div id="daftplugAdmin" data-option-name="<?php echo esc_attr($this->optionName); ?>" data-slug="<?php echo esc_attr($this->slug); ?>">
+  <div class="relative bg-gray-50 -daftplugLoading">
     <?php if (!$this->licenseKey): ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
     <?php else: ?>
@@ -431,7 +449,7 @@ class Admin
 
         // Decode and save base64 image
         $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $attachment['dataUrl']));
-        file_put_contents($filepath, $imageData);
+        Plugin::putContent($filepath, $imageData);
 
         $attachments[] = $filepath;
       }

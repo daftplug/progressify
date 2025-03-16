@@ -128,22 +128,22 @@ function plwp_login_form_attach_touch()
   $current_user = wp_get_current_user();
   ?>
   <form id="attachform" class="admin-attach" onSubmit="return false;">
-    <h1 class="admin-email__heading"><?php _e('Passwordless credentials adding', 'daftplug-instantify'); ?></h1>
+    <h1 class="admin-email__heading"><?php esc_html_e('Passwordless credentials adding', 'daftplug-instantify'); ?></h1>
     <div class="admin-attach__body">
       <div class="admin-attach__body-left">
         <p class="admin-email__details">
-          <?php _e('Generate token for biometric authentication, touch your fingerprint device or use you camera if your device use that method.', 'daftplug-instantify'); ?> <a href="javascript: void(0)" rel="noopener noreferrer" target="_blank"><?php _e('Which devices are supported?', 'daftplug-instantify'); ?></a> </p>
+          <?php esc_html_e('Generate token for biometric authentication, touch your fingerprint device or use you camera if your device use that method.', 'daftplug-instantify'); ?> <a href="javascript: void(0)" rel="noopener noreferrer" target="_blank"><?php esc_html_e('Which devices are supported?', 'daftplug-instantify'); ?></a> </p>
         <p class="admin-email__details">
-          <?php _e('Username:', 'daftplug-instantify'); ?> <strong><?php esc_html_e($current_user->user_login); ?></strong> </p>
+          <?php esc_html_e('Username:', 'daftplug-instantify'); ?> <strong><?php esc_html_e($current_user->user_login); ?></strong> </p>
 
         <div class="admin-email__actions">
           <div class="wtl-error"></div>
 
           <div class="admin-email__actions-primary">
-            <a id="attach-btn" class="button button-primary button-large" style="margin: 0;"><?php _e('Register Token', 'daftplug-instantify'); ?></a>
+            <a id="attach-btn" class="button button-primary button-large" style="margin: 0;"><?php esc_html_e('Register Token', 'daftplug-instantify'); ?></a>
           </div>
           <div class="admin-email__actions-secondary" style="margin-top: 20px;">
-            <a href="<?php esc_attr_e($redirect_to); ?>" rel="noopener noreferrer"><?php _e('Skip', 'daftplug-instantify'); ?></a>
+            <a href="<?php esc_attr_e($redirect_to); ?>" rel="noopener noreferrer"><?php esc_html_e('Skip', 'daftplug-instantify'); ?></a>
           </div>
         </div>
       </div>
@@ -192,11 +192,11 @@ function plwp_login_form_attach_touch_success()
   $btn = apply_filters('plwp_attach_success_btn', $btn);
   ?>
   <form id="attachform" class="admin-attach" onSubmit="return false;">
-    <h1 class="admin-email__heading"><?php _e('Passwordless credentials added', 'daftplug-instantify'); ?></h1>
+    <h1 class="admin-email__heading"><?php esc_html_e('Passwordless credentials added', 'daftplug-instantify'); ?></h1>
     <div class="admin-attach__body">
       <div class="admin-attach__body-left">
         <p class="admin-email__details">
-          <?php _e('Congrats! You have adeded you token, you can you it for Biometric authentication to WordPress. You can manage it in you profile page.'); ?></a> </p>
+          <?php esc_html_e('Congrats! You have adeded you token, you can you it for Biometric authentication to WordPress. You can manage it in you profile page.'); ?></a> </p>
 
         <?php do_action('plwp_attach_success'); ?>
 

@@ -17,7 +17,7 @@ function doModalPushNotification(e) {
   const form = jQuery(e.target);
   const parsedData = JSON.parse(form.daftplugSerialize());
   const sendNotificationBtn = form.find('button[type="submit"]');
-  const intractableComponents = daftplugAdmin.find('header, aside, main, footer');
+  const intractableComponents = daftplugAdmin.find('header, aside, button, footer');
 
   sendNotificationBtn.attr('data-sending', true);
   intractableComponents.attr('data-disabled', true);
@@ -40,7 +40,7 @@ function doModalPushNotification(e) {
         form.trigger('reset');
         form.find('[data-file-delete-btn]').trigger('click');
         form.find('[data-dp-copy-markup-delete="actionButton1"]').trigger('click');
-        showToast('Success', response.message, 'success', 'top-right', false, true);
+        showToast('Success', response.message, 'success', 'top-right', true, false);
       } else {
         throw new Error(response.message || 'Server error');
       }

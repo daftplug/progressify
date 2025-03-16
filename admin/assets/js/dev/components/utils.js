@@ -1,16 +1,16 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function navigateToPage(pageId, subPageId = '') {
-  const allPages = daftplugAdmin.find('section[data-page-id]');
-  const allMenuItems = daftplugAdmin.find('a[data-page-id]');
-  const allSubpages = daftplugAdmin.find('article[data-subpage-id]');
-  const allSubmenuItems = daftplugAdmin.find('a[data-subpage-id]');
+  const allPages = daftplugAdmin.find('[data-page-id]');
+  const allMenuItems = daftplugAdmin.find('nav a[data-page-id]');
+  const allSubpages = daftplugAdmin.find('[data-subpage-id]');
+  const allSubmenuItems = daftplugAdmin.find('nav a[data-subpage-id]');
   const page = allPages.filter(`[data-page-id="${pageId}"]`);
   const menuItem = allMenuItems.filter(`[data-page-id="${pageId}"]`);
   const subPage = allSubpages.filter(`[data-subpage-id="${pageId}-${subPageId}"]`);
   const submenuItem = allSubmenuItems.filter(`[data-subpage-id="${pageId}-${subPageId}"]`);
-  const hasSubpages = page.find('article[data-subpage-id]').length;
-  const firstSubpage = page.find('article[data-subpage-id]').first();
+  const hasSubpages = page.find('[data-subpage-id]').length;
+  const firstSubpage = page.find('[data-subpage-id]').first();
   const firstSubpageId = firstSubpage.attr('data-subpage-id');
   const firstSubmenuItem = menuItem.find('a[data-subpage-id]').first();
   const errorPage = allPages.filter('[data-page-id="error"]');
