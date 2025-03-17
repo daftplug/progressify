@@ -44,19 +44,21 @@ export async function saveSettings(e) {
 
     if (data.status === 'success') {
       try {
+        // Generate PWA assets if the top level key is webAppManifest
         if (topLevelKey === 'webAppManifest') {
           const iconUrl = daftplugAdmin.find('#settingAppIcon').find('[data-attachment-holder]').attr('src');
           const backgroundColor = parsedSettings.webAppManifest.appearance.backgroundColor;
           await generateAndSendPwaAssets(iconUrl, backgroundColor);
-        } else {
-          await fetch(wpApiSettings.root + slug + '/generateServiceWorkerFile', {
-            method: 'POST',
-            headers: {
-              'X-WP-Nonce': wpApiSettings.nonce,
-              'Content-Type': 'application/json',
-            },
-          });
         }
+
+        // Generate service worker file
+        await fetch(wpApiSettings.root + slug + '/generateServiceWorkerFile', {
+          method: 'POST',
+          headers: {
+            'X-WP-Nonce': wpApiSettings.nonce,
+            'Content-Type': 'application/json',
+          },
+        });
       } catch (error) {
         console.error('Failed to generate PWA assets:', error);
         showToast('Warning', 'Settings saved but PWA assets generation failed!', 'warning', 'top-right', true, false);

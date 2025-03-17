@@ -46,7 +46,7 @@ class OfflineUsage
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->workboxVersion = '7.3.0';
-    self::$serviceWorkerName = 'serviceworker.js';
+    self::$serviceWorkerName = 'serviceworker.webworker';
 
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'renderServiceWorker']);
@@ -108,7 +108,7 @@ class OfflineUsage
       header('Content-Type: application/javascript; charset=utf-8');
       header('Service-Worker-Allowed: /');
 
-      include $this->pluginUploadDir . self::$serviceWorkerName;
+      include $this->pluginUploadDir . 'scripts/serviceworker.js';
 
       exit();
     }
@@ -129,7 +129,12 @@ class OfflineUsage
       $header .= "const CACHE_PREFIX = '" . esc_js($safe_slug) . "';\n";
 
       $finalContent = $header . $serviceWorkerContent;
-      $serviceWorkerPath = $this->pluginUploadDir . self::$serviceWorkerName;
+
+      if (!file_exists($this->pluginUploadDir . 'scripts/')) {
+        wp_mkdir_p($this->pluginUploadDir . 'scripts/');
+      }
+
+      $serviceWorkerPath = $this->pluginUploadDir . 'scripts/serviceworker.js';
 
       Plugin::putContent($serviceWorkerPath, $finalContent);
 
