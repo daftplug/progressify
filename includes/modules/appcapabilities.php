@@ -45,7 +45,7 @@ class AppCapabilities
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
 
-    add_action('after_setup_theme', [$this, 'wrapAllContentWithSwup']);
+    add_action('template_redirect', [$this, 'wrapAllContentWithSwup']);
     add_filter("{$this->optionName}_manifest", [$this, 'addUrlProtocolHandlerToManifest']);
     add_filter("{$this->optionName}_manifest", [$this, 'addWebShareTargetToManifest']);
     add_action('plugin_loaded', [$this, 'initBiometricAuthentication']);
@@ -68,21 +68,31 @@ class AppCapabilities
     }
 
     ob_start();
+
     add_action(
       'shutdown',
       function () {
         $content = ob_get_clean();
 
-        if ($content && strpos($content, '<body') !== false) {
-          $content = preg_replace('/(<body[^>]*>)([\s\S]*?)(<\/body>)/i', '$1<div id="swup">$2</div>$3', $content);
-          if (!$content) {
-            $content = ob_get_clean();
-            $content = preg_replace('/(<body[^>]*>)/i', '$1<div id="swup">', $content);
-            $content = preg_replace('/(<\/body>)/i', '</div>$1', $content);
+        if (!empty($content) && false !== strpos($content, '<body')) {
+          libxml_use_internal_errors(true);
+          $dom = new \DOMDocument();
+          $dom->loadHTML($content, LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED);
+
+          $body = $dom->getElementsByTagName('body')->item(0);
+          if ($body) {
+            $wrapper = $dom->createElement('div');
+            $wrapper->setAttribute('id', 'swup');
+
+            while ($body->firstChild) {
+              $wrapper->appendChild($body->firstChild);
+            }
+            $body->appendChild($wrapper);
+            $content = $dom->saveHTML();
           }
         }
 
-        echo esc_html($content);
+        echo $content;
       },
       0
     );
@@ -142,26 +152,26 @@ class AppCapabilities
     }
 
     $serviceWorker .= "
-      workbox.loadModule('workbox-background-sync');
-      workbox.routing.registerRoute(
-          new RegExp('^(?!.*wp-admin).*$'),
-          new workbox.strategies.NetworkOnly({
-              plugins: [
-                  new workbox.backgroundSync.BackgroundSyncPlugin('backgroundSyncQueue', {
-                      maxRetentionTime: 24 * 60, // Retry for 24 Hours (in minutes)
-                      onSync: async ({queue}) => {
-                          try {
-                              await queue.replayRequests();
-                              console.log('Background sync completed');
-                          } catch (error) {
-                              console.error('Background sync failed:', error);
-                          }
-                      }
-                  })
-              ]
-          }),
-          'POST'
-      );";
+    workbox.loadModule('workbox-background-sync');
+    workbox.routing.registerRoute(
+    new RegExp('^(?!.*wp-admin).*$'),
+    new workbox.strategies.NetworkOnly({
+    plugins: [
+    new workbox.backgroundSync.BackgroundSyncPlugin('backgroundSyncQueue', {
+    maxRetentionTime: 24 * 60, // Retry for 24 Hours (in minutes)
+    onSync: async ({queue}) => {
+    try {
+    await queue.replayRequests();
+    console.log('Background sync completed');
+    } catch (error) {
+    console.error('Background sync failed:', error);
+    }
+    }
+    })
+    ]
+    }),
+    'POST'
+    );";
 
     return $serviceWorker;
   }
@@ -174,48 +184,48 @@ class AppCapabilities
 
     $serviceWorker .=
       "
-        async function fetchAndCacheContent() {
-            try {
-                const request = '" .
+    async function fetchAndCacheContent() {
+    try {
+    const request = '" .
       trailingslashit(strtok(home_url('/', 'https'), '?')) .
       "';
-                const cache = await caches.open(CACHE_PREFIX + '-periodic-' + CACHE_VERSION);
-                
-                const response = await fetch(request, {
-                    credentials: 'same-origin',
-                    headers: {
-                        'Accept': 'text/html',
-                        'Cache-Control': 'no-cache'
-                    }
-                });
+    const cache = await caches.open(CACHE_PREFIX + '-periodic-' + CACHE_VERSION);
 
-                if (!response.ok) {
-                    throw new Error('Periodic sync fetch failed: ' + response.status);
-                }
+    const response = await fetch(request, {
+    credentials: 'same-origin',
+    headers: {
+    'Accept': 'text/html',
+    'Cache-Control': 'no-cache'
+    }
+    });
 
-                await cache.put(request, response.clone());
-                
-                // Clean up old cached responses
-                const keys = await cache.keys();
-                await Promise.all(
-                    keys.map(key => {
-                        if (key.url !== request) {
-                            return cache.delete(key);
-                        }
-                    })
-                );
+    if (!response.ok) {
+    throw new Error('Periodic sync fetch failed: ' + response.status);
+    }
 
-                console.log('Periodic sync completed successfully');
-            } catch (error) {
-                console.error('Periodic sync error:', error);
-            }
-        }
+    await cache.put(request, response.clone());
 
-        self.addEventListener('periodicsync', (event) => {
-            if (event.tag === 'content-sync') {
-                event.waitUntil(fetchAndCacheContent());
-            }
-        });
+    // Clean up old cached responses
+    const keys = await cache.keys();
+    await Promise.all(
+    keys.map(key => {
+    if (key.url !== request) {
+    return cache.delete(key);
+    }
+    })
+    );
+
+    console.log('Periodic sync completed successfully');
+    } catch (error) {
+    console.error('Periodic sync error:', error);
+    }
+    }
+
+    self.addEventListener('periodicsync', (event) => {
+    if (event.tag === 'content-sync') {
+    event.waitUntil(fetchAndCacheContent());
+    }
+    });
     ";
 
     return $serviceWorker;
