@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-17T17:25:18+00:00\n"
+"POT-Creation-Date: 2025-03-18T19:54:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -113,10 +113,6 @@ msgstr ""
 
 #: admin/admin.php:219
 msgid "See what's new added, changed, fixed, improved or updated."
-msgstr ""
-
-#: admin/admin.php:224
-msgid "Control what to do with your settings and data, reset/export/import settings or deactivate license to activate the plugin on another website."
 msgstr ""
 
 #: admin/templates/header.php:26
@@ -374,10 +370,10 @@ msgstr ""
 #: admin/templates/pages/installation.php:234
 #: admin/templates/pages/offlineusage.php:148
 #: admin/templates/pages/offlineusage.php:281
-#: admin/templates/pages/pushnotifications.php:165
-#: admin/templates/pages/pushnotifications.php:260
-#: admin/templates/pages/pushnotifications.php:349
-#: admin/templates/pages/pushnotifications.php:821
+#: admin/templates/pages/pushnotifications.php:163
+#: admin/templates/pages/pushnotifications.php:258
+#: admin/templates/pages/pushnotifications.php:347
+#: admin/templates/pages/pushnotifications.php:819
 #: admin/templates/pages/uicomponents.php:596
 #: admin/templates/pages/uicomponents.php:669
 #: admin/templates/pages/uicomponents.php:805
@@ -403,10 +399,10 @@ msgstr ""
 #: admin/templates/pages/installation.php:236
 #: admin/templates/pages/offlineusage.php:150
 #: admin/templates/pages/offlineusage.php:283
-#: admin/templates/pages/pushnotifications.php:167
-#: admin/templates/pages/pushnotifications.php:262
-#: admin/templates/pages/pushnotifications.php:351
-#: admin/templates/pages/pushnotifications.php:823
+#: admin/templates/pages/pushnotifications.php:165
+#: admin/templates/pages/pushnotifications.php:260
+#: admin/templates/pages/pushnotifications.php:349
+#: admin/templates/pages/pushnotifications.php:821
 #: admin/templates/pages/uicomponents.php:598
 #: admin/templates/pages/uicomponents.php:671
 #: admin/templates/pages/uicomponents.php:807
@@ -594,47 +590,47 @@ msgstr ""
 msgid "Number of users who installed your web app and are actively using it as PWA."
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:48
+#: admin/templates/pages/dashboard.php:42
 msgid "PWA Scorecard"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:56
+#: admin/templates/pages/dashboard.php:50
 msgid "The scorecard shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score."
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:80
+#: admin/templates/pages/dashboard.php:72
 msgid "Bad"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:86
+#: admin/templates/pages/dashboard.php:78
 msgid "Average"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:92
+#: admin/templates/pages/dashboard.php:84
 msgid "Good"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:98
+#: admin/templates/pages/dashboard.php:90
 msgid "Excellent"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:117
+#: admin/templates/pages/dashboard.php:105
 msgid "PWA Installations"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:125
+#: admin/templates/pages/dashboard.php:113
 msgid "The chart displays the historical data of your web app installations over time."
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:131
+#: admin/templates/pages/dashboard.php:119
 msgid "Last 7 Days"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:135
+#: admin/templates/pages/dashboard.php:123
 msgid "Last 28 Days"
 msgstr ""
 
-#: admin/templates/pages/dashboard.php:139
+#: admin/templates/pages/dashboard.php:127
 msgid "Last 12 Months"
 msgstr ""
 
@@ -726,47 +722,43 @@ msgstr ""
 msgid "Your Email"
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:141
-msgid "Enter Your Email"
-msgstr ""
-
-#: admin/templates/pages/helpcenter.php:142
+#: admin/templates/pages/helpcenter.php:146
 msgid "Enter your email address where we'll send our response."
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:146
+#: admin/templates/pages/helpcenter.php:150
+msgid "Enter Your Email"
+msgstr ""
+
+#: admin/templates/pages/helpcenter.php:154
 msgid "Problem Description"
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:149
-msgid "Describe Your Problem"
-msgstr ""
-
-#: admin/templates/pages/helpcenter.php:157
-msgid "Attach Images (up to 5)"
-msgstr ""
-
-#: admin/templates/pages/helpcenter.php:163
+#: admin/templates/pages/helpcenter.php:161
 msgid "Please be as descriptive as possible regarding the details of this request."
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:169
+#: admin/templates/pages/helpcenter.php:165
+msgid "Describe Your Problem"
+msgstr ""
+
+#: admin/templates/pages/helpcenter.php:171
 msgid "Temporary Access"
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:176
+#: admin/templates/pages/helpcenter.php:178
 msgid "Enabling this will give the support team temporary access to your WordPress Dashboard. That is helpful because in most cases we need a temporary access to your WordPress Dashboard to check and fix the issue."
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:181
+#: admin/templates/pages/helpcenter.php:183
 msgid "Grant the support team temporary access to your WordPress Dashboard."
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:194
+#: admin/templates/pages/helpcenter.php:196
 msgid "Submitting..."
 msgstr ""
 
-#: admin/templates/pages/helpcenter.php:196
+#: admin/templates/pages/helpcenter.php:198
 msgid "Submit Request"
 msgstr ""
 
@@ -823,7 +815,7 @@ msgid "Enter Text"
 msgstr ""
 
 #: admin/templates/pages/installation.php:142
-#: admin/templates/pages/pushnotifications.php:220
+#: admin/templates/pages/pushnotifications.php:218
 msgid "Skip First Visit"
 msgstr ""
 
@@ -836,7 +828,7 @@ msgid "Show installation overlays to returning visitors only."
 msgstr ""
 
 #: admin/templates/pages/installation.php:164
-#: admin/templates/pages/pushnotifications.php:242
+#: admin/templates/pages/pushnotifications.php:240
 msgid "Timeout"
 msgstr ""
 
@@ -1095,8 +1087,8 @@ msgid "List of your users who are subscribed for push notifications."
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:28
-#: admin/templates/pages/pushnotifications.php:838
-#: admin/templates/pages/pushnotifications.php:1060
+#: admin/templates/pages/pushnotifications.php:836
+#: admin/templates/pages/pushnotifications.php:1058
 msgid "Send Push Notification"
 msgstr ""
 
@@ -1120,416 +1112,416 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:79
+#: admin/templates/pages/pushnotifications.php:77
 msgid "Total:"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:88
+#: admin/templates/pages/pushnotifications.php:86
 msgid "Prev"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:91
+#: admin/templates/pages/pushnotifications.php:89
 msgid "Next"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:118
+#: admin/templates/pages/pushnotifications.php:116
 msgid "General Settings"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:121
+#: admin/templates/pages/pushnotifications.php:119
 msgid "The general push notifications setting gives you full control over self-hosted notifications service configuration on your server. Here you'll have an ability to adjust some values that can potentially improve notifications performance and avoid your server resource overload."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:130
+#: admin/templates/pages/pushnotifications.php:128
 msgid "Time To Live (TTL)"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:137
+#: admin/templates/pages/pushnotifications.php:135
 msgid "Time To Live (TTL, in seconds) is how long a push message is retained by the push service (eg. Mozilla) in case the user's browser is not yet accessible (eg. is not connected). You may want to use a very long time for important notifications. The default TTL is 4 weeks. However, if you send multiple nonessential notifications, set a TTL of 0: the push notification will be delivered only if the user is currently connected. In other cases, you should use a minimum of one day if your users have multiple time zones, and if they don't several hours will suffice."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:147
+#: admin/templates/pages/pushnotifications.php:145
 msgid "Batch Size"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:154
+#: admin/templates/pages/pushnotifications.php:152
 msgid "If you send a lot of notifications at a time, you may get memory overflows. In order to fix this, Progressify sends notifications in batches. The default size is 1000. Depending on your server configuration (memory), you may want to decrease this number. Higher values require a longer script execution time."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:184
+#: admin/templates/pages/pushnotifications.php:182
 msgid "Prompt"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:190
+#: admin/templates/pages/pushnotifications.php:188
 msgid "The push notifications prompt is nice simple prompt with your website logo and a message that will ask your users to subscribe push notifications on your website."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:203
+#: admin/templates/pages/pushnotifications.php:201
 msgid "Prompt Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:210
+#: admin/templates/pages/pushnotifications.php:208
 msgid "Enter the message you want to show your users on push prompt."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:214
+#: admin/templates/pages/pushnotifications.php:212
 msgid "Enter Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:227
+#: admin/templates/pages/pushnotifications.php:225
 msgid "If enabled, users who are visiting the website for the first time will not get the Prompt."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:234
+#: admin/templates/pages/pushnotifications.php:232
 msgid "Show prompt to returning visitors only."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:249
+#: admin/templates/pages/pushnotifications.php:247
 msgid "Choose how many days to wait to show push notification prompt again if it was dismissed."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:279
+#: admin/templates/pages/pushnotifications.php:277
 msgid "Button"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:285
+#: admin/templates/pages/pushnotifications.php:283
 msgid "The push notifications button is a custom subscription button on your website to increase opt-in rate and allow your users to fully control when they want to subscribe and unsubscribe for your push notifications."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:298
+#: admin/templates/pages/pushnotifications.php:296
 msgid "Button Position"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:305
+#: admin/templates/pages/pushnotifications.php:303
 msgid "Select position of your push notifications button on your website."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:310
+#: admin/templates/pages/pushnotifications.php:308
 msgid "Select Button Position"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:312
+#: admin/templates/pages/pushnotifications.php:310
 msgid "Bottom Right"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:313
+#: admin/templates/pages/pushnotifications.php:311
 msgid "Bottom Left"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:314
+#: admin/templates/pages/pushnotifications.php:312
 msgid "Top Right"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:315
+#: admin/templates/pages/pushnotifications.php:313
 msgid "Top Left"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:322
+#: admin/templates/pages/pushnotifications.php:320
 msgid "Button Behavior"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:329
+#: admin/templates/pages/pushnotifications.php:327
 msgid "Select behavior of your push notifications button after users subscribe for push notifications."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:334
+#: admin/templates/pages/pushnotifications.php:332
 msgid "Select Button Behavior"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:337
+#: admin/templates/pages/pushnotifications.php:335
 msgid "Keep shown after user subscribes for notifications, allowing them to unsubscribe by clicking on the button again."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:338
+#: admin/templates/pages/pushnotifications.php:336
 msgid "Keep Shown After Subscription"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:340
+#: admin/templates/pages/pushnotifications.php:338
 msgid "Hide after user subscribes for notifications. Users will still be able to unsubscribe from browser settings."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:341
+#: admin/templates/pages/pushnotifications.php:339
 msgid "Hide After Subscription"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:368
+#: admin/templates/pages/pushnotifications.php:366
 msgid "Automation"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:377
+#: admin/templates/pages/pushnotifications.php:375
 msgid "Automation allows sending predefined push notifications automatically, triggered on certain events like publishing new post to re-engage your users and increase conversion."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:393
+#: admin/templates/pages/pushnotifications.php:391
 msgid "New Content"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:400
+#: admin/templates/pages/pushnotifications.php:398
 msgid "Sends automatic notification to website users when new content is published. Notification will include content title, text and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:405
+#: admin/templates/pages/pushnotifications.php:403
 msgid "Sends notification to users when new content is published."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:421
+#: admin/templates/pages/pushnotifications.php:419
 msgid "Post Types"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:428
+#: admin/templates/pages/pushnotifications.php:426
 msgid "Select supported post types for new content published notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:433
+#: admin/templates/pages/pushnotifications.php:431
 msgid "Select Post Types"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:450
+#: admin/templates/pages/pushnotifications.php:448
 msgid "New Comment"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:457
+#: admin/templates/pages/pushnotifications.php:455
 msgid "Sends automatic notification to users when a new comment or reply is posted where they have commented. Note that it will only work if you have enabled native WordPress comments on posts."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:462
+#: admin/templates/pages/pushnotifications.php:460
 msgid "Notifies users of new comments or replies on threads they've participated in."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:484
+#: admin/templates/pages/pushnotifications.php:482
 msgid "Price Drop"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:491
+#: admin/templates/pages/pushnotifications.php:489
 msgid "Sends automatic notification to website users when the product price drops. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:496
+#: admin/templates/pages/pushnotifications.php:494
 msgid "Sends notification to users when the product price drops."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:516
+#: admin/templates/pages/pushnotifications.php:514
 msgid "Sale Price"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:523
+#: admin/templates/pages/pushnotifications.php:521
 msgid "Sends automatic notification to website users when the sale price is added to the product. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:528
+#: admin/templates/pages/pushnotifications.php:526
 msgid "Sends notification to users when sale price is added to product."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:548
+#: admin/templates/pages/pushnotifications.php:546
 msgid "Back In Stock"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:555
+#: admin/templates/pages/pushnotifications.php:553
 msgid "Sends automatic notification to website users when the product is back in stock. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:560
+#: admin/templates/pages/pushnotifications.php:558
 msgid "Sends notification to users when product is back in stock."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:580
+#: admin/templates/pages/pushnotifications.php:578
 msgid "Order Status Update"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:587
+#: admin/templates/pages/pushnotifications.php:585
 msgid "Sends automatic notification to website users when the order status is updated. Notification will include what status change details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:592
+#: admin/templates/pages/pushnotifications.php:590
 msgid "Sends notification to users when the order status is updated."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:610
+#: admin/templates/pages/pushnotifications.php:608
 msgid "New Order"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:617
+#: admin/templates/pages/pushnotifications.php:615
 msgid "Sends automatic notification to admins when new order is placed. Notification will include order details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:622
+#: admin/templates/pages/pushnotifications.php:620
 msgid "Sends notification to admins when new order is placed."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:640
+#: admin/templates/pages/pushnotifications.php:638
 msgid "Low Stock"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:647
+#: admin/templates/pages/pushnotifications.php:645
 msgid "Sends automatic notification to admins when a product is low in stock. Notification will include product details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:652
+#: admin/templates/pages/pushnotifications.php:650
 msgid "Sends notification to admins when a product is low in stock."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:672
+#: admin/templates/pages/pushnotifications.php:670
 msgid "Member Mention"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:679
+#: admin/templates/pages/pushnotifications.php:677
 msgid "Sends automatic notification to users when a member mentions someone in an update @username."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:684
+#: admin/templates/pages/pushnotifications.php:682
 msgid "Sends notification to users when they are mentioned by a member."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:702
+#: admin/templates/pages/pushnotifications.php:700
 msgid "Member Reply"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:709
+#: admin/templates/pages/pushnotifications.php:707
 msgid "Sends automatic notification to users when a member replies to an update or comment."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:714
+#: admin/templates/pages/pushnotifications.php:712
 msgid "Sends notification to users when a member replies."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:732
+#: admin/templates/pages/pushnotifications.php:730
 msgid "New Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:739
+#: admin/templates/pages/pushnotifications.php:737
 msgid "Sends automatic notification to users when a new message is received in their DMs."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:744
+#: admin/templates/pages/pushnotifications.php:742
 msgid "Sends notification to users when a new message is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:762
+#: admin/templates/pages/pushnotifications.php:760
 msgid "Friend Request"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:769
+#: admin/templates/pages/pushnotifications.php:767
 msgid "Sends automatic notification to users when a new friend request is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:774
+#: admin/templates/pages/pushnotifications.php:772
 msgid "Sends notification to users when a new friend request is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:792
+#: admin/templates/pages/pushnotifications.php:790
 msgid "Friend Accepted"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:799
+#: admin/templates/pages/pushnotifications.php:797
 msgid "Sends automatic notification to users when the friend request is accepted."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:804
+#: admin/templates/pages/pushnotifications.php:802
 msgid "Sends notification to users when the friend request is accepted."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:847
+#: admin/templates/pages/pushnotifications.php:845
 msgid "The push notification will be sent to all of your subscribers."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:862
-#: admin/templates/pages/pushnotifications.php:882
+#: admin/templates/pages/pushnotifications.php:860
+#: admin/templates/pages/pushnotifications.php:880
 msgid "Notification Image"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:869
+#: admin/templates/pages/pushnotifications.php:867
 msgid "Adds a large image to notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:901
+#: admin/templates/pages/pushnotifications.php:899
 msgid "Select Image"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:909
+#: admin/templates/pages/pushnotifications.php:907
 msgid "Notification Title"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:916
+#: admin/templates/pages/pushnotifications.php:914
 msgid "Enter the title of your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:920
+#: admin/templates/pages/pushnotifications.php:918
 msgid "Enter Notification Title"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:924
+#: admin/templates/pages/pushnotifications.php:922
 msgid "Notification Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:931
+#: admin/templates/pages/pushnotifications.php:929
 msgid "Enter the message of your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:935
+#: admin/templates/pages/pushnotifications.php:933
 msgid "Enter Notification Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:939
+#: admin/templates/pages/pushnotifications.php:937
 msgid "Notification URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:946
+#: admin/templates/pages/pushnotifications.php:944
 msgid "Enter the URL of your notification. Your users will be redirected to this URL after they click on your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:950
+#: admin/templates/pages/pushnotifications.php:948
 msgid "Enter Notification URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:954
+#: admin/templates/pages/pushnotifications.php:952
 msgid "Action Buttons"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:961
+#: admin/templates/pages/pushnotifications.php:959
 msgid "Adds action buttons to your notification. You can add up to two action buttons per notification. However, not all browsers support action buttons, so they will only be displayed for users with compatible browsers."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:968
+#: admin/templates/pages/pushnotifications.php:966
 msgid "Enter Action Button Text"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:971
+#: admin/templates/pages/pushnotifications.php:969
 msgid "Enter Action Button URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:994
+#: admin/templates/pages/pushnotifications.php:992
 msgid "Add Action Button"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1002
+#: admin/templates/pages/pushnotifications.php:1000
 msgid "Vibration"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1009
+#: admin/templates/pages/pushnotifications.php:1007
 msgid "Allows notification to vibrate the user's device as soon as it's delivered. This will only work on the mobile and tablet devices as desktop devices do not have vibrations."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1014
+#: admin/templates/pages/pushnotifications.php:1012
 msgid "If enabled, your notification will vibrate the user's device upon delivery."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1028
+#: admin/templates/pages/pushnotifications.php:1026
 msgid "Persistent"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1035
+#: admin/templates/pages/pushnotifications.php:1033
 msgid "Your notification will not hide automatically after some time and it will require user interaction to be dismissed."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1040
+#: admin/templates/pages/pushnotifications.php:1038
 msgid "If enabled, the notification will remain visible until the user interacts with it."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1054
+#: admin/templates/pages/pushnotifications.php:1052
 msgid "Preview Notification"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1058
+#: admin/templates/pages/pushnotifications.php:1056
 msgid "Sending..."
 msgstr ""
 

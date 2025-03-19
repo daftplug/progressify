@@ -27,18 +27,12 @@ if (!defined('ABSPATH')) {
     <div class="flex flex-col h-full pb-5 px-5">
       <div>
         <h4 class="text-5xl md:text-6xl font-medium text-blue-600 dark:text-blue-500">
-          <span class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent" id="activePwaUsers">
-            <!-- Here will be dynamically loaded active PWA users number -->
-          </span>
+          <span class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent" id="activePwaUsers"></span>
         </h4>
-        <p class="mt-5 text-gray-500 dark:text-neutral-500 text-sm" id="browserStatsMessage">
-          <!-- Here will be dynamically loaded message about browser -->
-        </p>
+        <p class="mt-5 text-gray-500 dark:text-neutral-500 text-sm" id="browserStatsMessage"></p>
       </div>
       <div class="mt-5">
-        <div class="grid grid-cols-3 gap-3" id="browserStatsContainer">
-          <!-- Here will be dynamically loaded browsers stats -->
-        </div>
+        <div class="grid grid-cols-3 gap-3" id="browserStatsContainer"></div>
       </div>
     </div>
   </div>
@@ -68,9 +62,7 @@ if (!defined('ABSPATH')) {
               <p class="text-xs font-medium text-gray-500 dark:text-neutral-500 line-clamp-1 empty:bg-gray-200 empty:rounded-full empty:h-1 empty:w-60 empty:!mt-2.5"><?php echo esc_html(Plugin::getSetting('webAppManifest[appIdentity][description]')); ?></p>
             </div>
           </div>
-          <div id="pwaScoreResult">
-            <!-- Here will be dynamically loaded PWA score result -->
-          </div>
+          <div id="pwaScoreResult"></div>
         </div>
         <div class="mt-4">
           <div class="mb-1 flex justify-between items-center gap-x-2">
@@ -99,14 +91,10 @@ if (!defined('ABSPATH')) {
               </span>
             </div>
           </div>
-          <div class="relative" id="pwaScoreProgressbar">
-            <!-- Here will be dynamically loaded PWA score bar -->
-          </div>
+          <div class="relative" id="pwaScoreProgressbar"></div>
         </div>
       </div>
-      <div id="pwaScoreActions">
-        <!-- Here will be dynamically loaded PWA actions -->
-      </div>
+      <div id="pwaScoreActions"></div>
     </div>
   </div>
 </div>

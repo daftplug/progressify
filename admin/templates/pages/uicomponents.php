@@ -947,8 +947,8 @@ if (!defined('ABSPATH')) {
     </div>
   </fieldset>
   <!-- End Shake Refresh -->
-  <!-- Loader -->
-  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionLoader">
+  <!-- Page Loader -->
+  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionPageLoader">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
       <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
@@ -958,62 +958,62 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <?php esc_html_e('Loader', $this->slug); ?>
+              <?php esc_html_e('Page Loader', $this->slug); ?>
               <div class="relative inline-flex">
-                <input type="checkbox" name="uiComponents[loader][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[loader][feature]'), 'on'); ?>>
+                <input type="checkbox" name="uiComponents[pageLoader[feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(Plugin::getSetting('uiComponents[pageLoader[feature]'), 'on'); ?>>
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php esc_html_e('Loader feature gives you ability to show a nice loader animation between page loadings. Loader appears at the start of page load and disappears after it is fully loaded.', $this->slug); ?>
+              <?php esc_html_e('Page Loader feature gives you ability to show a nice page loader animation between page loadings. Page Loader appears at the start of page load and disappears after it is fully loaded.', $this->slug); ?>
             </p>
           </div>
         </div>
       </div>
       <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
-      "target": "uiComponents[loader][feature]",
+      "target": "uiComponents[pageLoader[feature]",
       "state": "checked",
       "mode": "availability"
     }'>
-        <!-- Loader Type -->
-        <div id="settingLoaderType">
+        <!-- Page Loader Type -->
+        <div id="settingPageLoaderType">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
-            <?php esc_html_e('Loader Type', $this->slug); ?>
+            <?php esc_html_e('Page Loader Type', $this->slug); ?>
             <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
               <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php esc_html_e('Select the type of loader you want on your website.', $this->slug); ?>
+                <?php esc_html_e('Select the type of page loader you want on your website.', $this->slug); ?>
               </span>
             </button>
           </label>
-          <select name="uiComponents[loader][type]" required="true" data-dp-select='{
-            "placeholder": "<?php esc_html_e('Select Loader Type', $this->slug); ?>"
+          <select name="uiComponents[pageLoader[type]" required="true" data-dp-select='{
+            "placeholder": "<?php esc_html_e('Select Page Loader Type', $this->slug); ?>"
           }'>
-            <option value="default" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'default'); ?> data-dp-select-option='{
+            <option value="default" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'default'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation.', $this->slug); ?>"
           }'><?php esc_html_e('Default', $this->slug); ?></option>
-            <option value="skeleton" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'skeleton'); ?> data-dp-select-option='{
+            <option value="skeleton" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'skeleton'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance.', $this->slug); ?>"
           }'><?php esc_html_e('Skeleton', $this->slug); ?></option>
-            <option value="spinner" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'spinner'); ?> data-dp-select-option='{
+            <option value="spinner" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'spinner'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Displays spinning circles as the loading animation, indicating that the page is loading with a familiar, straightforward visual.', $this->slug); ?>"
           }'><?php esc_html_e('Spinner', $this->slug); ?></option>
-            <option value="redirect" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'redirect'); ?> data-dp-select-option='{
+            <option value="redirect" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'redirect'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Features a flying man icon moving across a yellow background, offering a fun and playful loading experience that entertains users while they wait.', $this->slug); ?>"
           }'><?php esc_html_e('Redirect', $this->slug); ?></option>
-            <option value="percent" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'percent'); ?> data-dp-select-option='{
+            <option value="percent" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'percent'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Displays the loading percentage and a progress bar, giving users a clear and precise indication of the page loading progress.', $this->slug); ?>"
           }'><?php esc_html_e('Percent', $this->slug); ?></option>
-            <option value="fade" <?php selected(Plugin::getSetting('uiComponents[loader][type]'), 'fade'); ?> data-dp-select-option='{
+            <option value="fade" <?php selected(Plugin::getSetting('uiComponents[pageLoader[type]'), 'fade'); ?> data-dp-select-option='{
             "description": "<?php esc_html_e('Smooth transition with fade in and fade out effects, creating a seamless and visually appealing loading experience.', $this->slug); ?>"
           }'><?php esc_html_e('Fade', $this->slug); ?></option>
           </select>
         </div>
-        <!-- End Loader Type -->
+        <!-- End Page Loader Type -->
         <!-- Supported Devices -->
-        <div id="settingLoaderDevices">
+        <div id="settingPageLoaderDevices">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
             <?php esc_html_e('Supported Devices', $this->slug); ?>
             <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
@@ -1022,23 +1022,23 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php esc_html_e('Select on what device types loader feature should be active and running.', $this->slug); ?>
+                <?php esc_html_e('Select on what device types page loader feature should be active and running.', $this->slug); ?>
               </span>
             </button>
           </label>
-          <select name="uiComponents[loader][supportedDevices]" required="true" multiple="true" data-dp-select='{
+          <select name="uiComponents[pageLoader[supportedDevices]" required="true" multiple="true" data-dp-select='{
           "placeholder": "<?php esc_html_e('Select Devices', $this->slug); ?>"
           }'>
             <option value="smartphone" data-dp-select-option='{
-            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/smartphone.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('smartphone', (array) Plugin::getSetting('uiComponents[pageLoader[supportedDevices]'))); ?>>
               <?php esc_html_e('Smartphone', $this->slug); ?>
             </option>
             <option value="tablet" data-dp-select-option='{
-            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/tablet.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400 -mr-0.5', true)); ?>"}' <?php selected(true, in_array('tablet', (array) Plugin::getSetting('uiComponents[pageLoader[supportedDevices]'))); ?>>
               <?php esc_html_e('Tablet', $this->slug); ?>
             </option>
             <option value="desktop" data-dp-select-option='{
-            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true)); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[loader][supportedDevices]'))); ?>>
+            "icon": "<?php echo esc_html(Plugin::escapeSvg(plugins_url('admin/assets/media/icons/devices/desktop.svg', Plugin::$pluginFile), 'flex-shrink-0 size-4 fill-gray-400', true)); ?>"}' <?php selected(true, in_array('desktop', (array) Plugin::getSetting('uiComponents[pageLoader[supportedDevices]'))); ?>>
               <?php esc_html_e('Desktop', $this->slug); ?>
             </option>
           </select>
@@ -1055,7 +1055,7 @@ if (!defined('ABSPATH')) {
       </div>
     </div>
   </fieldset>
-  <!-- End Loader -->
+  <!-- End Page Loader -->
   <!-- Inactive Blur -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionInactiveBlur">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">

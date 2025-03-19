@@ -190,7 +190,7 @@ class Plugin
           'feature' => 'off',
           'supportedDevices' => [],
         ],
-        'loader' => [
+        'pageLoader' => [
           'feature' => 'on',
           'type' => 'default',
           'supportedDevices' => ['smartphone', 'tablet', 'desktop'],
@@ -377,7 +377,7 @@ class Plugin
 
   public static function daftplugProcessLicense($licenseKey, $action)
   {
-    @ini_set('display_errors', 0);
+    ini_set('display_errors', 0);
     error_reporting(0);
 
     $params = [
@@ -624,6 +624,28 @@ class Plugin
     return $keys;
   }
 
+  public static function getContent($file)
+  {
+    if (empty($file) || !is_file($file)) {
+      return false;
+    }
+
+    global $wp_filesystem;
+
+    if (empty($wp_filesystem)) {
+      require_once trailingslashit(ABSPATH) . 'wp-admin/includes/file.php';
+      WP_Filesystem();
+    }
+
+    $content = $wp_filesystem->get_contents($file);
+
+    if ($content === false) {
+      return false;
+    }
+
+    return $content;
+  }
+
   public static function putContent($file, $content = null)
   {
     if (is_file($file)) {
@@ -863,13 +885,10 @@ class Plugin
       // If logo is provided, try to add it but continue if it fails
       if ($logo) {
         try {
-          // Check if logo is a base64 encoded string
-          if (is_string($logo)) {
-            $logoContent = base64_decode($logo);
-            if (empty($logoContent)) {
-              throw new \Exception('Invalid base64 image data');
-            }
-          } elseif (is_numeric($logo)) {
+          $logoContent = null;
+
+          // Check if logo is a WordPress attachment ID
+          if (is_numeric($logo)) {
             $attachment_path = get_attached_file($logo);
             if (!$attachment_path || !file_exists($attachment_path)) {
               throw new \Exception('Attachment file not found');
@@ -879,7 +898,20 @@ class Plugin
             if ($logoContent === false) {
               throw new \Exception('Failed to read attachment file');
             }
-          } else {
+          }
+          // Check if logo is a binary image content (detect PNG/JPG/GIF magic numbers)
+          elseif (
+            is_string($logo) &&
+            !filter_var($logo, FILTER_VALIDATE_URL) &&
+            (strncmp($logo, "\x89PNG\r\n\x1a\n", 8) === 0 || // PNG
+              strncmp($logo, "\xff\xd8\xff", 3) === 0 || // JPEG
+              strncmp($logo, 'GIF', 3) === 0)
+          ) {
+            // GIF
+            $logoContent = $logo; // Use directly as binary content
+          }
+          // Check if logo is a URL
+          else {
             // Try to convert URL to local path if it's rounded PWA icon
             $pwa_icon_url = WebAppManifest::getPwaIconUrl('rounded');
             $pwa_icon_path = self::$pluginUploadDir . 'pwa-icons/icon-rounded.png';

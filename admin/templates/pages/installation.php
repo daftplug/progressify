@@ -29,10 +29,10 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
-      "target": "installation[prompts][feature]",
-      "state": "checked",
-      "mode": "availability"
-    }'>
+        "target": "installation[prompts][feature]",
+        "state": "checked",
+        "mode": "availability"
+      }'>
         <!-- Installation Overlays -->
         <div id="settingPromptsOverlays">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
@@ -47,72 +47,78 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <div class="grid grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-5">
+          <div class="grid grid-cols-2 xl:grid-cols-3 gap-6">
             <!-- Header Banner -->
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][headerBanner]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][headerBanner]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/header-banner.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][headerBanner]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][headerBanner]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/header-banner.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white">
                   <?php esc_html_e('Header Banner', $this->slug); ?>
-                </span>
-              </span>
+                </h3>
+              </div>
             </label>
             <!-- End Header Banner -->
             <!-- Snackbar -->
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][snackbar]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][snackbar]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/snackbar.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][snackbar]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][snackbar]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/snackbar.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white">
                   <?php esc_html_e('Snackbar', $this->slug); ?>
-                </span>
-              </span>
+                </h3>
+              </div>
             </label>
             <!-- End Snackbar -->
             <!-- Navigation Menu -->
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][navigationMenu]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][navigationMenu]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/navigation-menu.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][navigationMenu]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][navigationMenu]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/navigation-menu.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white">
                   <?php esc_html_e('Navigation Menu', $this->slug); ?>
-                </span>
-              </span>
+                </h3>
+              </div>
             </label>
             <!-- End Navigation Menu -->
             <!-- In Feed -->
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][inFeed]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][inFeed]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/in-feed.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
-                  <?php esc_html_e('In Feed', $this->slug); ?>
-                </span>
-              </span>
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][inFeed]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][inFeed]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/in-feed.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white"><?php esc_html_e('In Feed', $this->slug); ?></h3>
+              </div>
             </label>
             <!-- End In Feed -->
             <!-- Blog Popup -->
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][blogPopup]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][blogPopup]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/blog-popup.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
-                  <?php esc_html_e('Blog Popup', $this->slug); ?>
-                </span>
-              </span>
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][blogPopup]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][blogPopup]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/blog-popup.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white"><?php esc_html_e('Blog Popup', $this->slug); ?></h3>
+              </div>
             </label>
             <!-- End Post Popup -->
             <!-- WooCommerce Checkout -->
             <?php if (Plugin::isPluginActive('woocommerce')): ?>
-            <label class="relative p-4 flex justify-center items-center text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
-              <input type="checkbox" name="installation[prompts][types][woocommerceCheckout]" class="peer absolute top-3 left-3 checked:before:!content-none bg-transparent border-gray-200 [&:not(:checked)]:focus:!border-gray-200 shadow-none text-blue-600 rounded-full focus:ring-white focus:ring-offset-0 dark:text-blue-500 dark:!border-neutral-700 dark:focus:ring-neutral-800" <?php checked(Plugin::getSetting('installation[prompts][types][woocommerceCheckout]'), 'on'); ?>>
-              <span class="flex flex-col items-center justify-center gap-y-1.5">
-                <img src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/woocommerce-checkout.png', $this->pluginFile)); ?>" />
-                <span class="block text-center">
-                  <?php esc_html_e('WooCommerce Checkout', $this->slug); ?>
-                </span>
-              </span>
+            <label class="relative block text-sm bg-white text-gray-800 rounded-xl cursor-pointer border border-gray-200 shadow-sm has-[:checked]:ring-2 has-[:checked]:ring-blue-600 dark:bg-neutral-800 dark:text-neutral-200 dark:ring-neutral-700 dark:has-[:checked]:ring-blue-500">
+              <input type="checkbox" name="installation[prompts][types][woocommerceCheckout]" class="hidden" <?php checked(Plugin::getSetting('installation[prompts][types][woocommerceCheckout]'), 'on'); ?>>
+              <div class="pt-[50%] relative">
+                <img class="size-full absolute top-0 start-0 object-cover rounded-t-xl" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/installation-prompts/woocommerce-checkout.png', $this->pluginFile)); ?>" />
+              </div>
+              <div class="bg-white p-2.5 rounded-b-xl dark:bg-neutral-900">
+                <h3 class="text-center text-xs sm:text-sm text-gray-900 font-medium dark:text-white"><?php esc_html_e('WooCommerce Checkout', $this->slug); ?></h3>
+              </div>
             </label>
             <?php endif; ?>
             <!-- End WooCommerce Checkout -->

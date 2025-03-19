@@ -72,12 +72,12 @@ class AppCapabilities
     add_action(
       'shutdown',
       function () {
-        $content = ob_get_clean();
+        $content_safe = ob_get_clean();
 
-        if (!empty($content) && false !== strpos($content, '<body')) {
+        if (!empty($content_safe) && false !== strpos($content_safe, '<body')) {
           libxml_use_internal_errors(true);
           $dom = new \DOMDocument();
-          $dom->loadHTML($content, LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED);
+          $dom->loadHTML($content_safe, LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED);
 
           $body = $dom->getElementsByTagName('body')->item(0);
           if ($body) {
@@ -88,11 +88,13 @@ class AppCapabilities
               $wrapper->appendChild($body->firstChild);
             }
             $body->appendChild($wrapper);
-            $content = $dom->saveHTML();
+            $content_safe = $dom->saveHTML();
           }
         }
 
-        echo $content;
+        // Output the entire HTML content with the wrapper
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo $content_safe;
       },
       0
     );
@@ -136,12 +138,6 @@ class AppCapabilities
   {
     if (Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]') !== 'on') {
       return;
-    }
-
-    require_once plugin_dir_path(dirname(__FILE__)) . 'libs/biometric-authentication/biometric-authentication.php';
-
-    if (function_exists('plwp_create_tables')) {
-      plwp_create_tables();
     }
   }
 

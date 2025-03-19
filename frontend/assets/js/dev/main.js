@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initPwaTracker();
   }
 
-  // Loader
-  if (settings?.appCapabilities?.smoothPageTransitions?.feature === 'off' && settings?.uiComponents?.loader?.feature === 'on' && settings?.uiComponents?.loader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
-    const { initLoader } = await import('./modules/loader.js');
-    await initLoader();
+  // Page Loader
+  if (settings?.appCapabilities?.smoothPageTransitions?.feature === 'off' && settings?.uiComponents?.pageLoader?.feature === 'on' && settings?.uiComponents?.pageLoader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
+    const { initPageLoader } = await import('./modules/pageLoader.js');
+    await initPageLoader();
   }
 
   // Installation Prompts

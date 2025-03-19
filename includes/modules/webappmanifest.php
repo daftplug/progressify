@@ -56,6 +56,14 @@ class WebAppManifest
 
   public function registerRoutes()
   {
+    register_rest_route($this->slug, '/checkPwaAssets', [
+      'methods' => 'POST',
+      'callback' => [$this, 'checkPwaAssets'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+
     register_rest_route($this->slug, '/savePwaAssets', [
       'methods' => 'POST',
       'callback' => [$this, 'savePwaAssets'],
@@ -65,87 +73,109 @@ class WebAppManifest
     ]);
   }
 
+  public function checkPwaAssets()
+  {
+    $needsToGenerate = false;
+
+    if ((!file_exists(self::$pluginUploadDir . 'pwa-icons/icon-rounded.png') || !file_exists(self::$pluginUploadDir . 'scripts/serviceworker.js')) && Plugin::getSetting('webAppManifest[appIdentity][appIcon]') !== '' && Plugin::getSetting('webAppManifest[appearance][backgroundColor]') !== '') {
+      $needsToGenerate = true;
+    }
+
+    return new \WP_REST_Response(
+      [
+        'status' => 'success',
+        'needsToGenerate' => $needsToGenerate,
+      ],
+      200
+    );
+  }
+
   public function savePwaAssets(\WP_REST_Request $request)
   {
     try {
+      // Check nonce
       if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
         return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
       }
 
-      // Get parameters
-      $splashScreens = $request->get_param('splashScreens');
-      $roundedIcon = $request->get_param('roundedIcon');
-      $maskableIcon = $request->get_param('maskableIcon');
+      // Get uploaded files
+      $files = $request->get_file_params();
 
-      // Validate input
-      if (!$splashScreens || !$maskableIcon || !$roundedIcon) {
-        return new \WP_Error('invalid_input', 'Missing required assets', ['status' => 400]);
-      }
-
-      // Ensure directories exist
+      // Ensure upload directories exist
       $dirs = [self::$pluginUploadDir . 'splash-screens/', self::$pluginUploadDir . 'pwa-icons/', self::$pluginUploadDir . 'qr-codes/'];
-
       foreach ($dirs as $dir) {
         if (!file_exists($dir)) {
           wp_mkdir_p($dir);
         }
       }
 
-      // Save icons
+      // If we got icons this time, save them
       $iconPaths = [
         'rounded' => self::$pluginUploadDir . 'pwa-icons/icon-rounded.png',
         'maskable' => self::$pluginUploadDir . 'pwa-icons/icon-maskable.png',
       ];
 
-      $this->saveImage($roundedIcon, $iconPaths['rounded'], true);
-      $this->saveImage($maskableIcon, $iconPaths['maskable'], true);
-
-      // Process maskable icon variants
-      $this->processMaskableIconVariants($iconPaths['maskable']);
-
-      // Save and process splash screens
-      foreach ($splashScreens as $name => $base64Data) {
-        $orientation = str_ends_with($name, '_landscape') ? 'landscape' : 'portrait';
-        $deviceName = str_replace(['_landscape', '_portrait'], '', $name);
-
-        $filename = sprintf('%s-%s.png', $deviceName, $orientation);
-
-        $path = self::$pluginUploadDir . 'splash-screens/' . $filename;
-        $this->saveImage($base64Data, $path, true);
+      // -- (a) Rounded Icon --
+      if (!empty($files['roundedIcon']['tmp_name'])) {
+        $roundedContent = Plugin::getContent($files['roundedIcon']['tmp_name']);
+        if ($roundedContent === false) {
+          throw new \Exception('Failed to read rounded icon temporary file');
+        }
+        Plugin::putContent($iconPaths['rounded'], $roundedContent);
       }
 
-      // Generate and save QR code
-      $installationQrCodeData = Plugin::generateQrCode(add_query_arg('performInstallation', 'true', trailingslashit(strtok(home_url('/', 'https'), '?'))), '160x160', $roundedIcon);
-      $this->saveImage($installationQrCodeData, self::$pluginUploadDir . 'qr-codes/qr-pwa-installation.png', false);
+      // -- (b) Maskable Icon --
+      if (!empty($files['maskableIcon']['tmp_name'])) {
+        $maskableContent = Plugin::getContent($files['maskableIcon']['tmp_name']);
+        if ($maskableContent === false) {
+          throw new \Exception('Failed to read maskable icon temporary file');
+        }
+        Plugin::putContent($iconPaths['maskable'], $maskableContent);
+
+        // Generate any maskable variants if present
+        $this->processMaskableIconVariants($iconPaths['maskable']);
+      }
+
+      // Save splash screens if provided in this request
+      if (!empty($files['splashScreens']['tmp_name']) && is_array($files['splashScreens']['tmp_name'])) {
+        foreach ($files['splashScreens']['tmp_name'] as $name => $tmpName) {
+          if (empty($tmpName)) {
+            continue;
+          }
+
+          $orientation = str_ends_with($name, '_landscape') ? 'landscape' : 'portrait';
+          $deviceName = str_replace(['_landscape', '_portrait'], '', $name);
+          $filename = sprintf('%s-%s.png', $deviceName, $orientation);
+          $path = self::$pluginUploadDir . 'splash-screens/' . $filename;
+
+          $splashContent = Plugin::getContent($tmpName);
+          if ($splashContent === false) {
+            throw new \Exception("Failed to read splash screen temporary file for {$name}");
+          }
+          Plugin::putContent($path, $splashContent);
+        }
+      }
+
+      if (!empty($files['roundedIcon']['tmp_name'])) {
+        $roundedIconContent = Plugin::getContent($iconPaths['rounded']);
+        if ($roundedIconContent === false) {
+          throw new \Exception('Failed to read rounded icon for QR code generation');
+        }
+
+        $installationQrCodeData = Plugin::generateQrCode(add_query_arg('performInstallation', 'true', trailingslashit(strtok(home_url('/', 'https'), '?'))), '160x160', $roundedIconContent);
+        Plugin::putContent(self::$pluginUploadDir . 'qr-codes/qr-pwa-installation.png', $installationQrCodeData);
+      }
 
       return new \WP_REST_Response(
         [
           'status' => 'success',
-          'message' => 'PWA assets saved successfully',
+          'message' => 'PWA assets saved successfully.',
         ],
         200
       );
     } catch (\Exception $e) {
       return new \WP_Error('save_failed', $e->getMessage(), ['status' => 500]);
     }
-  }
-
-  private function saveImage($imageData, $path, $isBase64 = true)
-  {
-    if ($isBase64 && is_string($imageData)) {
-      $imageData = base64_decode($imageData);
-    }
-
-    if (!$imageData) {
-      throw new \Exception('Invalid image data for ' . esc_html(basename($path)));
-    }
-
-    // Save the file
-    if (!Plugin::putContent($path, $imageData)) {
-      throw new \Exception('Failed to save ' . esc_html(basename($path)));
-    }
-
-    return true;
   }
 
   private function processMaskableIconVariants($sourcePath)

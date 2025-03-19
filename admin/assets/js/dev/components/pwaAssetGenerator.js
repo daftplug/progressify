@@ -172,6 +172,15 @@ async function generatePwaIcons(iconUrl, backgroundColor) {
 }
 
 /**
+ * Converts canvas to blob (binary data)
+ * @param {string} dataUrl - Canvas data URL
+ * @returns {Promise<Blob>} - Promise that resolves with a blob
+ */
+function dataUrlToBlob(dataUrl) {
+  return fetch(dataUrl).then((res) => res.blob());
+}
+
+/**
  * Generates all splash screens for iOS devices
  * @param {string} iconUrl - URL of the icon image
  * @param {string} backgroundColor - Background color in hex format
@@ -402,42 +411,64 @@ async function generateSplashScreens(iconUrl, backgroundColor) {
  * @param {string} backgroundColor - CSS color value
  * @returns {Promise<Object>} - Server response
  */
-export default async function generateAndSendPwaAssets(iconUrl, backgroundColor) {
+export default async function generateAndSendPwaAssets(iconUrl, backgroundColor, batchSize = 10) {
   if (!iconUrl || !backgroundColor) {
     throw new Error('Both iconUrl and backgroundColor are required');
   }
 
-  try {
-    // Generate both icons first
-    const { maskableIcon, roundedIcon } = await generatePwaIcons(iconUrl, backgroundColor);
+  // 1) Generate icons
+  const { maskableIcon: maskableIconUrl, roundedIcon: roundedIconUrl } = await generatePwaIcons(iconUrl, backgroundColor);
+  // Convert data URLs to Blobs
+  const maskableIconBlob = await dataUrlToBlob(maskableIconUrl);
+  const roundedIconBlob = await dataUrlToBlob(roundedIconUrl);
 
-    // Then generate all splash screens
-    const splashScreens = await generateSplashScreens(iconUrl, backgroundColor);
+  // 2) Send a FIRST request that includes just the icons
+  const formDataFirst = new FormData();
+  formDataFirst.append('maskableIcon', maskableIconBlob, 'icon-maskable.png');
+  formDataFirst.append('roundedIcon', roundedIconBlob, 'icon-rounded.png');
 
-    // Prepare the payload
-    const payload = {
-      maskableIcon: maskableIcon.split(',')[1],
-      roundedIcon: roundedIcon.split(',')[1],
-      splashScreens: Object.fromEntries(Object.entries(splashScreens).map(([key, value]) => [key, value.split(',')[1]])),
-    };
+  let response = await fetch(wpApiSettings.root + slug + '/savePwaAssets', {
+    method: 'POST',
+    headers: { 'X-WP-Nonce': wpApiSettings.nonce },
+    body: formDataFirst,
+  });
+  if (!response.ok) {
+    throw new Error(`Server responded with ${response.status} during first icons upload.`);
+  }
+  let result = await response.json();
+  console.log('First upload result:', result);
 
-    // Send to server
-    const response = await fetch(wpApiSettings.root + slug + '/savePwaAssets', {
+  // 3) Generate all splash screens (as data URLs)
+  const splashScreenUrls = await generateSplashScreens(iconUrl, backgroundColor);
+  const splashScreensArray = [];
+  for (const [name, url] of Object.entries(splashScreenUrls)) {
+    const blob = await dataUrlToBlob(url);
+    splashScreensArray.push({ name, blob });
+  }
+
+  // 4) Batch them up: chunk the array into smaller pieces, each with at most `batchSize` items
+  for (let i = 0; i < splashScreensArray.length; i += batchSize) {
+    const batch = splashScreensArray.slice(i, i + batchSize);
+    const formData = new FormData();
+
+    // We only append splash screens in subsequent requests. The icons are already saved.
+    for (const { name, blob } of batch) {
+      formData.append(`splashScreens[${name}]`, blob, `${name}.png`);
+    }
+
+    // 5) Send each batch
+    response = await fetch(wpApiSettings.root + slug + '/savePwaAssets', {
       method: 'POST',
-      headers: {
-        'X-WP-Nonce': wpApiSettings.nonce,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+      headers: { 'X-WP-Nonce': wpApiSettings.nonce },
+      body: formData,
     });
 
     if (!response.ok) {
-      throw new Error(`Server responded with ${response.status}`);
+      throw new Error(`Server responded with ${response.status} during splash screen batch upload.`);
     }
-
-    return await response.json();
-  } catch (error) {
-    console.error('Failed to generate or send PWA assets:', error);
-    throw error;
+    result = await response.json();
   }
+
+  // 6) All done
+  return { status: 'success', message: 'All assets uploaded in multiple batches' };
 }

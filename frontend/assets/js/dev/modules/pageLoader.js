@@ -1,16 +1,16 @@
 import { config } from '../main.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-class PwaLoader extends HTMLElement {
+class PwaPageLoader extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.styles = new Set();
 
-    // Get loader type from settings
-    this.type = config.jsVars.settings.uiComponents.loader.type;
+    // Get page loader type from settings
+    this.type = config.jsVars.settings.uiComponents.pageLoader.type;
 
-    // Performance tracking for percent loader
+    // Performance tracking for percent page loader
     this.performanceData = {
       startTime: performance.now(),
       estimatedDuration: 2000, // Initial estimate
@@ -40,47 +40,47 @@ class PwaLoader extends HTMLElement {
   }
 
   static show() {
-    let loader = document.querySelector('pwa-loader');
+    let pageLoader = document.querySelector('pwa-page-loader');
 
-    if (!loader) {
-      loader = document.createElement('pwa-loader');
-      document.body.appendChild(loader);
+    if (!pageLoader) {
+      pageLoader = document.createElement('pwa-page-loader');
+      document.body.appendChild(pageLoader);
     }
 
-    return loader;
+    return pageLoader;
   }
 
   setupNavigationHandlers() {
-    // Show loader immediately before navigation
+    // Show page loader immediately before navigation
     window.addEventListener('beforeunload', () => {
-      this.showLoaderBeforeUnload();
+      this.showPageLoaderBeforeUnload();
     });
 
     // Handle initial page load
     if (document.readyState === 'complete') {
-      this.hideLoader();
+      this.hidePageLoader();
     } else {
       window.addEventListener('load', () => {
-        this.hideLoader();
+        this.hidePageLoader();
       });
     }
   }
 
   initialShow() {
-    const loader = this.shadowRoot.querySelector('.loader');
-    if (loader) {
-      // Setup skeleton loader on initial page load
+    const pageLoader = this.shadowRoot.querySelector('.pageLoader');
+    if (pageLoader) {
+      // Setup skeleton page loader on initial page load
       if (this.type === 'skeleton') {
-        this.showSkeletonLoader();
+        this.showSkeletonPageLoader();
       } else {
         document.documentElement.style.paddingRight = `${window.innerWidth - document.documentElement.offsetWidth}px`;
         document.documentElement.style.overflow = 'hidden';
-        loader.classList.add('visible');
-        loader.classList.add('no-transition');
+        pageLoader.classList.add('visible');
+        pageLoader.classList.add('no-transition');
 
         // Remove the no-transition class after initial render
         requestAnimationFrame(() => {
-          loader.classList.remove('no-transition');
+          pageLoader.classList.remove('no-transition');
         });
 
         if (this.type === 'percent') {
@@ -90,9 +90,9 @@ class PwaLoader extends HTMLElement {
     }
   }
 
-  showLoaderBeforeUnload() {
-    const loader = this.shadowRoot.querySelector('.loader');
-    if (loader) {
+  showPageLoaderBeforeUnload() {
+    const pageLoader = this.shadowRoot.querySelector('.pageLoader');
+    if (pageLoader) {
       if (this.type === 'percent') {
         this.resetProgress();
       }
@@ -100,46 +100,46 @@ class PwaLoader extends HTMLElement {
       requestAnimationFrame(() => {
         document.documentElement.style.paddingRight = `${window.innerWidth - document.documentElement.offsetWidth}px`;
         document.documentElement.style.overflow = 'hidden';
-        loader.classList.add('visible');
+        pageLoader.classList.add('visible');
       });
     }
   }
 
-  hideLoader() {
-    const loader = this.shadowRoot.querySelector('.loader');
-    if (loader) {
+  hidePageLoader() {
+    const pageLoader = this.shadowRoot.querySelector('.pageLoader');
+    if (pageLoader) {
       if (this.type === 'skeleton') {
-        this.removeSkeletonLoader();
+        this.removeSkeletonPageLoader();
       } else if (this.type === 'percent') {
         this.performanceData.isLoading = false;
         this.updateProgress(100);
-        setTimeout(() => this.fadeOutLoader(loader), 200);
+        setTimeout(() => this.fadeOutPageLoader(pageLoader), 200);
       } else {
-        this.fadeOutLoader(loader);
+        this.fadeOutPageLoader(pageLoader);
       }
     }
   }
 
-  fadeOutLoader(loader) {
+  fadeOutPageLoader(pageLoader) {
     // Force a reflow before removing the visible class
-    loader.offsetHeight;
+    pageLoader.offsetHeight;
 
-    // First ensure the loader is displayed
-    loader.style.display = 'flex';
+    // First ensure the page loader is displayed
+    pageLoader.style.display = 'flex';
 
     // Set up the transition end handler before starting the transition
     const handleTransitionEnd = () => {
       document.documentElement.style.removeProperty('overflow');
       document.documentElement.style.paddingRight = '';
-      loader.style.display = 'none';
-      loader.removeEventListener('transitionend', handleTransitionEnd);
+      pageLoader.style.display = 'none';
+      pageLoader.removeEventListener('transitionend', handleTransitionEnd);
     };
 
-    loader.addEventListener('transitionend', handleTransitionEnd);
+    pageLoader.addEventListener('transitionend', handleTransitionEnd);
 
     // Start the transition by removing visible class
     requestAnimationFrame(() => {
-      loader.classList.remove('visible');
+      pageLoader.classList.remove('visible');
     });
   }
 
@@ -177,8 +177,8 @@ class PwaLoader extends HTMLElement {
   resetProgress() {
     if (this.type !== 'percent') return;
 
-    const progressBar = this.shadowRoot.querySelector('.loader_progress-fill');
-    const counter = this.shadowRoot.querySelector('.loader_counter');
+    const progressBar = this.shadowRoot.querySelector('.pageLoader_progress-fill');
+    const counter = this.shadowRoot.querySelector('.pageLoader_counter');
 
     if (progressBar && counter) {
       // Reset without transition
@@ -254,8 +254,8 @@ class PwaLoader extends HTMLElement {
   updateProgress(progress) {
     if (this.type !== 'percent') return;
 
-    const progressBar = this.shadowRoot.querySelector('.loader_progress-fill');
-    const counter = this.shadowRoot.querySelector('.loader_counter');
+    const progressBar = this.shadowRoot.querySelector('.pageLoader_progress-fill');
+    const counter = this.shadowRoot.querySelector('.pageLoader_counter');
 
     if (progressBar && counter) {
       progressBar.style.width = `${progress}%`;
@@ -263,7 +263,7 @@ class PwaLoader extends HTMLElement {
     }
   }
 
-  showSkeletonLoader() {
+  showSkeletonPageLoader() {
     // Add skeleton class to body
     document.documentElement.classList.add('skeleton');
 
@@ -332,7 +332,7 @@ class PwaLoader extends HTMLElement {
           animation: skeletonLoad 1s ease-in-out infinite!important;
       }
 
-      :root.skeleton *:not(script):not(style):not(link):not(meta):not(pwa-loader),
+      :root.skeleton *:not(script):not(style):not(link):not(meta):not(pwa-page-loader),
       :root.skeleton::placeholder,
       :root.skeleton::before,
       :root.skeleton::after {
@@ -375,7 +375,7 @@ class PwaLoader extends HTMLElement {
     this.skeletonStyleSheet = styleSheet;
 
     // Process all visible elements
-    const elements = document.querySelectorAll('*:not(script):not(style):not(link):not(meta):not(pwa-loader)');
+    const elements = document.querySelectorAll('*:not(script):not(style):not(link):not(meta):not(pwa-page-loader)');
     elements.forEach((element) => {
       // Handle media elements
       if (element.matches('img, video, iframe')) {
@@ -389,7 +389,7 @@ class PwaLoader extends HTMLElement {
     });
   }
 
-  removeSkeletonLoader() {
+  removeSkeletonPageLoader() {
     document.documentElement.classList.remove('skeleton');
 
     // Remove skeleton styles
@@ -405,16 +405,16 @@ class PwaLoader extends HTMLElement {
     });
   }
 
-  renderDefaultLoader() {
+  renderDefaultPageLoader() {
     const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
     const appIcon = config.jsVars.iconUrl ?? '';
 
     this.injectStyles(`
-      .loader.-default {
+      .pageLoader.-default {
         background-color: ${backgroundColor};
       }
 
-      .loader_icon {
+      .pageLoader_icon {
           width: 150px;
           height: 150px;
           background: url(${appIcon}) no-repeat center;
@@ -439,36 +439,36 @@ class PwaLoader extends HTMLElement {
     `);
 
     return `
-      <div class="loader -default">
-				<div class="loader_icon"></div>
+      <div class="pageLoader -default">
+				<div class="pageLoader_icon"></div>
 			</div>
     `;
   }
 
-  renderSkeletonLoader() {
+  renderSkeletonPageLoader() {
     const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
 
     this.injectStyles(`
-      .loader.-skeleton {
+      .pageLoader.-skeleton {
         background-color: ${backgroundColor};
       }
     `);
 
     return `
-      <div class="loader -skeleton" style="background-color: ${backgroundColor}"></div>
+      <div class="pageLoader -skeleton" style="background-color: ${backgroundColor}"></div>
     `;
   }
 
-  renderSpinnerLoader() {
+  renderSpinnerPageLoader() {
     const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
     const spinnerColor = getContrastTextColor(backgroundColor);
 
     this.injectStyles(`
-      .loader.-spinner {
+      .pageLoader.-spinner {
         background-color: ${backgroundColor};
       }
   
-      .loader_svg {
+      .pageLoader_svg {
         -webkit-animation: rotate 2s linear infinite;
                 animation: rotate 2s linear infinite;
         z-index: 2;
@@ -477,7 +477,7 @@ class PwaLoader extends HTMLElement {
         height: 70px;
       }
   
-      .loader_svg circle {
+      .pageLoader_svg circle {
         stroke: ${spinnerColor};
         stroke-linecap: round;
         -webkit-animation: dash 1.5s ease-in-out infinite;
@@ -528,21 +528,21 @@ class PwaLoader extends HTMLElement {
     `);
 
     return `
-      <div class="loader -spinner">
-        <svg class="loader_svg" viewBox="0 0 50 50">
+      <div class="pageLoader -spinner">
+        <svg class="pageLoader_svg" viewBox="0 0 50 50">
           <circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
         </svg>
       </div>
     `;
   }
 
-  renderRedirectLoader() {
+  renderRedirectPageLoader() {
     this.injectStyles(`
-      .loader.-redirect {
+      .pageLoader.-redirect {
         background-color: #f1c40f;
       }
   
-      .loader_body {
+      .pageLoader_body {
         position: absolute;
         top: 50%;
         margin-left: -50px;
@@ -551,7 +551,7 @@ class PwaLoader extends HTMLElement {
                 animation: speeder .4s linear infinite;
       }
 
-      .loader_body > span {
+      .pageLoader_body > span {
         height: 5px;
         width: 35px;
         background: #000;
@@ -561,7 +561,7 @@ class PwaLoader extends HTMLElement {
         border-radius: 2px 10px 1px 0;
       }
 
-      .loader_base span {
+      .pageLoader_base span {
         position: absolute;
         width: 0;
         height: 0;
@@ -570,7 +570,7 @@ class PwaLoader extends HTMLElement {
         border-bottom: 6px solid transparent;
       }
 
-      .loader_base span::before {
+      .pageLoader_base span::before {
         content: "";
         height: 22px;
         width: 22px;
@@ -581,7 +581,7 @@ class PwaLoader extends HTMLElement {
         top: -16px;
       }
 
-      .loader_base span::after {
+      .pageLoader_base span::after {
         content: "";
         position: absolute;
         width: 0;
@@ -593,7 +593,7 @@ class PwaLoader extends HTMLElement {
         right: -98px;
       }
 
-      .loader_face {
+      .pageLoader_face {
         position: absolute;
         height: 12px;
         width: 20px;
@@ -606,7 +606,7 @@ class PwaLoader extends HTMLElement {
         top: -15px;
       }
 
-      .loader_face::after {
+      .pageLoader_face::after {
         content: "";
         height: 12px;
         width: 12px;
@@ -623,10 +623,10 @@ class PwaLoader extends HTMLElement {
         border-radius: 0 0 0 2px;
       }
 
-      .loader_body > span > span:nth-child(1),
-      .loader_body > span > span:nth-child(2),
-      .loader_body > span > span:nth-child(3),
-      .loader_body > span > span:nth-child(4) {
+      .pageLoader_body > span > span:nth-child(1),
+      .pageLoader_body > span > span:nth-child(2),
+      .pageLoader_body > span > span:nth-child(3),
+      .pageLoader_body > span > span:nth-child(4) {
         width: 30px;
         height: 1px;
         background: #000;
@@ -635,13 +635,13 @@ class PwaLoader extends HTMLElement {
                 animation: fazer1 .2s linear infinite;
       }
 
-      .loader_body > span > span:nth-child(2) {
+      .pageLoader_body > span > span:nth-child(2) {
         top: 3px;
         -webkit-animation: fazer2 .4s linear infinite;
                 animation: fazer2 .4s linear infinite;
       }
 
-      .loader_body > span > span:nth-child(3) {
+      .pageLoader_body > span > span:nth-child(3) {
         top: 1px;
         -webkit-animation: fazer3 .4s linear infinite;
                 animation: fazer3 .4s linear infinite;
@@ -649,7 +649,7 @@ class PwaLoader extends HTMLElement {
                 animation-delay: -1s;
       }
 
-      .loader_body > span > span:nth-child(4) {
+      .pageLoader_body > span > span:nth-child(4) {
         top: 4px;
         -webkit-animation: fazer4 1s linear infinite;
                 animation: fazer4 1s linear infinite;
@@ -657,20 +657,20 @@ class PwaLoader extends HTMLElement {
                 animation-delay: -1s;
       }
 
-      .loader_fazers {
+      .pageLoader_fazers {
         position: absolute;
         width: 100%;
         height: 100%;
       }
 
-      .loader_fazers span {
+      .pageLoader_fazers span {
         position: absolute;
         height: 2px;
         width: 20%;
         background: #000;
       }
 
-      .loader_fazers span:nth-child(1) {
+      .pageLoader_fazers span:nth-child(1) {
         top: 20%;
         -webkit-animation: fazers1 .6s linear infinite;
                 animation: fazers1 .6s linear infinite;
@@ -678,7 +678,7 @@ class PwaLoader extends HTMLElement {
                 animation-delay: -5s;
       }
 
-      .loader_fazers span:nth-child(2) {
+      .pageLoader_fazers span:nth-child(2) {
         top: 40%;
         -webkit-animation: fazers2 .8s linear infinite;
                 animation: fazers2 .8s linear infinite;
@@ -686,13 +686,13 @@ class PwaLoader extends HTMLElement {
                 animation-delay: -1s;
       }
 
-      .loader_fazers span:nth-child(3) {
+      .pageLoader_fazers span:nth-child(3) {
         top: 60%;
         -webkit-animation: fazers3 .6s linear infinite;
                 animation: fazers3 .6s linear infinite;
       }
 
-      .loader_fazers span:nth-child(4) {
+      .pageLoader_fazers span:nth-child(4) {
         top: 80%;
         -webkit-animation: fazers4 .5s linear infinite;
                 animation: fazers4 .5s linear infinite;
@@ -956,20 +956,20 @@ class PwaLoader extends HTMLElement {
     `);
 
     return `
-      <div class="loader -redirect">
-        <div class="loader_body">
+      <div class="pageLoader -redirect">
+        <div class="pageLoader_body">
           <span>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
           </span>
-          <div class="loader_base">
+          <div class="pageLoader_base">
             <span></span>
-            <div class="loader_face"></div>
+            <div class="pageLoader_face"></div>
           </div>
         </div>
-        <div class="loader_fazers">
+        <div class="pageLoader_fazers">
           <span></span>
           <span></span>
           <span></span>
@@ -979,23 +979,23 @@ class PwaLoader extends HTMLElement {
     `;
   }
 
-  renderPercentLoader() {
+  renderPercentPageLoader() {
     const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
     const percentColor = getContrastTextColor(backgroundColor);
 
     this.injectStyles(`
-      .loader.-percent {
+      .pageLoader.-percent {
         background-color: ${backgroundColor};
         flex-direction: column;
       }
   
-      .loader_counter {
+      .pageLoader_counter {
         font-size: 38px;
         color: ${percentColor};
         margin-bottom: 20px;
       }
   
-      .loader_progress {
+      .pageLoader_progress {
         width: 400px;
         max-width: 85vw;
         height: 4px;
@@ -1005,7 +1005,7 @@ class PwaLoader extends HTMLElement {
         overflow: hidden;
       }
   
-      .loader_progress-fill {
+      .pageLoader_progress-fill {
         display: block;
         width: 0;
         height: 100%;
@@ -1015,30 +1015,30 @@ class PwaLoader extends HTMLElement {
     `);
 
     return `
-      <div class="loader -percent">
-        <span class="loader_counter">0%</span>
-        <div class="loader_progress">
-          <span class="loader_progress-fill"></span>
+      <div class="pageLoader -percent">
+        <span class="pageLoader_counter">0%</span>
+        <div class="pageLoader_progress">
+          <span class="pageLoader_progress-fill"></span>
         </div>
       </div>
     `;
   }
 
-  renderFadeLoader() {
+  renderFadePageLoader() {
     const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? '#ffffff';
 
     this.injectStyles(`
-      .loader.-fade {
+      .pageLoader.-fade {
         background-color: ${backgroundColor};
       }
     `);
 
-    return `<div class="loader -fade"></div>`;
+    return `<div class="pageLoader -fade"></div>`;
   }
 
   render() {
     this.injectStyles(`
-      .loader {
+      .pageLoader {
         display: none;
         justify-content: center;
         align-items: center;
@@ -1052,37 +1052,37 @@ class PwaLoader extends HTMLElement {
         transition: opacity 0.3s ease-out;
       }
 
-      .loader.no-transition {
+      .pageLoader.no-transition {
         transition: none !important;
       }
 
-      .loader.visible {
+      .pageLoader.visible {
         opacity: 1;
         visibility: visible;
         display: flex !important;
       }
     `);
 
-    let loaderContent;
+    let pageLoaderContent;
 
     switch (this.type) {
       case 'default':
-        loaderContent = this.renderDefaultLoader();
+        pageLoaderContent = this.renderDefaultPageLoader();
         break;
       case 'skeleton':
-        loaderContent = this.renderSkeletonLoader();
+        pageLoaderContent = this.renderSkeletonPageLoader();
         break;
       case 'spinner':
-        loaderContent = this.renderSpinnerLoader();
+        pageLoaderContent = this.renderSpinnerPageLoader();
         break;
       case 'redirect':
-        loaderContent = this.renderRedirectLoader();
+        pageLoaderContent = this.renderRedirectPageLoader();
         break;
       case 'percent':
-        loaderContent = this.renderPercentLoader();
+        pageLoaderContent = this.renderPercentPageLoader();
         break;
       case 'fade':
-        loaderContent = this.renderFadeLoader();
+        pageLoaderContent = this.renderFadePageLoader();
         break;
       default:
         break;
@@ -1094,15 +1094,15 @@ class PwaLoader extends HTMLElement {
       <style>
         ${combinedStyles}
       </style>
-      ${loaderContent}
+      ${pageLoaderContent}
     `;
   }
 }
 
-export async function initLoader() {
-  if (!customElements.get('pwa-loader')) {
-    customElements.define('pwa-loader', PwaLoader);
+export async function initPageLoader() {
+  if (!customElements.get('pwa-page-loader')) {
+    customElements.define('pwa-page-loader', PwaPageLoader);
   }
 
-  PwaLoader.show();
+  PwaPageLoader.show();
 }

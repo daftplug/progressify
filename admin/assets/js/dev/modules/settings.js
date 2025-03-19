@@ -6,7 +6,40 @@ const daftplugAdmin = jQuery('#daftplugAdmin');
 const slug = daftplugAdmin.attr('data-slug');
 
 export function initSettings() {
+  checkAndGeneratePwaAssetsIfNeeded();
   daftplugAdmin.find('form[name="settingsForm"]').on('submit', saveSettings);
+}
+
+export async function checkAndGeneratePwaAssetsIfNeeded() {
+  const response = await fetch(wpApiSettings.root + slug + '/checkPwaAssets', {
+    method: 'POST',
+    headers: {
+      'X-WP-Nonce': wpApiSettings.nonce,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.needsToGenerate) {
+    try {
+      // Get the PWA pwa icons, splash screens and installation QR code
+      const iconUrl = daftplugAdmin.find('#settingAppIcon').find('[data-attachment-holder]').attr('src');
+      const backgroundColor = daftplugAdmin.find('input[name="webAppManifest[appearance][backgroundColor]"]').val();
+      await generateAndSendPwaAssets(iconUrl, backgroundColor);
+
+      // Generate service worker file
+      await fetch(wpApiSettings.root + slug + '/generateServiceWorkerFile', {
+        method: 'POST',
+        headers: {
+          'X-WP-Nonce': wpApiSettings.nonce,
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      console.error('Failed to generate PWA assets:', error);
+    }
+  }
 }
 
 export async function saveSettings(e) {

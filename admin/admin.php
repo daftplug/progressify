@@ -220,11 +220,6 @@ class Admin
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'changelog.php']),
       ],
       [
-        'id' => 'tools',
-        'description' => esc_html__('Control what to do with your settings and data, reset/export/import settings or deactivate license to activate the plugin on another website.', $this->slug),
-        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'tools.php']),
-      ],
-      [
         'id' => 'error',
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'error.php']),
       ],
@@ -348,8 +343,6 @@ class Admin
 
   public function submitSupportRequest(\WP_REST_Request $request)
   {
-    @ini_set('display_errors', 0);
-
     if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
       return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
     }
@@ -439,22 +432,6 @@ class Admin
     $settings = get_option("{$this->optionName}_settings", []);
     $formattedSettings = $this->formatSettingsHtml($settings);
 
-    // Process attachments
-    $attachments = [];
-    if (!empty($supportRequest['problemAttachments'])) {
-      foreach ($supportRequest['problemAttachments'] as $attachment) {
-        $upload_dir = wp_upload_dir();
-        $filename = wp_unique_filename($upload_dir['path'], $attachment['name']);
-        $filepath = $upload_dir['path'] . '/' . $filename;
-
-        // Decode and save base64 image
-        $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $attachment['dataUrl']));
-        Plugin::putContent($filepath, $imageData);
-
-        $attachments[] = $filepath;
-      }
-    }
-
     // Prepare email content
     $emailContent = sprintf(
       '<html>
@@ -475,7 +452,6 @@ class Admin
                   .settings-tree > ul { padding-left: 0; }
                   .settings-value { color: #000; font-weight: 700; }
                   h2, h3 { color: #000; margin-bottom: 10px; }
-                  .attachments-info { color: #666; font-style: italic; }
               </style>
           </head>
           <body>
@@ -490,8 +466,6 @@ class Admin
                       <div class="problem-description">%s</div>
                   </div>
                   
-                  %s
-
                   %s
                   
                   <div class="section">
@@ -510,7 +484,6 @@ class Admin
       $supportRequest['personName'],
       $supportRequest['personEmail'],
       nl2br(esc_html($supportRequest['problemDescription'])),
-      !empty($attachments) ? sprintf('<div class="attachments-info">%d attachment(s) included</div>', count($attachments)) : '',
       $tempCredentials,
       $debugInfo,
       $formattedSettings
@@ -519,15 +492,7 @@ class Admin
     // Send email
     $headers = ['From: ' . $supportRequest['personName'] . ' <' . $supportRequest['personEmail'] . '>', 'Reply-To: ' . $supportRequest['personEmail'], 'Content-Type: text/html; charset=UTF-8'];
 
-    // TODO: Support request should send the data to daftplug.com to create a ticket via email instead of direct email
-    $emailSent = wp_mail('support@daftplug.com', "[$this->name] New Support Request", $emailContent, $headers, $attachments);
-
-    // Clean up attachment files
-    if (!empty($attachments)) {
-      foreach ($attachments as $attachment) {
-        unlink($attachment);
-      }
-    }
+    $emailSent = wp_mail('support@daftplug.com', "[$this->name] New Support Request", $emailContent, $headers);
 
     if ($emailSent) {
       return new \WP_REST_Response(['status' => 'success'], 200);
