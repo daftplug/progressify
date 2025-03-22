@@ -1,4 +1,4 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 import { initSwup, initSwupHeadPlugin } from '../components/swup.js';
 
 export async function initSmoothPageTransitions() {

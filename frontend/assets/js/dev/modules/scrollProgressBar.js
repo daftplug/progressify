@@ -1,4 +1,4 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 
 class PwaScrollProgressBar extends HTMLElement {
   constructor() {

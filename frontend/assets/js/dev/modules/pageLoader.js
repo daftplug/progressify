@@ -1,4 +1,4 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
 class PwaPageLoader extends HTMLElement {

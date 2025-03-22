@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 <!-- ========== HEADER ========== -->
-<header class="xl:ms-[250px] absolute top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 bg-white border-b border-gray-200 dark:bg-neutral-800 dark:border-neutral-700">
+<header class="xl:ms-[240px] absolute top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 bg-white border-b border-gray-200 dark:bg-neutral-800 dark:border-neutral-700">
   <div class="flex justify-between xl:grid xl:grid-cols-3 basis-full items-center w-full py-2.5 px-2 sm:px-5" aria-label="Global">
     <div class="xl:col-span-1 flex items-center md:gap-x-3">
       <div class="xl:hidden">

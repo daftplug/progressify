@@ -1,4 +1,4 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 import { getOrCreatePwaUserId } from '../components/pwaUserId.js';
 import { hasUrlParam, addParamToUrl } from '../components/utils.js';
 

@@ -1,18 +1,40 @@
 <?php
+
 if (!defined('ABSPATH')) {
   exit();
 } ?>
 
-<main class="grid xl:grid-cols-7 w-full bg-gray-50 h-[calc(100svh-32px)] overflow-hidden" data-page-id="activation">
-  <div class="hidden xl:flex xl:col-span-2 h-[inherit] bg-gray-100 flex-col justify-between gap-y-6 p-6 dark:bg-neutral-950">
+<main class="grid 2xl:grid-cols-7 xl:grid-cols-8 w-full bg-gray-50 h-[calc(100svh-32px)] overflow-hidden" data-page-id="activation">
+  <div class="hidden xl:flex 2xl:col-span-2 xl:col-span-3 h-[inherit] bg-gray-100 flex-col justify-between gap-y-6 p-6 dark:bg-neutral-950">
     <div class="flex justify-between items-center">
       <img class="flex-none h-auto" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/logo.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr($this->menuTitle); ?>" />
-      <select name="language" data-dp-select='{
+      <select name="language" id="languageSelect" data-dp-select='{
         "placeholder": "<?php echo esc_attr__('Select Language', $this->slug); ?>",
         "toggleClasses": "truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 px-3 pe-7 flex items-center gap-x-2 text-nowrap cursor-pointer bg-white border border-gray-200 rounded-lg text-start text-sm text-gray-800 hover:border-gray-300 focus:outline-none focus:border-gray-300 dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
       }'>
-        <option value="English" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/gb.svg', $this->pluginFile)); ?>\" alt=\"English\"/>"}' selected>
-          <?php esc_html_e('English', $this->slug); ?>
+        <option value="default" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/wordpress.png', $this->pluginFile)); ?>\" alt=\"WordPress\"/>"}' <?php selected($this->language, 'default'); ?>>
+          <?php echo esc_html__('Default', $this->slug); ?>
+        </option>
+        <option value="en_US" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/us.svg', $this->pluginFile)); ?>\" alt=\"English\"/>"}' <?php selected($this->language, 'en_US'); ?>>
+          English
+        </option>
+        <option value="es_ES" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/es.svg', $this->pluginFile)); ?>\" alt=\"Spanish\"/>"}' <?php selected($this->language, 'es_ES'); ?>>
+          Español
+        </option>
+        <option value="pt_PT" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/pt.svg', $this->pluginFile)); ?>\" alt=\"Portuguese\"/>"}' <?php selected($this->language, 'pt_PT'); ?>>
+          Português
+        </option>
+        <option value="de_DE" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/de.svg', $this->pluginFile)); ?>\" alt=\"German\"/>"}' <?php selected($this->language, 'de_DE'); ?>>
+          Deutsch
+        </option>
+        <option value="it_IT" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/it.svg', $this->pluginFile)); ?>\" alt=\"Italian\"/>"}' <?php selected($this->language, 'it_IT'); ?>>
+          Italiano
+        </option>
+        <option value="fr_FR" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/fr.svg', $this->pluginFile)); ?>\" alt=\"French\"/>"}' <?php selected($this->language, 'fr_FR'); ?>>
+          Français
+        </option>
+        <option value="zh_CN" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/cn.svg', $this->pluginFile)); ?>\" alt=\"Chinese\"/>"}' <?php selected($this->language, 'zh_CN'); ?>>
+          中文
         </option>
       </select>
     </div>

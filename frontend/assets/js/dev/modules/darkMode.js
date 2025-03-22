@@ -1,6 +1,5 @@
-import { config } from '../main.js';
-
-const { __ } = wp.i18n;
+import { config } from '../frontend.js';
+import { __ } from '../components/i18n.js';
 
 class PwaDarkMode extends HTMLElement {
   constructor() {

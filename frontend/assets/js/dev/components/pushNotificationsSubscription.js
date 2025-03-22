@@ -1,4 +1,4 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 import { urlBase64ToUint8Array } from './utils.js';
 
 class PushNotificationsSubscriptionManager {

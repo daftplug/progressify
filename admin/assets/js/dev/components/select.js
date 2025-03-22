@@ -163,18 +163,19 @@ export function handleSelect() {
     toggle.on('click', function (event) {
       event.stopPropagation();
       daftplugAdmin.find('[data-dp-select-dropdown]').not(dropdown).addClass('hidden');
-      dropdown.toggleClass('hidden');
-      if (!dropdown.hasClass('hidden')) {
-        if (hasSearch) {
-          setTimeout(() => searchInput.focus(), 0);
-          searchInput.val('');
-          optionsContainer.find('[data-value]').removeClass('hidden');
-          optionsContainer.find('.no-results-message').remove();
-        } else {
-          optionsContainer.find('[data-value]').first().focus();
-        }
-      }
+
+      // Position the dropdown before showing it
+      dropdown.removeClass('hidden');
       positionDropdown(dropdown, toggle);
+
+      if (hasSearch) {
+        setTimeout(() => searchInput.focus(), 0);
+        searchInput.val('');
+        optionsContainer.find('[data-value]').removeClass('hidden');
+        optionsContainer.find('.no-results-message').remove();
+      } else {
+        optionsContainer.find('[data-value]').first().focus();
+      }
     });
 
     // Improved search functionality

@@ -1,5 +1,3 @@
-import { config } from '../main.js';
-
 export const getContrastTextColor = (backgroundColor) => {
   const temp = document.createElement('div');
   temp.style.backgroundColor = backgroundColor;

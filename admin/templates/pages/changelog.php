@@ -4,6 +4,15 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+  <div data-version="v1.0.2" data-date="March 22, 2025" data-title="Added Language Support" data-description="The update includes addition of new languages and improved language management.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added 6 new languages and improved the language management.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Improvements to Admin UI</li>
+      <li>Updated module bundler to esbuild for improved performance and smaller file sizes.</li>
+    </ul>
+  </div>
   <div data-version="v1.0.1" data-date="March 19, 2025" data-title="Improved PWA Assets Generation" data-description="The update includes minor fixes and mostly stability improvements.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Installation prompt label images has been updated.</li>

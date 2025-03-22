@@ -12,7 +12,6 @@ export const config = (() => {
 })();
 
 const { settings, userData, pluginsData, pageData } = config.jsVars;
-
 // Load modules
 document.addEventListener('DOMContentLoaded', async function () {
   // PWA Tracker

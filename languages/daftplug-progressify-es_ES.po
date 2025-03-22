@@ -1,0 +1,4504 @@
+# Copyright (C) 2025 DaftPlug
+# This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-"
+"progressify\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Spain)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-20T15:38:14+00:00\n"
+"PO-Revision-Date: 2025-03-22 18:45+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2"
+
+#. Plugin Name of the plugin
+#: daftplug-progressify.php daftplug-progressify.php:24
+msgid "DaftPlug Progressify - Progressive Web App (PWA)"
+msgstr "DaftPlug Progressify - Aplicación web progresiva (PWA)"
+
+#. Plugin URI of the plugin
+#: daftplug-progressify.php
+msgid "https://daftplug.com/progressify/"
+msgstr "https://daftplug.com/progressify/"
+
+#. Description of the plugin
+#: daftplug-progressify.php daftplug-progressify.php:25
+msgid ""
+"Enhance your website with Progressive Web App (PWA) features and take the "
+"user experience to the next level with future of mobile web."
+msgstr ""
+"Mejore su sitio web con funciones de aplicación web progresiva (PWA) y lleve "
+"la experiencia del usuario al siguiente nivel con el futuro de la web móvil."
+
+#. Author of the plugin
+#: daftplug-progressify.php
+msgid "DaftPlug"
+msgstr "DaftPlug"
+
+#. Author URI of the plugin
+#: daftplug-progressify.php
+msgid "https://daftplug.com/"
+msgstr "https://daftplug.com/"
+
+#: admin/admin.php:151 frontend/frontend.php:79
+msgid "An unexpected error occurred"
+msgstr "Se ha producido un error inesperado"
+
+#: admin/admin.php:167
+msgid "Dashboard"
+msgstr "Cuadro de mandos"
+
+#: admin/admin.php:168
+msgid ""
+"View your PWA's performance at a glance, including user stats, browser "
+"breakdown, and a PWA readiness score. Manage plugin features globally with a "
+"single toggle for easy control."
+msgstr ""
+"Vea el rendimiento de su PWA de un vistazo, incluidas las estadísticas de "
+"usuario, el desglose de navegadores y una puntuación de preparación de la "
+"PWA. Gestiona las funciones del plugin globalmente con un solo botón para un "
+"control sencillo."
+
+#: admin/admin.php:173
+msgid "Web App Manifest"
+msgstr "Manifiesto de la aplicación web"
+
+#: admin/admin.php:174
+msgid ""
+"The web app manifest is a JSON file that provides essential information "
+"about your web application to the browser, including how it should appear "
+"and behave when installed on a user's device. This file is necessary for "
+"enabling the \"Add to Home Screen\" prompt, enhancing the integration of "
+"your web app with the user's device."
+msgstr ""
+"El manifiesto de la aplicación web es un archivo JSON que proporciona "
+"información esencial sobre tu aplicación web al navegador, incluyendo cómo "
+"debe aparecer y comportarse cuando se instala en el dispositivo de un "
+"usuario. Este archivo es necesario para activar la opción \"Añadir a la "
+"pantalla de inicio\" y mejorar la integración de la aplicación web con el "
+"dispositivo del usuario."
+
+#: admin/admin.php:179
+msgid "Installation"
+msgstr "Instalación"
+
+#: admin/admin.php:180
+msgid ""
+"Installation features allows displaying prompts that encourage users to add "
+"your website to their home screens. This feature helps increase user "
+"engagement by making your site easily accessible with a single tap, just "
+"like any native mobile application."
+msgstr ""
+"Las funciones de instalación permiten mostrar avisos que animan a los "
+"usuarios a añadir su sitio web a sus pantallas de inicio. Esta función ayuda "
+"a aumentar la participación del usuario haciendo que su sitio sea fácilmente "
+"accesible con un solo toque, al igual que cualquier aplicación móvil nativa."
+
+#: admin/admin.php:185
+msgid "Offline Usage"
+msgstr "Uso fuera de línea"
+
+#: admin/admin.php:186
+msgid ""
+"Enhance your web app with offline support and reliable performance, enabling "
+"users to access previously viewed pages even without an internet connection "
+"or on low connectivity."
+msgstr ""
+"Mejore su aplicación web con soporte offline y un rendimiento fiable, "
+"permitiendo a los usuarios acceder a páginas vistas previamente incluso sin "
+"conexión a Internet o con baja conectividad."
+
+#: admin/admin.php:191
+msgid "UI Components"
+msgstr "Componentes de interfaz de usuario"
+
+#: admin/admin.php:192
+msgid ""
+"Enhance the user experience by adding interactive elements and features that "
+"make your web app look and feel more like a native application, including "
+"options like pull-down refresh, a navigation tab bar, dark mode, and toast "
+"messages."
+msgstr ""
+"Mejore la experiencia del usuario añadiendo elementos interactivos y "
+"funciones que hagan que su aplicación web se parezca más a una aplicación "
+"nativa, incluidas opciones como la actualización desplegable, una barra de "
+"pestañas de navegación, el modo oscuro y los mensajes tostados."
+
+#: admin/admin.php:197
+msgid "App Capabilities"
+msgstr "Funciones de la aplicación"
+
+#: admin/admin.php:198
+msgid ""
+"Enable advanced features and capabilities to enhance your website with "
+"native app-like functionalities. This includes passwordless login, "
+"background sync, periodic background sync, content indexing, persistent "
+"storage, and other advanced web APIs, providing a seamless mobile-like "
+"experience."
+msgstr ""
+"Habilite funciones y capacidades avanzadas para mejorar su sitio web con "
+"funcionalidades similares a las de una aplicación nativa. Esto incluye el "
+"inicio de sesión sin contraseña, la sincronización en segundo plano, la "
+"sincronización periódica en segundo plano, la indexación de contenidos, el "
+"almacenamiento persistente y otras API web avanzadas, lo que proporciona una "
+"experiencia similar a la de los dispositivos móviles."
+
+#: admin/admin.php:203
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:216
+msgid "Push Notifications"
+msgstr "Notificaciones Push"
+
+#: admin/admin.php:204
+msgid ""
+"Push notifications allow your web app to send messages directly to users' "
+"devices, providing a powerful tool for engaging users with timely updates, "
+"alerts, and personalized content. This feature helps keep your audience "
+"informed and connected, even when they are not actively using the app."
+msgstr ""
+"Las notificaciones push permiten a tu aplicación web enviar mensajes "
+"directamente a los dispositivos de los usuarios, proporcionando una potente "
+"herramienta para atraer a los usuarios con actualizaciones puntuales, "
+"alertas y contenido personalizado. Esta función ayuda a mantener a tu "
+"audiencia informada y conectada, incluso cuando no están utilizando "
+"activamente la aplicación."
+
+#: admin/admin.php:209 admin/templates/pages/publishtoappstores.php:9
+msgid ""
+"Get Android, iOS, and Windows apps that mirror your website in real-time, "
+"requiring no updates, and publish your web app to the Google Play Store, App "
+"Store, and Microsoft Store to reach more users."
+msgstr ""
+"Obtenga aplicaciones para Android, iOS y Windows que reflejen su sitio web "
+"en tiempo real, sin necesidad de actualizaciones, y publique su aplicación "
+"web en Google Play Store, App Store y Microsoft Store para llegar a más "
+"usuarios."
+
+#: admin/admin.php:214
+msgid ""
+"We understand all the importance of product support for our customers. "
+"That's why we are ready to solve all your issues and answer any questions "
+"related to our plugin."
+msgstr ""
+"Entendemos toda la importancia que tiene el soporte de producto para "
+"nuestros clientes. Es por eso que estamos listos para resolver todos sus "
+"problemas y responder a cualquier pregunta relacionada con nuestro plugin."
+
+#: admin/admin.php:219
+msgid "See what's new added, changed, fixed, improved or updated."
+msgstr ""
+"Vea las novedades añadidas, modificadas, corregidas, mejoradas o "
+"actualizadas."
+
+#: admin/templates/header.php:26 admin/templates/pages/uicomponents.php:423
+msgid "Search"
+msgstr "Buscar en"
+
+#: admin/templates/header.php:31 admin/templates/header.php:72
+#: admin/templates/pages/publishtoappstores.php:8
+#: admin/templates/sidebar.php:45
+msgid "Publish to App Stores"
+msgstr "Publicar en App Stores"
+
+#: admin/templates/header.php:34
+msgid "Play Store"
+msgstr "Play Store"
+
+#: admin/templates/header.php:36
+#: admin/templates/pages/publishtoappstores.php:22
+#: admin/templates/pages/webappmanifest.php:491
+msgid "Android"
+msgstr "Android"
+
+#: admin/templates/header.php:43
+msgid "App Store"
+msgstr "App Store"
+
+#: admin/templates/header.php:45
+msgid "Mac"
+msgstr "Mac"
+
+#: admin/templates/header.php:52
+msgid "Microsoft Store"
+msgstr "Tienda Microsoft"
+
+#: admin/templates/header.php:54 admin/templates/pages/webappmanifest.php:497
+msgid "Windows"
+msgstr "Windows"
+
+#: admin/templates/header.php:60
+msgid "No Results"
+msgstr "Sin resultados"
+
+#: admin/templates/main.php:15
+msgid "FAQ"
+msgstr "PREGUNTAS FRECUENTES"
+
+#: admin/templates/main.php:20
+msgid "Changelog"
+msgstr "Registro de cambios"
+
+#: admin/templates/pages/activation.php:11 admin/templates/sidebar.php:87
+msgid "Select Language"
+msgstr "Seleccionar idioma"
+
+#: admin/templates/pages/activation.php:15 admin/templates/sidebar.php:91
+msgid "English"
+msgstr "Inglés"
+
+#: admin/templates/pages/activation.php:33
+msgid "Dark mode"
+msgstr "Modo oscuro"
+
+#: admin/templates/pages/activation.php:47
+msgid "Light mode"
+msgstr "Modo luz"
+
+#: admin/templates/pages/activation.php:55
+#: admin/templates/pages/activation.php:88
+msgid "Activate License"
+msgstr "Activar licencia"
+
+#: admin/templates/pages/activation.php:58
+msgid ""
+"Enter your item purchase code from Envato as your license key to activate "
+"the plugin. This will enable in-plugin support and automatic updates."
+msgstr ""
+"Introduzca su código de compra de Envato como clave de licencia para activar "
+"el plugin. Esto habilitará el soporte dentro del plugin y las "
+"actualizaciones automáticas."
+
+#: admin/templates/pages/activation.php:64
+#: admin/templates/pages/activation.php:77
+msgid "License Key"
+msgstr "Clave de licencia"
+
+#: admin/templates/pages/activation.php:72
+msgid ""
+"To obtain your license key, go to your CodeCanyon downloads page, click "
+"\"Download\" on the plugin, select \"License certificate & purchase code,\" "
+"and download the document."
+msgstr ""
+"Para obtener su clave de licencia, vaya a su página de descargas de "
+"CodeCanyon, haga clic en \"Descargar\" en el plugin, seleccione "
+"\"Certificado de licencia y código de compra\" y descargue el documento."
+
+#: admin/templates/pages/activation.php:73
+msgid "Download License Key"
+msgstr "Descargar clave de licencia"
+
+#: admin/templates/pages/activation.php:76
+msgid ""
+"After downloading the document, open it and copy the \"Item Purchase Code\". "
+"This is your license key which you you need to enter in the field below to "
+"activate the plugin."
+msgstr ""
+"Después de descargar el documento, ábralo y copie el \"Código de compra del "
+"artículo\". Esta es su clave de licencia, que deberá introducir en el campo "
+"inferior para activar el plugin."
+
+#: admin/templates/pages/activation.php:82
+msgid "Enter Your License Key"
+msgstr "Introduzca su clave de licencia"
+
+#: admin/templates/pages/activation.php:86
+msgid "Activating..."
+msgstr "Activando..."
+
+#: admin/templates/pages/activation.php:92
+msgid "Having trouble with activating license?"
+msgstr "¿Tiene problemas para activar la licencia?"
+
+#: admin/templates/pages/activation.php:94
+msgid "Contact Us"
+msgstr "Póngase en contacto con nosotros"
+
+#: admin/templates/pages/appcapabilities.php:20
+msgid "Smooth Transitions"
+msgstr "Transiciones suaves"
+
+#: admin/templates/pages/appcapabilities.php:28
+msgid ""
+"This feature provides a true native app-like experience by loading content "
+"without reloading the entire page. It enables smooth slide and fade "
+"transition animations between pages and displays a progress bar while the "
+"page loads."
+msgstr ""
+"Esta función proporciona una experiencia similar a la de una aplicación "
+"nativa, ya que carga el contenido sin recargar toda la página. Permite "
+"animaciones suaves de transición entre páginas y muestra una barra de "
+"progreso mientras se carga la página."
+
+#: admin/templates/pages/appcapabilities.php:43
+msgid "Loading Progress Bar"
+msgstr "Barra de progreso de carga"
+
+#: admin/templates/pages/appcapabilities.php:50
+msgid ""
+"Enabling this options shows a page transition progress on top of the screen "
+"as the page loads."
+msgstr ""
+"Activando esta opción se muestra un progreso de transición de página en la "
+"parte superior de la pantalla mientras se carga la página."
+
+#: admin/templates/pages/appcapabilities.php:55
+msgid ""
+"Display a progress bar at the top of the screen during page transitions."
+msgstr ""
+"Mostrar una barra de progreso en la parte superior de la pantalla durante "
+"las transiciones de página."
+
+#: admin/templates/pages/appcapabilities.php:72
+msgid "Transition Type"
+msgstr "Tipo de transición"
+
+#: admin/templates/pages/appcapabilities.php:79
+msgid "Select the type of transition you want your pages to be swiped with."
+msgstr ""
+"Seleccione el tipo de transición con el que desea que se deslicen sus "
+"páginas."
+
+#: admin/templates/pages/appcapabilities.php:84
+msgid "Select Transition Type"
+msgstr "Seleccione el tipo de transición"
+
+#: admin/templates/pages/appcapabilities.php:87
+msgid ""
+"Makes the content slide out to one direction, and slide in from the other."
+msgstr ""
+"Hace que el contenido se deslice hacia fuera en una dirección y hacia dentro "
+"en la otra."
+
+#: admin/templates/pages/appcapabilities.php:88
+msgid "Slide"
+msgstr "Diapositiva"
+
+#: admin/templates/pages/appcapabilities.php:90
+msgid "Makes the content fade out when leaving, and fade in when entering."
+msgstr ""
+"Hace que el contenido se desvanezca al salir, y se desvanezca al entrar."
+
+#: admin/templates/pages/appcapabilities.php:91
+#: admin/templates/pages/uicomponents.php:1011
+msgid "Fade"
+msgstr "Desvanecer"
+
+#: admin/templates/pages/appcapabilities.php:98
+#: admin/templates/pages/appcapabilities.php:344
+#: admin/templates/pages/appcapabilities.php:431
+#: admin/templates/pages/appcapabilities.php:505
+#: admin/templates/pages/uicomponents.php:41
+#: admin/templates/pages/uicomponents.php:637
+#: admin/templates/pages/uicomponents.php:772
+#: admin/templates/pages/uicomponents.php:846
+#: admin/templates/pages/uicomponents.php:913
+#: admin/templates/pages/uicomponents.php:1018
+#: admin/templates/pages/uicomponents.php:1089
+#: admin/templates/pages/uicomponents.php:1156
+msgid "Supported Devices"
+msgstr "Dispositivos compatibles"
+
+#: admin/templates/pages/appcapabilities.php:105
+msgid ""
+"Select on what device types smooth page transitions feature should be active "
+"and running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de transición suave de páginas."
+
+#: admin/templates/pages/appcapabilities.php:110
+#: admin/templates/pages/appcapabilities.php:356
+#: admin/templates/pages/appcapabilities.php:443
+#: admin/templates/pages/appcapabilities.php:517
+#: admin/templates/pages/uicomponents.php:53
+#: admin/templates/pages/uicomponents.php:649
+#: admin/templates/pages/uicomponents.php:784
+#: admin/templates/pages/uicomponents.php:858
+#: admin/templates/pages/uicomponents.php:925
+#: admin/templates/pages/uicomponents.php:1030
+#: admin/templates/pages/uicomponents.php:1101
+#: admin/templates/pages/uicomponents.php:1168
+msgid "Select Devices"
+msgstr "Seleccionar dispositivos"
+
+#: admin/templates/pages/appcapabilities.php:114
+#: admin/templates/pages/appcapabilities.php:360
+#: admin/templates/pages/appcapabilities.php:447
+#: admin/templates/pages/appcapabilities.php:521
+#: admin/templates/pages/uicomponents.php:57
+#: admin/templates/pages/uicomponents.php:653
+#: admin/templates/pages/uicomponents.php:788
+#: admin/templates/pages/uicomponents.php:862
+#: admin/templates/pages/uicomponents.php:929
+#: admin/templates/pages/uicomponents.php:1034
+#: admin/templates/pages/uicomponents.php:1105
+#: admin/templates/pages/uicomponents.php:1172
+msgid "Smartphone"
+msgstr "Teléfono inteligente"
+
+#: admin/templates/pages/appcapabilities.php:118
+#: admin/templates/pages/appcapabilities.php:364
+#: admin/templates/pages/appcapabilities.php:451
+#: admin/templates/pages/appcapabilities.php:525
+#: admin/templates/pages/uicomponents.php:61
+#: admin/templates/pages/uicomponents.php:656
+#: admin/templates/pages/uicomponents.php:792
+#: admin/templates/pages/uicomponents.php:866
+#: admin/templates/pages/uicomponents.php:933
+#: admin/templates/pages/uicomponents.php:1038
+#: admin/templates/pages/uicomponents.php:1109
+#: admin/templates/pages/uicomponents.php:1176
+msgid "Tablet"
+msgstr "Tableta"
+
+#: admin/templates/pages/appcapabilities.php:122
+#: admin/templates/pages/appcapabilities.php:455
+#: admin/templates/pages/appcapabilities.php:529
+#: admin/templates/pages/uicomponents.php:660
+#: admin/templates/pages/uicomponents.php:796
+#: admin/templates/pages/uicomponents.php:1042
+msgid "Desktop"
+msgstr "Escritorio"
+
+#: admin/templates/pages/appcapabilities.php:130
+msgid "Compatibility Mode "
+msgstr "Modo Compatibilidad"
+
+#: admin/templates/pages/appcapabilities.php:137
+msgid ""
+"Enable this only if certain features on your website stop working, and you "
+"notice issues where page navigation reloads the entire page instead of "
+"transitioning smoothly."
+msgstr ""
+"Habilite esta opción sólo si determinadas funciones de su sitio web dejan de "
+"funcionar y observa problemas en los que la navegación por la página recarga "
+"toda la página en lugar de realizar una transición fluida."
+
+#: admin/templates/pages/appcapabilities.php:144
+msgid "Use custom content wrapper and force script reinitialization."
+msgstr ""
+"Usar envoltorio de contenido personalizado y forzar la reinicialización del "
+"script."
+
+#: admin/templates/pages/appcapabilities.php:153
+#: admin/templates/pages/appcapabilities.php:229
+#: admin/templates/pages/appcapabilities.php:305
+#: admin/templates/pages/appcapabilities.php:373
+#: admin/templates/pages/appcapabilities.php:465
+#: admin/templates/pages/appcapabilities.php:538
+#: admin/templates/pages/appcapabilities.php:725
+#: admin/templates/pages/installation.php:240
+#: admin/templates/pages/offlineusage.php:148
+#: admin/templates/pages/offlineusage.php:281
+#: admin/templates/pages/pushnotifications.php:163
+#: admin/templates/pages/pushnotifications.php:258
+#: admin/templates/pages/pushnotifications.php:347
+#: admin/templates/pages/pushnotifications.php:819
+#: admin/templates/pages/uicomponents.php:596
+#: admin/templates/pages/uicomponents.php:669
+#: admin/templates/pages/uicomponents.php:805
+#: admin/templates/pages/uicomponents.php:875
+#: admin/templates/pages/uicomponents.php:942
+#: admin/templates/pages/uicomponents.php:1051
+#: admin/templates/pages/uicomponents.php:1118
+#: admin/templates/pages/uicomponents.php:1185
+#: admin/templates/pages/webappmanifest.php:225
+#: admin/templates/pages/webappmanifest.php:334
+#: admin/templates/pages/webappmanifest.php:422
+#: admin/templates/pages/webappmanifest.php:602
+msgid "Saving..."
+msgstr "Ahorrar..."
+
+#: admin/templates/pages/appcapabilities.php:155
+#: admin/templates/pages/appcapabilities.php:231
+#: admin/templates/pages/appcapabilities.php:307
+#: admin/templates/pages/appcapabilities.php:375
+#: admin/templates/pages/appcapabilities.php:467
+#: admin/templates/pages/appcapabilities.php:540
+#: admin/templates/pages/appcapabilities.php:727
+#: admin/templates/pages/installation.php:242
+#: admin/templates/pages/offlineusage.php:150
+#: admin/templates/pages/offlineusage.php:283
+#: admin/templates/pages/pushnotifications.php:165
+#: admin/templates/pages/pushnotifications.php:260
+#: admin/templates/pages/pushnotifications.php:349
+#: admin/templates/pages/pushnotifications.php:821
+#: admin/templates/pages/uicomponents.php:598
+#: admin/templates/pages/uicomponents.php:671
+#: admin/templates/pages/uicomponents.php:807
+#: admin/templates/pages/uicomponents.php:877
+#: admin/templates/pages/uicomponents.php:944
+#: admin/templates/pages/uicomponents.php:1053
+#: admin/templates/pages/uicomponents.php:1120
+#: admin/templates/pages/uicomponents.php:1187
+#: admin/templates/pages/webappmanifest.php:227
+#: admin/templates/pages/webappmanifest.php:336
+#: admin/templates/pages/webappmanifest.php:424
+#: admin/templates/pages/webappmanifest.php:604
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: admin/templates/pages/appcapabilities.php:172
+msgid "URL Protocol Handler"
+msgstr "Manejador de protocolo URL"
+
+#: admin/templates/pages/appcapabilities.php:181
+msgid ""
+"The URL Protocol Handler feature allows PWAs to open specific protocol links "
+"for a seamless user experience. When a PWA is registered as a protocol "
+"handler, clicking a link with the specified scheme will open the PWA, "
+"receiving the URL."
+msgstr ""
+"La función URL Protocol Handler permite a las PWA abrir enlaces de "
+"protocolos específicos para una experiencia de usuario fluida. Cuando una "
+"PWA se registra como gestor de protocolos, al hacer clic en un enlace con el "
+"esquema especificado se abrirá la PWA, recibiendo la URL."
+
+#: admin/templates/pages/appcapabilities.php:194
+msgid "Protocol"
+msgstr "Protocolo"
+
+#: admin/templates/pages/appcapabilities.php:205
+msgid "Enter Protocol"
+msgstr "Introducir protocolo"
+
+#: admin/templates/pages/appcapabilities.php:211
+msgid "URL"
+msgstr "URL"
+
+#: admin/templates/pages/appcapabilities.php:222
+msgid "Enter URL"
+msgstr "Introducir URL"
+
+#: admin/templates/pages/appcapabilities.php:248
+msgid "Web Share Target"
+msgstr "Web Share Target"
+
+#: admin/templates/pages/appcapabilities.php:257
+msgid ""
+"Web Share Target feature adds a system-level share target picker and allows "
+"your web app to register as a share target to receive shared data from other "
+"sites or apps via share URL scheme. The feature is most useful if your "
+"website is a social networking app."
+msgstr ""
+"La función Web Share Target añade un selector de destinos compartidos a "
+"nivel de sistema y permite que tu aplicación web se registre como destino "
+"compartido para recibir datos compartidos de otros sitios o aplicaciones a "
+"través de un esquema de URL compartido. Esta función es muy útil si su sitio "
+"web es una aplicación de redes sociales."
+
+#: admin/templates/pages/appcapabilities.php:270
+msgid "Share Action"
+msgstr "Acción Compartir"
+
+#: admin/templates/pages/appcapabilities.php:277
+msgid ""
+"Enter the action of your web app. Action is a URL or your share URL scheme "
+"that accepts parameters and opens a share dialog. For example Facebook share "
+"action is <code>/sharer/</code> and Facebook full share URL is https://www."
+"facebook.com<code>/sharer/</code>?u=https://example.com/"
+msgstr ""
+"Introduzca la acción de su aplicación web. La acción es una URL o su esquema "
+"de URL de uso compartido que acepta parámetros y abre un cuadro de diálogo "
+"de uso compartido. Por ejemplo, la acción para compartir de Facebook es "
+"<code>/sharer/</code> y la URL completa para compartir de Facebook es https:"
+"//www.facebook.com<code>/sharer/</code>?u=https://example.com/"
+
+#: admin/templates/pages/appcapabilities.php:281
+msgid "Enter Action"
+msgstr "Introducir acción"
+
+#: admin/templates/pages/appcapabilities.php:287
+msgid "URL Query"
+msgstr "Consulta de URL"
+
+#: admin/templates/pages/appcapabilities.php:298
+msgid "Enter URL Query"
+msgstr "Introducir consulta URL"
+
+#: admin/templates/pages/appcapabilities.php:324
+msgid "Vibrations"
+msgstr "Vibraciones"
+
+#: admin/templates/pages/appcapabilities.php:331
+msgid ""
+"Vibrations feature creates vibes on tapping for mobile users. That can help "
+"mobile users recognize when they are tapping and clicking on your website."
+msgstr ""
+"La función Vibraciones crea vibraciones al pulsar para los usuarios móviles. "
+"Esto puede ayudar a los usuarios móviles a reconocer cuándo están pulsando y "
+"haciendo clic en su sitio web."
+
+#: admin/templates/pages/appcapabilities.php:351
+msgid ""
+"Select on what device types vibrations feature should be active and running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de vibración."
+
+#: admin/templates/pages/appcapabilities.php:392
+msgid "Idle Detection"
+msgstr "Detección de ralentí"
+
+#: admin/templates/pages/appcapabilities.php:401
+msgid ""
+"The Idle Detection notifies your website when a user is idle, indicating "
+"such things as lack of interaction with the keyboard, mouse, screen, "
+"activation of a screensaver, locking of the screen, or moving to a different "
+"screen. If enabled, your website will prompt your users to update contents "
+"if the user is detected to be in an idle state."
+msgstr ""
+"La detección de inactividad notifica a su sitio web cuando un usuario está "
+"inactivo, indicando cosas como la falta de interacción con el teclado, el "
+"ratón, la pantalla, la activación de un salvapantallas, el bloqueo de la "
+"pantalla o el desplazamiento a una pantalla diferente. Si se activa, su "
+"sitio web pedirá a sus usuarios que actualicen contenidos si se detecta que "
+"el usuario está en estado de inactividad."
+
+#: admin/templates/pages/appcapabilities.php:414
+msgid "Threshold"
+msgstr "Umbral"
+
+#: admin/templates/pages/appcapabilities.php:421
+msgid "Choose how many minutes to wait until the user is considered idle."
+msgstr ""
+"Elija cuántos minutos se debe esperar hasta que el usuario se considere "
+"inactivo."
+
+#: admin/templates/pages/appcapabilities.php:438
+msgid ""
+"Select on what device types Idle Detection feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de detección de inactividad."
+
+#: admin/templates/pages/appcapabilities.php:483
+msgid "Screen Wake Lock"
+msgstr "Bloqueo de pantalla"
+
+#: admin/templates/pages/appcapabilities.php:492
+msgid ""
+"Screen wake lock provides a way to prevent device from dimming or locking "
+"the screen when your web application needs to keep running. This capability "
+"enables new experiences that, until now, required a platform-specific app."
+msgstr ""
+"El bloqueo de pantalla permite evitar que el dispositivo atenúe o bloquee la "
+"pantalla cuando su aplicación web necesita seguir ejecutándose. Esta "
+"capacidad permite nuevas experiencias que, hasta ahora, requerían una app "
+"específica de la plataforma."
+
+#: admin/templates/pages/appcapabilities.php:512
+msgid ""
+"Select on what device types Screen Wake Lock feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de Bloqueo de Pantalla."
+
+#: admin/templates/pages/appcapabilities.php:557
+msgid "Advanced Web APIs"
+msgstr "API web avanzadas"
+
+#: admin/templates/pages/appcapabilities.php:566
+msgid ""
+"Enable support for advanced PWA functionality APIs to enhance your web app "
+"with features such as background sync, periodic background sync, web "
+"authentication for biometric login, content indexation, persistent storage, "
+"and other capabilities that provide a richer, more native-like experience."
+msgstr ""
+"Habilite la compatibilidad con las API de funcionalidad PWA avanzada para "
+"mejorar su aplicación web con funciones como la sincronización en segundo "
+"plano, la sincronización periódica en segundo plano, la autenticación web "
+"para el inicio de sesión biométrico, la indexación de contenidos, el "
+"almacenamiento persistente y otras capacidades que proporcionan una "
+"experiencia más rica y nativa."
+
+#: admin/templates/pages/appcapabilities.php:581
+msgid "Biometric Authentication"
+msgstr "Autenticación biométrica"
+
+#: admin/templates/pages/appcapabilities.php:588
+msgid ""
+"The Biometric Authentication feature is leveraging the Web Authentication "
+"API that allows standard WP login to authenticate registered users with the "
+"device's built-in authenticators like Touch ID, Face ID and Windows Hello or "
+"even using security keys like Yubikey."
+msgstr ""
+"La función de autenticación biométrica aprovecha la API de autenticación web "
+"que permite el inicio de sesión estándar de WP para autenticar a los "
+"usuarios registrados con los autenticadores integrados del dispositivo como "
+"Touch ID, Face ID y Windows Hello o incluso utilizando claves de seguridad "
+"como Yubikey."
+
+#: admin/templates/pages/appcapabilities.php:593
+msgid ""
+"Allow login with Touch ID, Face ID or with other device's built-in "
+"authenticator."
+msgstr ""
+"Permitir el inicio de sesión con Touch ID, Face ID o con el autenticador "
+"integrado de otro dispositivo."
+
+#: admin/templates/pages/appcapabilities.php:610
+msgid "Background Sync"
+msgstr "Sincronización de fondo"
+
+#: admin/templates/pages/appcapabilities.php:617
+msgid ""
+"Background sync lets you defer actions until the user has stable "
+"connectivity. This ensures that crucial requests made while your web app is "
+"offline can be replayed when the user comes back online."
+msgstr ""
+"La sincronización en segundo plano te permite aplazar acciones hasta que el "
+"usuario tenga una conectividad estable. Esto garantiza que las solicitudes "
+"cruciales realizadas mientras la aplicación web está desconectada puedan "
+"reproducirse cuando el usuario vuelva a estar conectado."
+
+#: admin/templates/pages/appcapabilities.php:622
+msgid "Defer actions and requests until the user has stable connectivity."
+msgstr ""
+"Aplazar acciones y solicitudes hasta que el usuario tenga una conectividad "
+"estable."
+
+#: admin/templates/pages/appcapabilities.php:639
+msgid "Periodic Background Sync"
+msgstr "Sincronización periódica de fondo"
+
+#: admin/templates/pages/appcapabilities.php:646
+msgid ""
+"Periodic Background Sync enables web applications to periodically "
+"synchronize data in the background, bringing web apps closer to the behavior "
+"of a platform-specific app. It lets your website to always show fresh "
+"content in PWA by downloading data in the background when the app or page is "
+"not being used."
+msgstr ""
+"La sincronización periódica en segundo plano permite a las aplicaciones web "
+"sincronizar periódicamente los datos en segundo plano, acercando las "
+"aplicaciones web al comportamiento de una aplicación específica de la "
+"plataforma. Permite que tu sitio web muestre siempre contenido fresco en la "
+"PWA descargando datos en segundo plano cuando la app o la página no se están "
+"utilizando."
+
+#: admin/templates/pages/appcapabilities.php:652
+msgid ""
+"Periodically sync data in the background to always show fresh content in PWA."
+msgstr ""
+"Sincronice periódicamente los datos en segundo plano para mostrar siempre "
+"contenido fresco en la PWA."
+
+#: admin/templates/pages/appcapabilities.php:669
+msgid "Content Indexing"
+msgstr "Indexación de contenidos"
+
+#: admin/templates/pages/appcapabilities.php:676
+msgid ""
+"Content Indexing allows web applications to add URLs and metadata of offline-"
+"capable pages to a local index maintained by the browser. This improves the "
+"offline experience and discoverability of already-cached pages by enabling "
+"the browser to surface those pages when users are likely to want to view "
+"them. These pages could also be used to improve on-device search and augment "
+"browsing history."
+msgstr ""
+"La indexación de contenidos permite a las aplicaciones web añadir las URL y "
+"los metadatos de las páginas sin conexión a un índice local mantenido por el "
+"navegador. Esto mejora la experiencia fuera de línea y la posibilidad de "
+"descubrir páginas ya almacenadas en caché, ya que permite al navegador "
+"mostrar esas páginas cuando es probable que los usuarios quieran verlas. "
+"Estas páginas también podrían utilizarse para mejorar la búsqueda en el "
+"dispositivo y aumentar el historial de navegación."
+
+#: admin/templates/pages/appcapabilities.php:681
+msgid ""
+"Add URLs of offline-capable pages to a local index maintained by the browser."
+msgstr ""
+"Añade las URL de las páginas no aptas para Internet a un índice local "
+"mantenido por el navegador."
+
+#: admin/templates/pages/appcapabilities.php:698
+msgid "Persistent Storage"
+msgstr "Almacenamiento persistente"
+
+#: admin/templates/pages/appcapabilities.php:705
+msgid ""
+"Persistent storage allows your web app to request persistent storage, "
+"ensuring that important data is reliably stored on the user's device without "
+"being automatically cleared, even under storage pressure. It can help "
+"protect critical data from eviction, and reduce the chance of data loss."
+msgstr ""
+"El almacenamiento persistente permite a su aplicación web solicitar "
+"almacenamiento persistente, garantizando que los datos importantes se "
+"almacenen de forma fiable en el dispositivo del usuario sin que se borren "
+"automáticamente, incluso bajo presión de almacenamiento. Puede ayudar a "
+"proteger los datos críticos frente al desalojo y reducir la posibilidad de "
+"pérdida de datos."
+
+#: admin/templates/pages/appcapabilities.php:710
+msgid "Mark cached website content as persistent to prevent deletion."
+msgstr ""
+"Marque el contenido del sitio web almacenado en caché como persistente para "
+"evitar su eliminación."
+
+#: admin/templates/pages/dashboard.php:14
+msgid "Active PWA Users"
+msgstr "Usuarios activos de la PWA"
+
+#: admin/templates/pages/dashboard.php:22
+msgid ""
+"Number of users who installed your web app and are actively using it as PWA."
+msgstr ""
+"Número de usuarios que han instalado su aplicación web y la utilizan "
+"activamente como PWA."
+
+#: admin/templates/pages/dashboard.php:42
+msgid "PWA Scorecard"
+msgstr "Tarjeta de puntuación PWA"
+
+#: admin/templates/pages/dashboard.php:50
+msgid ""
+"The scorecard shows the status and overall condition of your PWA setup. Your "
+"goal should be to resolve all action items and achieve an excellent score."
+msgstr ""
+"El cuadro de mando muestra el estado y la condición general de la "
+"configuración de su PWA. Su objetivo debe ser resolver todos los elementos "
+"de acción y lograr una puntuación excelente."
+
+#: admin/templates/pages/dashboard.php:72
+msgid "Bad"
+msgstr "Mal"
+
+#: admin/templates/pages/dashboard.php:78
+msgid "Average"
+msgstr "Media"
+
+#: admin/templates/pages/dashboard.php:84
+msgid "Good"
+msgstr "Bien"
+
+#: admin/templates/pages/dashboard.php:90
+msgid "Excellent"
+msgstr "Excelente"
+
+#: admin/templates/pages/dashboard.php:105
+msgid "PWA Installations"
+msgstr "Instalaciones PWA"
+
+#: admin/templates/pages/dashboard.php:113
+msgid ""
+"The chart displays the historical data of your web app installations over "
+"time."
+msgstr ""
+"El gráfico muestra los datos históricos de las instalaciones de su "
+"aplicación web a lo largo del tiempo."
+
+#: admin/templates/pages/dashboard.php:119
+msgid "Last 7 Days"
+msgstr "Últimos 7 días"
+
+#: admin/templates/pages/dashboard.php:123
+msgid "Last 28 Days"
+msgstr "Últimos 28 días"
+
+#: admin/templates/pages/dashboard.php:127
+msgid "Last 12 Months"
+msgstr "Últimos 12 meses"
+
+#: admin/templates/pages/error.php:9
+msgid "Oops, something went wrong."
+msgstr "Uy, algo salió mal."
+
+#: admin/templates/pages/error.php:10
+msgid "Sorry, we couldn't find your page."
+msgstr "Lo sentimos, no hemos podido encontrar su página."
+
+#: admin/templates/pages/error.php:16
+msgid "Go to Dashboard"
+msgstr "Ir al panel de control"
+
+#: admin/templates/pages/helpcenter.php:14
+msgid "Frequently Asked Questions"
+msgstr "Preguntas frecuentes"
+
+#: admin/templates/pages/helpcenter.php:17
+msgid ""
+"Reading the FAQ is useful when you're experiencing a common issue related to "
+"the plugin. If the FAQ didn't help and you have a hard time resolving the "
+"problem, please submit a ticket."
+msgstr ""
+"La lectura de las FAQ es útil cuando se experimenta un problema común "
+"relacionado con el plugin. Si las FAQ no le han ayudado y tiene dificultades "
+"para resolver el problema, envíe un ticket."
+
+#: admin/templates/pages/helpcenter.php:30
+msgid "What are Progressive Web Apps?"
+msgstr "¿Qué son las aplicaciones web progresivas?"
+
+#: admin/templates/pages/helpcenter.php:35
+msgid ""
+"Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs "
+"to provide enhanced capabilities while still reaching any web user on any "
+"device with a single codebase. They combine the broad reach of web apps with "
+"the rich capabilities of platform-specific apps to enhance the user "
+"experience."
+msgstr ""
+"Las aplicaciones web progresivas (PWA) son aplicaciones web creadas y "
+"mejoradas con API modernas para proporcionar capacidades mejoradas sin dejar "
+"de llegar a cualquier usuario web en cualquier dispositivo con una única "
+"base de código. Combinan el amplio alcance de las aplicaciones web con la "
+"riqueza de capacidades de las aplicaciones específicas de cada plataforma "
+"para mejorar la experiencia del usuario."
+
+#: admin/templates/pages/helpcenter.php:49
+msgid "Why do installation prompts sometimes not appear?"
+msgstr "¿Por qué a veces no aparecen las instrucciones de instalación?"
+
+#: admin/templates/pages/helpcenter.php:54
+msgid ""
+"Installation prompts appear dynamically based on your settings and specific "
+"conditions. Some prompts are shown only to tablet and smartphone users, "
+"while others also appear on desktops. Some can be dismissed, some auto-"
+"dismiss, and others are persistent. An installation overlay will not appear "
+"if the feature is disabled, the user has already seen and dismissed it while "
+"the timeout hasn't expired, or if the prompts are set to show only to "
+"returning visitors, and the user is visiting for the first time. If a prompt "
+"isn’t showing, check that it is enabled in the settings and that the display "
+"conditions are met."
+msgstr ""
+"Los avisos de instalación aparecen dinámicamente en función de su "
+"configuración y condiciones específicas. Algunas sólo se muestran a los "
+"usuarios de tabletas y teléfonos inteligentes, mientras que otras también "
+"aparecen en los ordenadores de sobremesa. Algunas se pueden descartar, otras "
+"se descartan automáticamente y otras son persistentes. Una superposición de "
+"instalación no aparecerá si la función está desactivada, si el usuario ya la "
+"ha visto y la ha descartado mientras el tiempo de espera no ha expirado, o "
+"si los avisos están configurados para mostrarse sólo a los visitantes que "
+"regresan, y el usuario está visitando por primera vez. Si un aviso no se "
+"muestra, compruebe que está activado en la configuración y que se cumplen "
+"las condiciones de visualización."
+
+#: admin/templates/pages/helpcenter.php:68
+msgid "Does Push Notifications work on iOS?"
+msgstr "¿Funcionan las notificaciones push en iOS?"
+
+#: admin/templates/pages/helpcenter.php:73
+msgid ""
+"Yes, iOS Safari is supporting web based push notifications, but only if the "
+"website is added to the home screen, so if installed as a PWA. Push "
+"notifications are as well supported on macOS devices (MacBook and iMac)."
+msgstr ""
+"Sí, Safari iOS soporta notificaciones push basadas en web, pero sólo si el "
+"sitio web se añade a la pantalla de inicio, es decir, si se instala como una "
+"PWA. Las notificaciones push también son compatibles con dispositivos macOS "
+"(MacBook e iMac)."
+
+#: admin/templates/pages/helpcenter.php:87
+msgid "Is the plugin compatible with all themes and plugins?"
+msgstr "¿El plugin es compatible con todos los temas y plugins?"
+
+#: admin/templates/pages/helpcenter.php:92
+msgid ""
+"PWAs designed by Progressify is fully compatible with all kinds of WordPress "
+"configuration, including plugins and themes. Please note that you should "
+"disable all other plugins that deliver the same functionality as Progressify "
+"in order to avoid compatibility issues."
+msgstr ""
+"PWAs diseñado por Progressify es totalmente compatible con todo tipo de "
+"configuración de WordPress, incluyendo plugins y temas. Tenga en cuenta que "
+"debe desactivar todos los demás plugins que ofrecen la misma funcionalidad "
+"que Progressify con el fin de evitar problemas de compatibilidad."
+
+#: admin/templates/pages/helpcenter.php:106
+msgid "How can I update the plugin?"
+msgstr "¿Cómo puedo actualizar el plugin?"
+
+#: admin/templates/pages/helpcenter.php:111
+msgid ""
+"There are two ways to update the plugin to the newer version: Using a "
+"WordPress built-in update system which will automatically check for updates "
+"and show you a notification on an %1$s when there will be an update "
+"available or manually download latest version of plugin from %2$s and re-"
+"install it."
+msgstr ""
+"Hay dos maneras de actualizar el plugin a la versión más reciente: Usando el "
+"sistema de actualización integrado en WordPress que buscará automáticamente "
+"actualizaciones y le mostrará una notificación en %1$s cuando haya una "
+"actualización disponible o descargando manualmente la última versión del "
+"plugin desde %2$s y reinstalándolo."
+
+#: admin/templates/pages/helpcenter.php:111
+msgid "admin plugins page"
+msgstr "página de plugins de administración"
+
+#: admin/templates/pages/helpcenter.php:111
+msgid "CodeCanyon"
+msgstr "CodeCanyon"
+
+#: admin/templates/pages/helpcenter.php:123
+msgid "Support Request"
+msgstr "Solicitud de apoyo"
+
+#: admin/templates/pages/helpcenter.php:126
+msgid ""
+"Before submitting a ticket, please make sure that the FAQ didn't help, "
+"you're using the latest version of the plugin and there are no javascript "
+"errors on your website."
+msgstr ""
+"Antes de enviar un ticket, por favor, asegúrate de que las FAQ no te han "
+"ayudado, de que estás utilizando la última versión del plugin y de que no "
+"hay errores javascript en tu sitio web."
+
+#: admin/templates/pages/helpcenter.php:133
+msgid "Your Name"
+msgstr "Su nombre"
+
+#: admin/templates/pages/helpcenter.php:135
+msgid "Enter Your Name"
+msgstr "Introduzca su nombre"
+
+#: admin/templates/pages/helpcenter.php:139
+msgid "Your Email"
+msgstr "Su correo electrónico"
+
+#: admin/templates/pages/helpcenter.php:146
+msgid "Enter your email address where we'll send our response."
+msgstr ""
+"Introduzca su dirección de correo electrónico a la que le enviaremos nuestra "
+"respuesta."
+
+#: admin/templates/pages/helpcenter.php:150
+msgid "Enter Your Email"
+msgstr "Introduzca su dirección de correo electrónico"
+
+#: admin/templates/pages/helpcenter.php:154
+msgid "Problem Description"
+msgstr "Descripción del problema"
+
+#: admin/templates/pages/helpcenter.php:161
+msgid ""
+"Please be as descriptive as possible regarding the details of this request."
+msgstr ""
+"Por favor, sea lo más descriptivo posible sobre los detalles de esta "
+"solicitud."
+
+#: admin/templates/pages/helpcenter.php:165
+msgid "Describe Your Problem"
+msgstr "Describa su problema"
+
+#: admin/templates/pages/helpcenter.php:171
+msgid "Temporary Access"
+msgstr "Acceso temporal"
+
+#: admin/templates/pages/helpcenter.php:178
+msgid ""
+"Enabling this will give the support team temporary access to your WordPress "
+"Dashboard. That is helpful because in most cases we need a temporary access "
+"to your WordPress Dashboard to check and fix the issue."
+msgstr ""
+"Activando esta opción, el equipo de soporte tendrá acceso temporal a su "
+"panel de WordPress. Esto es útil porque en la mayoría de los casos "
+"necesitamos un acceso temporal a su panel de WordPress para comprobar y "
+"solucionar el problema."
+
+#: admin/templates/pages/helpcenter.php:183
+msgid "Grant the support team temporary access to your WordPress Dashboard."
+msgstr ""
+"Conceda al equipo de asistencia acceso temporal a su panel de control de "
+"WordPress."
+
+#: admin/templates/pages/helpcenter.php:196
+msgid "Submitting..."
+msgstr "Presentar..."
+
+#: admin/templates/pages/helpcenter.php:198
+msgid "Submit Request"
+msgstr "Enviar solicitud"
+
+#: admin/templates/pages/installation.php:20
+msgid "Installation Prompts"
+msgstr "Instrucciones de instalación"
+
+#: admin/templates/pages/installation.php:26
+msgid ""
+"Installation prompts encourage your users to add your web app to their home "
+"screens by simply clicking the dedicated installation buttons. These "
+"overlays appear at strategic places to increase the likelihood of "
+"installation."
+msgstr ""
+"Los avisos de instalación animan a los usuarios a añadir tu aplicación web a "
+"sus pantallas de inicio simplemente haciendo clic en los botones de "
+"instalación específicos. Estas superposiciones aparecen en lugares "
+"estratégicos para aumentar la probabilidad de instalación."
+
+#: admin/templates/pages/installation.php:39
+msgid "Installation Overlays"
+msgstr "Superposiciones de instalación"
+
+#: admin/templates/pages/installation.php:46
+msgid ""
+"Enable installation overlays to display to users, such as a header banner, "
+"in-feed, or snackbar, to encourage them to add your web app to their home "
+"screens. Try not to enable them all to avoid spamming users with the "
+"installation banners."
+msgstr ""
+"Habilita las superposiciones de instalación para que se muestren a los "
+"usuarios, como un banner de cabecera, in-feed o snackbar, para animarles a "
+"añadir tu aplicación web a sus pantallas de inicio. Intenta no activarlas "
+"todas para evitar saturar a los usuarios con banners de instalación."
+
+#: admin/templates/pages/installation.php:59
+msgid "Header Banner"
+msgstr "Cabecera"
+
+#: admin/templates/pages/installation.php:72
+msgid "Snackbar"
+msgstr "Snackbar"
+
+#: admin/templates/pages/installation.php:85
+msgid "Navigation Menu"
+msgstr "Menú de navegación"
+
+#: admin/templates/pages/installation.php:97
+msgid "In Feed"
+msgstr "En Feed"
+
+#: admin/templates/pages/installation.php:108
+msgid "Blog Popup"
+msgstr "Blog Popup"
+
+#: admin/templates/pages/installation.php:120
+msgid "WooCommerce Checkout"
+msgstr "Pago WooCommerce"
+
+#: admin/templates/pages/installation.php:131
+msgid "Text"
+msgstr "Texto"
+
+#: admin/templates/pages/installation.php:138
+msgid ""
+"Set the text to display as the title on installation prompts and as the "
+"label on the installation button. "
+msgstr ""
+"Defina el texto que se mostrará como título en las instrucciones de "
+"instalación y como etiqueta en el botón de instalación."
+
+#: admin/templates/pages/installation.php:142
+msgid "Enter Text"
+msgstr "Introducir texto"
+
+#: admin/templates/pages/installation.php:148
+#: admin/templates/pages/pushnotifications.php:218
+msgid "Skip First Visit"
+msgstr "Saltar la primera visita"
+
+#: admin/templates/pages/installation.php:155
+msgid ""
+"Skips first-time visitors and only shows installation overlays to returning "
+"users."
+msgstr ""
+"Omite a los usuarios que visitan la página por primera vez y sólo muestra "
+"las superposiciones de instalación a los usuarios recurrentes."
+
+#: admin/templates/pages/installation.php:162
+msgid "Show installation overlays to returning visitors only."
+msgstr ""
+"Mostrar superposiciones de instalación sólo a los visitantes recurrentes."
+
+#: admin/templates/pages/installation.php:170
+#: admin/templates/pages/pushnotifications.php:240
+msgid "Timeout"
+msgstr "Tiempo de espera"
+
+#: admin/templates/pages/installation.php:177
+msgid ""
+"Choose how many days to wait to show installation overlays again if they "
+"were dismissed."
+msgstr ""
+"Elija cuántos días debe esperar para volver a mostrar las superposiciones de "
+"instalación si fueron descartadas."
+
+#: admin/templates/pages/installation.php:187
+msgid "Installation Button"
+msgstr "Botón de instalación"
+
+#: admin/templates/pages/installation.php:194
+msgid ""
+"Installation button is a customizable button that can be placed anywhere on "
+"your site using a shortcode. When clicked, it triggers an installation "
+"prompt, allowing users to easily add your web app to their home screens. You "
+"can insert an installation button anywhere on your website using the "
+"shortcode below."
+msgstr ""
+"El botón de instalación es un botón personalizable que puede colocarse en "
+"cualquier lugar de su sitio mediante un shortcode. Cuando se hace clic en él,"
+" se activa una solicitud de instalación, lo que permite a los usuarios "
+"añadir fácilmente su aplicación web a sus pantallas de inicio. Puede "
+"insertar un botón de instalación en cualquier lugar de su sitio web "
+"utilizando el siguiente código corto."
+
+#: admin/templates/pages/installation.php:210
+#: frontend/assets/js/dev/components/installPrompt.js:420
+msgid "Copied"
+msgstr "Copiado"
+
+#: admin/templates/pages/installation.php:218
+#: admin/templates/pages/installation.php:231
+msgid "Installation QR Code"
+msgstr "Código QR de instalación"
+
+#: admin/templates/pages/installation.php:225
+msgid ""
+"This QR code directs users to your homepage, where they can access the "
+"installation prompt and set up your PWA effortlessly."
+msgstr ""
+"Este código QR dirige a los usuarios a su página de inicio, donde pueden "
+"acceder a la solicitud de instalación y configurar su PWA sin esfuerzo."
+
+#: admin/templates/pages/offlineusage.php:21
+msgid "Offline Cache"
+msgstr "Caché sin conexión"
+
+#: admin/templates/pages/offlineusage.php:27
+msgid ""
+"Configure offline caching settings, including the fallback page, caching "
+"strategy, and cache expiry time, to ensure seamless offline functionality."
+msgstr ""
+"Configure los ajustes de almacenamiento en caché sin conexión, incluida la "
+"página de reserva, la estrategia de almacenamiento en caché y el tiempo de "
+"caducidad de la caché, para garantizar una funcionalidad sin conexión "
+"perfecta."
+
+#: admin/templates/pages/offlineusage.php:42
+msgid "Custom Offline Fallback Page"
+msgstr "Página personalizada de Fallback Offline"
+
+#: admin/templates/pages/offlineusage.php:49
+msgid ""
+"Enable this if you want to select the special offline fallback page for your "
+"web application, instead of using default one. This page will show up your "
+"users when they navigate your website without an internet connection and the "
+"requested page won't be in cache."
+msgstr ""
+"Habilite esta opción si desea seleccionar una página especial offline "
+"fallback para su aplicación web, en lugar de utilizar la página por defecto. "
+"Esta página se mostrará a los usuarios cuando naveguen por su sitio web sin "
+"conexión a Internet y la página solicitada no estará en la caché."
+
+#: admin/templates/pages/offlineusage.php:54
+msgid "Select a custom offline fallback page instead of default one."
+msgstr ""
+"Seleccione una página personalizada de reserva sin conexión en lugar de la "
+"predeterminada."
+
+#: admin/templates/pages/offlineusage.php:70
+msgid "Offline Fallback Page"
+msgstr "Página Offline Fallback"
+
+#: admin/templates/pages/offlineusage.php:77
+msgid "Select a custom offline fallback page."
+msgstr "Seleccione una página de reserva sin conexión personalizada."
+
+#: admin/templates/pages/offlineusage.php:82
+msgid "Select Offline Fallback Page"
+msgstr "Seleccione la página Offline Fallback"
+
+#: admin/templates/pages/offlineusage.php:95
+msgid "Caching Strategy"
+msgstr "Estrategia de almacenamiento en caché"
+
+#: admin/templates/pages/offlineusage.php:102
+msgid ""
+"All network requests are cached by Progressify, so that your website can "
+"serve content from the browser cache if available and display requested "
+"content as fast as possible. Here you are able to manually change the "
+"caching strategy for some request types. We recommend you to set it on "
+"Network First for always showing latest version of your website while "
+"updating the cache in the background and serving the last cached response "
+"when the network request fails."
+msgstr ""
+"Todas las solicitudes de red son almacenadas en caché por Progressify, para "
+"que su sitio web pueda servir el contenido de la caché del navegador si está "
+"disponible y mostrar el contenido solicitado lo más rápido posible. Aquí "
+"puede cambiar manualmente la estrategia de almacenamiento en caché para "
+"algunos tipos de solicitudes. Le recomendamos que lo establezca en Red "
+"Primero para mostrar siempre la última versión de su sitio web mientras se "
+"actualiza la caché en segundo plano y se sirve la última respuesta en caché "
+"cuando la solicitud de red falla."
+
+#: admin/templates/pages/offlineusage.php:107
+msgid "Select Caching Strategy"
+msgstr "Seleccionar estrategia de caché"
+
+#: admin/templates/pages/offlineusage.php:110
+msgid ""
+"Fetches from the network first and caches the response. Uses the last cached "
+"response if the network request fails."
+msgstr ""
+"Busca primero en la red y almacena en caché la respuesta. Utiliza la última "
+"respuesta almacenada en caché si falla la solicitud de red."
+
+#: admin/templates/pages/offlineusage.php:111
+msgid "Network-First"
+msgstr "Primero la red"
+
+#: admin/templates/pages/offlineusage.php:113
+msgid ""
+"Uses a cached response if available and updates the cache in the background. "
+"Always requests an asset from the network, using bandwidth."
+msgstr ""
+"Utiliza una respuesta en caché si está disponible y actualiza la caché en "
+"segundo plano. Siempre solicita un activo de la red, utilizando ancho de "
+"banda."
+
+#: admin/templates/pages/offlineusage.php:114
+msgid "Stale While Revalidate"
+msgstr "Anticuado mientras se revalida"
+
+#: admin/templates/pages/offlineusage.php:116
+msgid ""
+"Uses a cached response first. If unavailable, fetches from the network and "
+"caches the response."
+msgstr ""
+"Utiliza primero una respuesta almacenada en caché. Si no está disponible, "
+"busca la respuesta en la red y la almacena en caché."
+
+#: admin/templates/pages/offlineusage.php:117
+msgid "Cache-First"
+msgstr "Cache-First"
+
+#: admin/templates/pages/offlineusage.php:119
+msgid ""
+"Does not cache anything. Always uses the network and passes the response to "
+"the browser."
+msgstr ""
+"No almacena nada en caché. Siempre utiliza la red y pasa la respuesta al "
+"navegador."
+
+#: admin/templates/pages/offlineusage.php:120
+msgid "Network-Only"
+msgstr "Sólo red"
+
+#: admin/templates/pages/offlineusage.php:122
+msgid ""
+"Always uses a pre-populated cached response, never requesting from the "
+"network. Updates only when cache settings change or cache expires."
+msgstr ""
+"Utiliza siempre una respuesta pre-poblada en caché, nunca solicita a la red. "
+"Solo se actualiza cuando cambia la configuración de la caché o esta caduca."
+
+#: admin/templates/pages/offlineusage.php:123
+msgid "Cache-Only"
+msgstr "Sólo caché"
+
+#: admin/templates/pages/offlineusage.php:130
+msgid "Cache Expiration Time"
+msgstr "Hora de caducidad de la caché"
+
+#: admin/templates/pages/offlineusage.php:137
+msgid ""
+"Define how many days should cached content be remained in the browser cache "
+"storage. We recommend you to leave it on default as browser cache is updated "
+"automatically if your caching strategy is StaleWhileRevalidate but if you "
+"are using CacheFirst strategy, then lower expiration times might be a right "
+"choice."
+msgstr ""
+"Define cuántos días debe permanecer el contenido almacenado en la caché del "
+"navegador. Le recomendamos que lo deje por defecto, ya que la caché del "
+"navegador se actualiza automáticamente si su estrategia de almacenamiento en "
+"caché es StaleWhileRevalidate, pero si está utilizando la estrategia "
+"CacheFirst, entonces los tiempos de caducidad más bajos podrían ser una "
+"opción correcta."
+
+#: admin/templates/pages/offlineusage.php:167
+msgid "Offline Capabilities"
+msgstr "Funciones fuera de línea"
+
+#: admin/templates/pages/offlineusage.php:173
+msgid ""
+"Enhance your web app's offline functionality by enabling features such as "
+"offline forms, offline notifications, and offline Google Analytics, ensuring "
+"a seamless user experience even without internet connectivity."
+msgstr ""
+"Mejore la funcionalidad offline de su aplicación web habilitando funciones "
+"como formularios offline, notificaciones offline y Google Analytics offline, "
+"garantizando una experiencia de usuario fluida incluso sin conexión a "
+"Internet."
+
+#: admin/templates/pages/offlineusage.php:188
+msgid "Offline Notification"
+msgstr "Notificación fuera de línea"
+
+#: admin/templates/pages/offlineusage.php:195
+msgid ""
+"A live reconnecting notification for your users when they go offline or "
+"their connection interrupts on your website."
+msgstr ""
+"Una notificación de reconexión en directo para sus usuarios cuando se quedan "
+"sin conexión o su conexión se interrumpe en su sitio web."
+
+#: admin/templates/pages/offlineusage.php:200
+msgid "Display a live reconnecting notification if connection interrupts."
+msgstr ""
+"Mostrar una notificación de reconexión en directo si se interrumpe la "
+"conexión."
+
+#: admin/templates/pages/offlineusage.php:219
+msgid "Offline Forms"
+msgstr "Formularios fuera de línea"
+
+#: admin/templates/pages/offlineusage.php:226
+msgid ""
+"Allow users to submit forms offline with their consent. Submissions are "
+"saved locally and processed automatically when they reconnect to the "
+"internet."
+msgstr ""
+"Permite a los usuarios enviar formularios sin conexión con su consentimiento."
+" Los envíos se guardan localmente y se procesan automáticamente cuando "
+"vuelven a conectarse a Internet."
+
+#: admin/templates/pages/offlineusage.php:231
+msgid "Allow users to submit forms offline and process when reconnected."
+msgstr ""
+"Permitir a los usuarios enviar formularios sin conexión y procesarlos cuando "
+"vuelvan a conectarse."
+
+#: admin/templates/pages/offlineusage.php:250
+msgid "Offline Google Analytics"
+msgstr "Google Analytics sin conexión"
+
+#: admin/templates/pages/offlineusage.php:257
+msgid ""
+"Tracks user interactions and page views while offline, and syncs the data "
+"with Google Analytics once the connection is restored."
+msgstr ""
+"Realiza un seguimiento de las interacciones de los usuarios y de las páginas "
+"vistas mientras están desconectados, y sincroniza los datos con Google "
+"Analytics una vez que se restablece la conexión."
+
+#: admin/templates/pages/offlineusage.php:262
+msgid "Tracks users offline and syncs with Google Analytics when reconnected."
+msgstr ""
+"Realiza un seguimiento de los usuarios sin conexión y se sincroniza con "
+"Google Analytics cuando se vuelve a conectar."
+
+#: admin/templates/pages/offlineusage.php:274
+msgid ""
+"This feature is temporarily disabled due to incompatibility with new version "
+"of Google Analytics (GA4)."
+msgstr ""
+"Esta función está temporalmente desactivada debido a la incompatibilidad con "
+"la nueva versión de Google Analytics (GA4)."
+
+#: admin/templates/pages/publishtoappstores.php:31
+msgid ""
+"Perfect for bringing your web app to Android devices through the Google Play "
+"Store."
+msgstr ""
+"Perfecto para llevar tu aplicación web a dispositivos Android a través de "
+"Google Play Store."
+
+#: admin/templates/pages/publishtoappstores.php:44
+msgid "Includes an Android app package"
+msgstr "Incluye un paquete de aplicaciones para Android"
+
+#: admin/templates/pages/publishtoappstores.php:52
+msgid "Publish to Google Play Store"
+msgstr "Publicar en Google Play Store"
+
+#: admin/templates/pages/publishtoappstores.php:60
+msgid "Reach 2.5+ billion Android users"
+msgstr "Llegar a más de 2.500 millones de usuarios de Android"
+
+#: admin/templates/pages/publishtoappstores.php:68
+msgid "No app updates required"
+msgstr "No es necesario actualizar la aplicación"
+
+#: admin/templates/pages/publishtoappstores.php:89
+msgid "Android and iOS"
+msgstr "Android e iOS"
+
+#: admin/templates/pages/publishtoappstores.php:99
+msgid "Early Supporter Discount Applied"
+msgstr "Se aplica el descuento por afiliación anticipada"
+
+#: admin/templates/pages/publishtoappstores.php:110
+msgid ""
+"Ideal for reaching both Android and iOS users via the Google Play Store and "
+"Apple App Store."
+msgstr ""
+"Ideal para llegar tanto a usuarios de Android como de iOS a través de Google "
+"Play Store y Apple App Store."
+
+#: admin/templates/pages/publishtoappstores.php:123
+msgid "Everything from the Android plan"
+msgstr "Todo desde el plan Android"
+
+#: admin/templates/pages/publishtoappstores.php:131
+msgid "Plus an iOS app package"
+msgstr "Más un paquete de aplicaciones para iOS"
+
+#: admin/templates/pages/publishtoappstores.php:139
+msgid "Also publish to Apple App Store"
+msgstr "Publicar también en Apple App Store"
+
+#: admin/templates/pages/publishtoappstores.php:147
+msgid "Reach an additional 1.5+ billion iOS users"
+msgstr "Llegar a más de 1.500 millones de usuarios adicionales de iOS"
+
+#: admin/templates/pages/publishtoappstores.php:174
+msgid "Android, iOS and Windows"
+msgstr "Android, iOS y Windows"
+
+#: admin/templates/pages/publishtoappstores.php:183
+msgid ""
+"Built for PWA enthusiasts who want to extend reach across Android, iOS, and "
+"Windows devices."
+msgstr ""
+"Creado para los entusiastas de las PWA que desean ampliar su alcance a "
+"través de dispositivos Android, iOS y Windows."
+
+#: admin/templates/pages/publishtoappstores.php:196
+msgid "Everything from the Android and iOS plans"
+msgstr "Todo desde los planes Android e iOS"
+
+#: admin/templates/pages/publishtoappstores.php:204
+msgid "Plus a Windows app package"
+msgstr "Más un paquete de aplicaciones para Windows"
+
+#: admin/templates/pages/publishtoappstores.php:212
+msgid "Also publish to Microsoft Store"
+msgstr "Publicar también en Microsoft Store"
+
+#: admin/templates/pages/publishtoappstores.php:220
+msgid "Reach an additional 500+ million Windows users"
+msgstr "Llegar a más de 500 millones de usuarios de Windows"
+
+#: admin/templates/pages/publishtoappstores.php:228
+msgid "Need a desktop app?"
+msgstr "¿Necesita una aplicación de escritorio?"
+
+#: admin/templates/pages/publishtoappstores.php:231
+msgid "Show Desktop Plan"
+msgstr "Mostrar plan de escritorio"
+
+#: admin/templates/pages/pushnotifications.php:16
+msgid "Push Notifications Subscribers"
+msgstr "Suscriptores de notificaciones push"
+
+#: admin/templates/pages/pushnotifications.php:19
+msgid "List of your users who are subscribed for push notifications."
+msgstr "Lista de los usuarios suscritos a las notificaciones push."
+
+#: admin/templates/pages/pushnotifications.php:28
+#: admin/templates/pages/pushnotifications.php:836
+#: admin/templates/pages/pushnotifications.php:1058
+msgid "Send Push Notification"
+msgstr "Enviar notificación push"
+
+#: admin/templates/pages/pushnotifications.php:38
+msgid "Country"
+msgstr "País"
+
+#: admin/templates/pages/pushnotifications.php:45
+msgid "Operating System"
+msgstr "Sistema operativo"
+
+#: admin/templates/pages/pushnotifications.php:52
+msgid "Browser"
+msgstr "Navegador"
+
+#: admin/templates/pages/pushnotifications.php:59
+msgid "Date"
+msgstr "Fecha"
+
+#: admin/templates/pages/pushnotifications.php:66
+msgid "Actions"
+msgstr "Acciones"
+
+#: admin/templates/pages/pushnotifications.php:77
+msgid "Total:"
+msgstr "Total:"
+
+#: admin/templates/pages/pushnotifications.php:86
+msgid "Prev"
+msgstr "Anterior"
+
+#: admin/templates/pages/pushnotifications.php:89
+msgid "Next"
+msgstr "Siguiente"
+
+#: admin/templates/pages/pushnotifications.php:116
+msgid "General Settings"
+msgstr "Configuración general"
+
+#: admin/templates/pages/pushnotifications.php:119
+msgid ""
+"The general push notifications setting gives you full control over self-"
+"hosted notifications service configuration on your server. Here you'll have "
+"an ability to adjust some values that can potentially improve notifications "
+"performance and avoid your server resource overload."
+msgstr ""
+"La configuración general de las notificaciones push te ofrece un control "
+"total sobre la configuración del servicio de notificaciones autoalojado en "
+"tu servidor. Aquí podrá ajustar algunos valores que pueden mejorar el "
+"rendimiento de las notificaciones y evitar la sobrecarga de recursos del "
+"servidor."
+
+#: admin/templates/pages/pushnotifications.php:128
+msgid "Time To Live (TTL)"
+msgstr "Tiempo de vida (TTL)"
+
+#: admin/templates/pages/pushnotifications.php:135
+msgid ""
+"Time To Live (TTL, in seconds) is how long a push message is retained by the "
+"push service (eg. Mozilla) in case the user's browser is not yet accessible "
+"(eg. is not connected). You may want to use a very long time for important "
+"notifications. The default TTL is 4 weeks. However, if you send multiple "
+"nonessential notifications, set a TTL of 0: the push notification will be "
+"delivered only if the user is currently connected. In other cases, you "
+"should use a minimum of one day if your users have multiple time zones, and "
+"if they don't several hours will suffice."
+msgstr ""
+"Time To Live (TTL, en segundos) es el tiempo que un mensaje push es retenido "
+"por el servicio push (ej. Mozilla) en caso de que el navegador del usuario "
+"no sea accesible todavía (ej. no está conectado). Es posible que desee "
+"utilizar un tiempo muy largo para las notificaciones importantes. El TTL por "
+"defecto es de 4 semanas. Sin embargo, si envía varias notificaciones no "
+"esenciales, establezca un TTL de 0: la notificación push se entregará sólo "
+"si el usuario está conectado en ese momento. En otros casos, deberías "
+"utilizar un mínimo de un día si tus usuarios tienen varias zonas horarias, y "
+"si no las tienen bastará con varias horas."
+
+#: admin/templates/pages/pushnotifications.php:145
+msgid "Batch Size"
+msgstr "Tamaño del lote"
+
+#: admin/templates/pages/pushnotifications.php:152
+msgid ""
+"If you send a lot of notifications at a time, you may get memory overflows. "
+"In order to fix this, Progressify sends notifications in batches. The "
+"default size is 1000. Depending on your server configuration (memory), you "
+"may want to decrease this number. Higher values require a longer script "
+"execution time."
+msgstr ""
+"Si envías muchas notificaciones a la vez, es posible que se produzcan "
+"desbordamientos de memoria. Para solucionar esto, Progressify envía "
+"notificaciones en lotes. El tamaño por defecto es 1000. Dependiendo de la "
+"configuración de su servidor (memoria), es posible que desee disminuir este "
+"número. Valores más altos requieren un mayor tiempo de ejecución del script."
+
+#: admin/templates/pages/pushnotifications.php:182
+msgid "Prompt"
+msgstr "Pregunte a"
+
+#: admin/templates/pages/pushnotifications.php:188
+msgid ""
+"The push notifications prompt is nice simple prompt with your website logo "
+"and a message that will ask your users to subscribe push notifications on "
+"your website."
+msgstr ""
+"El aviso de notificaciones push es un simple aviso con el logo de tu sitio "
+"web y un mensaje que pedirá a tus usuarios que se suscriban a las "
+"notificaciones push de tu sitio web."
+
+#: admin/templates/pages/pushnotifications.php:201
+msgid "Prompt Message"
+msgstr "Mensaje de aviso"
+
+#: admin/templates/pages/pushnotifications.php:208
+msgid "Enter the message you want to show your users on push prompt."
+msgstr ""
+"Introduzca el mensaje que desea mostrar a sus usuarios en el aviso push."
+
+#: admin/templates/pages/pushnotifications.php:212
+msgid "Enter Message"
+msgstr "Introducir mensaje"
+
+#: admin/templates/pages/pushnotifications.php:225
+msgid ""
+"If enabled, users who are visiting the website for the first time will not "
+"get the Prompt."
+msgstr ""
+"Si se activa, los usuarios que visiten el sitio web por primera vez no "
+"recibirán el aviso."
+
+#: admin/templates/pages/pushnotifications.php:232
+msgid "Show prompt to returning visitors only."
+msgstr "Mostrar aviso sólo a visitantes recurrentes."
+
+#: admin/templates/pages/pushnotifications.php:247
+msgid ""
+"Choose how many days to wait to show push notification prompt again if it "
+"was dismissed."
+msgstr ""
+"Elija cuántos días debe esperar para volver a mostrar el aviso de "
+"notificación push si ha sido rechazado."
+
+#: admin/templates/pages/pushnotifications.php:277
+msgid "Button"
+msgstr "Botón"
+
+#: admin/templates/pages/pushnotifications.php:283
+msgid ""
+"The push notifications button is a custom subscription button on your "
+"website to increase opt-in rate and allow your users to fully control when "
+"they want to subscribe and unsubscribe for your push notifications."
+msgstr ""
+"El botón de notificaciones push es un botón de suscripción personalizado en "
+"su sitio web para aumentar la tasa de opt-in y permitir a sus usuarios "
+"controlar totalmente cuándo quieren suscribirse y darse de baja de sus "
+"notificaciones push."
+
+#: admin/templates/pages/pushnotifications.php:296
+msgid "Button Position"
+msgstr "Posición del botón"
+
+#: admin/templates/pages/pushnotifications.php:303
+msgid "Select position of your push notifications button on your website."
+msgstr ""
+"Seleccione la posición del botón de notificaciones push en su sitio web."
+
+#: admin/templates/pages/pushnotifications.php:308
+msgid "Select Button Position"
+msgstr "Seleccione la posición del botón"
+
+#: admin/templates/pages/pushnotifications.php:310
+msgid "Bottom Right"
+msgstr "Abajo a la derecha"
+
+#: admin/templates/pages/pushnotifications.php:311
+msgid "Bottom Left"
+msgstr "Abajo a la izquierda"
+
+#: admin/templates/pages/pushnotifications.php:312
+msgid "Top Right"
+msgstr "Arriba a la derecha"
+
+#: admin/templates/pages/pushnotifications.php:313
+msgid "Top Left"
+msgstr "Arriba a la izquierda"
+
+#: admin/templates/pages/pushnotifications.php:320
+msgid "Button Behavior"
+msgstr "Comportamiento de los botones"
+
+#: admin/templates/pages/pushnotifications.php:327
+msgid ""
+"Select behavior of your push notifications button after users subscribe for "
+"push notifications."
+msgstr ""
+"Seleccione el comportamiento de su botón de notificaciones push después de "
+"que los usuarios se suscriban a las notificaciones push."
+
+#: admin/templates/pages/pushnotifications.php:332
+msgid "Select Button Behavior"
+msgstr "Seleccione el comportamiento del botón"
+
+#: admin/templates/pages/pushnotifications.php:335
+msgid ""
+"Keep shown after user subscribes for notifications, allowing them to "
+"unsubscribe by clicking on the button again."
+msgstr ""
+"Mantener mostrado después de que el usuario se suscriba a las notificaciones,"
+" permitiéndole darse de baja haciendo clic de nuevo en el botón."
+
+#: admin/templates/pages/pushnotifications.php:336
+msgid "Keep Shown After Subscription"
+msgstr "Mantener mostrado después de la suscripción"
+
+#: admin/templates/pages/pushnotifications.php:338
+msgid ""
+"Hide after user subscribes for notifications. Users will still be able to "
+"unsubscribe from browser settings."
+msgstr ""
+"Ocultar después de que el usuario se suscriba a las notificaciones. Los "
+"usuarios podrán darse de baja desde la configuración del navegador."
+
+#: admin/templates/pages/pushnotifications.php:339
+msgid "Hide After Subscription"
+msgstr "Ocultar tras la suscripción"
+
+#: admin/templates/pages/pushnotifications.php:366
+msgid "Automation"
+msgstr "Automatización"
+
+#: admin/templates/pages/pushnotifications.php:375
+msgid ""
+"Automation allows sending predefined push notifications automatically, "
+"triggered on certain events like publishing new post to re-engage your users "
+"and increase conversion."
+msgstr ""
+"La automatización permite enviar automáticamente notificaciones push "
+"predefinidas que se activan en determinados eventos, como la publicación de "
+"un nuevo post, para volver a atraer a los usuarios y aumentar la conversión."
+
+#: admin/templates/pages/pushnotifications.php:391
+msgid "New Content"
+msgstr "Nuevo contenido"
+
+#: admin/templates/pages/pushnotifications.php:398
+msgid ""
+"Sends automatic notification to website users when new content is published. "
+"Notification will include content title, text and featured image."
+msgstr ""
+"Envía una notificación automática a los usuarios del sitio web cuando se "
+"publica un nuevo contenido. La notificación incluirá el título del contenido,"
+" el texto y la imagen destacada."
+
+#: admin/templates/pages/pushnotifications.php:403
+msgid "Sends notification to users when new content is published."
+msgstr ""
+"Envía notificaciones a los usuarios cuando se publican nuevos contenidos."
+
+#: admin/templates/pages/pushnotifications.php:419
+msgid "Post Types"
+msgstr "Tipos de puesto"
+
+#: admin/templates/pages/pushnotifications.php:426
+msgid "Select supported post types for new content published notification."
+msgstr ""
+"Seleccione los tipos de entradas compatibles para la notificación de nuevos "
+"contenidos publicados."
+
+#: admin/templates/pages/pushnotifications.php:431
+msgid "Select Post Types"
+msgstr "Seleccionar tipos de entrada"
+
+#: admin/templates/pages/pushnotifications.php:448
+msgid "New Comment"
+msgstr "Nuevo comentario"
+
+#: admin/templates/pages/pushnotifications.php:455
+msgid ""
+"Sends automatic notification to users when a new comment or reply is posted "
+"where they have commented. Note that it will only work if you have enabled "
+"native WordPress comments on posts."
+msgstr ""
+"Envía notificaciones automáticas a los usuarios cuando se publica un nuevo "
+"comentario o respuesta donde han comentado. Ten en cuenta que solo "
+"funcionará si has habilitado los comentarios nativos de WordPress en las "
+"entradas."
+
+#: admin/templates/pages/pushnotifications.php:460
+msgid ""
+"Notifies users of new comments or replies on threads they've participated in."
+msgstr ""
+"Notifica a los usuarios los nuevos comentarios o respuestas en los hilos en "
+"los que han participado."
+
+#: admin/templates/pages/pushnotifications.php:482
+msgid "Price Drop"
+msgstr "Bajada de precios"
+
+#: admin/templates/pages/pushnotifications.php:489
+msgid ""
+"Sends automatic notification to website users when the product price drops. "
+"Notification will include product title and featured image."
+msgstr ""
+"Envía una notificación automática a los usuarios del sitio web cuando baja "
+"el precio de un producto. La notificación incluirá el título del producto y "
+"la imagen destacada."
+
+#: admin/templates/pages/pushnotifications.php:494
+msgid "Sends notification to users when the product price drops."
+msgstr ""
+"Envía una notificación a los usuarios cuando el precio del producto baja."
+
+#: admin/templates/pages/pushnotifications.php:514
+msgid "Sale Price"
+msgstr "Precio de venta"
+
+#: admin/templates/pages/pushnotifications.php:521
+msgid ""
+"Sends automatic notification to website users when the sale price is added "
+"to the product. Notification will include product title and featured image."
+msgstr ""
+"Envía una notificación automática a los usuarios del sitio web cuando se "
+"añade el precio de venta al producto. La notificación incluirá el título del "
+"producto y la imagen destacada."
+
+#: admin/templates/pages/pushnotifications.php:526
+msgid "Sends notification to users when sale price is added to product."
+msgstr ""
+"Envía una notificación a los usuarios cuando se añade un precio de venta al "
+"producto."
+
+#: admin/templates/pages/pushnotifications.php:546
+msgid "Back In Stock"
+msgstr "De nuevo en stock"
+
+#: admin/templates/pages/pushnotifications.php:553
+msgid ""
+"Sends automatic notification to website users when the product is back in "
+"stock. Notification will include product title and featured image."
+msgstr ""
+"Envía una notificación automática a los usuarios del sitio web cuando el "
+"producto vuelve a estar disponible. La notificación incluirá el título del "
+"producto y la imagen destacada."
+
+#: admin/templates/pages/pushnotifications.php:558
+msgid "Sends notification to users when product is back in stock."
+msgstr ""
+"Envía una notificación a los usuarios cuando el producto vuelve a estar "
+"disponible."
+
+#: admin/templates/pages/pushnotifications.php:578
+msgid "Order Status Update"
+msgstr "Actualización del estado del pedido"
+
+#: admin/templates/pages/pushnotifications.php:585
+msgid ""
+"Sends automatic notification to website users when the order status is "
+"updated. Notification will include what status change details."
+msgstr ""
+"Envía una notificación automática a los usuarios del sitio web cuando se "
+"actualiza el estado del pedido. La notificación incluirá los detalles del "
+"cambio de estado."
+
+#: admin/templates/pages/pushnotifications.php:590
+msgid "Sends notification to users when the order status is updated."
+msgstr ""
+"Envía una notificación a los usuarios cuando se actualiza el estado del "
+"pedido."
+
+#: admin/templates/pages/pushnotifications.php:608
+msgid "New Order"
+msgstr "Nuevo orden"
+
+#: admin/templates/pages/pushnotifications.php:615
+msgid ""
+"Sends automatic notification to admins when new order is placed. "
+"Notification will include order details."
+msgstr ""
+"Envía una notificación automática a los administradores cuando se realiza un "
+"nuevo pedido. La notificación incluirá los detalles del pedido."
+
+#: admin/templates/pages/pushnotifications.php:620
+msgid "Sends notification to admins when new order is placed."
+msgstr ""
+"Envía una notificación a los administradores cuando se realiza un nuevo "
+"pedido."
+
+#: admin/templates/pages/pushnotifications.php:638
+msgid "Low Stock"
+msgstr "Stock bajo"
+
+#: admin/templates/pages/pushnotifications.php:645
+msgid ""
+"Sends automatic notification to admins when a product is low in stock. "
+"Notification will include product details."
+msgstr ""
+"Envía una notificación automática a los administradores cuando queda poco "
+"stock de un producto. La notificación incluirá los detalles del producto."
+
+#: admin/templates/pages/pushnotifications.php:650
+msgid "Sends notification to admins when a product is low in stock."
+msgstr ""
+"Envía una notificación a los administradores cuando queda poco stock de un "
+"producto."
+
+#: admin/templates/pages/pushnotifications.php:670
+msgid "Member Mention"
+msgstr "Mención Miembro"
+
+#: admin/templates/pages/pushnotifications.php:677
+msgid ""
+"Sends automatic notification to users when a member mentions someone in an "
+"update @username."
+msgstr ""
+"Envía una notificación automática a los usuarios cuando un miembro menciona "
+"a alguien en una actualización @nombredeusuario."
+
+#: admin/templates/pages/pushnotifications.php:682
+msgid "Sends notification to users when they are mentioned by a member."
+msgstr ""
+"Envía una notificación a los usuarios cuando son mencionados por un miembro."
+
+#: admin/templates/pages/pushnotifications.php:700
+msgid "Member Reply"
+msgstr "Respuesta de los miembros"
+
+#: admin/templates/pages/pushnotifications.php:707
+msgid ""
+"Sends automatic notification to users when a member replies to an update or "
+"comment."
+msgstr ""
+"Envía una notificación automática a los usuarios cuando un miembro responde "
+"a una actualización o comentario."
+
+#: admin/templates/pages/pushnotifications.php:712
+msgid "Sends notification to users when a member replies."
+msgstr "Envía una notificación a los usuarios cuando un miembro responde."
+
+#: admin/templates/pages/pushnotifications.php:730
+msgid "New Message"
+msgstr "Nuevo mensaje"
+
+#: admin/templates/pages/pushnotifications.php:737
+msgid ""
+"Sends automatic notification to users when a new message is received in "
+"their DMs."
+msgstr ""
+"Envía una notificación automática a los usuarios cuando se recibe un nuevo "
+"mensaje en sus DM."
+
+#: admin/templates/pages/pushnotifications.php:742
+msgid "Sends notification to users when a new message is received."
+msgstr ""
+"Envía una notificación a los usuarios cuando se recibe un nuevo mensaje."
+
+#: admin/templates/pages/pushnotifications.php:760
+msgid "Friend Request"
+msgstr "Solicitud de amistad"
+
+#: admin/templates/pages/pushnotifications.php:767
+msgid ""
+"Sends automatic notification to users when a new friend request is received."
+msgstr ""
+"Envía una notificación automática a los usuarios cuando se recibe una nueva "
+"solicitud de amistad."
+
+#: admin/templates/pages/pushnotifications.php:772
+msgid "Sends notification to users when a new friend request is received."
+msgstr ""
+"Envía una notificación a los usuarios cuando se recibe una nueva solicitud "
+"de amistad."
+
+#: admin/templates/pages/pushnotifications.php:790
+msgid "Friend Accepted"
+msgstr "Amigo aceptado"
+
+#: admin/templates/pages/pushnotifications.php:797
+msgid ""
+"Sends automatic notification to users when the friend request is accepted."
+msgstr ""
+"Envía una notificación automática a los usuarios cuando se acepta la "
+"solicitud de amistad."
+
+#: admin/templates/pages/pushnotifications.php:802
+msgid "Sends notification to users when the friend request is accepted."
+msgstr ""
+"Envía una notificación a los usuarios cuando se acepta la solicitud de "
+"amistad."
+
+#: admin/templates/pages/pushnotifications.php:845
+msgid "The push notification will be sent to all of your subscribers."
+msgstr "La notificación push se enviará a todos sus suscriptores."
+
+#: admin/templates/pages/pushnotifications.php:860
+#: admin/templates/pages/pushnotifications.php:880
+msgid "Notification Image"
+msgstr "Imagen de notificación"
+
+#: admin/templates/pages/pushnotifications.php:867
+msgid "Adds a large image to notification."
+msgstr "Añade una imagen grande a la notificación."
+
+#: admin/templates/pages/pushnotifications.php:899
+msgid "Select Image"
+msgstr "Seleccionar imagen"
+
+#: admin/templates/pages/pushnotifications.php:907
+msgid "Notification Title"
+msgstr "Título de la notificación"
+
+#: admin/templates/pages/pushnotifications.php:914
+msgid "Enter the title of your notification."
+msgstr "Introduzca el título de su notificación."
+
+#: admin/templates/pages/pushnotifications.php:918
+msgid "Enter Notification Title"
+msgstr "Introduzca el título de la notificación"
+
+#: admin/templates/pages/pushnotifications.php:922
+msgid "Notification Message"
+msgstr "Mensaje de notificación"
+
+#: admin/templates/pages/pushnotifications.php:929
+msgid "Enter the message of your notification."
+msgstr "Introduzca el mensaje de su notificación."
+
+#: admin/templates/pages/pushnotifications.php:933
+msgid "Enter Notification Message"
+msgstr "Introducir mensaje de notificación"
+
+#: admin/templates/pages/pushnotifications.php:937
+msgid "Notification URL"
+msgstr "URL de notificación"
+
+#: admin/templates/pages/pushnotifications.php:944
+msgid ""
+"Enter the URL of your notification. Your users will be redirected to this "
+"URL after they click on your notification."
+msgstr ""
+"Introduzca la URL de su notificación. Tus usuarios serán redirigidos a esta "
+"URL después de hacer clic en tu notificación."
+
+#: admin/templates/pages/pushnotifications.php:948
+msgid "Enter Notification URL"
+msgstr "Introducir URL de notificación"
+
+#: admin/templates/pages/pushnotifications.php:952
+msgid "Action Buttons"
+msgstr "Botones de acción"
+
+#: admin/templates/pages/pushnotifications.php:959
+msgid ""
+"Adds action buttons to your notification. You can add up to two action "
+"buttons per notification. However, not all browsers support action buttons, "
+"so they will only be displayed for users with compatible browsers."
+msgstr ""
+"Añade botones de acción a tu notificación. Puedes añadir hasta dos botones "
+"de acción por notificación. Sin embargo, no todos los navegadores admiten "
+"botones de acción, por lo que solo se mostrarán a los usuarios con "
+"navegadores compatibles."
+
+#: admin/templates/pages/pushnotifications.php:966
+msgid "Enter Action Button Text"
+msgstr "Introduzca el texto del botón de acción"
+
+#: admin/templates/pages/pushnotifications.php:969
+msgid "Enter Action Button URL"
+msgstr "Introduzca la URL del botón de acción"
+
+#: admin/templates/pages/pushnotifications.php:992
+msgid "Add Action Button"
+msgstr "Añadir botón de acción"
+
+#: admin/templates/pages/pushnotifications.php:1000
+msgid "Vibration"
+msgstr "Vibración"
+
+#: admin/templates/pages/pushnotifications.php:1007
+msgid ""
+"Allows notification to vibrate the user's device as soon as it's delivered. "
+"This will only work on the mobile and tablet devices as desktop devices do "
+"not have vibrations."
+msgstr ""
+"Permite que la notificación haga vibrar el dispositivo del usuario en cuanto "
+"se envía. Esto sólo funcionará en los dispositivos móviles y tabletas como "
+"dispositivos de escritorio no tienen vibraciones."
+
+#: admin/templates/pages/pushnotifications.php:1012
+msgid ""
+"If enabled, your notification will vibrate the user's device upon delivery."
+msgstr ""
+"Si está activada, su notificación hará vibrar el dispositivo del usuario en "
+"el momento de la entrega."
+
+#: admin/templates/pages/pushnotifications.php:1026
+msgid "Persistent"
+msgstr "Persistente"
+
+#: admin/templates/pages/pushnotifications.php:1033
+msgid ""
+"Your notification will not hide automatically after some time and it will "
+"require user interaction to be dismissed."
+msgstr ""
+"Su notificación no se ocultará automáticamente después de algún tiempo y "
+"requerirá la interacción del usuario para ser descartada."
+
+#: admin/templates/pages/pushnotifications.php:1038
+msgid ""
+"If enabled, the notification will remain visible until the user interacts "
+"with it."
+msgstr ""
+"Si está activada, la notificación permanecerá visible hasta que el usuario "
+"interactúe con ella."
+
+#: admin/templates/pages/pushnotifications.php:1052
+msgid "Preview Notification"
+msgstr "Notificación previa"
+
+#: admin/templates/pages/pushnotifications.php:1056
+msgid "Sending..."
+msgstr "Enviando..."
+
+#: admin/templates/pages/uicomponents.php:19
+msgid "Navigation Tab Bar"
+msgstr "Barra de navegación"
+
+#: admin/templates/pages/uicomponents.php:28
+msgid ""
+"Navigation tab bar provides app like experience by adding tabbed navigation "
+"menu bar on the bottom of your web app when accessed from mobile devices."
+msgstr ""
+"La barra de pestañas de navegación ofrece una experiencia similar a la de "
+"una aplicación, ya que añade una barra de menú de navegación con pestañas en "
+"la parte inferior de la aplicación web cuando se accede a ella desde "
+"dispositivos móviles."
+
+#: admin/templates/pages/uicomponents.php:48
+msgid ""
+"Select on what device types navigation tab bar feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de barra de pestañas de navegación."
+
+#: admin/templates/pages/uicomponents.php:69
+msgid "Navigation Items"
+msgstr "Elementos de navegación"
+
+#: admin/templates/pages/uicomponents.php:76
+msgid ""
+"Add items to the navigation tab bar by selecting the icon, label and the "
+"page."
+msgstr ""
+"Añada elementos a la barra de pestañas de navegación seleccionando el icono, "
+"la etiqueta y la página."
+
+#: admin/templates/pages/uicomponents.php:84
+msgid "Icon"
+msgstr "Icono"
+
+#: admin/templates/pages/uicomponents.php:90
+msgid "Activity"
+msgstr "Actividad"
+
+#: admin/templates/pages/uicomponents.php:93
+msgid "Alarm Clock"
+msgstr "Reloj despertador"
+
+#: admin/templates/pages/uicomponents.php:96
+msgid "Album"
+msgstr "Álbum"
+
+#: admin/templates/pages/uicomponents.php:99
+msgid "Archive"
+msgstr "Archivo"
+
+#: admin/templates/pages/uicomponents.php:102
+msgid "Award"
+msgstr "Premio"
+
+#: admin/templates/pages/uicomponents.php:105
+msgid "Bed"
+msgstr "Cama"
+
+#: admin/templates/pages/uicomponents.php:108
+msgid "Bell"
+msgstr "Campana"
+
+#: admin/templates/pages/uicomponents.php:111
+msgid "Bird"
+msgstr "Pájaro"
+
+#: admin/templates/pages/uicomponents.php:114
+msgid "Bitcoin"
+msgstr "Bitcoin"
+
+#: admin/templates/pages/uicomponents.php:117
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: admin/templates/pages/uicomponents.php:120
+msgid "Bone"
+msgstr "Hueso"
+
+#: admin/templates/pages/uicomponents.php:123
+msgid "Book"
+msgstr "Reserve"
+
+#: admin/templates/pages/uicomponents.php:126
+msgid "Bookmark"
+msgstr "Marcar como favorito"
+
+#: admin/templates/pages/uicomponents.php:129
+msgid "Bot"
+msgstr "Bot"
+
+#: admin/templates/pages/uicomponents.php:132
+msgid "Box"
+msgstr "Caja"
+
+#: admin/templates/pages/uicomponents.php:135
+msgid "Briefcase Business"
+msgstr "Maletín Business"
+
+#: admin/templates/pages/uicomponents.php:138
+msgid "Briefcase Medical"
+msgstr "Maletín médico"
+
+#: admin/templates/pages/uicomponents.php:141
+msgid "Broom"
+msgstr "Escoba"
+
+#: admin/templates/pages/uicomponents.php:144
+msgid "Brush"
+msgstr "Cepillo"
+
+#: admin/templates/pages/uicomponents.php:147
+msgid "Burger"
+msgstr "Hamburguesa"
+
+#: admin/templates/pages/uicomponents.php:150
+msgid "Calendar"
+msgstr "Calendario"
+
+#: admin/templates/pages/uicomponents.php:153
+msgid "Camera"
+msgstr "Cámara"
+
+#: admin/templates/pages/uicomponents.php:156
+msgid "Car"
+msgstr "Coche"
+
+#: admin/templates/pages/uicomponents.php:159
+msgid "Cat"
+msgstr "Gato"
+
+#: admin/templates/pages/uicomponents.php:162
+msgid "Chart Line"
+msgstr "Línea Gráfica"
+
+#: admin/templates/pages/uicomponents.php:165
+msgid "Chart Pie"
+msgstr "Gráfico Pastel"
+
+#: admin/templates/pages/uicomponents.php:168
+msgid "Clock"
+msgstr "Reloj"
+
+#: admin/templates/pages/uicomponents.php:171
+msgid "Cloud"
+msgstr "Nube"
+
+#: admin/templates/pages/uicomponents.php:174
+msgid "Coffee"
+msgstr "Café"
+
+#: admin/templates/pages/uicomponents.php:177
+msgid "Compass"
+msgstr "Brújula"
+
+#: admin/templates/pages/uicomponents.php:180
+msgid "Concierge Bell"
+msgstr "Timbre del conserje"
+
+#: admin/templates/pages/uicomponents.php:183
+msgid "Cookie"
+msgstr "Galleta"
+
+#: admin/templates/pages/uicomponents.php:186
+msgid "CPU"
+msgstr "CPU"
+
+#: admin/templates/pages/uicomponents.php:189
+msgid "Credit Card"
+msgstr "Tarjeta de crédito"
+
+#: admin/templates/pages/uicomponents.php:192
+msgid "Crown"
+msgstr "Corona"
+
+#: admin/templates/pages/uicomponents.php:195
+msgid "Database"
+msgstr "Base de datos"
+
+#: admin/templates/pages/uicomponents.php:198
+msgid "Dices"
+msgstr "Dados"
+
+#: admin/templates/pages/uicomponents.php:201
+msgid "DNA"
+msgstr "ADN"
+
+#: admin/templates/pages/uicomponents.php:204
+msgid "Dog"
+msgstr "Perro"
+
+#: admin/templates/pages/uicomponents.php:207
+msgid "Dollar Sign"
+msgstr "Signo del dólar"
+
+#: admin/templates/pages/uicomponents.php:210
+msgid "Download"
+msgstr "Descargar"
+
+#: admin/templates/pages/uicomponents.php:213
+msgid "Drama"
+msgstr "Drama"
+
+#: admin/templates/pages/uicomponents.php:216
+msgid "Drill"
+msgstr "Taladro"
+
+#: admin/templates/pages/uicomponents.php:219
+msgid "Euro"
+msgstr "Euro"
+
+#: admin/templates/pages/uicomponents.php:222
+msgid "Eye"
+msgstr "Ojo"
+
+#: admin/templates/pages/uicomponents.php:225
+msgid "Facebook"
+msgstr "Facebook"
+
+#: admin/templates/pages/uicomponents.php:228
+msgid "File"
+msgstr "Archivo"
+
+#: admin/templates/pages/uicomponents.php:231
+msgid "Film"
+msgstr "Película"
+
+#: admin/templates/pages/uicomponents.php:234
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/templates/pages/uicomponents.php:237
+msgid "Fingerprint"
+msgstr "Huella dactilar"
+
+#: admin/templates/pages/uicomponents.php:240
+msgid "Flag"
+msgstr "Bandera"
+
+#: admin/templates/pages/uicomponents.php:243
+msgid "Flame"
+msgstr "Llama"
+
+#: admin/templates/pages/uicomponents.php:246
+msgid "Flower"
+msgstr "Flor"
+
+#: admin/templates/pages/uicomponents.php:249
+msgid "Folder"
+msgstr "Carpeta"
+
+#: admin/templates/pages/uicomponents.php:252
+msgid "Gallery Horizontal End"
+msgstr "Galería Extremo horizontal"
+
+#: admin/templates/pages/uicomponents.php:255
+msgid "Gamepad"
+msgstr "Gamepad"
+
+#: admin/templates/pages/uicomponents.php:258
+msgid "Gauge"
+msgstr "Indicador"
+
+#: admin/templates/pages/uicomponents.php:261
+msgid "Gavel"
+msgstr "Mazo"
+
+#: admin/templates/pages/uicomponents.php:264
+msgid "Gem"
+msgstr "Gema"
+
+#: admin/templates/pages/uicomponents.php:267
+msgid "Gift"
+msgstr "Regalo"
+
+#: admin/templates/pages/uicomponents.php:270
+msgid "Glasses"
+msgstr "Gafas"
+
+#: admin/templates/pages/uicomponents.php:273
+msgid "Globe"
+msgstr "Globo"
+
+#: admin/templates/pages/uicomponents.php:276
+msgid "Graduation Cap"
+msgstr "Gorra de graduación"
+
+#: admin/templates/pages/uicomponents.php:279
+msgid "Hammer"
+msgstr "Martillo"
+
+#: admin/templates/pages/uicomponents.php:282
+msgid "Hand Heart"
+msgstr "Mano Corazón"
+
+#: admin/templates/pages/uicomponents.php:285
+msgid "Headphones"
+msgstr "Auriculares"
+
+#: admin/templates/pages/uicomponents.php:288
+msgid "Heart"
+msgstr "Corazón"
+
+#: admin/templates/pages/uicomponents.php:291
+msgid "Hourglass"
+msgstr "Reloj de arena"
+
+#: admin/templates/pages/uicomponents.php:294
+msgid "House"
+msgstr "Casa"
+
+#: admin/templates/pages/uicomponents.php:297
+msgid "Image"
+msgstr "Imagen"
+
+#: admin/templates/pages/uicomponents.php:300
+msgid "Info"
+msgstr "Información"
+
+#: admin/templates/pages/uicomponents.php:303
+msgid "Instagram"
+msgstr "Instagram"
+
+#: admin/templates/pages/uicomponents.php:306
+msgid "Key Round"
+msgstr "Llave redonda"
+
+#: admin/templates/pages/uicomponents.php:309
+msgid "Landmark"
+msgstr "Hito"
+
+#: admin/templates/pages/uicomponents.php:312
+msgid "Languages"
+msgstr "Idiomas"
+
+#: admin/templates/pages/uicomponents.php:315
+msgid "Layers"
+msgstr "Capas"
+
+#: admin/templates/pages/uicomponents.php:318
+msgid "Layout Grid"
+msgstr "Rejilla de diseño"
+
+#: admin/templates/pages/uicomponents.php:321
+msgid "Life Buoy"
+msgstr "Boya salvavidas"
+
+#: admin/templates/pages/uicomponents.php:324
+msgid "Link"
+msgstr "Enlace"
+
+#: admin/templates/pages/uicomponents.php:327
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: admin/templates/pages/uicomponents.php:330
+msgid "Lock"
+msgstr "Cerradura"
+
+#: admin/templates/pages/uicomponents.php:333
+msgid "Mail"
+msgstr "Correo"
+
+#: admin/templates/pages/uicomponents.php:336
+msgid "Map Pin"
+msgstr "Mapa Pin"
+
+#: admin/templates/pages/uicomponents.php:339
+msgid "Megaphone"
+msgstr "Megáfono"
+
+#: admin/templates/pages/uicomponents.php:342
+msgid "Message Circle"
+msgstr "Círculo de mensajes"
+
+#: admin/templates/pages/uicomponents.php:345
+msgid "Mic"
+msgstr "Mic"
+
+#: admin/templates/pages/uicomponents.php:348
+msgid "Monitor Smartphone"
+msgstr "Monitor Smartphone"
+
+#: admin/templates/pages/uicomponents.php:351
+msgid "Moon"
+msgstr "Luna"
+
+#: admin/templates/pages/uicomponents.php:354
+#: admin/templates/pages/webappmanifest.php:204
+msgid "Music"
+msgstr "Música"
+
+#: admin/templates/pages/uicomponents.php:357
+#: admin/templates/pages/webappmanifest.php:205
+msgid "Navigation"
+msgstr "Navegación"
+
+#: admin/templates/pages/uicomponents.php:360
+msgid "Network"
+msgstr "Red"
+
+#: admin/templates/pages/uicomponents.php:363
+msgid "Newspaper"
+msgstr "Periódico"
+
+#: admin/templates/pages/uicomponents.php:366
+msgid "Palette"
+msgstr "Paleta"
+
+#: admin/templates/pages/uicomponents.php:369
+msgid "Paperclip"
+msgstr "Clip"
+
+#: admin/templates/pages/uicomponents.php:372
+msgid "Paw Print"
+msgstr "Huella"
+
+#: admin/templates/pages/uicomponents.php:375
+msgid "Pencil"
+msgstr "Lápiz"
+
+#: admin/templates/pages/uicomponents.php:378
+#: admin/templates/pages/uicomponents.php:1008
+msgid "Percent"
+msgstr "Porcentaje"
+
+#: admin/templates/pages/uicomponents.php:381
+msgid "Phone"
+msgstr "Teléfono"
+
+#: admin/templates/pages/uicomponents.php:384
+msgid "Pill"
+msgstr "Píldora"
+
+#: admin/templates/pages/uicomponents.php:387
+msgid "Pin"
+msgstr "Pin"
+
+#: admin/templates/pages/uicomponents.php:390
+msgid "Pizza"
+msgstr "Pizza"
+
+#: admin/templates/pages/uicomponents.php:393
+msgid "Plane"
+msgstr "Plano"
+
+#: admin/templates/pages/uicomponents.php:396
+msgid "Play"
+msgstr "Jugar"
+
+#: admin/templates/pages/uicomponents.php:399
+msgid "Plus"
+msgstr "Más"
+
+#: admin/templates/pages/uicomponents.php:402
+msgid "Podcast"
+msgstr "Podcast"
+
+#: admin/templates/pages/uicomponents.php:405
+msgid "Popcorn"
+msgstr "Palomitas de maíz"
+
+#: admin/templates/pages/uicomponents.php:408
+msgid "Printer"
+msgstr "Impresora"
+
+#: admin/templates/pages/uicomponents.php:411
+msgid "Puzzle"
+msgstr "Puzzle"
+
+#: admin/templates/pages/uicomponents.php:414
+msgid "Rocket"
+msgstr "Cohete"
+
+#: admin/templates/pages/uicomponents.php:417
+msgid "Save"
+msgstr "Guardar"
+
+#: admin/templates/pages/uicomponents.php:420
+msgid "Scale"
+msgstr "Escala"
+
+#: admin/templates/pages/uicomponents.php:426
+msgid "Send"
+msgstr "Enviar"
+
+#: admin/templates/pages/uicomponents.php:429
+msgid "Settings"
+msgstr "Ajustes"
+
+#: admin/templates/pages/uicomponents.php:432
+msgid "Share"
+msgstr "Compartir"
+
+#: admin/templates/pages/uicomponents.php:435
+msgid "Shield"
+msgstr "Escudo"
+
+#: admin/templates/pages/uicomponents.php:438
+msgid "Shirt"
+msgstr "Camisa"
+
+#: admin/templates/pages/uicomponents.php:441
+msgid "Shopping Bag"
+msgstr "Bolsa de la compra"
+
+#: admin/templates/pages/uicomponents.php:444
+msgid "Shopping Cart"
+msgstr "Cesta de la compra"
+
+#: admin/templates/pages/uicomponents.php:447
+msgid "Skull"
+msgstr "Cráneo"
+
+#: admin/templates/pages/uicomponents.php:450
+msgid "Sofa"
+msgstr "Sofá"
+
+#: admin/templates/pages/uicomponents.php:453
+msgid "Sparkles"
+msgstr "Destellos"
+
+#: admin/templates/pages/uicomponents.php:456
+msgid "Sprout"
+msgstr "Brote"
+
+#: admin/templates/pages/uicomponents.php:459
+msgid "Star"
+msgstr "Estrella"
+
+#: admin/templates/pages/uicomponents.php:462
+msgid "Stethoscope"
+msgstr "Estetoscopio"
+
+#: admin/templates/pages/uicomponents.php:465
+msgid "Store"
+msgstr "Tienda"
+
+#: admin/templates/pages/uicomponents.php:468
+msgid "Sun"
+msgstr "Sol"
+
+#: admin/templates/pages/uicomponents.php:471
+msgid "Tag"
+msgstr "Etiqueta"
+
+#: admin/templates/pages/uicomponents.php:474
+msgid "Target"
+msgstr "Objetivo"
+
+#: admin/templates/pages/uicomponents.php:477
+msgid "Test Tube Diagonal"
+msgstr "Diagonal del tubo de ensayo"
+
+#: admin/templates/pages/uicomponents.php:480
+msgid "Thumbs Up"
+msgstr "Pulgares arriba"
+
+#: admin/templates/pages/uicomponents.php:483
+msgid "Ticket"
+msgstr "Billete"
+
+#: admin/templates/pages/uicomponents.php:486
+msgid "Toilet"
+msgstr "Aseo"
+
+#: admin/templates/pages/uicomponents.php:489
+msgid "Trash"
+msgstr "Basura"
+
+#: admin/templates/pages/uicomponents.php:492
+msgid "Tree Pine"
+msgstr "Pino"
+
+#: admin/templates/pages/uicomponents.php:495
+msgid "Trending Down"
+msgstr "Tendencias a la baja"
+
+#: admin/templates/pages/uicomponents.php:498
+msgid "Trending Up"
+msgstr "Tendencias al alza"
+
+#: admin/templates/pages/uicomponents.php:501
+msgid "Triangle Alert"
+msgstr "Alerta triangular"
+
+#: admin/templates/pages/uicomponents.php:504
+msgid "Trophy"
+msgstr "Trofeo"
+
+#: admin/templates/pages/uicomponents.php:507
+msgid "Twitch"
+msgstr "Twitch"
+
+#: admin/templates/pages/uicomponents.php:510
+msgid "Twitter"
+msgstr "Twitter"
+
+#: admin/templates/pages/uicomponents.php:513
+msgid "Upload"
+msgstr "Cargar"
+
+#: admin/templates/pages/uicomponents.php:516
+msgid "User"
+msgstr "Usuario"
+
+#: admin/templates/pages/uicomponents.php:519
+msgid "Utensils"
+msgstr "Utensilios"
+
+#: admin/templates/pages/uicomponents.php:522
+msgid "Video"
+msgstr "Vídeo"
+
+#: admin/templates/pages/uicomponents.php:525
+msgid "Volume"
+msgstr "Volumen"
+
+#: admin/templates/pages/uicomponents.php:528
+msgid "Wallet"
+msgstr "Cartera"
+
+#: admin/templates/pages/uicomponents.php:531
+msgid "Wand Sparkles"
+msgstr "La varita brilla"
+
+#: admin/templates/pages/uicomponents.php:534
+msgid "Watch"
+msgstr "Ver"
+
+#: admin/templates/pages/uicomponents.php:537
+msgid "Wifi"
+msgstr "Wifi"
+
+#: admin/templates/pages/uicomponents.php:540
+msgid "Wine"
+msgstr "Vino"
+
+#: admin/templates/pages/uicomponents.php:543
+msgid "Wrench"
+msgstr "Llave"
+
+#: admin/templates/pages/uicomponents.php:546
+msgid "Youtube"
+msgstr "Youtube"
+
+#: admin/templates/pages/uicomponents.php:549
+msgid "Zap"
+msgstr "Zap"
+
+#: admin/templates/pages/uicomponents.php:553
+msgid "Enter Label"
+msgstr "Introducir etiqueta"
+
+#: admin/templates/pages/uicomponents.php:557
+msgid "Select Page"
+msgstr "Seleccionar página"
+
+#: admin/templates/pages/uicomponents.php:560
+#: admin/templates/pages/webappmanifest.php:271
+#: admin/templates/pages/webappmanifest.php:566
+msgid "Home Page"
+msgstr "Página de inicio"
+
+#: admin/templates/pages/uicomponents.php:587
+msgid "Add Navigation Item"
+msgstr "Añadir elemento de navegación"
+
+#: admin/templates/pages/uicomponents.php:615
+msgid "Scroll Progress Bar"
+msgstr "Desplazar la barra de progreso"
+
+#: admin/templates/pages/uicomponents.php:624
+msgid ""
+"Scroll Progress Bar feature creates a progress bar on top of the page that "
+"indicates the scroll progress percentage of the page."
+msgstr ""
+"La función de barra de progreso de desplazamiento crea una barra de progreso "
+"en la parte superior de la página que indica el porcentaje de progreso de "
+"desplazamiento de la página."
+
+#: admin/templates/pages/uicomponents.php:644
+msgid ""
+"Select on what device types scroll progress bar feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de barra de progreso de desplazamiento."
+
+#: admin/templates/pages/uicomponents.php:687
+msgid "Dark Mode"
+msgstr "Modo oscuro"
+
+#: admin/templates/pages/uicomponents.php:693
+msgid ""
+"Dark mode adds a switch to your website, allowing users to toggle to a dark "
+"version. It can also auto-enable if the user's device is set to Dark Mode or "
+"has a low battery, helping save energy."
+msgstr ""
+"El modo oscuro añade un interruptor a su sitio web que permite a los "
+"usuarios cambiar a una versión oscura. También puede activarse "
+"automáticamente si el dispositivo del usuario está configurado en modo "
+"oscuro o tiene poca batería, lo que ayuda a ahorrar energía."
+
+#: admin/templates/pages/uicomponents.php:706
+msgid "Switch Button Type"
+msgstr "Interruptor Tipo de botón"
+
+#: admin/templates/pages/uicomponents.php:713
+msgid "Select type of your dark mode switch button."
+msgstr "Selecciona el tipo de botón de modo oscuro."
+
+#: admin/templates/pages/uicomponents.php:718
+msgid "Select Switch Button Type"
+msgstr "Seleccione el tipo de botón"
+
+#: admin/templates/pages/uicomponents.php:720
+msgid "Menu Switch"
+msgstr "Menú Interruptor"
+
+#: admin/templates/pages/uicomponents.php:721
+msgid "Floating Button"
+msgstr "Botón flotante"
+
+#: admin/templates/pages/uicomponents.php:728
+msgid "OS Aware Dark Mode"
+msgstr "Modo oscuro consciente del sistema operativo"
+
+#: admin/templates/pages/uicomponents.php:735
+msgid ""
+"OS aware dark mode automatically switches your website to a dark mode if "
+"your user's device OS theme preference is set to Dark in display settings."
+msgstr ""
+"El modo oscuro consciente del sistema operativo cambia automáticamente su "
+"sitio web a un modo oscuro si la preferencia de tema del sistema operativo "
+"del dispositivo de su usuario está establecida en Oscuro en la configuración "
+"de pantalla."
+
+#: admin/templates/pages/uicomponents.php:742
+msgid "Auto-enable Dark Mode if the user's device is set to Dark Mode."
+msgstr ""
+"Activar automáticamente el Modo Oscuro si el dispositivo del usuario está "
+"configurado en Modo Oscuro."
+
+#: admin/templates/pages/uicomponents.php:750
+msgid "Battery Low Dark Mode"
+msgstr "Batería baja Modo oscuro"
+
+#: admin/templates/pages/uicomponents.php:757
+msgid ""
+"Battery low dark mode automatically switches your website to a dark mode if "
+"your user's device battery level is less than 10%, thus saving their battery "
+"from draining fast."
+msgstr ""
+"El modo oscuro con batería baja cambia automáticamente su sitio web a un "
+"modo oscuro si el nivel de batería del dispositivo del usuario es inferior "
+"al 10%, evitando así que la batería se agote rápidamente."
+
+#: admin/templates/pages/uicomponents.php:764
+msgid "Auto-enable Dark Mode if your user's device battery level is low."
+msgstr ""
+"Active automáticamente el modo oscuro si el nivel de batería del dispositivo "
+"del usuario es bajo."
+
+#: admin/templates/pages/uicomponents.php:779
+msgid ""
+"Select on what device types dark mode feature should be active and running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de modo oscuro."
+
+#: admin/templates/pages/uicomponents.php:824
+msgid "Pull Down Refresh"
+msgstr "Actualizar"
+
+#: admin/templates/pages/uicomponents.php:833
+msgid ""
+"Pull down refresh touchscreen gesture allows your users to drag the screen "
+"and then release it, as a signal to the application to refresh contents of "
+"your web app."
+msgstr ""
+"El gesto de actualización de la pantalla táctil permite a los usuarios "
+"arrastrar la pantalla y soltarla, como señal para que la aplicación "
+"actualice el contenido de la aplicación web."
+
+#: admin/templates/pages/uicomponents.php:853
+msgid ""
+"Select on what device types pull down navigation feature should be active "
+"and running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de navegación desplegable."
+
+#: admin/templates/pages/uicomponents.php:894
+msgid "Shake Refresh"
+msgstr "Shake Refresh"
+
+#: admin/templates/pages/uicomponents.php:900
+msgid ""
+"Shake refresh gesture brings amazing UX experience to your users by simply "
+"shaking phone as a signal to your web application to refresh the contents of "
+"the screen."
+msgstr ""
+"Shake refresh gesture aporta una experiencia UX increíble a tus usuarios con "
+"sólo agitar el teléfono como señal para que tu aplicación web actualice el "
+"contenido de la pantalla."
+
+#: admin/templates/pages/uicomponents.php:920
+msgid ""
+"Select on what device types swipe navigation feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de navegación por deslizamiento."
+
+#: admin/templates/pages/uicomponents.php:961
+msgid "Page Loader"
+msgstr "Cargador de páginas"
+
+#: admin/templates/pages/uicomponents.php:967
+msgid ""
+"Page Loader feature gives you ability to show a nice page loader animation "
+"between page loadings. Page Loader appears at the start of page load and "
+"disappears after it is fully loaded."
+msgstr ""
+"La función de carga de página le permite mostrar una bonita animación de "
+"carga de página entre cargas de página. Page Loader aparece al inicio de la "
+"carga de la página y desaparece después de que se haya cargado completamente."
+
+#: admin/templates/pages/uicomponents.php:980
+msgid "Page Loader Type"
+msgstr "Tipo de cargador de páginas"
+
+#: admin/templates/pages/uicomponents.php:987
+msgid "Select the type of page loader you want on your website."
+msgstr "Seleccione el tipo de cargador de páginas que desea en su sitio web."
+
+#: admin/templates/pages/uicomponents.php:992
+msgid "Select Page Loader Type"
+msgstr "Seleccione el tipo de cargador de páginas"
+
+#: admin/templates/pages/uicomponents.php:995
+msgid ""
+"Your PWA icon (your website logo) bounces in the middle of the screen, "
+"providing a simple and recognizable loading animation."
+msgstr ""
+"El icono de su PWA (el logotipo de su sitio web) rebota en el centro de la "
+"pantalla, proporcionando una animación de carga sencilla y reconocible."
+
+#: admin/templates/pages/uicomponents.php:996
+msgid "Default"
+msgstr "Por defecto"
+
+#: admin/templates/pages/uicomponents.php:998
+msgid ""
+"Shows a skeleton loading screen, providing a placeholder layout that mimics "
+"the structure of the content being loaded, enhancing perceived performance."
+msgstr ""
+"Muestra un esqueleto de pantalla de carga, proporcionando un diseño de "
+"marcador de posición que imita la estructura del contenido que se está "
+"cargando, mejorando el rendimiento percibido."
+
+#: admin/templates/pages/uicomponents.php:999
+msgid "Skeleton"
+msgstr "Esqueleto"
+
+#: admin/templates/pages/uicomponents.php:1001
+msgid ""
+"Displays spinning circles as the loading animation, indicating that the page "
+"is loading with a familiar, straightforward visual."
+msgstr ""
+"Muestra círculos giratorios como animación de carga, indicando que la página "
+"se está cargando con un visual familiar y directo."
+
+#: admin/templates/pages/uicomponents.php:1002
+msgid "Spinner"
+msgstr "Spinner"
+
+#: admin/templates/pages/uicomponents.php:1004
+msgid ""
+"Features a flying man icon moving across a yellow background, offering a fun "
+"and playful loading experience that entertains users while they wait."
+msgstr ""
+"Presenta un icono de un hombre volador que se mueve sobre un fondo amarillo, "
+"ofreciendo una experiencia de carga divertida y juguetona que entretiene a "
+"los usuarios mientras esperan."
+
+#: admin/templates/pages/uicomponents.php:1005
+msgid "Redirect"
+msgstr "Redirigir"
+
+#: admin/templates/pages/uicomponents.php:1007
+msgid ""
+"Displays the loading percentage and a progress bar, giving users a clear and "
+"precise indication of the page loading progress."
+msgstr ""
+"Muestra el porcentaje de carga y una barra de progreso, ofreciendo a los "
+"usuarios una indicación clara y precisa del progreso de carga de la página."
+
+#: admin/templates/pages/uicomponents.php:1010
+msgid ""
+"Smooth transition with fade in and fade out effects, creating a seamless and "
+"visually appealing loading experience."
+msgstr ""
+"Transición suave con efectos de fundido de entrada y salida, que crean una "
+"experiencia de carga fluida y visualmente atractiva."
+
+#: admin/templates/pages/uicomponents.php:1025
+msgid ""
+"Select on what device types page loader feature should be active and running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activo y en "
+"funcionamiento el cargador de páginas."
+
+#: admin/templates/pages/uicomponents.php:1070
+msgid "Inactive Blur"
+msgstr "Desenfoque inactivo"
+
+#: admin/templates/pages/uicomponents.php:1076
+msgid ""
+"Inactive Blur feature blurs the website when it's not focused, so when the "
+"user switches to another tab in browser or will minimize your website as a "
+"background task your website will be blurred."
+msgstr ""
+"La función Desenfoque inactivo desenfoca el sitio web cuando no está "
+"enfocado, de modo que cuando el usuario cambie a otra pestaña en el "
+"navegador o minimice su sitio web como tarea de fondo, su sitio web "
+"aparecerá desenfocado."
+
+#: admin/templates/pages/uicomponents.php:1096
+msgid ""
+"Select on what device types inactive blur feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de desenfoque inactivo."
+
+#: admin/templates/pages/uicomponents.php:1136
+msgid "Toast Messages"
+msgstr "Mensajes para brindar"
+
+#: admin/templates/pages/uicomponents.php:1143
+msgid ""
+"Toast messages provide simple feedback about an operation in a small popup. "
+"It only fills the amount of space required for the message and the current "
+"activity remains visible and interactive. Toasts automatically disappear "
+"after a timeout."
+msgstr ""
+"Los mensajes Toast proporcionan información sencilla sobre una operación en "
+"una pequeña ventana emergente. Sólo ocupan el espacio necesario para el "
+"mensaje y la actividad en curso permanece visible e interactiva. Las "
+"tostadas desaparecen automáticamente después de un tiempo de espera."
+
+#: admin/templates/pages/uicomponents.php:1163
+msgid ""
+"Select on what device types toast messages feature should be active and "
+"running."
+msgstr ""
+"Seleccione en qué tipos de dispositivos debe estar activa y en "
+"funcionamiento la función de mensajes de brindis."
+
+#: admin/templates/pages/webappmanifest.php:20
+msgid "App Identity"
+msgstr "Identidad de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:23
+msgid ""
+"Define the core identifiers of your app such as the name, short name, icon, "
+"description, and categories which represent your app across devices and "
+"platforms."
+msgstr ""
+"Defina los identificadores principales de su aplicación, como el nombre, el "
+"nombre abreviado, el icono, la descripción y las categorías que la "
+"representan en todos los dispositivos y plataformas."
+
+#: admin/templates/pages/webappmanifest.php:32
+#: admin/templates/pages/webappmanifest.php:52
+#: admin/templates/pages/webappmanifest.php:555
+msgid "App Icon"
+msgstr "Icono de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:39
+msgid ""
+"Upload an icon representing your app, used for home screen and app listings. "
+"Ideally your web app icon should be the logo of your website."
+msgstr ""
+"Sube un icono que represente tu aplicación, utilizado para la pantalla de "
+"inicio y los listados de aplicaciones. Lo ideal es que el icono de tu "
+"aplicación web sea el logotipo de tu sitio web."
+
+#: admin/templates/pages/webappmanifest.php:71
+msgid "Select Icon"
+msgstr "Seleccionar icono"
+
+#: admin/templates/pages/webappmanifest.php:75
+msgid "Minimum 100x100 PNG, JPG, JPEG, or WEBP image."
+msgstr "Imagen PNG, JPG, JPEG o WEBP de 100x100 como mínimo."
+
+#: admin/templates/pages/webappmanifest.php:84
+msgid "App Screenshots"
+msgstr "Capturas de pantalla de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:91
+msgid ""
+"Upload screenshots of your app to showcase its features and user interface "
+"in app stores. By default, we auto-generate one mobile and one desktop "
+"version screenshot of your homepage, but you can add up to 5 screenshots of "
+"different screens and sizes."
+msgstr ""
+"Sube capturas de pantalla de tu aplicación para mostrar sus características "
+"y su interfaz de usuario en las tiendas de aplicaciones. Por defecto, "
+"generamos automáticamente una captura de pantalla de tu página de inicio en "
+"versión móvil y otra en versión de escritorio, pero puedes añadir hasta 5 "
+"capturas de pantalla de diferentes pantallas y tamaños."
+
+#: admin/templates/pages/webappmanifest.php:108
+msgid "Drop your screenshots here or"
+msgstr "Envíe sus capturas de pantalla aquí o"
+
+#: admin/templates/pages/webappmanifest.php:111
+msgid "browse"
+msgstr "consulte"
+
+#: admin/templates/pages/webappmanifest.php:115
+msgid "Select up to 5 screenshots."
+msgstr "Selecciona hasta 5 capturas de pantalla."
+
+#: admin/templates/pages/webappmanifest.php:124
+msgid "App Name"
+msgstr "Nombre de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:131
+msgid ""
+"Specify the full name of your web application, typically matching your "
+"business or service name."
+msgstr ""
+"Especifique el nombre completo de su aplicación web, que suele coincidir con "
+"el nombre de su empresa o servicio."
+
+#: admin/templates/pages/webappmanifest.php:135
+msgid "Enter App Name"
+msgstr "Introduzca el nombre de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:141
+msgid "Short Name"
+msgstr "Nombre corto"
+
+#: admin/templates/pages/webappmanifest.php:148
+msgid ""
+"Provide a brief version (up to 12 characters) of your app’s name for display "
+"on home screens and dashboards."
+msgstr ""
+"Proporcione una versión breve (hasta 12 caracteres) del nombre de su "
+"aplicación para que aparezca en las pantallas de inicio y los paneles de "
+"control."
+
+#: admin/templates/pages/webappmanifest.php:152
+msgid "Enter Short Name"
+msgstr "Introduzca el nombre corto"
+
+#: admin/templates/pages/webappmanifest.php:158
+msgid "Description"
+msgstr "Descripción"
+
+#: admin/templates/pages/webappmanifest.php:165
+msgid "Enter a concise summary of your app's purpose and main features."
+msgstr ""
+"Introduzca un resumen conciso de la finalidad y las principales "
+"características de su aplicación."
+
+#: admin/templates/pages/webappmanifest.php:169
+msgid "Enter Description"
+msgstr "Introducir descripción"
+
+#: admin/templates/pages/webappmanifest.php:175
+msgid "Categories"
+msgstr "Categorías"
+
+#: admin/templates/pages/webappmanifest.php:182
+msgid ""
+"The categories describe the expected application categories to which the web "
+"application belongs. It's used as a hint to catalogs or store listing web "
+"applications. We recommend not to choose more than 3 categories."
+msgstr ""
+"Las categorías describen las categorías de aplicaciones previstas a las que "
+"pertenece la aplicación web. Se utiliza como pista para los catálogos o "
+"tiendas que listan aplicaciones web. Recomendamos no elegir más de 3 "
+"categorías."
+
+#: admin/templates/pages/webappmanifest.php:187
+msgid "Select Categories"
+msgstr "Seleccionar categorías"
+
+#: admin/templates/pages/webappmanifest.php:190
+msgid "Books"
+msgstr "Libros"
+
+#: admin/templates/pages/webappmanifest.php:191
+msgid "Business"
+msgstr "Empresas"
+
+#: admin/templates/pages/webappmanifest.php:192
+msgid "Education"
+msgstr "Educación"
+
+#: admin/templates/pages/webappmanifest.php:193
+msgid "Entertainment"
+msgstr "Entretenimiento"
+
+#: admin/templates/pages/webappmanifest.php:194
+msgid "Finance"
+msgstr "Finanzas"
+
+#: admin/templates/pages/webappmanifest.php:195
+msgid "Fitness"
+msgstr "Fitness"
+
+#: admin/templates/pages/webappmanifest.php:196
+msgid "Food"
+msgstr "Alimentación"
+
+#: admin/templates/pages/webappmanifest.php:197
+msgid "Games"
+msgstr "Juegos"
+
+#: admin/templates/pages/webappmanifest.php:198
+msgid "Government"
+msgstr "Gobierno"
+
+#: admin/templates/pages/webappmanifest.php:199
+msgid "Health"
+msgstr "Salud"
+
+#: admin/templates/pages/webappmanifest.php:200
+msgid "Kids"
+msgstr "Niños"
+
+#: admin/templates/pages/webappmanifest.php:201
+msgid "Lifestyle"
+msgstr "Estilo de vida"
+
+#: admin/templates/pages/webappmanifest.php:202
+msgid "Magazines"
+msgstr "Revistas"
+
+#: admin/templates/pages/webappmanifest.php:203
+msgid "Medical"
+msgstr "Médico"
+
+#: admin/templates/pages/webappmanifest.php:206
+msgid "News"
+msgstr "Noticias"
+
+#: admin/templates/pages/webappmanifest.php:207
+msgid "Personalization"
+msgstr "Personalización"
+
+#: admin/templates/pages/webappmanifest.php:208
+msgid "Photo"
+msgstr "Foto"
+
+#: admin/templates/pages/webappmanifest.php:209
+msgid "Politics"
+msgstr "Política"
+
+#: admin/templates/pages/webappmanifest.php:210
+msgid "Productivity"
+msgstr "Productividad"
+
+#: admin/templates/pages/webappmanifest.php:211
+msgid "Security"
+msgstr "Seguridad"
+
+#: admin/templates/pages/webappmanifest.php:212
+msgid "Shopping"
+msgstr "Compras"
+
+#: admin/templates/pages/webappmanifest.php:213
+msgid "Social"
+msgstr "Social"
+
+#: admin/templates/pages/webappmanifest.php:214
+msgid "Sports"
+msgstr "Deportes"
+
+#: admin/templates/pages/webappmanifest.php:215
+msgid "Travel"
+msgstr "Viajar"
+
+#: admin/templates/pages/webappmanifest.php:216
+msgid "Utilities"
+msgstr "Servicios"
+
+#: admin/templates/pages/webappmanifest.php:217
+msgid "Weather"
+msgstr "Tiempo"
+
+#: admin/templates/pages/webappmanifest.php:244
+msgid "Display Settings"
+msgstr "Ajustes de pantalla"
+
+#: admin/templates/pages/webappmanifest.php:247
+msgid ""
+"Customize how your app appears and behaves on user screens, including the "
+"startup page, display layout, and screen orientation."
+msgstr ""
+"Personaliza la apariencia y el comportamiento de tu aplicación en las "
+"pantallas de los usuarios, incluida la página de inicio, el diseño de la "
+"pantalla y su orientación."
+
+#: admin/templates/pages/webappmanifest.php:256
+msgid "Start Page"
+msgstr "Página de inicio"
+
+#: admin/templates/pages/webappmanifest.php:263
+msgid ""
+"Set the initial page that loads when your app is launched from the home "
+"screen. In normal cases it should be your homepage."
+msgstr ""
+"Establece la página inicial que se carga cuando tu aplicación se lanza desde "
+"la pantalla de inicio. En casos normales, debería ser tu página de inicio."
+
+#: admin/templates/pages/webappmanifest.php:268
+msgid "Select Start Page"
+msgstr "Seleccionar página de inicio"
+
+#: admin/templates/pages/webappmanifest.php:281
+msgid "Display Mode"
+msgstr "Modo de visualización"
+
+#: admin/templates/pages/webappmanifest.php:288
+msgid ""
+"Choose how your app displays. We recommend choosing \"Standalone\", as it "
+"provides a native app feeling."
+msgstr ""
+"Elige cómo se mostrará tu aplicación. Recomendamos elegir \"Independiente\", "
+"ya que proporciona una sensación de aplicación nativa."
+
+#: admin/templates/pages/webappmanifest.php:293
+msgid "Select Display Mode"
+msgstr "Seleccionar modo de visualización"
+
+#: admin/templates/pages/webappmanifest.php:296
+msgid "Opens the app in a separate window for a native app experience."
+msgstr ""
+"Abre la aplicación en una ventana independiente para disfrutar de una "
+"experiencia de aplicación nativa."
+
+#: admin/templates/pages/webappmanifest.php:297
+msgid "Standalone"
+msgstr "Independiente"
+
+#: admin/templates/pages/webappmanifest.php:299
+msgid "Expands the app to cover the entire screen, hiding browser UI."
+msgstr ""
+"Amplía la aplicación para cubrir toda la pantalla, ocultando la interfaz de "
+"usuario del navegador."
+
+#: admin/templates/pages/webappmanifest.php:300
+msgid "Fullscreen"
+msgstr "Pantalla completa"
+
+#: admin/templates/pages/webappmanifest.php:302
+msgid "Displays the app with minimal browser UI for a cleaner interface."
+msgstr ""
+"Muestra la aplicación con una interfaz de usuario de navegador mínima para "
+"una interfaz más limpia."
+
+#: admin/templates/pages/webappmanifest.php:303
+msgid "Minimal UI"
+msgstr "Interfaz de usuario mínima"
+
+#: admin/templates/pages/webappmanifest.php:310
+msgid "Orientation"
+msgstr "Orientación"
+
+#: admin/templates/pages/webappmanifest.php:317
+msgid ""
+"Select the preferred screen orientation. We recommend choosing \"Portrait\", "
+"as it provides a more native app feeling."
+msgstr ""
+"Seleccione la orientación de pantalla preferida. Recomendamos elegir "
+"\"Vertical\", ya que proporciona una sensación de aplicación más nativa."
+
+#: admin/templates/pages/webappmanifest.php:322
+msgid "Select Orientation"
+msgstr "Seleccionar orientación"
+
+#: admin/templates/pages/webappmanifest.php:324
+msgid "Allow Both"
+msgstr "Permitir ambos"
+
+#: admin/templates/pages/webappmanifest.php:325
+msgid "Portrait"
+msgstr "Retrato"
+
+#: admin/templates/pages/webappmanifest.php:326
+msgid "Landscape"
+msgstr "Paisaje"
+
+#: admin/templates/pages/webappmanifest.php:352
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: admin/templates/pages/webappmanifest.php:355
+msgid ""
+"Adjust the visual elements of your app, including the theme and background "
+"colors, to enhance the user interface and align with your branding."
+msgstr ""
+"Ajuste los elementos visuales de su aplicación, incluidos el tema y los "
+"colores de fondo, para mejorar la interfaz de usuario y alinearse con su "
+"marca."
+
+#: admin/templates/pages/webappmanifest.php:364
+msgid "iOS Status Bar Style"
+msgstr "estilo de la barra de estado de iOS"
+
+#: admin/templates/pages/webappmanifest.php:371
+msgid "Specify the style of the status bar for your app on iOS devices."
+msgstr ""
+"Especifica el estilo de la barra de estado de tu aplicación en dispositivos "
+"iOS."
+
+#: admin/templates/pages/webappmanifest.php:376
+msgid "Select iOS Status Bar Style"
+msgstr "Seleccionar el estilo de la barra de estado de iOS"
+
+#: admin/templates/pages/webappmanifest.php:378
+msgid "White bar with black text"
+msgstr "Barra blanca con texto negro"
+
+#: admin/templates/pages/webappmanifest.php:379
+msgid "Black bar with white text"
+msgstr "Barra negra con texto blanco"
+
+#: admin/templates/pages/webappmanifest.php:380
+msgid "Transparent bar with white text"
+msgstr "Barra transparente con texto blanco"
+
+#: admin/templates/pages/webappmanifest.php:387
+#: admin/templates/pages/webappmanifest.php:398
+msgid "Theme Color"
+msgstr "Tema Color"
+
+#: admin/templates/pages/webappmanifest.php:394
+msgid ""
+"Define the primary color theme for the browser's toolbar and app's header. "
+"It should be the same as the main color palette of your website."
+msgstr ""
+"Defina el tema de color principal para la barra de herramientas del "
+"navegador y la cabecera de la aplicación. Debe ser el mismo que la paleta de "
+"colores principal de su sitio web."
+
+#: admin/templates/pages/webappmanifest.php:404
+#: admin/templates/pages/webappmanifest.php:415
+msgid "Background Color"
+msgstr "Color de fondo"
+
+#: admin/templates/pages/webappmanifest.php:411
+msgid ""
+"Choose a background color that displays during app startup and loading. It "
+"should be the same as the background color of your website."
+msgstr ""
+"Elija un color de fondo que se muestre durante el inicio y la carga de la "
+"aplicación. Debe ser el mismo que el color de fondo de su sitio web."
+
+#: admin/templates/pages/webappmanifest.php:441
+msgid "Advanced Features"
+msgstr "Funciones avanzadas"
+
+#: admin/templates/pages/webappmanifest.php:444
+msgid ""
+"Expand your app’s functionality with advanced features like age ratings, "
+"related applications, and customizable shortcuts to various app functions."
+msgstr ""
+"Amplíe la funcionalidad de su aplicación con funciones avanzadas como "
+"clasificaciones por edades, aplicaciones relacionadas y accesos directos "
+"personalizables a diversas funciones de la aplicación."
+
+#: admin/templates/pages/webappmanifest.php:453
+msgid "IARC Rating ID"
+msgstr "IARC Rating ID"
+
+#: admin/templates/pages/webappmanifest.php:460
+msgid ""
+"International Age Rating Coalition (IARC) certification number, which helps "
+"classify your app’s appropriate age group. Click the info icon for more "
+"information."
+msgstr ""
+"Número de certificación de la Coalición Internacional para la Clasificación "
+"por Edades (IARC), que ayuda a clasificar el grupo de edad apropiado de su "
+"aplicación. Haz clic en el icono de información para más información."
+
+#: admin/templates/pages/webappmanifest.php:464
+msgid "Enter IARC Rating ID"
+msgstr "Introduzca el ID de la clasificación IARC"
+
+#: admin/templates/pages/webappmanifest.php:471
+msgid "Related Applications"
+msgstr "Aplicaciones relacionadas"
+
+#: admin/templates/pages/webappmanifest.php:478
+msgid ""
+"Related application option gives you the ability to list your native "
+"applications related to your web app, for cross-promotion or additional "
+"functionality. So if you will relate your native application to your PWA, "
+"the browser will prompt the user with your native app instead of the PWA web "
+"app. If you don't have a native application for your web app, you can "
+"request them by clicking the \"Publish to App Stores\" button on the header "
+"or navigation menu."
+msgstr ""
+"La opción de aplicación relacionada te da la posibilidad de listar tus "
+"aplicaciones nativas relacionadas con tu aplicación web, para promoción "
+"cruzada o funcionalidad adicional. Así, si relacionas tu aplicación nativa "
+"con tu PWA, el navegador mostrará al usuario tu aplicación nativa en lugar "
+"de la aplicación web de la PWA. Si no tienes una aplicación nativa para tu "
+"web app, puedes solicitarlas pulsando el botón \"Publish to App Stores\" en "
+"la cabecera o en el menú de navegación."
+
+#: admin/templates/pages/webappmanifest.php:483
+msgid "Don't have native apps? Get them and %1$spublish to app stores%2$s"
+msgstr ""
+"¿No tienes aplicaciones nativas? Consíguelas y %1$spublícalas en las tiendas "
+"de aplicaciones%2$s"
+
+#: admin/templates/pages/webappmanifest.php:489
+msgid "Select Platform"
+msgstr "Seleccionar plataforma"
+
+#: admin/templates/pages/webappmanifest.php:494
+msgid "iOS"
+msgstr "iOS"
+
+#: admin/templates/pages/webappmanifest.php:502
+msgid "Enter App ID"
+msgstr "Introduzca el ID de la aplicación"
+
+#: admin/templates/pages/webappmanifest.php:525
+msgid "Add Related Application"
+msgstr "Añadir aplicación relacionada"
+
+#: admin/templates/pages/webappmanifest.php:533
+msgid "App Shortcuts"
+msgstr "Atajos de aplicaciones"
+
+#: admin/templates/pages/webappmanifest.php:540
+msgid ""
+"App shortcuts help users quickly start common or recommended tasks within "
+"your web app. Easy access to those tasks from anywhere the app icon is "
+"displayed will enhance users productivity as well as increase their "
+"engagement with the web app. The app shortcuts menu is invoked by right-"
+"clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's "
+"desktop, or long pressing the app's launcher icon on Android."
+msgstr ""
+"Los accesos directos a aplicaciones ayudan a los usuarios a iniciar "
+"rápidamente tareas comunes o recomendadas dentro de su aplicación web. El "
+"fácil acceso a esas tareas desde cualquier lugar donde se muestre el icono "
+"de la aplicación mejorará la productividad de los usuarios y aumentará su "
+"compromiso con la aplicación web. El menú de accesos directos a aplicaciones "
+"se abre haciendo clic con el botón derecho en el icono de la aplicación en "
+"la barra de tareas (Windows) o en el dock (macOS) del escritorio del usuario,"
+" o pulsando prolongadamente el icono del lanzador de la aplicación en "
+"Android."
+
+#: admin/templates/pages/webappmanifest.php:559
+msgid "Enter Shortcut Name"
+msgstr "Introducir nombre de acceso directo"
+
+#: admin/templates/pages/webappmanifest.php:563
+msgid "Select Shortcut Page"
+msgstr "Seleccionar página de acceso directo"
+
+#: admin/templates/pages/webappmanifest.php:593
+msgid "Add App Shortcut"
+msgstr "Añadir acceso directo a la aplicación"
+
+#: admin/templates/sidebar.php:13
+msgid "v%s"
+msgstr "v%s"
+
+#: admin/templates/sidebar.php:75
+msgid "Auto (system default)"
+msgstr "Auto (predeterminado del sistema)"
+
+#: admin/templates/sidebar.php:78
+msgid "Light"
+msgstr "Luz"
+
+#: admin/templates/sidebar.php:81
+msgid "Dark"
+msgstr "Oscuro"
+
+#: admin/templates/sidebar.php:110
+msgid "Help Centre"
+msgstr "Centro de ayuda"
+
+#: admin/templates/sidebar.php:117
+msgid "What's New"
+msgstr "Novedades"
+
+#: daftplug-progressify.php:35
+msgid "Progressify"
+msgstr "Progressify"
+
+#: frontend/partials/offlinefallbackpage.php:11
+#: frontend/partials/offlinefallbackpage.php:86
+msgid "You're Offline"
+msgstr "Estás desconectado"
+
+#: frontend/partials/offlinefallbackpage.php:88
+msgid ""
+"It looks like you lost your internet connection. Please check your "
+"connection to reconnect."
+msgstr ""
+"Parece que has perdido la conexión a Internet. Por favor, comprueba tu "
+"conexión para volver a conectarte."
+
+#: frontend/partials/offlinefallbackpage.php:98
+msgid "Reconnect"
+msgstr "Vuelva a conectar"
+
+#: includes/modules/dashboard.php:255
+msgid "Publish your web app to stores"
+msgstr "Publique su aplicación web en las tiendas"
+
+#: includes/modules/dashboard.php:265
+msgid "Enable secure HTTPS on your server"
+msgstr "Habilite HTTPS seguro en su servidor"
+
+#: includes/modules/dashboard.php:268
+msgid ""
+"It appears you do not have a secure HTTPS server and PWA requires HTTPS "
+"connection to function correctly. Please set up it on your server or contact "
+"to your hosting provider to enable it for you."
+msgstr ""
+"Parece que usted no tiene un servidor seguro HTTPS y PWA requiere conexión "
+"HTTPS para funcionar correctamente. Por favor, configúralo en tu servidor o "
+"contacta con tu proveedor de hosting para que te lo habilite."
+
+#: includes/modules/dashboard.php:274
+msgid "Upload or select your PWA App Icon"
+msgstr "Cargue o seleccione el icono de su aplicación PWA"
+
+#: includes/modules/dashboard.php:284
+msgid "Define your PWA web app Name"
+msgstr "Defina el nombre de su aplicación web PWA"
+
+#: includes/modules/dashboard.php:294
+msgid "Define your PWA web app Short Name"
+msgstr "Defina el nombre corto de su aplicación web PWA"
+
+#: includes/modules/dashboard.php:304
+msgid "Choose your PWA web app categories"
+msgstr "Elige las categorías de tu aplicación web PWA"
+
+#: includes/modules/dashboard.php:313
+msgid "Enable PWA Installation Prompts"
+msgstr "Activar los avisos de instalación de la PWA"
+
+#: includes/modules/dashboard.php:322
+msgid "Enable one of the PWA Installation Overlays"
+msgstr "Activar una de las superposiciones de instalación de PWA"
+
+#: includes/modules/dashboard.php:331
+msgid "Enable Offline Cache for your PWA"
+msgstr "Active la caché sin conexión para su PWA"
+
+#: includes/modules/dashboard.php:340
+msgid "Enable Advanced Web Capabilities for your PWA"
+msgstr "Habilite las capacidades web avanzadas para su PWA"
+
+#: includes/modules/dashboard.php:349
+msgid "Enable the Background Sync feature"
+msgstr "Activar la sincronización en segundo plano"
+
+#: includes/modules/dashboard.php:358
+msgid "Enable the Periodic Background Sync feature"
+msgstr "Activar la sincronización periódica en segundo plano"
+
+#: includes/modules/dashboard.php:367
+msgid "Enable Push Notifications Prompt or Button"
+msgstr "Habilitar aviso o botón de notificaciones push"
+
+#: includes/modules/pushnotifications.php:742
+msgid "The notification was sent to %d out of %d recipients, with %d failure."
+msgstr "La notificación se envió a %d de %d destinatarios, con %d fallos."
+
+#: includes/modules/pushnotifications.php:749
+#: admin/assets/js/dev/modules/modalPushNotifications.js:49
+msgid "Sending failed. There was an error on server."
+msgstr "Error en el envío. Se ha producido un error en el servidor."
+
+#: includes/modules/pushnotifications.php:770
+msgid "New %s - %s"
+msgstr "Nuevo %s - %s"
+
+#: includes/modules/pushnotifications.php:795
+msgid "Price Drop - %s"
+msgstr "Bajada de precios - %s"
+
+#: includes/modules/pushnotifications.php:796
+msgid "Price dropped from %s to %s"
+msgstr "El precio ha bajado de %s a %s"
+
+#: includes/modules/pushnotifications.php:800
+msgid "New Sale Price - %s"
+msgstr "Nuevo precio de venta - %s"
+
+#: includes/modules/pushnotifications.php:801
+msgid "New Sale Price: %s"
+msgstr "Nuevo precio de venta: %s"
+
+#: includes/modules/pushnotifications.php:805
+msgid "Back In Stock - %s"
+msgstr "De nuevo en stock - %s"
+
+#: includes/modules/pushnotifications.php:806
+msgid "%s is now back in stock"
+msgstr "%s ya está disponible"
+
+#: includes/modules/pushnotifications.php:873
+msgid "Your Order Status Updated"
+msgstr "Estado de su pedido actualizado"
+
+#: includes/modules/pushnotifications.php:874
+msgid ""
+"Your order (ID %s) status has updated from %s to %s. Click on this "
+"notification to see the order."
+msgstr ""
+"El estado de su pedido (ID %s) se ha actualizado de %s a %s. Haga clic en "
+"esta notificación para ver el pedido."
+
+#: includes/modules/pushnotifications.php:923
+msgid "New Comment By %s"
+msgstr "Nuevo comentario de %s"
+
+#: includes/modules/pushnotifications.php:961
+msgid "New Order #%s"
+msgstr "Nuevo Orden #%s"
+
+#: includes/modules/pushnotifications.php:962
+msgid "New order from %s for %s%s (%d items)"
+msgstr "Nuevo pedido de %s para %s%s (%d artículos)"
+
+#: includes/modules/pushnotifications.php:1030
+msgid "Low Stock Alert: %s"
+msgstr "Alerta de stock bajo: %s"
+
+#: includes/modules/pushnotifications.php:1031
+msgid "Stock level: %d (Threshold: %d)%s. SKU: %s"
+msgstr "Nivel de existencias: %d (Umbral: %d)%s. SKU: %s"
+
+#: includes/modules/pushnotifications.php:1056
+msgid "%s has just mentioned you in a %s"
+msgstr "%s acaba de mencionarte en un %s"
+
+#: includes/modules/pushnotifications.php:1059
+msgid "New mention from %s"
+msgstr "Nueva mención de %s"
+
+#: includes/modules/pushnotifications.php:1083
+msgid "New comment from %s"
+msgstr "Nuevo comentario de %s"
+
+#: includes/modules/pushnotifications.php:1084
+msgid "%s has just commented on your post."
+msgstr "%s acaba de comentar tu entrada."
+
+#: includes/modules/pushnotifications.php:1107
+msgid "New reply from %s"
+msgstr "Nueva respuesta de %s"
+
+#: includes/modules/pushnotifications.php:1108
+msgid "%s has just replied to you."
+msgstr "%s acaba de responderte."
+
+#: includes/modules/pushnotifications.php:1135
+msgid "New message from %s"
+msgstr "Nuevo mensaje de %s"
+
+#: includes/modules/pushnotifications.php:1161
+msgid "New friend request from %s"
+msgstr "Nueva solicitud de amistad de %s"
+
+#: includes/modules/pushnotifications.php:1162
+msgid "%s has just sent you a friend request."
+msgstr "%s acaba de enviarte una solicitud de amistad."
+
+#: includes/modules/pushnotifications.php:1187
+msgid "Friend request accepted"
+msgstr "Solicitud de amistad aceptada"
+
+#: includes/modules/pushnotifications.php:1188
+msgid "%s has just accepted your friend request."
+msgstr "%s acaba de aceptar tu solicitud de amistad."
+
+#: includes/plugin.php:309
+msgid "⚠️ %s requires PHP version at least 8.2 to function properly."
+msgstr ""
+"⚠️ %s requiere la versión PHP 8.2 como mínimo para funcionar correctamente."
+
+#: includes/plugin.php:309 includes/plugin.php:321
+msgid "If you have trouble fixing this, please contact us on"
+msgstr ""
+"Si tiene problemas para solucionarlo, póngase en contacto con nosotros en"
+
+#: includes/plugin.php:321
+msgid "⚠️ %s features require <i>%s</i> extension to function properly."
+msgstr ""
+"⚠️ %s funciones requieren <i>%s</i> extensión para funcionar correctamente."
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:75
+msgid "Notifications are not supported by your browser."
+msgstr "Su navegador no admite notificaciones."
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:87
+msgid "You need to accept the notifications permission to preview."
+msgstr ""
+"Debe aceptar el permiso de notificaciones para obtener una vista previa."
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:91
+msgid "Push notifications are blocked by your browser."
+msgstr "Las notificaciones push están bloqueadas por tu navegador."
+
+#: admin/assets/js/dev/modules/publishToAppStores.js:58
+msgid ""
+"Thank you for the payment! We are starting to create apps for you and will "
+"send it to you soon."
+msgstr ""
+"Gracias por el pago Estamos empezando a crear aplicaciones para usted y se "
+"lo enviaremos pronto."
+
+#: admin/assets/js/dev/modules/publishToAppStores.js:78
+msgid "Payment failed! Please try again or contact us on support@daftplug.com"
+msgstr ""
+"¡Pago fallido! Por favor, inténtelo de nuevo o póngase en contacto con "
+"nosotros en support@daftplug.com"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:106
+msgid "No Subscribers"
+msgstr "Sin abonados"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:109
+msgid "There are no push notification subscribers yet."
+msgstr "Aún no hay suscriptores de notificaciones push."
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:186
+msgid "Delete"
+msgstr "Borrar"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:235
+msgid "Are you sure you want to remove this subscriber?"
+msgstr "¿Seguro que quieres eliminar a este abonado?"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:130
+msgid "No Action Items"
+msgstr "Ninguna medida"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:133
+msgid "Your PWA seems fully setup and your score is excellent."
+msgstr "Tu PWA parece totalmente configurada y tu puntuación es excelente."
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:144
+msgid "Action Items"
+msgstr "Acciones"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:172
+msgid "Show All"
+msgstr "Mostrar todo"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:317
+msgid ""
+"Your PWA hasn't been installed yet, and there are no current users. Make "
+"sure Installation Prompts are enabled to encourage users to install your web "
+"app."
+msgstr ""
+"Tu PWA aún no se ha instalado y no hay usuarios. Asegúrate de que los avisos "
+"de instalación están activados para animar a los usuarios a instalar tu "
+"aplicación web."
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:325
+msgid ""
+"Your PWA users are evenly distributed across different browsers. While we "
+"strive for broad compatibility, Chrome is recommended as the most PWA-"
+"friendly."
+msgstr ""
+"Los usuarios de tu PWA están distribuidos uniformemente en diferentes "
+"navegadores. Aunque nos esforzamos por lograr una amplia compatibilidad, se "
+"recomienda Chrome como el más compatible con la PWA."
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:328
+msgid "All"
+msgstr "Todos"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:328
+msgid "Most"
+msgstr "Más"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:353
+#: admin/assets/js/dev/modules/pwaUsersData.js:394
+#: admin/assets/js/dev/modules/pwaUsersData.js:425
+#: admin/assets/js/dev/modules/pwaUsersData.js:518
+msgid "PWA Installs"
+msgstr "Instalación de PWA"
+
+#: dist/daftplug-progressify/frontend/assets/js/installButton-40e2903c.js:1
+#: frontend/assets/js/dev/components/installPrompt.js:984
+#: frontend/assets/js/dev/modules/installButton.js:32
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:63
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:83
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:94
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:79
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:62
+msgid "Install Web App"
+msgstr "Instalar Web App"
+
+#: frontend/assets/js/dev/components/installPrompt.js:480
+msgid "Checking installation capabilities..."
+msgstr "Comprobación de las capacidades de instalación..."
+
+#: frontend/assets/js/dev/components/installPrompt.js:535
+msgid "Click to Install"
+msgstr "Haga clic para instalar"
+
+#: frontend/assets/js/dev/components/installPrompt.js:539
+msgid "Tap to Install"
+msgstr "Pulse para instalar"
+
+#: frontend/assets/js/dev/components/installPrompt.js:694
+#: frontend/assets/js/dev/components/installPrompt.js:698
+#: frontend/assets/js/dev/components/installPrompt.js:702
+#: frontend/assets/js/dev/components/installPrompt.js:706
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:729
+#: frontend/assets/js/dev/components/installPrompt.js:734
+#: frontend/assets/js/dev/components/installPrompt.js:752
+#: frontend/assets/js/dev/components/installPrompt.js:757
+msgid "Tap the Menu Icon"
+msgstr "Pulse el icono de menú"
+
+#: frontend/assets/js/dev/components/installPrompt.js:694
+#: frontend/assets/js/dev/components/installPrompt.js:698
+#: frontend/assets/js/dev/components/installPrompt.js:702
+msgid ""
+"Tap the menu icon (three dots), located at the top-right of your screen."
+msgstr ""
+"Pulse el icono de menú (tres puntos), situado en la parte superior derecha "
+"de la pantalla."
+
+#: frontend/assets/js/dev/components/installPrompt.js:695
+#: frontend/assets/js/dev/components/installPrompt.js:717
+#: frontend/assets/js/dev/components/installPrompt.js:721
+#: frontend/assets/js/dev/components/installPrompt.js:726
+#: frontend/assets/js/dev/components/installPrompt.js:731
+#: frontend/assets/js/dev/components/installPrompt.js:736
+#: frontend/assets/js/dev/components/installPrompt.js:740
+msgid "Select \"Add to Home Screen\""
+msgstr "Selecciona \"Añadir a pantalla de inicio\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:695
+msgid "Tap the \"Add to Home Screen\" option from the menu."
+msgstr "Pulse la opción \"Añadir a la pantalla de inicio\" del menú."
+
+#: frontend/assets/js/dev/components/installPrompt.js:696
+#: frontend/assets/js/dev/components/installPrompt.js:704
+#: frontend/assets/js/dev/components/installPrompt.js:718
+#: frontend/assets/js/dev/components/installPrompt.js:722
+#: frontend/assets/js/dev/components/installPrompt.js:727
+#: frontend/assets/js/dev/components/installPrompt.js:732
+#: frontend/assets/js/dev/components/installPrompt.js:737
+#: frontend/assets/js/dev/components/installPrompt.js:741
+msgid "Confirm by Tapping \"Add\""
+msgstr "Confirme pulsando \"Añadir\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:696
+#: frontend/assets/js/dev/components/installPrompt.js:704
+msgid "Tap the \"Add\" text on the browser installation dialog."
+msgstr ""
+"Pulse el texto \"Añadir\" en el cuadro de diálogo de instalación del "
+"navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:699
+msgid "Select \"Install\""
+msgstr "Seleccione \"Instalar\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:699
+#: frontend/assets/js/dev/components/installPrompt.js:703
+msgid "Tap the \"Install\" option from the menu."
+msgstr "Pulse la opción \"Instalar\" del menú."
+
+#: frontend/assets/js/dev/components/installPrompt.js:700
+msgid "Confirm by Tapping \"Add to Home Screen\""
+msgstr "Confirme pulsando \"Añadir a pantalla de inicio\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:700
+msgid ""
+"Tap the \"Add to Home Screen\" button on the browser installation dialog."
+msgstr ""
+"Pulse el botón \"Añadir a la pantalla de inicio\" en el cuadro de diálogo de "
+"instalación del navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:703
+msgid "Select \"Home Screen\""
+msgstr "Seleccione \"Pantalla de inicio\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:706
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:734
+msgid ""
+"Tap the menu icon (three horizontal lines) located at the bottom-right of "
+"your screen."
+msgstr ""
+"Pulse el icono de menú (tres líneas horizontales) situado en la parte "
+"inferior derecha de la pantalla."
+
+#: frontend/assets/js/dev/components/installPrompt.js:707
+msgid "Select \"Add to Phone\""
+msgstr "Selecciona \"Añadir al teléfono\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:707
+msgid "Tap the \"Add to Phone\" option from the menu"
+msgstr "Pulse la opción \"Añadir al teléfono\" del menú"
+
+#: frontend/assets/js/dev/components/installPrompt.js:708
+msgid "Confirm by Tapping \"Install\""
+msgstr "Confirme pulsando \"Instalar\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:708
+msgid "Tap the \"Install\" text on the browser installation dialog."
+msgstr ""
+"Pulse el texto \"Instalar\" en el cuadro de diálogo de instalación del "
+"navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+#: frontend/assets/js/dev/components/installPrompt.js:743
+#: frontend/assets/js/dev/components/installPrompt.js:762
+msgid "Copy the Page URL"
+msgstr "Copiar la URL de la página"
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+#: frontend/assets/js/dev/components/installPrompt.js:743
+#: frontend/assets/js/dev/components/installPrompt.js:762
+msgid "Click the button below to copy the page's URL."
+msgstr "Haga clic en el botón de abajo para copiar la URL de la página."
+
+#: frontend/assets/js/dev/components/installPrompt.js:711
+#: frontend/assets/js/dev/components/installPrompt.js:763
+msgid "Open the Google Chrome Browser"
+msgstr "Abrir el navegador Google Chrome"
+
+#: frontend/assets/js/dev/components/installPrompt.js:711
+msgid "Launch the Google Chrome web browser from your home screen."
+msgstr "Abre el navegador web Google Chrome desde la pantalla de inicio."
+
+#: frontend/assets/js/dev/components/installPrompt.js:712
+#: frontend/assets/js/dev/components/installPrompt.js:745
+#: frontend/assets/js/dev/components/installPrompt.js:764
+msgid "Paste and Open the URL"
+msgstr "Pegar y abrir la URL"
+
+#: frontend/assets/js/dev/components/installPrompt.js:712
+#: frontend/assets/js/dev/components/installPrompt.js:764
+msgid ""
+"Paste the copied URL into Google Chrome's address bar and open the page."
+msgstr ""
+"Pega la URL copiada en la barra de direcciones de Google Chrome y abre la "
+"página."
+
+#: frontend/assets/js/dev/components/installPrompt.js:716
+#: frontend/assets/js/dev/components/installPrompt.js:720
+#: frontend/assets/js/dev/components/installPrompt.js:725
+#: frontend/assets/js/dev/components/installPrompt.js:730
+#: frontend/assets/js/dev/components/installPrompt.js:735
+#: frontend/assets/js/dev/components/installPrompt.js:739
+msgid "Tap the Share Icon"
+msgstr "Pulse el icono Compartir"
+
+#: frontend/assets/js/dev/components/installPrompt.js:716
+msgid "Tap the share icon located at the center-bottom of your screen."
+msgstr ""
+"Toca el icono de compartir situado en el centro de la parte inferior de la "
+"pantalla."
+
+#: frontend/assets/js/dev/components/installPrompt.js:717
+#: frontend/assets/js/dev/components/installPrompt.js:721
+#: frontend/assets/js/dev/components/installPrompt.js:726
+#: frontend/assets/js/dev/components/installPrompt.js:731
+#: frontend/assets/js/dev/components/installPrompt.js:736
+#: frontend/assets/js/dev/components/installPrompt.js:740
+msgid ""
+"Tap the \"Add to Home Screen\" option, represented by the plus [+] icon."
+msgstr ""
+"Pulse la opción \"Añadir a la pantalla de inicio\", representada por el "
+"icono más [+]."
+
+#: frontend/assets/js/dev/components/installPrompt.js:718
+#: frontend/assets/js/dev/components/installPrompt.js:722
+#: frontend/assets/js/dev/components/installPrompt.js:727
+#: frontend/assets/js/dev/components/installPrompt.js:732
+#: frontend/assets/js/dev/components/installPrompt.js:737
+#: frontend/assets/js/dev/components/installPrompt.js:741
+msgid "Tap the \"Add\" button at the top-right corner of your screen."
+msgstr ""
+"Pulse el botón \"Añadir\" en la esquina superior derecha de la pantalla."
+
+#: frontend/assets/js/dev/components/installPrompt.js:720
+msgid ""
+"Tap the share icon located at the top-right of your browser address bar."
+msgstr ""
+"Pulse el icono de compartir situado en la parte superior derecha de la barra "
+"de direcciones de su navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:725
+#: frontend/assets/js/dev/components/installPrompt.js:735
+msgid "Tap the share icon in the dialog overlay that the browser opens."
+msgstr ""
+"Toca el icono de compartir en el diálogo superpuesto que se abre en el "
+"navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:729
+msgid ""
+"Tap the menu icon (three dots), located at the bottom-right of your screen."
+msgstr ""
+"Pulse el icono de menú (tres puntos), situado en la parte inferior derecha "
+"de la pantalla."
+
+#: frontend/assets/js/dev/components/installPrompt.js:730
+msgid ""
+"Tap the share icon located at the top of the dialog overlay that browser "
+"opens."
+msgstr ""
+"Toca el icono de compartir situado en la parte superior de la superposición "
+"de diálogo que se abre en el navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:739
+msgid ""
+"Tap the share icon located at the right side of the browser's address bar."
+msgstr ""
+"Pulse el icono de compartir situado a la derecha de la barra de direcciones "
+"del navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:744
+msgid "Open the Safari Browser"
+msgstr "Abra el navegador Safari"
+
+#: frontend/assets/js/dev/components/installPrompt.js:744
+msgid "Launch the Safari web browser from your home screen."
+msgstr "Abre el navegador Safari desde la pantalla de inicio."
+
+#: frontend/assets/js/dev/components/installPrompt.js:745
+msgid "Paste the copied URL into Safari's address bar and open the page."
+msgstr ""
+"Pega la URL copiada en la barra de direcciones de Safari y abre la página."
+
+#: frontend/assets/js/dev/components/installPrompt.js:748
+#: frontend/assets/js/dev/components/installPrompt.js:767
+msgid "Installation Not Supported"
+msgstr "Instalación no compatible"
+
+#: frontend/assets/js/dev/components/installPrompt.js:748
+msgid ""
+"Your operating system does not support web app installation. Please try "
+"accessing the website on an Android or iOS mobile device."
+msgstr ""
+"Tu sistema operativo no admite la instalación de aplicaciones web. Intente "
+"acceder al sitio web desde un dispositivo móvil Android o iOS."
+
+#: frontend/assets/js/dev/components/installPrompt.js:752
+#: frontend/assets/js/dev/components/installPrompt.js:757
+msgid ""
+"Tap the menu icon (three dots) in the top-right corner of your browser "
+"window."
+msgstr ""
+"Pulse el icono de menú (tres puntos) situado en la esquina superior derecha "
+"de la ventana del navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:753
+msgid "Expand \"Cast, save and share\""
+msgstr "Ampliar \"Fundir, guardar y compartir\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:753
+msgid ""
+"Hover over the \"Cast, Save, and Share\" menu item to expand its options."
+msgstr ""
+"Pasa el ratón por encima de la opción de menú \"Repartir, guardar y "
+"compartir\" para ampliar sus opciones."
+
+#: frontend/assets/js/dev/components/installPrompt.js:754
+msgid "Select \"Install page as app...\""
+msgstr "Selecciona \"Instalar página como app...\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:754
+msgid "Click on \"Install page as app...\" from the menu."
+msgstr "Haga clic en \"Instalar página como aplicación...\" en el menú."
+
+#: frontend/assets/js/dev/components/installPrompt.js:755
+#: frontend/assets/js/dev/components/installPrompt.js:760
+msgid "Confirm by Clicking \"Install\""
+msgstr "Confirme haciendo clic en \"Instalar\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:755
+#: frontend/assets/js/dev/components/installPrompt.js:760
+msgid "Click the \"Install\" button in the browser's installation dialog."
+msgstr ""
+"Pulse el botón \"Instalar\" en el cuadro de diálogo de instalación del "
+"navegador."
+
+#: frontend/assets/js/dev/components/installPrompt.js:758
+msgid "Expand \"Apps\""
+msgstr "Ampliar \"Aplicaciones"
+
+#: frontend/assets/js/dev/components/installPrompt.js:758
+msgid "Hover over the \"Apps\" menu item to expand its options."
+msgstr ""
+"Pase el ratón por encima de la opción de menú \"Aplicaciones\" para ampliar "
+"sus opciones."
+
+#: frontend/assets/js/dev/components/installPrompt.js:759
+msgid "Select \"Install this site as app\""
+msgstr "Seleccione \"Instalar este sitio como aplicación\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:759
+msgid "Click on \"Install this site as app\" from the menu."
+msgstr "Haga clic en \"Instalar este sitio como aplicación\" en el menú."
+
+#: frontend/assets/js/dev/components/installPrompt.js:763
+msgid "Launch the Google Chrome web browser from your start menu."
+msgstr "Abre el navegador web Google Chrome desde el menú de inicio."
+
+#: frontend/assets/js/dev/components/installPrompt.js:767
+msgid ""
+"Your device does not support web app installation. Please try accessing the "
+"website on a mobile or desktop device."
+msgstr ""
+"Su dispositivo no admite la instalación de aplicaciones web. Intenta acceder "
+"al sitio web desde un dispositivo móvil o de escritorio."
+
+#: frontend/assets/js/dev/components/installPrompt.js:1004
+msgid "Close Dialog"
+msgstr "Cerrar diálogo"
+
+#: frontend/assets/js/dev/modules/darkMode.js:386
+#: frontend/assets/js/dev/modules/darkMode.js:445
+msgid "Toggle dark mode"
+msgstr "Activar el modo oscuro"
+
+#: frontend/assets/js/dev/modules/idleDetection.js:159
+msgid "You've been idle for a while."
+msgstr "Llevas tiempo sin hacer nada."
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:315
+msgid "Read this article in our web app"
+msgstr "Lea este artículo en nuestra aplicación web"
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:324
+msgid "Open"
+msgstr "Abrir"
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:333
+msgid "Continue"
+msgstr "Continúe en"
+
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:212
+msgid "Get our web app. It won't take up space on your device."
+msgstr "Obtén nuestra aplicación web. No ocupará espacio en tu dispositivo."
+
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:217
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:177
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:188
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:177
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:157
+msgid "Install Now"
+msgstr "Instalar ahora"
+
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:173
+msgid "Keep reading, even when you're on the train!"
+msgstr "Siga leyendo, ¡incluso cuando esté en el tren!"
+
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:184
+msgid "Find what you need faster by installing our web app!"
+msgstr ""
+"Instale nuestra aplicación web para encontrar más rápidamente lo que necesita"
+
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:174
+msgid "Installing uses no storage and offers a quick way back to our web app."
+msgstr ""
+"La instalación no utiliza almacenamiento y ofrece una forma rápida de volver "
+"a nuestra aplicación web."
+
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:153
+msgid ""
+"Keep track of your orders. Our web app is fast, small and works offline."
+msgstr ""
+"Controle sus pedidos. Nuestra aplicación web es rápida, pequeña y funciona "
+"sin conexión."
+
+#: frontend/assets/js/dev/modules/offlineForms.js:467
+msgid "No Internet Connection"
+msgstr "Sin conexión a Internet"
+
+#: frontend/assets/js/dev/modules/offlineForms.js:471
+msgid ""
+"You’re currently offline. Your form submission data will be saved and be "
+"automatically processed in the background when you’re back online within 24 "
+"hours. Would you like to proceed?"
+msgstr ""
+"Actualmente no estás conectado. Los datos de envío de su formulario se "
+"guardarán y se procesarán automáticamente en segundo plano cuando vuelva a "
+"conectarse en un plazo de 24 horas. ¿Desea continuar?"
+
+#: frontend/assets/js/dev/modules/offlineNotification.js:38
+#: frontend/assets/js/dev/modules/offlineNotification.js:170
+msgid "Connection lost. Attempting to reconnect..."
+msgstr "Conexión perdida. Intentando reconectar..."
+
+#: frontend/assets/js/dev/modules/offlineNotification.js:59
+msgid "Successfully reconnected to the internet!"
+msgstr "¡Reconectado con éxito a Internet!"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:103
+msgid "Release to refresh"
+msgstr "Liberar para actualizar"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:105
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:235
+msgid "Pull down to refresh"
+msgstr "Tire hacia abajo para actualizar"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:125
+msgid "Refreshing..."
+msgstr "Refrescante..."
+
+#: frontend/assets/js/dev/modules/pushNotificationsButton.js:180
+msgid "Enable / Disable Push Notifications"
+msgstr "Activar / Desactivar notificaciones push"
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:85
+msgid ""
+"We would like to show you notifications for the latest news and updates."
+msgstr ""
+"Nos gustaría mostrarle notificaciones de las últimas noticias y "
+"actualizaciones."
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:222
+msgid "Dismiss"
+msgstr "Desestimar"
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:225
+msgid "Allow Notifications"
+msgstr "Permitir notificaciones"
+
+#: frontend/assets/js/dev/modules/shakeRefresh.js:158
+msgid "Shake detected! Refreshing the page..."
+msgstr "¡Sacudida detectada! Actualizando la página..."
+
+#: frontend/assets/js/dev/modules/toastMessages.js:105
+msgid "Homepage Opened"
+msgstr "Página de inicio abierta"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:108
+msgid "Page Not Found"
+msgstr "Página no encontrada"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:111
+msgid "Search Results"
+msgstr "Resultados de la búsqueda"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:114
+msgid "Article Opened"
+msgstr "Artículo abierto"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:117
+msgid "Shop Opened"
+msgstr "Tienda abierta"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:120
+msgid "Product Opened"
+msgstr "Producto abierto"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:123
+msgid "Page Opened"
+msgstr "Página abierta"

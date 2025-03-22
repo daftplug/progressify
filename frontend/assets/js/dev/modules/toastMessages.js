@@ -1,7 +1,6 @@
-import { config } from '../main.js';
+import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
-
-const { __ } = wp.i18n;
+import { __ } from '../components/i18n.js';
 
 class PwaToastMessages extends HTMLElement {
   constructor() {

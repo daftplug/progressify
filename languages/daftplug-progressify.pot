@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.0\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-18T19:54:34+00:00\n"
+"POT-Creation-Date: 2025-03-20T15:38:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -367,7 +367,7 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:465
 #: admin/templates/pages/appcapabilities.php:538
 #: admin/templates/pages/appcapabilities.php:725
-#: admin/templates/pages/installation.php:234
+#: admin/templates/pages/installation.php:240
 #: admin/templates/pages/offlineusage.php:148
 #: admin/templates/pages/offlineusage.php:281
 #: admin/templates/pages/pushnotifications.php:163
@@ -396,7 +396,7 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:467
 #: admin/templates/pages/appcapabilities.php:540
 #: admin/templates/pages/appcapabilities.php:727
-#: admin/templates/pages/installation.php:236
+#: admin/templates/pages/installation.php:242
 #: admin/templates/pages/offlineusage.php:150
 #: admin/templates/pages/offlineusage.php:283
 #: admin/templates/pages/pushnotifications.php:165
@@ -778,83 +778,83 @@ msgstr ""
 msgid "Enable installation overlays to display to users, such as a header banner, in-feed, or snackbar, to encourage them to add your web app to their home screens. Try not to enable them all to avoid spamming users with the installation banners."
 msgstr ""
 
-#: admin/templates/pages/installation.php:57
+#: admin/templates/pages/installation.php:59
 msgid "Header Banner"
 msgstr ""
 
-#: admin/templates/pages/installation.php:68
+#: admin/templates/pages/installation.php:72
 msgid "Snackbar"
 msgstr ""
 
-#: admin/templates/pages/installation.php:79
+#: admin/templates/pages/installation.php:85
 msgid "Navigation Menu"
 msgstr ""
 
-#: admin/templates/pages/installation.php:90
+#: admin/templates/pages/installation.php:97
 msgid "In Feed"
 msgstr ""
 
-#: admin/templates/pages/installation.php:101
+#: admin/templates/pages/installation.php:108
 msgid "Blog Popup"
 msgstr ""
 
-#: admin/templates/pages/installation.php:113
+#: admin/templates/pages/installation.php:120
 msgid "WooCommerce Checkout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:125
+#: admin/templates/pages/installation.php:131
 msgid "Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:132
+#: admin/templates/pages/installation.php:138
 msgid "Set the text to display as the title on installation prompts and as the label on the installation button. "
 msgstr ""
 
-#: admin/templates/pages/installation.php:136
+#: admin/templates/pages/installation.php:142
 msgid "Enter Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:142
+#: admin/templates/pages/installation.php:148
 #: admin/templates/pages/pushnotifications.php:218
 msgid "Skip First Visit"
 msgstr ""
 
-#: admin/templates/pages/installation.php:149
+#: admin/templates/pages/installation.php:155
 msgid "Skips first-time visitors and only shows installation overlays to returning users."
 msgstr ""
 
-#: admin/templates/pages/installation.php:156
+#: admin/templates/pages/installation.php:162
 msgid "Show installation overlays to returning visitors only."
 msgstr ""
 
-#: admin/templates/pages/installation.php:164
+#: admin/templates/pages/installation.php:170
 #: admin/templates/pages/pushnotifications.php:240
 msgid "Timeout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:171
+#: admin/templates/pages/installation.php:177
 msgid "Choose how many days to wait to show installation overlays again if they were dismissed."
 msgstr ""
 
-#: admin/templates/pages/installation.php:181
+#: admin/templates/pages/installation.php:187
 msgid "Installation Button"
 msgstr ""
 
-#: admin/templates/pages/installation.php:188
+#: admin/templates/pages/installation.php:194
 msgid "Installation button is a customizable button that can be placed anywhere on your site using a shortcode. When clicked, it triggers an installation prompt, allowing users to easily add your web app to their home screens. You can insert an installation button anywhere on your website using the shortcode below."
 msgstr ""
 
-#: admin/templates/pages/installation.php:204
+#: admin/templates/pages/installation.php:210
 #: frontend/assets/js/dev/components/installPrompt.js:420
 msgid "Copied"
 msgstr ""
 
-#: admin/templates/pages/installation.php:212
-#: admin/templates/pages/installation.php:225
+#: admin/templates/pages/installation.php:218
+#: admin/templates/pages/installation.php:231
 msgid "Installation QR Code"
 msgstr ""
 
-#: admin/templates/pages/installation.php:219
+#: admin/templates/pages/installation.php:225
 msgid "This QR code directs users to your homepage, where they can access the installation prompt and set up your PWA effortlessly."
 msgstr ""
 
@@ -2275,23 +2275,23 @@ msgid "Select on what device types swipe navigation feature should be active and
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:961
-msgid "Loader"
+msgid "Page Loader"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:967
-msgid "Loader feature gives you ability to show a nice loader animation between page loadings. Loader appears at the start of page load and disappears after it is fully loaded."
+msgid "Page Loader feature gives you ability to show a nice page loader animation between page loadings. Page Loader appears at the start of page load and disappears after it is fully loaded."
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:980
-msgid "Loader Type"
+msgid "Page Loader Type"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:987
-msgid "Select the type of loader you want on your website."
+msgid "Select the type of page loader you want on your website."
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:992
-msgid "Select Loader Type"
+msgid "Select Page Loader Type"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:995
@@ -2335,7 +2335,7 @@ msgid "Smooth transition with fade in and fade out effects, creating a seamless 
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:1025
-msgid "Select on what device types loader feature should be active and running."
+msgid "Select on what device types page loader feature should be active and running."
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:1070
@@ -3052,7 +3052,7 @@ msgstr ""
 msgid "PWA Installs"
 msgstr ""
 
-#: dist/daftplug-progressify/frontend/assets/js/installButton-6946f9f6.js:1
+#: dist/daftplug-progressify/frontend/assets/js/installButton-40e2903c.js:1
 #: frontend/assets/js/dev/components/installPrompt.js:984
 #: frontend/assets/js/dev/modules/installButton.js:32
 #: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:63

@@ -9,7 +9,7 @@ import { initTooltip } from './components/tooltip.js';
 import { initOverlay } from './components/overlay.js';
 import { initDropdown } from './components/dropdown.js';
 import { initThemeMode } from './components/themeMode.js';
-
+import { initLanguageSelect } from './components/languageSelect.js';
 // Modules
 import { initProcessLicense } from './modules/processLicense.js';
 import { initNavigation } from './modules/navigation.js';
@@ -38,6 +38,7 @@ const coreModules = [
   { init: initNavigation, name: 'navigation' },
   { init: initDropdown, name: 'dropdown' },
   { init: initSelect, name: 'select' },
+  { init: initLanguageSelect, name: 'languageSelect' },
   { init: initThemeMode, name: 'themeMode' },
 ];
 
@@ -132,7 +133,7 @@ window.addEventListener('load', () => {
   initializeModules();
 
   // Remove loading state after page is loaded
-  document.querySelector('#daftplugAdmin .-daftplugLoading').classList.remove('-daftplugLoading');
+  document.querySelector('#daftplugAdminWrapper').classList.remove('-daftplugLoading');
 });
 
 // Handle hash changes - ensure navigation happens first
@@ -141,4 +142,9 @@ window.addEventListener('hashchange', () => {
     window.handleHashChange();
   }
   setTimeout(initializeModules, 0);
+});
+
+window.addEventListener('beforeunload', () => {
+  // Add loading state before page is unloaded
+  document.querySelector('#daftplugAdminWrapper').classList.add('-daftplugLoading');
 });

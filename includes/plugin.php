@@ -31,6 +31,7 @@ class Plugin
   public static $envatoItemId;
   public static $domain;
   public static $licenseKey;
+  public static $language;
   public $capability;
   public $defaultSettings;
   public static $settings;
@@ -64,6 +65,7 @@ class Plugin
     self::$envatoItemId = $config['envato_item_id'];
     self::$domain = self::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
     self::$licenseKey = get_option("{$this->optionName}_license_key");
+    self::$language = get_option("{$this->optionName}_language", 'default');
     $this->capability = 'manage_options';
 
     self::$settings = $config['settings'];
@@ -365,7 +367,26 @@ class Plugin
 
   public function loadTextDomain()
   {
-    load_plugin_textdomain(self::$slug, false, dirname($this->pluginBasename) . '/languages/');
+    if (self::$language === 'default') {
+      // Load using WordPress default locale (whatever the site is using)
+      load_plugin_textdomain(self::$slug, false, plugin_dir_path(__FILE__) . 'languages/');
+    } elseif (self::$language === 'en_US') {
+      // For English, unload any existing translations to use the original strings
+      unload_textdomain(self::$slug);
+      // No need to load anything - the default hardcoded strings are in English
+    } else {
+      // Explicitly load the specific language for just this plugin
+      $mofile = self::$pluginDirPath . 'languages/' . self::$slug . '-' . self::$language . '.mo';
+      if (file_exists($mofile)) {
+        // First unload any existing translations for this domain
+        unload_textdomain(self::$slug);
+        // Then load the specific language file
+        load_textdomain(self::$slug, $mofile);
+      } else {
+        // If the specific language file doesn't exist, fall back to site language
+        load_plugin_textdomain(self::$slug, false, plugin_dir_path(__FILE__) . 'languages/');
+      }
+    }
   }
 
   public function addPluginActionLinks($links)
@@ -377,9 +398,6 @@ class Plugin
 
   public static function daftplugProcessLicense($licenseKey, $action)
   {
-    ini_set('display_errors', 0);
-    error_reporting(0);
-
     $params = [
       'sslverify' => false,
       'body' => [
@@ -399,7 +417,14 @@ class Plugin
     }
 
     $body = wp_remote_retrieve_body($response);
+
+    // Try to decode the JSON response
     $result = json_decode($body);
+
+    // Check if JSON decoding failed
+    if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
+      return new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
+    }
 
     return $result;
   }

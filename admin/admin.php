@@ -25,6 +25,7 @@ class Admin
   public $menuId;
   protected $dependencies;
   public $licenseKey;
+  public $language;
   public $capability;
   public $settings;
   public $licenseEndpoint;
@@ -50,6 +51,7 @@ class Admin
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
     $this->licenseKey = get_option("{$this->optionName}_license_key");
+    $this->language = get_option("{$this->optionName}_language", 'default');
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->pages = $this->generatePages();
@@ -108,7 +110,7 @@ class Admin
       $this->dependencies[] = "{$this->slug}-paypal";
 
       // load admin styles and scripts
-      wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.css', $this->pluginFile), [], $this->version);
+      wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.min.css', $this->pluginFile), [], $this->version);
       wp_add_inline_style(
         "{$this->slug}-admin",
         '
@@ -124,20 +126,7 @@ class Admin
       '
       );
 
-      wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/dev/main.js', $this->pluginFile), $this->dependencies, $this->version, true);
-
-      // Ensure the script is loaded as a module
-      add_filter(
-        'script_loader_tag',
-        function ($tag, $handle, $src) {
-          if ("{$this->slug}-admin" !== $handle) {
-            return $tag;
-          }
-          return '<script type="module" src="' . esc_url($src) . '"></script>';
-        },
-        10,
-        3
-      );
+      wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/admin.min.js', $this->pluginFile), $this->dependencies, $this->version, true);
       $this->dependencies[] = "{$this->slug}-admin";
 
       // WP media
@@ -232,7 +221,7 @@ class Admin
   {
     ?>
 <div id="daftplugAdmin" data-option-name="<?php echo esc_attr($this->optionName); ?>" data-slug="<?php echo esc_attr($this->slug); ?>">
-  <div class="relative bg-gray-50 -daftplugLoading">
+  <div id="daftplugAdminWrapper" class="relative bg-gray-50 -daftplugLoading">
     <?php if (!$this->licenseKey): ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
     <?php else: ?>
@@ -256,6 +245,14 @@ class Admin
       },
     ]);
 
+    register_rest_route($this->slug, '/changeLanguage', [
+      'methods' => 'POST',
+      'callback' => [$this, 'changeLanguage'],
+      'permission_callback' => function () {
+        return current_user_can($this->capability);
+      },
+    ]);
+
     register_rest_route($this->slug, '/saveSettings', [
       'methods' => 'POST',
       'callback' => [$this, 'saveSettings'],
@@ -271,6 +268,20 @@ class Admin
         return current_user_can($this->capability);
       },
     ]);
+  }
+
+  public function changeLanguage(\WP_REST_Request $request)
+  {
+    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
+      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $params = $request->get_json_params();
+    $language = sanitize_text_field($params['language']);
+
+    update_option("{$this->optionName}_language", $language);
+
+    return rest_ensure_response(['success' => true, 'language' => $language]);
   }
 
   public function requestLicenseProcessing(\WP_REST_Request $request)
@@ -293,7 +304,7 @@ class Admin
     }
 
     if ($action === 'activate') {
-      if ($licenseResponse->valid) {
+      if ($licenseResponse && isset($licenseResponse->valid) && $licenseResponse->valid) {
         update_option("{$this->optionName}_license_key", $licenseKey);
         return new \WP_REST_Response(['status' => 'success'], 200);
       } else {
@@ -303,7 +314,7 @@ class Admin
     }
 
     if ($action === 'deactivate') {
-      if ($licenseResponse->valid) {
+      if ($licenseResponse && isset($licenseResponse->valid) && $licenseResponse->valid) {
         delete_option("{$this->optionName}_license_key");
         return new \WP_REST_Response(['status' => 'success'], 200);
       } else {

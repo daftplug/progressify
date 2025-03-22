@@ -23,15 +23,32 @@ async function sendLicenseProcessRequest(licenseKey, action) {
       body: requestBody,
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Network response was not ok (${response.status}): ${errorText}`);
+    // First get the raw response text
+    const responseText = await response.text();
+
+    // Look for JSON at the end of the response, even if there's other content
+    const jsonMatch = responseText.match(/\{.*\}/s);
+    if (jsonMatch) {
+      try {
+        const jsonStr = jsonMatch[0];
+        const data = JSON.parse(jsonStr);
+        return data;
+      } catch (e) {
+        console.error('Failed to extract JSON from response:', e);
+      }
     }
 
-    const data = await response.json();
-    return data;
+    // If we can't find valid JSON in the response, try to parse the whole thing
+    try {
+      const data = JSON.parse(responseText);
+      return data;
+    } catch (jsonError) {
+      console.error('Failed to parse server response as JSON:', jsonError);
+      throw new Error('The server returned an invalid response. Please try again or contact support.');
+    }
   } catch (error) {
-    return error;
+    console.error('Request processing error:', error);
+    throw error;
   }
 }
 
@@ -50,12 +67,13 @@ async function activateLicense(e) {
       window.location.hash = '#/dashboard/';
       window.location.reload();
     } else if (response.status === 'fail') {
-      showToast('Fail', response.message, 'fail', 'top-right', true, false);
+      showToast('Fail', response.message || 'License activation failed.', 'fail', 'top-right', true, false);
     } else {
-      showToast('Fail', 'An unexpected error occurred', 'fail', 'top-right', true, false);
+      showToast('Fail', 'Invalid response from the server. Please try again.', 'fail', 'top-right', true, false);
     }
   } catch (error) {
-    showToast('Fail', 'Failed to process license request. Please try again.', 'fail', 'top-right', true, false);
+    console.error('License activation error:', error);
+    showToast('Fail', `Error: ${error.message}`, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-activating');
   }

@@ -59,7 +59,7 @@ class AppCapabilities
 
   public function wrapAllContentWithSwup()
   {
-    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][compatibilityMode]') !== 'on') {
+    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]') !== 'on') {
       return;
     }
 

@@ -1,7 +1,6 @@
-import { config } from '../main.js';
-import { getContrastTextColor, hasUrlParam, addParamToUrl, removeParamFromUrl } from '../components/utils.js';
-
-const { __ } = wp.i18n;
+import { config } from '../frontend.js';
+import { getContrastTextColor, addParamToUrl } from '../components/utils.js';
+import { __ } from '../components/i18n.js';
 
 let deferredInstallPrompt = null;
 

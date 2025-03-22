@@ -1,0 +1,3955 @@
+# Copyright (C) 2025 DaftPlug
+# This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-"
+"progressify\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (China)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-20T15:38:14+00:00\n"
+"PO-Revision-Date: 2025-03-22 18:47+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2"
+
+#. Plugin Name of the plugin
+#: daftplug-progressify.php daftplug-progressify.php:24
+msgid "DaftPlug Progressify - Progressive Web App (PWA)"
+msgstr "DaftPlug Progressify - 渐进式网络应用程序 (PWA)"
+
+#. Plugin URI of the plugin
+#: daftplug-progressify.php
+msgid "https://daftplug.com/progressify/"
+msgstr "https://daftplug.com/progressify/"
+
+#. Description of the plugin
+#: daftplug-progressify.php daftplug-progressify.php:25
+msgid ""
+"Enhance your website with Progressive Web App (PWA) features and take the "
+"user experience to the next level with future of mobile web."
+msgstr "利用渐进式网络应用程序 (PWA) 功能增强网站功能，让用户体验与未来移动网络更上一层楼。"
+
+#. Author of the plugin
+#: daftplug-progressify.php
+msgid "DaftPlug"
+msgstr "插头"
+
+#. Author URI of the plugin
+#: daftplug-progressify.php
+msgid "https://daftplug.com/"
+msgstr "https://daftplug.com/"
+
+#: admin/admin.php:151 frontend/frontend.php:79
+msgid "An unexpected error occurred"
+msgstr "发生意外错误"
+
+#: admin/admin.php:167
+msgid "Dashboard"
+msgstr "仪表板"
+
+#: admin/admin.php:168
+msgid ""
+"View your PWA's performance at a glance, including user stats, browser "
+"breakdown, and a PWA readiness score. Manage plugin features globally with a "
+"single toggle for easy control."
+msgstr "一目了然地查看 PWA 的性能，包括用户统计、浏览器细分和 PWA 就绪度评分。只需一个切换键，即可在全局范围内管理插件功能，实现轻松控制。"
+
+#: admin/admin.php:173
+msgid "Web App Manifest"
+msgstr "网络应用程序清单"
+
+#: admin/admin.php:174
+msgid ""
+"The web app manifest is a JSON file that provides essential information "
+"about your web application to the browser, including how it should appear "
+"and behave when installed on a user's device. This file is necessary for "
+"enabling the \"Add to Home Screen\" prompt, enhancing the integration of "
+"your web app with the user's device."
+msgstr ""
+"网络应用程序清单是一个 JSON 文件，用于向浏览器提供有关网络应用程序的基本信息，包括安装到用户设备上后的外观和行为。该文件对于启用 \"添加到主屏幕 "
+"\"提示、加强网络应用与用户设备的集成非常必要。"
+
+#: admin/admin.php:179
+msgid "Installation"
+msgstr "安装"
+
+#: admin/admin.php:180
+msgid ""
+"Installation features allows displaying prompts that encourage users to add "
+"your website to their home screens. This feature helps increase user "
+"engagement by making your site easily accessible with a single tap, just "
+"like any native mobile application."
+msgstr ""
+"安装功能允许显示提示，鼓励用户将您的网站添加到他们的主屏幕上。这项功能可以让用户像使用任何本地移动应用程序一样，只需轻点一下即可轻松访问您的网站，从而提高用户参与度。"
+
+#: admin/admin.php:185
+msgid "Offline Usage"
+msgstr "离线使用"
+
+#: admin/admin.php:186
+msgid ""
+"Enhance your web app with offline support and reliable performance, enabling "
+"users to access previously viewed pages even without an internet connection "
+"or on low connectivity."
+msgstr "通过离线支持和可靠的性能增强您的网络应用程序，使用户即使在没有互联网连接或连接能力较低的情况下也能访问以前浏览过的页面。"
+
+#: admin/admin.php:191
+msgid "UI Components"
+msgstr "用户界面组件"
+
+#: admin/admin.php:192
+msgid ""
+"Enhance the user experience by adding interactive elements and features that "
+"make your web app look and feel more like a native application, including "
+"options like pull-down refresh, a navigation tab bar, dark mode, and toast "
+"messages."
+msgstr "通过添加交互式元素和功能，包括下拉刷新、导航标签栏、暗模式和祝酒词等选项，让网络应用程序看起来感觉更像本地应用程序，从而增强用户体验。"
+
+#: admin/admin.php:197
+msgid "App Capabilities"
+msgstr "应用程序功能"
+
+#: admin/admin.php:198
+msgid ""
+"Enable advanced features and capabilities to enhance your website with "
+"native app-like functionalities. This includes passwordless login, "
+"background sync, periodic background sync, content indexing, persistent "
+"storage, and other advanced web APIs, providing a seamless mobile-like "
+"experience."
+msgstr ""
+"启用高级特性和功能，通过类似本地应用程序的功能增强网站功能。这包括无密码登录、后台同步、定期后台同步、内容索引、持久存储和其他高级网络 "
+"API，从而提供类似移动应用的无缝体验。"
+
+#: admin/admin.php:203
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:216
+msgid "Push Notifications"
+msgstr "推送通知"
+
+#: admin/admin.php:204
+msgid ""
+"Push notifications allow your web app to send messages directly to users' "
+"devices, providing a powerful tool for engaging users with timely updates, "
+"alerts, and personalized content. This feature helps keep your audience "
+"informed and connected, even when they are not actively using the app."
+msgstr ""
+"推送通知可让您的网络应用程序直接向用户的设备发送消息，为用户及时更新、提醒和个性化内容提供了强大的工具。即使用户不主动使用应用程序，该功能也能帮助他们了解信息并保持联系。"
+
+#: admin/admin.php:209 admin/templates/pages/publishtoappstores.php:9
+msgid ""
+"Get Android, iOS, and Windows apps that mirror your website in real-time, "
+"requiring no updates, and publish your web app to the Google Play Store, App "
+"Store, and Microsoft Store to reach more users."
+msgstr ""
+"获取 Android、iOS 和 Windows 应用程序，实时镜像您的网站，无需更新，并将您的网络应用程序发布到 Google Play "
+"Store、App Store 和 Microsoft Store，以获得更多用户。"
+
+#: admin/admin.php:214
+msgid ""
+"We understand all the importance of product support for our customers. "
+"That's why we are ready to solve all your issues and answer any questions "
+"related to our plugin."
+msgstr "我们深知产品支持对客户的重要性。因此，我们随时准备解决您的所有问题，并回答与我们插件相关的任何问题。"
+
+#: admin/admin.php:219
+msgid "See what's new added, changed, fixed, improved or updated."
+msgstr "查看新增、更改、修复、改进或更新的内容。"
+
+#: admin/templates/header.php:26 admin/templates/pages/uicomponents.php:423
+msgid "Search"
+msgstr "搜索"
+
+#: admin/templates/header.php:31 admin/templates/header.php:72
+#: admin/templates/pages/publishtoappstores.php:8
+#: admin/templates/sidebar.php:45
+msgid "Publish to App Stores"
+msgstr "发布到应用程序商店"
+
+#: admin/templates/header.php:34
+msgid "Play Store"
+msgstr "游戏商店"
+
+#: admin/templates/header.php:36
+#: admin/templates/pages/publishtoappstores.php:22
+#: admin/templates/pages/webappmanifest.php:491
+msgid "Android"
+msgstr "安卓"
+
+#: admin/templates/header.php:43
+msgid "App Store"
+msgstr "应用程序商店"
+
+#: admin/templates/header.php:45
+msgid "Mac"
+msgstr "苹果电脑"
+
+#: admin/templates/header.php:52
+msgid "Microsoft Store"
+msgstr "微软商店"
+
+#: admin/templates/header.php:54 admin/templates/pages/webappmanifest.php:497
+msgid "Windows"
+msgstr "视窗"
+
+#: admin/templates/header.php:60
+msgid "No Results"
+msgstr "无结果"
+
+#: admin/templates/main.php:15
+msgid "FAQ"
+msgstr "常见问题"
+
+#: admin/templates/main.php:20
+msgid "Changelog"
+msgstr "更新日志"
+
+#: admin/templates/pages/activation.php:11 admin/templates/sidebar.php:87
+msgid "Select Language"
+msgstr "选择语言"
+
+#: admin/templates/pages/activation.php:15 admin/templates/sidebar.php:91
+msgid "English"
+msgstr "英语"
+
+#: admin/templates/pages/activation.php:33
+msgid "Dark mode"
+msgstr "黑暗模式"
+
+#: admin/templates/pages/activation.php:47
+msgid "Light mode"
+msgstr "灯光模式"
+
+#: admin/templates/pages/activation.php:55
+#: admin/templates/pages/activation.php:88
+msgid "Activate License"
+msgstr "激活许可证"
+
+#: admin/templates/pages/activation.php:58
+msgid ""
+"Enter your item purchase code from Envato as your license key to activate "
+"the plugin. This will enable in-plugin support and automatic updates."
+msgstr "输入您从 Envato 购买商品的代码作为许可证密钥，以激活插件。这将启用插件内支持和自动更新。"
+
+#: admin/templates/pages/activation.php:64
+#: admin/templates/pages/activation.php:77
+msgid "License Key"
+msgstr "许可证密钥"
+
+#: admin/templates/pages/activation.php:72
+msgid ""
+"To obtain your license key, go to your CodeCanyon downloads page, click "
+"\"Download\" on the plugin, select \"License certificate & purchase code,\" "
+"and download the document."
+msgstr "要获取许可证密钥，请访问 CodeCanyon 下载页面，点击插件上的 \"下载\"，选择 \"许可证书和购买代码\"，然后下载文件。"
+
+#: admin/templates/pages/activation.php:73
+msgid "Download License Key"
+msgstr "下载许可证密钥"
+
+#: admin/templates/pages/activation.php:76
+msgid ""
+"After downloading the document, open it and copy the \"Item Purchase Code\". "
+"This is your license key which you you need to enter in the field below to "
+"activate the plugin."
+msgstr "下载文件后，打开并复制 \"项目购买代码\"。这是您的许可证密钥，您需要将其输入下面的字段以激活插件。"
+
+#: admin/templates/pages/activation.php:82
+msgid "Enter Your License Key"
+msgstr "输入许可证密钥"
+
+#: admin/templates/pages/activation.php:86
+msgid "Activating..."
+msgstr "激活..."
+
+#: admin/templates/pages/activation.php:92
+msgid "Having trouble with activating license?"
+msgstr "激活许可证有问题？"
+
+#: admin/templates/pages/activation.php:94
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: admin/templates/pages/appcapabilities.php:20
+msgid "Smooth Transitions"
+msgstr "平稳过渡"
+
+#: admin/templates/pages/appcapabilities.php:28
+msgid ""
+"This feature provides a true native app-like experience by loading content "
+"without reloading the entire page. It enables smooth slide and fade "
+"transition animations between pages and displays a progress bar while the "
+"page loads."
+msgstr ""
+"该功能无需重新加载整个页面即可加载内容，从而提供真正的类似本地应用程序的体验。它能在页面之间实现平滑的滑动和渐变过渡动画，并在页面加载时显示进度条。"
+
+#: admin/templates/pages/appcapabilities.php:43
+msgid "Loading Progress Bar"
+msgstr "加载进度条"
+
+#: admin/templates/pages/appcapabilities.php:50
+msgid ""
+"Enabling this options shows a page transition progress on top of the screen "
+"as the page loads."
+msgstr "启用此选项后，页面加载时屏幕顶部会显示页面过渡进度。"
+
+#: admin/templates/pages/appcapabilities.php:55
+msgid ""
+"Display a progress bar at the top of the screen during page transitions."
+msgstr "在页面转换时，在屏幕顶部显示进度条。"
+
+#: admin/templates/pages/appcapabilities.php:72
+msgid "Transition Type"
+msgstr "过渡类型"
+
+#: admin/templates/pages/appcapabilities.php:79
+msgid "Select the type of transition you want your pages to be swiped with."
+msgstr "选择您想要的页面轻扫过渡类型。"
+
+#: admin/templates/pages/appcapabilities.php:84
+msgid "Select Transition Type"
+msgstr "选择过渡类型"
+
+#: admin/templates/pages/appcapabilities.php:87
+msgid ""
+"Makes the content slide out to one direction, and slide in from the other."
+msgstr "使内容向一个方向滑出，从另一个方向滑入。"
+
+#: admin/templates/pages/appcapabilities.php:88
+msgid "Slide"
+msgstr "幻灯片"
+
+#: admin/templates/pages/appcapabilities.php:90
+msgid "Makes the content fade out when leaving, and fade in when entering."
+msgstr "使内容在离开时淡出，在进入时淡入。"
+
+#: admin/templates/pages/appcapabilities.php:91
+#: admin/templates/pages/uicomponents.php:1011
+msgid "Fade"
+msgstr "褪色"
+
+#: admin/templates/pages/appcapabilities.php:98
+#: admin/templates/pages/appcapabilities.php:344
+#: admin/templates/pages/appcapabilities.php:431
+#: admin/templates/pages/appcapabilities.php:505
+#: admin/templates/pages/uicomponents.php:41
+#: admin/templates/pages/uicomponents.php:637
+#: admin/templates/pages/uicomponents.php:772
+#: admin/templates/pages/uicomponents.php:846
+#: admin/templates/pages/uicomponents.php:913
+#: admin/templates/pages/uicomponents.php:1018
+#: admin/templates/pages/uicomponents.php:1089
+#: admin/templates/pages/uicomponents.php:1156
+msgid "Supported Devices"
+msgstr "支持的设备"
+
+#: admin/templates/pages/appcapabilities.php:105
+msgid ""
+"Select on what device types smooth page transitions feature should be active "
+"and running."
+msgstr "选择应在哪些设备类型上激活和运行平滑页面转换功能。"
+
+#: admin/templates/pages/appcapabilities.php:110
+#: admin/templates/pages/appcapabilities.php:356
+#: admin/templates/pages/appcapabilities.php:443
+#: admin/templates/pages/appcapabilities.php:517
+#: admin/templates/pages/uicomponents.php:53
+#: admin/templates/pages/uicomponents.php:649
+#: admin/templates/pages/uicomponents.php:784
+#: admin/templates/pages/uicomponents.php:858
+#: admin/templates/pages/uicomponents.php:925
+#: admin/templates/pages/uicomponents.php:1030
+#: admin/templates/pages/uicomponents.php:1101
+#: admin/templates/pages/uicomponents.php:1168
+msgid "Select Devices"
+msgstr "选择设备"
+
+#: admin/templates/pages/appcapabilities.php:114
+#: admin/templates/pages/appcapabilities.php:360
+#: admin/templates/pages/appcapabilities.php:447
+#: admin/templates/pages/appcapabilities.php:521
+#: admin/templates/pages/uicomponents.php:57
+#: admin/templates/pages/uicomponents.php:653
+#: admin/templates/pages/uicomponents.php:788
+#: admin/templates/pages/uicomponents.php:862
+#: admin/templates/pages/uicomponents.php:929
+#: admin/templates/pages/uicomponents.php:1034
+#: admin/templates/pages/uicomponents.php:1105
+#: admin/templates/pages/uicomponents.php:1172
+msgid "Smartphone"
+msgstr "智能手机"
+
+#: admin/templates/pages/appcapabilities.php:118
+#: admin/templates/pages/appcapabilities.php:364
+#: admin/templates/pages/appcapabilities.php:451
+#: admin/templates/pages/appcapabilities.php:525
+#: admin/templates/pages/uicomponents.php:61
+#: admin/templates/pages/uicomponents.php:656
+#: admin/templates/pages/uicomponents.php:792
+#: admin/templates/pages/uicomponents.php:866
+#: admin/templates/pages/uicomponents.php:933
+#: admin/templates/pages/uicomponents.php:1038
+#: admin/templates/pages/uicomponents.php:1109
+#: admin/templates/pages/uicomponents.php:1176
+msgid "Tablet"
+msgstr "平板电脑"
+
+#: admin/templates/pages/appcapabilities.php:122
+#: admin/templates/pages/appcapabilities.php:455
+#: admin/templates/pages/appcapabilities.php:529
+#: admin/templates/pages/uicomponents.php:660
+#: admin/templates/pages/uicomponents.php:796
+#: admin/templates/pages/uicomponents.php:1042
+msgid "Desktop"
+msgstr "台式机"
+
+#: admin/templates/pages/appcapabilities.php:130
+msgid "Compatibility Mode "
+msgstr "兼容模式"
+
+#: admin/templates/pages/appcapabilities.php:137
+msgid ""
+"Enable this only if certain features on your website stop working, and you "
+"notice issues where page navigation reloads the entire page instead of "
+"transitioning smoothly."
+msgstr "只有当网站上的某些功能停止工作，并且你发现页面导航会重新加载整个页面而不是平稳过渡时，才启用此功能。"
+
+#: admin/templates/pages/appcapabilities.php:144
+msgid "Use custom content wrapper and force script reinitialization."
+msgstr "使用自定义内容包装器并强制重新初始化脚本。"
+
+#: admin/templates/pages/appcapabilities.php:153
+#: admin/templates/pages/appcapabilities.php:229
+#: admin/templates/pages/appcapabilities.php:305
+#: admin/templates/pages/appcapabilities.php:373
+#: admin/templates/pages/appcapabilities.php:465
+#: admin/templates/pages/appcapabilities.php:538
+#: admin/templates/pages/appcapabilities.php:725
+#: admin/templates/pages/installation.php:240
+#: admin/templates/pages/offlineusage.php:148
+#: admin/templates/pages/offlineusage.php:281
+#: admin/templates/pages/pushnotifications.php:163
+#: admin/templates/pages/pushnotifications.php:258
+#: admin/templates/pages/pushnotifications.php:347
+#: admin/templates/pages/pushnotifications.php:819
+#: admin/templates/pages/uicomponents.php:596
+#: admin/templates/pages/uicomponents.php:669
+#: admin/templates/pages/uicomponents.php:805
+#: admin/templates/pages/uicomponents.php:875
+#: admin/templates/pages/uicomponents.php:942
+#: admin/templates/pages/uicomponents.php:1051
+#: admin/templates/pages/uicomponents.php:1118
+#: admin/templates/pages/uicomponents.php:1185
+#: admin/templates/pages/webappmanifest.php:225
+#: admin/templates/pages/webappmanifest.php:334
+#: admin/templates/pages/webappmanifest.php:422
+#: admin/templates/pages/webappmanifest.php:602
+msgid "Saving..."
+msgstr "节约..."
+
+#: admin/templates/pages/appcapabilities.php:155
+#: admin/templates/pages/appcapabilities.php:231
+#: admin/templates/pages/appcapabilities.php:307
+#: admin/templates/pages/appcapabilities.php:375
+#: admin/templates/pages/appcapabilities.php:467
+#: admin/templates/pages/appcapabilities.php:540
+#: admin/templates/pages/appcapabilities.php:727
+#: admin/templates/pages/installation.php:242
+#: admin/templates/pages/offlineusage.php:150
+#: admin/templates/pages/offlineusage.php:283
+#: admin/templates/pages/pushnotifications.php:165
+#: admin/templates/pages/pushnotifications.php:260
+#: admin/templates/pages/pushnotifications.php:349
+#: admin/templates/pages/pushnotifications.php:821
+#: admin/templates/pages/uicomponents.php:598
+#: admin/templates/pages/uicomponents.php:671
+#: admin/templates/pages/uicomponents.php:807
+#: admin/templates/pages/uicomponents.php:877
+#: admin/templates/pages/uicomponents.php:944
+#: admin/templates/pages/uicomponents.php:1053
+#: admin/templates/pages/uicomponents.php:1120
+#: admin/templates/pages/uicomponents.php:1187
+#: admin/templates/pages/webappmanifest.php:227
+#: admin/templates/pages/webappmanifest.php:336
+#: admin/templates/pages/webappmanifest.php:424
+#: admin/templates/pages/webappmanifest.php:604
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: admin/templates/pages/appcapabilities.php:172
+msgid "URL Protocol Handler"
+msgstr "URL 协议处理程序"
+
+#: admin/templates/pages/appcapabilities.php:181
+msgid ""
+"The URL Protocol Handler feature allows PWAs to open specific protocol links "
+"for a seamless user experience. When a PWA is registered as a protocol "
+"handler, clicking a link with the specified scheme will open the PWA, "
+"receiving the URL."
+msgstr ""
+"URL 协议处理程序功能允许 PWA 打开特定协议链接，以实现无缝的用户体验。当 PWA 注册为协议处理程序时，点击指定方案的链接将打开 PWA 并接收 "
+"URL。"
+
+#: admin/templates/pages/appcapabilities.php:194
+msgid "Protocol"
+msgstr "规程"
+
+#: admin/templates/pages/appcapabilities.php:205
+msgid "Enter Protocol"
+msgstr "输入协议"
+
+#: admin/templates/pages/appcapabilities.php:211
+msgid "URL"
+msgstr "网址"
+
+#: admin/templates/pages/appcapabilities.php:222
+msgid "Enter URL"
+msgstr "输入 URL"
+
+#: admin/templates/pages/appcapabilities.php:248
+msgid "Web Share Target"
+msgstr "网络共享目标"
+
+#: admin/templates/pages/appcapabilities.php:257
+msgid ""
+"Web Share Target feature adds a system-level share target picker and allows "
+"your web app to register as a share target to receive shared data from other "
+"sites or apps via share URL scheme. The feature is most useful if your "
+"website is a social networking app."
+msgstr ""
+"网络共享目标功能增加了一个系统级共享目标选择器，允许你的网络应用程序注册为共享目标，通过共享 URL "
+"方案从其他网站或应用程序接收共享数据。如果您的网站是一个社交网络应用程序，该功能将非常有用。"
+
+#: admin/templates/pages/appcapabilities.php:270
+msgid "Share Action"
+msgstr "分享行动"
+
+#: admin/templates/pages/appcapabilities.php:277
+msgid ""
+"Enter the action of your web app. Action is a URL or your share URL scheme "
+"that accepts parameters and opens a share dialog. For example Facebook share "
+"action is <code>/sharer/</code> and Facebook full share URL is https://www."
+"facebook.com<code>/sharer/</code>?u=https://example.com/"
+msgstr ""
+"输入网络应用程序的操作。操作是接受参数并打开分享对话框的 URL 或您的分享 URL 方案。例如，Facebook 分享操作为 <code>"
+"/sharer/</code> 而 Facebook 完整分享 URL 为 https://www.facebook.com<code>"
+"/sharer/</code>?u=https://example.com/"
+
+#: admin/templates/pages/appcapabilities.php:281
+msgid "Enter Action"
+msgstr "进入行动"
+
+#: admin/templates/pages/appcapabilities.php:287
+msgid "URL Query"
+msgstr "URL 查询"
+
+#: admin/templates/pages/appcapabilities.php:298
+msgid "Enter URL Query"
+msgstr "输入 URL 查询"
+
+#: admin/templates/pages/appcapabilities.php:324
+msgid "Vibrations"
+msgstr "振动"
+
+#: admin/templates/pages/appcapabilities.php:331
+msgid ""
+"Vibrations feature creates vibes on tapping for mobile users. That can help "
+"mobile users recognize when they are tapping and clicking on your website."
+msgstr "振动功能可在移动用户点击时产生振动。这可以帮助移动用户识别他们何时在点击您的网站。"
+
+#: admin/templates/pages/appcapabilities.php:351
+msgid ""
+"Select on what device types vibrations feature should be active and running."
+msgstr "选择振动功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/appcapabilities.php:392
+msgid "Idle Detection"
+msgstr "空闲检测"
+
+#: admin/templates/pages/appcapabilities.php:401
+msgid ""
+"The Idle Detection notifies your website when a user is idle, indicating "
+"such things as lack of interaction with the keyboard, mouse, screen, "
+"activation of a screensaver, locking of the screen, or moving to a different "
+"screen. If enabled, your website will prompt your users to update contents "
+"if the user is detected to be in an idle state."
+msgstr ""
+"当用户处于闲置状态时，闲置检测功能会通知您的网站，比如没有与键盘、鼠标、屏幕进行交互，激活屏保，锁定屏幕或移动到其他屏幕。启用后，如果检测到用户处于闲置状态，网站将提示用户更新内容。"
+
+#: admin/templates/pages/appcapabilities.php:414
+msgid "Threshold"
+msgstr "阈值"
+
+#: admin/templates/pages/appcapabilities.php:421
+msgid "Choose how many minutes to wait until the user is considered idle."
+msgstr "选择等待多少分钟，直到用户被视为空闲。"
+
+#: admin/templates/pages/appcapabilities.php:438
+msgid ""
+"Select on what device types Idle Detection feature should be active and "
+"running."
+msgstr "选择空闲检测功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/appcapabilities.php:483
+msgid "Screen Wake Lock"
+msgstr "屏幕唤醒锁"
+
+#: admin/templates/pages/appcapabilities.php:492
+msgid ""
+"Screen wake lock provides a way to prevent device from dimming or locking "
+"the screen when your web application needs to keep running. This capability "
+"enables new experiences that, until now, required a platform-specific app."
+msgstr ""
+"屏幕唤醒锁提供了一种在网络应用程序需要继续运行时防止设备调暗或锁定屏幕的方法。这一功能带来了新的体验，而在此之前，这些体验需要特定平台的应用程序才能实现。"
+
+#: admin/templates/pages/appcapabilities.php:512
+msgid ""
+"Select on what device types Screen Wake Lock feature should be active and "
+"running."
+msgstr "选择屏幕唤醒锁定功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/appcapabilities.php:557
+msgid "Advanced Web APIs"
+msgstr "高级网络应用程序接口"
+
+#: admin/templates/pages/appcapabilities.php:566
+msgid ""
+"Enable support for advanced PWA functionality APIs to enhance your web app "
+"with features such as background sync, periodic background sync, web "
+"authentication for biometric login, content indexation, persistent storage, "
+"and other capabilities that provide a richer, more native-like experience."
+msgstr ""
+"启用对高级 PWA 功能 API "
+"的支持，通过后台同步、定期后台同步、用于生物识别登录的网络身份验证、内容索引、持久存储等功能增强网络应用程序，提供更丰富、更类似本地的体验。"
+
+#: admin/templates/pages/appcapabilities.php:581
+msgid "Biometric Authentication"
+msgstr "生物识别认证"
+
+#: admin/templates/pages/appcapabilities.php:588
+msgid ""
+"The Biometric Authentication feature is leveraging the Web Authentication "
+"API that allows standard WP login to authenticate registered users with the "
+"device's built-in authenticators like Touch ID, Face ID and Windows Hello or "
+"even using security keys like Yubikey."
+msgstr ""
+"生物识别身份验证功能利用网络身份验证应用程序接口（Web Authentication API），允许使用标准的 WP "
+"登录，通过设备内置的身份验证器（如 Touch ID、Face ID 和 Windows Hello），甚至使用安全密钥（如 "
+"Yubikey），对注册用户进行身份验证。"
+
+#: admin/templates/pages/appcapabilities.php:593
+msgid ""
+"Allow login with Touch ID, Face ID or with other device's built-in "
+"authenticator."
+msgstr "允许使用 Touch ID、Face ID 或其他设备的内置验证器登录。"
+
+#: admin/templates/pages/appcapabilities.php:610
+msgid "Background Sync"
+msgstr "后台同步"
+
+#: admin/templates/pages/appcapabilities.php:617
+msgid ""
+"Background sync lets you defer actions until the user has stable "
+"connectivity. This ensures that crucial requests made while your web app is "
+"offline can be replayed when the user comes back online."
+msgstr "后台同步可让您推迟操作，直到用户拥有稳定的连接。这可确保在网络应用离线时发出的关键请求能在用户重新上线时重放。"
+
+#: admin/templates/pages/appcapabilities.php:622
+msgid "Defer actions and requests until the user has stable connectivity."
+msgstr "推迟操作和请求，直到用户拥有稳定的连接。"
+
+#: admin/templates/pages/appcapabilities.php:639
+msgid "Periodic Background Sync"
+msgstr "周期性背景同步"
+
+#: admin/templates/pages/appcapabilities.php:646
+msgid ""
+"Periodic Background Sync enables web applications to periodically "
+"synchronize data in the background, bringing web apps closer to the behavior "
+"of a platform-specific app. It lets your website to always show fresh "
+"content in PWA by downloading data in the background when the app or page is "
+"not being used."
+msgstr ""
+"周期性后台同步使网络应用程序能够在后台周期性地同步数据，从而使网络应用程序更接近于特定平台应用程序的行为。它可以让您的网站在不使用应用程序或页面时在后台下载数据，从而始终在"
+" PWA 中显示新鲜内容。"
+
+#: admin/templates/pages/appcapabilities.php:652
+msgid ""
+"Periodically sync data in the background to always show fresh content in PWA."
+msgstr "定期在后台同步数据，在 PWA 中始终显示新鲜内容。"
+
+#: admin/templates/pages/appcapabilities.php:669
+msgid "Content Indexing"
+msgstr "内容索引"
+
+#: admin/templates/pages/appcapabilities.php:676
+msgid ""
+"Content Indexing allows web applications to add URLs and metadata of offline-"
+"capable pages to a local index maintained by the browser. This improves the "
+"offline experience and discoverability of already-cached pages by enabling "
+"the browser to surface those pages when users are likely to want to view "
+"them. These pages could also be used to improve on-device search and augment "
+"browsing history."
+msgstr ""
+"内容索引允许网络应用程序将离线页面的 URL "
+"和元数据添加到浏览器维护的本地索引中。这样，浏览器就能在用户可能想查看网页时显示这些网页，从而改善离线体验和已缓存网页的可发现性。这些网页还可用于改进设备搜索和增强浏览历史。"
+
+#: admin/templates/pages/appcapabilities.php:681
+msgid ""
+"Add URLs of offline-capable pages to a local index maintained by the browser."
+msgstr "将离线页面的 URL 添加到浏览器维护的本地索引中。"
+
+#: admin/templates/pages/appcapabilities.php:698
+msgid "Persistent Storage"
+msgstr "持久存储"
+
+#: admin/templates/pages/appcapabilities.php:705
+msgid ""
+"Persistent storage allows your web app to request persistent storage, "
+"ensuring that important data is reliably stored on the user's device without "
+"being automatically cleared, even under storage pressure. It can help "
+"protect critical data from eviction, and reduce the chance of data loss."
+msgstr ""
+"持久存储允许您的网络应用请求持久存储，确保重要数据可靠地存储在用户设备上，即使在存储压力下也不会自动清除。它有助于保护关键数据不被驱逐，并降低数据丢失的几率。"
+
+#: admin/templates/pages/appcapabilities.php:710
+msgid "Mark cached website content as persistent to prevent deletion."
+msgstr "将缓存的网站内容标记为持久内容，以防止删除。"
+
+#: admin/templates/pages/dashboard.php:14
+msgid "Active PWA Users"
+msgstr "活跃的 PWA 用户"
+
+#: admin/templates/pages/dashboard.php:22
+msgid ""
+"Number of users who installed your web app and are actively using it as PWA."
+msgstr "安装了您的网络应用程序并将其作为 PWA 积极使用的用户数量。"
+
+#: admin/templates/pages/dashboard.php:42
+msgid "PWA Scorecard"
+msgstr "PWA 记分卡"
+
+#: admin/templates/pages/dashboard.php:50
+msgid ""
+"The scorecard shows the status and overall condition of your PWA setup. Your "
+"goal should be to resolve all action items and achieve an excellent score."
+msgstr "记分卡显示 PWA 设置的状态和总体情况。您的目标应该是解决所有行动项目并取得优异成绩。"
+
+#: admin/templates/pages/dashboard.php:72
+msgid "Bad"
+msgstr "坏的"
+
+#: admin/templates/pages/dashboard.php:78
+msgid "Average"
+msgstr "平均"
+
+#: admin/templates/pages/dashboard.php:84
+msgid "Good"
+msgstr "良好"
+
+#: admin/templates/pages/dashboard.php:90
+msgid "Excellent"
+msgstr "优秀"
+
+#: admin/templates/pages/dashboard.php:105
+msgid "PWA Installations"
+msgstr "PWA 安装"
+
+#: admin/templates/pages/dashboard.php:113
+msgid ""
+"The chart displays the historical data of your web app installations over "
+"time."
+msgstr "该图表显示网络应用程序安装量的历史数据。"
+
+#: admin/templates/pages/dashboard.php:119
+msgid "Last 7 Days"
+msgstr "最近 7 天"
+
+#: admin/templates/pages/dashboard.php:123
+msgid "Last 28 Days"
+msgstr "最近 28 天"
+
+#: admin/templates/pages/dashboard.php:127
+msgid "Last 12 Months"
+msgstr "过去 12 个月"
+
+#: admin/templates/pages/error.php:9
+msgid "Oops, something went wrong."
+msgstr "哎呀，出错了。"
+
+#: admin/templates/pages/error.php:10
+msgid "Sorry, we couldn't find your page."
+msgstr "抱歉，我们找不到您的页面。"
+
+#: admin/templates/pages/error.php:16
+msgid "Go to Dashboard"
+msgstr "转到仪表板"
+
+#: admin/templates/pages/helpcenter.php:14
+msgid "Frequently Asked Questions"
+msgstr "常见问题"
+
+#: admin/templates/pages/helpcenter.php:17
+msgid ""
+"Reading the FAQ is useful when you're experiencing a common issue related to "
+"the plugin. If the FAQ didn't help and you have a hard time resolving the "
+"problem, please submit a ticket."
+msgstr "当您遇到与插件相关的常见问题时，阅读常见问题解答很有用。如果常见问题解答对您没有帮助，而且您很难解决该问题，请提交票单。"
+
+#: admin/templates/pages/helpcenter.php:30
+msgid "What are Progressive Web Apps?"
+msgstr "什么是渐进式网络应用？"
+
+#: admin/templates/pages/helpcenter.php:35
+msgid ""
+"Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs "
+"to provide enhanced capabilities while still reaching any web user on any "
+"device with a single codebase. They combine the broad reach of web apps with "
+"the rich capabilities of platform-specific apps to enhance the user "
+"experience."
+msgstr ""
+"渐进式网络应用程序（PWA）是利用现代应用程序接口构建和增强的网络应用程序，在提供增强功能的同时，还能通过单一代码库接触到任何设备上的任何网络用户。它们将网络应用程序的广泛覆盖范围与特定平台应用程序的丰富功能相结合，以增强用户体验。"
+
+#: admin/templates/pages/helpcenter.php:49
+msgid "Why do installation prompts sometimes not appear?"
+msgstr "为什么有时不会出现安装提示？"
+
+#: admin/templates/pages/helpcenter.php:54
+msgid ""
+"Installation prompts appear dynamically based on your settings and specific "
+"conditions. Some prompts are shown only to tablet and smartphone users, "
+"while others also appear on desktops. Some can be dismissed, some auto-"
+"dismiss, and others are persistent. An installation overlay will not appear "
+"if the feature is disabled, the user has already seen and dismissed it while "
+"the timeout hasn't expired, or if the prompts are set to show only to "
+"returning visitors, and the user is visiting for the first time. If a prompt "
+"isn’t showing, check that it is enabled in the settings and that the display "
+"conditions are met."
+msgstr ""
+"安装提示会根据您的设置和特定条件动态显示。有些提示只显示给平板电脑和智能手机用户，而有些提示也会出现在台式机上。有些提示可以取消，有些会自动取消，还有些会持续出现。如果禁用了该功能，用户已经看到并取消了该功能，而超时尚未结束，或者提示设置为只显示给回访者，而用户是首次访问，则不会出现安装叠加。如果提示未显示，请检查是否在设置中启用了该功能，以及是否满足显示条件。"
+
+#: admin/templates/pages/helpcenter.php:68
+msgid "Does Push Notifications work on iOS?"
+msgstr "推送通知是否适用于 iOS？"
+
+#: admin/templates/pages/helpcenter.php:73
+msgid ""
+"Yes, iOS Safari is supporting web based push notifications, but only if the "
+"website is added to the home screen, so if installed as a PWA. Push "
+"notifications are as well supported on macOS devices (MacBook and iMac)."
+msgstr ""
+"是的，iOS Safari 支持基于网页的推送通知，但前提是网站已添加到主屏幕上，即安装为 PWA。macOS 设备（MacBook 和 "
+"iMac）也支持推送通知。"
+
+#: admin/templates/pages/helpcenter.php:87
+msgid "Is the plugin compatible with all themes and plugins?"
+msgstr "该插件是否与所有主题和插件兼容？"
+
+#: admin/templates/pages/helpcenter.php:92
+msgid ""
+"PWAs designed by Progressify is fully compatible with all kinds of WordPress "
+"configuration, including plugins and themes. Please note that you should "
+"disable all other plugins that deliver the same functionality as Progressify "
+"in order to avoid compatibility issues."
+msgstr ""
+"Progressify 设计的 PWA 完全兼容各种 WordPress 配置，包括插件和主题。请注意，为避免出现兼容性问题，您应禁用与 "
+"Progressify 提供相同功能的所有其他插件。"
+
+#: admin/templates/pages/helpcenter.php:106
+msgid "How can I update the plugin?"
+msgstr "如何更新插件？"
+
+#: admin/templates/pages/helpcenter.php:111
+msgid ""
+"There are two ways to update the plugin to the newer version: Using a "
+"WordPress built-in update system which will automatically check for updates "
+"and show you a notification on an %1$s when there will be an update "
+"available or manually download latest version of plugin from %2$s and re-"
+"install it."
+msgstr ""
+"有两种方法可以将插件更新到最新版本：使用 WordPress 内置的更新系统，它会自动检查更新，并在有更新可用时在 %1$s 上向您显示通知；或者从 "
+"%2$s 手动下载最新版本的插件并重新安装。"
+
+#: admin/templates/pages/helpcenter.php:111
+msgid "admin plugins page"
+msgstr "管理插件页面"
+
+#: admin/templates/pages/helpcenter.php:111
+msgid "CodeCanyon"
+msgstr "代码峡谷"
+
+#: admin/templates/pages/helpcenter.php:123
+msgid "Support Request"
+msgstr "支持请求"
+
+#: admin/templates/pages/helpcenter.php:126
+msgid ""
+"Before submitting a ticket, please make sure that the FAQ didn't help, "
+"you're using the latest version of the plugin and there are no javascript "
+"errors on your website."
+msgstr "在提交问题单之前，请确保常见问题没有帮助，您使用的是最新版本的插件，并且您的网站上没有 javascript 错误。"
+
+#: admin/templates/pages/helpcenter.php:133
+msgid "Your Name"
+msgstr "您的姓名"
+
+#: admin/templates/pages/helpcenter.php:135
+msgid "Enter Your Name"
+msgstr "输入您的姓名"
+
+#: admin/templates/pages/helpcenter.php:139
+msgid "Your Email"
+msgstr "您的电子邮件"
+
+#: admin/templates/pages/helpcenter.php:146
+msgid "Enter your email address where we'll send our response."
+msgstr "请输入您的电子邮件地址，我们将通过该地址发送回复。"
+
+#: admin/templates/pages/helpcenter.php:150
+msgid "Enter Your Email"
+msgstr "输入您的电子邮件"
+
+#: admin/templates/pages/helpcenter.php:154
+msgid "Problem Description"
+msgstr "问题描述"
+
+#: admin/templates/pages/helpcenter.php:161
+msgid ""
+"Please be as descriptive as possible regarding the details of this request."
+msgstr "请尽可能详细地描述该请求的细节。"
+
+#: admin/templates/pages/helpcenter.php:165
+msgid "Describe Your Problem"
+msgstr "描述您的问题"
+
+#: admin/templates/pages/helpcenter.php:171
+msgid "Temporary Access"
+msgstr "临时通道"
+
+#: admin/templates/pages/helpcenter.php:178
+msgid ""
+"Enabling this will give the support team temporary access to your WordPress "
+"Dashboard. That is helpful because in most cases we need a temporary access "
+"to your WordPress Dashboard to check and fix the issue."
+msgstr ""
+"启用此功能将允许支持团队临时访问您的 WordPress 控制面板。这很有帮助，因为在大多数情况下，我们需要临时访问您的 WordPress "
+"控制面板来检查和解决问题。"
+
+#: admin/templates/pages/helpcenter.php:183
+msgid "Grant the support team temporary access to your WordPress Dashboard."
+msgstr "允许支持团队临时访问您的 WordPress 控制面板。"
+
+#: admin/templates/pages/helpcenter.php:196
+msgid "Submitting..."
+msgstr "提交..."
+
+#: admin/templates/pages/helpcenter.php:198
+msgid "Submit Request"
+msgstr "提交申请"
+
+#: admin/templates/pages/installation.php:20
+msgid "Installation Prompts"
+msgstr "安装提示"
+
+#: admin/templates/pages/installation.php:26
+msgid ""
+"Installation prompts encourage your users to add your web app to their home "
+"screens by simply clicking the dedicated installation buttons. These "
+"overlays appear at strategic places to increase the likelihood of "
+"installation."
+msgstr "安装提示鼓励用户只需点击专用的安装按钮，即可将网络应用程序添加到他们的主屏幕上。这些叠加按钮会出现在重要位置，以增加安装的可能性。"
+
+#: admin/templates/pages/installation.php:39
+msgid "Installation Overlays"
+msgstr "安装覆盖层"
+
+#: admin/templates/pages/installation.php:46
+msgid ""
+"Enable installation overlays to display to users, such as a header banner, "
+"in-feed, or snackbar, to encourage them to add your web app to their home "
+"screens. Try not to enable them all to avoid spamming users with the "
+"installation banners."
+msgstr ""
+"启用向用户显示的安装覆盖，如标题横幅、Feed "
+"内或点心栏，以鼓励用户将您的网络应用程序添加到他们的主屏幕上。尽量不要全部启用，以免安装横幅给用户带来垃圾信息。"
+
+#: admin/templates/pages/installation.php:59
+msgid "Header Banner"
+msgstr "标题横幅"
+
+#: admin/templates/pages/installation.php:72
+msgid "Snackbar"
+msgstr "小吃店"
+
+#: admin/templates/pages/installation.php:85
+msgid "Navigation Menu"
+msgstr "导航菜单"
+
+#: admin/templates/pages/installation.php:97
+msgid "In Feed"
+msgstr "在饲料中"
+
+#: admin/templates/pages/installation.php:108
+msgid "Blog Popup"
+msgstr "博客弹出窗口"
+
+#: admin/templates/pages/installation.php:120
+msgid "WooCommerce Checkout"
+msgstr "WooCommerce 结账"
+
+#: admin/templates/pages/installation.php:131
+msgid "Text"
+msgstr "文本"
+
+#: admin/templates/pages/installation.php:138
+msgid ""
+"Set the text to display as the title on installation prompts and as the "
+"label on the installation button. "
+msgstr "将文本设置为安装提示的标题和安装按钮的标签。"
+
+#: admin/templates/pages/installation.php:142
+msgid "Enter Text"
+msgstr "输入文本"
+
+#: admin/templates/pages/installation.php:148
+#: admin/templates/pages/pushnotifications.php:218
+msgid "Skip First Visit"
+msgstr "跳过首次访问"
+
+#: admin/templates/pages/installation.php:155
+msgid ""
+"Skips first-time visitors and only shows installation overlays to returning "
+"users."
+msgstr "跳过首次访客，只向老用户显示安装覆盖。"
+
+#: admin/templates/pages/installation.php:162
+msgid "Show installation overlays to returning visitors only."
+msgstr "仅向老访客显示安装叠加。"
+
+#: admin/templates/pages/installation.php:170
+#: admin/templates/pages/pushnotifications.php:240
+msgid "Timeout"
+msgstr "超时"
+
+#: admin/templates/pages/installation.php:177
+msgid ""
+"Choose how many days to wait to show installation overlays again if they "
+"were dismissed."
+msgstr "选择如果安装覆盖被取消，要等待多少天才能再次显示。"
+
+#: admin/templates/pages/installation.php:187
+msgid "Installation Button"
+msgstr "安装按钮"
+
+#: admin/templates/pages/installation.php:194
+msgid ""
+"Installation button is a customizable button that can be placed anywhere on "
+"your site using a shortcode. When clicked, it triggers an installation "
+"prompt, allowing users to easily add your web app to their home screens. You "
+"can insert an installation button anywhere on your website using the "
+"shortcode below."
+msgstr ""
+"安装按钮是一个可定制的按钮，可使用简码放置在网站的任何位置。点击后，它会触发安装提示，让用户可以轻松地将您的网络应用程序添加到他们的主屏幕上。您可以使用下面的简码在网站的任何位置插入安装按钮。"
+
+#: admin/templates/pages/installation.php:210
+#: frontend/assets/js/dev/components/installPrompt.js:420
+msgid "Copied"
+msgstr "复制的"
+
+#: admin/templates/pages/installation.php:218
+#: admin/templates/pages/installation.php:231
+msgid "Installation QR Code"
+msgstr "安装二维码"
+
+#: admin/templates/pages/installation.php:225
+msgid ""
+"This QR code directs users to your homepage, where they can access the "
+"installation prompt and set up your PWA effortlessly."
+msgstr "该二维码可将用户引导至您的主页，在那里他们可以访问安装提示并轻松设置您的 PWA。"
+
+#: admin/templates/pages/offlineusage.php:21
+msgid "Offline Cache"
+msgstr "离线缓存"
+
+#: admin/templates/pages/offlineusage.php:27
+msgid ""
+"Configure offline caching settings, including the fallback page, caching "
+"strategy, and cache expiry time, to ensure seamless offline functionality."
+msgstr "配置离线缓存设置，包括后备页面、缓存策略和缓存到期时间，以确保无缝离线功能。"
+
+#: admin/templates/pages/offlineusage.php:42
+msgid "Custom Offline Fallback Page"
+msgstr "自定义离线回退页面"
+
+#: admin/templates/pages/offlineusage.php:49
+msgid ""
+"Enable this if you want to select the special offline fallback page for your "
+"web application, instead of using default one. This page will show up your "
+"users when they navigate your website without an internet connection and the "
+"requested page won't be in cache."
+msgstr ""
+"如果您想为您的网络应用程序选择特殊的离线回退页面，而不是使用默认页面，请启用此项。当用户在没有互联网连接的情况下浏览网站时，该页面就会显示出来，而且请求的页面也不会在缓存中。"
+
+#: admin/templates/pages/offlineusage.php:54
+msgid "Select a custom offline fallback page instead of default one."
+msgstr "选择自定义离线后备页面，而不是默认页面。"
+
+#: admin/templates/pages/offlineusage.php:70
+msgid "Offline Fallback Page"
+msgstr "离线备用页面"
+
+#: admin/templates/pages/offlineusage.php:77
+msgid "Select a custom offline fallback page."
+msgstr "选择自定义脱机后备页面。"
+
+#: admin/templates/pages/offlineusage.php:82
+msgid "Select Offline Fallback Page"
+msgstr "选择离线回退页面"
+
+#: admin/templates/pages/offlineusage.php:95
+msgid "Caching Strategy"
+msgstr "缓存策略"
+
+#: admin/templates/pages/offlineusage.php:102
+msgid ""
+"All network requests are cached by Progressify, so that your website can "
+"serve content from the browser cache if available and display requested "
+"content as fast as possible. Here you are able to manually change the "
+"caching strategy for some request types. We recommend you to set it on "
+"Network First for always showing latest version of your website while "
+"updating the cache in the background and serving the last cached response "
+"when the network request fails."
+msgstr ""
+"Progressify "
+"会对所有网络请求进行缓存，这样，如果浏览器缓存中有内容，您的网站就可以从浏览器缓存中提供内容，并尽可能快地显示所请求的内容。您可以在这里手动更改某些请求类型的缓存策略。我们建议你将其设置为"
+" \"网络优先\"，以便在后台更新缓存时始终显示最新版本的网站，并在网络请求失败时提供最后一次缓存的响应。"
+
+#: admin/templates/pages/offlineusage.php:107
+msgid "Select Caching Strategy"
+msgstr "选择缓存策略"
+
+#: admin/templates/pages/offlineusage.php:110
+msgid ""
+"Fetches from the network first and caches the response. Uses the last cached "
+"response if the network request fails."
+msgstr "先从网络获取并缓存响应。如果网络请求失败，则使用上次缓存的响应。"
+
+#: admin/templates/pages/offlineusage.php:111
+msgid "Network-First"
+msgstr "网络优先"
+
+#: admin/templates/pages/offlineusage.php:113
+msgid ""
+"Uses a cached response if available and updates the cache in the background. "
+"Always requests an asset from the network, using bandwidth."
+msgstr "如果可用，则使用缓存响应，并在后台更新缓存。总是从网络请求资产，占用带宽。"
+
+#: admin/templates/pages/offlineusage.php:114
+msgid "Stale While Revalidate"
+msgstr "过期而重新验证"
+
+#: admin/templates/pages/offlineusage.php:116
+msgid ""
+"Uses a cached response first. If unavailable, fetches from the network and "
+"caches the response."
+msgstr "首先使用缓存响应。如果不可用，则从网络获取并缓存响应。"
+
+#: admin/templates/pages/offlineusage.php:117
+msgid "Cache-First"
+msgstr "缓存优先"
+
+#: admin/templates/pages/offlineusage.php:119
+msgid ""
+"Does not cache anything. Always uses the network and passes the response to "
+"the browser."
+msgstr "不缓存任何内容。始终使用网络并将响应传递给浏览器。"
+
+#: admin/templates/pages/offlineusage.php:120
+msgid "Network-Only"
+msgstr "仅限网络"
+
+#: admin/templates/pages/offlineusage.php:122
+msgid ""
+"Always uses a pre-populated cached response, never requesting from the "
+"network. Updates only when cache settings change or cache expires."
+msgstr "始终使用预先填充的缓存响应，从不从网络请求。仅在缓存设置更改或缓存过期时更新。"
+
+#: admin/templates/pages/offlineusage.php:123
+msgid "Cache-Only"
+msgstr "仅缓存"
+
+#: admin/templates/pages/offlineusage.php:130
+msgid "Cache Expiration Time"
+msgstr "缓存过期时间"
+
+#: admin/templates/pages/offlineusage.php:137
+msgid ""
+"Define how many days should cached content be remained in the browser cache "
+"storage. We recommend you to leave it on default as browser cache is updated "
+"automatically if your caching strategy is StaleWhileRevalidate but if you "
+"are using CacheFirst strategy, then lower expiration times might be a right "
+"choice."
+msgstr ""
+"定义缓存内容在浏览器缓存中的保留天数。如果您的缓存策略是 "
+"StaleWhileRevalidate，浏览器缓存会自动更新，因此我们建议您将其保留为默认值，但如果您使用的是 CacheFirst "
+"策略，那么较低的过期时间可能是一个正确的选择。"
+
+#: admin/templates/pages/offlineusage.php:167
+msgid "Offline Capabilities"
+msgstr "离线功能"
+
+#: admin/templates/pages/offlineusage.php:173
+msgid ""
+"Enhance your web app's offline functionality by enabling features such as "
+"offline forms, offline notifications, and offline Google Analytics, ensuring "
+"a seamless user experience even without internet connectivity."
+msgstr ""
+"通过启用离线表单、离线通知和离线 Google Analytics "
+"等功能，增强网络应用程序的离线功能，确保即使在没有互联网连接的情况下也能获得无缝的用户体验。"
+
+#: admin/templates/pages/offlineusage.php:188
+msgid "Offline Notification"
+msgstr "离线通知"
+
+#: admin/templates/pages/offlineusage.php:195
+msgid ""
+"A live reconnecting notification for your users when they go offline or "
+"their connection interrupts on your website."
+msgstr "当用户离线或网站连接中断时，为用户提供实时重新连接通知。"
+
+#: admin/templates/pages/offlineusage.php:200
+msgid "Display a live reconnecting notification if connection interrupts."
+msgstr "如果连接中断，显示实时重新连接通知。"
+
+#: admin/templates/pages/offlineusage.php:219
+msgid "Offline Forms"
+msgstr "离线表格"
+
+#: admin/templates/pages/offlineusage.php:226
+msgid ""
+"Allow users to submit forms offline with their consent. Submissions are "
+"saved locally and processed automatically when they reconnect to the "
+"internet."
+msgstr "允许用户在同意的情况下离线提交表单。提交的表格会保存在本地，并在重新连接互联网时自动处理。"
+
+#: admin/templates/pages/offlineusage.php:231
+msgid "Allow users to submit forms offline and process when reconnected."
+msgstr "允许用户离线提交表单，并在重新连接时进行处理。"
+
+#: admin/templates/pages/offlineusage.php:250
+msgid "Offline Google Analytics"
+msgstr "离线谷歌分析"
+
+#: admin/templates/pages/offlineusage.php:257
+msgid ""
+"Tracks user interactions and page views while offline, and syncs the data "
+"with Google Analytics once the connection is restored."
+msgstr "跟踪离线状态下的用户互动和页面浏览，并在恢复连接后与 Google Analytics 同步数据。"
+
+#: admin/templates/pages/offlineusage.php:262
+msgid "Tracks users offline and syncs with Google Analytics when reconnected."
+msgstr "跟踪离线用户，并在重新连接后与 Google Analytics 同步。"
+
+#: admin/templates/pages/offlineusage.php:274
+msgid ""
+"This feature is temporarily disabled due to incompatibility with new version "
+"of Google Analytics (GA4)."
+msgstr "由于与新版 Google Analytics (GA4) 不兼容，此功能暂时禁用。"
+
+#: admin/templates/pages/publishtoappstores.php:31
+msgid ""
+"Perfect for bringing your web app to Android devices through the Google Play "
+"Store."
+msgstr "非常适合通过 Google Play 商店将网络应用程序引入安卓设备。"
+
+#: admin/templates/pages/publishtoappstores.php:44
+msgid "Includes an Android app package"
+msgstr "包括一个 Android 应用程序包"
+
+#: admin/templates/pages/publishtoappstores.php:52
+msgid "Publish to Google Play Store"
+msgstr "发布到 Google Play 商店"
+
+#: admin/templates/pages/publishtoappstores.php:60
+msgid "Reach 2.5+ billion Android users"
+msgstr "覆盖 25 亿多安卓用户"
+
+#: admin/templates/pages/publishtoappstores.php:68
+msgid "No app updates required"
+msgstr "无需更新应用程序"
+
+#: admin/templates/pages/publishtoappstores.php:89
+msgid "Android and iOS"
+msgstr "安卓和 iOS"
+
+#: admin/templates/pages/publishtoappstores.php:99
+msgid "Early Supporter Discount Applied"
+msgstr "适用早期支持者折扣"
+
+#: admin/templates/pages/publishtoappstores.php:110
+msgid ""
+"Ideal for reaching both Android and iOS users via the Google Play Store and "
+"Apple App Store."
+msgstr "通过 Google Play Store 和 Apple App Store 向 Android 和 iOS 用户提供服务的理想选择。"
+
+#: admin/templates/pages/publishtoappstores.php:123
+msgid "Everything from the Android plan"
+msgstr "安卓计划中的所有内容"
+
+#: admin/templates/pages/publishtoappstores.php:131
+msgid "Plus an iOS app package"
+msgstr "外加一个 iOS 应用程序包"
+
+#: admin/templates/pages/publishtoappstores.php:139
+msgid "Also publish to Apple App Store"
+msgstr "同时发布到苹果应用商店"
+
+#: admin/templates/pages/publishtoappstores.php:147
+msgid "Reach an additional 1.5+ billion iOS users"
+msgstr "新增 15 亿多 iOS 用户"
+
+#: admin/templates/pages/publishtoappstores.php:174
+msgid "Android, iOS and Windows"
+msgstr "安卓、iOS 和 Windows"
+
+#: admin/templates/pages/publishtoappstores.php:183
+msgid ""
+"Built for PWA enthusiasts who want to extend reach across Android, iOS, and "
+"Windows devices."
+msgstr "专为希望在 Android、iOS 和 Windows 设备上扩展覆盖范围的 PWA 爱好者打造。"
+
+#: admin/templates/pages/publishtoappstores.php:196
+msgid "Everything from the Android and iOS plans"
+msgstr "安卓和 iOS 计划中的所有内容"
+
+#: admin/templates/pages/publishtoappstores.php:204
+msgid "Plus a Windows app package"
+msgstr "外加一个 Windows 应用程序包"
+
+#: admin/templates/pages/publishtoappstores.php:212
+msgid "Also publish to Microsoft Store"
+msgstr "同时发布到微软商店"
+
+#: admin/templates/pages/publishtoappstores.php:220
+msgid "Reach an additional 500+ million Windows users"
+msgstr "新增 5 亿多 Windows 用户"
+
+#: admin/templates/pages/publishtoappstores.php:228
+msgid "Need a desktop app?"
+msgstr "需要桌面应用程序？"
+
+#: admin/templates/pages/publishtoappstores.php:231
+msgid "Show Desktop Plan"
+msgstr "显示桌面平面图"
+
+#: admin/templates/pages/pushnotifications.php:16
+msgid "Push Notifications Subscribers"
+msgstr "推送通知订阅者"
+
+#: admin/templates/pages/pushnotifications.php:19
+msgid "List of your users who are subscribed for push notifications."
+msgstr "已订阅推送通知的用户列表。"
+
+#: admin/templates/pages/pushnotifications.php:28
+#: admin/templates/pages/pushnotifications.php:836
+#: admin/templates/pages/pushnotifications.php:1058
+msgid "Send Push Notification"
+msgstr "发送推送通知"
+
+#: admin/templates/pages/pushnotifications.php:38
+msgid "Country"
+msgstr "国家"
+
+#: admin/templates/pages/pushnotifications.php:45
+msgid "Operating System"
+msgstr "操作系统"
+
+#: admin/templates/pages/pushnotifications.php:52
+msgid "Browser"
+msgstr "浏览器"
+
+#: admin/templates/pages/pushnotifications.php:59
+msgid "Date"
+msgstr "日期"
+
+#: admin/templates/pages/pushnotifications.php:66
+msgid "Actions"
+msgstr "行动"
+
+#: admin/templates/pages/pushnotifications.php:77
+msgid "Total:"
+msgstr "共计"
+
+#: admin/templates/pages/pushnotifications.php:86
+msgid "Prev"
+msgstr "上一页"
+
+#: admin/templates/pages/pushnotifications.php:89
+msgid "Next"
+msgstr "下一页"
+
+#: admin/templates/pages/pushnotifications.php:116
+msgid "General Settings"
+msgstr "常规设置"
+
+#: admin/templates/pages/pushnotifications.php:119
+msgid ""
+"The general push notifications setting gives you full control over self-"
+"hosted notifications service configuration on your server. Here you'll have "
+"an ability to adjust some values that can potentially improve notifications "
+"performance and avoid your server resource overload."
+msgstr "一般推送通知设置可让您完全控制服务器上的自托管通知服务配置。您可以在这里调整一些值，这些值有可能提高通知性能，避免服务器资源超载。"
+
+#: admin/templates/pages/pushnotifications.php:128
+msgid "Time To Live (TTL)"
+msgstr "生存时间 (TTL)"
+
+#: admin/templates/pages/pushnotifications.php:135
+msgid ""
+"Time To Live (TTL, in seconds) is how long a push message is retained by the "
+"push service (eg. Mozilla) in case the user's browser is not yet accessible "
+"(eg. is not connected). You may want to use a very long time for important "
+"notifications. The default TTL is 4 weeks. However, if you send multiple "
+"nonessential notifications, set a TTL of 0: the push notification will be "
+"delivered only if the user is currently connected. In other cases, you "
+"should use a minimum of one day if your users have multiple time zones, and "
+"if they don't several hours will suffice."
+msgstr ""
+"存活时间（TTL，以秒为单位）是指推送服务（如 "
+"Mozilla）在用户的浏览器尚未可访问（如未连接）的情况下保留推送消息的时间。对于重要通知，您可能需要使用较长的时间。默认 TTL 为 4 "
+"周。但是，如果要发送多个非重要通知，可将 TTL 设置为 "
+"0：只有当用户当前处于连接状态时，才会发送推送通知。在其他情况下，如果用户使用多个时区，则至少应使用一天，如果用户不使用多个时区，则几个小时就足够了。"
+
+#: admin/templates/pages/pushnotifications.php:145
+msgid "Batch Size"
+msgstr "批量大小"
+
+#: admin/templates/pages/pushnotifications.php:152
+msgid ""
+"If you send a lot of notifications at a time, you may get memory overflows. "
+"In order to fix this, Progressify sends notifications in batches. The "
+"default size is 1000. Depending on your server configuration (memory), you "
+"may want to decrease this number. Higher values require a longer script "
+"execution time."
+msgstr ""
+"如果一次发送大量通知，可能会出现内存溢出。为了解决这个问题，Progressify 会分批发送通知。默认大小为 "
+"1000。根据你的服务器配置（内存），你可能需要减少这个数字。数值越大，脚本执行时间越长。"
+
+#: admin/templates/pages/pushnotifications.php:182
+msgid "Prompt"
+msgstr "提示"
+
+#: admin/templates/pages/pushnotifications.php:188
+msgid ""
+"The push notifications prompt is nice simple prompt with your website logo "
+"and a message that will ask your users to subscribe push notifications on "
+"your website."
+msgstr "推送通知提示非常简单，带有网站徽标和一条信息，会要求用户在网站上订阅推送通知。"
+
+#: admin/templates/pages/pushnotifications.php:201
+msgid "Prompt Message"
+msgstr "提示信息"
+
+#: admin/templates/pages/pushnotifications.php:208
+msgid "Enter the message you want to show your users on push prompt."
+msgstr "输入您希望在推送提示中向用户显示的信息。"
+
+#: admin/templates/pages/pushnotifications.php:212
+msgid "Enter Message"
+msgstr "输入信息"
+
+#: admin/templates/pages/pushnotifications.php:225
+msgid ""
+"If enabled, users who are visiting the website for the first time will not "
+"get the Prompt."
+msgstr "如果启用，首次访问网站的用户将不会收到提示。"
+
+#: admin/templates/pages/pushnotifications.php:232
+msgid "Show prompt to returning visitors only."
+msgstr "仅向老访客显示提示。"
+
+#: admin/templates/pages/pushnotifications.php:247
+msgid ""
+"Choose how many days to wait to show push notification prompt again if it "
+"was dismissed."
+msgstr "选择如果推送通知提示被取消，需要等待多少天才能再次显示推送通知提示。"
+
+#: admin/templates/pages/pushnotifications.php:277
+msgid "Button"
+msgstr "按钮"
+
+#: admin/templates/pages/pushnotifications.php:283
+msgid ""
+"The push notifications button is a custom subscription button on your "
+"website to increase opt-in rate and allow your users to fully control when "
+"they want to subscribe and unsubscribe for your push notifications."
+msgstr "推送通知按钮是网站上的自定义订阅按钮，可提高选择加入率，并允许用户完全控制何时订阅和取消订阅推送通知。"
+
+#: admin/templates/pages/pushnotifications.php:296
+msgid "Button Position"
+msgstr "按钮位置"
+
+#: admin/templates/pages/pushnotifications.php:303
+msgid "Select position of your push notifications button on your website."
+msgstr "选择推送通知按钮在网站上的位置。"
+
+#: admin/templates/pages/pushnotifications.php:308
+msgid "Select Button Position"
+msgstr "选择按钮位置"
+
+#: admin/templates/pages/pushnotifications.php:310
+msgid "Bottom Right"
+msgstr "右下角"
+
+#: admin/templates/pages/pushnotifications.php:311
+msgid "Bottom Left"
+msgstr "左下角"
+
+#: admin/templates/pages/pushnotifications.php:312
+msgid "Top Right"
+msgstr "右上角"
+
+#: admin/templates/pages/pushnotifications.php:313
+msgid "Top Left"
+msgstr "左上角"
+
+#: admin/templates/pages/pushnotifications.php:320
+msgid "Button Behavior"
+msgstr "按钮行为"
+
+#: admin/templates/pages/pushnotifications.php:327
+msgid ""
+"Select behavior of your push notifications button after users subscribe for "
+"push notifications."
+msgstr "选择用户订阅推送通知后推送通知按钮的行为。"
+
+#: admin/templates/pages/pushnotifications.php:332
+msgid "Select Button Behavior"
+msgstr "选择按钮行为"
+
+#: admin/templates/pages/pushnotifications.php:335
+msgid ""
+"Keep shown after user subscribes for notifications, allowing them to "
+"unsubscribe by clicking on the button again."
+msgstr "在用户订阅通知后继续显示，允许用户再次点击按钮取消订阅。"
+
+#: admin/templates/pages/pushnotifications.php:336
+msgid "Keep Shown After Subscription"
+msgstr "订阅后保留显示"
+
+#: admin/templates/pages/pushnotifications.php:338
+msgid ""
+"Hide after user subscribes for notifications. Users will still be able to "
+"unsubscribe from browser settings."
+msgstr "在用户订阅通知后隐藏。用户仍可通过浏览器设置取消订阅。"
+
+#: admin/templates/pages/pushnotifications.php:339
+msgid "Hide After Subscription"
+msgstr "订阅后隐藏"
+
+#: admin/templates/pages/pushnotifications.php:366
+msgid "Automation"
+msgstr "自动化"
+
+#: admin/templates/pages/pushnotifications.php:375
+msgid ""
+"Automation allows sending predefined push notifications automatically, "
+"triggered on certain events like publishing new post to re-engage your users "
+"and increase conversion."
+msgstr "自动化功能允许自动发送预定义的推送通知，在发布新文章等特定事件时触发，以重新吸引用户并提高转化率。"
+
+#: admin/templates/pages/pushnotifications.php:391
+msgid "New Content"
+msgstr "新内容"
+
+#: admin/templates/pages/pushnotifications.php:398
+msgid ""
+"Sends automatic notification to website users when new content is published. "
+"Notification will include content title, text and featured image."
+msgstr "发布新内容时自动向网站用户发送通知。通知内容包括标题、文本和特色图片。"
+
+#: admin/templates/pages/pushnotifications.php:403
+msgid "Sends notification to users when new content is published."
+msgstr "发布新内容时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:419
+msgid "Post Types"
+msgstr "职位类型"
+
+#: admin/templates/pages/pushnotifications.php:426
+msgid "Select supported post types for new content published notification."
+msgstr "为新内容发布通知选择支持的帖子类型。"
+
+#: admin/templates/pages/pushnotifications.php:431
+msgid "Select Post Types"
+msgstr "选择帖子类型"
+
+#: admin/templates/pages/pushnotifications.php:448
+msgid "New Comment"
+msgstr "新评论"
+
+#: admin/templates/pages/pushnotifications.php:455
+msgid ""
+"Sends automatic notification to users when a new comment or reply is posted "
+"where they have commented. Note that it will only work if you have enabled "
+"native WordPress comments on posts."
+msgstr "当用户发表新评论或回复时，自动向用户发送通知。请注意，只有启用了 WordPress 原生帖子评论功能，该功能才会起作用。"
+
+#: admin/templates/pages/pushnotifications.php:460
+msgid ""
+"Notifies users of new comments or replies on threads they've participated in."
+msgstr "通知用户他们参与的主题的新评论或回复。"
+
+#: admin/templates/pages/pushnotifications.php:482
+msgid "Price Drop"
+msgstr "降价"
+
+#: admin/templates/pages/pushnotifications.php:489
+msgid ""
+"Sends automatic notification to website users when the product price drops. "
+"Notification will include product title and featured image."
+msgstr "当产品降价时，自动向网站用户发送通知。通知内容包括产品标题和特色图片。"
+
+#: admin/templates/pages/pushnotifications.php:494
+msgid "Sends notification to users when the product price drops."
+msgstr "当产品降价时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:514
+msgid "Sale Price"
+msgstr "销售价格"
+
+#: admin/templates/pages/pushnotifications.php:521
+msgid ""
+"Sends automatic notification to website users when the sale price is added "
+"to the product. Notification will include product title and featured image."
+msgstr "当产品的销售价格被添加时，会自动向网站用户发送通知。通知内容包括产品标题和特色图片。"
+
+#: admin/templates/pages/pushnotifications.php:526
+msgid "Sends notification to users when sale price is added to product."
+msgstr "在产品添加售价时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:546
+msgid "Back In Stock"
+msgstr "返回库存"
+
+#: admin/templates/pages/pushnotifications.php:553
+msgid ""
+"Sends automatic notification to website users when the product is back in "
+"stock. Notification will include product title and featured image."
+msgstr "当产品恢复库存时，自动向网站用户发送通知。通知内容包括产品标题和特色图片。"
+
+#: admin/templates/pages/pushnotifications.php:558
+msgid "Sends notification to users when product is back in stock."
+msgstr "在产品恢复库存时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:578
+msgid "Order Status Update"
+msgstr "订单状态更新"
+
+#: admin/templates/pages/pushnotifications.php:585
+msgid ""
+"Sends automatic notification to website users when the order status is "
+"updated. Notification will include what status change details."
+msgstr "当订单状态更新时，自动向网站用户发送通知。通知将包括状态更改的详细信息。"
+
+#: admin/templates/pages/pushnotifications.php:590
+msgid "Sends notification to users when the order status is updated."
+msgstr "订单状态更新时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:608
+msgid "New Order"
+msgstr "新秩序"
+
+#: admin/templates/pages/pushnotifications.php:615
+msgid ""
+"Sends automatic notification to admins when new order is placed. "
+"Notification will include order details."
+msgstr "下达新订单时自动向管理员发送通知。通知内容包括订单详情。"
+
+#: admin/templates/pages/pushnotifications.php:620
+msgid "Sends notification to admins when new order is placed."
+msgstr "下达新订单时向管理员发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:638
+msgid "Low Stock"
+msgstr "低库存"
+
+#: admin/templates/pages/pushnotifications.php:645
+msgid ""
+"Sends automatic notification to admins when a product is low in stock. "
+"Notification will include product details."
+msgstr "当产品库存不足时，自动向管理员发送通知。通知将包括产品详细信息。"
+
+#: admin/templates/pages/pushnotifications.php:650
+msgid "Sends notification to admins when a product is low in stock."
+msgstr "当产品库存不足时向管理员发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:670
+msgid "Member Mention"
+msgstr "成员提及"
+
+#: admin/templates/pages/pushnotifications.php:677
+msgid ""
+"Sends automatic notification to users when a member mentions someone in an "
+"update @username."
+msgstr "当成员在更新中 @ 用户名时提到某人，会自动向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:682
+msgid "Sends notification to users when they are mentioned by a member."
+msgstr "当用户被某个会员提及时，向其发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:700
+msgid "Member Reply"
+msgstr "成员答复"
+
+#: admin/templates/pages/pushnotifications.php:707
+msgid ""
+"Sends automatic notification to users when a member replies to an update or "
+"comment."
+msgstr "当有成员回复更新或评论时，自动向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:712
+msgid "Sends notification to users when a member replies."
+msgstr "成员回复时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:730
+msgid "New Message"
+msgstr "新信息"
+
+#: admin/templates/pages/pushnotifications.php:737
+msgid ""
+"Sends automatic notification to users when a new message is received in "
+"their DMs."
+msgstr "当用户的 DM 中收到新信息时，向用户发送自动通知。"
+
+#: admin/templates/pages/pushnotifications.php:742
+msgid "Sends notification to users when a new message is received."
+msgstr "收到新信息时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:760
+msgid "Friend Request"
+msgstr "好友申请"
+
+#: admin/templates/pages/pushnotifications.php:767
+msgid ""
+"Sends automatic notification to users when a new friend request is received."
+msgstr "收到新的好友请求时自动向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:772
+msgid "Sends notification to users when a new friend request is received."
+msgstr "收到新好友请求时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:790
+msgid "Friend Accepted"
+msgstr "接受朋友"
+
+#: admin/templates/pages/pushnotifications.php:797
+msgid ""
+"Sends automatic notification to users when the friend request is accepted."
+msgstr "接受好友请求时自动向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:802
+msgid "Sends notification to users when the friend request is accepted."
+msgstr "接受好友请求时向用户发送通知。"
+
+#: admin/templates/pages/pushnotifications.php:845
+msgid "The push notification will be sent to all of your subscribers."
+msgstr "推送通知将发送给您的所有订阅者。"
+
+#: admin/templates/pages/pushnotifications.php:860
+#: admin/templates/pages/pushnotifications.php:880
+msgid "Notification Image"
+msgstr "通知图像"
+
+#: admin/templates/pages/pushnotifications.php:867
+msgid "Adds a large image to notification."
+msgstr "在通知中添加大图。"
+
+#: admin/templates/pages/pushnotifications.php:899
+msgid "Select Image"
+msgstr "选择图像"
+
+#: admin/templates/pages/pushnotifications.php:907
+msgid "Notification Title"
+msgstr "通知标题"
+
+#: admin/templates/pages/pushnotifications.php:914
+msgid "Enter the title of your notification."
+msgstr "输入通知标题。"
+
+#: admin/templates/pages/pushnotifications.php:918
+msgid "Enter Notification Title"
+msgstr "输入通知标题"
+
+#: admin/templates/pages/pushnotifications.php:922
+msgid "Notification Message"
+msgstr "通知信息"
+
+#: admin/templates/pages/pushnotifications.php:929
+msgid "Enter the message of your notification."
+msgstr "输入通知信息。"
+
+#: admin/templates/pages/pushnotifications.php:933
+msgid "Enter Notification Message"
+msgstr "输入通知信息"
+
+#: admin/templates/pages/pushnotifications.php:937
+msgid "Notification URL"
+msgstr "通知 URL"
+
+#: admin/templates/pages/pushnotifications.php:944
+msgid ""
+"Enter the URL of your notification. Your users will be redirected to this "
+"URL after they click on your notification."
+msgstr "输入通知的 URL。用户点击通知后将被重定向到此 URL。"
+
+#: admin/templates/pages/pushnotifications.php:948
+msgid "Enter Notification URL"
+msgstr "输入通知 URL"
+
+#: admin/templates/pages/pushnotifications.php:952
+msgid "Action Buttons"
+msgstr "操作按钮"
+
+#: admin/templates/pages/pushnotifications.php:959
+msgid ""
+"Adds action buttons to your notification. You can add up to two action "
+"buttons per notification. However, not all browsers support action buttons, "
+"so they will only be displayed for users with compatible browsers."
+msgstr "在通知中添加操作按钮。每个通知最多可添加两个操作按钮。不过，并非所有浏览器都支持操作按钮，因此只有使用兼容浏览器的用户才会显示这些按钮。"
+
+#: admin/templates/pages/pushnotifications.php:966
+msgid "Enter Action Button Text"
+msgstr "输入操作按钮文本"
+
+#: admin/templates/pages/pushnotifications.php:969
+msgid "Enter Action Button URL"
+msgstr "输入操作按钮 URL"
+
+#: admin/templates/pages/pushnotifications.php:992
+msgid "Add Action Button"
+msgstr "添加操作按钮"
+
+#: admin/templates/pages/pushnotifications.php:1000
+msgid "Vibration"
+msgstr "振动"
+
+#: admin/templates/pages/pushnotifications.php:1007
+msgid ""
+"Allows notification to vibrate the user's device as soon as it's delivered. "
+"This will only work on the mobile and tablet devices as desktop devices do "
+"not have vibrations."
+msgstr "允许通知发送后立即震动用户的设备。这只适用于移动和平板设备，因为台式机设备没有震动功能。"
+
+#: admin/templates/pages/pushnotifications.php:1012
+msgid ""
+"If enabled, your notification will vibrate the user's device upon delivery."
+msgstr "如果启用，您的通知将在发送时振动用户的设备。"
+
+#: admin/templates/pages/pushnotifications.php:1026
+msgid "Persistent"
+msgstr "持久性"
+
+#: admin/templates/pages/pushnotifications.php:1033
+msgid ""
+"Your notification will not hide automatically after some time and it will "
+"require user interaction to be dismissed."
+msgstr "一段时间后，您的通知不会自动隐藏，而是需要用户交互才能解除。"
+
+#: admin/templates/pages/pushnotifications.php:1038
+msgid ""
+"If enabled, the notification will remain visible until the user interacts "
+"with it."
+msgstr "如果启用，通知将保持可见，直到用户与之交互。"
+
+#: admin/templates/pages/pushnotifications.php:1052
+msgid "Preview Notification"
+msgstr "预览通知"
+
+#: admin/templates/pages/pushnotifications.php:1056
+msgid "Sending..."
+msgstr "发送..."
+
+#: admin/templates/pages/uicomponents.php:19
+msgid "Navigation Tab Bar"
+msgstr "导航标签栏"
+
+#: admin/templates/pages/uicomponents.php:28
+msgid ""
+"Navigation tab bar provides app like experience by adding tabbed navigation "
+"menu bar on the bottom of your web app when accessed from mobile devices."
+msgstr "当从移动设备访问网络应用时，导航标签栏通过在底部添加标签式导航菜单栏，提供类似应用的体验。"
+
+#: admin/templates/pages/uicomponents.php:48
+msgid ""
+"Select on what device types navigation tab bar feature should be active and "
+"running."
+msgstr "选择导航标签栏功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/uicomponents.php:69
+msgid "Navigation Items"
+msgstr "导航项目"
+
+#: admin/templates/pages/uicomponents.php:76
+msgid ""
+"Add items to the navigation tab bar by selecting the icon, label and the "
+"page."
+msgstr "通过选择图标、标签和页面，将项目添加到导航标签栏。"
+
+#: admin/templates/pages/uicomponents.php:84
+msgid "Icon"
+msgstr "图标"
+
+#: admin/templates/pages/uicomponents.php:90
+msgid "Activity"
+msgstr "活动"
+
+#: admin/templates/pages/uicomponents.php:93
+msgid "Alarm Clock"
+msgstr "闹钟"
+
+#: admin/templates/pages/uicomponents.php:96
+msgid "Album"
+msgstr "相册"
+
+#: admin/templates/pages/uicomponents.php:99
+msgid "Archive"
+msgstr "档案"
+
+#: admin/templates/pages/uicomponents.php:102
+msgid "Award"
+msgstr "奖项"
+
+#: admin/templates/pages/uicomponents.php:105
+msgid "Bed"
+msgstr "床"
+
+#: admin/templates/pages/uicomponents.php:108
+msgid "Bell"
+msgstr "贝尔"
+
+#: admin/templates/pages/uicomponents.php:111
+msgid "Bird"
+msgstr "鸟类"
+
+#: admin/templates/pages/uicomponents.php:114
+msgid "Bitcoin"
+msgstr "比特币"
+
+#: admin/templates/pages/uicomponents.php:117
+msgid "Bluetooth"
+msgstr "蓝牙"
+
+#: admin/templates/pages/uicomponents.php:120
+msgid "Bone"
+msgstr "骨质"
+
+#: admin/templates/pages/uicomponents.php:123
+msgid "Book"
+msgstr "图书"
+
+#: admin/templates/pages/uicomponents.php:126
+msgid "Bookmark"
+msgstr "书签"
+
+#: admin/templates/pages/uicomponents.php:129
+msgid "Bot"
+msgstr "机器人"
+
+#: admin/templates/pages/uicomponents.php:132
+msgid "Box"
+msgstr "盒子"
+
+#: admin/templates/pages/uicomponents.php:135
+msgid "Briefcase Business"
+msgstr "公文包商务"
+
+#: admin/templates/pages/uicomponents.php:138
+msgid "Briefcase Medical"
+msgstr "公文包医疗"
+
+#: admin/templates/pages/uicomponents.php:141
+msgid "Broom"
+msgstr "扫帚"
+
+#: admin/templates/pages/uicomponents.php:144
+msgid "Brush"
+msgstr "刷子"
+
+#: admin/templates/pages/uicomponents.php:147
+msgid "Burger"
+msgstr "汉堡"
+
+#: admin/templates/pages/uicomponents.php:150
+msgid "Calendar"
+msgstr "日历"
+
+#: admin/templates/pages/uicomponents.php:153
+msgid "Camera"
+msgstr "照相机"
+
+#: admin/templates/pages/uicomponents.php:156
+msgid "Car"
+msgstr "汽车"
+
+#: admin/templates/pages/uicomponents.php:159
+msgid "Cat"
+msgstr "猫"
+
+#: admin/templates/pages/uicomponents.php:162
+msgid "Chart Line"
+msgstr "图表线"
+
+#: admin/templates/pages/uicomponents.php:165
+msgid "Chart Pie"
+msgstr "图表饼"
+
+#: admin/templates/pages/uicomponents.php:168
+msgid "Clock"
+msgstr "时钟"
+
+#: admin/templates/pages/uicomponents.php:171
+msgid "Cloud"
+msgstr "云"
+
+#: admin/templates/pages/uicomponents.php:174
+msgid "Coffee"
+msgstr "咖啡"
+
+#: admin/templates/pages/uicomponents.php:177
+msgid "Compass"
+msgstr "指南针"
+
+#: admin/templates/pages/uicomponents.php:180
+msgid "Concierge Bell"
+msgstr "礼宾钟"
+
+#: admin/templates/pages/uicomponents.php:183
+msgid "Cookie"
+msgstr "饼干"
+
+#: admin/templates/pages/uicomponents.php:186
+msgid "CPU"
+msgstr "CPU"
+
+#: admin/templates/pages/uicomponents.php:189
+msgid "Credit Card"
+msgstr "信用卡"
+
+#: admin/templates/pages/uicomponents.php:192
+msgid "Crown"
+msgstr "官方"
+
+#: admin/templates/pages/uicomponents.php:195
+msgid "Database"
+msgstr "数据库"
+
+#: admin/templates/pages/uicomponents.php:198
+msgid "Dices"
+msgstr "骰子"
+
+#: admin/templates/pages/uicomponents.php:201
+msgid "DNA"
+msgstr "脱氧核糖核酸"
+
+#: admin/templates/pages/uicomponents.php:204
+msgid "Dog"
+msgstr "狗"
+
+#: admin/templates/pages/uicomponents.php:207
+msgid "Dollar Sign"
+msgstr "美元符号"
+
+#: admin/templates/pages/uicomponents.php:210
+msgid "Download"
+msgstr "下载"
+
+#: admin/templates/pages/uicomponents.php:213
+msgid "Drama"
+msgstr "戏剧"
+
+#: admin/templates/pages/uicomponents.php:216
+msgid "Drill"
+msgstr "钻孔"
+
+#: admin/templates/pages/uicomponents.php:219
+msgid "Euro"
+msgstr "欧元"
+
+#: admin/templates/pages/uicomponents.php:222
+msgid "Eye"
+msgstr "眼睛"
+
+#: admin/templates/pages/uicomponents.php:225
+msgid "Facebook"
+msgstr "在 Facebook 上"
+
+#: admin/templates/pages/uicomponents.php:228
+msgid "File"
+msgstr "文件"
+
+#: admin/templates/pages/uicomponents.php:231
+msgid "Film"
+msgstr "电影"
+
+#: admin/templates/pages/uicomponents.php:234
+msgid "Filter"
+msgstr "过滤器"
+
+#: admin/templates/pages/uicomponents.php:237
+msgid "Fingerprint"
+msgstr "指纹"
+
+#: admin/templates/pages/uicomponents.php:240
+msgid "Flag"
+msgstr "旗帜"
+
+#: admin/templates/pages/uicomponents.php:243
+msgid "Flame"
+msgstr "火焰"
+
+#: admin/templates/pages/uicomponents.php:246
+msgid "Flower"
+msgstr "花卉"
+
+#: admin/templates/pages/uicomponents.php:249
+msgid "Folder"
+msgstr "文件夹"
+
+#: admin/templates/pages/uicomponents.php:252
+msgid "Gallery Horizontal End"
+msgstr "画廊水平端"
+
+#: admin/templates/pages/uicomponents.php:255
+msgid "Gamepad"
+msgstr "游戏板"
+
+#: admin/templates/pages/uicomponents.php:258
+msgid "Gauge"
+msgstr "仪表"
+
+#: admin/templates/pages/uicomponents.php:261
+msgid "Gavel"
+msgstr "标尺"
+
+#: admin/templates/pages/uicomponents.php:264
+msgid "Gem"
+msgstr "宝石"
+
+#: admin/templates/pages/uicomponents.php:267
+msgid "Gift"
+msgstr "礼物"
+
+#: admin/templates/pages/uicomponents.php:270
+msgid "Glasses"
+msgstr "眼镜"
+
+#: admin/templates/pages/uicomponents.php:273
+msgid "Globe"
+msgstr "全球"
+
+#: admin/templates/pages/uicomponents.php:276
+msgid "Graduation Cap"
+msgstr "毕业帽"
+
+#: admin/templates/pages/uicomponents.php:279
+msgid "Hammer"
+msgstr "锤子"
+
+#: admin/templates/pages/uicomponents.php:282
+msgid "Hand Heart"
+msgstr "手心"
+
+#: admin/templates/pages/uicomponents.php:285
+msgid "Headphones"
+msgstr "耳机"
+
+#: admin/templates/pages/uicomponents.php:288
+msgid "Heart"
+msgstr "心脏"
+
+#: admin/templates/pages/uicomponents.php:291
+msgid "Hourglass"
+msgstr "沙漏"
+
+#: admin/templates/pages/uicomponents.php:294
+msgid "House"
+msgstr "房屋"
+
+#: admin/templates/pages/uicomponents.php:297
+msgid "Image"
+msgstr "图片"
+
+#: admin/templates/pages/uicomponents.php:300
+msgid "Info"
+msgstr "信息"
+
+#: admin/templates/pages/uicomponents.php:303
+msgid "Instagram"
+msgstr "Instagram"
+
+#: admin/templates/pages/uicomponents.php:306
+msgid "Key Round"
+msgstr "圆形钥匙"
+
+#: admin/templates/pages/uicomponents.php:309
+msgid "Landmark"
+msgstr "地标"
+
+#: admin/templates/pages/uicomponents.php:312
+msgid "Languages"
+msgstr "语言"
+
+#: admin/templates/pages/uicomponents.php:315
+msgid "Layers"
+msgstr "层数"
+
+#: admin/templates/pages/uicomponents.php:318
+msgid "Layout Grid"
+msgstr "布局网格"
+
+#: admin/templates/pages/uicomponents.php:321
+msgid "Life Buoy"
+msgstr "救生圈"
+
+#: admin/templates/pages/uicomponents.php:324
+msgid "Link"
+msgstr "链接"
+
+#: admin/templates/pages/uicomponents.php:327
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: admin/templates/pages/uicomponents.php:330
+msgid "Lock"
+msgstr "锁"
+
+#: admin/templates/pages/uicomponents.php:333
+msgid "Mail"
+msgstr "邮件"
+
+#: admin/templates/pages/uicomponents.php:336
+msgid "Map Pin"
+msgstr "地图针"
+
+#: admin/templates/pages/uicomponents.php:339
+msgid "Megaphone"
+msgstr "扩音器"
+
+#: admin/templates/pages/uicomponents.php:342
+msgid "Message Circle"
+msgstr "留言圈"
+
+#: admin/templates/pages/uicomponents.php:345
+msgid "Mic"
+msgstr "麦克风"
+
+#: admin/templates/pages/uicomponents.php:348
+msgid "Monitor Smartphone"
+msgstr "监控智能手机"
+
+#: admin/templates/pages/uicomponents.php:351
+msgid "Moon"
+msgstr "月亮"
+
+#: admin/templates/pages/uicomponents.php:354
+#: admin/templates/pages/webappmanifest.php:204
+msgid "Music"
+msgstr "音乐"
+
+#: admin/templates/pages/uicomponents.php:357
+#: admin/templates/pages/webappmanifest.php:205
+msgid "Navigation"
+msgstr "导航"
+
+#: admin/templates/pages/uicomponents.php:360
+msgid "Network"
+msgstr "网络"
+
+#: admin/templates/pages/uicomponents.php:363
+msgid "Newspaper"
+msgstr "报纸"
+
+#: admin/templates/pages/uicomponents.php:366
+msgid "Palette"
+msgstr "调色板"
+
+#: admin/templates/pages/uicomponents.php:369
+msgid "Paperclip"
+msgstr "纸夹"
+
+#: admin/templates/pages/uicomponents.php:372
+msgid "Paw Print"
+msgstr "爪印"
+
+#: admin/templates/pages/uicomponents.php:375
+msgid "Pencil"
+msgstr "铅笔"
+
+#: admin/templates/pages/uicomponents.php:378
+#: admin/templates/pages/uicomponents.php:1008
+msgid "Percent"
+msgstr "百分比"
+
+#: admin/templates/pages/uicomponents.php:381
+msgid "Phone"
+msgstr "电话"
+
+#: admin/templates/pages/uicomponents.php:384
+msgid "Pill"
+msgstr "药丸"
+
+#: admin/templates/pages/uicomponents.php:387
+msgid "Pin"
+msgstr "针脚"
+
+#: admin/templates/pages/uicomponents.php:390
+msgid "Pizza"
+msgstr "比萨"
+
+#: admin/templates/pages/uicomponents.php:393
+msgid "Plane"
+msgstr "飞机"
+
+#: admin/templates/pages/uicomponents.php:396
+msgid "Play"
+msgstr "播放"
+
+#: admin/templates/pages/uicomponents.php:399
+msgid "Plus"
+msgstr "加"
+
+#: admin/templates/pages/uicomponents.php:402
+msgid "Podcast"
+msgstr "播客"
+
+#: admin/templates/pages/uicomponents.php:405
+msgid "Popcorn"
+msgstr "爆米花"
+
+#: admin/templates/pages/uicomponents.php:408
+msgid "Printer"
+msgstr "打印机"
+
+#: admin/templates/pages/uicomponents.php:411
+msgid "Puzzle"
+msgstr "拼图"
+
+#: admin/templates/pages/uicomponents.php:414
+msgid "Rocket"
+msgstr "火箭"
+
+#: admin/templates/pages/uicomponents.php:417
+msgid "Save"
+msgstr "节省"
+
+#: admin/templates/pages/uicomponents.php:420
+msgid "Scale"
+msgstr "规模"
+
+#: admin/templates/pages/uicomponents.php:426
+msgid "Send"
+msgstr "发送"
+
+#: admin/templates/pages/uicomponents.php:429
+msgid "Settings"
+msgstr "设置"
+
+#: admin/templates/pages/uicomponents.php:432
+msgid "Share"
+msgstr "分享"
+
+#: admin/templates/pages/uicomponents.php:435
+msgid "Shield"
+msgstr "防护罩"
+
+#: admin/templates/pages/uicomponents.php:438
+msgid "Shirt"
+msgstr "衬衫"
+
+#: admin/templates/pages/uicomponents.php:441
+msgid "Shopping Bag"
+msgstr "购物袋"
+
+#: admin/templates/pages/uicomponents.php:444
+msgid "Shopping Cart"
+msgstr "购物车"
+
+#: admin/templates/pages/uicomponents.php:447
+msgid "Skull"
+msgstr "骷髅头"
+
+#: admin/templates/pages/uicomponents.php:450
+msgid "Sofa"
+msgstr "沙发"
+
+#: admin/templates/pages/uicomponents.php:453
+msgid "Sparkles"
+msgstr "火花"
+
+#: admin/templates/pages/uicomponents.php:456
+msgid "Sprout"
+msgstr "萌芽"
+
+#: admin/templates/pages/uicomponents.php:459
+msgid "Star"
+msgstr "明星"
+
+#: admin/templates/pages/uicomponents.php:462
+msgid "Stethoscope"
+msgstr "听诊器"
+
+#: admin/templates/pages/uicomponents.php:465
+msgid "Store"
+msgstr "商店"
+
+#: admin/templates/pages/uicomponents.php:468
+msgid "Sun"
+msgstr "太阳"
+
+#: admin/templates/pages/uicomponents.php:471
+msgid "Tag"
+msgstr "标签"
+
+#: admin/templates/pages/uicomponents.php:474
+msgid "Target"
+msgstr "目标"
+
+#: admin/templates/pages/uicomponents.php:477
+msgid "Test Tube Diagonal"
+msgstr "试管对角线"
+
+#: admin/templates/pages/uicomponents.php:480
+msgid "Thumbs Up"
+msgstr "竖起大拇指"
+
+#: admin/templates/pages/uicomponents.php:483
+msgid "Ticket"
+msgstr "门票"
+
+#: admin/templates/pages/uicomponents.php:486
+msgid "Toilet"
+msgstr "厕所"
+
+#: admin/templates/pages/uicomponents.php:489
+msgid "Trash"
+msgstr "垃圾"
+
+#: admin/templates/pages/uicomponents.php:492
+msgid "Tree Pine"
+msgstr "松树"
+
+#: admin/templates/pages/uicomponents.php:495
+msgid "Trending Down"
+msgstr "趋势向下"
+
+#: admin/templates/pages/uicomponents.php:498
+msgid "Trending Up"
+msgstr "发展趋势"
+
+#: admin/templates/pages/uicomponents.php:501
+msgid "Triangle Alert"
+msgstr "三角警报"
+
+#: admin/templates/pages/uicomponents.php:504
+msgid "Trophy"
+msgstr "奖杯"
+
+#: admin/templates/pages/uicomponents.php:507
+msgid "Twitch"
+msgstr "Twitch"
+
+#: admin/templates/pages/uicomponents.php:510
+msgid "Twitter"
+msgstr "推特"
+
+#: admin/templates/pages/uicomponents.php:513
+msgid "Upload"
+msgstr "上传"
+
+#: admin/templates/pages/uicomponents.php:516
+msgid "User"
+msgstr "用户"
+
+#: admin/templates/pages/uicomponents.php:519
+msgid "Utensils"
+msgstr "餐具"
+
+#: admin/templates/pages/uicomponents.php:522
+msgid "Video"
+msgstr "视频"
+
+#: admin/templates/pages/uicomponents.php:525
+msgid "Volume"
+msgstr "卷数"
+
+#: admin/templates/pages/uicomponents.php:528
+msgid "Wallet"
+msgstr "钱包"
+
+#: admin/templates/pages/uicomponents.php:531
+msgid "Wand Sparkles"
+msgstr "魔杖闪光"
+
+#: admin/templates/pages/uicomponents.php:534
+msgid "Watch"
+msgstr "观看"
+
+#: admin/templates/pages/uicomponents.php:537
+msgid "Wifi"
+msgstr "无线网络"
+
+#: admin/templates/pages/uicomponents.php:540
+msgid "Wine"
+msgstr "葡萄酒"
+
+#: admin/templates/pages/uicomponents.php:543
+msgid "Wrench"
+msgstr "扳手"
+
+#: admin/templates/pages/uicomponents.php:546
+msgid "Youtube"
+msgstr "Youtube"
+
+#: admin/templates/pages/uicomponents.php:549
+msgid "Zap"
+msgstr "咔嚓"
+
+#: admin/templates/pages/uicomponents.php:553
+msgid "Enter Label"
+msgstr "输入标签"
+
+#: admin/templates/pages/uicomponents.php:557
+msgid "Select Page"
+msgstr "选择页面"
+
+#: admin/templates/pages/uicomponents.php:560
+#: admin/templates/pages/webappmanifest.php:271
+#: admin/templates/pages/webappmanifest.php:566
+msgid "Home Page"
+msgstr "主页"
+
+#: admin/templates/pages/uicomponents.php:587
+msgid "Add Navigation Item"
+msgstr "添加导航项目"
+
+#: admin/templates/pages/uicomponents.php:615
+msgid "Scroll Progress Bar"
+msgstr "滚动进度条"
+
+#: admin/templates/pages/uicomponents.php:624
+msgid ""
+"Scroll Progress Bar feature creates a progress bar on top of the page that "
+"indicates the scroll progress percentage of the page."
+msgstr "滚动进度条功能可在页面顶部创建一个进度条，显示页面的滚动进度百分比。"
+
+#: admin/templates/pages/uicomponents.php:644
+msgid ""
+"Select on what device types scroll progress bar feature should be active and "
+"running."
+msgstr "选择应在哪些设备类型上激活和运行滚动进度条功能。"
+
+#: admin/templates/pages/uicomponents.php:687
+msgid "Dark Mode"
+msgstr "黑暗模式"
+
+#: admin/templates/pages/uicomponents.php:693
+msgid ""
+"Dark mode adds a switch to your website, allowing users to toggle to a dark "
+"version. It can also auto-enable if the user's device is set to Dark Mode or "
+"has a low battery, helping save energy."
+msgstr "黑暗模式为网站增加了一个开关，允许用户切换到黑暗版本。如果用户的设备设置为黑暗模式或电池电量不足，它还可以自动启用，帮助节省能源。"
+
+#: admin/templates/pages/uicomponents.php:706
+msgid "Switch Button Type"
+msgstr "开关按钮类型"
+
+#: admin/templates/pages/uicomponents.php:713
+msgid "Select type of your dark mode switch button."
+msgstr "选择黑暗模式开关按钮的类型。"
+
+#: admin/templates/pages/uicomponents.php:718
+msgid "Select Switch Button Type"
+msgstr "选择开关按钮类型"
+
+#: admin/templates/pages/uicomponents.php:720
+msgid "Menu Switch"
+msgstr "菜单开关"
+
+#: admin/templates/pages/uicomponents.php:721
+msgid "Floating Button"
+msgstr "浮动按钮"
+
+#: admin/templates/pages/uicomponents.php:728
+msgid "OS Aware Dark Mode"
+msgstr "操作系统感知黑暗模式"
+
+#: admin/templates/pages/uicomponents.php:735
+msgid ""
+"OS aware dark mode automatically switches your website to a dark mode if "
+"your user's device OS theme preference is set to Dark in display settings."
+msgstr "如果用户的设备操作系统主题偏好在显示设置中设置为暗色，操作系统感知暗色模式会自动将网站切换为暗色模式。"
+
+#: admin/templates/pages/uicomponents.php:742
+msgid "Auto-enable Dark Mode if the user's device is set to Dark Mode."
+msgstr "如果用户的设备已设置为暗色模式，则自动启用暗色模式。"
+
+#: admin/templates/pages/uicomponents.php:750
+msgid "Battery Low Dark Mode"
+msgstr "电池电量低黑暗模式"
+
+#: admin/templates/pages/uicomponents.php:757
+msgid ""
+"Battery low dark mode automatically switches your website to a dark mode if "
+"your user's device battery level is less than 10%, thus saving their battery "
+"from draining fast."
+msgstr "如果用户的设备电池电量低于 10%，电池电量低黑暗模式会自动将网站切换为黑暗模式，从而避免电池快速耗尽。"
+
+#: admin/templates/pages/uicomponents.php:764
+msgid "Auto-enable Dark Mode if your user's device battery level is low."
+msgstr "如果用户的设备电池电量不足，可自动启用黑暗模式。"
+
+#: admin/templates/pages/uicomponents.php:779
+msgid ""
+"Select on what device types dark mode feature should be active and running."
+msgstr "选择暗模式功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/uicomponents.php:824
+msgid "Pull Down Refresh"
+msgstr "下拉刷新"
+
+#: admin/templates/pages/uicomponents.php:833
+msgid ""
+"Pull down refresh touchscreen gesture allows your users to drag the screen "
+"and then release it, as a signal to the application to refresh contents of "
+"your web app."
+msgstr "下拉刷新触摸屏手势允许用户拖动屏幕，然后松开，以此向应用程序发出信号，刷新网络应用程序的内容。"
+
+#: admin/templates/pages/uicomponents.php:853
+msgid ""
+"Select on what device types pull down navigation feature should be active "
+"and running."
+msgstr "选择下拉导航功能应在哪些设备上激活和运行。"
+
+#: admin/templates/pages/uicomponents.php:894
+msgid "Shake Refresh"
+msgstr "奶昔刷新"
+
+#: admin/templates/pages/uicomponents.php:900
+msgid ""
+"Shake refresh gesture brings amazing UX experience to your users by simply "
+"shaking phone as a signal to your web application to refresh the contents of "
+"the screen."
+msgstr "摇动刷新手势可为用户带来令人惊叹的用户体验，只需摇动手机，网络应用程序就会发出信号，刷新屏幕内容。"
+
+#: admin/templates/pages/uicomponents.php:920
+msgid ""
+"Select on what device types swipe navigation feature should be active and "
+"running."
+msgstr "选择哪些设备类型应激活和运行轻扫导航功能。"
+
+#: admin/templates/pages/uicomponents.php:961
+msgid "Page Loader"
+msgstr "页面加载器"
+
+#: admin/templates/pages/uicomponents.php:967
+msgid ""
+"Page Loader feature gives you ability to show a nice page loader animation "
+"between page loadings. Page Loader appears at the start of page load and "
+"disappears after it is fully loaded."
+msgstr "页面加载器功能可在页面加载之间显示漂亮的页面加载器动画。页面加载器在页面加载开始时出现，并在页面完全加载后消失。"
+
+#: admin/templates/pages/uicomponents.php:980
+msgid "Page Loader Type"
+msgstr "页面加载器类型"
+
+#: admin/templates/pages/uicomponents.php:987
+msgid "Select the type of page loader you want on your website."
+msgstr "选择您希望在网站上使用的页面加载器类型。"
+
+#: admin/templates/pages/uicomponents.php:992
+msgid "Select Page Loader Type"
+msgstr "选择页面加载器类型"
+
+#: admin/templates/pages/uicomponents.php:995
+msgid ""
+"Your PWA icon (your website logo) bounces in the middle of the screen, "
+"providing a simple and recognizable loading animation."
+msgstr "您的 PWA 图标（您的网站徽标）会在屏幕中间跳动，提供一个简单易识别的加载动画。"
+
+#: admin/templates/pages/uicomponents.php:996
+msgid "Default"
+msgstr "默认值"
+
+#: admin/templates/pages/uicomponents.php:998
+msgid ""
+"Shows a skeleton loading screen, providing a placeholder layout that mimics "
+"the structure of the content being loaded, enhancing perceived performance."
+msgstr "显示骨架加载屏幕，提供模仿加载内容结构的占位符布局，提高感知性能。"
+
+#: admin/templates/pages/uicomponents.php:999
+msgid "Skeleton"
+msgstr "骨架"
+
+#: admin/templates/pages/uicomponents.php:1001
+msgid ""
+"Displays spinning circles as the loading animation, indicating that the page "
+"is loading with a familiar, straightforward visual."
+msgstr "将旋转的圆圈显示为加载动画，以熟悉、直观的视觉效果表示页面正在加载。"
+
+#: admin/templates/pages/uicomponents.php:1002
+msgid "Spinner"
+msgstr "旋转器"
+
+#: admin/templates/pages/uicomponents.php:1004
+msgid ""
+"Features a flying man icon moving across a yellow background, offering a fun "
+"and playful loading experience that entertains users while they wait."
+msgstr "黄色背景上有一个飞人图标在移动，提供了一种有趣的加载体验，让用户在等待时也能得到娱乐。"
+
+#: admin/templates/pages/uicomponents.php:1005
+msgid "Redirect"
+msgstr "重定向"
+
+#: admin/templates/pages/uicomponents.php:1007
+msgid ""
+"Displays the loading percentage and a progress bar, giving users a clear and "
+"precise indication of the page loading progress."
+msgstr "显示加载百分比和进度条，让用户清晰准确地了解页面加载进度。"
+
+#: admin/templates/pages/uicomponents.php:1010
+msgid ""
+"Smooth transition with fade in and fade out effects, creating a seamless and "
+"visually appealing loading experience."
+msgstr "通过淡入和淡出效果实现平滑过渡，创造出无缝和具有视觉吸引力的加载体验。"
+
+#: admin/templates/pages/uicomponents.php:1025
+msgid ""
+"Select on what device types page loader feature should be active and running."
+msgstr "选择页面加载器功能应在哪些设备类型上激活和运行。"
+
+#: admin/templates/pages/uicomponents.php:1070
+msgid "Inactive Blur"
+msgstr "非活动模糊"
+
+#: admin/templates/pages/uicomponents.php:1076
+msgid ""
+"Inactive Blur feature blurs the website when it's not focused, so when the "
+"user switches to another tab in browser or will minimize your website as a "
+"background task your website will be blurred."
+msgstr "非活动模糊功能会在网站未聚焦时使其模糊，因此当用户切换到浏览器的另一个标签页或将网站最小化为背景任务时，网站就会模糊。"
+
+#: admin/templates/pages/uicomponents.php:1096
+msgid ""
+"Select on what device types inactive blur feature should be active and "
+"running."
+msgstr "选择哪些设备类型的非活动模糊功能应处于活动和运行状态。"
+
+#: admin/templates/pages/uicomponents.php:1136
+msgid "Toast Messages"
+msgstr "祝酒词"
+
+#: admin/templates/pages/uicomponents.php:1143
+msgid ""
+"Toast messages provide simple feedback about an operation in a small popup. "
+"It only fills the amount of space required for the message and the current "
+"activity remains visible and interactive. Toasts automatically disappear "
+"after a timeout."
+msgstr "祝酒词通过一个小弹出窗口提供有关操作的简单反馈。它只占用信息所需的空间，而当前活动仍然可见并具有交互性。敬酒信息会在超时后自动消失。"
+
+#: admin/templates/pages/uicomponents.php:1163
+msgid ""
+"Select on what device types toast messages feature should be active and "
+"running."
+msgstr "选择哪些设备类型的吐司信息功能应激活并运行。"
+
+#: admin/templates/pages/webappmanifest.php:20
+msgid "App Identity"
+msgstr "应用程序身份"
+
+#: admin/templates/pages/webappmanifest.php:23
+msgid ""
+"Define the core identifiers of your app such as the name, short name, icon, "
+"description, and categories which represent your app across devices and "
+"platforms."
+msgstr "定义应用程序的核心标识符，如名称、简称、图标、描述和类别，以便在各种设备和平台上代表应用程序。"
+
+#: admin/templates/pages/webappmanifest.php:32
+#: admin/templates/pages/webappmanifest.php:52
+#: admin/templates/pages/webappmanifest.php:555
+msgid "App Icon"
+msgstr "应用程序图标"
+
+#: admin/templates/pages/webappmanifest.php:39
+msgid ""
+"Upload an icon representing your app, used for home screen and app listings. "
+"Ideally your web app icon should be the logo of your website."
+msgstr "上传一个代表你的应用程序的图标，用于主屏幕和应用程序列表。理想情况下，您的网络应用程序图标应该是您网站的徽标。"
+
+#: admin/templates/pages/webappmanifest.php:71
+msgid "Select Icon"
+msgstr "选择图标"
+
+#: admin/templates/pages/webappmanifest.php:75
+msgid "Minimum 100x100 PNG, JPG, JPEG, or WEBP image."
+msgstr "最小尺寸为 100x100 的 PNG、JPG、JPEG 或 WEBP 图像。"
+
+#: admin/templates/pages/webappmanifest.php:84
+msgid "App Screenshots"
+msgstr "应用程序截图"
+
+#: admin/templates/pages/webappmanifest.php:91
+msgid ""
+"Upload screenshots of your app to showcase its features and user interface "
+"in app stores. By default, we auto-generate one mobile and one desktop "
+"version screenshot of your homepage, but you can add up to 5 screenshots of "
+"different screens and sizes."
+msgstr ""
+"上传应用程序的屏幕截图，以便在应用程序商店中展示其功能和用户界面。默认情况下，我们会自动生成一张移动版和一张桌面版的主页截图，但您最多可以添加 5 "
+"张不同屏幕和尺寸的截图。"
+
+#: admin/templates/pages/webappmanifest.php:108
+msgid "Drop your screenshots here or"
+msgstr "请在此处或"
+
+#: admin/templates/pages/webappmanifest.php:111
+msgid "browse"
+msgstr "浏览"
+
+#: admin/templates/pages/webappmanifest.php:115
+msgid "Select up to 5 screenshots."
+msgstr "最多选择 5 张截图。"
+
+#: admin/templates/pages/webappmanifest.php:124
+msgid "App Name"
+msgstr "应用程序名称"
+
+#: admin/templates/pages/webappmanifest.php:131
+msgid ""
+"Specify the full name of your web application, typically matching your "
+"business or service name."
+msgstr "指定网络应用程序的全名，通常与业务或服务名称相匹配。"
+
+#: admin/templates/pages/webappmanifest.php:135
+msgid "Enter App Name"
+msgstr "输入应用程序名称"
+
+#: admin/templates/pages/webappmanifest.php:141
+msgid "Short Name"
+msgstr "简称"
+
+#: admin/templates/pages/webappmanifest.php:148
+msgid ""
+"Provide a brief version (up to 12 characters) of your app’s name for display "
+"on home screens and dashboards."
+msgstr "提供应用程序名称的简短版本（最多 12 个字符），以便在主屏幕和仪表板上显示。"
+
+#: admin/templates/pages/webappmanifest.php:152
+msgid "Enter Short Name"
+msgstr "输入简称"
+
+#: admin/templates/pages/webappmanifest.php:158
+msgid "Description"
+msgstr "说明"
+
+#: admin/templates/pages/webappmanifest.php:165
+msgid "Enter a concise summary of your app's purpose and main features."
+msgstr "输入应用目的和主要功能的简明摘要。"
+
+#: admin/templates/pages/webappmanifest.php:169
+msgid "Enter Description"
+msgstr "输入描述"
+
+#: admin/templates/pages/webappmanifest.php:175
+msgid "Categories"
+msgstr "类别"
+
+#: admin/templates/pages/webappmanifest.php:182
+msgid ""
+"The categories describe the expected application categories to which the web "
+"application belongs. It's used as a hint to catalogs or store listing web "
+"applications. We recommend not to choose more than 3 categories."
+msgstr "类别描述了网络应用所属的预期应用类别。它可作为目录或商店列出网络应用程序的提示。我们建议选择的类别不要超过 3 个。"
+
+#: admin/templates/pages/webappmanifest.php:187
+msgid "Select Categories"
+msgstr "选择类别"
+
+#: admin/templates/pages/webappmanifest.php:190
+msgid "Books"
+msgstr "书籍"
+
+#: admin/templates/pages/webappmanifest.php:191
+msgid "Business"
+msgstr "商业"
+
+#: admin/templates/pages/webappmanifest.php:192
+msgid "Education"
+msgstr "教育"
+
+#: admin/templates/pages/webappmanifest.php:193
+msgid "Entertainment"
+msgstr "娱乐"
+
+#: admin/templates/pages/webappmanifest.php:194
+msgid "Finance"
+msgstr "财务"
+
+#: admin/templates/pages/webappmanifest.php:195
+msgid "Fitness"
+msgstr "健身"
+
+#: admin/templates/pages/webappmanifest.php:196
+msgid "Food"
+msgstr "食品"
+
+#: admin/templates/pages/webappmanifest.php:197
+msgid "Games"
+msgstr "游戏"
+
+#: admin/templates/pages/webappmanifest.php:198
+msgid "Government"
+msgstr "政府"
+
+#: admin/templates/pages/webappmanifest.php:199
+msgid "Health"
+msgstr "健康"
+
+#: admin/templates/pages/webappmanifest.php:200
+msgid "Kids"
+msgstr "儿童"
+
+#: admin/templates/pages/webappmanifest.php:201
+msgid "Lifestyle"
+msgstr "生活方式"
+
+#: admin/templates/pages/webappmanifest.php:202
+msgid "Magazines"
+msgstr "杂志"
+
+#: admin/templates/pages/webappmanifest.php:203
+msgid "Medical"
+msgstr "医疗"
+
+#: admin/templates/pages/webappmanifest.php:206
+msgid "News"
+msgstr "新闻"
+
+#: admin/templates/pages/webappmanifest.php:207
+msgid "Personalization"
+msgstr "个性化"
+
+#: admin/templates/pages/webappmanifest.php:208
+msgid "Photo"
+msgstr "照片"
+
+#: admin/templates/pages/webappmanifest.php:209
+msgid "Politics"
+msgstr "政治"
+
+#: admin/templates/pages/webappmanifest.php:210
+msgid "Productivity"
+msgstr "生产率"
+
+#: admin/templates/pages/webappmanifest.php:211
+msgid "Security"
+msgstr "安全"
+
+#: admin/templates/pages/webappmanifest.php:212
+msgid "Shopping"
+msgstr "购物"
+
+#: admin/templates/pages/webappmanifest.php:213
+msgid "Social"
+msgstr "社会"
+
+#: admin/templates/pages/webappmanifest.php:214
+msgid "Sports"
+msgstr "体育"
+
+#: admin/templates/pages/webappmanifest.php:215
+msgid "Travel"
+msgstr "旅行"
+
+#: admin/templates/pages/webappmanifest.php:216
+msgid "Utilities"
+msgstr "公用设施"
+
+#: admin/templates/pages/webappmanifest.php:217
+msgid "Weather"
+msgstr "天气"
+
+#: admin/templates/pages/webappmanifest.php:244
+msgid "Display Settings"
+msgstr "显示屏设置"
+
+#: admin/templates/pages/webappmanifest.php:247
+msgid ""
+"Customize how your app appears and behaves on user screens, including the "
+"startup page, display layout, and screen orientation."
+msgstr "自定义应用程序在用户屏幕上的显示和行为方式，包括启动页面、显示布局和屏幕方向。"
+
+#: admin/templates/pages/webappmanifest.php:256
+msgid "Start Page"
+msgstr "起始页"
+
+#: admin/templates/pages/webappmanifest.php:263
+msgid ""
+"Set the initial page that loads when your app is launched from the home "
+"screen. In normal cases it should be your homepage."
+msgstr "设置从主屏幕启动应用程序时加载的初始页面。一般情况下，这应该是您的主页。"
+
+#: admin/templates/pages/webappmanifest.php:268
+msgid "Select Start Page"
+msgstr "选择起始页"
+
+#: admin/templates/pages/webappmanifest.php:281
+msgid "Display Mode"
+msgstr "显示模式"
+
+#: admin/templates/pages/webappmanifest.php:288
+msgid ""
+"Choose how your app displays. We recommend choosing \"Standalone\", as it "
+"provides a native app feeling."
+msgstr "选择应用程序的显示方式。我们建议选择 \"独立\"，因为它能给人一种原生应用的感觉。"
+
+#: admin/templates/pages/webappmanifest.php:293
+msgid "Select Display Mode"
+msgstr "选择显示模式"
+
+#: admin/templates/pages/webappmanifest.php:296
+msgid "Opens the app in a separate window for a native app experience."
+msgstr "在单独窗口中打开应用程序，体验原生应用程序。"
+
+#: admin/templates/pages/webappmanifest.php:297
+msgid "Standalone"
+msgstr "单机版"
+
+#: admin/templates/pages/webappmanifest.php:299
+msgid "Expands the app to cover the entire screen, hiding browser UI."
+msgstr "将应用程序扩展至覆盖整个屏幕，隐藏浏览器用户界面。"
+
+#: admin/templates/pages/webappmanifest.php:300
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: admin/templates/pages/webappmanifest.php:302
+msgid "Displays the app with minimal browser UI for a cleaner interface."
+msgstr "以最小的浏览器用户界面显示应用程序，使界面更简洁。"
+
+#: admin/templates/pages/webappmanifest.php:303
+msgid "Minimal UI"
+msgstr "极简用户界面"
+
+#: admin/templates/pages/webappmanifest.php:310
+msgid "Orientation"
+msgstr "定向"
+
+#: admin/templates/pages/webappmanifest.php:317
+msgid ""
+"Select the preferred screen orientation. We recommend choosing \"Portrait\", "
+"as it provides a more native app feeling."
+msgstr "选择首选的屏幕方向。我们建议选择 \"纵向\"，因为它提供了一种更原生的应用程序感觉。"
+
+#: admin/templates/pages/webappmanifest.php:322
+msgid "Select Orientation"
+msgstr "选择方向"
+
+#: admin/templates/pages/webappmanifest.php:324
+msgid "Allow Both"
+msgstr "同时允许"
+
+#: admin/templates/pages/webappmanifest.php:325
+msgid "Portrait"
+msgstr "肖像"
+
+#: admin/templates/pages/webappmanifest.php:326
+msgid "Landscape"
+msgstr "景观"
+
+#: admin/templates/pages/webappmanifest.php:352
+msgid "Appearance"
+msgstr "外观"
+
+#: admin/templates/pages/webappmanifest.php:355
+msgid ""
+"Adjust the visual elements of your app, including the theme and background "
+"colors, to enhance the user interface and align with your branding."
+msgstr "调整应用程序的视觉元素，包括主题和背景颜色，以增强用户界面并与品牌形象保持一致。"
+
+#: admin/templates/pages/webappmanifest.php:364
+msgid "iOS Status Bar Style"
+msgstr "iOS 状态栏风格"
+
+#: admin/templates/pages/webappmanifest.php:371
+msgid "Specify the style of the status bar for your app on iOS devices."
+msgstr "指定 iOS 设备上应用程序状态栏的样式。"
+
+#: admin/templates/pages/webappmanifest.php:376
+msgid "Select iOS Status Bar Style"
+msgstr "选择 iOS 状态栏样式"
+
+#: admin/templates/pages/webappmanifest.php:378
+msgid "White bar with black text"
+msgstr "白色条形图配黑色文字"
+
+#: admin/templates/pages/webappmanifest.php:379
+msgid "Black bar with white text"
+msgstr "黑条白字"
+
+#: admin/templates/pages/webappmanifest.php:380
+msgid "Transparent bar with white text"
+msgstr "带白色文字的透明条"
+
+#: admin/templates/pages/webappmanifest.php:387
+#: admin/templates/pages/webappmanifest.php:398
+msgid "Theme Color"
+msgstr "主题颜色"
+
+#: admin/templates/pages/webappmanifest.php:394
+msgid ""
+"Define the primary color theme for the browser's toolbar and app's header. "
+"It should be the same as the main color palette of your website."
+msgstr "定义浏览器工具栏和应用程序标题的主色调。它应与网站的主色调相同。"
+
+#: admin/templates/pages/webappmanifest.php:404
+#: admin/templates/pages/webappmanifest.php:415
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: admin/templates/pages/webappmanifest.php:411
+msgid ""
+"Choose a background color that displays during app startup and loading. It "
+"should be the same as the background color of your website."
+msgstr "选择一种在应用程序启动和加载时显示的背景颜色。背景颜色应与网站的背景颜色相同。"
+
+#: admin/templates/pages/webappmanifest.php:441
+msgid "Advanced Features"
+msgstr "高级功能"
+
+#: admin/templates/pages/webappmanifest.php:444
+msgid ""
+"Expand your app’s functionality with advanced features like age ratings, "
+"related applications, and customizable shortcuts to various app functions."
+msgstr "利用年龄分级、相关应用程序和自定义各种应用程序功能快捷方式等高级功能扩展应用程序的功能。"
+
+#: admin/templates/pages/webappmanifest.php:453
+msgid "IARC Rating ID"
+msgstr "国际癌症研究机构评级 ID"
+
+#: admin/templates/pages/webappmanifest.php:460
+msgid ""
+"International Age Rating Coalition (IARC) certification number, which helps "
+"classify your app’s appropriate age group. Click the info icon for more "
+"information."
+msgstr "国际年龄分级联盟 (IARC) 认证编号，有助于将您的应用程序划分为相应的年龄组。点击信息图标了解更多信息。"
+
+#: admin/templates/pages/webappmanifest.php:464
+msgid "Enter IARC Rating ID"
+msgstr "输入 IARC 评级 ID"
+
+#: admin/templates/pages/webappmanifest.php:471
+msgid "Related Applications"
+msgstr "相关应用"
+
+#: admin/templates/pages/webappmanifest.php:478
+msgid ""
+"Related application option gives you the ability to list your native "
+"applications related to your web app, for cross-promotion or additional "
+"functionality. So if you will relate your native application to your PWA, "
+"the browser will prompt the user with your native app instead of the PWA web "
+"app. If you don't have a native application for your web app, you can "
+"request them by clicking the \"Publish to App Stores\" button on the header "
+"or navigation menu."
+msgstr ""
+"相关应用程序选项可让您列出与网络应用程序相关的本地应用程序，以进行交叉推广或实现附加功能。因此，如果您将本地应用程序与 PWA "
+"相关联，浏览器就会提示用户使用本地应用程序，而不是 PWA 网络应用程序。如果您的网络应用程序没有本地应用程序，您可以点击标题或导航菜单上的 "
+"\"发布到应用程序商店 \"按钮来申请本地应用程序。"
+
+#: admin/templates/pages/webappmanifest.php:483
+msgid "Don't have native apps? Get them and %1$spublish to app stores%2$s"
+msgstr "没有本地应用程序？获取它们并%1$s发布到应用程序商店%2$s"
+
+#: admin/templates/pages/webappmanifest.php:489
+msgid "Select Platform"
+msgstr "选择平台"
+
+#: admin/templates/pages/webappmanifest.php:494
+msgid "iOS"
+msgstr "iOS"
+
+#: admin/templates/pages/webappmanifest.php:502
+msgid "Enter App ID"
+msgstr "输入应用程序 ID"
+
+#: admin/templates/pages/webappmanifest.php:525
+msgid "Add Related Application"
+msgstr "添加相关应用程序"
+
+#: admin/templates/pages/webappmanifest.php:533
+msgid "App Shortcuts"
+msgstr "应用程序快捷方式"
+
+#: admin/templates/pages/webappmanifest.php:540
+msgid ""
+"App shortcuts help users quickly start common or recommended tasks within "
+"your web app. Easy access to those tasks from anywhere the app icon is "
+"displayed will enhance users productivity as well as increase their "
+"engagement with the web app. The app shortcuts menu is invoked by right-"
+"clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's "
+"desktop, or long pressing the app's launcher icon on Android."
+msgstr ""
+"应用程序快捷方式可帮助用户在网络应用程序中快速启动常用任务或推荐任务。在显示应用程序图标的任何位置都能轻松访问这些任务，这将提高用户的工作效率，并增加他们对网络应用程序的参与度。右键单击用户桌面任务栏（Windows）或"
+" dock（macOS）上的应用图标，或长按安卓系统上的应用启动器图标，即可调用应用快捷方式菜单。"
+
+#: admin/templates/pages/webappmanifest.php:559
+msgid "Enter Shortcut Name"
+msgstr "输入快捷方式名称"
+
+#: admin/templates/pages/webappmanifest.php:563
+msgid "Select Shortcut Page"
+msgstr "选择快捷页面"
+
+#: admin/templates/pages/webappmanifest.php:593
+msgid "Add App Shortcut"
+msgstr "添加应用程序快捷方式"
+
+#: admin/templates/sidebar.php:13
+msgid "v%s"
+msgstr "v%s"
+
+#: admin/templates/sidebar.php:75
+msgid "Auto (system default)"
+msgstr "自动（系统默认）"
+
+#: admin/templates/sidebar.php:78
+msgid "Light"
+msgstr "灯光"
+
+#: admin/templates/sidebar.php:81
+msgid "Dark"
+msgstr "黑暗"
+
+#: admin/templates/sidebar.php:110
+msgid "Help Centre"
+msgstr "帮助中心"
+
+#: admin/templates/sidebar.php:117
+msgid "What's New"
+msgstr "最新消息"
+
+#: daftplug-progressify.php:35
+msgid "Progressify"
+msgstr "进步"
+
+#: frontend/partials/offlinefallbackpage.php:11
+#: frontend/partials/offlinefallbackpage.php:86
+msgid "You're Offline"
+msgstr "您已离线"
+
+#: frontend/partials/offlinefallbackpage.php:88
+msgid ""
+"It looks like you lost your internet connection. Please check your "
+"connection to reconnect."
+msgstr "您好像失去了网络连接。请检查您的连接以重新连接。"
+
+#: frontend/partials/offlinefallbackpage.php:98
+msgid "Reconnect"
+msgstr "重新连接"
+
+#: includes/modules/dashboard.php:255
+msgid "Publish your web app to stores"
+msgstr "向商店发布网络应用程序"
+
+#: includes/modules/dashboard.php:265
+msgid "Enable secure HTTPS on your server"
+msgstr "在服务器上启用安全 HTTPS"
+
+#: includes/modules/dashboard.php:268
+msgid ""
+"It appears you do not have a secure HTTPS server and PWA requires HTTPS "
+"connection to function correctly. Please set up it on your server or contact "
+"to your hosting provider to enable it for you."
+msgstr ""
+"看来您没有安全的 HTTPS 服务器，而 PWA 需要 HTTPS 连接才能正常运行。请在您的服务器上进行设置，或联系您的托管提供商为您启用。"
+
+#: includes/modules/dashboard.php:274
+msgid "Upload or select your PWA App Icon"
+msgstr "上传或选择您的 PWA 应用程序图标"
+
+#: includes/modules/dashboard.php:284
+msgid "Define your PWA web app Name"
+msgstr "定义 PWA 网络应用程序名称"
+
+#: includes/modules/dashboard.php:294
+msgid "Define your PWA web app Short Name"
+msgstr "定义 PWA 网络应用程序的简称"
+
+#: includes/modules/dashboard.php:304
+msgid "Choose your PWA web app categories"
+msgstr "选择您的 PWA 网络应用程序类别"
+
+#: includes/modules/dashboard.php:313
+msgid "Enable PWA Installation Prompts"
+msgstr "启用 PWA 安装提示"
+
+#: includes/modules/dashboard.php:322
+msgid "Enable one of the PWA Installation Overlays"
+msgstr "启用其中一个 PWA 安装覆盖层"
+
+#: includes/modules/dashboard.php:331
+msgid "Enable Offline Cache for your PWA"
+msgstr "为您的 PWA 启用离线缓存"
+
+#: includes/modules/dashboard.php:340
+msgid "Enable Advanced Web Capabilities for your PWA"
+msgstr "为您的 PWA 启用高级网络功能"
+
+#: includes/modules/dashboard.php:349
+msgid "Enable the Background Sync feature"
+msgstr "启用后台同步功能"
+
+#: includes/modules/dashboard.php:358
+msgid "Enable the Periodic Background Sync feature"
+msgstr "启用定期后台同步功能"
+
+#: includes/modules/dashboard.php:367
+msgid "Enable Push Notifications Prompt or Button"
+msgstr "启用推送通知提示或按钮"
+
+#: includes/modules/pushnotifications.php:742
+msgid "The notification was sent to %d out of %d recipients, with %d failure."
+msgstr "通知已发送给 %d 个收件人中的 %d，失败 %d。"
+
+#: includes/modules/pushnotifications.php:749
+#: admin/assets/js/dev/modules/modalPushNotifications.js:49
+msgid "Sending failed. There was an error on server."
+msgstr "发送失败。服务器出错。"
+
+#: includes/modules/pushnotifications.php:770
+msgid "New %s - %s"
+msgstr "新 %s - %s"
+
+#: includes/modules/pushnotifications.php:795
+msgid "Price Drop - %s"
+msgstr "降价 - %s"
+
+#: includes/modules/pushnotifications.php:796
+msgid "Price dropped from %s to %s"
+msgstr "价格从 %s 降至 %s"
+
+#: includes/modules/pushnotifications.php:800
+msgid "New Sale Price - %s"
+msgstr "新售价 - %s"
+
+#: includes/modules/pushnotifications.php:801
+msgid "New Sale Price: %s"
+msgstr "新售价: %s"
+
+#: includes/modules/pushnotifications.php:805
+msgid "Back In Stock - %s"
+msgstr "返回库存 - %s"
+
+#: includes/modules/pushnotifications.php:806
+msgid "%s is now back in stock"
+msgstr "%s 现已恢复库存"
+
+#: includes/modules/pushnotifications.php:873
+msgid "Your Order Status Updated"
+msgstr "您的订单状态已更新"
+
+#: includes/modules/pushnotifications.php:874
+msgid ""
+"Your order (ID %s) status has updated from %s to %s. Click on this "
+"notification to see the order."
+msgstr "您的订单（ID %s）状态已从 %s 更新为 %s。点击此通知查看订单。"
+
+#: includes/modules/pushnotifications.php:923
+msgid "New Comment By %s"
+msgstr "新评论 %s"
+
+#: includes/modules/pushnotifications.php:961
+msgid "New Order #%s"
+msgstr "新秩序 #%s"
+
+#: includes/modules/pushnotifications.php:962
+msgid "New order from %s for %s%s (%d items)"
+msgstr "来自 %s 的 %s%s 新订单（%d 个项目）"
+
+#: includes/modules/pushnotifications.php:1030
+msgid "Low Stock Alert: %s"
+msgstr "低库存警报：%s"
+
+#: includes/modules/pushnotifications.php:1031
+msgid "Stock level: %d (Threshold: %d)%s. SKU: %s"
+msgstr "库存水平：%d（阈值：%d）%s。SKU：%s"
+
+#: includes/modules/pushnotifications.php:1056
+msgid "%s has just mentioned you in a %s"
+msgstr "%s 刚刚在 %s 中提到了您"
+
+#: includes/modules/pushnotifications.php:1059
+msgid "New mention from %s"
+msgstr "来自 %s 的新提法"
+
+#: includes/modules/pushnotifications.php:1083
+msgid "New comment from %s"
+msgstr "来自 %s 的新评论"
+
+#: includes/modules/pushnotifications.php:1084
+msgid "%s has just commented on your post."
+msgstr "%s 刚刚评论了您的帖子。"
+
+#: includes/modules/pushnotifications.php:1107
+msgid "New reply from %s"
+msgstr "来自 %s 的新回复"
+
+#: includes/modules/pushnotifications.php:1108
+msgid "%s has just replied to you."
+msgstr "%s 刚刚回复了您。"
+
+#: includes/modules/pushnotifications.php:1135
+msgid "New message from %s"
+msgstr "来自 %s 的新消息"
+
+#: includes/modules/pushnotifications.php:1161
+msgid "New friend request from %s"
+msgstr "来自 %s 的新好友请求"
+
+#: includes/modules/pushnotifications.php:1162
+msgid "%s has just sent you a friend request."
+msgstr "%s 刚刚向您发送了好友请求。"
+
+#: includes/modules/pushnotifications.php:1187
+msgid "Friend request accepted"
+msgstr "接受好友请求"
+
+#: includes/modules/pushnotifications.php:1188
+msgid "%s has just accepted your friend request."
+msgstr "%s 刚刚接受了您的好友请求。"
+
+#: includes/plugin.php:309
+msgid "⚠️ %s requires PHP version at least 8.2 to function properly."
+msgstr "⚠️ %s 需要至少 8.2 的 PHP 版本才能正常运行。"
+
+#: includes/plugin.php:309 includes/plugin.php:321
+msgid "If you have trouble fixing this, please contact us on"
+msgstr "如果您在修复时遇到困难，请通过以下方式联系我们"
+
+#: includes/plugin.php:321
+msgid "⚠️ %s features require <i>%s</i> extension to function properly."
+msgstr "⚠️ %s 功能需要 <i>%s</i> 扩展才能正常运行。"
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:75
+msgid "Notifications are not supported by your browser."
+msgstr "您的浏览器不支持通知功能。"
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:87
+msgid "You need to accept the notifications permission to preview."
+msgstr "您需要接受通知权限才能预览。"
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:91
+msgid "Push notifications are blocked by your browser."
+msgstr "您的浏览器会阻止推送通知。"
+
+#: admin/assets/js/dev/modules/publishToAppStores.js:58
+msgid ""
+"Thank you for the payment! We are starting to create apps for you and will "
+"send it to you soon."
+msgstr "感谢您的付款！我们正在为您制作应用程序，很快就会寄给您。"
+
+#: admin/assets/js/dev/modules/publishToAppStores.js:78
+msgid "Payment failed! Please try again or contact us on support@daftplug.com"
+msgstr "付款失败！请重试或通过 support@daftplug.com 联系我们"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:106
+msgid "No Subscribers"
+msgstr "没有订阅者"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:109
+msgid "There are no push notification subscribers yet."
+msgstr "目前还没有推送通知用户。"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:186
+msgid "Delete"
+msgstr "删除"
+
+#: admin/assets/js/dev/modules/pushSubscribers.js:235
+msgid "Are you sure you want to remove this subscriber?"
+msgstr "您确定要删除此订阅者吗？"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:130
+msgid "No Action Items"
+msgstr "无行动项目"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:133
+msgid "Your PWA seems fully setup and your score is excellent."
+msgstr "您的 PWA 似乎已完全设置好，您的分数也很高。"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:144
+msgid "Action Items"
+msgstr "行动项目"
+
+#: admin/assets/js/dev/modules/pwaScoreData.js:172
+msgid "Show All"
+msgstr "显示全部"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:317
+msgid ""
+"Your PWA hasn't been installed yet, and there are no current users. Make "
+"sure Installation Prompts are enabled to encourage users to install your web "
+"app."
+msgstr "您的 PWA 尚未安装，也没有当前用户。确保安装提示已启用，以鼓励用户安装您的网络应用。"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:325
+msgid ""
+"Your PWA users are evenly distributed across different browsers. While we "
+"strive for broad compatibility, Chrome is recommended as the most PWA-"
+"friendly."
+msgstr "您的 PWA 用户平均分布在不同的浏览器中。虽然我们努力实现广泛的兼容性，但建议使用 Chrome 浏览器，因为它对 PWA 最友好。"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:328
+msgid "All"
+msgstr "全部"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:328
+msgid "Most"
+msgstr "大多数"
+
+#: admin/assets/js/dev/modules/pwaUsersData.js:353
+#: admin/assets/js/dev/modules/pwaUsersData.js:394
+#: admin/assets/js/dev/modules/pwaUsersData.js:425
+#: admin/assets/js/dev/modules/pwaUsersData.js:518
+msgid "PWA Installs"
+msgstr "PWA 安装"
+
+#: dist/daftplug-progressify/frontend/assets/js/installButton-40e2903c.js:1
+#: frontend/assets/js/dev/components/installPrompt.js:984
+#: frontend/assets/js/dev/modules/installButton.js:32
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:63
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:83
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:94
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:79
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:62
+msgid "Install Web App"
+msgstr "安装网络应用程序"
+
+#: frontend/assets/js/dev/components/installPrompt.js:480
+msgid "Checking installation capabilities..."
+msgstr "检查安装能力..."
+
+#: frontend/assets/js/dev/components/installPrompt.js:535
+msgid "Click to Install"
+msgstr "点击安装"
+
+#: frontend/assets/js/dev/components/installPrompt.js:539
+msgid "Tap to Install"
+msgstr "点击安装"
+
+#: frontend/assets/js/dev/components/installPrompt.js:694
+#: frontend/assets/js/dev/components/installPrompt.js:698
+#: frontend/assets/js/dev/components/installPrompt.js:702
+#: frontend/assets/js/dev/components/installPrompt.js:706
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:729
+#: frontend/assets/js/dev/components/installPrompt.js:734
+#: frontend/assets/js/dev/components/installPrompt.js:752
+#: frontend/assets/js/dev/components/installPrompt.js:757
+msgid "Tap the Menu Icon"
+msgstr "轻按菜单图标"
+
+#: frontend/assets/js/dev/components/installPrompt.js:694
+#: frontend/assets/js/dev/components/installPrompt.js:698
+#: frontend/assets/js/dev/components/installPrompt.js:702
+msgid ""
+"Tap the menu icon (three dots), located at the top-right of your screen."
+msgstr "点击屏幕右上角的菜单图标（三个点）。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:695
+#: frontend/assets/js/dev/components/installPrompt.js:717
+#: frontend/assets/js/dev/components/installPrompt.js:721
+#: frontend/assets/js/dev/components/installPrompt.js:726
+#: frontend/assets/js/dev/components/installPrompt.js:731
+#: frontend/assets/js/dev/components/installPrompt.js:736
+#: frontend/assets/js/dev/components/installPrompt.js:740
+msgid "Select \"Add to Home Screen\""
+msgstr "选择 \"添加到主屏幕"
+
+#: frontend/assets/js/dev/components/installPrompt.js:695
+msgid "Tap the \"Add to Home Screen\" option from the menu."
+msgstr "点击菜单中的 \"添加到主屏幕 \"选项。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:696
+#: frontend/assets/js/dev/components/installPrompt.js:704
+#: frontend/assets/js/dev/components/installPrompt.js:718
+#: frontend/assets/js/dev/components/installPrompt.js:722
+#: frontend/assets/js/dev/components/installPrompt.js:727
+#: frontend/assets/js/dev/components/installPrompt.js:732
+#: frontend/assets/js/dev/components/installPrompt.js:737
+#: frontend/assets/js/dev/components/installPrompt.js:741
+msgid "Confirm by Tapping \"Add\""
+msgstr "点击 \"添加 \"确认"
+
+#: frontend/assets/js/dev/components/installPrompt.js:696
+#: frontend/assets/js/dev/components/installPrompt.js:704
+msgid "Tap the \"Add\" text on the browser installation dialog."
+msgstr "点击浏览器安装对话框上的 \"添加 \"文本。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:699
+msgid "Select \"Install\""
+msgstr "选择 \"安装"
+
+#: frontend/assets/js/dev/components/installPrompt.js:699
+#: frontend/assets/js/dev/components/installPrompt.js:703
+msgid "Tap the \"Install\" option from the menu."
+msgstr "点击菜单中的 \"安装 \"选项。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:700
+msgid "Confirm by Tapping \"Add to Home Screen\""
+msgstr "点击 \"添加到主屏幕 \"确认"
+
+#: frontend/assets/js/dev/components/installPrompt.js:700
+msgid ""
+"Tap the \"Add to Home Screen\" button on the browser installation dialog."
+msgstr "在浏览器安装对话框中点击 \"添加到主屏幕 \"按钮。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:703
+msgid "Select \"Home Screen\""
+msgstr "选择 \"主屏幕"
+
+#: frontend/assets/js/dev/components/installPrompt.js:706
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:734
+msgid ""
+"Tap the menu icon (three horizontal lines) located at the bottom-right of "
+"your screen."
+msgstr "点击屏幕右下角的菜单图标（三条横线）。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:707
+msgid "Select \"Add to Phone\""
+msgstr "选择 \"添加到手机"
+
+#: frontend/assets/js/dev/components/installPrompt.js:707
+msgid "Tap the \"Add to Phone\" option from the menu"
+msgstr "点击菜单中的 \"添加到手机 \"选项"
+
+#: frontend/assets/js/dev/components/installPrompt.js:708
+msgid "Confirm by Tapping \"Install\""
+msgstr "点击 \"安装 \"确认"
+
+#: frontend/assets/js/dev/components/installPrompt.js:708
+msgid "Tap the \"Install\" text on the browser installation dialog."
+msgstr "点击浏览器安装对话框中的 \"安装 \"文本。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+#: frontend/assets/js/dev/components/installPrompt.js:743
+#: frontend/assets/js/dev/components/installPrompt.js:762
+msgid "Copy the Page URL"
+msgstr "复制页面 URL"
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+#: frontend/assets/js/dev/components/installPrompt.js:743
+#: frontend/assets/js/dev/components/installPrompt.js:762
+msgid "Click the button below to copy the page's URL."
+msgstr "点击下面的按钮复制网页的 URL。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:711
+#: frontend/assets/js/dev/components/installPrompt.js:763
+msgid "Open the Google Chrome Browser"
+msgstr "打开谷歌浏览器"
+
+#: frontend/assets/js/dev/components/installPrompt.js:711
+msgid "Launch the Google Chrome web browser from your home screen."
+msgstr "从主屏幕启动 Google Chrome 浏览器。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:712
+#: frontend/assets/js/dev/components/installPrompt.js:745
+#: frontend/assets/js/dev/components/installPrompt.js:764
+msgid "Paste and Open the URL"
+msgstr "粘贴并打开 URL"
+
+#: frontend/assets/js/dev/components/installPrompt.js:712
+#: frontend/assets/js/dev/components/installPrompt.js:764
+msgid ""
+"Paste the copied URL into Google Chrome's address bar and open the page."
+msgstr "将复制的 URL 粘贴到 Google Chrome 浏览器的地址栏，然后打开页面。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:716
+#: frontend/assets/js/dev/components/installPrompt.js:720
+#: frontend/assets/js/dev/components/installPrompt.js:725
+#: frontend/assets/js/dev/components/installPrompt.js:730
+#: frontend/assets/js/dev/components/installPrompt.js:735
+#: frontend/assets/js/dev/components/installPrompt.js:739
+msgid "Tap the Share Icon"
+msgstr "轻按 \"共享 \"图标"
+
+#: frontend/assets/js/dev/components/installPrompt.js:716
+msgid "Tap the share icon located at the center-bottom of your screen."
+msgstr "点击屏幕中央下方的共享图标。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:717
+#: frontend/assets/js/dev/components/installPrompt.js:721
+#: frontend/assets/js/dev/components/installPrompt.js:726
+#: frontend/assets/js/dev/components/installPrompt.js:731
+#: frontend/assets/js/dev/components/installPrompt.js:736
+#: frontend/assets/js/dev/components/installPrompt.js:740
+msgid ""
+"Tap the \"Add to Home Screen\" option, represented by the plus [+] icon."
+msgstr "点击 \"添加到主屏幕 \"选项，该选项由加号 [+] 图标表示。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:718
+#: frontend/assets/js/dev/components/installPrompt.js:722
+#: frontend/assets/js/dev/components/installPrompt.js:727
+#: frontend/assets/js/dev/components/installPrompt.js:732
+#: frontend/assets/js/dev/components/installPrompt.js:737
+#: frontend/assets/js/dev/components/installPrompt.js:741
+msgid "Tap the \"Add\" button at the top-right corner of your screen."
+msgstr "点击屏幕右上角的 \"添加 \"按钮。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:720
+msgid ""
+"Tap the share icon located at the top-right of your browser address bar."
+msgstr "点击浏览器地址栏右上方的共享图标。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:725
+#: frontend/assets/js/dev/components/installPrompt.js:735
+msgid "Tap the share icon in the dialog overlay that the browser opens."
+msgstr "在浏览器打开的对话框覆盖层中点击共享图标。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:729
+msgid ""
+"Tap the menu icon (three dots), located at the bottom-right of your screen."
+msgstr "点击屏幕右下角的菜单图标（三个点）。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:730
+msgid ""
+"Tap the share icon located at the top of the dialog overlay that browser "
+"opens."
+msgstr "点击浏览器打开的对话框顶部的共享图标。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:739
+msgid ""
+"Tap the share icon located at the right side of the browser's address bar."
+msgstr "点击浏览器地址栏右侧的共享图标。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:744
+msgid "Open the Safari Browser"
+msgstr "打开 Safari 浏览器"
+
+#: frontend/assets/js/dev/components/installPrompt.js:744
+msgid "Launch the Safari web browser from your home screen."
+msgstr "从主屏幕启动 Safari 网页浏览器。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:745
+msgid "Paste the copied URL into Safari's address bar and open the page."
+msgstr "将复制的 URL 粘贴到 Safari 的地址栏，然后打开页面。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:748
+#: frontend/assets/js/dev/components/installPrompt.js:767
+msgid "Installation Not Supported"
+msgstr "不支持安装"
+
+#: frontend/assets/js/dev/components/installPrompt.js:748
+msgid ""
+"Your operating system does not support web app installation. Please try "
+"accessing the website on an Android or iOS mobile device."
+msgstr "您的操作系统不支持网络应用程序安装。请尝试使用 Android 或 iOS 移动设备访问网站。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:752
+#: frontend/assets/js/dev/components/installPrompt.js:757
+msgid ""
+"Tap the menu icon (three dots) in the top-right corner of your browser "
+"window."
+msgstr "点击浏览器窗口右上角的菜单图标（三个点）。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:753
+msgid "Expand \"Cast, save and share\""
+msgstr "扩展 \"铸造、保存和共享 \"功能"
+
+#: frontend/assets/js/dev/components/installPrompt.js:753
+msgid ""
+"Hover over the \"Cast, Save, and Share\" menu item to expand its options."
+msgstr "将鼠标悬停在 \"投屏、保存和共享 \"菜单项上可扩展其选项。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:754
+msgid "Select \"Install page as app...\""
+msgstr "选择 \"将页面安装为应用程序......\""
+
+#: frontend/assets/js/dev/components/installPrompt.js:754
+msgid "Click on \"Install page as app...\" from the menu."
+msgstr "点击菜单中的 \"将页面安装为应用程序...\"。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:755
+#: frontend/assets/js/dev/components/installPrompt.js:760
+msgid "Confirm by Clicking \"Install\""
+msgstr "点击 \"安装 \"确认"
+
+#: frontend/assets/js/dev/components/installPrompt.js:755
+#: frontend/assets/js/dev/components/installPrompt.js:760
+msgid "Click the \"Install\" button in the browser's installation dialog."
+msgstr "点击浏览器安装对话框中的 \"安装 \"按钮。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:758
+msgid "Expand \"Apps\""
+msgstr "扩展 \"应用程序"
+
+#: frontend/assets/js/dev/components/installPrompt.js:758
+msgid "Hover over the \"Apps\" menu item to expand its options."
+msgstr "将鼠标悬停在 \"应用程序 \"菜单项上可扩展其选项。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:759
+msgid "Select \"Install this site as app\""
+msgstr "选择 \"将此网站安装为应用程序"
+
+#: frontend/assets/js/dev/components/installPrompt.js:759
+msgid "Click on \"Install this site as app\" from the menu."
+msgstr "点击菜单中的 \"将此网站安装为应用程序\"。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:763
+msgid "Launch the Google Chrome web browser from your start menu."
+msgstr "从开始菜单启动 Google Chrome 浏览器。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:767
+msgid ""
+"Your device does not support web app installation. Please try accessing the "
+"website on a mobile or desktop device."
+msgstr "您的设备不支持网络应用程序安装。请尝试使用移动或台式设备访问网站。"
+
+#: frontend/assets/js/dev/components/installPrompt.js:1004
+msgid "Close Dialog"
+msgstr "关闭对话框"
+
+#: frontend/assets/js/dev/modules/darkMode.js:386
+#: frontend/assets/js/dev/modules/darkMode.js:445
+msgid "Toggle dark mode"
+msgstr "切换黑暗模式"
+
+#: frontend/assets/js/dev/modules/idleDetection.js:159
+msgid "You've been idle for a while."
+msgstr "你已经闲了一段时间了。"
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:315
+msgid "Read this article in our web app"
+msgstr "在我们的网络应用程序中阅读本文"
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:324
+msgid "Open"
+msgstr "开放"
+
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:333
+msgid "Continue"
+msgstr "继续"
+
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:212
+msgid "Get our web app. It won't take up space on your device."
+msgstr "获取我们的网络应用程序。它不会占用您的设备空间。"
+
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:217
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:177
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:188
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:177
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:157
+msgid "Install Now"
+msgstr "立即安装"
+
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:173
+msgid "Keep reading, even when you're on the train!"
+msgstr "即使在火车上，也要继续阅读！"
+
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:184
+msgid "Find what you need faster by installing our web app!"
+msgstr "安装我们的网络应用程序，更快地找到您需要的信息！"
+
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:174
+msgid "Installing uses no storage and offers a quick way back to our web app."
+msgstr "安装时不使用存储空间，并可快速返回我们的网络应用程序。"
+
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:153
+msgid ""
+"Keep track of your orders. Our web app is fast, small and works offline."
+msgstr "跟踪您的订单。我们的网络应用程序速度快、体积小，可离线运行。"
+
+#: frontend/assets/js/dev/modules/offlineForms.js:467
+msgid "No Internet Connection"
+msgstr "无互联网连接"
+
+#: frontend/assets/js/dev/modules/offlineForms.js:471
+msgid ""
+"You’re currently offline. Your form submission data will be saved and be "
+"automatically processed in the background when you’re back online within 24 "
+"hours. Would you like to proceed?"
+msgstr "您目前处于离线状态。您提交的表单数据将被保存，并在 24 小时内重新上线时在后台自动处理。您想继续吗？"
+
+#: frontend/assets/js/dev/modules/offlineNotification.js:38
+#: frontend/assets/js/dev/modules/offlineNotification.js:170
+msgid "Connection lost. Attempting to reconnect..."
+msgstr "连接丢失。尝试重新连接..."
+
+#: frontend/assets/js/dev/modules/offlineNotification.js:59
+msgid "Successfully reconnected to the internet!"
+msgstr "成功重新连接互联网！"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:103
+msgid "Release to refresh"
+msgstr "释放刷新"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:105
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:235
+msgid "Pull down to refresh"
+msgstr "下拉刷新"
+
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:125
+msgid "Refreshing..."
+msgstr "令人耳目一新..."
+
+#: frontend/assets/js/dev/modules/pushNotificationsButton.js:180
+msgid "Enable / Disable Push Notifications"
+msgstr "启用/禁用推送通知"
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:85
+msgid ""
+"We would like to show you notifications for the latest news and updates."
+msgstr "我们希望向您发送最新消息和更新通知。"
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:222
+msgid "Dismiss"
+msgstr "解散"
+
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:225
+msgid "Allow Notifications"
+msgstr "允许通知"
+
+#: frontend/assets/js/dev/modules/shakeRefresh.js:158
+msgid "Shake detected! Refreshing the page..."
+msgstr "检测到晃动！刷新页面..."
+
+#: frontend/assets/js/dev/modules/toastMessages.js:105
+msgid "Homepage Opened"
+msgstr "主页已打开"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:108
+msgid "Page Not Found"
+msgstr "页面未找到"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:111
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:114
+msgid "Article Opened"
+msgstr "文章已打开"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:117
+msgid "Shop Opened"
+msgstr "商店开张"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:120
+msgid "Product Opened"
+msgstr "产品已打开"
+
+#: frontend/assets/js/dev/modules/toastMessages.js:123
+msgid "Page Opened"
+msgstr "打开的页面"
