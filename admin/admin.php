@@ -417,16 +417,16 @@ class Admin
 
     $debugInfo = sprintf(
       '<div class="debug-section">
-          <p><strong>PHP Version:</strong> %s</p>
-          <p><strong>WordPress Version:</strong> %s</p>
-          <p><strong>Plugin Version:</strong> %s</p>
-          <p><strong>Site URL:</strong> %s</p>
-          <p><strong>Active Theme:</strong> %s</p>
-          <p><strong>Server Software:</strong> %s</p>
-          <p><strong>Memory Limit:</strong> %s</p>
-          <p><strong>Max Upload Size:</strong> %s</p>
-          <p><strong>Active Plugins:</strong></p>
-          <div class="plugins-grid">%s</div>
+        <p><strong>PHP Version:</strong> %s</p>
+        <p><strong>WordPress Version:</strong> %s</p>
+        <p><strong>Plugin Version:</strong> %s</p>
+        <p><strong>Site URL:</strong> %s</p>
+        <p><strong>Active Theme:</strong> %s</p>
+        <p><strong>Server Software:</strong> %s</p>
+        <p><strong>Memory Limit:</strong> %s</p>
+        <p><strong>Max Upload Size:</strong> %s</p>
+        <p><strong>Active Plugins:</strong></p>
+        <div class="plugins-grid">%s</div>
       </div>',
       PHP_VERSION,
       get_bloginfo('version'),
@@ -468,8 +468,13 @@ class Admin
           <body>
               <div class="container">
                   <div class="header">
-                      <h2>New Support Request - %s</h2>
+                      <h2>New Support Request for %s</h2>
                       <p><strong>From:</strong> %s (%s)</p>
+                  </div>
+
+                  <div class="section">
+                    <h3>License Key</h3>
+                    <div class="plugin-item">%s</div>
                   </div>
                   
                   <div class="section">
@@ -480,13 +485,13 @@ class Admin
                   %s
                   
                   <div class="section">
-                      <h3>System Information</h3>
-                      %s
+                    <h3>System Information</h3>
+                    %s
                   </div>
                   
                   <div class="section">
-                      <h3>Plugin Settings</h3>
-                      <div class="settings-tree">%s</div>
+                    <h3>Plugin Settings</h3>
+                    <div class="settings-tree">%s</div>
                   </div>
               </div>
           </body>
@@ -494,21 +499,53 @@ class Admin
       $this->name,
       $supportRequest['personName'],
       $supportRequest['personEmail'],
+      $this->licenseKey,
       nl2br(esc_html($supportRequest['problemDescription'])),
       $tempCredentials,
       $debugInfo,
       $formattedSettings
     );
 
-    // Send email
-    $headers = ['From: ' . $supportRequest['personName'] . ' <' . $supportRequest['personEmail'] . '>', 'Reply-To: ' . $supportRequest['personEmail'], 'Content-Type: text/html; charset=UTF-8'];
+    $response = wp_remote_post('https://daftplug.com/wp-json/daftplug/v1/support-request/', [
+      'sslverify' => false,
+      'timeout' => 30,
+      'body' => [
+        'subject' => 'New Support Request from ' . $supportRequest['personName'],
+        'from_name' => $supportRequest['personName'],
+        'from_email' => $supportRequest['personEmail'],
+        'content' => $emailContent,
+      ],
+      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
+      'headers' => [
+        'Content-Type' => 'application/x-www-form-urlencoded',
+      ],
+    ]);
 
-    $emailSent = wp_mail('support@daftplug.com', "[$this->name] New Support Request", $emailContent, $headers);
+    if (is_wp_error($response)) {
+      return new \WP_Error('submit_failed', 'Failed to submit support request: ' . $response->get_error_message(), ['status' => 500]);
+    }
 
-    if ($emailSent) {
-      return new \WP_REST_Response(['status' => 'success'], 200);
+    $responseBody = wp_remote_retrieve_body($response);
+
+    // Try to decode the JSON response
+    $result = json_decode($responseBody);
+
+    // Check if JSON decoding failed
+    if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
+      return new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
+    }
+
+    if (isset($result->success) && $result->success === true) {
+      return new \WP_REST_Response(
+        [
+          'status' => 'success',
+          'message' => isset($result->message) ? $result->message : 'Support request sent successfully',
+        ],
+        200
+      );
     } else {
-      return new \WP_Error('submit_failed', 'Failed to submit support request', ['status' => 500]);
+      $errorMessage = isset($result->message) ? $result->message : 'Unknown error occurred';
+      return new \WP_Error('remote_error', 'Error from support server: ' . $errorMessage, ['status' => 500]);
     }
   }
 
