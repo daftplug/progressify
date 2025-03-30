@@ -219,6 +219,11 @@ class Plugin
           'protocol' => '',
           'url' => '',
         ],
+        'fileHandler' => [
+          'feature' => 'off',
+          'action' => '',
+          'accept' => [],
+        ],
         'webShareTarget' => [
           'feature' => 'off',
           'action' => '',

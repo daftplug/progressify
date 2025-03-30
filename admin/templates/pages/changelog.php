@@ -4,6 +4,16 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+  <div data-version="v1.0.3" data-date="March 31, 2025" data-title="File Handler Property" data-description="The update includes small improvements in performance and addition of file handler property to Manifest file.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added ability to set PWA as file handler.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed issue with CSS conflicts in certain cases.</li>
+      <li>Improved compatibility with popular page builders.</li>
+      <li>Adjusted PWA scorecard calculation for more precise results.</li>
+    </ul>
+  </div>
   <div data-version="v1.0.2" data-date="March 23, 2025" data-title="Added Language Support" data-description="The update includes addition of new languages and improved language management.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added 6 new languages and improved the language management.</li>

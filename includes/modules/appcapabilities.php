@@ -47,6 +47,7 @@ class AppCapabilities
 
     add_action('template_redirect', [$this, 'wrapAllContentWithSwup']);
     add_filter("{$this->optionName}_manifest", [$this, 'addUrlProtocolHandlerToManifest']);
+    add_filter("{$this->optionName}_manifest", [$this, 'addFileHandlerToManifest']);
     add_filter("{$this->optionName}_manifest", [$this, 'addWebShareTargetToManifest']);
     add_action('plugin_loaded', [$this, 'initBiometricAuthentication']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addBackgroundSyncToServiceWorker']);
@@ -109,6 +110,29 @@ class AppCapabilities
     $manifest['protocol_handlers'][] = [
       'protocol' => 'web+' . Plugin::getSetting('appCapabilities[urlProtocolHandler][protocol]'),
       'url' => Plugin::getSetting('appCapabilities[urlProtocolHandler][url]'),
+    ];
+
+    return $manifest;
+  }
+
+  public function addFileHandlerToManifest($manifest)
+  {
+    if (Plugin::getSetting('appCapabilities[fileHandler][feature]') !== 'on') {
+      return $manifest;
+    }
+
+    $accept = Plugin::getSetting('appCapabilities[fileHandler][accept]');
+    $acceptWithExtensions = [];
+    foreach ((array) $accept as $mimeType) {
+      $extension = strtolower(substr(strrchr($mimeType, '/'), 1));
+      $acceptWithExtensions[$mimeType] = ['.' . $extension];
+    }
+
+    $manifest['file_handlers'] = [
+      [
+        'action' => Plugin::getSetting('appCapabilities[fileHandler][action]'),
+        'accept' => $acceptWithExtensions,
+      ],
     ];
 
     return $manifest;

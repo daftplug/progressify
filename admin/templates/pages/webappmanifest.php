@@ -265,9 +265,9 @@ if (!defined('ABSPATH')) {
             </button>
           </label>
           <select name="webAppManifest[displaySettings][startPage]" required="true" data-dp-select='{
-          "placeholder": "<?php esc_html_e('Select Start Page', $this->slug); ?>",
-          "hasSearch": true
-        }'>
+            "placeholder": "<?php esc_html_e('Select Start Page', $this->slug); ?>",
+            "hasSearch": true
+          }'>
             <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
             <?php foreach (get_pages() as $wpPage): ?>
             <option value="<?php echo esc_url(get_page_link($wpPage->ID)); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), get_page_link($wpPage->ID)); ?>><?php echo esc_html($wpPage->post_title); ?></option>

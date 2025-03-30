@@ -17,8 +17,8 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
+              <span class="inline text-nowrap bg-yellow-50 border border-yellow-300 text-yellow-600 text-[9px] sm:text-[10px] leading-none uppercase rounded-full py-[0.1875rem] px-1.5 mt-px sm:mt-0">BETA</span>
               <?php esc_html_e('Smooth Transitions', $this->slug); ?>
-              <span class="inline-flex items-center leading-none py-0.5 px-1 !-ml-1 mt-0.5 rounded-full text-[0.55rem] font-medium border border-gray-200 bg-white text-yellow-600 dark:bg-neutral-800 dark:border-neutral-700 dark:text-yellow-500">Beta</span>
               <div class="relative inline-flex">
                 <input type="checkbox" name="appCapabilities[smoothPageTransitions][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
                   <?php checked(Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]'), 'on'); ?>>
@@ -234,6 +234,101 @@ if (!defined('ABSPATH')) {
     </div>
   </fieldset>
   <!-- End URL Protocol Handler -->
+  <!-- File Handler -->
+  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionFileHandler">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
+        <div class="flex gap-x-2 sticky top-6">
+          <svg class="fill-gray-400 size-9 shrink-0 dark:fill-neutral-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path d="M480.34-240.77q50.97 0 85.31-37.66Q600-316.1 600-367.69v-163.08q0-5.42-2.67-8.1-2.68-2.67-8.1-2.67t-8.1 2.67q-2.67 2.68-2.67 8.1v163.08q0 42.77-27.98 74.07-27.98 31.31-70.48 31.31-42.17 0-70.32-31.31-28.14-31.3-28.14-74.07v-218.46q0-20.08 12.16-34.27 12.16-14.2 31.84-14.2 19.38 0 31.54 14.2 12.15 14.19 12.15 34.27v198.46q0 5.42 2.67 8.09 2.68 2.68 8.1 2.68t8.1-2.68q2.67-2.67 2.67-8.09v-198.46q0-28.13-18.85-49.07-18.84-20.93-46.5-20.93-27.65 0-46.54 20.93Q360-614.28 360-586.15v218.46q0 51.59 34.77 89.26 34.78 37.66 85.57 37.66ZM255.38-120q-23.05 0-39.22-16.16Q200-152.33 200-175.38v-609.24q0-23.05 16.16-39.22Q232.33-840 255.38-840h324.85L760-660.23v484.85q0 23.05-16.16 39.22Q727.67-120 704.62-120H255.38Zm0-30.77h449.24q9.23 0 16.92-7.69 7.69-7.69 7.69-16.92v-470.93H594q-11.21 0-19.45-8.24-8.24-8.24-8.24-19.45v-135.23H255.38q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v609.24q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69Zm-24.61-658.46v162.92-162.92 658.46-658.46Z" />
+          </svg>
+          <div class="grow">
+            <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
+              <span class="inline text-nowrap bg-blue-50 border border-blue-300 text-blue-600 text-[9px] sm:text-[10px] leading-none uppercase rounded-full py-[0.1875rem] px-1.5 mt-px sm:mt-0">NEW</span>
+              <?php esc_html_e('File Handler', $this->slug); ?>
+              <div class="relative inline-flex">
+                <input type="checkbox" name="appCapabilities[fileHandler][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(
+                  Plugin::getSetting('appCapabilities[fileHandler][feature]'),
+                  'on'
+                ); ?>>
+              </div>
+            </label>
+            <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
+              <?php esc_html_e('File Handler feature allows your web app to register as a file handler to receive files from other sites or apps via file URL scheme. The feature is mostly useful if your website is processing files or documents.', $this->slug); ?>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
+      "target": "appCapabilities[fileHandler][feature]",
+      "state": "checked",
+      "mode": "availability"
+    }'>
+        <!-- File Action -->
+        <div id="settingFileAction">
+          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <?php esc_html_e('File Action', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Enter the action of your web app. File action is a URL or your file URL scheme that your web app will open to when handling the given file.', $this->slug); ?>
+              </span>
+            </button>
+          </label>
+          <input name="appCapabilities[fileHandler][action]" type="text" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Action', $this->slug); ?>" value="<?php echo esc_html(Plugin::getSetting('appCapabilities[fileHandler][action]')); ?>" autocomplete="off" required>
+        </div>
+        <!-- End File Action -->
+        <!-- File Types -->
+        <div id="settingFileTypes">
+          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800 dark:text-neutral-200">
+            <?php esc_html_e('File Types', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
+                <?php esc_html_e('Select the file MIME types that your web app can handle using above file action.', $this->slug); ?>
+              </span>
+            </button>
+          </label>
+          <select name="appCapabilities[fileHandler][accept]" multiple="true" data-dp-select='{
+            "placeholder": "<?php esc_html_e('Select File Types', $this->slug); ?>",
+            "hasSearch": true
+          }' required>
+            <option value="image/png" <?php selected(true, in_array('image/png', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Image/PNG', $this->slug); ?></option>
+            <option value="image/jpeg" <?php selected(true, in_array('image/jpeg', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Image/JPEG', $this->slug); ?></option>
+            <option value="image/gif" <?php selected(true, in_array('image/gif', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Image/GIF', $this->slug); ?></option>
+            <option value="image/webp" <?php selected(true, in_array('image/webp', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Image/WebP', $this->slug); ?></option>
+            <option value="audio/mp3" <?php selected(true, in_array('audio/mp3', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Audio/MP3', $this->slug); ?></option>
+            <option value="audio/mp4" <?php selected(true, in_array('audio/mp4', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Audio/MP4', $this->slug); ?></option>
+            <option value="audio/ogg" <?php selected(true, in_array('audio/ogg', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Audio/OGG', $this->slug); ?></option>
+            <option value="audio/wav" <?php selected(true, in_array('audio/wav', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Audio/WAV', $this->slug); ?></option>
+            <option value="video/mp4" <?php selected(true, in_array('video/mp4', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Video/MP4', $this->slug); ?></option>
+            <option value="video/webm" <?php selected(true, in_array('video/webm', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Video/WebM', $this->slug); ?></option>
+            <option value="text/csv" <?php selected(true, in_array('text/csv', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Text/CSV', $this->slug); ?></option>
+            <option value="application/xml" <?php selected(true, in_array('application/xml', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Application/XML', $this->slug); ?></option>
+            <option value="application/json" <?php selected(true, in_array('application/json', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Application/JSON', $this->slug); ?></option>
+            <option value="application/pdf" <?php selected(true, in_array('application/pdf', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Application/PDF', $this->slug); ?></option>
+            <option value="application/zip" <?php selected(true, in_array('application/zip', (array) Plugin::getSetting('appCapabilities[fileHandler][accept]'))); ?>><?php esc_html_e('Application/ZIP', $this->slug); ?></option>
+          </select>
+          <!-- End File Types -->
+        </div>
+      </div>
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
+    </div>
+  </fieldset>
+  <!-- End File Handler -->
   <!-- Web Share Target -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0 dark:border-neutral-700" id="subsectionWebShareTarget">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
@@ -254,7 +349,7 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-400">
-              <?php esc_html_e('Web Share Target feature adds a system-level share target picker and allows your web app to register as a share target to receive shared data from other sites or apps via share URL scheme. The feature is most useful if your website is a social networking app.', $this->slug); ?>
+              <?php echo wp_kses_post('Web Share Target feature adds a system-level share target picker and allows your web app to register as a share target to receive shared data from other sites or apps via share URL scheme. The feature is most useful if your website is a social networking app.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -274,7 +369,7 @@ if (!defined('ABSPATH')) {
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                <?php esc_html_e('Enter the action of your web app. Action is a URL or your share URL scheme that accepts parameters and opens a share dialog. For example Facebook share action is <code>/sharer/</code> and Facebook full share URL is https://www.facebook.com<code>/sharer/</code>?u=https://example.com/', $this->slug); ?>
+                <?php echo wp_kses_post('Enter the action of your web app. Action is a URL or your share URL scheme that accepts parameters and opens a share dialog. For example Facebook share action is <code>/sharer/</code> and Facebook full share URL is https://www.facebook.com<code>/sharer/</code>?u=https://example.com/', $this->slug); ?>
               </span>
             </button>
           </label>

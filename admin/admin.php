@@ -412,7 +412,7 @@ class Admin
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
       }
       $pluginData = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin);
-      $activePlugins[] = sprintf('<span class="plugin-item">%s <small>(%s)</small></span>', $pluginData['Name'], $pluginData['Version']);
+      $activePlugins[] = sprintf('<li class="plugin-item">%s <small>(%s)</small></li>', $pluginData['Name'], $pluginData['Version']);
     }
 
     $debugInfo = sprintf(
@@ -426,7 +426,7 @@ class Admin
         <p><strong>Memory Limit:</strong> %s</p>
         <p><strong>Max Upload Size:</strong> %s</p>
         <p><strong>Active Plugins:</strong></p>
-        <div class="plugins-grid">%s</div>
+        <ul class="plugins-grid">%s</ul>
       </div>',
       PHP_VERSION,
       get_bloginfo('version'),
@@ -455,8 +455,8 @@ class Admin
                   .problem-description { background: #fff; padding: 15px; border-left: 4px solid #000; margin: 10px 0; }
                   .debug-section { background: #f8f9fa; padding: 15px; border-radius: 5px; }
                   .debug-section p { margin: 5px 0; }
-                  .plugins-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-                  .plugin-item { background: #fff; padding: 7px 10px; border-radius: 3px; border: 1px solid #ddd; border-radius: 10px; font-size: 13px; line-height: 1;}
+                  .plugins-grid { margin-top: 10px;list-style: none; padding: 0; }
+                  .plugin-item { background: #fff; padding: 7px 10px; border-radius: 3px; border: 1px solid #ddd; border-radius: 10px; font-size: 13px; line-height: 1; margin: 7px; width: max-content;}
                   .temporary-access { background: #fff3cd; padding: 15px; border-radius: 5px; margin: 15px 0; }
                   .settings-tree { background: #f8f9fa; padding: 15px; border-radius: 5px; }
                   .settings-tree ul { list-style: none; margin: 0; padding-left: 20px; }

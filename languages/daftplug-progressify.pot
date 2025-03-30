@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.1\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-20T15:38:14+00:00\n"
+"POT-Creation-Date: 2025-03-30T21:36:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -40,78 +40,78 @@ msgstr ""
 msgid "https://daftplug.com/"
 msgstr ""
 
-#: admin/admin.php:151
-#: frontend/frontend.php:79
+#: admin/admin.php:140
+#: frontend/frontend.php:69
 msgid "An unexpected error occurred"
 msgstr ""
 
-#: admin/admin.php:167
+#: admin/admin.php:156
 msgid "Dashboard"
 msgstr ""
 
-#: admin/admin.php:168
+#: admin/admin.php:157
 msgid "View your PWA's performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control."
 msgstr ""
 
-#: admin/admin.php:173
+#: admin/admin.php:162
 msgid "Web App Manifest"
 msgstr ""
 
-#: admin/admin.php:174
+#: admin/admin.php:163
 msgid "The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user's device. This file is necessary for enabling the \"Add to Home Screen\" prompt, enhancing the integration of your web app with the user's device."
 msgstr ""
 
-#: admin/admin.php:179
+#: admin/admin.php:168
 msgid "Installation"
 msgstr ""
 
-#: admin/admin.php:180
+#: admin/admin.php:169
 msgid "Installation features allows displaying prompts that encourage users to add your website to their home screens. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application."
 msgstr ""
 
-#: admin/admin.php:185
+#: admin/admin.php:174
 msgid "Offline Usage"
 msgstr ""
 
-#: admin/admin.php:186
+#: admin/admin.php:175
 msgid "Enhance your web app with offline support and reliable performance, enabling users to access previously viewed pages even without an internet connection or on low connectivity."
 msgstr ""
 
-#: admin/admin.php:191
+#: admin/admin.php:180
 msgid "UI Components"
 msgstr ""
 
-#: admin/admin.php:192
+#: admin/admin.php:181
 msgid "Enhance the user experience by adding interactive elements and features that make your web app look and feel more like a native application, including options like pull-down refresh, a navigation tab bar, dark mode, and toast messages."
 msgstr ""
 
-#: admin/admin.php:197
+#: admin/admin.php:186
 msgid "App Capabilities"
 msgstr ""
 
-#: admin/admin.php:198
+#: admin/admin.php:187
 msgid "Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience."
 msgstr ""
 
-#: admin/admin.php:203
-#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:216
+#: admin/admin.php:192
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:215
 msgid "Push Notifications"
 msgstr ""
 
-#: admin/admin.php:204
+#: admin/admin.php:193
 msgid "Push notifications allow your web app to send messages directly to users' devices, providing a powerful tool for engaging users with timely updates, alerts, and personalized content. This feature helps keep your audience informed and connected, even when they are not actively using the app."
 msgstr ""
 
-#: admin/admin.php:209
+#: admin/admin.php:198
 #: admin/templates/pages/publishtoappstores.php:9
 msgid "Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users."
 msgstr ""
 
-#: admin/admin.php:214
+#: admin/admin.php:203
 msgid "We understand all the importance of product support for our customers. That's why we are ready to solve all your issues and answer any questions related to our plugin."
 msgstr ""
 
-#: admin/admin.php:219
+#: admin/admin.php:208
 msgid "See what's new added, changed, fixed, improved or updated."
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 #: admin/templates/header.php:31
 #: admin/templates/header.php:72
 #: admin/templates/pages/publishtoappstores.php:8
-#: admin/templates/sidebar.php:45
+#: admin/templates/sidebar.php:43
 msgid "Publish to App Stores"
 msgstr ""
 
@@ -166,67 +166,68 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: admin/templates/pages/activation.php:11
-#: admin/templates/sidebar.php:87
+#: admin/templates/pages/activation.php:12
+#: admin/templates/sidebar.php:80
 msgid "Select Language"
 msgstr ""
 
-#: admin/templates/pages/activation.php:15
-#: admin/templates/sidebar.php:91
-msgid "English"
-msgstr ""
-
-#: admin/templates/pages/activation.php:33
-msgid "Dark mode"
-msgstr ""
-
-#: admin/templates/pages/activation.php:47
-msgid "Light mode"
+#: admin/templates/pages/activation.php:16
+#: admin/templates/pages/uicomponents.php:996
+#: admin/templates/sidebar.php:84
+msgid "Default"
 msgstr ""
 
 #: admin/templates/pages/activation.php:55
-#: admin/templates/pages/activation.php:88
+msgid "Dark mode"
+msgstr ""
+
+#: admin/templates/pages/activation.php:69
+msgid "Light mode"
+msgstr ""
+
+#: admin/templates/pages/activation.php:77
+#: admin/templates/pages/activation.php:110
 msgid "Activate License"
 msgstr ""
 
-#: admin/templates/pages/activation.php:58
+#: admin/templates/pages/activation.php:80
 msgid "Enter your item purchase code from Envato as your license key to activate the plugin. This will enable in-plugin support and automatic updates."
 msgstr ""
 
-#: admin/templates/pages/activation.php:64
-#: admin/templates/pages/activation.php:77
+#: admin/templates/pages/activation.php:86
+#: admin/templates/pages/activation.php:99
 msgid "License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:72
+#: admin/templates/pages/activation.php:94
 msgid "To obtain your license key, go to your CodeCanyon downloads page, click \"Download\" on the plugin, select \"License certificate & purchase code,\" and download the document."
 msgstr ""
 
-#: admin/templates/pages/activation.php:73
+#: admin/templates/pages/activation.php:95
 msgid "Download License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:76
+#: admin/templates/pages/activation.php:98
 msgid "After downloading the document, open it and copy the \"Item Purchase Code\". This is your license key which you you need to enter in the field below to activate the plugin."
 msgstr ""
 
-#: admin/templates/pages/activation.php:82
+#: admin/templates/pages/activation.php:104
 msgid "Enter Your License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:86
+#: admin/templates/pages/activation.php:108
 msgid "Activating..."
 msgstr ""
 
-#: admin/templates/pages/activation.php:92
+#: admin/templates/pages/activation.php:114
 msgid "Having trouble with activating license?"
 msgstr ""
 
-#: admin/templates/pages/activation.php:94
+#: admin/templates/pages/activation.php:116
 msgid "Contact Us"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:20
+#: admin/templates/pages/appcapabilities.php:21
 msgid "Smooth Transitions"
 msgstr ""
 
@@ -276,9 +277,9 @@ msgid "Fade"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:98
-#: admin/templates/pages/appcapabilities.php:344
-#: admin/templates/pages/appcapabilities.php:431
-#: admin/templates/pages/appcapabilities.php:505
+#: admin/templates/pages/appcapabilities.php:439
+#: admin/templates/pages/appcapabilities.php:526
+#: admin/templates/pages/appcapabilities.php:600
 #: admin/templates/pages/uicomponents.php:41
 #: admin/templates/pages/uicomponents.php:637
 #: admin/templates/pages/uicomponents.php:772
@@ -295,9 +296,9 @@ msgid "Select on what device types smooth page transitions feature should be act
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:110
-#: admin/templates/pages/appcapabilities.php:356
-#: admin/templates/pages/appcapabilities.php:443
-#: admin/templates/pages/appcapabilities.php:517
+#: admin/templates/pages/appcapabilities.php:451
+#: admin/templates/pages/appcapabilities.php:538
+#: admin/templates/pages/appcapabilities.php:612
 #: admin/templates/pages/uicomponents.php:53
 #: admin/templates/pages/uicomponents.php:649
 #: admin/templates/pages/uicomponents.php:784
@@ -310,9 +311,9 @@ msgid "Select Devices"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:114
-#: admin/templates/pages/appcapabilities.php:360
-#: admin/templates/pages/appcapabilities.php:447
-#: admin/templates/pages/appcapabilities.php:521
+#: admin/templates/pages/appcapabilities.php:455
+#: admin/templates/pages/appcapabilities.php:542
+#: admin/templates/pages/appcapabilities.php:616
 #: admin/templates/pages/uicomponents.php:57
 #: admin/templates/pages/uicomponents.php:653
 #: admin/templates/pages/uicomponents.php:788
@@ -325,9 +326,9 @@ msgid "Smartphone"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:118
-#: admin/templates/pages/appcapabilities.php:364
-#: admin/templates/pages/appcapabilities.php:451
-#: admin/templates/pages/appcapabilities.php:525
+#: admin/templates/pages/appcapabilities.php:459
+#: admin/templates/pages/appcapabilities.php:546
+#: admin/templates/pages/appcapabilities.php:620
 #: admin/templates/pages/uicomponents.php:61
 #: admin/templates/pages/uicomponents.php:656
 #: admin/templates/pages/uicomponents.php:792
@@ -340,8 +341,8 @@ msgid "Tablet"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:122
-#: admin/templates/pages/appcapabilities.php:455
-#: admin/templates/pages/appcapabilities.php:529
+#: admin/templates/pages/appcapabilities.php:550
+#: admin/templates/pages/appcapabilities.php:624
 #: admin/templates/pages/uicomponents.php:660
 #: admin/templates/pages/uicomponents.php:796
 #: admin/templates/pages/uicomponents.php:1042
@@ -362,11 +363,12 @@ msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:153
 #: admin/templates/pages/appcapabilities.php:229
-#: admin/templates/pages/appcapabilities.php:305
-#: admin/templates/pages/appcapabilities.php:373
-#: admin/templates/pages/appcapabilities.php:465
-#: admin/templates/pages/appcapabilities.php:538
-#: admin/templates/pages/appcapabilities.php:725
+#: admin/templates/pages/appcapabilities.php:324
+#: admin/templates/pages/appcapabilities.php:400
+#: admin/templates/pages/appcapabilities.php:468
+#: admin/templates/pages/appcapabilities.php:560
+#: admin/templates/pages/appcapabilities.php:633
+#: admin/templates/pages/appcapabilities.php:820
 #: admin/templates/pages/installation.php:240
 #: admin/templates/pages/offlineusage.php:148
 #: admin/templates/pages/offlineusage.php:281
@@ -391,11 +393,12 @@ msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:155
 #: admin/templates/pages/appcapabilities.php:231
-#: admin/templates/pages/appcapabilities.php:307
-#: admin/templates/pages/appcapabilities.php:375
-#: admin/templates/pages/appcapabilities.php:467
-#: admin/templates/pages/appcapabilities.php:540
-#: admin/templates/pages/appcapabilities.php:727
+#: admin/templates/pages/appcapabilities.php:326
+#: admin/templates/pages/appcapabilities.php:402
+#: admin/templates/pages/appcapabilities.php:470
+#: admin/templates/pages/appcapabilities.php:562
+#: admin/templates/pages/appcapabilities.php:635
+#: admin/templates/pages/appcapabilities.php:822
 #: admin/templates/pages/installation.php:242
 #: admin/templates/pages/offlineusage.php:150
 #: admin/templates/pages/offlineusage.php:283
@@ -443,142 +446,223 @@ msgid "Enter URL"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:248
-msgid "Web Share Target"
+msgid "File Handler"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:257
-msgid "Web Share Target feature adds a system-level share target picker and allows your web app to register as a share target to receive shared data from other sites or apps via share URL scheme. The feature is most useful if your website is a social networking app."
+msgid "File Handler feature allows your web app to register as a file handler to receive files from other sites or apps via file URL scheme. The feature is mostly useful if your website is processing files or documents."
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:270
-msgid "Share Action"
+msgid "File Action"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:277
-msgid "Enter the action of your web app. Action is a URL or your share URL scheme that accepts parameters and opens a share dialog. For example Facebook share action is <code>/sharer/</code> and Facebook full share URL is https://www.facebook.com<code>/sharer/</code>?u=https://example.com/"
+msgid "Enter the action of your web app. File action is a URL or your file URL scheme that your web app will open to when handling the given file."
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:281
+#: admin/templates/pages/appcapabilities.php:376
 msgid "Enter Action"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:287
+msgid "File Types"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:294
+msgid "Select the file MIME types that your web app can handle using above file action."
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:299
+msgid "Select File Types"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:302
+msgid "Image/PNG"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:303
+msgid "Image/JPEG"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:304
+msgid "Image/GIF"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:305
+msgid "Image/WebP"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:306
+msgid "Audio/MP3"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:307
+msgid "Audio/MP4"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:308
+msgid "Audio/OGG"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:309
+msgid "Audio/WAV"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:310
+msgid "Video/MP4"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:311
+msgid "Video/WebM"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:312
+msgid "Text/CSV"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:313
+msgid "Application/XML"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:314
+msgid "Application/JSON"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:315
+msgid "Application/PDF"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:316
+msgid "Application/ZIP"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:343
+msgid "Web Share Target"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:365
+msgid "Share Action"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:382
 msgid "URL Query"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:298
+#: admin/templates/pages/appcapabilities.php:393
 msgid "Enter URL Query"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:324
+#: admin/templates/pages/appcapabilities.php:419
 msgid "Vibrations"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:331
+#: admin/templates/pages/appcapabilities.php:426
 msgid "Vibrations feature creates vibes on tapping for mobile users. That can help mobile users recognize when they are tapping and clicking on your website."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:351
+#: admin/templates/pages/appcapabilities.php:446
 msgid "Select on what device types vibrations feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:392
+#: admin/templates/pages/appcapabilities.php:487
 msgid "Idle Detection"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:401
+#: admin/templates/pages/appcapabilities.php:496
 msgid "The Idle Detection notifies your website when a user is idle, indicating such things as lack of interaction with the keyboard, mouse, screen, activation of a screensaver, locking of the screen, or moving to a different screen. If enabled, your website will prompt your users to update contents if the user is detected to be in an idle state."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:414
+#: admin/templates/pages/appcapabilities.php:509
 msgid "Threshold"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:421
+#: admin/templates/pages/appcapabilities.php:516
 msgid "Choose how many minutes to wait until the user is considered idle."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:438
+#: admin/templates/pages/appcapabilities.php:533
 msgid "Select on what device types Idle Detection feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:483
+#: admin/templates/pages/appcapabilities.php:578
 msgid "Screen Wake Lock"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:492
+#: admin/templates/pages/appcapabilities.php:587
 msgid "Screen wake lock provides a way to prevent device from dimming or locking the screen when your web application needs to keep running. This capability enables new experiences that, until now, required a platform-specific app."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:512
+#: admin/templates/pages/appcapabilities.php:607
 msgid "Select on what device types Screen Wake Lock feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:557
+#: admin/templates/pages/appcapabilities.php:652
 msgid "Advanced Web APIs"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:566
+#: admin/templates/pages/appcapabilities.php:661
 msgid "Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:581
+#: admin/templates/pages/appcapabilities.php:676
 msgid "Biometric Authentication"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:588
+#: admin/templates/pages/appcapabilities.php:683
 msgid "The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device's built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:593
+#: admin/templates/pages/appcapabilities.php:688
 msgid "Allow login with Touch ID, Face ID or with other device's built-in authenticator."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:610
+#: admin/templates/pages/appcapabilities.php:705
 msgid "Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:617
+#: admin/templates/pages/appcapabilities.php:712
 msgid "Background sync lets you defer actions until the user has stable connectivity. This ensures that crucial requests made while your web app is offline can be replayed when the user comes back online."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:622
+#: admin/templates/pages/appcapabilities.php:717
 msgid "Defer actions and requests until the user has stable connectivity."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:639
+#: admin/templates/pages/appcapabilities.php:734
 msgid "Periodic Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:646
+#: admin/templates/pages/appcapabilities.php:741
 msgid "Periodic Background Sync enables web applications to periodically synchronize data in the background, bringing web apps closer to the behavior of a platform-specific app. It lets your website to always show fresh content in PWA by downloading data in the background when the app or page is not being used."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:652
+#: admin/templates/pages/appcapabilities.php:747
 msgid "Periodically sync data in the background to always show fresh content in PWA."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:669
+#: admin/templates/pages/appcapabilities.php:764
 msgid "Content Indexing"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:676
+#: admin/templates/pages/appcapabilities.php:771
 msgid "Content Indexing allows web applications to add URLs and metadata of offline-capable pages to a local index maintained by the browser. This improves the offline experience and discoverability of already-cached pages by enabling the browser to surface those pages when users are likely to want to view them. These pages could also be used to improve on-device search and augment browsing history."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:681
+#: admin/templates/pages/appcapabilities.php:776
 msgid "Add URLs of offline-capable pages to a local index maintained by the browser."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:698
+#: admin/templates/pages/appcapabilities.php:793
 msgid "Persistent Storage"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:705
+#: admin/templates/pages/appcapabilities.php:800
 msgid "Persistent storage allows your web app to request persistent storage, ensuring that important data is reliably stored on the user's device without being automatically cleared, even under storage pressure. It can help protect critical data from eviction, and reduce the chance of data loss."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:710
+#: admin/templates/pages/appcapabilities.php:805
 msgid "Mark cached website content as persistent to prevent deletion."
 msgstr ""
 
@@ -845,7 +929,7 @@ msgid "Installation button is a customizable button that can be placed anywhere 
 msgstr ""
 
 #: admin/templates/pages/installation.php:210
-#: frontend/assets/js/dev/components/installPrompt.js:420
+#: frontend/assets/js/dev/components/installPrompt.js:419
 msgid "Copied"
 msgstr ""
 
@@ -2298,10 +2382,6 @@ msgstr ""
 msgid "Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:996
-msgid "Default"
-msgstr ""
-
 #: admin/templates/pages/uicomponents.php:998
 msgid "Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance."
 msgstr ""
@@ -2758,28 +2838,28 @@ msgstr ""
 msgid "Add App Shortcut"
 msgstr ""
 
-#: admin/templates/sidebar.php:13
-msgid "v%s"
-msgstr ""
-
-#: admin/templates/sidebar.php:75
-msgid "Auto (system default)"
-msgstr ""
-
-#: admin/templates/sidebar.php:78
-msgid "Light"
-msgstr ""
-
-#: admin/templates/sidebar.php:81
-msgid "Dark"
-msgstr ""
-
-#: admin/templates/sidebar.php:110
+#: admin/templates/sidebar.php:58
 msgid "Help Centre"
 msgstr ""
 
-#: admin/templates/sidebar.php:117
+#: admin/templates/sidebar.php:67
 msgid "What's New"
+msgstr ""
+
+#: admin/templates/sidebar.php:68
+msgid "v%s"
+msgstr ""
+
+#: admin/templates/sidebar.php:125
+msgid "Auto (system default)"
+msgstr ""
+
+#: admin/templates/sidebar.php:128
+msgid "Light"
+msgstr ""
+
+#: admin/templates/sidebar.php:131
+msgid "Dark"
 msgstr ""
 
 #: daftplug-progressify.php:35
@@ -2964,16 +3044,16 @@ msgstr ""
 msgid "%s has just accepted your friend request."
 msgstr ""
 
-#: includes/plugin.php:309
+#: includes/plugin.php:316
 msgid "⚠️ %s requires PHP version at least 8.2 to function properly."
 msgstr ""
 
-#: includes/plugin.php:309
-#: includes/plugin.php:321
+#: includes/plugin.php:316
+#: includes/plugin.php:328
 msgid "If you have trouble fixing this, please contact us on"
 msgstr ""
 
-#: includes/plugin.php:321
+#: includes/plugin.php:328
 msgid "⚠️ %s features require <i>%s</i> extension to function properly."
 msgstr ""
 
@@ -3052,150 +3132,152 @@ msgstr ""
 msgid "PWA Installs"
 msgstr ""
 
-#: dist/daftplug-progressify/frontend/assets/js/installButton-40e2903c.js:1
-#: frontend/assets/js/dev/components/installPrompt.js:984
-#: frontend/assets/js/dev/modules/installButton.js:32
-#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:63
-#: frontend/assets/js/dev/modules/installOverlayInFeed.js:83
-#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:94
-#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:79
-#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:62
-msgid "Install Web App"
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:480
+#: frontend/assets/js/dev/components/installPrompt.js:479
 msgid "Checking installation capabilities..."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:535
+#: frontend/assets/js/dev/components/installPrompt.js:534
 msgid "Click to Install"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:539
+#: frontend/assets/js/dev/components/installPrompt.js:538
 msgid "Tap to Install"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:694
-#: frontend/assets/js/dev/components/installPrompt.js:698
-#: frontend/assets/js/dev/components/installPrompt.js:702
-#: frontend/assets/js/dev/components/installPrompt.js:706
-#: frontend/assets/js/dev/components/installPrompt.js:724
-#: frontend/assets/js/dev/components/installPrompt.js:729
-#: frontend/assets/js/dev/components/installPrompt.js:734
-#: frontend/assets/js/dev/components/installPrompt.js:752
-#: frontend/assets/js/dev/components/installPrompt.js:757
+#: frontend/assets/js/dev/components/installPrompt.js:693
+#: frontend/assets/js/dev/components/installPrompt.js:697
+#: frontend/assets/js/dev/components/installPrompt.js:701
+#: frontend/assets/js/dev/components/installPrompt.js:705
+#: frontend/assets/js/dev/components/installPrompt.js:723
+#: frontend/assets/js/dev/components/installPrompt.js:728
+#: frontend/assets/js/dev/components/installPrompt.js:733
+#: frontend/assets/js/dev/components/installPrompt.js:751
+#: frontend/assets/js/dev/components/installPrompt.js:756
 msgid "Tap the Menu Icon"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:694
-#: frontend/assets/js/dev/components/installPrompt.js:698
-#: frontend/assets/js/dev/components/installPrompt.js:702
+#: frontend/assets/js/dev/components/installPrompt.js:693
+#: frontend/assets/js/dev/components/installPrompt.js:697
+#: frontend/assets/js/dev/components/installPrompt.js:701
 msgid "Tap the menu icon (three dots), located at the top-right of your screen."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:695
-#: frontend/assets/js/dev/components/installPrompt.js:717
-#: frontend/assets/js/dev/components/installPrompt.js:721
-#: frontend/assets/js/dev/components/installPrompt.js:726
-#: frontend/assets/js/dev/components/installPrompt.js:731
-#: frontend/assets/js/dev/components/installPrompt.js:736
-#: frontend/assets/js/dev/components/installPrompt.js:740
+#: frontend/assets/js/dev/components/installPrompt.js:694
+#: frontend/assets/js/dev/components/installPrompt.js:716
+#: frontend/assets/js/dev/components/installPrompt.js:720
+#: frontend/assets/js/dev/components/installPrompt.js:725
+#: frontend/assets/js/dev/components/installPrompt.js:730
+#: frontend/assets/js/dev/components/installPrompt.js:735
+#: frontend/assets/js/dev/components/installPrompt.js:739
 msgid "Select \"Add to Home Screen\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:695
+#: frontend/assets/js/dev/components/installPrompt.js:694
 msgid "Tap the \"Add to Home Screen\" option from the menu."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:696
-#: frontend/assets/js/dev/components/installPrompt.js:704
-#: frontend/assets/js/dev/components/installPrompt.js:718
-#: frontend/assets/js/dev/components/installPrompt.js:722
-#: frontend/assets/js/dev/components/installPrompt.js:727
-#: frontend/assets/js/dev/components/installPrompt.js:732
-#: frontend/assets/js/dev/components/installPrompt.js:737
-#: frontend/assets/js/dev/components/installPrompt.js:741
+#: frontend/assets/js/dev/components/installPrompt.js:695
+#: frontend/assets/js/dev/components/installPrompt.js:703
+#: frontend/assets/js/dev/components/installPrompt.js:717
+#: frontend/assets/js/dev/components/installPrompt.js:721
+#: frontend/assets/js/dev/components/installPrompt.js:726
+#: frontend/assets/js/dev/components/installPrompt.js:731
+#: frontend/assets/js/dev/components/installPrompt.js:736
+#: frontend/assets/js/dev/components/installPrompt.js:740
 msgid "Confirm by Tapping \"Add\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:696
-#: frontend/assets/js/dev/components/installPrompt.js:704
+#: frontend/assets/js/dev/components/installPrompt.js:695
+#: frontend/assets/js/dev/components/installPrompt.js:703
 msgid "Tap the \"Add\" text on the browser installation dialog."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:699
+#: frontend/assets/js/dev/components/installPrompt.js:698
 msgid "Select \"Install\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:699
-#: frontend/assets/js/dev/components/installPrompt.js:703
+#: frontend/assets/js/dev/components/installPrompt.js:698
+#: frontend/assets/js/dev/components/installPrompt.js:702
 msgid "Tap the \"Install\" option from the menu."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:700
+#: frontend/assets/js/dev/components/installPrompt.js:699
 msgid "Confirm by Tapping \"Add to Home Screen\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:700
+#: frontend/assets/js/dev/components/installPrompt.js:699
 msgid "Tap the \"Add to Home Screen\" button on the browser installation dialog."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:703
+#: frontend/assets/js/dev/components/installPrompt.js:702
 msgid "Select \"Home Screen\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:706
-#: frontend/assets/js/dev/components/installPrompt.js:724
-#: frontend/assets/js/dev/components/installPrompt.js:734
+#: frontend/assets/js/dev/components/installPrompt.js:705
+#: frontend/assets/js/dev/components/installPrompt.js:723
+#: frontend/assets/js/dev/components/installPrompt.js:733
 msgid "Tap the menu icon (three horizontal lines) located at the bottom-right of your screen."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:707
+#: frontend/assets/js/dev/components/installPrompt.js:706
 msgid "Select \"Add to Phone\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:707
+#: frontend/assets/js/dev/components/installPrompt.js:706
 msgid "Tap the \"Add to Phone\" option from the menu"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:708
+#: frontend/assets/js/dev/components/installPrompt.js:707
 msgid "Confirm by Tapping \"Install\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:708
+#: frontend/assets/js/dev/components/installPrompt.js:707
 msgid "Tap the \"Install\" text on the browser installation dialog."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:710
-#: frontend/assets/js/dev/components/installPrompt.js:743
-#: frontend/assets/js/dev/components/installPrompt.js:762
+#: frontend/assets/js/dev/components/installPrompt.js:709
+#: frontend/assets/js/dev/components/installPrompt.js:742
+#: frontend/assets/js/dev/components/installPrompt.js:761
 msgid "Copy the Page URL"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:710
-#: frontend/assets/js/dev/components/installPrompt.js:743
-#: frontend/assets/js/dev/components/installPrompt.js:762
+#: frontend/assets/js/dev/components/installPrompt.js:709
+#: frontend/assets/js/dev/components/installPrompt.js:742
+#: frontend/assets/js/dev/components/installPrompt.js:761
 msgid "Click the button below to copy the page's URL."
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+#: frontend/assets/js/dev/components/installPrompt.js:762
+msgid "Open the Google Chrome Browser"
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:710
+msgid "Launch the Google Chrome web browser from your home screen."
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:711
+#: frontend/assets/js/dev/components/installPrompt.js:744
+#: frontend/assets/js/dev/components/installPrompt.js:763
+msgid "Paste and Open the URL"
 msgstr ""
 
 #: frontend/assets/js/dev/components/installPrompt.js:711
 #: frontend/assets/js/dev/components/installPrompt.js:763
-msgid "Open the Google Chrome Browser"
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:711
-msgid "Launch the Google Chrome web browser from your home screen."
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:712
-#: frontend/assets/js/dev/components/installPrompt.js:745
-#: frontend/assets/js/dev/components/installPrompt.js:764
-msgid "Paste and Open the URL"
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:712
-#: frontend/assets/js/dev/components/installPrompt.js:764
 msgid "Paste the copied URL into Google Chrome's address bar and open the page."
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:715
+#: frontend/assets/js/dev/components/installPrompt.js:719
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:729
+#: frontend/assets/js/dev/components/installPrompt.js:734
+#: frontend/assets/js/dev/components/installPrompt.js:738
+msgid "Tap the Share Icon"
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:715
+msgid "Tap the share icon located at the center-bottom of your screen."
 msgstr ""
 
 #: frontend/assets/js/dev/components/installPrompt.js:716
@@ -3204,11 +3286,7 @@ msgstr ""
 #: frontend/assets/js/dev/components/installPrompt.js:730
 #: frontend/assets/js/dev/components/installPrompt.js:735
 #: frontend/assets/js/dev/components/installPrompt.js:739
-msgid "Tap the Share Icon"
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:716
-msgid "Tap the share icon located at the center-bottom of your screen."
+msgid "Tap the \"Add to Home Screen\" option, represented by the plus [+] icon."
 msgstr ""
 
 #: frontend/assets/js/dev/components/installPrompt.js:717
@@ -3217,242 +3295,243 @@ msgstr ""
 #: frontend/assets/js/dev/components/installPrompt.js:731
 #: frontend/assets/js/dev/components/installPrompt.js:736
 #: frontend/assets/js/dev/components/installPrompt.js:740
-msgid "Tap the \"Add to Home Screen\" option, represented by the plus [+] icon."
-msgstr ""
-
-#: frontend/assets/js/dev/components/installPrompt.js:718
-#: frontend/assets/js/dev/components/installPrompt.js:722
-#: frontend/assets/js/dev/components/installPrompt.js:727
-#: frontend/assets/js/dev/components/installPrompt.js:732
-#: frontend/assets/js/dev/components/installPrompt.js:737
-#: frontend/assets/js/dev/components/installPrompt.js:741
 msgid "Tap the \"Add\" button at the top-right corner of your screen."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:720
+#: frontend/assets/js/dev/components/installPrompt.js:719
 msgid "Tap the share icon located at the top-right of your browser address bar."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:725
-#: frontend/assets/js/dev/components/installPrompt.js:735
+#: frontend/assets/js/dev/components/installPrompt.js:724
+#: frontend/assets/js/dev/components/installPrompt.js:734
 msgid "Tap the share icon in the dialog overlay that the browser opens."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:729
+#: frontend/assets/js/dev/components/installPrompt.js:728
 msgid "Tap the menu icon (three dots), located at the bottom-right of your screen."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:730
+#: frontend/assets/js/dev/components/installPrompt.js:729
 msgid "Tap the share icon located at the top of the dialog overlay that browser opens."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:739
+#: frontend/assets/js/dev/components/installPrompt.js:738
 msgid "Tap the share icon located at the right side of the browser's address bar."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:744
+#: frontend/assets/js/dev/components/installPrompt.js:743
 msgid "Open the Safari Browser"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:744
+#: frontend/assets/js/dev/components/installPrompt.js:743
 msgid "Launch the Safari web browser from your home screen."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:745
+#: frontend/assets/js/dev/components/installPrompt.js:744
 msgid "Paste the copied URL into Safari's address bar and open the page."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:748
-#: frontend/assets/js/dev/components/installPrompt.js:767
+#: frontend/assets/js/dev/components/installPrompt.js:747
+#: frontend/assets/js/dev/components/installPrompt.js:766
 msgid "Installation Not Supported"
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:748
+#: frontend/assets/js/dev/components/installPrompt.js:747
 msgid "Your operating system does not support web app installation. Please try accessing the website on an Android or iOS mobile device."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:752
-#: frontend/assets/js/dev/components/installPrompt.js:757
+#: frontend/assets/js/dev/components/installPrompt.js:751
+#: frontend/assets/js/dev/components/installPrompt.js:756
 msgid "Tap the menu icon (three dots) in the top-right corner of your browser window."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:753
+#: frontend/assets/js/dev/components/installPrompt.js:752
 msgid "Expand \"Cast, save and share\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:753
+#: frontend/assets/js/dev/components/installPrompt.js:752
 msgid "Hover over the \"Cast, Save, and Share\" menu item to expand its options."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:754
+#: frontend/assets/js/dev/components/installPrompt.js:753
 msgid "Select \"Install page as app...\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:754
+#: frontend/assets/js/dev/components/installPrompt.js:753
 msgid "Click on \"Install page as app...\" from the menu."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:755
-#: frontend/assets/js/dev/components/installPrompt.js:760
+#: frontend/assets/js/dev/components/installPrompt.js:754
+#: frontend/assets/js/dev/components/installPrompt.js:759
 msgid "Confirm by Clicking \"Install\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:755
-#: frontend/assets/js/dev/components/installPrompt.js:760
+#: frontend/assets/js/dev/components/installPrompt.js:754
+#: frontend/assets/js/dev/components/installPrompt.js:759
 msgid "Click the \"Install\" button in the browser's installation dialog."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:758
+#: frontend/assets/js/dev/components/installPrompt.js:757
 msgid "Expand \"Apps\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:758
+#: frontend/assets/js/dev/components/installPrompt.js:757
 msgid "Hover over the \"Apps\" menu item to expand its options."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:759
+#: frontend/assets/js/dev/components/installPrompt.js:758
 msgid "Select \"Install this site as app\""
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:759
+#: frontend/assets/js/dev/components/installPrompt.js:758
 msgid "Click on \"Install this site as app\" from the menu."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:763
+#: frontend/assets/js/dev/components/installPrompt.js:762
 msgid "Launch the Google Chrome web browser from your start menu."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:767
+#: frontend/assets/js/dev/components/installPrompt.js:766
 msgid "Your device does not support web app installation. Please try accessing the website on a mobile or desktop device."
 msgstr ""
 
-#: frontend/assets/js/dev/components/installPrompt.js:1004
+#: frontend/assets/js/dev/components/installPrompt.js:983
+#: frontend/assets/js/dev/modules/installButton.js:32
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:62
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:82
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:93
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:78
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:61
+msgid "Install Web App"
+msgstr ""
+
+#: frontend/assets/js/dev/components/installPrompt.js:1003
 msgid "Close Dialog"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/darkMode.js:386
-#: frontend/assets/js/dev/modules/darkMode.js:445
+#: frontend/assets/js/dev/modules/darkMode.js:385
+#: frontend/assets/js/dev/modules/darkMode.js:444
 msgid "Toggle dark mode"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/idleDetection.js:159
+#: frontend/assets/js/dev/modules/idleDetection.js:158
 msgid "You've been idle for a while."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:315
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:314
 msgid "Read this article in our web app"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:324
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:323
 msgid "Open"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:333
+#: frontend/assets/js/dev/modules/installOverlayBlogPopup.js:332
 msgid "Continue"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:212
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:211
 msgid "Get our web app. It won't take up space on your device."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:217
-#: frontend/assets/js/dev/modules/installOverlayInFeed.js:177
-#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:188
-#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:177
-#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:157
+#: frontend/assets/js/dev/modules/installOverlayHeaderBanner.js:216
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:176
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:187
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:176
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:156
 msgid "Install Now"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayInFeed.js:173
+#: frontend/assets/js/dev/modules/installOverlayInFeed.js:172
 msgid "Keep reading, even when you're on the train!"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:184
+#: frontend/assets/js/dev/modules/installOverlayNavigationMenu.js:183
 msgid "Find what you need faster by installing our web app!"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:174
+#: frontend/assets/js/dev/modules/installOverlaySnackbar.js:173
 msgid "Installing uses no storage and offers a quick way back to our web app."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:153
+#: frontend/assets/js/dev/modules/installOverlayWoocommerceCheckout.js:152
 msgid "Keep track of your orders. Our web app is fast, small and works offline."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/offlineForms.js:467
+#: frontend/assets/js/dev/modules/offlineForms.js:466
 msgid "No Internet Connection"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/offlineForms.js:471
+#: frontend/assets/js/dev/modules/offlineForms.js:470
 msgid "You’re currently offline. Your form submission data will be saved and be automatically processed in the background when you’re back online within 24 hours. Would you like to proceed?"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/offlineNotification.js:38
-#: frontend/assets/js/dev/modules/offlineNotification.js:170
+#: frontend/assets/js/dev/modules/offlineNotification.js:37
+#: frontend/assets/js/dev/modules/offlineNotification.js:169
 msgid "Connection lost. Attempting to reconnect..."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/offlineNotification.js:59
+#: frontend/assets/js/dev/modules/offlineNotification.js:58
 msgid "Successfully reconnected to the internet!"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pullDownRefresh.js:103
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:102
 msgid "Release to refresh"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pullDownRefresh.js:105
-#: frontend/assets/js/dev/modules/pullDownRefresh.js:235
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:104
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:234
 msgid "Pull down to refresh"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pullDownRefresh.js:125
+#: frontend/assets/js/dev/modules/pullDownRefresh.js:124
 msgid "Refreshing..."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pushNotificationsButton.js:180
+#: frontend/assets/js/dev/modules/pushNotificationsButton.js:179
 msgid "Enable / Disable Push Notifications"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:85
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:84
 msgid "We would like to show you notifications for the latest news and updates."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:222
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:221
 msgid "Dismiss"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:225
+#: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:224
 msgid "Allow Notifications"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/shakeRefresh.js:158
+#: frontend/assets/js/dev/modules/shakeRefresh.js:157
 msgid "Shake detected! Refreshing the page..."
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:105
+#: frontend/assets/js/dev/modules/toastMessages.js:104
 msgid "Homepage Opened"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:108
+#: frontend/assets/js/dev/modules/toastMessages.js:107
 msgid "Page Not Found"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:111
+#: frontend/assets/js/dev/modules/toastMessages.js:110
 msgid "Search Results"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:114
+#: frontend/assets/js/dev/modules/toastMessages.js:113
 msgid "Article Opened"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:117
+#: frontend/assets/js/dev/modules/toastMessages.js:116
 msgid "Shop Opened"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:120
+#: frontend/assets/js/dev/modules/toastMessages.js:119
 msgid "Product Opened"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/toastMessages.js:123
+#: frontend/assets/js/dev/modules/toastMessages.js:122
 msgid "Page Opened"
 msgstr ""
