@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-03-20T15:38:14+00:00\n"
-"PO-Revision-Date: 2025-03-22 18:47+0000\n"
+"PO-Revision-Date: 2025-04-03 09:03+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -4463,7 +4463,7 @@ msgstr ""
 
 #: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:222
 msgid "Dismiss"
-msgstr "Congedo"
+msgstr "Rifiuto"
 
 #: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:225
 msgid "Allow Notifications"

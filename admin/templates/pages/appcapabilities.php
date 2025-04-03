@@ -17,7 +17,6 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <span class="inline text-nowrap bg-yellow-50 border border-yellow-300 text-yellow-600 text-[9px] sm:text-[10px] leading-none uppercase rounded-full py-[0.1875rem] px-1.5 mt-px sm:mt-0">BETA</span>
               <?php esc_html_e('Smooth Transitions', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="appCapabilities[smoothPageTransitions][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start"
@@ -244,7 +243,6 @@ if (!defined('ABSPATH')) {
           </svg>
           <div class="grow">
             <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800 dark:text-neutral-200">
-              <span class="inline text-nowrap bg-blue-50 border border-blue-300 text-blue-600 text-[9px] sm:text-[10px] leading-none uppercase rounded-full py-[0.1875rem] px-1.5 mt-px sm:mt-0">NEW</span>
               <?php esc_html_e('File Handler', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="appCapabilities[fileHandler][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-neutral-900 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-white text-start" <?php checked(

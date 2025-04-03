@@ -553,14 +553,25 @@ if (!defined('ABSPATH')) {
                 <input name="uiComponents[navigationTabBar][navigationItems][label]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:placeholder:text-white/60 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Enter Label', $this->slug); ?>">
               </div>
               <div class="flex-grow">
-                <select name="uiComponents[navigationTabBar][navigationItems][page]" data-dp-select='{
-                "placeholder": "<?php esc_html_e('Select Page', $this->slug); ?>",
-                "hasSearch": true
-              }'>
-                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
-                  <?php foreach (get_pages() as $wpPage): ?>
-                  <option value="<?php echo esc_url(get_page_link($wpPage->ID)); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_page_link($wpPage->ID)); ?>><?php echo esc_html($wpPage->post_title); ?></option>
-                  <?php endforeach; ?>
+                <select name="uiComponents[navigationTabBar][navigationItems][page]" required="true" data-dp-select='{
+                  "placeholder": "<?php esc_html_e('Select Page', $this->slug); ?>",
+                  "hasSearch": true
+                }'>
+                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?> data-dp-select-option='{
+                    "description": "/"
+                  }'><?php esc_html_e('Home Page', $this->slug); ?></option>
+                  <?php foreach ($this->getPostTypes() as $postType) {
+                    $posts = get_posts([
+                      'post_type' => $postType,
+                      'posts_per_page' => -1,
+                      'post_status' => 'publish',
+                    ]);
+                    foreach ($posts as $post): ?>
+                  <option value="<?php echo esc_url(get_permalink($post->ID)); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_permalink($post->ID)); ?> data-dp-select-option='{
+                    "description": "<?php echo esc_html(get_post_type_object($postType)->labels->singular_name); ?> - <?php echo esc_url(str_replace(home_url('', 'https'), '', get_permalink($post->ID))); ?>"
+                  }'><?php echo esc_html($post->post_title); ?></option>
+                  <?php endforeach;
+                  } ?>
                 </select>
               </div>
               <div class="flex-none flex items-center ml-1.5">

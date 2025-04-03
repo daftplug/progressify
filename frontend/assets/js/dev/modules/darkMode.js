@@ -250,6 +250,12 @@ class PwaDarkMode extends HTMLElement {
 
   checkSystemPreference() {
     if (config.jsVars.settings.uiComponents.darkMode.osAware === 'on') {
+      // Add color-scheme meta tag to head
+      const metaTag = document.createElement('meta');
+      metaTag.setAttribute('name', 'color-scheme');
+      metaTag.setAttribute('content', 'dark light');
+      document.head.appendChild(metaTag);
+
       // Check initial preference
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.enableDarkMode();

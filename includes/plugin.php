@@ -639,10 +639,37 @@ class Plugin
 
   public static function getDomainFromUrl($url)
   {
+    // Handle empty or invalid URLs
+    if (empty($url)) {
+      return false;
+    }
+
+    // Add scheme if missing to make wp_parse_url work correctly
+    if (!preg_match('~^(?:f|ht)tps?://~i', $url)) {
+      $url = 'https://' . $url;
+    }
+
+    // Parse the URL
     $pieces = wp_parse_url($url);
-    $domain = isset($pieces['host']) ? $pieces['host'] : $pieces['path'];
-    if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+
+    // If no host is found, return false
+    if (empty($pieces['host'])) {
+      return false;
+    }
+
+    $host = $pieces['host'];
+
+    // Remove 'www.' if present
+    $host = preg_replace('/^www\./i', '', $host);
+
+    // Match domain pattern - supports longer TLDs like .museum, .travel, etc.
+    if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,63})$/i', $host, $regs)) {
       return $regs['domain'];
+    }
+
+    // If it's a valid host but doesn't match the pattern (like localhost or IP)
+    if (filter_var($host, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+      return $host;
     }
 
     return false;

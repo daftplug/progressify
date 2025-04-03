@@ -36,6 +36,9 @@ if (!defined('ABSPATH')) {
         <option value="zh_CN" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/cn.svg', $this->pluginFile)); ?>\" alt=\"Chinese\"/>"}' <?php selected($this->language, 'zh_CN'); ?>>
           中文
         </option>
+        <option value="ko_KR" data-dp-select-option='{"icon": "<img class=\"shrink-0 size-4 rounded-full\" src=\"<?php echo esc_url(plugins_url('admin/assets/media/icons/flags/1x1/kr.svg', $this->pluginFile)); ?>\" alt=\"Korean\"/>"}' <?php selected($this->language, 'ko_KR'); ?>>
+          한국어
+        </option>
       </select>
     </div>
     <div>

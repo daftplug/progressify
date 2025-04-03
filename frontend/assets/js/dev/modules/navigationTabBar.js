@@ -295,7 +295,6 @@ class PwaNavigationTabBar extends HTMLElement {
                 align-items: center;
         padding: 0.5rem;
         text-decoration: none;
-        color: ${textColor};
         transition: all 0.2s ease;
       }
 
@@ -315,7 +314,7 @@ class PwaNavigationTabBar extends HTMLElement {
       .navigation-tab-bar_icon svg {
         width: 1.25rem;
         height: 1.25rem;
-        color: ${textColor};
+        color: ${textColor}99;
       }
 
       .navigation-tab-bar_label {
@@ -324,7 +323,7 @@ class PwaNavigationTabBar extends HTMLElement {
         line-height: 1rem;
         font-weight: 500;
         text-align: center;
-        color: ${textColor};
+        color: ${textColor}99;
       }
 
       .navigation-tab-bar_item.-active .navigation-tab-bar_icon svg {

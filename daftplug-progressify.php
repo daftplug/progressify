@@ -3,7 +3,7 @@
 Plugin Name: DaftPlug Progressify - Progressive Web App (PWA)
 Description: Enhance your website with Progressive Web App (PWA) features and take the user experience to the next level with future of mobile web.
 Plugin URI: https://daftplug.com/progressify/
-Version: 1.0.3
+Version: 1.0.4
 Author: DaftPlug
 Author URI: https://daftplug.com/
 Text Domain: daftplug-progressify
@@ -24,7 +24,7 @@ new Plugin([
   'name' => esc_html__('DaftPlug Progressify - Progressive Web App (PWA)', 'daftplug-progressify'),
   'description' => esc_html__('Enhance your website with Progressive Web App (PWA) features and take the user experience to the next level with future of mobile web.', 'daftplug-progressify'),
   'slug' => 'daftplug-progressify',
-  'version' => '1.0.3',
+  'version' => '1.0.4',
   'option_name' => 'daftplug_progressify',
   'plugin_file' => __FILE__,
   'plugin_basename' => plugin_basename(__FILE__),

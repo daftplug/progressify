@@ -190,24 +190,24 @@ class PushNotifications
           $this->wpdb->get_results(
             $this->wpdb->prepare(
               "SELECT 
-                        id,
-                        endpoint,
-                        auth_key,
-                        p256dh_key,
-                        content_encoding,
-                        country_name,
-                        country_icon,
-                        device_name,
-                        device_icon,
-                        os_name,
-                        os_icon,
-                        browser_name,
-                        browser_icon,
-                        wp_user_id,
-                        DATE_FORMAT(date, '%b %e, %Y') as date
-                    FROM {$this->tableName} 
-                    ORDER BY date DESC 
-                    LIMIT %d OFFSET %d",
+                  id,
+                  endpoint,
+                  auth_key,
+                  p256dh_key,
+                  content_encoding,
+                  country_name,
+                  country_icon,
+                  device_name,
+                  device_icon,
+                  os_name,
+                  os_icon,
+                  browser_name,
+                  browser_icon,
+                  wp_user_id,
+                  DATE_FORMAT(date, '%b %e, %Y') as date
+              FROM {$this->tableName} 
+              ORDER BY date DESC 
+              LIMIT %d OFFSET %d",
               $per_page,
               $offset
             ),
