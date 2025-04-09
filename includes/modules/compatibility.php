@@ -2,13 +2,13 @@
 
 namespace DaftPlug\Progressify\Module;
 
-use DaftPlug\Progressify\{Plugin, Frontend};
+use DaftPlug\Progressify\{Plugin};
 
 if (!defined('ABSPATH')) {
   exit();
 }
 
-class UiComponents
+class Compatibility
 {
   public $name;
   public $description;
@@ -43,5 +43,17 @@ class UiComponents
     $this->dependencies = [];
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
+
+    add_filter('wp_headers', [$this, 'servePwaHeaderWithNoCache']);
+  }
+
+  // Prevent caching header when browsing PWA mode
+  public function servePwaHeaderWithNoCache($headers)
+  {
+    if (Plugin::isPlatform('pwa')) {
+      $headers['Cache-Control'] = 'no-cache';
+    }
+
+    return $headers;
   }
 }

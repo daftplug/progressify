@@ -4,6 +4,15 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+  <div data-version="v1.0.5" data-date="April 9, 2025" data-title="More Languages and PWA Mode Fixes" data-description="The update includes addition of Russian language and fixes for PWA mode caching and sustainability.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added Russian language support.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Improved compatibility with PWA mode caching.</li>
+      <li>Fixed issue where PWA mode was not persistent in certain cases.</li>
+    </ul>
+  </div>
   <div data-version="v1.0.4" data-date="April 3, 2025" data-title="Korean Language and Dark Mode Fixes" data-description="The update fixes dark mode issue and includes a new Korean language.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added Korean language support.</li>

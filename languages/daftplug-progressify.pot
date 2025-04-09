@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.3\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-30T21:36:49+00:00\n"
+"POT-Creation-Date: 2025-04-09T17:53:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -27,7 +27,7 @@ msgstr ""
 #. Description of the plugin
 #: daftplug-progressify.php
 #: daftplug-progressify.php:25
-msgid "Enhance your website with Progressive Web App (PWA) features and take the user experience to the next level with future of mobile web."
+msgid "Progressify empowers your website with Progressive Web App (PWA) features that use modern web capabilities to deliver fast, native-app experiences with no app stores or downloads, and all the goodness of the web directly in the browser."
 msgstr ""
 
 #. Author of the plugin
@@ -133,7 +133,7 @@ msgstr ""
 
 #: admin/templates/header.php:36
 #: admin/templates/pages/publishtoappstores.php:22
-#: admin/templates/pages/webappmanifest.php:491
+#: admin/templates/pages/webappmanifest.php:502
 msgid "Android"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgid "Microsoft Store"
 msgstr ""
 
 #: admin/templates/header.php:54
-#: admin/templates/pages/webappmanifest.php:497
+#: admin/templates/pages/webappmanifest.php:508
 msgid "Windows"
 msgstr ""
 
@@ -172,497 +172,497 @@ msgid "Select Language"
 msgstr ""
 
 #: admin/templates/pages/activation.php:16
-#: admin/templates/pages/uicomponents.php:996
+#: admin/templates/pages/uicomponents.php:1007
 #: admin/templates/sidebar.php:84
 msgid "Default"
 msgstr ""
 
-#: admin/templates/pages/activation.php:55
+#: admin/templates/pages/activation.php:61
 msgid "Dark mode"
 msgstr ""
 
-#: admin/templates/pages/activation.php:69
+#: admin/templates/pages/activation.php:75
 msgid "Light mode"
 msgstr ""
 
-#: admin/templates/pages/activation.php:77
-#: admin/templates/pages/activation.php:110
+#: admin/templates/pages/activation.php:83
+#: admin/templates/pages/activation.php:116
 msgid "Activate License"
 msgstr ""
 
-#: admin/templates/pages/activation.php:80
+#: admin/templates/pages/activation.php:86
 msgid "Enter your item purchase code from Envato as your license key to activate the plugin. This will enable in-plugin support and automatic updates."
 msgstr ""
 
-#: admin/templates/pages/activation.php:86
-#: admin/templates/pages/activation.php:99
+#: admin/templates/pages/activation.php:92
+#: admin/templates/pages/activation.php:105
 msgid "License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:94
+#: admin/templates/pages/activation.php:100
 msgid "To obtain your license key, go to your CodeCanyon downloads page, click \"Download\" on the plugin, select \"License certificate & purchase code,\" and download the document."
 msgstr ""
 
-#: admin/templates/pages/activation.php:95
+#: admin/templates/pages/activation.php:101
 msgid "Download License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:98
+#: admin/templates/pages/activation.php:104
 msgid "After downloading the document, open it and copy the \"Item Purchase Code\". This is your license key which you you need to enter in the field below to activate the plugin."
 msgstr ""
 
-#: admin/templates/pages/activation.php:104
+#: admin/templates/pages/activation.php:110
 msgid "Enter Your License Key"
 msgstr ""
 
-#: admin/templates/pages/activation.php:108
+#: admin/templates/pages/activation.php:114
 msgid "Activating..."
 msgstr ""
 
-#: admin/templates/pages/activation.php:114
+#: admin/templates/pages/activation.php:120
 msgid "Having trouble with activating license?"
 msgstr ""
 
-#: admin/templates/pages/activation.php:116
+#: admin/templates/pages/activation.php:122
 msgid "Contact Us"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:21
+#: admin/templates/pages/appcapabilities.php:20
 msgid "Smooth Transitions"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:28
+#: admin/templates/pages/appcapabilities.php:27
 msgid "This feature provides a true native app-like experience by loading content without reloading the entire page. It enables smooth slide and fade transition animations between pages and displays a progress bar while the page loads."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:43
+#: admin/templates/pages/appcapabilities.php:42
 msgid "Loading Progress Bar"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:50
+#: admin/templates/pages/appcapabilities.php:49
 msgid "Enabling this options shows a page transition progress on top of the screen as the page loads."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:55
+#: admin/templates/pages/appcapabilities.php:54
 msgid "Display a progress bar at the top of the screen during page transitions."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:72
+#: admin/templates/pages/appcapabilities.php:71
 msgid "Transition Type"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:79
+#: admin/templates/pages/appcapabilities.php:78
 msgid "Select the type of transition you want your pages to be swiped with."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:84
+#: admin/templates/pages/appcapabilities.php:83
 msgid "Select Transition Type"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:87
+#: admin/templates/pages/appcapabilities.php:86
 msgid "Makes the content slide out to one direction, and slide in from the other."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:88
+#: admin/templates/pages/appcapabilities.php:87
 msgid "Slide"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:90
+#: admin/templates/pages/appcapabilities.php:89
 msgid "Makes the content fade out when leaving, and fade in when entering."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:91
-#: admin/templates/pages/uicomponents.php:1011
+#: admin/templates/pages/appcapabilities.php:90
+#: admin/templates/pages/uicomponents.php:1022
 msgid "Fade"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:98
-#: admin/templates/pages/appcapabilities.php:439
-#: admin/templates/pages/appcapabilities.php:526
-#: admin/templates/pages/appcapabilities.php:600
+#: admin/templates/pages/appcapabilities.php:97
+#: admin/templates/pages/appcapabilities.php:437
+#: admin/templates/pages/appcapabilities.php:524
+#: admin/templates/pages/appcapabilities.php:598
 #: admin/templates/pages/uicomponents.php:41
-#: admin/templates/pages/uicomponents.php:637
-#: admin/templates/pages/uicomponents.php:772
-#: admin/templates/pages/uicomponents.php:846
-#: admin/templates/pages/uicomponents.php:913
-#: admin/templates/pages/uicomponents.php:1018
-#: admin/templates/pages/uicomponents.php:1089
-#: admin/templates/pages/uicomponents.php:1156
+#: admin/templates/pages/uicomponents.php:648
+#: admin/templates/pages/uicomponents.php:783
+#: admin/templates/pages/uicomponents.php:857
+#: admin/templates/pages/uicomponents.php:924
+#: admin/templates/pages/uicomponents.php:1029
+#: admin/templates/pages/uicomponents.php:1100
+#: admin/templates/pages/uicomponents.php:1167
 msgid "Supported Devices"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:105
+#: admin/templates/pages/appcapabilities.php:104
 msgid "Select on what device types smooth page transitions feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:110
-#: admin/templates/pages/appcapabilities.php:451
-#: admin/templates/pages/appcapabilities.php:538
-#: admin/templates/pages/appcapabilities.php:612
+#: admin/templates/pages/appcapabilities.php:109
+#: admin/templates/pages/appcapabilities.php:449
+#: admin/templates/pages/appcapabilities.php:536
+#: admin/templates/pages/appcapabilities.php:610
 #: admin/templates/pages/uicomponents.php:53
-#: admin/templates/pages/uicomponents.php:649
-#: admin/templates/pages/uicomponents.php:784
-#: admin/templates/pages/uicomponents.php:858
-#: admin/templates/pages/uicomponents.php:925
-#: admin/templates/pages/uicomponents.php:1030
-#: admin/templates/pages/uicomponents.php:1101
-#: admin/templates/pages/uicomponents.php:1168
+#: admin/templates/pages/uicomponents.php:660
+#: admin/templates/pages/uicomponents.php:795
+#: admin/templates/pages/uicomponents.php:869
+#: admin/templates/pages/uicomponents.php:936
+#: admin/templates/pages/uicomponents.php:1041
+#: admin/templates/pages/uicomponents.php:1112
+#: admin/templates/pages/uicomponents.php:1179
 msgid "Select Devices"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:114
-#: admin/templates/pages/appcapabilities.php:455
-#: admin/templates/pages/appcapabilities.php:542
-#: admin/templates/pages/appcapabilities.php:616
+#: admin/templates/pages/appcapabilities.php:113
+#: admin/templates/pages/appcapabilities.php:453
+#: admin/templates/pages/appcapabilities.php:540
+#: admin/templates/pages/appcapabilities.php:614
 #: admin/templates/pages/uicomponents.php:57
-#: admin/templates/pages/uicomponents.php:653
-#: admin/templates/pages/uicomponents.php:788
-#: admin/templates/pages/uicomponents.php:862
-#: admin/templates/pages/uicomponents.php:929
-#: admin/templates/pages/uicomponents.php:1034
-#: admin/templates/pages/uicomponents.php:1105
-#: admin/templates/pages/uicomponents.php:1172
+#: admin/templates/pages/uicomponents.php:664
+#: admin/templates/pages/uicomponents.php:799
+#: admin/templates/pages/uicomponents.php:873
+#: admin/templates/pages/uicomponents.php:940
+#: admin/templates/pages/uicomponents.php:1045
+#: admin/templates/pages/uicomponents.php:1116
+#: admin/templates/pages/uicomponents.php:1183
 msgid "Smartphone"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:118
-#: admin/templates/pages/appcapabilities.php:459
-#: admin/templates/pages/appcapabilities.php:546
-#: admin/templates/pages/appcapabilities.php:620
+#: admin/templates/pages/appcapabilities.php:117
+#: admin/templates/pages/appcapabilities.php:457
+#: admin/templates/pages/appcapabilities.php:544
+#: admin/templates/pages/appcapabilities.php:618
 #: admin/templates/pages/uicomponents.php:61
-#: admin/templates/pages/uicomponents.php:656
-#: admin/templates/pages/uicomponents.php:792
-#: admin/templates/pages/uicomponents.php:866
-#: admin/templates/pages/uicomponents.php:933
-#: admin/templates/pages/uicomponents.php:1038
-#: admin/templates/pages/uicomponents.php:1109
-#: admin/templates/pages/uicomponents.php:1176
+#: admin/templates/pages/uicomponents.php:667
+#: admin/templates/pages/uicomponents.php:803
+#: admin/templates/pages/uicomponents.php:877
+#: admin/templates/pages/uicomponents.php:944
+#: admin/templates/pages/uicomponents.php:1049
+#: admin/templates/pages/uicomponents.php:1120
+#: admin/templates/pages/uicomponents.php:1187
 msgid "Tablet"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:122
-#: admin/templates/pages/appcapabilities.php:550
-#: admin/templates/pages/appcapabilities.php:624
-#: admin/templates/pages/uicomponents.php:660
-#: admin/templates/pages/uicomponents.php:796
-#: admin/templates/pages/uicomponents.php:1042
+#: admin/templates/pages/appcapabilities.php:121
+#: admin/templates/pages/appcapabilities.php:548
+#: admin/templates/pages/appcapabilities.php:622
+#: admin/templates/pages/uicomponents.php:671
+#: admin/templates/pages/uicomponents.php:807
+#: admin/templates/pages/uicomponents.php:1053
 msgid "Desktop"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:130
+#: admin/templates/pages/appcapabilities.php:129
 msgid "Compatibility Mode "
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:137
+#: admin/templates/pages/appcapabilities.php:136
 msgid "Enable this only if certain features on your website stop working, and you notice issues where page navigation reloads the entire page instead of transitioning smoothly."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:144
+#: admin/templates/pages/appcapabilities.php:143
 msgid "Use custom content wrapper and force script reinitialization."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:153
-#: admin/templates/pages/appcapabilities.php:229
+#: admin/templates/pages/appcapabilities.php:152
+#: admin/templates/pages/appcapabilities.php:228
+#: admin/templates/pages/appcapabilities.php:322
+#: admin/templates/pages/appcapabilities.php:398
+#: admin/templates/pages/appcapabilities.php:466
+#: admin/templates/pages/appcapabilities.php:558
+#: admin/templates/pages/appcapabilities.php:631
+#: admin/templates/pages/appcapabilities.php:818
+#: admin/templates/pages/installation.php:240
+#: admin/templates/pages/offlineusage.php:158
+#: admin/templates/pages/offlineusage.php:291
+#: admin/templates/pages/pushnotifications.php:163
+#: admin/templates/pages/pushnotifications.php:258
+#: admin/templates/pages/pushnotifications.php:347
+#: admin/templates/pages/pushnotifications.php:819
+#: admin/templates/pages/uicomponents.php:607
+#: admin/templates/pages/uicomponents.php:680
+#: admin/templates/pages/uicomponents.php:816
+#: admin/templates/pages/uicomponents.php:886
+#: admin/templates/pages/uicomponents.php:953
+#: admin/templates/pages/uicomponents.php:1062
+#: admin/templates/pages/uicomponents.php:1129
+#: admin/templates/pages/uicomponents.php:1196
+#: admin/templates/pages/webappmanifest.php:225
+#: admin/templates/pages/webappmanifest.php:345
+#: admin/templates/pages/webappmanifest.php:433
+#: admin/templates/pages/webappmanifest.php:624
+msgid "Saving..."
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:154
+#: admin/templates/pages/appcapabilities.php:230
 #: admin/templates/pages/appcapabilities.php:324
 #: admin/templates/pages/appcapabilities.php:400
 #: admin/templates/pages/appcapabilities.php:468
 #: admin/templates/pages/appcapabilities.php:560
 #: admin/templates/pages/appcapabilities.php:633
 #: admin/templates/pages/appcapabilities.php:820
-#: admin/templates/pages/installation.php:240
-#: admin/templates/pages/offlineusage.php:148
-#: admin/templates/pages/offlineusage.php:281
-#: admin/templates/pages/pushnotifications.php:163
-#: admin/templates/pages/pushnotifications.php:258
-#: admin/templates/pages/pushnotifications.php:347
-#: admin/templates/pages/pushnotifications.php:819
-#: admin/templates/pages/uicomponents.php:596
-#: admin/templates/pages/uicomponents.php:669
-#: admin/templates/pages/uicomponents.php:805
-#: admin/templates/pages/uicomponents.php:875
-#: admin/templates/pages/uicomponents.php:942
-#: admin/templates/pages/uicomponents.php:1051
-#: admin/templates/pages/uicomponents.php:1118
-#: admin/templates/pages/uicomponents.php:1185
-#: admin/templates/pages/webappmanifest.php:225
-#: admin/templates/pages/webappmanifest.php:334
-#: admin/templates/pages/webappmanifest.php:422
-#: admin/templates/pages/webappmanifest.php:602
-msgid "Saving..."
-msgstr ""
-
-#: admin/templates/pages/appcapabilities.php:155
-#: admin/templates/pages/appcapabilities.php:231
-#: admin/templates/pages/appcapabilities.php:326
-#: admin/templates/pages/appcapabilities.php:402
-#: admin/templates/pages/appcapabilities.php:470
-#: admin/templates/pages/appcapabilities.php:562
-#: admin/templates/pages/appcapabilities.php:635
-#: admin/templates/pages/appcapabilities.php:822
 #: admin/templates/pages/installation.php:242
-#: admin/templates/pages/offlineusage.php:150
-#: admin/templates/pages/offlineusage.php:283
+#: admin/templates/pages/offlineusage.php:160
+#: admin/templates/pages/offlineusage.php:293
 #: admin/templates/pages/pushnotifications.php:165
 #: admin/templates/pages/pushnotifications.php:260
 #: admin/templates/pages/pushnotifications.php:349
 #: admin/templates/pages/pushnotifications.php:821
-#: admin/templates/pages/uicomponents.php:598
-#: admin/templates/pages/uicomponents.php:671
-#: admin/templates/pages/uicomponents.php:807
-#: admin/templates/pages/uicomponents.php:877
-#: admin/templates/pages/uicomponents.php:944
-#: admin/templates/pages/uicomponents.php:1053
-#: admin/templates/pages/uicomponents.php:1120
-#: admin/templates/pages/uicomponents.php:1187
+#: admin/templates/pages/uicomponents.php:609
+#: admin/templates/pages/uicomponents.php:682
+#: admin/templates/pages/uicomponents.php:818
+#: admin/templates/pages/uicomponents.php:888
+#: admin/templates/pages/uicomponents.php:955
+#: admin/templates/pages/uicomponents.php:1064
+#: admin/templates/pages/uicomponents.php:1131
+#: admin/templates/pages/uicomponents.php:1198
 #: admin/templates/pages/webappmanifest.php:227
-#: admin/templates/pages/webappmanifest.php:336
-#: admin/templates/pages/webappmanifest.php:424
-#: admin/templates/pages/webappmanifest.php:604
+#: admin/templates/pages/webappmanifest.php:347
+#: admin/templates/pages/webappmanifest.php:435
+#: admin/templates/pages/webappmanifest.php:626
 msgid "Save Changes"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:172
+#: admin/templates/pages/appcapabilities.php:171
 msgid "URL Protocol Handler"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:181
+#: admin/templates/pages/appcapabilities.php:180
 msgid "The URL Protocol Handler feature allows PWAs to open specific protocol links for a seamless user experience. When a PWA is registered as a protocol handler, clicking a link with the specified scheme will open the PWA, receiving the URL."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:194
+#: admin/templates/pages/appcapabilities.php:193
 msgid "Protocol"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:205
+#: admin/templates/pages/appcapabilities.php:204
 msgid "Enter Protocol"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:211
+#: admin/templates/pages/appcapabilities.php:210
 msgid "URL"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:222
+#: admin/templates/pages/appcapabilities.php:221
 msgid "Enter URL"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:248
+#: admin/templates/pages/appcapabilities.php:246
 msgid "File Handler"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:257
+#: admin/templates/pages/appcapabilities.php:255
 msgid "File Handler feature allows your web app to register as a file handler to receive files from other sites or apps via file URL scheme. The feature is mostly useful if your website is processing files or documents."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:270
+#: admin/templates/pages/appcapabilities.php:268
 msgid "File Action"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:277
+#: admin/templates/pages/appcapabilities.php:275
 msgid "Enter the action of your web app. File action is a URL or your file URL scheme that your web app will open to when handling the given file."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:281
-#: admin/templates/pages/appcapabilities.php:376
+#: admin/templates/pages/appcapabilities.php:279
+#: admin/templates/pages/appcapabilities.php:374
 msgid "Enter Action"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:287
+#: admin/templates/pages/appcapabilities.php:285
 msgid "File Types"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:294
+#: admin/templates/pages/appcapabilities.php:292
 msgid "Select the file MIME types that your web app can handle using above file action."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:299
+#: admin/templates/pages/appcapabilities.php:297
 msgid "Select File Types"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:302
+#: admin/templates/pages/appcapabilities.php:300
 msgid "Image/PNG"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:303
+#: admin/templates/pages/appcapabilities.php:301
 msgid "Image/JPEG"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:304
+#: admin/templates/pages/appcapabilities.php:302
 msgid "Image/GIF"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:305
+#: admin/templates/pages/appcapabilities.php:303
 msgid "Image/WebP"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:306
+#: admin/templates/pages/appcapabilities.php:304
 msgid "Audio/MP3"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:307
+#: admin/templates/pages/appcapabilities.php:305
 msgid "Audio/MP4"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:308
+#: admin/templates/pages/appcapabilities.php:306
 msgid "Audio/OGG"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:309
+#: admin/templates/pages/appcapabilities.php:307
 msgid "Audio/WAV"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:310
+#: admin/templates/pages/appcapabilities.php:308
 msgid "Video/MP4"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:311
+#: admin/templates/pages/appcapabilities.php:309
 msgid "Video/WebM"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:312
+#: admin/templates/pages/appcapabilities.php:310
 msgid "Text/CSV"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:313
+#: admin/templates/pages/appcapabilities.php:311
 msgid "Application/XML"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:314
+#: admin/templates/pages/appcapabilities.php:312
 msgid "Application/JSON"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:315
+#: admin/templates/pages/appcapabilities.php:313
 msgid "Application/PDF"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:316
+#: admin/templates/pages/appcapabilities.php:314
 msgid "Application/ZIP"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:343
+#: admin/templates/pages/appcapabilities.php:341
 msgid "Web Share Target"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:365
+#: admin/templates/pages/appcapabilities.php:363
 msgid "Share Action"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:382
+#: admin/templates/pages/appcapabilities.php:380
 msgid "URL Query"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:393
+#: admin/templates/pages/appcapabilities.php:391
 msgid "Enter URL Query"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:419
+#: admin/templates/pages/appcapabilities.php:417
 msgid "Vibrations"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:426
+#: admin/templates/pages/appcapabilities.php:424
 msgid "Vibrations feature creates vibes on tapping for mobile users. That can help mobile users recognize when they are tapping and clicking on your website."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:446
+#: admin/templates/pages/appcapabilities.php:444
 msgid "Select on what device types vibrations feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:487
+#: admin/templates/pages/appcapabilities.php:485
 msgid "Idle Detection"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:496
+#: admin/templates/pages/appcapabilities.php:494
 msgid "The Idle Detection notifies your website when a user is idle, indicating such things as lack of interaction with the keyboard, mouse, screen, activation of a screensaver, locking of the screen, or moving to a different screen. If enabled, your website will prompt your users to update contents if the user is detected to be in an idle state."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:509
+#: admin/templates/pages/appcapabilities.php:507
 msgid "Threshold"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:516
+#: admin/templates/pages/appcapabilities.php:514
 msgid "Choose how many minutes to wait until the user is considered idle."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:533
+#: admin/templates/pages/appcapabilities.php:531
 msgid "Select on what device types Idle Detection feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:578
+#: admin/templates/pages/appcapabilities.php:576
 msgid "Screen Wake Lock"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:587
+#: admin/templates/pages/appcapabilities.php:585
 msgid "Screen wake lock provides a way to prevent device from dimming or locking the screen when your web application needs to keep running. This capability enables new experiences that, until now, required a platform-specific app."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:607
+#: admin/templates/pages/appcapabilities.php:605
 msgid "Select on what device types Screen Wake Lock feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:652
+#: admin/templates/pages/appcapabilities.php:650
 msgid "Advanced Web APIs"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:661
+#: admin/templates/pages/appcapabilities.php:659
 msgid "Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:676
+#: admin/templates/pages/appcapabilities.php:674
 msgid "Biometric Authentication"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:683
+#: admin/templates/pages/appcapabilities.php:681
 msgid "The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device's built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:688
+#: admin/templates/pages/appcapabilities.php:686
 msgid "Allow login with Touch ID, Face ID or with other device's built-in authenticator."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:705
+#: admin/templates/pages/appcapabilities.php:703
 msgid "Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:712
+#: admin/templates/pages/appcapabilities.php:710
 msgid "Background sync lets you defer actions until the user has stable connectivity. This ensures that crucial requests made while your web app is offline can be replayed when the user comes back online."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:717
+#: admin/templates/pages/appcapabilities.php:715
 msgid "Defer actions and requests until the user has stable connectivity."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:734
+#: admin/templates/pages/appcapabilities.php:732
 msgid "Periodic Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:741
+#: admin/templates/pages/appcapabilities.php:739
 msgid "Periodic Background Sync enables web applications to periodically synchronize data in the background, bringing web apps closer to the behavior of a platform-specific app. It lets your website to always show fresh content in PWA by downloading data in the background when the app or page is not being used."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:747
+#: admin/templates/pages/appcapabilities.php:745
 msgid "Periodically sync data in the background to always show fresh content in PWA."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:764
+#: admin/templates/pages/appcapabilities.php:762
 msgid "Content Indexing"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:771
+#: admin/templates/pages/appcapabilities.php:769
 msgid "Content Indexing allows web applications to add URLs and metadata of offline-capable pages to a local index maintained by the browser. This improves the offline experience and discoverability of already-cached pages by enabling the browser to surface those pages when users are likely to want to view them. These pages could also be used to improve on-device search and augment browsing history."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:776
+#: admin/templates/pages/appcapabilities.php:774
 msgid "Add URLs of offline-capable pages to a local index maintained by the browser."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:793
+#: admin/templates/pages/appcapabilities.php:791
 msgid "Persistent Storage"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:800
+#: admin/templates/pages/appcapabilities.php:798
 msgid "Persistent storage allows your web app to request persistent storage, ensuring that important data is reliably stored on the user's device without being automatically cleared, even under storage pressure. It can help protect critical data from eviction, and reduce the chance of data loss."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:805
+#: admin/templates/pages/appcapabilities.php:803
 msgid "Mark cached website content as persistent to prevent deletion."
 msgstr ""
 
@@ -974,111 +974,111 @@ msgstr ""
 msgid "Select Offline Fallback Page"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:95
+#: admin/templates/pages/offlineusage.php:105
 msgid "Caching Strategy"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:102
+#: admin/templates/pages/offlineusage.php:112
 msgid "All network requests are cached by Progressify, so that your website can serve content from the browser cache if available and display requested content as fast as possible. Here you are able to manually change the caching strategy for some request types. We recommend you to set it on Network First for always showing latest version of your website while updating the cache in the background and serving the last cached response when the network request fails."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:107
+#: admin/templates/pages/offlineusage.php:117
 msgid "Select Caching Strategy"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:110
+#: admin/templates/pages/offlineusage.php:120
 msgid "Fetches from the network first and caches the response. Uses the last cached response if the network request fails."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:111
+#: admin/templates/pages/offlineusage.php:121
 msgid "Network-First"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:113
+#: admin/templates/pages/offlineusage.php:123
 msgid "Uses a cached response if available and updates the cache in the background. Always requests an asset from the network, using bandwidth."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:114
+#: admin/templates/pages/offlineusage.php:124
 msgid "Stale While Revalidate"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:116
+#: admin/templates/pages/offlineusage.php:126
 msgid "Uses a cached response first. If unavailable, fetches from the network and caches the response."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:117
+#: admin/templates/pages/offlineusage.php:127
 msgid "Cache-First"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:119
+#: admin/templates/pages/offlineusage.php:129
 msgid "Does not cache anything. Always uses the network and passes the response to the browser."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:120
+#: admin/templates/pages/offlineusage.php:130
 msgid "Network-Only"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:122
+#: admin/templates/pages/offlineusage.php:132
 msgid "Always uses a pre-populated cached response, never requesting from the network. Updates only when cache settings change or cache expires."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:123
+#: admin/templates/pages/offlineusage.php:133
 msgid "Cache-Only"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:130
+#: admin/templates/pages/offlineusage.php:140
 msgid "Cache Expiration Time"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:137
+#: admin/templates/pages/offlineusage.php:147
 msgid "Define how many days should cached content be remained in the browser cache storage. We recommend you to leave it on default as browser cache is updated automatically if your caching strategy is StaleWhileRevalidate but if you are using CacheFirst strategy, then lower expiration times might be a right choice."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:167
+#: admin/templates/pages/offlineusage.php:177
 msgid "Offline Capabilities"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:173
+#: admin/templates/pages/offlineusage.php:183
 msgid "Enhance your web app's offline functionality by enabling features such as offline forms, offline notifications, and offline Google Analytics, ensuring a seamless user experience even without internet connectivity."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:188
+#: admin/templates/pages/offlineusage.php:198
 msgid "Offline Notification"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:195
+#: admin/templates/pages/offlineusage.php:205
 msgid "A live reconnecting notification for your users when they go offline or their connection interrupts on your website."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:200
+#: admin/templates/pages/offlineusage.php:210
 msgid "Display a live reconnecting notification if connection interrupts."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:219
+#: admin/templates/pages/offlineusage.php:229
 msgid "Offline Forms"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:226
+#: admin/templates/pages/offlineusage.php:236
 msgid "Allow users to submit forms offline with their consent. Submissions are saved locally and processed automatically when they reconnect to the internet."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:231
+#: admin/templates/pages/offlineusage.php:241
 msgid "Allow users to submit forms offline and process when reconnected."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:250
+#: admin/templates/pages/offlineusage.php:260
 msgid "Offline Google Analytics"
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:257
+#: admin/templates/pages/offlineusage.php:267
 msgid "Tracks user interactions and page views while offline, and syncs the data with Google Analytics once the connection is restored."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:262
+#: admin/templates/pages/offlineusage.php:272
 msgid "Tracks users offline and syncs with Google Analytics when reconnected."
 msgstr ""
 
-#: admin/templates/pages/offlineusage.php:274
+#: admin/templates/pages/offlineusage.php:284
 msgid "This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4)."
 msgstr ""
 
@@ -2020,7 +2020,7 @@ msgid "Pencil"
 msgstr ""
 
 #: admin/templates/pages/uicomponents.php:378
-#: admin/templates/pages/uicomponents.php:1008
+#: admin/templates/pages/uicomponents.php:1019
 msgid "Percent"
 msgstr ""
 
@@ -2256,189 +2256,189 @@ msgstr ""
 msgid "Select Page"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:560
-#: admin/templates/pages/webappmanifest.php:271
-#: admin/templates/pages/webappmanifest.php:566
+#: admin/templates/pages/uicomponents.php:562
+#: admin/templates/pages/webappmanifest.php:273
+#: admin/templates/pages/webappmanifest.php:579
 msgid "Home Page"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:587
+#: admin/templates/pages/uicomponents.php:598
 msgid "Add Navigation Item"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:615
+#: admin/templates/pages/uicomponents.php:626
 msgid "Scroll Progress Bar"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:624
+#: admin/templates/pages/uicomponents.php:635
 msgid "Scroll Progress Bar feature creates a progress bar on top of the page that indicates the scroll progress percentage of the page."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:644
+#: admin/templates/pages/uicomponents.php:655
 msgid "Select on what device types scroll progress bar feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:687
+#: admin/templates/pages/uicomponents.php:698
 msgid "Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:693
+#: admin/templates/pages/uicomponents.php:704
 msgid "Dark mode adds a switch to your website, allowing users to toggle to a dark version. It can also auto-enable if the user's device is set to Dark Mode or has a low battery, helping save energy."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:706
+#: admin/templates/pages/uicomponents.php:717
 msgid "Switch Button Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:713
+#: admin/templates/pages/uicomponents.php:724
 msgid "Select type of your dark mode switch button."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:718
+#: admin/templates/pages/uicomponents.php:729
 msgid "Select Switch Button Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:720
+#: admin/templates/pages/uicomponents.php:731
 msgid "Menu Switch"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:721
+#: admin/templates/pages/uicomponents.php:732
 msgid "Floating Button"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:728
+#: admin/templates/pages/uicomponents.php:739
 msgid "OS Aware Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:735
+#: admin/templates/pages/uicomponents.php:746
 msgid "OS aware dark mode automatically switches your website to a dark mode if your user's device OS theme preference is set to Dark in display settings."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:742
+#: admin/templates/pages/uicomponents.php:753
 msgid "Auto-enable Dark Mode if the user's device is set to Dark Mode."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:750
+#: admin/templates/pages/uicomponents.php:761
 msgid "Battery Low Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:757
+#: admin/templates/pages/uicomponents.php:768
 msgid "Battery low dark mode automatically switches your website to a dark mode if your user's device battery level is less than 10%, thus saving their battery from draining fast."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:764
+#: admin/templates/pages/uicomponents.php:775
 msgid "Auto-enable Dark Mode if your user's device battery level is low."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:779
+#: admin/templates/pages/uicomponents.php:790
 msgid "Select on what device types dark mode feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:824
+#: admin/templates/pages/uicomponents.php:835
 msgid "Pull Down Refresh"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:833
+#: admin/templates/pages/uicomponents.php:844
 msgid "Pull down refresh touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents of your web app."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:853
+#: admin/templates/pages/uicomponents.php:864
 msgid "Select on what device types pull down navigation feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:894
+#: admin/templates/pages/uicomponents.php:905
 msgid "Shake Refresh"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:900
+#: admin/templates/pages/uicomponents.php:911
 msgid "Shake refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:920
+#: admin/templates/pages/uicomponents.php:931
 msgid "Select on what device types swipe navigation feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:961
+#: admin/templates/pages/uicomponents.php:972
 msgid "Page Loader"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:967
+#: admin/templates/pages/uicomponents.php:978
 msgid "Page Loader feature gives you ability to show a nice page loader animation between page loadings. Page Loader appears at the start of page load and disappears after it is fully loaded."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:980
+#: admin/templates/pages/uicomponents.php:991
 msgid "Page Loader Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:987
+#: admin/templates/pages/uicomponents.php:998
 msgid "Select the type of page loader you want on your website."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:992
+#: admin/templates/pages/uicomponents.php:1003
 msgid "Select Page Loader Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:995
+#: admin/templates/pages/uicomponents.php:1006
 msgid "Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:998
+#: admin/templates/pages/uicomponents.php:1009
 msgid "Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:999
+#: admin/templates/pages/uicomponents.php:1010
 msgid "Skeleton"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1001
+#: admin/templates/pages/uicomponents.php:1012
 msgid "Displays spinning circles as the loading animation, indicating that the page is loading with a familiar, straightforward visual."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1002
+#: admin/templates/pages/uicomponents.php:1013
 msgid "Spinner"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1004
+#: admin/templates/pages/uicomponents.php:1015
 msgid "Features a flying man icon moving across a yellow background, offering a fun and playful loading experience that entertains users while they wait."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1005
+#: admin/templates/pages/uicomponents.php:1016
 msgid "Redirect"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1007
+#: admin/templates/pages/uicomponents.php:1018
 msgid "Displays the loading percentage and a progress bar, giving users a clear and precise indication of the page loading progress."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1010
+#: admin/templates/pages/uicomponents.php:1021
 msgid "Smooth transition with fade in and fade out effects, creating a seamless and visually appealing loading experience."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1025
+#: admin/templates/pages/uicomponents.php:1036
 msgid "Select on what device types page loader feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1070
+#: admin/templates/pages/uicomponents.php:1081
 msgid "Inactive Blur"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1076
+#: admin/templates/pages/uicomponents.php:1087
 msgid "Inactive Blur feature blurs the website when it's not focused, so when the user switches to another tab in browser or will minimize your website as a background task your website will be blurred."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1096
+#: admin/templates/pages/uicomponents.php:1107
 msgid "Select on what device types inactive blur feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1136
+#: admin/templates/pages/uicomponents.php:1147
 msgid "Toast Messages"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1143
+#: admin/templates/pages/uicomponents.php:1154
 msgid "Toast messages provide simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. Toasts automatically disappear after a timeout."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1163
+#: admin/templates/pages/uicomponents.php:1174
 msgid "Select on what device types toast messages feature should be active and running."
 msgstr ""
 
@@ -2452,7 +2452,7 @@ msgstr ""
 
 #: admin/templates/pages/webappmanifest.php:32
 #: admin/templates/pages/webappmanifest.php:52
-#: admin/templates/pages/webappmanifest.php:555
+#: admin/templates/pages/webappmanifest.php:566
 msgid "App Icon"
 msgstr ""
 
@@ -2660,181 +2660,181 @@ msgstr ""
 msgid "Select Start Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:281
+#: admin/templates/pages/webappmanifest.php:292
 msgid "Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:288
+#: admin/templates/pages/webappmanifest.php:299
 msgid "Choose how your app displays. We recommend choosing \"Standalone\", as it provides a native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:293
+#: admin/templates/pages/webappmanifest.php:304
 msgid "Select Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:296
+#: admin/templates/pages/webappmanifest.php:307
 msgid "Opens the app in a separate window for a native app experience."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:297
+#: admin/templates/pages/webappmanifest.php:308
 msgid "Standalone"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:299
+#: admin/templates/pages/webappmanifest.php:310
 msgid "Expands the app to cover the entire screen, hiding browser UI."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:300
+#: admin/templates/pages/webappmanifest.php:311
 msgid "Fullscreen"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:302
+#: admin/templates/pages/webappmanifest.php:313
 msgid "Displays the app with minimal browser UI for a cleaner interface."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:303
+#: admin/templates/pages/webappmanifest.php:314
 msgid "Minimal UI"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:310
+#: admin/templates/pages/webappmanifest.php:321
 msgid "Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:317
+#: admin/templates/pages/webappmanifest.php:328
 msgid "Select the preferred screen orientation. We recommend choosing \"Portrait\", as it provides a more native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:322
+#: admin/templates/pages/webappmanifest.php:333
 msgid "Select Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:324
+#: admin/templates/pages/webappmanifest.php:335
 msgid "Allow Both"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:325
+#: admin/templates/pages/webappmanifest.php:336
 msgid "Portrait"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:326
+#: admin/templates/pages/webappmanifest.php:337
 msgid "Landscape"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:352
+#: admin/templates/pages/webappmanifest.php:363
 msgid "Appearance"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:355
+#: admin/templates/pages/webappmanifest.php:366
 msgid "Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:364
+#: admin/templates/pages/webappmanifest.php:375
 msgid "iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:371
+#: admin/templates/pages/webappmanifest.php:382
 msgid "Specify the style of the status bar for your app on iOS devices."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:376
+#: admin/templates/pages/webappmanifest.php:387
 msgid "Select iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:378
+#: admin/templates/pages/webappmanifest.php:389
 msgid "White bar with black text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:379
+#: admin/templates/pages/webappmanifest.php:390
 msgid "Black bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:380
+#: admin/templates/pages/webappmanifest.php:391
 msgid "Transparent bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:387
 #: admin/templates/pages/webappmanifest.php:398
+#: admin/templates/pages/webappmanifest.php:409
 msgid "Theme Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:394
+#: admin/templates/pages/webappmanifest.php:405
 msgid "Define the primary color theme for the browser's toolbar and app's header. It should be the same as the main color palette of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:404
 #: admin/templates/pages/webappmanifest.php:415
+#: admin/templates/pages/webappmanifest.php:426
 msgid "Background Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:411
+#: admin/templates/pages/webappmanifest.php:422
 msgid "Choose a background color that displays during app startup and loading. It should be the same as the background color of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:441
+#: admin/templates/pages/webappmanifest.php:452
 msgid "Advanced Features"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:444
+#: admin/templates/pages/webappmanifest.php:455
 msgid "Expand your app’s functionality with advanced features like age ratings, related applications, and customizable shortcuts to various app functions."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:453
+#: admin/templates/pages/webappmanifest.php:464
 msgid "IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:460
+#: admin/templates/pages/webappmanifest.php:471
 msgid "International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:464
+#: admin/templates/pages/webappmanifest.php:475
 msgid "Enter IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:471
+#: admin/templates/pages/webappmanifest.php:482
 msgid "Related Applications"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:478
+#: admin/templates/pages/webappmanifest.php:489
 msgid "Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don't have a native application for your web app, you can request them by clicking the \"Publish to App Stores\" button on the header or navigation menu."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:483
+#: admin/templates/pages/webappmanifest.php:494
 msgid "Don't have native apps? Get them and %1$spublish to app stores%2$s"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:489
+#: admin/templates/pages/webappmanifest.php:500
 msgid "Select Platform"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:494
+#: admin/templates/pages/webappmanifest.php:505
 msgid "iOS"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:502
+#: admin/templates/pages/webappmanifest.php:513
 msgid "Enter App ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:525
+#: admin/templates/pages/webappmanifest.php:536
 msgid "Add Related Application"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:533
+#: admin/templates/pages/webappmanifest.php:544
 msgid "App Shortcuts"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:540
+#: admin/templates/pages/webappmanifest.php:551
 msgid "App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's desktop, or long pressing the app's launcher icon on Android."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:559
+#: admin/templates/pages/webappmanifest.php:570
 msgid "Enter Shortcut Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:563
+#: admin/templates/pages/webappmanifest.php:574
 msgid "Select Shortcut Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:593
+#: admin/templates/pages/webappmanifest.php:615
 msgid "Add App Shortcut"
 msgstr ""
 
@@ -2850,15 +2850,15 @@ msgstr ""
 msgid "v%s"
 msgstr ""
 
-#: admin/templates/sidebar.php:125
+#: admin/templates/sidebar.php:131
 msgid "Auto (system default)"
 msgstr ""
 
-#: admin/templates/sidebar.php:128
+#: admin/templates/sidebar.php:134
 msgid "Light"
 msgstr ""
 
-#: admin/templates/sidebar.php:131
+#: admin/templates/sidebar.php:137
 msgid "Dark"
 msgstr ""
 
@@ -3409,8 +3409,8 @@ msgstr ""
 msgid "Close Dialog"
 msgstr ""
 
-#: frontend/assets/js/dev/modules/darkMode.js:385
-#: frontend/assets/js/dev/modules/darkMode.js:444
+#: frontend/assets/js/dev/modules/darkMode.js:391
+#: frontend/assets/js/dev/modules/darkMode.js:450
 msgid "Toggle dark mode"
 msgstr ""
 

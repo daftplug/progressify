@@ -4,49 +4,70 @@ import { hasUrlParam, addParamToUrl } from '../components/utils.js';
 
 // An additional JS based function to make sure we are in PWA mode
 function isPwa() {
-  const displayMode = window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches || window.matchMedia('(display-mode: minimal-ui)').matches || window.navigator.standalone;
+  const isPwaDisplayMode = window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches || window.matchMedia('(display-mode: minimal-ui)').matches || window.navigator.standalone;
   const isTwa = document.referrer.startsWith('android-app://');
   const isPwaParam = hasUrlParam('isPwa', 'true');
+  const pwaSession = sessionStorage.getItem('isPwa');
 
-  return displayMode || isTwa || isPwaParam;
+  return isPwaDisplayMode || isTwa || isPwaParam || pwaSession;
 }
 
-// Appends isPwa query param to internal links
+// Appends isPwa query param to internal links to sustain PWA session
 function appendPwaQueryParamToInternalLinks() {
-  if (hasUrlParam('isPwa', 'true')) {
-    const observer = new MutationObserver((mutations) => {
-      const links = document.querySelectorAll('a[href]');
+  if (!isPwa()) {
+    return;
+  }
 
-      links.forEach((link) => {
-        const href = link.getAttribute('href');
+  // Set session storage item
+  sessionStorage.setItem('isPwa', 'true');
 
-        if (!href || href === '#' || href.startsWith('javascript:') || href.startsWith('mailto:')) {
-          return;
-        }
+  // Add isPwa class to body for potential usage
+  document.body.classList.add('isPwa');
 
-        const isInternalLink = href.includes(window.location.hostname) || href.startsWith('/') || href.startsWith('./') || href.startsWith('../') || !href.includes('://');
-
-        if (isInternalLink) {
-          try {
-            const newUrl = addParamToUrl('isPwa', 'true', href);
-            link.setAttribute('href', newUrl);
-          } catch (error) {
-            console.debug('Failed to process link:', href, error);
-          }
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  } else {
+  // Handle initial URL
+  if (!hasUrlParam('isPwa', 'true')) {
     const newUrl = addParamToUrl('isPwa', 'true');
     if (newUrl !== window.location.href) {
       window.history.replaceState({}, '', newUrl);
     }
   }
+
+  // Handle link clicks
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('javascript:') || href.startsWith('mailto:')) {
+      return;
+    }
+
+    const isInternalLink = href.includes(window.location.hostname) || href.startsWith('/') || href.startsWith('./') || href.startsWith('../') || !href.includes('://');
+
+    if (isInternalLink) {
+      try {
+        const newUrl = addParamToUrl('isPwa', 'true', href);
+        link.setAttribute('href', newUrl);
+      } catch (error) {
+        console.debug('Failed to process link:', href, error);
+      }
+    }
+  });
+
+  // Handle form submissions
+  document.addEventListener('submit', (event) => {
+    const form = event.target;
+    if (!form || form.method.toLowerCase() !== 'get') return;
+
+    const action = form.getAttribute('action');
+    if (!action) return;
+
+    const isInternalForm = action.includes(window.location.hostname) || action.startsWith('/') || action.startsWith('./') || action.startsWith('../') || !action.includes('://');
+
+    if (isInternalForm && !hasUrlParam('isPwa', 'true', action)) {
+      form.setAttribute('action', addParamToUrl('isPwa', 'true', action));
+    }
+  });
 }
 
 // Send PWA usage event for analytics to server
@@ -79,23 +100,8 @@ async function sendPwaUsageEventToServer(retries = 3) {
 }
 
 export async function initPwaTracker() {
-  // Don't proceed if we are not in PWA
-  if (!isPwa()) {
-    return;
-  }
-
-  // Add isPwa class to body for potential usage
-  document.body.classList.add('isPwa');
-
-  // Persist isPwa query param in URLs
-  appendPwaQueryParamToInternalLinks();
-
-  if (sessionStorage.getItem('pwa_session_started')) {
-    return;
-  }
-
   try {
-    sessionStorage.setItem('pwa_session_started', 'true');
+    appendPwaQueryParamToInternalLinks();
     await sendPwaUsageEventToServer();
   } catch (error) {
     console.error('Failed to track PWA session:', error);

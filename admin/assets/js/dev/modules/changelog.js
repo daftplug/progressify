@@ -16,7 +16,7 @@ export function handleChangelog() {
 
     let sectionHtml = `
       <div class="sm:flex">
-        <div class="relative z-10 sm:ps-0 sm:pb-20 sm:w-[15%] sm:text-end">
+        <div class="relative z-10 sm:ps-0 sm:pb-20 sm:w-[17%] sm:text-end">
           <div class="sm:sticky sm:top-12 sm:end-0">
             <div class="ps-7 sm:pe-[1.6125rem]">
               <div class="inline-block py-1 px-2 rounded-lg text-xs font-medium bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:bg-gray-900 dark:bg-white dark:hover:bg-neutral-200 dark:focus:bg-neutral-200 dark:text-neutral-800">
@@ -53,7 +53,7 @@ export function handleChangelog() {
     if (title) {
       sectionHtml += `
         <h2 class="scroll-mt-10">
-          <div class="group inline-flex items-center gap-x-2 font-semibold text-gray-800 hover:text-gray-600 focus:outline-none focus:text-gray-600 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 text-lg">
+          <div class="group inline-flex items-center gap-x-2 font-semibold text-gray-800 focus:outline-none focus:text-gray-600 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 text-lg">
             ${title}
           </div>
         </h2>
