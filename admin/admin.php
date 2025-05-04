@@ -194,9 +194,9 @@ class Admin
         'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'pushnotifications.php']),
       ],
       [
-        'id' => 'publishToAppStores',
+        'id' => 'generateMobileApps',
         'description' => esc_html__('Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users.', $this->slug),
-        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'publishtoappstores.php']),
+        'template' => plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'generatemobileapps.php']),
       ],
       [
         'id' => 'helpCenter',

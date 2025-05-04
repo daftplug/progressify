@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initPageLoader();
   }
 
+  // Orientation Lock
+  if (settings?.webAppManifest?.displaySettings?.orientationLock === 'on') {
+    const { initOrientationLock } = await import('./modules/orientationLock.js');
+    await initOrientationLock();
+  }
+
   // Installation Prompts
   if (settings?.installation?.prompts?.feature === 'on' && userData?.platform?.isBrowser) {
     // Install Url
@@ -39,40 +45,40 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Installation Overlays
     if (settings?.installation?.prompts?.skipFirstVisit !== 'on' || isReturningVisitor()) {
       // Installation Overlay - Header Banner
-      if (settings?.installation?.prompts?.types?.headerBanner === 'on' && !getCookie('pwa_header_banner_overlay_shown')) {
+      if (settings?.installation?.prompts?.types?.headerBanner?.feature === 'on' && !getCookie('pwa_header_banner_overlay_shown')) {
         const { initInstallOverlayHeaderBanner } = await import('./modules/installOverlayHeaderBanner.js');
         await initInstallOverlayHeaderBanner();
         setCookie(`pwa_header_banner_overlay_shown`, 'true', settings?.installation?.prompts?.timeout ?? 1);
       }
 
       // Installation Overlay - Snackbar
-      if (settings?.installation?.prompts?.types?.snackbar === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie('pwa_snackbar_overlay_shown')) {
+      if (settings?.installation?.prompts?.types?.snackbar?.feature === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie('pwa_snackbar_overlay_shown')) {
         const { initInstallOverlaySnackbar } = await import('./modules/installOverlaySnackbar.js');
         await initInstallOverlaySnackbar();
         setCookie(`pwa_snackbar_overlay_shown`, 'true', settings?.installation?.prompts?.timeout ?? 1);
       }
 
       // Installation Overlay - Blog Popup
-      if (settings?.installation?.prompts?.types?.blogPopup === 'on' && pageData?.type?.isBlogPost && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie('pwa_blog_popup_overlay_shown')) {
+      if (settings?.installation?.prompts?.types?.blogPopup?.feature === 'on' && pageData?.type?.isBlogPost && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie('pwa_blog_popup_overlay_shown')) {
         const { initInstallOverlayBlogPopup } = await import('./modules/installOverlayBlogPopup.js');
         await initInstallOverlayBlogPopup();
         setCookie(`pwa_blog_popup_overlay_shown`, 'true', settings?.installation?.prompts?.timeout ?? 1);
       }
 
       // Installation Overlay - Navigation Menu
-      if (settings?.installation?.prompts?.types?.navigationMenu === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+      if (settings?.installation?.prompts?.types?.navigationMenu?.feature === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
         const { initInstallOverlayNavigationMenu } = await import('./modules/installOverlayNavigationMenu.js');
         await initInstallOverlayNavigationMenu();
       }
 
       // Installation Overlay - In Feed
-      if (settings?.installation?.prompts?.types?.inFeed === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+      if (settings?.installation?.prompts?.types?.inFeed?.feature === 'on' && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
         const { initInstallOverlayInFeed } = await import('./modules/installOverlayInFeed.js');
         await initInstallOverlayInFeed();
       }
 
       // Installation Overlay - Woocommerce Checkout
-      if (settings?.installation?.prompts?.types?.woocommerceCheckout === 'on' && pluginsData?.isActive?.woocommerce && document.body.classList.contains('woocommerce-checkout') && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+      if (settings?.installation?.prompts?.types?.woocommerceCheckout?.feature === 'on' && pluginsData?.isActive?.woocommerce && document.body.classList.contains('woocommerce-checkout') && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
         const { initInstallOverlayWoocommerceCheckout } = await import('./modules/installOverlayWoocommerceCheckout.js');
         await initInstallOverlayWoocommerceCheckout();
       }

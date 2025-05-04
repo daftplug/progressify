@@ -121,7 +121,8 @@ class Plugin
         'displaySettings' => [
           'startPage' => trailingslashit(strtok(home_url('/', 'https'), '?')),
           'displayMode' => 'standalone',
-          'orientation' => 'any',
+          'orientation' => 'portrait',
+          'orientationLock' => 'off',
         ],
         'appearance' => [
           'iosStatusBarStyle' => 'default',
@@ -138,12 +139,42 @@ class Plugin
         'prompts' => [
           'feature' => 'on',
           'types' => [
-            'headerBanner' => 'on',
-            'snackbar' => 'off',
-            'navigationMenu' => 'on',
-            'inFeed' => 'off',
-            'blogPopup' => 'off',
-            'woocommerceCheckout' => 'off',
+            'headerBanner' => [
+              'feature' => 'on',
+              'title' => 'Install Web App',
+              'message' => 'Get our web app. It won\'t take up space on your device.',
+              'buttonText' => 'Install Now',
+            ],
+            'snackbar' => [
+              'feature' => 'on',
+              'title' => 'Add to Home Screen',
+              'message' => 'Installing uses no storage and offers a quick way back to our web app.',
+              'buttonText' => 'Install Now',
+            ],
+            'navigationMenu' => [
+              'feature' => 'off',
+              'title' => 'Install Our Web App',
+              'message' => 'Find what you need faster by installing our web app!',
+              'buttonText' => 'Install Now',
+            ],
+            'inFeed' => [
+              'feature' => 'off',
+              'title' => 'Install on Home Screen',
+              'message' => 'Keep reading, even when you\'re on the train!',
+              'buttonText' => 'Install Now',
+            ],
+            'blogPopup' => [
+              'feature' => 'on',
+              'title' => 'Read this article in our web app',
+              'buttonText' => 'Open',
+              'buttonTextContinue' => 'Continue',
+            ],
+            'woocommerceCheckout' => [
+              'feature' => 'off',
+              'title' => 'Add to Home Screen',
+              'message' => 'Keep track of your orders. Our web app is fast, small and works offline.',
+              'buttonText' => 'Install Now',
+            ],
           ],
           'text' => 'Install Web App',
           'skipFirstVisit' => 'off',

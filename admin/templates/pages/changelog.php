@@ -4,6 +4,15 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+  <div data-version="v1.0.6" data-date="May 4, 2025" data-title="Installation Prompts and Orientation Lock" data-description="The update includes option to edit texts on installation prompts and orientation lock option.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added option to edit texts on installation prompts.</li>
+      <li>Added orientation lock option to display settings.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Corrected wordings on some of the plugin areas.</li>
+    </ul>
+  </div>
   <div data-version="v1.0.5" data-date="April 9, 2025" data-title="More Languages and PWA Mode Fixes" data-description="The update includes addition of Russian language and fixes for PWA mode caching and sustainability.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added Russian language support.</li>

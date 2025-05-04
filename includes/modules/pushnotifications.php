@@ -2,7 +2,7 @@
 
 namespace DaftPlug\Progressify\Module;
 
-use DaftPlug\Progressify\{Plugin, Frontend};
+use DaftPlug\Progressify\{Plugin};
 use DaftPlug\Progressify\Module\WebAppManifest;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;

@@ -90,7 +90,9 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const bannerTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
+    const navigationMenuTitle = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.title ?? __('Install Our Web App', config.jsVars.slug);
+    const navigationMenuMessage = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.message ?? __('Find what you need faster by installing our web app!', config.jsVars.slug);
+    const navigationMenuButtonText = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.buttonText ?? __('Install Now', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -179,12 +181,12 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
         <div class="navigation-menu-overlay-appinfo">
           ${appIconHtml}
           <div class="navigation-menu-overlay-appinfo_texts">
-            <div class="navigation-menu-overlay-appinfo_title">${bannerTitle}</div>
-            <div class="navigation-menu-overlay-appinfo_description">${__('Find what you need faster by installing our web app!', config.jsVars.slug)}</div>
+            <div class="navigation-menu-overlay-appinfo_title">${navigationMenuTitle}</div>
+            <div class="navigation-menu-overlay-appinfo_description">${navigationMenuMessage}</div>
           </div>
         </div>
         <button type="button" class="navigation-menu-overlay-button_install">
-          ${__('Install Now', config.jsVars.slug)}
+          ${navigationMenuButtonText}
         </button>
       </div>
     `;
