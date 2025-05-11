@@ -1,7 +1,8 @@
 import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaInstallOverlayBlogPopup extends HTMLElement {
   constructor() {
@@ -73,9 +74,6 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const popupTitle = config.jsVars.settings.installation?.prompts?.types?.blogPopup?.title ?? __('Read this article in our web app', config.jsVars.slug);
-    const popupButtonText = config.jsVars.settings.installation?.prompts?.types?.blogPopup?.buttonText ?? __('Open', config.jsVars.slug);
-    const popupButtonTextContinue = config.jsVars.settings.installation?.prompts?.types?.blogPopup?.buttonTextContinue ?? __('Continue', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="blog-popup-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : '';
     let browserTitle;
     let browserIcon;
@@ -314,7 +312,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
       <div class="blog-popup-overlay">
         <div class="blog-popup-overlay-container">
           <div class="blog-popup-overlay-header">
-            <div class="blog-popup-overlay-header_title">${popupTitle}</div>
+            <div class="blog-popup-overlay-header_title">${__('Read this article in our web app', config.jsVars.slug)}</div>
           </div>
           <div class="blog-popup-overlay-body">
             <div class="blog-popup-overlay-appinfo">
@@ -323,7 +321,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-appinfo_appname">${appName}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -install">
-                ${popupButtonText}
+                ${__('Open', config.jsVars.slug)}
               </button>
             </div>
             <div class="blog-popup-overlay-browserinfo">
@@ -332,7 +330,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-browserinfo_title">${browserTitle}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -continue">
-                ${popupButtonTextContinue}
+                ${__('Continue', config.jsVars.slug)}
               </button>
             </div>     
           </div>

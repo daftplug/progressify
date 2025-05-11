@@ -1,7 +1,8 @@
 import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaInstallOverlaySnackbar extends HTMLElement {
   constructor() {
@@ -75,9 +76,8 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
   render() {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const snackbarTitle = config.jsVars.settings.installation?.prompts?.types?.snackbar?.title ?? __('Install Web App', config.jsVars.slug);
-    const snackbarMessage = config.jsVars.settings.installation?.prompts?.types?.snackbar?.message ?? __('Installing uses no storage and offers a quick way back to our web app.', config.jsVars.slug);
-    const snackbarButtonText = config.jsVars.settings.installation?.prompts?.types?.snackbar?.buttonText ?? __('Install Now', config.jsVars.slug);
+    const title = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
+    const message = config.jsVars.settings.installation?.prompts?.types?.snackbar?.message ?? __('Installing uses no storage and offers a quick way back to our web app.', config.jsVars.slug);
 
     this.injectStyles(`
       .snackbar-overlay {
@@ -171,11 +171,11 @@ class PwaInstallOverlaySnackbar extends HTMLElement {
       <style>${combinedStyles}</style>
       <div class="snackbar-overlay">
         <div class="snackbar-overlay-appinfo">
-          <div class="snackbar-overlay-appinfo_title">${snackbarTitle}</div>
-          <div class="snackbar-overlay-appinfo_description">${snackbarMessage}</div>
+          <div class="snackbar-overlay-appinfo_title">${title}</div>
+          <div class="snackbar-overlay-appinfo_description">${message}</div>
         </div>
         <button type="button" class="snackbar-overlay-button_install">
-          ${snackbarButtonText}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
         <div class="snackbar-overlay-progressbar">
           <div class="snackbar-overlay-progressbar_inner"></div>

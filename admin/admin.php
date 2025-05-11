@@ -25,7 +25,6 @@ class Admin
   public $menuId;
   protected $dependencies;
   public $licenseKey;
-  public $language;
   public $capability;
   public $settings;
   public $licenseEndpoint;
@@ -51,7 +50,6 @@ class Admin
     $this->menuIcon = $config['menu_icon'];
     $this->dependencies = [];
     $this->licenseKey = get_option("{$this->optionName}_license_key");
-    $this->language = get_option("{$this->optionName}_language", 'default');
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->pages = $this->generatePages();
@@ -103,31 +101,41 @@ class Admin
   public function loadAssets($hook)
   {
     if ($hook && $hook == $this->menuId) {
+      $this->dependencies[] = 'wp-i18n';
       $this->dependencies[] = 'jquery';
 
       // load paypal script
       wp_enqueue_script("{$this->slug}-paypal", 'https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD', $this->dependencies, null, true);
       $this->dependencies[] = "{$this->slug}-paypal";
 
+      // Load intro.js library
+      wp_enqueue_script("{$this->slug}-intro", 'https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js', $this->dependencies, '7.2.0', true);
+      $this->dependencies[] = "{$this->slug}-intro";
+
       // load admin styles and scripts
       wp_enqueue_style("{$this->slug}-admin", plugins_url('admin/assets/css/admin.min.css', $this->pluginFile), [], $this->version);
       wp_add_inline_style(
         "{$this->slug}-admin",
         '
-        #wpcontent {
-          padding-left: 0 !important;
-        }
-        #wpfooter {
-          display: none !important;
-        }
-        #wpbody-content {
-          padding-bottom: 0 !important;
-        }
-      '
+          #wpcontent {
+            padding-left: 0 !important;
+          }
+          #wpfooter {
+            display: none !important;
+          }
+          #wpbody-content {
+            padding-bottom: 0 !important;
+          }
+        '
       );
 
+      // Load admin script
       wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/admin.min.js', $this->pluginFile), $this->dependencies, $this->version, true);
+      wp_set_script_translations("{$this->slug}-admin", $this->slug);
       $this->dependencies[] = "{$this->slug}-admin";
+
+      // Load translations inline after the main script
+      Plugin::loadJsTranslations("{$this->slug}-admin");
 
       // WP media
       wp_enqueue_media();
@@ -245,9 +253,9 @@ class Admin
       },
     ]);
 
-    register_rest_route($this->slug, '/changeLanguage', [
-      'methods' => 'POST',
-      'callback' => [$this, 'changeLanguage'],
+    register_rest_route($this->slug, '/getSettings', [
+      'methods' => 'GET',
+      'callback' => [$this, 'getSettings'],
       'permission_callback' => function () {
         return current_user_can($this->capability);
       },
@@ -268,20 +276,6 @@ class Admin
         return current_user_can($this->capability);
       },
     ]);
-  }
-
-  public function changeLanguage(\WP_REST_Request $request)
-  {
-    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
-      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
-    }
-
-    $params = $request->get_json_params();
-    $language = sanitize_text_field($params['language']);
-
-    update_option("{$this->optionName}_language", $language);
-
-    return rest_ensure_response(['success' => true, 'language' => $language]);
   }
 
   public function requestLicenseProcessing(\WP_REST_Request $request)
@@ -325,6 +319,31 @@ class Admin
     return new \WP_Error('invalid_action', 'Invalid action', ['status' => 400]);
   }
 
+  public function getSettings(\WP_REST_Request $request)
+  {
+    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
+      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
+    }
+
+    $settings = get_option("{$this->optionName}_settings", []);
+    return rest_ensure_response($settings);
+  }
+
+  private function arrayMergeDeep($array1, $array2)
+  {
+    $merged = $array1;
+
+    foreach ($array2 as $key => $value) {
+      if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+        $merged[$key] = $this->arrayMergeDeep($merged[$key], $value);
+      } else {
+        $merged[$key] = $value;
+      }
+    }
+
+    return $merged;
+  }
+
   public function saveSettings(\WP_REST_Request $request)
   {
     if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
@@ -332,18 +351,58 @@ class Admin
     }
 
     $newSettings = $request->get_param('settings');
-    $topLevelKey = $request->get_param('topLevelKey');
+    $settingPath = $request->get_param('settingPath');
 
-    if (!is_array($newSettings) || !is_string($topLevelKey)) {
-      return new \WP_Error('invalid_settings', 'Invalid settings format', ['status' => 400]);
+    // Ensure newSettings is an array
+    if (!is_array($newSettings) || empty($newSettings)) {
+      $newSettings = [];
     }
 
+    if (!is_string($settingPath) || empty($settingPath)) {
+      return new \WP_Error('invalid_setting_path', 'Setting path must be a string', ['status' => 400]);
+    }
+
+    // Get current settings
     $currentSettings = get_option("{$this->optionName}_settings", []);
 
-    // Replace the entire top-level key
-    $currentSettings[$topLevelKey] = $newSettings[$topLevelKey];
+    // Create a deep copy of current settings
+    $mergedSettings = json_decode(json_encode($currentSettings), true);
 
-    $saved = update_option("{$this->optionName}_settings", $currentSettings);
+    // Get the path parts
+    $pathParts = explode('[', str_replace(']', '', $settingPath));
+    $pathParts = array_map('trim', $pathParts);
+
+    // Navigate to the correct location in the settings array
+    $current = &$mergedSettings;
+    $lastKey = array_pop($pathParts);
+
+    foreach ($pathParts as $part) {
+      if (!isset($current[$part])) {
+        $current[$part] = [];
+      }
+      $current = &$current[$part];
+    }
+
+    // Get the new value from the settings array
+    $newValue = isset($newSettings[$settingPath]) ? $newSettings[$settingPath] : [];
+
+    // If the new value is an array, merge it with existing value
+    if (is_array($newValue)) {
+      if (!isset($current[$lastKey]) || !is_array($current[$lastKey])) {
+        $current[$lastKey] = [];
+      }
+      $current[$lastKey] = $this->arrayMergeDeep($current[$lastKey], $newValue);
+    } else {
+      $current[$lastKey] = $newValue;
+    }
+
+    // Debug logging
+    error_log('Merged settings: ' . print_r($mergedSettings, true));
+
+    $saved = update_option("{$this->optionName}_settings", $mergedSettings);
+
+    // Set content type header to ensure proper JSON response
+    header('Content-Type: application/json');
 
     if ($saved) {
       return new \WP_REST_Response(['status' => 'success'], 200);

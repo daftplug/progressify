@@ -116,7 +116,7 @@ class PwaScoreDataManager {
     this.pwaScoreResult.innerHTML = `
       <span class="py-1 ps-1.5 pe-2 inline-flex items-center gap-x-1.5 text-xs font-medium rounded-full ${resultColorClass}">
         <span class="inline-block shrink-0 size-2.5 rounded-full ${resultIconClass}"></span>
-        <span>${__(scoreResult, slug)}</span>
+        <span>${scoreResult}</span>
       </span>
     `;
   }
@@ -127,10 +127,10 @@ class PwaScoreDataManager {
         <div class="relative px-5 py-6 mt-5 flex flex-col rounded-xl justify-center items-center text-center bg-gray-100">
           <div class="max-w-md mx-auto text-wrap">
             <p class="text-base font-medium text-gray-800 dark:text-neutral-200">
-              ${__(`No Action Items`, slug)}
+              ${__('No Action Items', slug)}
             </p>
             <p class="mt-0.5 text-sm text-gray-500 dark:text-neutral-500">
-              ${__(`Your PWA seems fully setup and your score is excellent.`, slug)}
+              ${__('Your PWA seems fully setup and your score is excellent.', slug)}
             </p>
           </div>
         </div>
@@ -141,7 +141,7 @@ class PwaScoreDataManager {
 
     this.pwaScoreActions.innerHTML = `
       <div class="relative mt-5 flex flex-col">
-        <h3 class="mb-1.5 text-sm text-gray-500 dark:text-neutral-200">${__(`Action Items`, slug)}</h3>
+        <h3 class="mb-1.5 text-sm text-gray-500 dark:text-neutral-200">${__('Action Items', slug)}</h3>
         <div class="flex flex-col w-full action-items-container [&:not(.expanded)_.action-item:nth-child(n+3)]:hidden ${actionItems.length > 2 ? '[&:not(.expanded)]:after:absolute [&:not(.expanded)]:after:w-full [&:not(.expanded)]:after:h-12 [&:not(.expanded)]:after:bottom-0 [&:not(.expanded)]:after:bg-gradient-to-t [&:not(.expanded)]:after:from-white [&:not(.expanded)]:after:to-transparent [&:not(.expanded)]:after:z-20' : ''}">
           ${actionItems
             .map((actionItem) => {
@@ -169,7 +169,7 @@ class PwaScoreDataManager {
             ? `
           <button onclick="this.previousElementSibling.classList.add('expanded');this.remove();" class="absolute z-30 bottom-0 self-center py-1.5 px-2.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-blue-500">
             <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg>
-            <span>${__(`Show All`, slug)} (${actionItems.length})</span>
+            <span>${__('Show All', slug)} (${actionItems.length})</span>
           </button>
         `
             : ''

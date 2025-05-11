@@ -31,7 +31,6 @@ class Plugin
   public static $envatoItemId;
   public static $domain;
   public static $licenseKey;
-  public static $language;
   public $capability;
   public $defaultSettings;
   public static $settings;
@@ -65,7 +64,6 @@ class Plugin
     self::$envatoItemId = $config['envato_item_id'];
     self::$domain = self::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
     self::$licenseKey = get_option("{$this->optionName}_license_key");
-    self::$language = get_option("{$this->optionName}_language", 'default');
     $this->capability = 'manage_options';
 
     self::$settings = $config['settings'];
@@ -101,10 +99,6 @@ class Plugin
       // Init Frontend
       require_once self::$pluginDirPath . 'frontend/frontend.php';
       $this->Frontend = new Frontend($config);
-
-      if (!wp_next_scheduled("{$this->optionName}_validate_license_schedule")) {
-        wp_schedule_event(time(), 'weekly', "{$this->optionName}_validate_license_schedule");
-      }
     }
 
     // Init default settings
@@ -141,39 +135,26 @@ class Plugin
           'types' => [
             'headerBanner' => [
               'feature' => 'on',
-              'title' => 'Install Web App',
               'message' => 'Get our web app. It won\'t take up space on your device.',
-              'buttonText' => 'Install Now',
             ],
             'snackbar' => [
               'feature' => 'on',
-              'title' => 'Add to Home Screen',
               'message' => 'Installing uses no storage and offers a quick way back to our web app.',
-              'buttonText' => 'Install Now',
             ],
             'navigationMenu' => [
               'feature' => 'off',
-              'title' => 'Install Our Web App',
               'message' => 'Find what you need faster by installing our web app!',
-              'buttonText' => 'Install Now',
             ],
             'inFeed' => [
               'feature' => 'off',
-              'title' => 'Install on Home Screen',
               'message' => 'Keep reading, even when you\'re on the train!',
-              'buttonText' => 'Install Now',
             ],
             'blogPopup' => [
               'feature' => 'on',
-              'title' => 'Read this article in our web app',
-              'buttonText' => 'Open',
-              'buttonTextContinue' => 'Continue',
             ],
             'woocommerceCheckout' => [
               'feature' => 'off',
-              'title' => 'Add to Home Screen',
               'message' => 'Keep track of your orders. Our web app is fast, small and works offline.',
-              'buttonText' => 'Install Now',
             ],
           ],
           'text' => 'Install Web App',
@@ -193,9 +174,15 @@ class Plugin
         ],
         'capabilities' => [
           'feature' => 'on',
-          'notification' => 'on',
-          'forms' => 'off',
-          'googleAnalytics' => 'off',
+          'notification' => [
+            'feature' => 'on',
+          ],
+          'forms' => [
+            'feature' => 'off',
+          ],
+          'googleAnalytics' => [
+            'feature' => 'off',
+          ],
         ],
       ],
       'uiComponents' => [
@@ -331,13 +318,11 @@ class Plugin
       delete_transient("{$this->optionName}_updated");
     }
 
-    add_action('plugins_loaded', [$this, 'loadTextDomain']);
     add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
     register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
     add_action('upgrader_process_complete', [$this, 'onUpdate'], 10, 2);
     register_deactivation_hook(self::$pluginFile, [$this, 'onDeactivate']);
     register_uninstall_hook(self::$pluginFile, [self::class, 'onUninstall']);
-    add_action("{$this->optionName}_validate_license_schedule", [$this, 'checkLicenseValidity']);
   }
 
   public function onActivate()
@@ -391,38 +376,6 @@ class Plugin
     self::daftplugProcessLicense(self::$licenseKey, 'deactivate');
     delete_option("{$optionName}_license_key");
     delete_option("{$optionName}_settings");
-  }
-
-  public function checkLicenseValidity()
-  {
-    $licenseResponse = self::daftplugProcessLicense(self::$licenseKey, 'validate');
-    if (!is_wp_error($licenseResponse) && !$licenseResponse->valid) {
-      delete_option("{$this->optionName}_license_key");
-    }
-  }
-
-  public function loadTextDomain()
-  {
-    if (self::$language === 'default') {
-      // Load using WordPress default locale (whatever the site is using)
-      load_plugin_textdomain(self::$slug, false, plugin_dir_path(__FILE__) . 'languages/');
-    } elseif (self::$language === 'en_US') {
-      // For English, unload any existing translations to use the original strings
-      unload_textdomain(self::$slug);
-      // No need to load anything - the default hardcoded strings are in English
-    } else {
-      // Explicitly load the specific language for just this plugin
-      $mofile = self::$pluginDirPath . 'languages/' . self::$slug . '-' . self::$language . '.mo';
-      if (file_exists($mofile)) {
-        // First unload any existing translations for this domain
-        unload_textdomain(self::$slug);
-        // Then load the specific language file
-        load_textdomain(self::$slug, $mofile);
-      } else {
-        // If the specific language file doesn't exist, fall back to site language
-        load_plugin_textdomain(self::$slug, false, plugin_dir_path(__FILE__) . 'languages/');
-      }
-    }
   }
 
   public function addPluginActionLinks($links)
@@ -1490,5 +1443,61 @@ class Plugin
     }
 
     return $userData;
+  }
+
+  public static function loadJsTranslations($script_handle)
+  {
+    global $wp_filesystem;
+    if (!function_exists('WP_Filesystem')) {
+      require_once ABSPATH . 'wp-admin/includes/file.php';
+    }
+    WP_Filesystem();
+
+    if (!$wp_filesystem) {
+      return;
+    }
+
+    $locale = determine_locale();
+    $slug = self::$slug;
+
+    // Define possible paths to check
+    $paths = [WP_LANG_DIR . '/loco/plugins/', WP_LANG_DIR . '/plugins/'];
+
+    // Try each path until we find matching files
+    $files = [];
+    foreach ($paths as $path) {
+      $json_path = $path . $slug . "-{$locale}-*.json";
+      $found_files = glob($json_path);
+      if (!empty($found_files)) {
+        $files = $found_files;
+        break; // Stop once we find files in any location
+      }
+    }
+
+    if (empty($files)) {
+      return;
+    }
+
+    $inline_script = '';
+    foreach ($files as $file) {
+      if (!$wp_filesystem->exists($file)) {
+        continue;
+      }
+
+      $json = $wp_filesystem->get_contents($file);
+      if (!$json) {
+        continue;
+      }
+
+      $translations = json_decode($json, true);
+      if (!empty($translations['locale_data'][$slug])) {
+        $locale_data = wp_json_encode($translations['locale_data'][$slug]);
+        $inline_script .= "wp.i18n.setLocaleData({$locale_data}, '{$slug}');\n";
+      }
+    }
+
+    if (!empty($inline_script)) {
+      wp_add_inline_script($script_handle, $inline_script);
+    }
   }
 }

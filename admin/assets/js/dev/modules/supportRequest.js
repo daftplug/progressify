@@ -3,6 +3,7 @@ import showToast from '../components/toast.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 const slug = daftplugAdmin.attr('data-slug');
+const { __ } = wp.i18n;
 
 export function initSupportRequest() {
   daftplugAdmin.find('form[name="supportForm"]').on('submit', sendSupportRequest);
@@ -48,9 +49,9 @@ async function sendSupportRequest(e) {
 
     if (data.status === 'success') {
       form.trigger('reset');
-      showToast('Success', 'Support request have submitted successfully!', 'success', 'top-right', true, false);
+      showToast(__('Success', slug), __('Support request have submitted successfully!', slug), 'success', 'top-right', true, false);
     } else {
-      showToast('Fail', 'Support request have failed to be submitted!', 'fail', 'top-right', true, false);
+      showToast(__('Fail', slug), __('Support request have failed to be submitted!', slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
     showToast('Fail', error.message, 'fail', 'top-right', true, false);

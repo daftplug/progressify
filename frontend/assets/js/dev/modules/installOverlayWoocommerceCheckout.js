@@ -1,7 +1,8 @@
 import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
   constructor() {
@@ -58,9 +59,8 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const woocommerceCheckoutTitle = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.title ?? __('Add to Home Screen', config.jsVars.slug);
-    const woocommerceCheckoutMessage = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.message ?? __('Keep track of your orders. Our web app is fast, small and works offline.', config.jsVars.slug);
-    const woocommerceCheckoutButtonText = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.buttonText ?? __('Install Now', config.jsVars.slug);
+    const title = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
+    const message = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.message ?? __('Keep track of your orders. Our web app is fast, small and works offline.', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="woocommerce-checkout-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -150,12 +150,12 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
         <div class="woocommerce-checkout-overlay-appinfo">
           ${appIconHtml}
           <div class="woocommerce-checkout-overlay-appinfo_texts">
-            <div class="woocommerce-checkout-overlay-appinfo_title">${woocommerceCheckoutTitle}</div>
-            <div class="woocommerce-checkout-overlay-appinfo_description">${woocommerceCheckoutMessage}</div>
+            <div class="woocommerce-checkout-overlay-appinfo_title">${title}</div>
+            <div class="woocommerce-checkout-overlay-appinfo_description">${message}</div>
           </div>
         </div>
         <button type="button" class="woocommerce-checkout-overlay-button_install">
-          ${woocommerceCheckoutButtonText}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

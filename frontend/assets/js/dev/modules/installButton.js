@@ -29,7 +29,7 @@ class PwaInstallButton extends HTMLElement {
   render() {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const buttonText = __('Add to Home Screen', config.jsVars.slug);
+    const buttonText = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
 
     this.injectStyles(`
       :host(:active),

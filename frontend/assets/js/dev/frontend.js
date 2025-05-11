@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Offline Capabilities
   if (settings?.offlineUsage?.capabilities?.feature === 'on') {
     // Offline Notification
-    if (settings?.offlineUsage?.capabilities?.notification === 'on') {
+    if (settings?.offlineUsage?.capabilities?.notification?.feature === 'on') {
       const { initOfflineNotification } = await import('./modules/offlineNotification.js');
       await initOfflineNotification();
     }
 
     // Offline Forms
-    if (settings?.offlineUsage?.capabilities?.forms === 'on') {
+    if (settings?.offlineUsage?.capabilities?.forms?.feature === 'on') {
       const { initOfflineForms } = await import('./modules/offlineForms.js');
       await initOfflineForms();
     }

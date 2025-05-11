@@ -3,7 +3,20 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 
-<div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+<div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.1.6" data-date="May 11, 2025" data-title="Intro Guide and Translation Fixes" data-description="The update includes intro guide and fixes for translations and license deactivation issue.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added intro guide to help users getting started with the plugin.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed installation prompt edit settings not saving issue.</li>
+      <li>Fixed plugin auto license deactivation issue.</li>
+    </ul>
+    <ul data-icon="warning" data-label="Removed Features">
+      <li>Language switch is removed and plugin will follow WordPress language by default.</li>
+      <li>Dark mode switch on admin side is removed due to instability.</li>
+    </ul>
+  </div>
   <div data-version="v1.0.6" data-date="May 4, 2025" data-title="Installation Prompts and Orientation Lock" data-description="The update includes option to edit texts on installation prompts and orientation lock option.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added option to edit texts on installation prompts.</li>

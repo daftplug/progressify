@@ -1,7 +1,8 @@
 import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaInstallOverlayInFeed extends HTMLElement {
   constructor() {
@@ -79,9 +80,8 @@ class PwaInstallOverlayInFeed extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const inFeedTitle = config.jsVars.settings.installation?.prompts?.types?.inFeed?.title ?? __('Install on Home Screen', config.jsVars.slug);
-    const inFeedMessage = config.jsVars.settings.installation?.prompts?.types?.inFeed?.message ?? __("Keep reading, even when you're on the train!", config.jsVars.slug);
-    const inFeedButtonText = config.jsVars.settings.installation?.prompts?.types?.inFeed?.buttonText ?? __('Install Now', config.jsVars.slug);
+    const title = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
+    const message = config.jsVars.settings.installation?.prompts?.types?.inFeed?.message ?? __("Keep reading, even when you're on the train!", config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="in-feed-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -170,12 +170,12 @@ class PwaInstallOverlayInFeed extends HTMLElement {
         <div class="in-feed-overlay-appinfo">
           ${appIconHtml}
           <div class="in-feed-overlay-appinfo_texts">
-            <div class="in-feed-overlay-appinfo_title">${inFeedTitle}</div>
-            <div class="in-feed-overlay-appinfo_description">${inFeedMessage}</div>
+            <div class="in-feed-overlay-appinfo_title">${title}</div>
+            <div class="in-feed-overlay-appinfo_description">${message}</div>
           </div>
         </div>
         <button type="button" class="in-feed-overlay-button_install">
-          ${inFeedButtonText}
+          ${__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

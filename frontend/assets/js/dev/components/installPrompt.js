@@ -1,7 +1,7 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor, addParamToUrl } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
 
+const { __ } = wp.i18n;
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {

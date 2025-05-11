@@ -62,6 +62,9 @@ export function navigateToPage(pageId, subPageId = '') {
       updateHash('#/error/');
     }
 
+    // Scroll to top of the content
+    daftplugAdmin.find('main#content').animate({ scrollTop: 0 }, 'fast');
+
     setTimeout(resolve, 0);
   });
 }

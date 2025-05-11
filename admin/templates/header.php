@@ -3,61 +3,61 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 <!-- ========== HEADER ========== -->
-<header class="xl:ms-[240px] absolute top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 bg-white border-b border-gray-200 dark:bg-neutral-800 dark:border-neutral-700">
+<header class="xl:ms-[240px] absolute top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 bg-white border-b border-gray-200">
   <div class="flex justify-between xl:grid xl:grid-cols-3 basis-full items-center w-full py-2.5 px-2 sm:px-5" aria-label="Global">
     <div class="xl:col-span-1 flex items-center md:gap-x-3">
       <div class="xl:hidden">
         <!-- Sidebar Toggle -->
-        <button type="button" class="w-7 h-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-100 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-dp-open-overlay="#sidebar" aria-controls="sidebar" aria-label="Toggle navigation">
+        <button type="button" class="w-7 h-[38px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-100 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" data-dp-open-overlay="#sidebar" aria-controls="sidebar" aria-label="Toggle navigation">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m9 18 6-6-6-6" />
           </svg>
         </button>
         <!-- End Sidebar Toggle -->
       </div>
-      <div class="group/searchbox relative hidden xl:block min-w-96 xl:w-full" data-dp-searchbox="true">
+      <div class="group/searchbox relative hidden xl:block min-w-96 xl:w-full" data-dp-searchbox="true" id="settingsSearch">
         <div class="relative">
           <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-            <svg class="flex-shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="flex-shrink-0 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8" />
               <path d="m21 21-4.3-4.3" />
             </svg>
           </div>
-          <input type="search" class="dp-searchbox-input py-2 ps-10 pe-2 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600" placeholder="<?php esc_html_e('Search', $this->slug); ?>">
+          <input type="search" class="dp-searchbox-input py-2 ps-10 pe-2 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Search', $this->slug); ?>">
         </div>
-        <div class="dp-searchbox-output hidden absolute mt-2 z-50 w-full bg-white rounded-xl shadow-2xl dark:bg-neutral-800">
-          <div class="dp-searchbox-output-wrapper max-h-[400px] p-2 overflow-y-auto overflow-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+        <div class="dp-searchbox-output hidden absolute mt-2 z-50 w-full bg-white rounded-xl shadow-2xl">
+          <div class="dp-searchbox-output-wrapper max-h-[400px] p-2 overflow-y-auto overflow-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
             <div class="dp-searchbox-group">
-              <div class="dp-searchbox-item-group-title block text-xs text-gray-500 m-3 mb-1 dark:text-neutral-500 dark:border-neutral-700"><?php esc_html_e('Generate Mobile Apps', $this->slug); ?></div>
-              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-navigate-to-page="generateMobileApps">
+              <div class="dp-searchbox-item-group-title block text-xs text-gray-500 m-3 mb-1"><?php esc_html_e('Generate Mobile Apps', $this->slug); ?></div>
+              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100" data-navigate-to-page="generateMobileApps">
                 <div class="relative inline-block shrink-0">
                   <img class="size-4" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('Android', $this->slug); ?>" />
                   <div class="absolute -bottom-0.5 -right-0.5 size-2 inline-block border border-gray-200 bg-white p-px shrink-0 rounded-full">
                     <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('Play Store', $this->slug); ?>" />
                   </div>
                 </div>
-                <span class="dp-searchbox-item-title text-sm truncate text-gray-800 dark:text-neutral-200">Android</span>
+                <span class="dp-searchbox-item-title text-sm truncate text-gray-800">Android</span>
               </div>
-              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-navigate-to-page="generateMobileApps">
+              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100" data-navigate-to-page="generateMobileApps">
                 <div class="relative inline-block shrink-0">
                   <img class="size-4" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('Mac', $this->slug); ?>" />
                   <div class="absolute -bottom-0.5 -right-0.5 size-2 inline-block border border-gray-200 bg-white p-px shrink-0 rounded-full">
                     <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/app-store.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('App Store', $this->slug); ?>" />
                   </div>
                 </div>
-                <span class="dp-searchbox-item-title text-sm truncate text-gray-800 dark:text-neutral-200">iOS</span>
+                <span class="dp-searchbox-item-title text-sm truncate text-gray-800">iOS</span>
               </div>
-              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-navigate-to-page="generateMobileApps">
+              <div class="dp-searchbox-item py-2 px-2.5 flex items-center cursor-pointer gap-x-2 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100" data-navigate-to-page="generateMobileApps">
                 <div class="relative inline-block shrink-0">
                   <img class="size-4" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/windows.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('Windows', $this->slug); ?>" />
                   <div class="absolute -bottom-0.5 -right-0.5 size-2 inline-block border border-gray-200 bg-white p-px shrink-0 rounded-full">
                     <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/microsoft-store.png', $this->pluginFile)); ?>" alt="<?php echo esc_attr__('Microsoft Store', $this->slug); ?>" />
                   </div>
                 </div>
-                <span class="dp-searchbox-item-title text-sm truncate text-gray-800 dark:text-neutral-200">Windows</span>
+                <span class="dp-searchbox-item-title text-sm truncate text-gray-800">Windows</span>
               </div>
             </div>
-            <div class="dp-searchbox-no-results hidden py-2 px-3 text-sm text-gray-500 dark:text-neutral-400"><?php esc_html_e('No Results', $this->slug); ?></div>
+            <div class="dp-searchbox-no-results hidden py-2 px-3 text-sm text-gray-500"><?php esc_html_e('No Results', $this->slug); ?></div>
           </div>
         </div>
       </div>

@@ -56,10 +56,11 @@ class Frontend
     $this->dependencies[] = 'wp-i18n';
 
     wp_enqueue_script("{$this->slug}-frontend", plugins_url('frontend/assets/js/frontend.min.js', $this->pluginFile), $this->dependencies, $this->version, true);
+    wp_set_script_translations("{$this->slug}-frontend", $this->slug);
     $this->dependencies[] = "{$this->slug}-frontend";
 
-    // Register translations - standard WordPress way
-    wp_set_script_translations("{$this->slug}-frontend", $this->slug, plugin_dir_path($this->pluginFile) . 'languages/');
+    // Load translations inline after the main script
+    Plugin::loadJsTranslations("{$this->slug}-frontend");
 
     // Other localizations
     wp_localize_script(
@@ -72,8 +73,6 @@ class Frontend
         'restUrl' => get_rest_url(),
         'restNonce' => wp_create_nonce('wp-rest'),
         'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
-        'language' => Plugin::$language === 'default' ? determine_locale() : Plugin::$language,
-        'translations' => $this->getTranslationsJson(),
         'slug' => $this->slug,
         'settings' => $this->settings,
         'userData' => [
@@ -152,40 +151,5 @@ class Frontend
   public static function renderPartial($key)
   {
     include self::$partials[$key];
-  }
-
-  private function getTranslationsJson()
-  {
-    // Get current locale
-    $locale = Plugin::$language === 'default' ? determine_locale() : Plugin::$language;
-
-    // Skip for English
-    if ($locale === 'en_US') {
-      return '{}';
-    }
-
-    // Find all JSON translation files for this locale
-    $files = glob(plugin_dir_path($this->pluginFile) . "languages/{$this->slug}-{$locale}-*.json");
-    $merged_translations = [];
-
-    // Process each file
-    foreach ($files as $file) {
-      $json = file_get_contents($file);
-      if ($json) {
-        $data = json_decode($json, true);
-        if (isset($data['locale_data'][$this->slug])) {
-          // Extract the actual translations (ignoring metadata)
-          foreach ($data['locale_data'][$this->slug] as $original => $translated) {
-            if ($original !== '') {
-              // Skip the metadata entry
-              $merged_translations[$original] = $translated;
-            }
-          }
-        }
-      }
-    }
-
-    // Return JSON-encoded translation map
-    return json_encode($merged_translations);
   }
 }

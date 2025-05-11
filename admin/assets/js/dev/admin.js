@@ -3,15 +3,13 @@ import { initCopyMarkup } from './components/copyMarkup.js';
 import { initDependentMarkup } from './components/dependentMarkup.js';
 import { initSelect } from './components/select.js';
 import { initClipboard } from './components/clipboard.js';
-import { initTextareaAutoHeight } from './components/autoHeightTextarea.js';
 import { initInputValidation } from './components/inputValidation.js';
 import { initTooltip } from './components/tooltip.js';
 import { initOverlay } from './components/overlay.js';
 import { initDropdown } from './components/dropdown.js';
-import { initThemeMode } from './components/themeMode.js';
-import { initLanguageSelect } from './components/languageSelect.js';
 // Modules
 import { initProcessLicense } from './modules/processLicense.js';
+import { initIntroGuide } from './modules/introGuide.js';
 import { initNavigation } from './modules/navigation.js';
 import { initSettings } from './modules/settings.js';
 import { initSearch } from './modules/search.js';
@@ -38,8 +36,6 @@ const coreModules = [
   { init: initNavigation, name: 'navigation' },
   { init: initDropdown, name: 'dropdown' },
   { init: initSelect, name: 'select' },
-  { init: initLanguageSelect, name: 'languageSelect' },
-  { init: initThemeMode, name: 'themeMode' },
 ];
 
 // Common modules that should be loaded on all pages except activation and error
@@ -49,7 +45,7 @@ const commonModules = [
   { init: initClipboard, name: 'clipboard' },
   { init: initCopyMarkup, name: 'copyMarkup' },
   { init: initDependentMarkup, name: 'dependentMarkup' },
-  { init: initTextareaAutoHeight, name: 'textareaAutoHeight' },
+  { init: initIntroGuide, name: 'introGuide' },
 ];
 
 // Hash-based module mapping

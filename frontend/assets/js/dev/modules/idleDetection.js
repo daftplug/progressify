@@ -1,6 +1,7 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaIdleDetection extends HTMLElement {
   constructor() {

@@ -1,7 +1,8 @@
 import { config } from '../frontend.js';
 import PushNotificationsSubscription from '../components/pushNotificationsSubscription.js';
 import { getContrastTextColor } from '../components/utils.js';
-import { __ } from '../components/i18n.js';
+
+const { __ } = wp.i18n;
 
 class PwaPushNotificationsPrompt extends HTMLElement {
   constructor() {
