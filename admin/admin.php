@@ -65,9 +65,6 @@ class Admin
 
   public function addMenuPage()
   {
-    remove_all_actions('admin_notices');
-    remove_all_actions('all_admin_notices');
-
     $this->menuId = add_menu_page($this->menuTitle, !$this->licenseKey ? $this->menuTitle . ' <span class="awaiting-mod">1</span>' : $this->menuTitle, $this->capability, $this->slug, [$this, 'createAdminPage'], $this->menuIcon, 55);
 
     $this->addMenuSeparators();
@@ -101,6 +98,9 @@ class Admin
   public function loadAssets($hook)
   {
     if ($hook && $hook == $this->menuId) {
+      remove_all_actions('admin_notices');
+      remove_all_actions('all_admin_notices');
+
       $this->dependencies[] = 'wp-i18n';
       $this->dependencies[] = 'jquery';
 
@@ -229,7 +229,7 @@ class Admin
   {
     ?>
 <div id="daftplugAdmin" data-option-name="<?php echo esc_attr($this->optionName); ?>" data-slug="<?php echo esc_attr($this->slug); ?>">
-  <div id="daftplugAdminWrapper" class="relative bg-gray-50 -daftplugLoading">
+  <div id="daftplugAdminWrapper" class="relative bg-gray-50 text-balance -daftplugLoading">
     <?php if (!$this->licenseKey): ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
     <?php else: ?>

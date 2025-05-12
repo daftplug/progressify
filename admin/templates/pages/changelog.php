@@ -4,6 +4,13 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.1.7" data-date="May 12, 2025" data-title="Admin Side and OG Image Fixes" data-description="The update includes fixes for admin side issues and OG image fix.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed admin notices not being displayed.</li>
+      <li>Fixed settings saving failing in certain cases.</li>
+      <li>Fixed Open Graph image being PWA icon.</li>
+    </ul>
+  </div>
   <div data-version="v1.1.6" data-date="May 11, 2025" data-title="Intro Guide and Translation Fixes" data-description="The update includes intro guide and fixes for translations and license deactivation issue.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added intro guide to help users getting started with the plugin.</li>

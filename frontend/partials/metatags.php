@@ -42,12 +42,6 @@ $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][rela
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="msapplication-config" content="none">
 
-<!-- Open Graph Meta Tags for Better Integration -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="<?php echo esc_attr($appName); ?>">
-<meta property="og:image" content="<?php echo esc_url($fullMaskableAppIcon); ?>">
-<meta property="al:web:url" content="<?php echo esc_url($startPage); ?>">
-
 <!-- UC Browser Meta Tags -->
 <meta name="browsermode" content="application">
 <meta name="full-screen" content="yes">
