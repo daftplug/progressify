@@ -27,7 +27,6 @@ class WebAppManifest
   protected $dependencies;
   public $capability;
   public $settings;
-  public static $manifestName;
 
   public function __construct($config)
   {
@@ -46,7 +45,6 @@ class WebAppManifest
     $this->dependencies = [];
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
-    self::$manifestName = 'manifest.webmanifest';
 
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'renderManifest']);
@@ -249,11 +247,9 @@ class WebAppManifest
       return;
     }
 
-    if ($wp->request === self::$manifestName) {
-      $wp_query->set(self::$manifestName, 1);
-    }
+    if ((isset($wp->request) && $wp->request === 'manifest.webmanifest') || (isset($_GET['manifest']) && $_GET['manifest'] === 'webmanifest')) {
+      $wp_query->set('manifest', 1);
 
-    if ($wp_query->get(self::$manifestName)) {
       nocache_headers();
       header('X-Robots-Tag: noindex, follow');
       header('Content-Type: application/manifest+json; charset=utf-8');
@@ -448,13 +444,8 @@ class WebAppManifest
 
   public static function getManifestUrl($encoded = true)
   {
-    $manifestUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . self::$manifestName);
-
-    if ($encoded) {
-      return wp_json_encode($manifestUrl);
-    }
-
-    return $manifestUrl;
+    $manifestUrl = get_option('permalink_structure') ? home_url('/manifest.webmanifest') : home_url('/?manifest=webmanifest');
+    return $encoded ? wp_json_encode($manifestUrl) : $manifestUrl;
   }
 
   public static function getPwaIconUrl($type = 'maskable', $size = '')
@@ -475,14 +466,8 @@ class WebAppManifest
     $iconPath = self::$pluginUploadDir . 'pwa-icons/' . $filename;
     $iconUrl = self::$pluginUploadUrl . 'pwa-icons/' . $filename;
 
-    // Check if file exists and return URL with version hash
-    if (file_exists($iconPath)) {
-      // Add version hash to prevent caching issues
-      $version = hash('crc32', filemtime($iconPath));
-      return $iconUrl . '?v=' . $version;
-    }
-
-    return '';
+    // Check if file exists and return URL
+    return file_exists($iconPath) ? $iconUrl : '';
   }
 
   public static function getSplashScreenUrl($name)
@@ -503,14 +488,8 @@ class WebAppManifest
     $splashScreenPath = self::$pluginUploadDir . 'splash-screens/' . $filename;
     $splashScreenUrl = self::$pluginUploadUrl . 'splash-screens/' . $filename;
 
-    // Check if file exists and return URL with version hash
-    if (file_exists($splashScreenPath)) {
-      // Add version hash to prevent caching issues
-      $version = hash('crc32', filemtime($splashScreenPath));
-      return $splashScreenUrl . '?v=' . $version;
-    }
-
-    return '';
+    // Check if file exists and return URL
+    return file_exists($splashScreenPath) ? $splashScreenUrl : '';
   }
 
   public static function getInstallationQrCodeUrl()
@@ -525,12 +504,6 @@ class WebAppManifest
     $qrCodeUrl = self::$pluginUploadUrl . 'qr-codes/qr-pwa-installation.png';
 
     // Check if file exists and return URL with version hash
-    if (file_exists($qrCodePath)) {
-      // Add version hash to prevent caching issues
-      $version = hash('crc32', filemtime($qrCodePath));
-      return $qrCodeUrl . '?v=' . $version;
-    }
-
-    return '';
+    return file_exists($qrCodePath) ? $qrCodeUrl : '';
   }
 }

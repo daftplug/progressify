@@ -4,6 +4,18 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.1.8" data-date="May 18, 2025" data-title="Installation URL and Stability Improvements" data-description="The update includes addition of Installation URL in Installation Prompts and fixes for stability issues.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added Installation URL in Installation Prompts.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed scorecard not recognizing enabled settings.</li>
+      <li>Fixed clicking action items not scrolling to the target section.</li>
+      <li>Fixed PWA icon mime type not being set correctly.</li>
+      <li>Fixed JS error in console on frontend in certain cases.</li>
+      <li>Improved manifest and service worker render stability.</li>
+    </ul>
+  </div>
   <div data-version="v1.1.7" data-date="May 12, 2025" data-title="Admin Side and OG Image Fixes" data-description="The update includes fixes for admin side issues and OG image fix.">
     <ul data-icon="checkmark" data-label="Fixes and Improvements">
       <li>Fixed admin notices not being displayed.</li>

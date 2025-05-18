@@ -1,3 +1,4 @@
+import { config } from '../frontend.js';
 /**
  * Apply CSS-based orientation lock as fallback
  * @param {string} targetOrientation - The desired orientation to lock to

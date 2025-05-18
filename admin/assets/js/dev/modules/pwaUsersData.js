@@ -289,7 +289,7 @@ class PwaUsersDataManager {
         ...validBrowsers.map(
           (browser) => `
             <div class="p-3 bg-gray-100 dark:bg-neutral-700 rounded-lg">
-                <img class="shrink-0 size-7 mb-4" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
+                <img class="shrink-0 size-7 mb-4 ${browser.browser_name === 'Unknown' ? 'rounded-full' : ''}" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
                 <p class="text-sm text-gray-800 dark:text-neutral-200">
                     ${browser.browser_name}
                 </p>
@@ -304,7 +304,7 @@ class PwaUsersDataManager {
                 <div class="shrink-0 size-7 mb-4 rounded-full bg-gray-200"></div>
                 <p class="text-sm text-gray-800 dark:text-neutral-200 bg-gray-200 rounded-full h-2 w-16"></p>
                 <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
-                    0
+                  0
                 </p>
             </div>
             `),

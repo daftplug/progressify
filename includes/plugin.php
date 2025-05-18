@@ -367,7 +367,7 @@ class Plugin
 
   public function onDeactivate()
   {
-    // Do nothing, just deactivate the plugin.
+    flush_rewrite_rules();
   }
 
   public static function onUninstall()

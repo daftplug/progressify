@@ -64,7 +64,7 @@ export function initSearch() {
     const pageId = jQuery(this).data('navigate-to-page');
     const highlightElementSelector = jQuery(this).data('highlight-element');
 
-    navigateToPage(pageId);
+    navigateToPage(pageId, '', !highlightElementSelector);
     if (highlightElementSelector) {
       highlightElement(highlightElementSelector);
     }

@@ -185,6 +185,37 @@ if (!defined('ABSPATH')) {
           </button>
         </div>
         <!-- End Installation Button -->
+        <!-- Installation URL -->
+        <div id="settingPromptsUrl">
+          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+            <?php esc_html_e('Installation URL', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
+                <?php esc_html_e('Installation URL is a link to the homepage of your web app with an additional parameter to trigger the installation prompt as soon as the user lands on your website. You can share this URL with your users who wants to install your web app or use it in your marketing materials, like buttons on your website, social media posts, or emails.', $this->slug); ?>
+              </span>
+            </button>
+          </label>
+          <button type="button" class="group/tooltip relative py-2 px-3 flex justify-center items-center gap-x-2 text-sm font-mono rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" tabindex="-1" data-dp-tooltip='{"trigger": "click", "placement": "top"}' data-clipboard-content="<?php echo esc_url(home_url('/?performInstallation=true')); ?>">
+            <?php echo esc_url(home_url('/?performInstallation=true')); ?>
+            <span class="border-s ps-3.5">
+              <svg class="clipboard-default size-4 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              </svg>
+              <svg class="clipboard-success hidden size-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm !bottom-10" role="tooltip">
+              <?php esc_html_e('Copied', $this->slug); ?>
+            </span>
+          </button>
+        </div>
+        <!-- End Installation URL -->
         <!-- Installation QR Code -->
         <div id="settingPromptsQrCode">
           <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800">

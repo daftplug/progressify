@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.1.6\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-11T16:24:42+00:00\n"
+"POT-Creation-Date: 2025-05-12T20:23:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -209,6 +209,10 @@ msgid "Contact Us"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:20
+msgid "Beta"
+msgstr ""
+
+#: admin/templates/pages/appcapabilities.php:21
 msgid "Smooth Transitions"
 msgstr ""
 
@@ -258,9 +262,9 @@ msgid "Fade"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:94
-#: admin/templates/pages/appcapabilities.php:425
-#: admin/templates/pages/appcapabilities.php:509
-#: admin/templates/pages/appcapabilities.php:580
+#: admin/templates/pages/appcapabilities.php:424
+#: admin/templates/pages/appcapabilities.php:508
+#: admin/templates/pages/appcapabilities.php:579
 #: admin/templates/pages/uicomponents.php:38
 #: admin/templates/pages/uicomponents.php:642
 #: admin/templates/pages/uicomponents.php:777
@@ -277,9 +281,9 @@ msgid "Select on what device types smooth page transitions feature should be act
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:106
-#: admin/templates/pages/appcapabilities.php:437
-#: admin/templates/pages/appcapabilities.php:521
-#: admin/templates/pages/appcapabilities.php:592
+#: admin/templates/pages/appcapabilities.php:436
+#: admin/templates/pages/appcapabilities.php:520
+#: admin/templates/pages/appcapabilities.php:591
 #: admin/templates/pages/uicomponents.php:50
 #: admin/templates/pages/uicomponents.php:654
 #: admin/templates/pages/uicomponents.php:789
@@ -292,9 +296,9 @@ msgid "Select Devices"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:110
-#: admin/templates/pages/appcapabilities.php:441
-#: admin/templates/pages/appcapabilities.php:525
-#: admin/templates/pages/appcapabilities.php:596
+#: admin/templates/pages/appcapabilities.php:440
+#: admin/templates/pages/appcapabilities.php:524
+#: admin/templates/pages/appcapabilities.php:595
 #: admin/templates/pages/uicomponents.php:54
 #: admin/templates/pages/uicomponents.php:658
 #: admin/templates/pages/uicomponents.php:793
@@ -307,9 +311,9 @@ msgid "Smartphone"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:114
-#: admin/templates/pages/appcapabilities.php:445
-#: admin/templates/pages/appcapabilities.php:529
-#: admin/templates/pages/appcapabilities.php:600
+#: admin/templates/pages/appcapabilities.php:444
+#: admin/templates/pages/appcapabilities.php:528
+#: admin/templates/pages/appcapabilities.php:599
 #: admin/templates/pages/uicomponents.php:58
 #: admin/templates/pages/uicomponents.php:661
 #: admin/templates/pages/uicomponents.php:797
@@ -322,8 +326,8 @@ msgid "Tablet"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:118
-#: admin/templates/pages/appcapabilities.php:533
-#: admin/templates/pages/appcapabilities.php:604
+#: admin/templates/pages/appcapabilities.php:532
+#: admin/templates/pages/appcapabilities.php:603
 #: admin/templates/pages/uicomponents.php:665
 #: admin/templates/pages/uicomponents.php:801
 #: admin/templates/pages/uicomponents.php:1044
@@ -346,22 +350,22 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:222
 #: admin/templates/pages/appcapabilities.php:313
 #: admin/templates/pages/appcapabilities.php:386
-#: admin/templates/pages/appcapabilities.php:454
-#: admin/templates/pages/appcapabilities.php:543
-#: admin/templates/pages/appcapabilities.php:613
-#: admin/templates/pages/appcapabilities.php:797
-#: admin/templates/pages/installation.php:269
-#: admin/templates/pages/installation.php:307
-#: admin/templates/pages/installation.php:344
-#: admin/templates/pages/installation.php:381
-#: admin/templates/pages/installation.php:418
-#: admin/templates/pages/installation.php:455
+#: admin/templates/pages/appcapabilities.php:453
+#: admin/templates/pages/appcapabilities.php:542
+#: admin/templates/pages/appcapabilities.php:612
+#: admin/templates/pages/appcapabilities.php:791
+#: admin/templates/pages/installation.php:277
+#: admin/templates/pages/installation.php:315
+#: admin/templates/pages/installation.php:352
+#: admin/templates/pages/installation.php:389
+#: admin/templates/pages/installation.php:426
+#: admin/templates/pages/installation.php:463
 #: admin/templates/pages/offlineusage.php:158
 #: admin/templates/pages/offlineusage.php:285
 #: admin/templates/pages/pushnotifications.php:163
 #: admin/templates/pages/pushnotifications.php:258
 #: admin/templates/pages/pushnotifications.php:347
-#: admin/templates/pages/pushnotifications.php:804
+#: admin/templates/pages/pushnotifications.php:795
 #: admin/templates/pages/uicomponents.php:604
 #: admin/templates/pages/uicomponents.php:674
 #: admin/templates/pages/uicomponents.php:810
@@ -381,22 +385,22 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:224
 #: admin/templates/pages/appcapabilities.php:315
 #: admin/templates/pages/appcapabilities.php:388
-#: admin/templates/pages/appcapabilities.php:456
-#: admin/templates/pages/appcapabilities.php:545
-#: admin/templates/pages/appcapabilities.php:615
-#: admin/templates/pages/appcapabilities.php:799
-#: admin/templates/pages/installation.php:271
-#: admin/templates/pages/installation.php:309
-#: admin/templates/pages/installation.php:346
-#: admin/templates/pages/installation.php:383
-#: admin/templates/pages/installation.php:420
-#: admin/templates/pages/installation.php:457
+#: admin/templates/pages/appcapabilities.php:455
+#: admin/templates/pages/appcapabilities.php:544
+#: admin/templates/pages/appcapabilities.php:614
+#: admin/templates/pages/appcapabilities.php:793
+#: admin/templates/pages/installation.php:279
+#: admin/templates/pages/installation.php:317
+#: admin/templates/pages/installation.php:354
+#: admin/templates/pages/installation.php:391
+#: admin/templates/pages/installation.php:428
+#: admin/templates/pages/installation.php:465
 #: admin/templates/pages/offlineusage.php:160
 #: admin/templates/pages/offlineusage.php:287
 #: admin/templates/pages/pushnotifications.php:165
 #: admin/templates/pages/pushnotifications.php:260
 #: admin/templates/pages/pushnotifications.php:349
-#: admin/templates/pages/pushnotifications.php:806
+#: admin/templates/pages/pushnotifications.php:797
 #: admin/templates/pages/uicomponents.php:606
 #: admin/templates/pages/uicomponents.php:676
 #: admin/templates/pages/uicomponents.php:812
@@ -549,111 +553,111 @@ msgstr ""
 msgid "Vibrations"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:412
+#: admin/templates/pages/appcapabilities.php:411
 msgid "Vibrations feature creates vibes on tapping for mobile users. That can help mobile users recognize when they are tapping and clicking on your website."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:432
+#: admin/templates/pages/appcapabilities.php:431
 msgid "Select on what device types vibrations feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:473
+#: admin/templates/pages/appcapabilities.php:472
 msgid "Idle Detection"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:479
+#: admin/templates/pages/appcapabilities.php:478
 msgid "The Idle Detection notifies your website when a user is idle, indicating such things as lack of interaction with the keyboard, mouse, screen, activation of a screensaver, locking of the screen, or moving to a different screen. If enabled, your website will prompt your users to update contents if the user is detected to be in an idle state."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:492
+#: admin/templates/pages/appcapabilities.php:491
 msgid "Threshold"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:499
+#: admin/templates/pages/appcapabilities.php:498
 msgid "Choose how many minutes to wait until the user is considered idle."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:516
+#: admin/templates/pages/appcapabilities.php:515
 msgid "Select on what device types Idle Detection feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:561
+#: admin/templates/pages/appcapabilities.php:560
 msgid "Screen Wake Lock"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:567
+#: admin/templates/pages/appcapabilities.php:566
 msgid "Screen wake lock provides a way to prevent device from dimming or locking the screen when your web application needs to keep running. This capability enables new experiences that, until now, required a platform-specific app."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:587
+#: admin/templates/pages/appcapabilities.php:586
 msgid "Select on what device types Screen Wake Lock feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:632
+#: admin/templates/pages/appcapabilities.php:631
 msgid "Advanced Web APIs"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:638
+#: admin/templates/pages/appcapabilities.php:637
 msgid "Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:653
+#: admin/templates/pages/appcapabilities.php:652
 msgid "Biometric Authentication"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:660
+#: admin/templates/pages/appcapabilities.php:659
 msgid "The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device's built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:665
+#: admin/templates/pages/appcapabilities.php:664
 msgid "Allow login with Touch ID, Face ID or with other device's built-in authenticator."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:682
+#: admin/templates/pages/appcapabilities.php:680
 msgid "Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:689
+#: admin/templates/pages/appcapabilities.php:687
 msgid "Background sync lets you defer actions until the user has stable connectivity. This ensures that crucial requests made while your web app is offline can be replayed when the user comes back online."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:694
+#: admin/templates/pages/appcapabilities.php:692
 msgid "Defer actions and requests until the user has stable connectivity."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:711
+#: admin/templates/pages/appcapabilities.php:708
 msgid "Periodic Background Sync"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:718
+#: admin/templates/pages/appcapabilities.php:715
 msgid "Periodic Background Sync enables web applications to periodically synchronize data in the background, bringing web apps closer to the behavior of a platform-specific app. It lets your website to always show fresh content in PWA by downloading data in the background when the app or page is not being used."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:724
+#: admin/templates/pages/appcapabilities.php:721
 msgid "Periodically sync data in the background to always show fresh content in PWA."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:741
+#: admin/templates/pages/appcapabilities.php:737
 msgid "Content Indexing"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:748
+#: admin/templates/pages/appcapabilities.php:744
 msgid "Content Indexing allows web applications to add URLs and metadata of offline-capable pages to a local index maintained by the browser. This improves the offline experience and discoverability of already-cached pages by enabling the browser to surface those pages when users are likely to want to view them. These pages could also be used to improve on-device search and augment browsing history."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:753
+#: admin/templates/pages/appcapabilities.php:749
 msgid "Add URLs of offline-capable pages to a local index maintained by the browser."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:770
+#: admin/templates/pages/appcapabilities.php:765
 msgid "Persistent Storage"
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:777
+#: admin/templates/pages/appcapabilities.php:772
 msgid "Persistent storage allows your web app to request persistent storage, ensuring that important data is reliably stored on the user's device without being automatically cleared, even under storage pressure. It can help protect critical data from eviction, and reduce the chance of data loss."
 msgstr ""
 
-#: admin/templates/pages/appcapabilities.php:782
+#: admin/templates/pages/appcapabilities.php:777
 msgid "Mark cached website content as persistent to prevent deletion."
 msgstr ""
 
@@ -987,85 +991,89 @@ msgstr ""
 msgid "This QR code directs users to your homepage, where they can access the installation prompt and set up your PWA effortlessly."
 msgstr ""
 
-#: admin/templates/pages/installation.php:212
+#: admin/templates/pages/installation.php:211
+msgid "Download Image"
+msgstr ""
+
+#: admin/templates/pages/installation.php:220
 msgid "Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:219
+#: admin/templates/pages/installation.php:227
 msgid "Set the text to display as the title on installation prompts and as the label on the installation button. "
 msgstr ""
 
-#: admin/templates/pages/installation.php:223
+#: admin/templates/pages/installation.php:231
 msgid "Enter Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:229
+#: admin/templates/pages/installation.php:237
 #: admin/templates/pages/pushnotifications.php:218
 msgid "Skip First Visit"
 msgstr ""
 
-#: admin/templates/pages/installation.php:236
+#: admin/templates/pages/installation.php:244
 msgid "Skips first-time visitors and only shows installation overlays to returning users."
 msgstr ""
 
-#: admin/templates/pages/installation.php:243
+#: admin/templates/pages/installation.php:251
 msgid "Show installation overlays to returning visitors only."
 msgstr ""
 
-#: admin/templates/pages/installation.php:251
+#: admin/templates/pages/installation.php:259
 #: admin/templates/pages/pushnotifications.php:240
 msgid "Timeout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:258
+#: admin/templates/pages/installation.php:266
 msgid "Choose how many days to wait to show installation overlays again if they were dismissed."
 msgstr ""
 
-#: admin/templates/pages/installation.php:284
+#: admin/templates/pages/installation.php:292
 msgid "Edit Header Banner"
 msgstr ""
 
-#: admin/templates/pages/installation.php:298
-#: admin/templates/pages/installation.php:335
-#: admin/templates/pages/installation.php:372
-#: admin/templates/pages/installation.php:409
-#: admin/templates/pages/installation.php:446
+#: admin/templates/pages/installation.php:306
+#: admin/templates/pages/installation.php:343
+#: admin/templates/pages/installation.php:380
+#: admin/templates/pages/installation.php:417
+#: admin/templates/pages/installation.php:454
 msgid "Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:300
+#: admin/templates/pages/installation.php:308
 msgid "Enter Header Banner Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:321
+#: admin/templates/pages/installation.php:329
 msgid "Edit Snackbar"
 msgstr ""
 
-#: admin/templates/pages/installation.php:337
+#: admin/templates/pages/installation.php:345
 msgid "Enter Snackbar Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:358
+#: admin/templates/pages/installation.php:366
 msgid "Edit Navigation Menu"
 msgstr ""
 
-#: admin/templates/pages/installation.php:374
+#: admin/templates/pages/installation.php:382
 msgid "Enter Navigation Menu Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:395
+#: admin/templates/pages/installation.php:403
 msgid "Edit In Feed"
 msgstr ""
 
-#: admin/templates/pages/installation.php:411
+#: admin/templates/pages/installation.php:419
 msgid "Enter In Feed Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:432
+#: admin/templates/pages/installation.php:440
 msgid "Edit Woocommerce Checkout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:448
+#: admin/templates/pages/installation.php:456
 msgid "Enter Woocommerce Checkout Message"
 msgstr ""
 
@@ -1218,8 +1226,8 @@ msgid "List of your users who are subscribed for push notifications."
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:28
-#: admin/templates/pages/pushnotifications.php:821
-#: admin/templates/pages/pushnotifications.php:1043
+#: admin/templates/pages/pushnotifications.php:812
+#: admin/templates/pages/pushnotifications.php:1034
 msgid "Send Push Notification"
 msgstr ""
 
@@ -1395,264 +1403,264 @@ msgstr ""
 msgid "Sends notification to users when new content is published."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:416
+#: admin/templates/pages/pushnotifications.php:415
 msgid "Post Types"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:423
+#: admin/templates/pages/pushnotifications.php:422
 msgid "Select supported post types for new content published notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:428
+#: admin/templates/pages/pushnotifications.php:427
 msgid "Select Post Types"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:445
+#: admin/templates/pages/pushnotifications.php:444
 msgid "New Comment"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:452
+#: admin/templates/pages/pushnotifications.php:451
 msgid "Sends automatic notification to users when a new comment or reply is posted where they have commented. Note that it will only work if you have enabled native WordPress comments on posts."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:457
+#: admin/templates/pages/pushnotifications.php:456
 msgid "Notifies users of new comments or replies on threads they've participated in."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:476
+#: admin/templates/pages/pushnotifications.php:475
 msgid "Price Drop"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:483
+#: admin/templates/pages/pushnotifications.php:482
 msgid "Sends automatic notification to website users when the product price drops. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:488
+#: admin/templates/pages/pushnotifications.php:487
 msgid "Sends notification to users when the product price drops."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:505
+#: admin/templates/pages/pushnotifications.php:504
 msgid "Sale Price"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:512
+#: admin/templates/pages/pushnotifications.php:511
 msgid "Sends automatic notification to website users when the sale price is added to the product. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:517
+#: admin/templates/pages/pushnotifications.php:516
 msgid "Sends notification to users when sale price is added to product."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:534
+#: admin/templates/pages/pushnotifications.php:533
 msgid "Back In Stock"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:541
+#: admin/templates/pages/pushnotifications.php:540
 msgid "Sends automatic notification to website users when the product is back in stock. Notification will include product title and featured image."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:546
+#: admin/templates/pages/pushnotifications.php:545
 msgid "Sends notification to users when product is back in stock."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:563
+#: admin/templates/pages/pushnotifications.php:562
 msgid "Order Status Update"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:570
+#: admin/templates/pages/pushnotifications.php:569
 msgid "Sends automatic notification to website users when the order status is updated. Notification will include what status change details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:575
+#: admin/templates/pages/pushnotifications.php:574
 msgid "Sends notification to users when the order status is updated."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:593
+#: admin/templates/pages/pushnotifications.php:591
 msgid "New Order"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:600
+#: admin/templates/pages/pushnotifications.php:598
 msgid "Sends automatic notification to admins when new order is placed. Notification will include order details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:605
+#: admin/templates/pages/pushnotifications.php:603
 msgid "Sends notification to admins when new order is placed."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:623
+#: admin/templates/pages/pushnotifications.php:620
 msgid "Low Stock"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:630
+#: admin/templates/pages/pushnotifications.php:627
 msgid "Sends automatic notification to admins when a product is low in stock. Notification will include product details."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:635
+#: admin/templates/pages/pushnotifications.php:632
 msgid "Sends notification to admins when a product is low in stock."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:655
+#: admin/templates/pages/pushnotifications.php:651
 msgid "Member Mention"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:662
+#: admin/templates/pages/pushnotifications.php:658
 msgid "Sends automatic notification to users when a member mentions someone in an update @username."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:667
+#: admin/templates/pages/pushnotifications.php:663
 msgid "Sends notification to users when they are mentioned by a member."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:685
+#: admin/templates/pages/pushnotifications.php:680
 msgid "Member Reply"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:692
+#: admin/templates/pages/pushnotifications.php:687
 msgid "Sends automatic notification to users when a member replies to an update or comment."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:697
+#: admin/templates/pages/pushnotifications.php:692
 msgid "Sends notification to users when a member replies."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:715
+#: admin/templates/pages/pushnotifications.php:709
 msgid "New Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:722
+#: admin/templates/pages/pushnotifications.php:716
 msgid "Sends automatic notification to users when a new message is received in their DMs."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:727
+#: admin/templates/pages/pushnotifications.php:721
 msgid "Sends notification to users when a new message is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:745
+#: admin/templates/pages/pushnotifications.php:738
 msgid "Friend Request"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:752
+#: admin/templates/pages/pushnotifications.php:745
 msgid "Sends automatic notification to users when a new friend request is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:757
+#: admin/templates/pages/pushnotifications.php:750
 msgid "Sends notification to users when a new friend request is received."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:775
+#: admin/templates/pages/pushnotifications.php:767
 msgid "Friend Accepted"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:782
+#: admin/templates/pages/pushnotifications.php:774
 msgid "Sends automatic notification to users when the friend request is accepted."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:787
+#: admin/templates/pages/pushnotifications.php:779
 msgid "Sends notification to users when the friend request is accepted."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:830
+#: admin/templates/pages/pushnotifications.php:821
 msgid "The push notification will be sent to all of your subscribers."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:845
-#: admin/templates/pages/pushnotifications.php:865
+#: admin/templates/pages/pushnotifications.php:836
+#: admin/templates/pages/pushnotifications.php:856
 msgid "Notification Image"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:852
+#: admin/templates/pages/pushnotifications.php:843
 msgid "Adds a large image to notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:884
+#: admin/templates/pages/pushnotifications.php:875
 msgid "Select Image"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:892
+#: admin/templates/pages/pushnotifications.php:883
 msgid "Notification Title"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:899
+#: admin/templates/pages/pushnotifications.php:890
 msgid "Enter the title of your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:903
+#: admin/templates/pages/pushnotifications.php:894
 msgid "Enter Notification Title"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:907
+#: admin/templates/pages/pushnotifications.php:898
 msgid "Notification Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:914
+#: admin/templates/pages/pushnotifications.php:905
 msgid "Enter the message of your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:918
+#: admin/templates/pages/pushnotifications.php:909
 msgid "Enter Notification Message"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:922
+#: admin/templates/pages/pushnotifications.php:913
 msgid "Notification URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:929
+#: admin/templates/pages/pushnotifications.php:920
 msgid "Enter the URL of your notification. Your users will be redirected to this URL after they click on your notification."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:933
+#: admin/templates/pages/pushnotifications.php:924
 msgid "Enter Notification URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:937
+#: admin/templates/pages/pushnotifications.php:928
 msgid "Action Buttons"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:944
+#: admin/templates/pages/pushnotifications.php:935
 msgid "Adds action buttons to your notification. You can add up to two action buttons per notification. However, not all browsers support action buttons, so they will only be displayed for users with compatible browsers."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:951
+#: admin/templates/pages/pushnotifications.php:942
 msgid "Enter Action Button Text"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:954
+#: admin/templates/pages/pushnotifications.php:945
 msgid "Enter Action Button URL"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:977
+#: admin/templates/pages/pushnotifications.php:968
 msgid "Add Action Button"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:985
+#: admin/templates/pages/pushnotifications.php:976
 msgid "Vibration"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:992
+#: admin/templates/pages/pushnotifications.php:983
 msgid "Allows notification to vibrate the user's device as soon as it's delivered. This will only work on the mobile and tablet devices as desktop devices do not have vibrations."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:997
+#: admin/templates/pages/pushnotifications.php:988
 msgid "If enabled, your notification will vibrate the user's device upon delivery."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1011
+#: admin/templates/pages/pushnotifications.php:1002
 msgid "Persistent"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1018
+#: admin/templates/pages/pushnotifications.php:1009
 msgid "Your notification will not hide automatically after some time and it will require user interaction to be dismissed."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1023
+#: admin/templates/pages/pushnotifications.php:1014
 msgid "If enabled, the notification will remain visible until the user interacts with it."
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1037
+#: admin/templates/pages/pushnotifications.php:1028
 msgid "Preview Notification"
 msgstr ""
 
-#: admin/templates/pages/pushnotifications.php:1041
+#: admin/templates/pages/pushnotifications.php:1032
 msgid "Sending..."
 msgstr ""
 

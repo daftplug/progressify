@@ -1,6 +1,6 @@
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
-export function navigateToPage(pageId, subPageId = '') {
+export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
   const allPages = daftplugAdmin.find('[data-page-id]');
   const allMenuItems = daftplugAdmin.find('nav a[data-page-id]');
   const allSubpages = daftplugAdmin.find('[data-subpage-id]');
@@ -62,8 +62,10 @@ export function navigateToPage(pageId, subPageId = '') {
       updateHash('#/error/');
     }
 
-    // Scroll to top of the content
-    daftplugAdmin.find('main#content').animate({ scrollTop: 0 }, 'fast');
+    // Scroll to top of the content only if scrollToTop is true
+    if (scrollToTop) {
+      daftplugAdmin.find('main#content').animate({ scrollTop: 0 }, 'fast');
+    }
 
     setTimeout(resolve, 0);
   });

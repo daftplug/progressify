@@ -27,11 +27,11 @@ class PwaScoreDataManager {
 
       const actionType = actionItem.dataset.actionType;
       if (actionType === 'click') {
-        const navigateToPageId = actionItem.dataset.navigateToPage;
+        const pageId = actionItem.dataset.navigateToPage;
         const highlightElementSelector = actionItem.dataset.highlightElement;
 
-        if (navigateToPageId) {
-          await navigateToPage(navigateToPageId);
+        if (pageId) {
+          await navigateToPage(pageId, '', !highlightElementSelector);
           if (highlightElementSelector) {
             highlightElement(highlightElementSelector);
           }

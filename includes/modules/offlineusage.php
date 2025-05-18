@@ -27,7 +27,6 @@ class OfflineUsage
   public $capability;
   public $settings;
   private $workboxVersion;
-  public static $serviceWorkerName;
 
   public function __construct($config)
   {
@@ -46,7 +45,6 @@ class OfflineUsage
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
     $this->workboxVersion = '7.3.0';
-    self::$serviceWorkerName = 'serviceworker.webworker';
 
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'renderServiceWorker']);
@@ -74,11 +72,9 @@ class OfflineUsage
       return;
     }
 
-    if ($wp->request === 'offline-fallback') {
+    if ((isset($wp->request) && $wp->request === 'offline-fallback') || (isset($_GET['offline']) && $_GET['offline'] === 'fallback')) {
       $wp_query->set('offline-fallback', 1);
-    }
 
-    if ($wp_query->get('offline-fallback')) {
       nocache_headers();
       header('X-Robots-Tag: noindex, follow');
       header('Content-Type: text/html; charset=utf-8');
@@ -98,11 +94,9 @@ class OfflineUsage
       return;
     }
 
-    if ($wp->request === self::$serviceWorkerName) {
-      $wp_query->set(self::$serviceWorkerName, 1);
-    }
+    if ((isset($wp->request) && $wp->request === 'serviceworker.webworker') || (isset($_GET['serviceworker']) && $_GET['serviceworker'] === 'webworker')) {
+      $wp_query->set('serviceworker.webworker', 1);
 
-    if ($wp_query->get(self::$serviceWorkerName)) {
       nocache_headers();
       header('X-Robots-Tag: noindex, follow');
       header('Content-Type: application/javascript; charset=utf-8');
@@ -153,7 +147,7 @@ class OfflineUsage
   public function buildServiceworkerData()
   {
     $isOfflineCacheEnabled = Plugin::getSetting('offlineUsage[cache][feature]') == 'on';
-    $offlineFallbackPage = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on' ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : home_url('/offline-fallback');
+    $offlineFallbackPage = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on' ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : $this->getOfflineFallbackUrl();
     $cachingStrategy = Plugin::getSetting('offlineUsage[cache][strategy]');
     $cacheExpiration = intval(Plugin::getSetting('offlineUsage[cache][expirationTime]')) ?: 10;
 
@@ -368,7 +362,12 @@ if ('serviceWorker' in navigator) {
 
   public static function getServiceWorkerUrl($encoded = true)
   {
-    $serviceWorkerUrl = untrailingslashit(strtok(home_url('/', 'https'), '?') . self::$serviceWorkerName);
+    $serviceWorkerUrl = get_option('permalink_structure') ? home_url('/serviceworker.webworker') : home_url('/?serviceworker=webworker');
     return $encoded ? wp_json_encode($serviceWorkerUrl) : $serviceWorkerUrl;
+  }
+
+  private function getOfflineFallbackUrl()
+  {
+    return get_option('permalink_structure') ? home_url('/offline-fallback') : home_url('/?offline=fallback');
   }
 }
