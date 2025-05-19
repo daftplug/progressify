@@ -1,4 +1,4 @@
-import { navigateToPage, highlightElement } from '../components/utils.js';
+import { findAndHighlightElement } from '../components/utils.js';
 
 const daftplugAdmin = jQuery('#daftplugAdmin');
 
@@ -60,13 +60,10 @@ export function initSearch() {
   });
 
   // Handle search item clicks
-  searchItemsWrapper.on('mousedown', '[data-navigate-to-page]', function (e) {
-    const pageId = jQuery(this).data('navigate-to-page');
-    const highlightElementSelector = jQuery(this).data('highlight-element');
-
-    navigateToPage(pageId, '', !highlightElementSelector);
+  searchItemsWrapper.on('mousedown', '[data-find-and-highlight-element]', function (e) {
+    const highlightElementSelector = jQuery(this).data('find-and-highlight-element');
     if (highlightElementSelector) {
-      highlightElement(highlightElementSelector);
+      findAndHighlightElement(highlightElementSelector);
     }
   });
 }
@@ -94,7 +91,7 @@ function buildSettingsItems() {
       fieldsetIcon.attr('class', 'shrink-0 size-5 fill-gray-500 dark:fill-neutral-500');
 
       groupItemsHTML += `
-        <div class="dp-searchbox-item py-2 px-3 flex items-center gap-x-2 cursor-pointer hover:bg-gray-100 rounded-lg dark:hover:bg-neutral-700" data-navigate-to-page="${pageId}" data-highlight-element="#${fieldsetId}">
+        <div class="dp-searchbox-item py-2 px-3 flex items-center gap-x-2 cursor-pointer hover:bg-gray-100 rounded-lg dark:hover:bg-neutral-700" data-find-and-highlight-element="#${fieldsetId}">
           ${fieldsetIcon.prop('outerHTML')}
           <span class="dp-searchbox-item-title text-sm truncate text-gray-800 dark:text-neutral-200">${fieldsetTitle}</span>
         </div>

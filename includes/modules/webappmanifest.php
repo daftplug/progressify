@@ -221,7 +221,7 @@ class WebAppManifest
       $webAppOriginAssociation = [
         'web_apps' => [
           [
-            'manifest' => $this->getManifestUrl(false),
+            'manifest' => self::getManifestUrl(false),
             'details' => [
               'paths' => ['/*'],
             ],
@@ -269,16 +269,22 @@ class WebAppManifest
       $scope = $homeUrlParts['path'];
     }
 
+    // Get dynamic values or fallbacks
+    $manifestName = trim(!empty($_GET['name']) ? $_GET['name'] : Plugin::getSetting('webAppManifest[appIdentity][appName]'));
+    $manifestShortName = trim(!empty($_GET['shortName']) ? $_GET['shortName'] : trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12)));
+    $manifestDescription = trim(!empty($_GET['description']) ? $_GET['description'] : trim(Plugin::getSetting('webAppManifest[appIdentity][description]')));
+    $manifestStartUrl = trim(!empty($_GET['startUrl']) ? $_GET['startUrl'] : add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]')))));
+
     $manifest = [
       'lang' => get_bloginfo('language') ?: 'en-US',
       'id' => hash('crc32', Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))),
       'dir' => is_rtl() ? 'rtl' : 'ltr',
-      'name' => trim(Plugin::getSetting('webAppManifest[appIdentity][appName]')),
+      'name' => $manifestName,
       'scope' => $scope,
-      'start_url' => add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]')))),
+      'start_url' => $manifestStartUrl,
       'scope_extensions' => [['origin' => 'https://*.' . Plugin::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')))]],
-      'short_name' => trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12)),
-      'description' => trim(Plugin::getSetting('webAppManifest[appIdentity][description]')),
+      'short_name' => $manifestShortName,
+      'description' => $manifestDescription,
       'display' => Plugin::getSetting('webAppManifest[displaySettings][displayMode]'),
       'display_override' => [Plugin::getSetting('webAppManifest[displaySettings][displayMode]'), 'window-controls-overlay', 'browser'],
       'orientation' => Plugin::getSetting('webAppManifest[displaySettings][orientation]'),
@@ -379,15 +385,14 @@ class WebAppManifest
     }
 
     if (empty($manifest['screenshots'])) {
-      $startPage = trailingslashit(Plugin::getSetting('webAppManifest[displaySettings][startPage]'));
       $manifest['screenshots'][] = [
-        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=750&vph=1334&format=png',
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($manifestStartUrl) . '?vpw=750&vph=1334&format=png',
         'sizes' => '750x1334',
         'form_factor' => 'narrow',
         'type' => 'image/png',
       ];
       $manifest['screenshots'][] = [
-        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($startPage) . '?vpw=1280&vph=800&format=png',
+        'src' => 'https://s0.wp.com/mshots/v1/' . urlencode($manifestStartUrl) . '?vpw=1280&vph=800&format=png',
         'sizes' => '1280x800',
         'form_factor' => 'wide',
         'type' => 'image/png',
@@ -445,6 +450,22 @@ class WebAppManifest
   public static function getManifestUrl($encoded = true)
   {
     $manifestUrl = get_option('permalink_structure') ? home_url('/manifest.webmanifest') : home_url('/?manifest=webmanifest');
+
+    if (Plugin::getSetting('webAppManifest[appIdentity][dynamicManifest][feature]') == 'on' && is_singular() && Plugin::getCurrentUrl(true) !== Plugin::getSetting('webAppManifest[displaySettings][startPage]')) {
+      $queryArgs = [];
+      $post = get_post();
+      $postTitle = get_the_title($post->ID);
+      $postDescription = has_excerpt($post->ID) ? get_the_excerpt($post->ID) : wp_trim_words(get_the_content($post->ID), 30, '...');
+      $postUrl = get_permalink($post->ID);
+
+      $queryArgs['name'] = !empty($postTitle) ? $postTitle : trim(Plugin::getSetting('webAppManifest[appIdentity][appName]'));
+      $queryArgs['shortName'] = !empty($postTitle) ? trim(substr($postTitle, 0, 12)) : trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12));
+      $queryArgs['description'] = !empty($postDescription) ? $postDescription : trim(Plugin::getSetting('webAppManifest[appIdentity][description]'));
+      $queryArgs['startUrl'] = add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative($postUrl)));
+
+      $manifestUrl = add_query_arg($queryArgs, $manifestUrl);
+    }
+
     return $encoded ? wp_json_encode($manifestUrl) : $manifestUrl;
   }
 

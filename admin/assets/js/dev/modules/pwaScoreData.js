@@ -1,4 +1,4 @@
-import { navigateToPage, highlightElement } from '../components/utils.js';
+import { findAndHighlightElement } from '../components/utils.js';
 
 const daftplugAdmin = document.querySelector('#daftplugAdmin');
 const slug = daftplugAdmin.getAttribute('data-slug');
@@ -26,16 +26,9 @@ class PwaScoreDataManager {
       if (!actionItem) return;
 
       const actionType = actionItem.dataset.actionType;
-      if (actionType === 'click') {
-        const pageId = actionItem.dataset.navigateToPage;
-        const highlightElementSelector = actionItem.dataset.highlightElement;
-
-        if (pageId) {
-          await navigateToPage(pageId, '', !highlightElementSelector);
-          if (highlightElementSelector) {
-            highlightElement(highlightElementSelector);
-          }
-        }
+      const highlightElement = actionItem.dataset.findAndHighlightElement;
+      if (actionType === 'click' && highlightElement) {
+        findAndHighlightElement(highlightElement);
       }
     });
   }
@@ -64,27 +57,8 @@ class PwaScoreDataManager {
   }
 
   generateScoreProgressbar(scorePercent, scoreResult) {
-    let indicatorBgColorClass;
-
-    switch (scoreResult) {
-      case 'Bad':
-        indicatorBgColorClass = 'before:bg-red-500';
-        break;
-      case 'Average':
-        indicatorBgColorClass = 'before:bg-orange-500';
-        break;
-      case 'Good':
-        indicatorBgColorClass = 'before:bg-yellow-500';
-        break;
-      case 'Excellent':
-        indicatorBgColorClass = 'before:bg-green-500';
-        break;
-      default:
-        break;
-    }
-
     this.pwaScoreProgressbar.innerHTML = `
-      <div class="flex items-center w-full h-2.5 bg-gradient-to-r from-red-500 via-yellow-400 via-90% to-green-400 rounded-full dark:bg-neutral-700 before:relative before:start-[--progressVal] before:w-2 before:h-5 ${indicatorBgColorClass} before:border-2 before:border-white before:rounded-full before:dark:border-neutral-800" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${scorePercent}" style="--progressVal: calc(${scorePercent}% - 0.5rem / 2);"></div>
+      <div class="flex items-center w-full h-2.5 bg-gradient-to-r from-red-500 via-yellow-400 via-90% to-green-400 rounded-full dark:bg-neutral-700 before:relative before:start-[--progressVal] before:w-2 before:h-5 before:bg-gray-700 before:border-2 before:border-white before:rounded-full before:dark:border-neutral-800" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${scorePercent}" style="--progressVal: calc(${scorePercent}% - 0.5rem / 2);"></div>
     `;
   }
 
@@ -146,18 +120,18 @@ class PwaScoreDataManager {
           ${actionItems
             .map((actionItem) => {
               const isTooltip = actionItem.action.tooltip;
-              const isNavigateToPage = actionItem.action.navigateToPage;
+              const isFindAndHighlightElement = actionItem.action.findAndHighlightElement;
               const isGenerateMobileApps = actionItem.id === 'generateMobileApps';
 
               return `
-              <div class="action-item p-1.5 flex items-center gap-x-2 text-sm font-medium text-gray-800 rounded-lg hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-blue-500 dark:focus:bg-neutral-700 ${isTooltip ? 'group/tooltip relative cursor-help' : 'cursor-pointer'}" ${isNavigateToPage ? `data-action-type="click" data-navigate-to-page="${actionItem.action.navigateToPage}" data-highlight-element="${actionItem.action.highLightElement}"` : `data-dp-tooltip='{"trigger": "hover", "placement": "top"}'`}>
+              <div class="action-item p-1.5 flex items-center gap-x-2 text-sm font-medium text-gray-800 rounded-lg hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-blue-500 dark:focus:bg-neutral-700 ${isTooltip ? 'group/tooltip relative cursor-help' : 'cursor-pointer'}" ${isFindAndHighlightElement ? `data-action-type="click" data-find-and-highlight-element="${actionItem.action.findAndHighlightElement}"` : `data-dp-tooltip='{"trigger": "hover", "placement": "top"}'`}>
                 <span class="flex shrink-0 justify-center items-center size-7 bg-white border border-gray-200 rounded-lg dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300">
                   ${actionItem.icon}
                 </span>
                 <div class="grow">
                   <span class="${isGenerateMobileApps ? 'bg-clip-text bg-gradient-to-r from-green-600 to-blue-600 text-transparent font-semibold' : ''}">${actionItem.title}</span>
                 </div>
-                ${isNavigateToPage ? `<svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>` : `<svg class="shrink-0 size-3 mr-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path></svg>`}
+                ${findAndHighlightElement ? `<svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>` : `<svg class="shrink-0 size-3 mr-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path></svg>`}
                 ${isTooltip ? `<span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700 !bottom-12" role="tooltip">${actionItem.action.tooltip}</span>` : ''}
               </div>
             `;

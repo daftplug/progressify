@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="text-gray-800 mb-2">
         <div class="inline-flex text-5xl font-semibold">
-          <span class="text-2xl align-top me-1">$</span>19
+          <span class="text-2xl align-top me-1">$</span>26
         </div>
       </div>
       <div class="mb-5">
@@ -31,11 +31,11 @@ if (!defined('ABSPATH')) {
           <?php esc_html_e('Perfect for bringing your web app to Android devices through the Google Play Store.', $this->slug); ?>
         </div>
       </div>
-      <div class="paypalButtonsContainer w-full" data-button-color="silver" data-product-name="Android App" data-price="19">
+      <div class="paypalButtonsContainer w-full" data-button-color="silver" data-product-name="Android App" data-price="26">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 flex flex-col gap-y-2">
+      <ul class="-mt-6 pt-4 z-[9999] bg-white flex flex-col gap-y-2">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
@@ -92,14 +92,14 @@ if (!defined('ABSPATH')) {
         <div class="inline-flex text-5xl font-semibold">
           <div class="inline-flex flex-wrap items-center gap-3">
             <div class="inline-flex flex-wrap items-center pe-2 border-e border-dashed border-gray-300">
-              <span class="text-2xl self-start me-1">$</span>37
+              <span class="text-2xl self-start me-1">$</span>45
             </div>
             <span class="grid">
               <span class="text-xs leading-tight text-gray-800">
                 <?php esc_html_e('Early Supporter Discount Applied', $this->slug); ?>
               </span>
               <s class="text-2xl leading-6 font-normal text-gray-400">
-                <span>$</span><span>46</span>
+                <span>$</span><span>67</span>
               </s>
             </span>
           </div>
@@ -110,11 +110,11 @@ if (!defined('ABSPATH')) {
           <?php esc_html_e('Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store.', $this->slug); ?>
         </div>
       </div>
-      <div class="paypalButtonsContainer w-full" data-button-color="blue" data-product-name="Android and iOS Apps" data-price="37">
+      <div class="paypalButtonsContainer w-full" data-button-color="blue" data-product-name="Android and iOS Apps" data-price="45">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 flex flex-col gap-y-2">
+      <ul class="-mt-6 pt-4 z-[9999] bg-white flex flex-col gap-y-2">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
@@ -175,7 +175,7 @@ if (!defined('ABSPATH')) {
       </div>
       <div class="text-gray-800 mb-2">
         <div class="inline-flex text-5xl font-semibold">
-          <span class="text-2xl align-top me-1">$</span>59
+          <span class="text-2xl align-top me-1">$</span>78
         </div>
       </div>
       <div class="mb-5">
@@ -183,11 +183,11 @@ if (!defined('ABSPATH')) {
           <?php esc_html_e('Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices.', $this->slug); ?>
         </div>
       </div>
-      <div class="paypalButtonsContainer w-full" data-button-color="gold" data-product-name="Android, iOS and Windows Apps" data-price="59">
+      <div class="paypalButtonsContainer w-full" data-button-color="gold" data-product-name="Android, iOS and Windows Apps" data-price="78">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 flex flex-col gap-y-2">
+      <ul class="-mt-6 pt-4 z-[9999] bg-white flex flex-col gap-y-2">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>

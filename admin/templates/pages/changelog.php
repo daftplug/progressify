@@ -4,6 +4,15 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.2.0" data-date="May 19, 2025" data-title="Dynamic Manifest" data-description="The update includes addition of Dynamic Manifest feature and small fixes.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added Dynamic Manifest option.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Applied admin-side stability improvements.</li>
+      <li>Fixed Navigation Tab Bar overlapping push notification button.</li>
+    </ul>
+  </div>
   <div data-version="v1.1.8" data-date="May 18, 2025" data-title="Installation URL and Stability Improvements" data-description="The update includes addition of Installation URL in Installation Prompts and fixes for stability issues.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added Installation URL in Installation Prompts.</li>

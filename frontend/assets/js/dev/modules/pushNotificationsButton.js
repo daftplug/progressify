@@ -94,8 +94,8 @@ class PwaPushNotificationsButton extends HTMLElement {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const iconColor = getContrastTextColor(themeColor);
     const positionStyles = {
-      'bottom-right': 'bottom: 20px; right: 20px;',
-      'bottom-left': 'bottom: 20px; left: 20px;',
+      'bottom-right': document.querySelector('pwa-navigation-tab-bar') ? 'bottom: 70px; right: 20px;' : 'bottom: 20px; right: 20px;',
+      'bottom-left': document.querySelector('pwa-navigation-tab-bar') ? 'bottom: 70px; left: 20px;' : 'bottom: 20px; left: 20px;',
       'top-right': 'top: 20px; right: 20px;',
       'top-left': 'top: 20px; left: 20px;',
     }[this.position];

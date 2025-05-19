@@ -117,6 +117,9 @@ class Admin
       wp_add_inline_style(
         "{$this->slug}-admin",
         '
+          html,body {
+            overflow: hidden !important;
+          }
           #wpcontent {
             padding-left: 0 !important;
           }

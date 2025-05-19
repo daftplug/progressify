@@ -256,7 +256,7 @@ class Dashboard
         'icon' =>
           '<svg class="shrink-0 size-5 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C132.26 32 32 132.26 32 256s100.26 224 224 224 224-100.26 224-224S379.74 32 256 32zm-85 321.89a15.48 15.48 0 01-13.46 7.65 14.91 14.91 0 01-7.86-2.16 15.48 15.48 0 01-5.6-21.21l15.29-25.42a8.73 8.73 0 017.54-4.3h2.26c11.09 0 18.85 6.67 21.11 13.13zm129.45-50l-100.13.11h-66.55a15.46 15.46 0 01-15.51-16.15c.32-8.4 7.65-14.76 16-14.76h48.24l57.19-97.35-18.52-31.55C217 137 218.85 127.52 226 123a15.57 15.57 0 0121.87 5.17l9.9 16.91h.11l9.91-16.91A15.58 15.58 0 01289.6 123c7.11 4.52 8.94 14 4.74 21.22l-18.52 31.55-18 30.69-39.09 66.66v.11h57.61c7.22 0 16.27 3.88 19.93 10.12l.32.65c3.23 5.49 5.06 9.26 5.06 14.75a13.82 13.82 0 01-1.17 5.17zm77.75.11h-27.11v.11l19.82 33.71a15.8 15.8 0 01-5.17 21.53 15.53 15.53 0 01-8.08 2.27A15.71 15.71 0 01344.2 354l-29.29-49.86-18.2-31L273.23 233a38.35 38.35 0 01-.65-38c4.64-8.19 8.19-10.34 8.19-10.34L333 273h44.91c8.4 0 15.61 6.46 16 14.75A15.65 15.65 0 01378.23 304z" /></svg>',
         'action' => [
-          'navigateToPage' => 'generateMobileApps',
+          'findAndHighlightElement' => '#androidAndIosPlan',
         ],
       ],
       'https' => [
@@ -274,8 +274,7 @@ class Dashboard
         'title' => esc_html__('Upload or select your PWA App Icon', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>',
         'action' => [
-          'navigateToPage' => 'webAppManifest',
-          'highLightElement' => '#settingAppIcon',
+          'findAndHighlightElement' => '#settingAppIcon',
         ],
       ],
       'appName' => [
@@ -284,8 +283,7 @@ class Dashboard
         'title' => esc_html__('Define your PWA web app Name', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>',
         'action' => [
-          'navigateToPage' => 'webAppManifest',
-          'highLightElement' => '#settingAppName',
+          'findAndHighlightElement' => '#settingAppName',
         ],
       ],
       'shortName' => [
@@ -294,8 +292,7 @@ class Dashboard
         'title' => esc_html__('Define your PWA web app Short Name', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 15 4-8 4 8"/><path d="M4 13h6"/><circle cx="18" cy="12" r="3"/><path d="M21 9v6"/></svg>',
         'action' => [
-          'navigateToPage' => 'webAppManifest',
-          'highLightElement' => '#settingShortName',
+          'findAndHighlightElement' => '#settingShortName',
         ],
       ],
       'categories' => [
@@ -304,8 +301,7 @@ class Dashboard
         'title' => esc_html__('Choose your PWA web app categories', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
         'action' => [
-          'navigateToPage' => 'webAppManifest',
-          'highLightElement' => '#settingCategories',
+          'findAndHighlightElement' => '#settingCategories',
         ],
       ],
       'installationPrompts' => [
@@ -313,8 +309,7 @@ class Dashboard
         'title' => esc_html__('Enable PWA Installation Prompts', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
         'action' => [
-          'navigateToPage' => 'installation',
-          'highLightElement' => '#subsectionInstallationPrompts',
+          'findAndHighlightElement' => '#subsectionInstallationPrompts',
         ],
       ],
       'installationOverlays' => [
@@ -322,8 +317,7 @@ class Dashboard
         'title' => esc_html__('Enable one of the PWA Installation Overlays', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v6"/><path d="M9 10h6"/></svg>',
         'action' => [
-          'navigateToPage' => 'installation',
-          'highLightElement' => '#settingPromptsOverlays',
+          'findAndHighlightElement' => '#settingPromptsOverlays',
         ],
       ],
       'offlineCache' => [
@@ -331,8 +325,7 @@ class Dashboard
         'title' => esc_html__('Enable Offline Cache for your PWA', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg>',
         'action' => [
-          'navigateToPage' => 'offlineUsage',
-          'highLightElement' => '#subsectionOfflineCache',
+          'findAndHighlightElement' => '#subsectionOfflineCache',
         ],
       ],
       'advancedWebCapabilities' => [
@@ -340,8 +333,7 @@ class Dashboard
         'title' => esc_html__('Enable Advanced Web Capabilities for your PWA', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v4"/><path d="m15.2 4.9-.9-.4"/><path d="m15.2 7.1-.9.4"/><path d="m16.9 3.2-.4-.9"/><path d="m16.9 8.8-.4.9"/><path d="m19.5 2.3-.4.9"/><path d="m19.5 9.7-.4-.9"/><path d="m21.7 4.5-.9.4"/><path d="m21.7 7.5-.9-.4"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/></svg>',
         'action' => [
-          'navigateToPage' => 'appCapabilities',
-          'highLightElement' => '#subsectionAdvancedWebCapabilities',
+          'findAndHighlightElement' => '#subsectionAdvancedWebCapabilities',
         ],
       ],
       'backgroundSync' => [
@@ -349,8 +341,7 @@ class Dashboard
         'title' => esc_html__('Enable the Background Sync feature', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>',
         'action' => [
-          'navigateToPage' => 'appCapabilities',
-          'highLightElement' => '#settingBackgroundSync',
+          'findAndHighlightElement' => '#settingBackgroundSync',
         ],
       ],
       'periodicBackgroundSync' => [
@@ -358,8 +349,7 @@ class Dashboard
         'title' => esc_html__('Enable the Periodic Background Sync feature', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><circle cx="12" cy="12" r="1"/></svg>',
         'action' => [
-          'navigateToPage' => 'appCapabilities',
-          'highLightElement' => '#settingPeriodicBackgroundSync',
+          'findAndHighlightElement' => '#settingPeriodicBackgroundSync',
         ],
       ],
       'pushNotificationsPromptOrButton' => [
@@ -367,8 +357,7 @@ class Dashboard
         'title' => esc_html__('Enable Push Notifications Prompt or Button', $this->slug),
         'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>',
         'action' => [
-          'navigateToPage' => 'pushNotifications',
-          'highLightElement' => '#subsectionPushPrompt',
+          'findAndHighlightElement' => '#subsectionPushPrompt',
         ],
       ],
     ];

@@ -105,6 +105,9 @@ class Plugin
     $this->defaultSettings = [
       'webAppManifest' => [
         'appIdentity' => [
+          'dynamicManifest' => [
+            'feature' => 'off',
+          ],
           'appIcon' => get_option('site_icon') && file_exists(get_attached_file(get_option('site_icon'))) ? get_option('site_icon') : '',
           'appScreenshots' => '',
           'appName' => get_bloginfo('name') ?: '',

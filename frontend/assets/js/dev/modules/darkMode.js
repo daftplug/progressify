@@ -401,7 +401,7 @@ class PwaDarkMode extends HTMLElement {
     this.injectStyles(`
       .dark-mode-floating {
         position: fixed;
-        bottom: 20px;
+        bottom: ${document.querySelector('pwa-navigation-tab-bar') ? '70px' : '20px'};
         right: 20px;
         z-index: 999;
         display: -webkit-box;

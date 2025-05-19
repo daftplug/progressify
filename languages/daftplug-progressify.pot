@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.1.7\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.1.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-12T20:23:45+00:00\n"
+"POT-Creation-Date: 2025-05-18T23:16:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 
@@ -354,12 +354,12 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:542
 #: admin/templates/pages/appcapabilities.php:612
 #: admin/templates/pages/appcapabilities.php:791
-#: admin/templates/pages/installation.php:277
-#: admin/templates/pages/installation.php:315
-#: admin/templates/pages/installation.php:352
-#: admin/templates/pages/installation.php:389
-#: admin/templates/pages/installation.php:426
-#: admin/templates/pages/installation.php:463
+#: admin/templates/pages/installation.php:308
+#: admin/templates/pages/installation.php:346
+#: admin/templates/pages/installation.php:383
+#: admin/templates/pages/installation.php:420
+#: admin/templates/pages/installation.php:457
+#: admin/templates/pages/installation.php:494
 #: admin/templates/pages/offlineusage.php:158
 #: admin/templates/pages/offlineusage.php:285
 #: admin/templates/pages/pushnotifications.php:163
@@ -389,12 +389,12 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:544
 #: admin/templates/pages/appcapabilities.php:614
 #: admin/templates/pages/appcapabilities.php:793
-#: admin/templates/pages/installation.php:279
-#: admin/templates/pages/installation.php:317
-#: admin/templates/pages/installation.php:354
-#: admin/templates/pages/installation.php:391
-#: admin/templates/pages/installation.php:428
-#: admin/templates/pages/installation.php:465
+#: admin/templates/pages/installation.php:310
+#: admin/templates/pages/installation.php:348
+#: admin/templates/pages/installation.php:385
+#: admin/templates/pages/installation.php:422
+#: admin/templates/pages/installation.php:459
+#: admin/templates/pages/installation.php:496
 #: admin/templates/pages/offlineusage.php:160
 #: admin/templates/pages/offlineusage.php:287
 #: admin/templates/pages/pushnotifications.php:165
@@ -978,102 +978,111 @@ msgid "Installation button is a customizable button that can be placed anywhere 
 msgstr ""
 
 #: admin/templates/pages/installation.php:183
+#: admin/templates/pages/installation.php:214
 #: frontend/assets/js/dev/components/installPrompt.js:419
 msgid "Copied"
 msgstr ""
 
 #: admin/templates/pages/installation.php:191
-#: admin/templates/pages/installation.php:204
-msgid "Installation QR Code"
+msgid "Installation URL"
 msgstr ""
 
 #: admin/templates/pages/installation.php:198
+msgid "Installation URL is a link to the homepage of your web app with an additional parameter to trigger the installation prompt as soon as the user lands on your website. You can share this URL with your users who wants to install your web app or use it in your marketing materials, like buttons on your website, social media posts, or emails."
+msgstr ""
+
+#: admin/templates/pages/installation.php:222
+#: admin/templates/pages/installation.php:235
+msgid "Installation QR Code"
+msgstr ""
+
+#: admin/templates/pages/installation.php:229
 msgid "This QR code directs users to your homepage, where they can access the installation prompt and set up your PWA effortlessly."
 msgstr ""
 
-#: admin/templates/pages/installation.php:211
+#: admin/templates/pages/installation.php:242
 msgid "Download Image"
 msgstr ""
 
-#: admin/templates/pages/installation.php:220
+#: admin/templates/pages/installation.php:251
 msgid "Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:227
+#: admin/templates/pages/installation.php:258
 msgid "Set the text to display as the title on installation prompts and as the label on the installation button. "
 msgstr ""
 
-#: admin/templates/pages/installation.php:231
+#: admin/templates/pages/installation.php:262
 msgid "Enter Text"
 msgstr ""
 
-#: admin/templates/pages/installation.php:237
+#: admin/templates/pages/installation.php:268
 #: admin/templates/pages/pushnotifications.php:218
 msgid "Skip First Visit"
 msgstr ""
 
-#: admin/templates/pages/installation.php:244
+#: admin/templates/pages/installation.php:275
 msgid "Skips first-time visitors and only shows installation overlays to returning users."
 msgstr ""
 
-#: admin/templates/pages/installation.php:251
+#: admin/templates/pages/installation.php:282
 msgid "Show installation overlays to returning visitors only."
 msgstr ""
 
-#: admin/templates/pages/installation.php:259
+#: admin/templates/pages/installation.php:290
 #: admin/templates/pages/pushnotifications.php:240
 msgid "Timeout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:266
+#: admin/templates/pages/installation.php:297
 msgid "Choose how many days to wait to show installation overlays again if they were dismissed."
 msgstr ""
 
-#: admin/templates/pages/installation.php:292
+#: admin/templates/pages/installation.php:323
 msgid "Edit Header Banner"
 msgstr ""
 
-#: admin/templates/pages/installation.php:306
-#: admin/templates/pages/installation.php:343
-#: admin/templates/pages/installation.php:380
-#: admin/templates/pages/installation.php:417
-#: admin/templates/pages/installation.php:454
+#: admin/templates/pages/installation.php:337
+#: admin/templates/pages/installation.php:374
+#: admin/templates/pages/installation.php:411
+#: admin/templates/pages/installation.php:448
+#: admin/templates/pages/installation.php:485
 msgid "Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:308
+#: admin/templates/pages/installation.php:339
 msgid "Enter Header Banner Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:329
+#: admin/templates/pages/installation.php:360
 msgid "Edit Snackbar"
 msgstr ""
 
-#: admin/templates/pages/installation.php:345
+#: admin/templates/pages/installation.php:376
 msgid "Enter Snackbar Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:366
+#: admin/templates/pages/installation.php:397
 msgid "Edit Navigation Menu"
 msgstr ""
 
-#: admin/templates/pages/installation.php:382
+#: admin/templates/pages/installation.php:413
 msgid "Enter Navigation Menu Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:403
+#: admin/templates/pages/installation.php:434
 msgid "Edit In Feed"
 msgstr ""
 
-#: admin/templates/pages/installation.php:419
+#: admin/templates/pages/installation.php:450
 msgid "Enter In Feed Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:440
+#: admin/templates/pages/installation.php:471
 msgid "Edit Woocommerce Checkout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:456
+#: admin/templates/pages/installation.php:487
 msgid "Enter Woocommerce Checkout Message"
 msgstr ""
 

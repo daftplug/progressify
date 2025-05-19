@@ -64,7 +64,7 @@ export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
 
     // Scroll to top of the content only if scrollToTop is true
     if (scrollToTop) {
-      daftplugAdmin.find('main#content').animate({ scrollTop: 0 }, 'fast');
+      daftplugAdmin.find('main#content').scrollTop(0);
     }
 
     setTimeout(resolve, 0);
@@ -155,6 +155,50 @@ export function highlightElement(selector) {
     .catch((error) => {
       console.error('Error during highlight animation:', error);
     });
+}
+
+export function findAndHighlightElement(selector) {
+  const element = document.querySelector(selector);
+  if (!element) return Promise.reject(new Error('Element not found'));
+
+  // Find the parent section with data-page-id
+  let parentSection = element.closest('section[data-page-id]');
+  if (!parentSection) {
+    // If no direct section parent, try to find any ancestor with data-page-id
+    parentSection = element.closest('[data-page-id]');
+  }
+
+  if (!parentSection) {
+    // If still not found, just highlight the element without navigation
+    return new Promise((resolve) => {
+      highlightElement(selector);
+      resolve();
+    });
+  }
+
+  const pageId = parentSection.getAttribute('data-page-id');
+
+  // Find if there's a subpage ID
+  const subPageElement = element.closest('[data-subpage-id]');
+  let subPageId = '';
+
+  if (subPageElement) {
+    const fullSubpageId = subPageElement.getAttribute('data-subpage-id');
+    // The format is typically pageId-subPageId, so extract just the subPageId
+    const parts = fullSubpageId.split('-');
+    if (parts.length > 1) {
+      subPageId = parts[1];
+    }
+  }
+
+  // Navigate to the page without scrolling to top
+  return navigateToPage(pageId, subPageId, false).then(() => {
+    // After navigation completes, find the element again (as DOM might have changed)
+    const updatedElement = document.querySelector(selector);
+    if (updatedElement) {
+      highlightElement(selector);
+    }
+  });
 }
 
 export function validateAttachment(attachment, mimes, maxWidth, minWidth, maxHeight, minHeight) {
