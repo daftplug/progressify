@@ -53,7 +53,7 @@ export function handleChangelog() {
     if (title) {
       sectionHtml += `
         <h2 class="scroll-mt-10">
-          <div class="group inline-flex items-center gap-x-2 font-semibold text-gray-800 focus:outline-none focus:text-gray-600text-lg">
+          <div class="group inline-flex items-center gap-x-2 font-semibold text-gray-800 focus:outline-none focus:text-gray-600 text-lg">
             ${title}
           </div>
         </h2>

@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
-  <div data-version="v1.2.1" data-date="June 3, 2025" data-title="Share Button and Custom URLs" data-description="The update includes addition of Share Button and significant improvements.">
+  <div data-version="v1.2.3" data-date="June 5, 2025" data-title="Share Button, PWA CSS/JS and Navigation Tab Bar Improvements" data-description="The update includes addition of Share Button, PWA-Specific CSS/JS and other significant improvements.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added PWA Custom CSS/JS feature.</li>
       <li>Added Share Button feature.</li>

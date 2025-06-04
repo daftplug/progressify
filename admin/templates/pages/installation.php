@@ -462,6 +462,7 @@ if (!defined('ABSPATH')) {
   </div>
   <!-- End Edit In Feed Modal -->
   <!-- Edit Woocommerce Checkout Modal -->
+  <?php if (Plugin::isPluginActive('woocommerce')): ?>
   <div id="edit-woocommerce-checkout-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-woocommerce-checkout-popup">
     <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
       <div class="py-2.5 px-4 flex justify-between items-center border-b">
@@ -497,5 +498,6 @@ if (!defined('ABSPATH')) {
       </div>
     </div>
   </div>
+  <?php endif; ?>
   <!-- End Edit Woocommerce Checkout Modal -->
 </form>
