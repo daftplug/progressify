@@ -1,12 +1,11 @@
+import { config } from '../admin.js';
 import jQuery from '../components/utils.js';
 import showToast from '../components/toast.js';
 
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const slug = daftplugAdmin.attr('data-slug');
 const { __ } = wp.i18n;
 
 export function initSupportRequest() {
-  daftplugAdmin.find('form[name="supportForm"]').on('submit', sendSupportRequest);
+  config.daftplugAdminElm.find('form[name="supportForm"]').on('submit', sendSupportRequest);
 }
 
 async function sendSupportRequest(e) {
@@ -16,7 +15,7 @@ async function sendSupportRequest(e) {
   const parsedFormData = JSON.parse(supportFormData);
 
   const submitRequestBtn = form.find('button[type="submit"]');
-  const intractableComponents = daftplugAdmin.find('header, aside, main, footer');
+  const intractableComponents = config.daftplugAdminElm.find('header, aside, main, footer');
 
   submitRequestBtn.attr('data-submitting', true);
   intractableComponents.attr('data-disabled', true);
@@ -26,7 +25,7 @@ async function sendSupportRequest(e) {
   });
 
   try {
-    const response = await fetch(wpApiSettings.root + slug + '/submitSupportRequest', {
+    const response = await fetch(wpApiSettings.root + config.jsVars.slug + '/submitSupportRequest', {
       method: 'POST',
       headers: {
         'X-WP-Nonce': wpApiSettings.nonce,
@@ -49,12 +48,12 @@ async function sendSupportRequest(e) {
 
     if (data.status === 'success') {
       form.trigger('reset');
-      showToast(__('Success', slug), __('Support request have submitted successfully!', slug), 'success', 'top-right', true, false);
+      showToast(__('Success', config.jsVars.slug), __('Support request have submitted successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
     } else {
-      showToast(__('Fail', slug), __('Support request have failed to be submitted!', slug), 'fail', 'top-right', true, false);
+      showToast(__('Fail', config.jsVars.slug), __('Support request have failed to be submitted!', config.jsVars.slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
-    showToast('Fail', error.message, 'fail', 'top-right', true, false);
+    showToast(__('Fail', config.jsVars.slug), error.message, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-submitting');
     intractableComponents.removeAttr('data-disabled');

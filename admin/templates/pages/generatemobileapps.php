@@ -96,9 +96,9 @@ if (!defined('ABSPATH')) {
             </div>
             <span class="grid">
               <span class="text-xs leading-tight text-gray-800">
-                <?php esc_html_e('Early Supporter Discount Applied', $this->slug); ?>
+                <?php esc_html_e('Discount Applied', $this->slug); ?>
               </span>
-              <s class="text-2xl leading-6 font-normal text-gray-400">
+              <s class="mt-1 text-2xl leading-6 font-medium text-gray-400">
                 <span>$</span><span>67</span>
               </s>
             </span>

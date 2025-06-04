@@ -205,6 +205,11 @@ class Plugin
           'batteryLow' => 'off',
           'supportedDevices' => [],
         ],
+        'shareButton' => [
+          'feature' => 'off',
+          'position' => '',
+          'supportedDevices' => [],
+        ],
         'pullDownRefresh' => [
           'feature' => 'off',
           'supportedDevices' => [],
@@ -225,6 +230,11 @@ class Plugin
         'toastMessages' => [
           'feature' => 'off',
           'supportedDevices' => [],
+        ],
+        'pwaCustomCssAndJs' => [
+          'feature' => 'off',
+          'css' => '',
+          'js' => '',
         ],
       ],
       'appCapabilities' => [
@@ -321,11 +331,17 @@ class Plugin
       delete_transient("{$this->optionName}_updated");
     }
 
+    add_action('plugins_loaded', [$this, 'loadTextDomain']);
     add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
     register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
     add_action('upgrader_process_complete', [$this, 'onUpdate'], 10, 2);
     register_deactivation_hook(self::$pluginFile, [$this, 'onDeactivate']);
     register_uninstall_hook(self::$pluginFile, [self::class, 'onUninstall']);
+  }
+
+  public function loadTextDomain()
+  {
+    load_plugin_textdomain(self::$slug, false);
   }
 
   public function onActivate()
@@ -493,25 +509,7 @@ class Plugin
 
     // Browser checks
     if (in_array($platform, ['chrome', 'safari', 'firefox', 'opera', 'edge', 'samsung', 'duckduckgo', 'brave', 'qq', 'uc', 'yandex'])) {
-      return self::isPlatform('browser') && strpos(strtolower(str_replace(' ', '', $dd->getClient('name'))), $platform) !== false;
-    }
-
-    // Special cases
-    if ($platform === 'pwa') {
-      return isset($_GET['isPwa']) && $_GET['isPwa'] === 'true';
-    }
-
-    if ($platform === 'browser') {
-      $ua = strtolower($userAgent);
-      $nonBrowserApps = ['fban', 'fbios', 'fb_iab', 'telegram', 'instagram', 'messenger', 'micromessenger', 'webview', 'wv'];
-
-      foreach ($nonBrowserApps as $app) {
-        if (strpos($ua, $app) !== false) {
-          return false;
-        }
-      }
-
-      return $dd->isBrowser() && !(isset($_GET['isPwa']) && $_GET['isPwa'] === 'true');
+      return strpos(strtolower(str_replace(' ', '', $dd->getClient('name'))), $platform) !== false;
     }
 
     return false;

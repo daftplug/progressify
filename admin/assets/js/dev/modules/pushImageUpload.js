@@ -1,13 +1,12 @@
+import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initPushImageUpload() {
   handlePushImageUpload();
 }
 
 export function handlePushImageUpload() {
-  const sendPushPopup = daftplugAdmin.find('#send-notification-popup');
+  const sendPushPopup = config.daftplugAdminElm.find('#send-notification-popup');
   const pushImageUploadBtn = sendPushPopup.find('[data-file-upload-btn]');
   const pushImageDeleteBtn = sendPushPopup.find('[data-file-delete-btn]');
   const attachmentPlaceholder = sendPushPopup.find('[data-attachment-placeholder]');

@@ -1,4 +1,4 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export default function showToast(title, description, type, position = 'bottom-right', autodismiss = true, dismissible = false, actionMarkup = '') {
   const icons = {
@@ -25,15 +25,15 @@ export default function showToast(title, description, type, position = 'bottom-r
 
   const positionClasses = positions[position];
   const positionSelector = positionClasses.map((cls) => `.${cls}`).join('');
-  let toastWrapper = daftplugAdmin.find(`.toast-wrapper${positionSelector.replace(/\s/g, '.')}`);
+  let toastWrapper = config.daftplugAdminElm.find(`.toast-wrapper${positionSelector.replace(/\s/g, '.')}`);
 
   if (!toastWrapper.length) {
     toastWrapper = jQuery(`<div class="toast-wrapper fixed ${positionClasses.join(' ')} space-y-3 z-[99999]"></div>`);
-    daftplugAdmin.append(toastWrapper);
+    config.daftplugAdminElm.append(toastWrapper);
   }
 
   const toast = jQuery('<div>', {
-    class: 'relative max-w-xs overflow-hidden bg-white border border-gray-200 border-b-0 rounded-xl shadow-lg dark:bg-neutral-800 dark:border-neutral-700 p-4 pb-5 transition-opacity duration-200 ease-in-out opacity-0',
+    class: 'relative max-w-xs overflow-hidden bg-white border border-gray-200 border-b-0 rounded-xl shadow-lg p-4 pb-5 transition-opacity duration-200 ease-in-out opacity-0',
     role: 'alert',
   });
 
@@ -49,7 +49,7 @@ export default function showToast(title, description, type, position = 'bottom-r
 
   if (title) {
     const titleElement = jQuery('<h3>', {
-      class: 'text-gray-800 font-semibold dark:text-white text-base leading-5',
+      class: 'text-gray-800 font-semibold text-base leading-5',
       text: title,
     });
     contentContainer.append(titleElement);
@@ -57,7 +57,7 @@ export default function showToast(title, description, type, position = 'bottom-r
 
   if (description) {
     const descriptionElement = jQuery('<div>', {
-      class: 'mt-1 text-sm text-gray-600 dark:text-neutral-400',
+      class: 'mt-1 text-sm text-gray-600',
       text: description,
     });
     contentContainer.append(descriptionElement);
@@ -76,7 +76,7 @@ export default function showToast(title, description, type, position = 'bottom-r
   if (dismissible) {
     const closeButton = jQuery('<button>', {
       type: 'button',
-      class: 'absolute top-3 end-3 inline-flex flex-shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white',
+      class: 'absolute top-3 end-3 inline-flex flex-shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100',
       html: `<span class="sr-only">Close</span>
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 6 6 18"></path>
@@ -93,7 +93,7 @@ export default function showToast(title, description, type, position = 'bottom-r
 
   if (autodismiss) {
     const progressBar = jQuery('<div>', {
-      class: 'flex absolute left-0 bottom-0 w-full h-1 bg-white overflow-hidden dark:bg-neutral-700',
+      class: 'flex absolute left-0 bottom-0 w-full h-1 bg-white overflow-hidden',
       role: 'progressbar',
       'aria-valuenow': '100',
       'aria-valuemin': '0',

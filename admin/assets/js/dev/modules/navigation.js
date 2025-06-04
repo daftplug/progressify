@@ -1,6 +1,5 @@
+import { config } from '../admin.js';
 import { navigateToPage } from '../components/utils.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initNavigation() {
   window.handleHashChange = handleNavigation;
@@ -9,7 +8,7 @@ export function initNavigation() {
 }
 
 function handleNavigation() {
-  if (daftplugAdmin.find('main[data-page-id="activation"]').length) {
+  if (config.daftplugAdminElm.find('main[data-page-id="activation"]').length) {
     navigateToPage('activation');
     return;
   }

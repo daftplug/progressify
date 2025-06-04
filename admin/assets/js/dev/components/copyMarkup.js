@@ -1,22 +1,19 @@
+import { config } from '../admin.js';
 import { handleSelect } from './select.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const optionName = daftplugAdmin.attr('data-option-name');
-const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initCopyMarkup() {
   handleCopyMarkup();
 }
 
 function handleCopyMarkup() {
-  daftplugAdmin.find('[data-dp-copy-markup]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-copy-markup]').each(function () {
     const self = jQuery(this);
-    const config = JSON.parse(self.attr('data-dp-copy-markup'));
-    const wrapper = config.wrapper;
-    const target = config.target;
-    const firstShown = config.firstShown || false;
-    const limit = config.limit || Infinity;
-    const wrapperElement = daftplugAdmin.find(`[data-dp-copy-markup-wrapper="${wrapper}"]`);
+    const copyMarkupConfig = JSON.parse(self.attr('data-dp-copy-markup'));
+    const wrapper = copyMarkupConfig.wrapper;
+    const target = copyMarkupConfig.target;
+    const firstShown = copyMarkupConfig.firstShown || false;
+    const limit = copyMarkupConfig.limit || Infinity;
+    const wrapperElement = config.daftplugAdminElm.find(`[data-dp-copy-markup-wrapper="${wrapper}"]`);
     const targetElements = wrapperElement.find(`[data-dp-copy-markup-target^="${target}"]`);
     const template = targetElements.first().clone().prop('outerHTML');
 
@@ -24,7 +21,7 @@ function handleCopyMarkup() {
     wrapperElement.empty();
 
     // Calculate the number of initial elements to render based on settings
-    const settingsArray = findKey(jsVars.settings, wrapper);
+    const settingsArray = findKey(config.jsVars.settings, wrapper);
     const initialCount = Math.max(firstShown ? 1 : 0, settingsArray.length);
 
     for (let i = 0; i < initialCount; i++) {
@@ -49,7 +46,7 @@ function handleCopyMarkup() {
     });
 
     // Handle the delete button click
-    daftplugAdmin.on('click', '[data-dp-copy-markup-delete]', function () {
+    config.daftplugAdminElm.on('click', '[data-dp-copy-markup-delete]', function () {
       const deleteButton = jQuery(this);
       const deleteTarget = deleteButton.attr('data-dp-copy-markup-delete');
       const targetElement = wrapperElement.find(`[data-dp-copy-markup-target="${deleteTarget}"]`);
@@ -123,7 +120,7 @@ function populateInitialValues(wrapperElement, target) {
           .replace(/\]/g, '');
 
         // Traverse the settings object to find the corresponding value
-        let value = jsVars && typeof jsVars.settings === 'object' ? jsVars.settings : undefined;
+        let value = typeof config.jsVars.settings === 'object' ? config.jsVars.settings : undefined;
         if (value) {
           const segments = path.split('.');
           for (const segment of segments) {

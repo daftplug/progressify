@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the DaftPlug Progressify - Progressive Web App (PWA) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.1.8\n"
+"Project-Id-Version: DaftPlug Progressify - Progressive Web App (PWA) 1.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/daftplug-progressify\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-18T23:16:26+00:00\n"
+"POT-Creation-Date: 2025-06-04T20:48:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: daftplug-progressify.php
-#: daftplug-progressify.php:24
 msgid "DaftPlug Progressify - Progressive Web App (PWA)"
 msgstr ""
 
@@ -26,7 +25,6 @@ msgstr ""
 
 #. Description of the plugin
 #: daftplug-progressify.php
-#: daftplug-progressify.php:25
 msgid "Progressify empowers your website with Progressive Web App (PWA) features that use modern web capabilities to deliver fast, native-app experiences with no app stores or downloads, and all the goodness of the web directly in the browser."
 msgstr ""
 
@@ -40,121 +38,92 @@ msgstr ""
 msgid "https://daftplug.com/"
 msgstr ""
 
-#: admin/admin.php:148
-#: frontend/frontend.php:70
-msgid "An unexpected error occurred"
-msgstr ""
-
-#: admin/admin.php:164
+#: admin/admin.php:168
 msgid "Dashboard"
 msgstr ""
 
-#: admin/admin.php:165
+#: admin/admin.php:169
 msgid "View your PWA's performance at a glance, including user stats, browser breakdown, and a PWA readiness score. Manage plugin features globally with a single toggle for easy control."
 msgstr ""
 
-#: admin/admin.php:170
+#: admin/admin.php:174
 msgid "Web App Manifest"
 msgstr ""
 
-#: admin/admin.php:171
+#: admin/admin.php:175
 msgid "The web app manifest is a JSON file that provides essential information about your web application to the browser, including how it should appear and behave when installed on a user's device. This file is necessary for enabling the \"Add to Home Screen\" prompt, enhancing the integration of your web app with the user's device."
 msgstr ""
 
-#: admin/admin.php:176
+#: admin/admin.php:180
 msgid "Installation"
 msgstr ""
 
-#: admin/admin.php:177
+#: admin/admin.php:181
 msgid "Installation features allows displaying prompts that encourage users to add your website to their home screens. This feature helps increase user engagement by making your site easily accessible with a single tap, just like any native mobile application."
 msgstr ""
 
-#: admin/admin.php:182
+#: admin/admin.php:186
 msgid "Offline Usage"
 msgstr ""
 
-#: admin/admin.php:183
+#: admin/admin.php:187
 msgid "Enhance your web app with offline support and reliable performance, enabling users to access previously viewed pages even without an internet connection or on low connectivity."
 msgstr ""
 
-#: admin/admin.php:188
+#: admin/admin.php:192
 msgid "UI Components"
 msgstr ""
 
-#: admin/admin.php:189
+#: admin/admin.php:193
 msgid "Enhance the user experience by adding interactive elements and features that make your web app look and feel more like a native application, including options like pull-down refresh, a navigation tab bar, dark mode, and toast messages."
 msgstr ""
 
-#: admin/admin.php:194
+#: admin/admin.php:198
 msgid "App Capabilities"
 msgstr ""
 
-#: admin/admin.php:195
+#: admin/admin.php:199
 msgid "Enable advanced features and capabilities to enhance your website with native app-like functionalities. This includes passwordless login, background sync, periodic background sync, content indexing, persistent storage, and other advanced web APIs, providing a seamless mobile-like experience."
 msgstr ""
 
-#: admin/admin.php:200
+#: admin/admin.php:204
 #: frontend/assets/js/dev/modules/pushNotificationsPrompt.js:216
 msgid "Push Notifications"
 msgstr ""
 
-#: admin/admin.php:201
+#: admin/admin.php:205
 msgid "Push notifications allow your web app to send messages directly to users' devices, providing a powerful tool for engaging users with timely updates, alerts, and personalized content. This feature helps keep your audience informed and connected, even when they are not actively using the app."
 msgstr ""
 
-#: admin/admin.php:206
+#: admin/admin.php:210
 #: admin/templates/pages/generatemobileapps.php:9
 msgid "Get Android, iOS, and Windows apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store, App Store, and Microsoft Store to reach more users."
 msgstr ""
 
-#: admin/admin.php:211
+#: admin/admin.php:215
 msgid "We understand all the importance of product support for our customers. That's why we are ready to solve all your issues and answer any questions related to our plugin."
 msgstr ""
 
-#: admin/admin.php:216
+#: admin/admin.php:220
 msgid "See what's new added, changed, fixed, improved or updated."
 msgstr ""
 
 #: admin/templates/header.php:26
-#: admin/templates/pages/uicomponents.php:420
 msgid "Search"
 msgstr ""
 
 #: admin/templates/header.php:31
-#: admin/templates/header.php:72
+#: admin/templates/header.php:51
 #: admin/templates/pages/generatemobileapps.php:8
 #: admin/templates/sidebar.php:43
 msgid "Generate Mobile Apps"
 msgstr ""
 
-#: admin/templates/header.php:34
-#: admin/templates/pages/generatemobileapps.php:22
-#: admin/templates/pages/webappmanifest.php:530
-msgid "Android"
-msgstr ""
-
 #: admin/templates/header.php:36
-msgid "Play Store"
+msgid "Android and iOS Apps"
 msgstr ""
 
-#: admin/templates/header.php:43
-msgid "Mac"
-msgstr ""
-
-#: admin/templates/header.php:45
-msgid "App Store"
-msgstr ""
-
-#: admin/templates/header.php:52
-#: admin/templates/pages/webappmanifest.php:536
-msgid "Windows"
-msgstr ""
-
-#: admin/templates/header.php:54
-msgid "Microsoft Store"
-msgstr ""
-
-#: admin/templates/header.php:60
+#: admin/templates/header.php:39
 msgid "No Results"
 msgstr ""
 
@@ -257,7 +226,7 @@ msgid "Makes the content fade out when leaving, and fade in when entering."
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:87
-#: admin/templates/pages/uicomponents.php:1013
+#: admin/templates/pages/uicomponents.php:1046
 msgid "Fade"
 msgstr ""
 
@@ -266,13 +235,14 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:508
 #: admin/templates/pages/appcapabilities.php:579
 #: admin/templates/pages/uicomponents.php:38
-#: admin/templates/pages/uicomponents.php:642
-#: admin/templates/pages/uicomponents.php:777
-#: admin/templates/pages/uicomponents.php:848
-#: admin/templates/pages/uicomponents.php:915
-#: admin/templates/pages/uicomponents.php:1020
-#: admin/templates/pages/uicomponents.php:1091
-#: admin/templates/pages/uicomponents.php:1157
+#: admin/templates/pages/uicomponents.php:581
+#: admin/templates/pages/uicomponents.php:716
+#: admin/templates/pages/uicomponents.php:810
+#: admin/templates/pages/uicomponents.php:881
+#: admin/templates/pages/uicomponents.php:948
+#: admin/templates/pages/uicomponents.php:1053
+#: admin/templates/pages/uicomponents.php:1124
+#: admin/templates/pages/uicomponents.php:1190
 msgid "Supported Devices"
 msgstr ""
 
@@ -285,13 +255,14 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:520
 #: admin/templates/pages/appcapabilities.php:591
 #: admin/templates/pages/uicomponents.php:50
-#: admin/templates/pages/uicomponents.php:654
-#: admin/templates/pages/uicomponents.php:789
-#: admin/templates/pages/uicomponents.php:860
-#: admin/templates/pages/uicomponents.php:927
-#: admin/templates/pages/uicomponents.php:1032
-#: admin/templates/pages/uicomponents.php:1103
-#: admin/templates/pages/uicomponents.php:1169
+#: admin/templates/pages/uicomponents.php:593
+#: admin/templates/pages/uicomponents.php:728
+#: admin/templates/pages/uicomponents.php:822
+#: admin/templates/pages/uicomponents.php:893
+#: admin/templates/pages/uicomponents.php:960
+#: admin/templates/pages/uicomponents.php:1065
+#: admin/templates/pages/uicomponents.php:1136
+#: admin/templates/pages/uicomponents.php:1202
 msgid "Select Devices"
 msgstr ""
 
@@ -300,13 +271,14 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:524
 #: admin/templates/pages/appcapabilities.php:595
 #: admin/templates/pages/uicomponents.php:54
-#: admin/templates/pages/uicomponents.php:658
-#: admin/templates/pages/uicomponents.php:793
-#: admin/templates/pages/uicomponents.php:864
-#: admin/templates/pages/uicomponents.php:931
-#: admin/templates/pages/uicomponents.php:1036
-#: admin/templates/pages/uicomponents.php:1107
-#: admin/templates/pages/uicomponents.php:1173
+#: admin/templates/pages/uicomponents.php:597
+#: admin/templates/pages/uicomponents.php:732
+#: admin/templates/pages/uicomponents.php:826
+#: admin/templates/pages/uicomponents.php:897
+#: admin/templates/pages/uicomponents.php:964
+#: admin/templates/pages/uicomponents.php:1069
+#: admin/templates/pages/uicomponents.php:1140
+#: admin/templates/pages/uicomponents.php:1206
 msgid "Smartphone"
 msgstr ""
 
@@ -315,22 +287,24 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:528
 #: admin/templates/pages/appcapabilities.php:599
 #: admin/templates/pages/uicomponents.php:58
-#: admin/templates/pages/uicomponents.php:661
-#: admin/templates/pages/uicomponents.php:797
-#: admin/templates/pages/uicomponents.php:868
-#: admin/templates/pages/uicomponents.php:935
-#: admin/templates/pages/uicomponents.php:1040
-#: admin/templates/pages/uicomponents.php:1111
-#: admin/templates/pages/uicomponents.php:1177
+#: admin/templates/pages/uicomponents.php:600
+#: admin/templates/pages/uicomponents.php:736
+#: admin/templates/pages/uicomponents.php:830
+#: admin/templates/pages/uicomponents.php:901
+#: admin/templates/pages/uicomponents.php:968
+#: admin/templates/pages/uicomponents.php:1073
+#: admin/templates/pages/uicomponents.php:1144
+#: admin/templates/pages/uicomponents.php:1210
 msgid "Tablet"
 msgstr ""
 
 #: admin/templates/pages/appcapabilities.php:118
 #: admin/templates/pages/appcapabilities.php:532
 #: admin/templates/pages/appcapabilities.php:603
-#: admin/templates/pages/uicomponents.php:665
-#: admin/templates/pages/uicomponents.php:801
-#: admin/templates/pages/uicomponents.php:1044
+#: admin/templates/pages/uicomponents.php:604
+#: admin/templates/pages/uicomponents.php:740
+#: admin/templates/pages/uicomponents.php:834
+#: admin/templates/pages/uicomponents.php:1077
 msgid "Desktop"
 msgstr ""
 
@@ -355,29 +329,31 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:612
 #: admin/templates/pages/appcapabilities.php:791
 #: admin/templates/pages/installation.php:308
-#: admin/templates/pages/installation.php:346
-#: admin/templates/pages/installation.php:383
-#: admin/templates/pages/installation.php:420
-#: admin/templates/pages/installation.php:457
-#: admin/templates/pages/installation.php:494
+#: admin/templates/pages/installation.php:345
+#: admin/templates/pages/installation.php:382
+#: admin/templates/pages/installation.php:419
+#: admin/templates/pages/installation.php:456
+#: admin/templates/pages/installation.php:493
 #: admin/templates/pages/offlineusage.php:158
 #: admin/templates/pages/offlineusage.php:285
 #: admin/templates/pages/pushnotifications.php:163
 #: admin/templates/pages/pushnotifications.php:258
 #: admin/templates/pages/pushnotifications.php:347
 #: admin/templates/pages/pushnotifications.php:795
-#: admin/templates/pages/uicomponents.php:604
-#: admin/templates/pages/uicomponents.php:674
-#: admin/templates/pages/uicomponents.php:810
-#: admin/templates/pages/uicomponents.php:877
-#: admin/templates/pages/uicomponents.php:944
-#: admin/templates/pages/uicomponents.php:1053
-#: admin/templates/pages/uicomponents.php:1120
-#: admin/templates/pages/uicomponents.php:1186
-#: admin/templates/pages/webappmanifest.php:225
-#: admin/templates/pages/webappmanifest.php:373
-#: admin/templates/pages/webappmanifest.php:461
-#: admin/templates/pages/webappmanifest.php:652
+#: admin/templates/pages/uicomponents.php:543
+#: admin/templates/pages/uicomponents.php:613
+#: admin/templates/pages/uicomponents.php:749
+#: admin/templates/pages/uicomponents.php:843
+#: admin/templates/pages/uicomponents.php:910
+#: admin/templates/pages/uicomponents.php:977
+#: admin/templates/pages/uicomponents.php:1086
+#: admin/templates/pages/uicomponents.php:1153
+#: admin/templates/pages/uicomponents.php:1219
+#: admin/templates/pages/uicomponents.php:1291
+#: admin/templates/pages/webappmanifest.php:253
+#: admin/templates/pages/webappmanifest.php:401
+#: admin/templates/pages/webappmanifest.php:489
+#: admin/templates/pages/webappmanifest.php:680
 msgid "Saving..."
 msgstr ""
 
@@ -390,29 +366,31 @@ msgstr ""
 #: admin/templates/pages/appcapabilities.php:614
 #: admin/templates/pages/appcapabilities.php:793
 #: admin/templates/pages/installation.php:310
-#: admin/templates/pages/installation.php:348
-#: admin/templates/pages/installation.php:385
-#: admin/templates/pages/installation.php:422
-#: admin/templates/pages/installation.php:459
-#: admin/templates/pages/installation.php:496
+#: admin/templates/pages/installation.php:347
+#: admin/templates/pages/installation.php:384
+#: admin/templates/pages/installation.php:421
+#: admin/templates/pages/installation.php:458
+#: admin/templates/pages/installation.php:495
 #: admin/templates/pages/offlineusage.php:160
 #: admin/templates/pages/offlineusage.php:287
 #: admin/templates/pages/pushnotifications.php:165
 #: admin/templates/pages/pushnotifications.php:260
 #: admin/templates/pages/pushnotifications.php:349
 #: admin/templates/pages/pushnotifications.php:797
-#: admin/templates/pages/uicomponents.php:606
-#: admin/templates/pages/uicomponents.php:676
-#: admin/templates/pages/uicomponents.php:812
-#: admin/templates/pages/uicomponents.php:879
-#: admin/templates/pages/uicomponents.php:946
-#: admin/templates/pages/uicomponents.php:1055
-#: admin/templates/pages/uicomponents.php:1122
-#: admin/templates/pages/uicomponents.php:1188
-#: admin/templates/pages/webappmanifest.php:227
-#: admin/templates/pages/webappmanifest.php:375
-#: admin/templates/pages/webappmanifest.php:463
-#: admin/templates/pages/webappmanifest.php:654
+#: admin/templates/pages/uicomponents.php:545
+#: admin/templates/pages/uicomponents.php:615
+#: admin/templates/pages/uicomponents.php:751
+#: admin/templates/pages/uicomponents.php:845
+#: admin/templates/pages/uicomponents.php:912
+#: admin/templates/pages/uicomponents.php:979
+#: admin/templates/pages/uicomponents.php:1088
+#: admin/templates/pages/uicomponents.php:1155
+#: admin/templates/pages/uicomponents.php:1221
+#: admin/templates/pages/uicomponents.php:1293
+#: admin/templates/pages/webappmanifest.php:255
+#: admin/templates/pages/webappmanifest.php:403
+#: admin/templates/pages/webappmanifest.php:491
+#: admin/templates/pages/webappmanifest.php:682
 msgid "Save Changes"
 msgstr ""
 
@@ -725,6 +703,11 @@ msgstr ""
 msgid "Go to Dashboard"
 msgstr ""
 
+#: admin/templates/pages/generatemobileapps.php:22
+#: admin/templates/pages/webappmanifest.php:558
+msgid "Android"
+msgstr ""
+
 #: admin/templates/pages/generatemobileapps.php:31
 msgid "Perfect for bringing your web app to Android devices through the Google Play Store."
 msgstr ""
@@ -750,7 +733,7 @@ msgid "Android and iOS"
 msgstr ""
 
 #: admin/templates/pages/generatemobileapps.php:99
-msgid "Early Supporter Discount Applied"
+msgid "Discount Applied"
 msgstr ""
 
 #: admin/templates/pages/generatemobileapps.php:110
@@ -850,6 +833,7 @@ msgid "How can I update the plugin?"
 msgstr ""
 
 #: admin/templates/pages/helpcenter.php:111
+#, php-format
 msgid "There are two ways to update the plugin to the newer version: Using a WordPress built-in update system which will automatically check for updates and show you a notification on an %1$s when there will be an update available or manually download latest version of plugin from %2$s and re-install it."
 msgstr ""
 
@@ -1038,51 +1022,51 @@ msgstr ""
 msgid "Choose how many days to wait to show installation overlays again if they were dismissed."
 msgstr ""
 
-#: admin/templates/pages/installation.php:323
+#: admin/templates/pages/installation.php:322
 msgid "Edit Header Banner"
 msgstr ""
 
-#: admin/templates/pages/installation.php:337
-#: admin/templates/pages/installation.php:374
-#: admin/templates/pages/installation.php:411
-#: admin/templates/pages/installation.php:448
-#: admin/templates/pages/installation.php:485
+#: admin/templates/pages/installation.php:336
+#: admin/templates/pages/installation.php:373
+#: admin/templates/pages/installation.php:410
+#: admin/templates/pages/installation.php:447
+#: admin/templates/pages/installation.php:484
 msgid "Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:339
+#: admin/templates/pages/installation.php:338
 msgid "Enter Header Banner Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:360
+#: admin/templates/pages/installation.php:359
 msgid "Edit Snackbar"
 msgstr ""
 
-#: admin/templates/pages/installation.php:376
+#: admin/templates/pages/installation.php:375
 msgid "Enter Snackbar Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:397
+#: admin/templates/pages/installation.php:396
 msgid "Edit Navigation Menu"
 msgstr ""
 
-#: admin/templates/pages/installation.php:413
+#: admin/templates/pages/installation.php:412
 msgid "Enter Navigation Menu Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:434
+#: admin/templates/pages/installation.php:433
 msgid "Edit In Feed"
 msgstr ""
 
-#: admin/templates/pages/installation.php:450
+#: admin/templates/pages/installation.php:449
 msgid "Enter In Feed Message"
 msgstr ""
 
-#: admin/templates/pages/installation.php:471
+#: admin/templates/pages/installation.php:470
 msgid "Edit Woocommerce Checkout"
 msgstr ""
 
-#: admin/templates/pages/installation.php:487
+#: admin/templates/pages/installation.php:486
 msgid "Enter Woocommerce Checkout Message"
 msgstr ""
 
@@ -1337,6 +1321,7 @@ msgid "The push notifications button is a custom subscription button on your web
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:296
+#: admin/templates/pages/uicomponents.php:786
 msgid "Button Position"
 msgstr ""
 
@@ -1345,22 +1330,27 @@ msgid "Select position of your push notifications button on your website."
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:308
+#: admin/templates/pages/uicomponents.php:798
 msgid "Select Button Position"
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:310
+#: admin/templates/pages/uicomponents.php:800
 msgid "Bottom Right"
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:311
+#: admin/templates/pages/uicomponents.php:801
 msgid "Bottom Left"
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:312
+#: admin/templates/pages/uicomponents.php:802
 msgid "Top Right"
 msgstr ""
 
 #: admin/templates/pages/pushnotifications.php:313
+#: admin/templates/pages/uicomponents.php:803
 msgid "Top Left"
 msgstr ""
 
@@ -1697,817 +1687,246 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:87
-msgid "Activity"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:90
-msgid "Alarm Clock"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:93
-msgid "Album"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:96
-msgid "Archive"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:99
-msgid "Award"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:102
-msgid "Bed"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:105
-msgid "Bell"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:108
-msgid "Bird"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:111
-msgid "Bitcoin"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:114
-msgid "Bluetooth"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:117
-msgid "Bone"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:120
-msgid "Book"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:123
-msgid "Bookmark"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:126
-msgid "Bot"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:129
-msgid "Box"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:132
-msgid "Briefcase Business"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:135
-msgid "Briefcase Medical"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:138
-msgid "Broom"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:141
-msgid "Brush"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:144
-msgid "Burger"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:147
-msgid "Calendar"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:150
-msgid "Camera"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:153
-msgid "Car"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:156
-msgid "Cat"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:159
-msgid "Chart Line"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:162
-msgid "Chart Pie"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:165
-msgid "Clock"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:168
-msgid "Cloud"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:171
-msgid "Coffee"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:174
-msgid "Compass"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:177
-msgid "Concierge Bell"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:180
-msgid "Cookie"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:183
-msgid "CPU"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:186
-msgid "Credit Card"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:189
-msgid "Crown"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:192
-msgid "Database"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:195
-msgid "Dices"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:198
-msgid "DNA"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:201
-msgid "Dog"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:204
-msgid "Dollar Sign"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:207
-msgid "Download"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:210
-msgid "Drama"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:213
-msgid "Drill"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:216
-msgid "Euro"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:219
-msgid "Eye"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:222
-msgid "Facebook"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:225
-msgid "File"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:228
-msgid "Film"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:231
-msgid "Filter"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:234
-msgid "Fingerprint"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:237
-msgid "Flag"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:240
-msgid "Flame"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:243
-msgid "Flower"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:246
-msgid "Folder"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:249
-msgid "Gallery Horizontal End"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:252
-msgid "Gamepad"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:255
-msgid "Gauge"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:258
-msgid "Gavel"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:261
-msgid "Gem"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:264
-msgid "Gift"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:267
-msgid "Glasses"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:270
-msgid "Globe"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:273
-msgid "Graduation Cap"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:276
-msgid "Hammer"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:279
-msgid "Hand Heart"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:282
-msgid "Headphones"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:285
-msgid "Heart"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:288
-msgid "Hourglass"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:291
-msgid "House"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:294
-msgid "Image"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:297
-msgid "Info"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:300
-msgid "Instagram"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:303
-msgid "Key Round"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:306
-msgid "Landmark"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:309
-msgid "Languages"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:312
-msgid "Layers"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:315
-msgid "Layout Grid"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:318
-msgid "Life Buoy"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:321
-msgid "Link"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:324
-msgid "LinkedIn"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:327
-msgid "Lock"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:330
-msgid "Mail"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:333
-msgid "Map Pin"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:336
-msgid "Megaphone"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:339
-msgid "Message Circle"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:342
-msgid "Mic"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:345
-msgid "Monitor Smartphone"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:348
-msgid "Moon"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:351
-#: admin/templates/pages/webappmanifest.php:204
-msgid "Music"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:354
-#: admin/templates/pages/webappmanifest.php:205
-msgid "Navigation"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:357
-msgid "Network"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:360
-msgid "Newspaper"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:363
-msgid "Palette"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:366
-msgid "Paperclip"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:369
-msgid "Paw Print"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:372
-msgid "Pencil"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:375
-#: admin/templates/pages/uicomponents.php:1010
-msgid "Percent"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:378
-msgid "Phone"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:381
-msgid "Pill"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:384
-msgid "Pin"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:387
-msgid "Pizza"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:390
-msgid "Plane"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:393
-msgid "Play"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:396
-msgid "Plus"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:399
-msgid "Podcast"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:402
-msgid "Popcorn"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:405
-msgid "Printer"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:408
-msgid "Puzzle"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:411
-msgid "Rocket"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:414
-msgid "Save"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:417
-msgid "Scale"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:423
-msgid "Send"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:426
-msgid "Settings"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:429
-msgid "Share"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:432
-msgid "Shield"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:435
-msgid "Shirt"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:438
-msgid "Shopping Bag"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:441
-msgid "Shopping Cart"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:444
-msgid "Skull"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:447
-msgid "Sofa"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:450
-msgid "Sparkles"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:453
-msgid "Sprout"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:456
-msgid "Star"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:459
-msgid "Stethoscope"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:462
-msgid "Store"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:465
-msgid "Sun"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:468
-msgid "Tag"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:471
-msgid "Target"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:474
-msgid "Test Tube Diagonal"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:477
-msgid "Thumbs Up"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:480
-msgid "Ticket"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:483
-msgid "Toilet"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:486
-msgid "Trash"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:489
-msgid "Tree Pine"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:492
-msgid "Trending Down"
-msgstr ""
-
 #: admin/templates/pages/uicomponents.php:495
-msgid "Trending Up"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:498
-msgid "Triangle Alert"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:501
-msgid "Trophy"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:504
-msgid "Twitch"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:507
-msgid "Twitter"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:510
-msgid "Upload"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:513
-msgid "User"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:516
-msgid "Utensils"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:519
-msgid "Video"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:522
-msgid "Volume"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:525
-msgid "Wallet"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:528
-msgid "Wand Sparkles"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:531
-msgid "Watch"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:534
-msgid "Wifi"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:537
-msgid "Wine"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:540
-msgid "Wrench"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:543
-msgid "Youtube"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:546
-msgid "Zap"
-msgstr ""
-
-#: admin/templates/pages/uicomponents.php:550
 msgid "Enter Label"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:554
-msgid "Select Page"
+#: admin/templates/pages/uicomponents.php:498
+msgid "Enter URL or Select Page"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:559
-#: admin/templates/pages/webappmanifest.php:273
-#: admin/templates/pages/webappmanifest.php:607
+#: admin/templates/pages/uicomponents.php:500
+#: admin/templates/pages/webappmanifest.php:301
+#: admin/templates/pages/webappmanifest.php:635
 msgid "Home Page"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:595
+#: admin/templates/pages/uicomponents.php:534
 msgid "Add Navigation Item"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:623
+#: admin/templates/pages/uicomponents.php:562
 msgid "Scroll Progress Bar"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:629
+#: admin/templates/pages/uicomponents.php:568
 msgid "Scroll Progress Bar feature creates a progress bar on top of the page that indicates the scroll progress percentage of the page."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:649
+#: admin/templates/pages/uicomponents.php:588
 msgid "Select on what device types scroll progress bar feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:692
+#: admin/templates/pages/uicomponents.php:631
 msgid "Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:698
+#: admin/templates/pages/uicomponents.php:637
 msgid "Dark mode adds a switch to your website, allowing users to toggle to a dark version. It can also auto-enable if the user's device is set to Dark Mode or has a low battery, helping save energy."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:711
+#: admin/templates/pages/uicomponents.php:650
 msgid "Switch Button Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:718
+#: admin/templates/pages/uicomponents.php:657
 msgid "Select type of your dark mode switch button."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:723
+#: admin/templates/pages/uicomponents.php:662
 msgid "Select Switch Button Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:725
+#: admin/templates/pages/uicomponents.php:664
 msgid "Menu Switch"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:726
+#: admin/templates/pages/uicomponents.php:665
 msgid "Floating Button"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:733
+#: admin/templates/pages/uicomponents.php:672
 msgid "OS Aware Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:740
+#: admin/templates/pages/uicomponents.php:679
 msgid "OS aware dark mode automatically switches your website to a dark mode if your user's device OS theme preference is set to Dark in display settings."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:747
+#: admin/templates/pages/uicomponents.php:686
 msgid "Auto-enable Dark Mode if the user's device is set to Dark Mode."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:755
+#: admin/templates/pages/uicomponents.php:694
 msgid "Battery Low Dark Mode"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:762
+#: admin/templates/pages/uicomponents.php:701
 msgid "Battery low dark mode automatically switches your website to a dark mode if your user's device battery level is less than 10%, thus saving their battery from draining fast."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:769
+#: admin/templates/pages/uicomponents.php:708
 msgid "Auto-enable Dark Mode if your user's device battery level is low."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:784
+#: admin/templates/pages/uicomponents.php:723
 msgid "Select on what device types dark mode feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:829
+#: admin/templates/pages/uicomponents.php:767
+msgid "Share Button"
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:773
+msgid "Share Button feature enables a floating button that uses the Web Share API, allowing users to share your content through their device's native sharing options."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:793
+msgid "Select position of your share button on your website."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:817
+msgid "Select on what device types share button feature should be active and running."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:862
 msgid "Pull Down Refresh"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:835
+#: admin/templates/pages/uicomponents.php:868
 msgid "Pull down refresh touchscreen gesture allows your users to drag the screen and then release it, as a signal to the application to refresh contents of your web app."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:855
+#: admin/templates/pages/uicomponents.php:888
 msgid "Select on what device types pull down navigation feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:896
+#: admin/templates/pages/uicomponents.php:929
 msgid "Shake Refresh"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:902
+#: admin/templates/pages/uicomponents.php:935
 msgid "Shake refresh gesture brings amazing UX experience to your users by simply shaking phone as a signal to your web application to refresh the contents of the screen."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:922
+#: admin/templates/pages/uicomponents.php:955
 msgid "Select on what device types swipe navigation feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:963
+#: admin/templates/pages/uicomponents.php:996
 msgid "Page Loader"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:969
+#: admin/templates/pages/uicomponents.php:1002
 msgid "Page Loader feature gives you ability to show a nice page loader animation between page loadings. Page Loader appears at the start of page load and disappears after it is fully loaded."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:982
+#: admin/templates/pages/uicomponents.php:1015
 msgid "Page Loader Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:989
+#: admin/templates/pages/uicomponents.php:1022
 msgid "Select the type of page loader you want on your website."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:994
+#: admin/templates/pages/uicomponents.php:1027
 msgid "Select Page Loader Type"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:997
+#: admin/templates/pages/uicomponents.php:1030
 msgid "Your PWA icon (your website logo) bounces in the middle of the screen, providing a simple and recognizable loading animation."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:998
+#: admin/templates/pages/uicomponents.php:1031
 msgid "Default"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1000
+#: admin/templates/pages/uicomponents.php:1033
 msgid "Shows a skeleton loading screen, providing a placeholder layout that mimics the structure of the content being loaded, enhancing perceived performance."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1001
+#: admin/templates/pages/uicomponents.php:1034
 msgid "Skeleton"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1003
+#: admin/templates/pages/uicomponents.php:1036
 msgid "Displays spinning circles as the loading animation, indicating that the page is loading with a familiar, straightforward visual."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1004
+#: admin/templates/pages/uicomponents.php:1037
 msgid "Spinner"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1006
+#: admin/templates/pages/uicomponents.php:1039
 msgid "Features a flying man icon moving across a yellow background, offering a fun and playful loading experience that entertains users while they wait."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1007
+#: admin/templates/pages/uicomponents.php:1040
 msgid "Redirect"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1009
+#: admin/templates/pages/uicomponents.php:1042
 msgid "Displays the loading percentage and a progress bar, giving users a clear and precise indication of the page loading progress."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1012
+#: admin/templates/pages/uicomponents.php:1043
+msgid "Percent"
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1045
 msgid "Smooth transition with fade in and fade out effects, creating a seamless and visually appealing loading experience."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1027
+#: admin/templates/pages/uicomponents.php:1060
 msgid "Select on what device types page loader feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1072
+#: admin/templates/pages/uicomponents.php:1105
 msgid "Inactive Blur"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1078
+#: admin/templates/pages/uicomponents.php:1111
 msgid "Inactive Blur feature blurs the website when it's not focused, so when the user switches to another tab in browser or will minimize your website as a background task your website will be blurred."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1098
+#: admin/templates/pages/uicomponents.php:1131
 msgid "Select on what device types inactive blur feature should be active and running."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1138
+#: admin/templates/pages/uicomponents.php:1171
 msgid "Toast Messages"
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1144
+#: admin/templates/pages/uicomponents.php:1177
 msgid "Toast messages provide simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. Toasts automatically disappear after a timeout."
 msgstr ""
 
-#: admin/templates/pages/uicomponents.php:1164
+#: admin/templates/pages/uicomponents.php:1197
 msgid "Select on what device types toast messages feature should be active and running."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1237
+msgid "PWA Custom CSS and JS"
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1243
+msgid "PWA Custom CSS and JS allow you to apply custom styles (CSS) and scripts (JS) specifically to your PWA. Please note that these changes will only affect the PWA mode and will not apply when the site is viewed in a regular browser."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1256
+msgid "PWA Custom CSS"
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1263
+msgid "Apply custom stylings (CSS) to your PWA."
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1273
+msgid "PWA Custom JS"
+msgstr ""
+
+#: admin/templates/pages/uicomponents.php:1280
+msgid "Apply custom code (JS) to your PWA."
 msgstr ""
 
 #: admin/templates/pages/webappmanifest.php:20
@@ -2518,403 +1937,428 @@ msgstr ""
 msgid "Define the core identifiers of your app such as the name, short name, icon, description, and categories which represent your app across devices and platforms."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:32
-#: admin/templates/pages/webappmanifest.php:52
-#: admin/templates/pages/webappmanifest.php:594
+#: admin/templates/pages/webappmanifest.php:34
+msgid "Dynamic Manifest"
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:41
+msgid "The Dynamic Manifest option makes each page individually installable by automatically pulling app details (name, description, URL, screenshots, and more) from the current page. This only applies to individual pages - homepage values come from settings below. Most users should keep this disabled unless they specifically need different app identities per page."
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:46
+msgid "Makes each page individually installable by pulling app details from the current page."
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:60
+#: admin/templates/pages/webappmanifest.php:80
+#: admin/templates/pages/webappmanifest.php:622
 msgid "App Icon"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:39
+#: admin/templates/pages/webappmanifest.php:67
 msgid "Upload an icon representing your app, used for home screen and app listings. Ideally your web app icon should be the logo of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:71
+#: admin/templates/pages/webappmanifest.php:99
 msgid "Select Icon"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:75
+#: admin/templates/pages/webappmanifest.php:103
 msgid "Minimum 100x100 PNG, JPG, JPEG, or WEBP image."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:84
+#: admin/templates/pages/webappmanifest.php:112
 msgid "App Screenshots"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:91
+#: admin/templates/pages/webappmanifest.php:119
 msgid "Upload screenshots of your app to showcase its features and user interface in app stores. By default, we auto-generate one mobile and one desktop version screenshot of your homepage, but you can add up to 5 screenshots of different screens and sizes."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:108
+#: admin/templates/pages/webappmanifest.php:136
 msgid "Drop your screenshots here or"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:111
+#: admin/templates/pages/webappmanifest.php:139
 msgid "browse"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:115
+#: admin/templates/pages/webappmanifest.php:143
 msgid "Select up to 5 screenshots."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:124
+#: admin/templates/pages/webappmanifest.php:152
 msgid "App Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:131
+#: admin/templates/pages/webappmanifest.php:159
 msgid "Specify the full name of your web application, typically matching your business or service name."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:135
+#: admin/templates/pages/webappmanifest.php:163
 msgid "Enter App Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:141
+#: admin/templates/pages/webappmanifest.php:169
 msgid "Short Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:148
+#: admin/templates/pages/webappmanifest.php:176
 msgid "Provide a brief version (up to 12 characters) of your app’s name for display on home screens and dashboards."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:152
+#: admin/templates/pages/webappmanifest.php:180
 msgid "Enter Short Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:158
+#: admin/templates/pages/webappmanifest.php:186
 msgid "Description"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:165
+#: admin/templates/pages/webappmanifest.php:193
 msgid "Enter a concise summary of your app's purpose and main features."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:169
+#: admin/templates/pages/webappmanifest.php:197
 msgid "Enter Description"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:175
+#: admin/templates/pages/webappmanifest.php:203
 msgid "Categories"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:182
+#: admin/templates/pages/webappmanifest.php:210
 msgid "The categories describe the expected application categories to which the web application belongs. It's used as a hint to catalogs or store listing web applications. We recommend not to choose more than 3 categories."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:187
+#: admin/templates/pages/webappmanifest.php:215
 msgid "Select Categories"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:190
+#: admin/templates/pages/webappmanifest.php:218
 msgid "Books"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:191
+#: admin/templates/pages/webappmanifest.php:219
 msgid "Business"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:192
+#: admin/templates/pages/webappmanifest.php:220
 msgid "Education"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:193
+#: admin/templates/pages/webappmanifest.php:221
 msgid "Entertainment"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:194
+#: admin/templates/pages/webappmanifest.php:222
 msgid "Finance"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:195
+#: admin/templates/pages/webappmanifest.php:223
 msgid "Fitness"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:196
+#: admin/templates/pages/webappmanifest.php:224
 msgid "Food"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:197
+#: admin/templates/pages/webappmanifest.php:225
 msgid "Games"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:198
+#: admin/templates/pages/webappmanifest.php:226
 msgid "Government"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:199
+#: admin/templates/pages/webappmanifest.php:227
 msgid "Health"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:200
+#: admin/templates/pages/webappmanifest.php:228
 msgid "Kids"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:201
+#: admin/templates/pages/webappmanifest.php:229
 msgid "Lifestyle"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:202
+#: admin/templates/pages/webappmanifest.php:230
 msgid "Magazines"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:203
+#: admin/templates/pages/webappmanifest.php:231
 msgid "Medical"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:206
+#: admin/templates/pages/webappmanifest.php:232
+msgid "Music"
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:233
+msgid "Navigation"
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:234
 msgid "News"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:207
+#: admin/templates/pages/webappmanifest.php:235
 msgid "Personalization"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:208
+#: admin/templates/pages/webappmanifest.php:236
 msgid "Photo"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:209
+#: admin/templates/pages/webappmanifest.php:237
 msgid "Politics"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:210
+#: admin/templates/pages/webappmanifest.php:238
 msgid "Productivity"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:211
+#: admin/templates/pages/webappmanifest.php:239
 msgid "Security"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:212
+#: admin/templates/pages/webappmanifest.php:240
 msgid "Shopping"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:213
+#: admin/templates/pages/webappmanifest.php:241
 msgid "Social"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:214
+#: admin/templates/pages/webappmanifest.php:242
 msgid "Sports"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:215
+#: admin/templates/pages/webappmanifest.php:243
 msgid "Travel"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:216
+#: admin/templates/pages/webappmanifest.php:244
 msgid "Utilities"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:217
+#: admin/templates/pages/webappmanifest.php:245
 msgid "Weather"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:244
+#: admin/templates/pages/webappmanifest.php:272
 msgid "Display Settings"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:247
+#: admin/templates/pages/webappmanifest.php:275
 msgid "Customize how your app appears and behaves on user screens, including the startup page, display layout, and screen orientation."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:256
+#: admin/templates/pages/webappmanifest.php:284
 msgid "Start Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:263
+#: admin/templates/pages/webappmanifest.php:291
 msgid "Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:268
+#: admin/templates/pages/webappmanifest.php:296
 msgid "Select Start Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:292
+#: admin/templates/pages/webappmanifest.php:320
 msgid "Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:299
+#: admin/templates/pages/webappmanifest.php:327
 msgid "Choose how your app displays. We recommend choosing \"Standalone\", as it provides a native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:304
+#: admin/templates/pages/webappmanifest.php:332
 msgid "Select Display Mode"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:307
+#: admin/templates/pages/webappmanifest.php:335
 msgid "Opens the app in a separate window for a native app experience."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:308
+#: admin/templates/pages/webappmanifest.php:336
 msgid "Standalone"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:310
+#: admin/templates/pages/webappmanifest.php:338
 msgid "Expands the app to cover the entire screen, hiding browser UI."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:311
+#: admin/templates/pages/webappmanifest.php:339
 msgid "Fullscreen"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:313
+#: admin/templates/pages/webappmanifest.php:341
 msgid "Displays the app with minimal browser UI for a cleaner interface."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:314
+#: admin/templates/pages/webappmanifest.php:342
 msgid "Minimal UI"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:321
+#: admin/templates/pages/webappmanifest.php:349
 msgid "Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:328
+#: admin/templates/pages/webappmanifest.php:356
 msgid "Select the preferred screen orientation. We recommend choosing \"Portrait\", as it provides a more native app feeling."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:333
+#: admin/templates/pages/webappmanifest.php:361
 msgid "Select Orientation"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:335
+#: admin/templates/pages/webappmanifest.php:363
 msgid "Allow Both"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:336
+#: admin/templates/pages/webappmanifest.php:364
 msgid "Portrait"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:337
+#: admin/templates/pages/webappmanifest.php:365
 msgid "Landscape"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:346
+#: admin/templates/pages/webappmanifest.php:374
 msgid "Orientation Lock"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:353
+#: admin/templates/pages/webappmanifest.php:381
 msgid "Lock the orientation of your app to prevent users from rotating their device."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:358
+#: admin/templates/pages/webappmanifest.php:386
 msgid "Lock the orientation of your website to prevent users from rotating the contents."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:391
+#: admin/templates/pages/webappmanifest.php:419
 msgid "Appearance"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:394
+#: admin/templates/pages/webappmanifest.php:422
 msgid "Adjust the visual elements of your app, including the theme and background colors, to enhance the user interface and align with your branding."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:403
+#: admin/templates/pages/webappmanifest.php:431
 msgid "iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:410
+#: admin/templates/pages/webappmanifest.php:438
 msgid "Specify the style of the status bar for your app on iOS devices."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:415
+#: admin/templates/pages/webappmanifest.php:443
 msgid "Select iOS Status Bar Style"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:417
+#: admin/templates/pages/webappmanifest.php:445
 msgid "White bar with black text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:418
+#: admin/templates/pages/webappmanifest.php:446
 msgid "Black bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:419
+#: admin/templates/pages/webappmanifest.php:447
 msgid "Transparent bar with white text"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:426
-#: admin/templates/pages/webappmanifest.php:437
+#: admin/templates/pages/webappmanifest.php:454
+#: admin/templates/pages/webappmanifest.php:465
 msgid "Theme Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:433
+#: admin/templates/pages/webappmanifest.php:461
 msgid "Define the primary color theme for the browser's toolbar and app's header. It should be the same as the main color palette of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:443
-#: admin/templates/pages/webappmanifest.php:454
+#: admin/templates/pages/webappmanifest.php:471
+#: admin/templates/pages/webappmanifest.php:482
 msgid "Background Color"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:450
+#: admin/templates/pages/webappmanifest.php:478
 msgid "Choose a background color that displays during app startup and loading. It should be the same as the background color of your website."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:480
+#: admin/templates/pages/webappmanifest.php:508
 msgid "Advanced Features"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:483
+#: admin/templates/pages/webappmanifest.php:511
 msgid "Expand your app’s functionality with advanced features like age ratings, related applications, and customizable shortcuts to various app functions."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:492
+#: admin/templates/pages/webappmanifest.php:520
 msgid "IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:499
+#: admin/templates/pages/webappmanifest.php:527
 msgid "International Age Rating Coalition (IARC) certification number, which helps classify your app’s appropriate age group. Click the info icon for more information."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:503
+#: admin/templates/pages/webappmanifest.php:531
 msgid "Enter IARC Rating ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:510
+#: admin/templates/pages/webappmanifest.php:538
 msgid "Related Applications"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:517
+#: admin/templates/pages/webappmanifest.php:545
 msgid "Related application option gives you the ability to list your native applications related to your web app, for cross-promotion or additional functionality. So if you will relate your native application to your PWA, the browser will prompt the user with your native app instead of the PWA web app. If you don't have a native application for your web app, you can request them by clicking the \"Generate Mobile Apps\" button on the header or navigation menu."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:522
+#: admin/templates/pages/webappmanifest.php:550
+#, php-format
 msgid "Don't have native apps? You can %1$sgenerate mobile apps%2$s now."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:528
+#: admin/templates/pages/webappmanifest.php:556
 msgid "Select Platform"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:533
+#: admin/templates/pages/webappmanifest.php:561
 msgid "iOS"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:541
+#: admin/templates/pages/webappmanifest.php:564
+msgid "Windows"
+msgstr ""
+
+#: admin/templates/pages/webappmanifest.php:569
 msgid "Enter App ID"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:564
+#: admin/templates/pages/webappmanifest.php:592
 msgid "Add Related Application"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:572
+#: admin/templates/pages/webappmanifest.php:600
 msgid "App Shortcuts"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:579
+#: admin/templates/pages/webappmanifest.php:607
 msgid "App shortcuts help users quickly start common or recommended tasks within your web app. Easy access to those tasks from anywhere the app icon is displayed will enhance users productivity as well as increase their engagement with the web app. The app shortcuts menu is invoked by right-clicking the app icon in the taskbar (Windows) or dock (macOS) on the user's desktop, or long pressing the app's launcher icon on Android."
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:598
+#: admin/templates/pages/webappmanifest.php:626
 msgid "Enter Shortcut Name"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:602
+#: admin/templates/pages/webappmanifest.php:630
 msgid "Select Shortcut Page"
 msgstr ""
 
-#: admin/templates/pages/webappmanifest.php:643
+#: admin/templates/pages/webappmanifest.php:671
 msgid "Add App Shortcut"
 msgstr ""
 
@@ -2927,11 +2371,8 @@ msgid "What's New"
 msgstr ""
 
 #: admin/templates/sidebar.php:68
+#, php-format
 msgid "v%s"
-msgstr ""
-
-#: daftplug-progressify.php:35
-msgid "Progressify"
 msgstr ""
 
 #: frontend/partials/offlinefallbackpage.php:11
@@ -2963,80 +2404,88 @@ msgstr ""
 msgid "Upload or select your PWA App Icon"
 msgstr ""
 
-#: includes/modules/dashboard.php:284
+#: includes/modules/dashboard.php:283
 msgid "Define your PWA web app Name"
 msgstr ""
 
-#: includes/modules/dashboard.php:294
+#: includes/modules/dashboard.php:292
 msgid "Define your PWA web app Short Name"
 msgstr ""
 
-#: includes/modules/dashboard.php:304
+#: includes/modules/dashboard.php:301
 msgid "Choose your PWA web app categories"
 msgstr ""
 
-#: includes/modules/dashboard.php:313
+#: includes/modules/dashboard.php:309
 msgid "Enable PWA Installation Prompts"
 msgstr ""
 
-#: includes/modules/dashboard.php:322
+#: includes/modules/dashboard.php:317
 msgid "Enable one of the PWA Installation Overlays"
 msgstr ""
 
-#: includes/modules/dashboard.php:331
+#: includes/modules/dashboard.php:325
 msgid "Enable Offline Cache for your PWA"
 msgstr ""
 
-#: includes/modules/dashboard.php:340
+#: includes/modules/dashboard.php:333
 msgid "Enable Advanced Web Capabilities for your PWA"
 msgstr ""
 
-#: includes/modules/dashboard.php:349
+#: includes/modules/dashboard.php:341
 msgid "Enable the Background Sync feature"
 msgstr ""
 
-#: includes/modules/dashboard.php:358
+#: includes/modules/dashboard.php:349
 msgid "Enable the Periodic Background Sync feature"
 msgstr ""
 
-#: includes/modules/dashboard.php:367
+#: includes/modules/dashboard.php:357
 msgid "Enable Push Notifications Prompt or Button"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:742
+#, php-format
 msgid "The notification was sent to %d out of %d recipients, with %d failure."
 msgstr ""
 
 #: includes/modules/pushnotifications.php:749
-#: admin/assets/js/dev/modules/modalPushNotifications.js:49
+#: admin/assets/js/dev/modules/modalPushNotifications.js:46
 msgid "Sending failed. There was an error on server."
 msgstr ""
 
 #: includes/modules/pushnotifications.php:770
+#, php-format
 msgid "New %s - %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:795
+#, php-format
 msgid "Price Drop - %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:796
+#, php-format
 msgid "Price dropped from %s to %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:800
+#, php-format
 msgid "New Sale Price - %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:801
+#, php-format
 msgid "New Sale Price: %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:805
+#, php-format
 msgid "Back In Stock - %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:806
+#, php-format
 msgid "%s is now back in stock"
 msgstr ""
 
@@ -3045,62 +2494,77 @@ msgid "Your Order Status Updated"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:874
+#, php-format
 msgid "Your order (ID %s) status has updated from %s to %s. Click on this notification to see the order."
 msgstr ""
 
 #: includes/modules/pushnotifications.php:923
+#, php-format
 msgid "New Comment By %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:961
+#, php-format
 msgid "New Order #%s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:962
+#, php-format
 msgid "New order from %s for %s%s (%d items)"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1030
+#, php-format
 msgid "Low Stock Alert: %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1031
+#, php-format
 msgid "Stock level: %d (Threshold: %d)%s. SKU: %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1056
+#, php-format
 msgid "%s has just mentioned you in a %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1059
+#, php-format
 msgid "New mention from %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1083
+#, php-format
 msgid "New comment from %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1084
+#, php-format
 msgid "%s has just commented on your post."
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1107
+#, php-format
 msgid "New reply from %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1108
+#, php-format
 msgid "%s has just replied to you."
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1135
+#, php-format
 msgid "New message from %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1161
+#, php-format
 msgid "New friend request from %s"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1162
+#, php-format
 msgid "%s has just sent you a friend request."
 msgstr ""
 
@@ -3109,19 +2573,22 @@ msgid "Friend request accepted"
 msgstr ""
 
 #: includes/modules/pushnotifications.php:1188
+#, php-format
 msgid "%s has just accepted your friend request."
 msgstr ""
 
-#: includes/plugin.php:332
+#: includes/plugin.php:351
+#, php-format
 msgid "⚠️ %s requires PHP version at least 8.2 to function properly."
 msgstr ""
 
-#: includes/plugin.php:332
-#: includes/plugin.php:344
+#: includes/plugin.php:351
+#: includes/plugin.php:363
 msgid "If you have trouble fixing this, please contact us on"
 msgstr ""
 
-#: includes/plugin.php:344
+#: includes/plugin.php:363
+#, php-format
 msgid "⚠️ %s features require <i>%s</i> extension to function properly."
 msgstr ""
 
@@ -3133,52 +2600,83 @@ msgstr ""
 msgid "Payment failed! Please try again or contact us on support@daftplug.com"
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:34
+#: admin/assets/js/dev/modules/introGuide.js:33
 msgid "Thank you for installing Progressify! Let me guide you through the plugin really quick."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:43
+#: admin/assets/js/dev/modules/introGuide.js:42
 msgid "This is the main navigation menu. You can use it to navigate through the different pages."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:52
+#: admin/assets/js/dev/modules/introGuide.js:51
 msgid "Use the search bar to search settings and features."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:61
+#: admin/assets/js/dev/modules/introGuide.js:60
 msgid "Here will be the number of users who installed your web app and are actively using it as PWA."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:70
+#: admin/assets/js/dev/modules/introGuide.js:69
 msgid "This shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:79
+#: admin/assets/js/dev/modules/introGuide.js:78
 msgid "Here you will see the analytics of PWA installations over time."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:88
+#: admin/assets/js/dev/modules/introGuide.js:87
 msgid "Enable features and configure their options as you need."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:97
+#: admin/assets/js/dev/modules/introGuide.js:96
 msgid "After making changes to the settings, you can save them by clicking buttons placed at the bottom of the settings section."
 msgstr ""
 
-#: admin/assets/js/dev/modules/introGuide.js:106
+#: admin/assets/js/dev/modules/introGuide.js:105
 msgid "When you finish setting up your PWA, you can optionally request generation of Android and iOS mobile apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store and App Store to reach more users."
 msgstr ""
 
-#: admin/assets/js/dev/modules/modalPushNotifications.js:75
+#: admin/assets/js/dev/modules/modalPushNotifications.js:72
+#: admin/assets/js/dev/modules/modalPushNotifications.js:84
+#: admin/assets/js/dev/modules/modalPushNotifications.js:88
+#: admin/assets/js/dev/modules/processLicense.js:68
+#: admin/assets/js/dev/modules/processLicense.js:70
+#: admin/assets/js/dev/modules/processLicense.js:74
+#: admin/assets/js/dev/modules/settings.js:102
+#: admin/assets/js/dev/modules/settings.js:106
+#: admin/assets/js/dev/modules/supportRequest.js:53
+#: admin/assets/js/dev/modules/supportRequest.js:56
+msgid "Fail"
+msgstr ""
+
+#: admin/assets/js/dev/modules/modalPushNotifications.js:72
 msgid "Notifications are not supported by your browser."
 msgstr ""
 
-#: admin/assets/js/dev/modules/modalPushNotifications.js:87
+#: admin/assets/js/dev/modules/modalPushNotifications.js:84
 msgid "You need to accept the notifications permission to preview."
 msgstr ""
 
-#: admin/assets/js/dev/modules/modalPushNotifications.js:91
+#: admin/assets/js/dev/modules/modalPushNotifications.js:88
 msgid "Push notifications are blocked by your browser."
+msgstr ""
+
+#: admin/assets/js/dev/modules/processLicense.js:64
+#: admin/assets/js/dev/modules/settings.js:99
+#: admin/assets/js/dev/modules/supportRequest.js:51
+msgid "Success"
+msgstr ""
+
+#: admin/assets/js/dev/modules/processLicense.js:64
+msgid "License has been activated successfully!"
+msgstr ""
+
+#: admin/assets/js/dev/modules/processLicense.js:68
+msgid "License activation failed."
+msgstr ""
+
+#: admin/assets/js/dev/modules/processLicense.js:70
+msgid "Invalid response from the server. Please try again."
 msgstr ""
 
 #: admin/assets/js/dev/modules/pushSubscribers.js:106
@@ -3197,80 +2695,67 @@ msgstr ""
 msgid "Are you sure you want to remove this subscriber?"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaScoreData.js:130
+#: admin/assets/js/dev/modules/pwaScoreData.js:103
 msgid "No Action Items"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaScoreData.js:133
+#: admin/assets/js/dev/modules/pwaScoreData.js:106
 msgid "Your PWA seems fully setup and your score is excellent."
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaScoreData.js:144
+#: admin/assets/js/dev/modules/pwaScoreData.js:117
 msgid "Action Items"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaScoreData.js:172
+#: admin/assets/js/dev/modules/pwaScoreData.js:145
 msgid "Show All"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaUsersData.js:317
+#: admin/assets/js/dev/modules/pwaUsersData.js:316
 msgid "Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app."
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaUsersData.js:325
+#: admin/assets/js/dev/modules/pwaUsersData.js:324
 msgid "Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly."
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaUsersData.js:328
+#: admin/assets/js/dev/modules/pwaUsersData.js:327
 msgid "All"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaUsersData.js:328
+#: admin/assets/js/dev/modules/pwaUsersData.js:327
 msgid "Most"
 msgstr ""
 
-#: admin/assets/js/dev/modules/pwaUsersData.js:353
-#: admin/assets/js/dev/modules/pwaUsersData.js:394
-#: admin/assets/js/dev/modules/pwaUsersData.js:425
-#: admin/assets/js/dev/modules/pwaUsersData.js:518
+#: admin/assets/js/dev/modules/pwaUsersData.js:352
+#: admin/assets/js/dev/modules/pwaUsersData.js:393
+#: admin/assets/js/dev/modules/pwaUsersData.js:424
+#: admin/assets/js/dev/modules/pwaUsersData.js:517
 msgid "PWA Installs"
 msgstr ""
 
-#: admin/assets/js/dev/modules/settings.js:61
-#: admin/assets/js/dev/modules/settings.js:163
-#: admin/assets/js/dev/modules/settings.js:167
-#: admin/assets/js/dev/modules/supportRequest.js:54
-msgid "Fail"
-msgstr ""
-
-#: admin/assets/js/dev/modules/settings.js:61
-#: admin/assets/js/dev/modules/settings.js:163
-#: admin/assets/js/dev/modules/settings.js:167
-msgid "Your changes have failed to be saved!"
-msgstr ""
-
-#: admin/assets/js/dev/modules/settings.js:158
+#: admin/assets/js/dev/modules/settings.js:97
 msgid "Warning"
 msgstr ""
 
-#: admin/assets/js/dev/modules/settings.js:158
+#: admin/assets/js/dev/modules/settings.js:97
 msgid "Settings saved but PWA assets generation failed!"
 msgstr ""
 
-#: admin/assets/js/dev/modules/settings.js:160
-#: admin/assets/js/dev/modules/supportRequest.js:52
-msgid "Success"
-msgstr ""
-
-#: admin/assets/js/dev/modules/settings.js:160
+#: admin/assets/js/dev/modules/settings.js:99
 msgid "Your changes have been saved successfully!"
 msgstr ""
 
-#: admin/assets/js/dev/modules/supportRequest.js:52
+#: admin/assets/js/dev/modules/settings.js:102
+#: admin/assets/js/dev/modules/settings.js:106
+msgid "Your changes have failed to be saved!"
+msgstr ""
+
+#: admin/assets/js/dev/modules/supportRequest.js:51
 msgid "Support request have submitted successfully!"
 msgstr ""
 
-#: admin/assets/js/dev/modules/supportRequest.js:54
+#: admin/assets/js/dev/modules/supportRequest.js:53
 msgid "Support request have failed to be submitted!"
 msgstr ""
 
@@ -3648,6 +3133,10 @@ msgstr ""
 
 #: frontend/assets/js/dev/modules/shakeRefresh.js:158
 msgid "Shake detected! Refreshing the page..."
+msgstr ""
+
+#: frontend/assets/js/dev/modules/shareButton.js:106
+msgid "Share"
 msgstr ""
 
 #: frontend/assets/js/dev/modules/toastMessages.js:105

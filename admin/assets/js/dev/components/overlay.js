@@ -1,11 +1,11 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initOverlay() {
   handleOverlay();
 }
 
 export function handleOverlay() {
-  daftplugAdmin.find('[data-dp-overlay]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-overlay]').each(function () {
     const self = jQuery(this);
     const target = self.attr('data-dp-overlay');
     const triggerElement = jQuery('[data-dp-open-overlay="' + target + '"]');
@@ -15,9 +15,9 @@ export function handleOverlay() {
       self.attr('data-open', true);
 
       // Only add backdrop if it doesn't exist
-      if (daftplugAdmin.find('#dp-overlay-backdrop').length === 0) {
-        daftplugAdmin.append(`
-          <div id="dp-overlay-backdrop" class="transition duration-300 fixed z-[99] inset-0 bg-gray-900 bg-opacity-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none dark:bg-opacity-80 dark:bg-neutral-900"></div>  
+      if (config.daftplugAdminElm.find('#dp-overlay-backdrop').length === 0) {
+        config.daftplugAdminElm.append(`
+          <div id="dp-overlay-backdrop" class="transition duration-300 fixed z-[99] inset-0 bg-gray-900 bg-opacity-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none"></div>  
         `);
 
         // Add click event to backdrop to close overlay
@@ -29,7 +29,7 @@ export function handleOverlay() {
 
     const hideOverlay = () => {
       self.attr('data-open', false);
-      daftplugAdmin.find('#dp-overlay-backdrop').remove();
+      config.daftplugAdminElm.find('#dp-overlay-backdrop').remove();
     };
 
     triggerElement.on('click', (event) => {
@@ -52,16 +52,16 @@ export function handleOverlay() {
   let mouseDownTarget = null;
 
   // Track where the mouse down event started
-  daftplugAdmin.on('mousedown', function (event) {
+  config.daftplugAdminElm.on('mousedown', function (event) {
     mouseDownTarget = event.target;
   });
 
   // Only handle clicks when mouse up happens
-  daftplugAdmin.on('mouseup', function (event) {
+  config.daftplugAdminElm.on('mouseup', function (event) {
     // Don't process if mousedown didn't happen (handles weird edge cases)
     if (!mouseDownTarget) return;
 
-    const openOverlay = daftplugAdmin.find('[data-dp-overlay][data-open="true"]');
+    const openOverlay = config.daftplugAdminElm.find('[data-dp-overlay][data-open="true"]');
 
     if (openOverlay.length > 0) {
       const target = openOverlay.attr('data-dp-overlay');
@@ -85,11 +85,11 @@ export function handleOverlay() {
 }
 
 function hideAllOverlays() {
-  daftplugAdmin.find('[data-dp-overlay]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-overlay]').each(function () {
     const self = jQuery(this);
     self.attr('data-open', false);
   });
 
   // Remove backdrop when hiding all overlays
-  daftplugAdmin.find('#dp-overlay-backdrop').remove();
+  config.daftplugAdminElm.find('#dp-overlay-backdrop').remove();
 }

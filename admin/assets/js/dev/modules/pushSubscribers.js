@@ -1,5 +1,5 @@
-const daftplugAdmin = document.querySelector('#daftplugAdmin');
-const slug = daftplugAdmin.getAttribute('data-slug');
+import { config } from '../admin.js';
+
 const { __ } = wp.i18n;
 
 class SubscriberManager {
@@ -43,7 +43,7 @@ class SubscriberManager {
       this.isLoading = true;
       this.toggleLoadingState(true);
 
-      const url = new URL(`${wpApiSettings.root}${slug}/fetchPushNotificationsSubscribers`);
+      const url = new URL(`${wpApiSettings.root}${config.jsVars.slug}/fetchPushNotificationsSubscribers`);
       url.searchParams.append('page', page);
 
       const response = await fetch(url, {
@@ -76,17 +76,17 @@ class SubscriberManager {
           <td colspan="5">
             <div class="p-5 min-h-56 flex flex-col justify-center items-center text-center">
               <svg class="w-48 mx-auto" viewBox="0 0 178 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" fill="currentColor" class="fill-white dark:fill-neutral-800"></rect>
-                <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100 dark:stroke-neutral-700/30"></rect>
-                <rect x="27" y="36" width="24" height="24" rx="12" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70"></rect>
-                <rect x="59" y="39" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70"></rect>
-                <rect x="59" y="51" width="92" height="6" rx="3" fill="currentColor" class="fill-gray-100 dark:fill-neutral-700/70"></rect>
+                <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" fill="currentColor" class="fill-white"></rect>
+                <rect x="19.5" y="28.5" width="139" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100"></rect>
+                <rect x="27" y="36" width="24" height="24" rx="12" fill="currentColor" class="fill-gray-100"></rect>
+                <rect x="59" y="39" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-100"></rect>
+                <rect x="59" y="51" width="92" height="6" rx="3" fill="currentColor" class="fill-gray-100"></rect>
                 <g filter="url(#filter1)">
-                  <rect x="12" y="6" width="154" height="40" rx="8" class="fill-white dark:fill-neutral-800" shape-rendering="crispEdges"></rect>
-                  <rect x="12.5" y="6.5" width="153" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100 dark:stroke-neutral-700/60" shape-rendering="crispEdges"></rect>
-                  <rect x="20" y="14" width="24" height="24" rx="12" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700"></rect>
-                  <rect x="52" y="17" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700"></rect>
-                  <rect x="52" y="29" width="106" height="6" rx="3" fill="currentColor" class="fill-gray-200 dark:fill-neutral-700"></rect>
+                  <rect x="12" y="6" width="154" height="40" rx="8" class="fill-white" shape-rendering="crispEdges"></rect>
+                  <rect x="12.5" y="6.5" width="153" height="39" rx="7.5" stroke="currentColor" class="stroke-gray-100" shape-rendering="crispEdges"></rect>
+                  <rect x="20" y="14" width="24" height="24" rx="12" fill="currentColor" class="fill-gray-200"></rect>
+                  <rect x="52" y="17" width="60" height="6" rx="3" fill="currentColor" class="fill-gray-200"></rect>
+                  <rect x="52" y="29" width="106" height="6" rx="3" fill="currentColor" class="fill-gray-200"></rect>
                 </g>
                 <defs>
                   <filter id="filter1" x="0" y="0" width="178" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -102,11 +102,11 @@ class SubscriberManager {
                 </defs>
               </svg>
               <div class="max-w-sm mx-auto">
-                <p class="mt-2 text-base font-medium text-gray-800 dark:text-neutral-200">
-                  ${__('No Subscribers', slug)}
+                <p class="mt-2 text-base font-medium text-gray-800">
+                  ${__('No Subscribers', config.jsVars.slug)}
                 </p>
-                <p class="text-sm text-gray-500 dark:text-neutral-500">
-                  ${__('There are no push notification subscribers yet.', slug)}
+                <p class="text-sm text-gray-500">
+                  ${__('There are no push notification subscribers yet.', config.jsVars.slug)}
                 </p>
               </div>
             </div>
@@ -138,7 +138,7 @@ class SubscriberManager {
             <div class="flex items-center gap-x-1.5">
               <img class="inline-block w-auto h-5 rounded" src="${subscriber.country_icon}" alt="${subscriber.country_name}" />
               <div class="grow">
-                <span class="block text-sm text-gray-800 dark:text-neutral-200">${subscriber.country_name}</span>
+                <span class="block text-sm text-gray-800">${subscriber.country_name}</span>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ class SubscriberManager {
             <div class="flex items-center gap-x-1.5">
               <img class="inline-block size-5" src="${subscriber.os_icon}" alt="${subscriber.os_name}" />
               <div class="grow space-y-1">
-                <span class="block text-sm text-gray-800 dark:text-neutral-200">${subscriber.os_name}</span>
+                <span class="block text-sm text-gray-800">${subscriber.os_name}</span>
               </div>
             </div>
           </div>
@@ -158,24 +158,24 @@ class SubscriberManager {
             <div class="flex items-center gap-x-1.5">
               <img class="inline-block size-5" src="${subscriber.browser_icon}" alt="${subscriber.browser_name}" />
               <div class="grow space-y-1">
-                <span class="block text-sm text-gray-800 dark:text-neutral-200">${subscriber.browser_name}</span>
+                <span class="block text-sm text-gray-800">${subscriber.browser_name}</span>
               </div>
             </div>
           </div>
         </td>
         <td class="size-px whitespace-nowrap">
           <div class="px-6 py-2.5">
-            <span class="text-sm text-gray-500 dark:text-neutral-500">${subscriber.date}</span>
+            <span class="text-sm text-gray-500">${subscriber.date}</span>
           </div>
         </td>
         <td class="size-px whitespace-nowrap">
           <div class="px-6 py-1.5">
             <div class="group/dropdown relative inline-flex" data-dp-dropdown='{"trigger": "click"}'>
-              <button type="button" class="dp-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+              <button type="button" class="dp-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm">
                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
               </button>
-              <div class="dp-dropdown-menu group-data-[open=true]/dropdown:opacity-100 group-data-[open=true]/dropdown:visible absolute w-max min-w-40 transition-opacity duration-300 invisible opacity-0 z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)] dark:bg-neutral-800">
-                <button type="button" class="w-full flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-neutral-700" data-action="delete" data-endpoint="${subscriber.endpoint}">
+              <div class="dp-dropdown-menu group-data-[open=true]/dropdown:opacity-100 group-data-[open=true]/dropdown:visible absolute w-max min-w-40 transition-opacity duration-300 invisible opacity-0 z-10 bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+                <button type="button" class="w-full flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500" data-action="delete" data-endpoint="${subscriber.endpoint}">
                   <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 6h18"></path>
                     <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
@@ -183,7 +183,7 @@ class SubscriberManager {
                     <line x1="10" x2="10" y1="11" y2="17"></line>
                     <line x1="14" x2="14" y1="11" y2="17"></line>
                   </svg>
-                  ${__('Delete', slug)}
+                  ${__('Delete', config.jsVars.slug)}
                 </button>
               </div>
             </div>
@@ -232,10 +232,10 @@ class SubscriberManager {
   }
 
   async removeSubscriber(endpoint) {
-    if (!confirm(__('Are you sure you want to remove this subscriber?', slug))) return;
+    if (!confirm(__('Are you sure you want to remove this subscriber?', config.jsVars.slug))) return;
 
     try {
-      const response = await fetch(wpApiSettings.root + slug + '/removeSubscription', {
+      const response = await fetch(wpApiSettings.root + config.jsVars.slug + '/removeSubscription', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -255,7 +255,7 @@ class SubscriberManager {
 }
 
 export function initPushSubscribers() {
-  const pushSubscribers = daftplugAdmin.querySelector('#pushNotificationsSubscribers');
+  const pushSubscribers = config.daftplugAdminElm[0].querySelector('#pushNotificationsSubscribers');
   if (!pushSubscribers) return;
 
   const subscriberManager = new SubscriberManager(pushSubscribers);

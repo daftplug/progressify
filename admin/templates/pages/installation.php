@@ -313,189 +313,189 @@ if (!defined('ABSPATH')) {
     </div>
   </fieldset>
   <!-- End Installation Prompts -->
-</form>
-<!-- Edit Header Banner Modal -->
-<form name="settingsForm" spellcheck="false" autocomplete="off" id="edit-header-banner-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-header-banner-popup">
-  <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
-    <div class="py-2.5 px-4 flex justify-between items-center border-b">
-      <div class="flex items-center gap-x-1.5">
-        <h3 id="edit-header-banner-popup-label" class="text-base font-medium text-gray-800">
-          <?php esc_html_e('Edit Header Banner', $this->slug); ?>
-        </h3>
+  <!-- Edit Header Banner Modal -->
+  <div id="edit-header-banner-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-header-banner-popup">
+    <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+      <div class="py-2.5 px-4 flex justify-between items-center border-b">
+        <div class="flex items-center gap-x-1.5">
+          <h3 id="edit-header-banner-popup-label" class="text-base font-medium text-gray-800">
+            <?php esc_html_e('Edit Header Banner', $this->slug); ?>
+          </h3>
+        </div>
+        <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-header-banner-popup">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
-      <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-header-banner-popup">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-      <div class="space-y-7">
-        <div>
-          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Message', $this->slug); ?>
-          </label>
-          <textarea name="installation[prompts][types][headerBanner][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Header Banner Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][headerBanner][message]')); ?></textarea>
+      <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        <div class="space-y-7">
+          <div>
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+              <?php esc_html_e('Message', $this->slug); ?>
+            </label>
+            <textarea name="installation[prompts][types][headerBanner][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Header Banner Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][headerBanner][message]')); ?></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
-        </span>
-        <?php esc_html_e('Save Changes', $this->slug); ?>
-      </button>
+      <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
     </div>
   </div>
-</form>
-<!-- End Edit Header Banner Modal -->
-<!-- Edit Snackbar Modal -->
-<form name="settingsForm" spellcheck="false" autocomplete="off" id="edit-snackbar-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-snackbar-popup">
-  <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
-    <div class="py-2.5 px-4 flex justify-between items-center border-b">
-      <div class="flex items-center gap-x-1.5">
-        <h3 id="edit-snackbar-popup-label" class="text-base font-medium text-gray-800">
-          <?php esc_html_e('Edit Snackbar', $this->slug); ?>
-        </h3>
+  <!-- End Edit Header Banner Modal -->
+  <!-- Edit Snackbar Modal -->
+  <div id="edit-snackbar-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-snackbar-popup">
+    <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+      <div class="py-2.5 px-4 flex justify-between items-center border-b">
+        <div class="flex items-center gap-x-1.5">
+          <h3 id="edit-snackbar-popup-label" class="text-base font-medium text-gray-800">
+            <?php esc_html_e('Edit Snackbar', $this->slug); ?>
+          </h3>
+        </div>
+        <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-snackbar-popup">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
-      <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-snackbar-popup">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-      <div class="space-y-7">
-        <div>
-          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Message', $this->slug); ?>
-          </label>
-          <textarea name="installation[prompts][types][snackbar][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Snackbar Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][snackbar][message]')); ?></textarea>
+      <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        <div class="space-y-7">
+          <div>
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+              <?php esc_html_e('Message', $this->slug); ?>
+            </label>
+            <textarea name="installation[prompts][types][snackbar][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Snackbar Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][snackbar][message]')); ?></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
-        </span>
-        <?php esc_html_e('Save Changes', $this->slug); ?>
-      </button>
+      <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
     </div>
   </div>
-</form>
-<!-- End Edit Header Banner Modal -->
-<!-- Edit Navigation Menu Modal -->
-<form name="settingsForm" spellcheck="false" autocomplete="off" id="edit-navigation-menu-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-navigation-menu-popup">
-  <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
-    <div class="py-2.5 px-4 flex justify-between items-center border-b">
-      <div class="flex items-center gap-x-1.5">
-        <h3 id="edit-navigation-menu-popup-label" class="text-base font-medium text-gray-800">
-          <?php esc_html_e('Edit Navigation Menu', $this->slug); ?>
-        </h3>
+  <!-- End Edit Header Banner Modal -->
+  <!-- Edit Navigation Menu Modal -->
+  <div id="edit-navigation-menu-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-navigation-menu-popup">
+    <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+      <div class="py-2.5 px-4 flex justify-between items-center border-b">
+        <div class="flex items-center gap-x-1.5">
+          <h3 id="edit-navigation-menu-popup-label" class="text-base font-medium text-gray-800">
+            <?php esc_html_e('Edit Navigation Menu', $this->slug); ?>
+          </h3>
+        </div>
+        <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-navigation-menu-popup">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
-      <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-navigation-menu-popup">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-      <div class="space-y-7">
-        <div>
-          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Message', $this->slug); ?>
-          </label>
-          <textarea name="installation[prompts][types][navigationMenu][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Navigation Menu Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][navigationMenu][message]')); ?></textarea>
+      <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        <div class="space-y-7">
+          <div>
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+              <?php esc_html_e('Message', $this->slug); ?>
+            </label>
+            <textarea name="installation[prompts][types][navigationMenu][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Navigation Menu Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][navigationMenu][message]')); ?></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
-        </span>
-        <?php esc_html_e('Save Changes', $this->slug); ?>
-      </button>
+      <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
     </div>
   </div>
-</form>
-<!-- End Edit Navigation Menu Modal -->
-<!-- Edit In Feed Modal -->
-<form name="settingsForm" spellcheck="false" autocomplete="off" id="edit-in-feed-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-in-feed-popup">
-  <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
-    <div class="py-2.5 px-4 flex justify-between items-center border-b">
-      <div class="flex items-center gap-x-1.5">
-        <h3 id="edit-in-feed-popup-label" class="text-base font-medium text-gray-800">
-          <?php esc_html_e('Edit In Feed', $this->slug); ?>
-        </h3>
+  <!-- End Edit Navigation Menu Modal -->
+  <!-- Edit In Feed Modal -->
+  <div id="edit-in-feed-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-in-feed-popup">
+    <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+      <div class="py-2.5 px-4 flex justify-between items-center border-b">
+        <div class="flex items-center gap-x-1.5">
+          <h3 id="edit-in-feed-popup-label" class="text-base font-medium text-gray-800">
+            <?php esc_html_e('Edit In Feed', $this->slug); ?>
+          </h3>
+        </div>
+        <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-in-feed-popup">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
-      <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-in-feed-popup">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-      <div class="space-y-7">
-        <div>
-          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Message', $this->slug); ?>
-          </label>
-          <textarea name="installation[prompts][types][inFeed][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter In Feed Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][inFeed][message]')); ?></textarea>
+      <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        <div class="space-y-7">
+          <div>
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+              <?php esc_html_e('Message', $this->slug); ?>
+            </label>
+            <textarea name="installation[prompts][types][inFeed][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter In Feed Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][inFeed][message]')); ?></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
-        </span>
-        <?php esc_html_e('Save Changes', $this->slug); ?>
-      </button>
+      <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
     </div>
   </div>
-</form>
-<!-- End Edit In Feed Modal -->
-<!-- Edit Woocommerce Checkout Modal -->
-<form name="settingsForm" spellcheck="false" autocomplete="off" id="edit-woocommerce-checkout-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-woocommerce-checkout-popup">
-  <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
-    <div class="py-2.5 px-4 flex justify-between items-center border-b">
-      <div class="flex items-center gap-x-1.5">
-        <h3 id="edit-woocommerce-checkout-popup-label" class="text-base font-medium text-gray-800">
-          <?php esc_html_e('Edit Woocommerce Checkout', $this->slug); ?>
-        </h3>
+  <!-- End Edit In Feed Modal -->
+  <!-- Edit Woocommerce Checkout Modal -->
+  <div id="edit-woocommerce-checkout-popup" class="fixed inset-0 z-[99999] invisible data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:duration-300 opacity-0 ease-out transition-all max-w-xl w-full !m-auto h-max flex items-center" role="dialog" tabindex="-1" data-dp-overlay="#edit-woocommerce-checkout-popup">
+    <div class="w-full max-h-full flex flex-col bg-white rounded-xl pointer-events-auto shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)]">
+      <div class="py-2.5 px-4 flex justify-between items-center border-b">
+        <div class="flex items-center gap-x-1.5">
+          <h3 id="edit-woocommerce-checkout-popup-label" class="text-base font-medium text-gray-800">
+            <?php esc_html_e('Edit Woocommerce Checkout', $this->slug); ?>
+          </h3>
+        </div>
+        <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-woocommerce-checkout-popup">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
-      <button type="button" class="size-6 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-label="Close" data-dp-close-overlay="#edit-woocommerce-checkout-popup">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-      <div class="space-y-7">
-        <div>
-          <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Message', $this->slug); ?>
-          </label>
-          <textarea name="installation[prompts][types][woocommerceCheckout][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Woocommerce Checkout Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][woocommerceCheckout][message]')); ?></textarea>
+      <div class="p-4 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        <div class="space-y-7">
+          <div>
+            <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
+              <?php esc_html_e('Message', $this->slug); ?>
+            </label>
+            <textarea name="installation[prompts][types][woocommerceCheckout][message]" class="overflow-hidden resize-none shadow-sm py-2 px-3 block w-full min-h-24 border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [field-sizing:content]" placeholder="<?php esc_html_e('Enter Woocommerce Checkout Message', $this->slug); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required><?php echo esc_textarea(Plugin::getSetting('installation[prompts][types][woocommerceCheckout][message]')); ?></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-      <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-        <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
-          <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
-        </span>
-        <?php esc_html_e('Save Changes', $this->slug); ?>
-      </button>
+      <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
     </div>
   </div>
+  <!-- End Edit Woocommerce Checkout Modal -->
 </form>
-<!-- End Edit Woocommerce Checkout Modal -->

@@ -1,9 +1,8 @@
+import { config } from '../admin.js';
 import { findAndHighlightElement } from '../components/utils.js';
 
-const daftplugAdmin = jQuery('#daftplugAdmin');
-
 export function initSearch() {
-  const searchBox = daftplugAdmin.find('[data-dp-searchbox]');
+  const searchBox = config.daftplugAdminElm.find('[data-dp-searchbox]');
   const searchBoxInput = searchBox.find('.dp-searchbox-input');
   const searchBoxOutput = searchBox.find('.dp-searchbox-output');
   const searchItemsWrapper = searchBoxOutput.find('.dp-searchbox-output-wrapper');
@@ -69,7 +68,7 @@ export function initSearch() {
 }
 
 function buildSettingsItems() {
-  const sections = daftplugAdmin.find('main section');
+  const sections = config.daftplugAdminElm.find('main section');
   let searchGroupsHTML = '';
 
   sections.each(function () {
@@ -88,12 +87,12 @@ function buildSettingsItems() {
       const fieldsetId = fieldset.attr('id');
       const fieldsetTitle = fieldset.find('h5, label').first().text().trim();
       const fieldsetIcon = fieldset.find('svg').clone();
-      fieldsetIcon.attr('class', 'shrink-0 size-5 fill-gray-500 dark:fill-neutral-500');
+      fieldsetIcon.attr('class', 'shrink-0 size-5 fill-gray-500');
 
       groupItemsHTML += `
-        <div class="dp-searchbox-item py-2 px-3 flex items-center gap-x-2 cursor-pointer hover:bg-gray-100 rounded-lg dark:hover:bg-neutral-700" data-find-and-highlight-element="#${fieldsetId}">
+        <div class="dp-searchbox-item py-2 px-3 flex items-center gap-x-2 cursor-pointer hover:bg-gray-100 rounded-lg" data-find-and-highlight-element="#${fieldsetId}">
           ${fieldsetIcon.prop('outerHTML')}
-          <span class="dp-searchbox-item-title text-sm truncate text-gray-800 dark:text-neutral-200">${fieldsetTitle}</span>
+          <span class="dp-searchbox-item-title text-sm truncate text-gray-800">${fieldsetTitle}</span>
         </div>
       `;
     });
@@ -101,7 +100,7 @@ function buildSettingsItems() {
     if (groupItemsHTML) {
       searchGroupsHTML += `
         <div class="dp-searchbox-group">
-          <div class="dp-searchbox-item-group-title block text-xs text-gray-500 m-3 mb-1 dark:text-neutral-500 dark:border-neutral-700">${pageTitle}</div>
+          <div class="dp-searchbox-item-group-title block text-xs text-gray-500 m-3 mb-1">${pageTitle}</div>
           ${groupItemsHTML}
         </div>
       `;

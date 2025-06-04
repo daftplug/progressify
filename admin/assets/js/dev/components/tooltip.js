@@ -1,4 +1,4 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initTooltip() {
   handleTooltip();
@@ -26,10 +26,10 @@ export function handleTooltip() {
   });
 
   // Start observing the document with the configured parameters
-  observer.observe(daftplugAdmin[0], { childList: true, subtree: true });
+  observer.observe(config.daftplugAdminElm[0], { childList: true, subtree: true });
 }
 
-function setupTooltips(container = daftplugAdmin) {
+function setupTooltips(container = config.daftplugAdminElm) {
   const tooltips = container.is('[data-dp-tooltip]') ? container : container.find('[data-dp-tooltip]');
 
   tooltips.each(function () {
@@ -41,9 +41,9 @@ function setupTooltips(container = daftplugAdmin) {
     }
 
     const content = self.find('.dp-tooltip-content');
-    const config = JSON.parse(self.attr('data-dp-tooltip'));
-    const trigger = config.trigger || 'hover';
-    const placement = config.placement || 'top';
+    const tooltipConfig = JSON.parse(self.attr('data-dp-tooltip'));
+    const trigger = tooltipConfig.trigger || 'hover';
+    const placement = tooltipConfig.placement || 'top';
 
     let positionClasses = '';
 
@@ -101,7 +101,7 @@ function setupTooltips(container = daftplugAdmin) {
 }
 
 function hideAllTooltips() {
-  daftplugAdmin.find('[data-dp-tooltip]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-tooltip]').each(function () {
     const self = jQuery(this);
     self.attr('data-shown', false);
   });

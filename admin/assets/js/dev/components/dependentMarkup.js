@@ -1,17 +1,17 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initDependentMarkup() {
   handleDependentMarkup();
 }
 
 export function handleDependentMarkup() {
-  daftplugAdmin.find('[data-dp-dependant-markup]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-dependant-markup]').each(function () {
     const self = jQuery(this);
-    const config = JSON.parse(self.attr('data-dp-dependant-markup'));
-    const target = config.target;
-    const state = config.state || 'checked';
-    const mode = config.mode || 'availability';
-    const targetElement = daftplugAdmin.find(`[name="${target}"]`);
+    const dependentMarkupConfig = JSON.parse(self.attr('data-dp-dependant-markup'));
+    const target = dependentMarkupConfig.target;
+    const state = dependentMarkupConfig.state || 'checked';
+    const mode = dependentMarkupConfig.mode || 'availability';
+    const targetElement = config.daftplugAdminElm.find(`[name="${target}"]`);
 
     function updateState() {
       const isChecked = targetElement.is(':checked');
@@ -61,11 +61,11 @@ export function handleDependentMarkup() {
     }
 
     function updateDependentMarkup(element) {
-      const config = JSON.parse(element.attr('data-dp-dependant-markup'));
-      const target = config.target;
-      const state = config.state || 'checked';
-      const mode = config.mode || 'availability';
-      const targetElement = daftplugAdmin.find(`[name="${target}"]`);
+      const dependentMarkupConfig = JSON.parse(element.attr('data-dp-dependant-markup'));
+      const target = dependentMarkupConfig.target;
+      const state = dependentMarkupConfig.state || 'checked';
+      const mode = dependentMarkupConfig.mode || 'availability';
+      const targetElement = config.daftplugAdminElm.find(`[name="${target}"]`);
       const isChecked = targetElement.is(':checked');
       const shouldActivate = state === 'checked' ? isChecked : !isChecked;
 

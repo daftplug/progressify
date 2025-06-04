@@ -1,4 +1,4 @@
-import { isReturningVisitor, getCookie, setCookie } from './components/utils.js';
+import { isReturningVisitor, getCookie, setCookie, isPwa } from './components/utils.js';
 import PushNotificationsSubscription from './components/pushNotificationsSubscription.js';
 
 export const config = (() => {
@@ -12,37 +12,22 @@ export const config = (() => {
 })();
 
 const { settings, userData, pluginsData, pageData } = config.jsVars;
-// Load modules
-document.addEventListener('DOMContentLoaded', async function () {
-  // PWA Tracker
-  if (userData?.platform?.isPwa) {
-    const { initPwaTracker } = await import('./modules/pwaTracker.js');
-    await initPwaTracker();
-  }
 
-  // Page Loader
-  if (settings?.appCapabilities?.smoothPageTransitions?.feature === 'off' && settings?.uiComponents?.pageLoader?.feature === 'on' && settings?.uiComponents?.pageLoader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
-    const { initPageLoader } = await import('./modules/pageLoader.js');
-    await initPageLoader();
-  }
+// Delayed loading mechanism
+let delayedModulesLoaded = false;
 
-  // Orientation Lock
-  if (settings?.webAppManifest?.displaySettings?.orientationLock === 'on') {
-    const { initOrientationLock } = await import('./modules/orientationLock.js');
-    await initOrientationLock();
-  }
+const loadDelayedModules = async () => {
+  if (delayedModulesLoaded) return;
+  delayedModulesLoaded = true;
 
-  // Installation Prompts
-  if (settings?.installation?.prompts?.feature === 'on' && userData?.platform?.isBrowser) {
-    // Install Url
-    const { initInstallUrl } = await import('./modules/installUrl.js');
-    await initInstallUrl();
+  // Remove event listeners to prevent multiple executions
+  document.removeEventListener('mousemove', loadDelayedModules);
+  document.removeEventListener('scroll', loadDelayedModules);
+  document.removeEventListener('touchstart', loadDelayedModules);
+  document.removeEventListener('keydown', loadDelayedModules);
 
-    // Installation Button
-    const { initInstallButton } = await import('./modules/installButton.js');
-    await initInstallButton();
-
-    // Installation Overlays
+  // Installation Overlays
+  if (settings?.installation?.prompts?.feature === 'on' && !isPwa()) {
     if (settings?.installation?.prompts?.skipFirstVisit !== 'on' || isReturningVisitor()) {
       // Installation Overlay - Header Banner
       if (settings?.installation?.prompts?.types?.headerBanner?.feature === 'on' && !getCookie('pwa_header_banner_overlay_shown')) {
@@ -118,6 +103,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initDarkMode();
   }
 
+  // Share Button
+  if (settings?.uiComponents?.shareButton?.feature === 'on' && navigator.share && settings?.uiComponents?.shareButton?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
+    const { initShareButton } = await import('./modules/shareButton.js');
+    await initShareButton();
+  }
+
   // Pull Down Refresh
   if (settings?.uiComponents?.pullDownRefresh?.feature === 'on' && settings?.uiComponents?.pullDownRefresh?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
     const { initPullDownRefresh } = await import('./modules/pullDownRefresh.js');
@@ -134,12 +125,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   if (settings?.uiComponents?.inactiveBlur?.feature === 'on' && settings?.uiComponents?.inactiveBlur?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
     const { initInactiveBlur } = await import('./modules/inactiveBlur.js');
     await initInactiveBlur();
-  }
-
-  // Toast Messages
-  if (settings?.uiComponents?.toastMessages?.feature === 'on' && settings?.uiComponents?.toastMessages?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
-    const { initToastMessages } = await import('./modules/toastMessages.js');
-    await initToastMessages();
   }
 
   // Smooth Page Transitions
@@ -178,4 +163,64 @@ document.addEventListener('DOMContentLoaded', async function () {
     const { initPushNotificationsButton } = await import('./modules/pushNotificationsButton.js');
     await initPushNotificationsButton();
   }
+};
+
+const setupDelayedLoading = () => {
+  // Set up event listeners for user interaction
+  document.addEventListener('mousemove', loadDelayedModules, { once: true, passive: true });
+  document.addEventListener('scroll', loadDelayedModules, { once: true, passive: true });
+  document.addEventListener('touchstart', loadDelayedModules, { once: true, passive: true });
+  document.addEventListener('keydown', loadDelayedModules, { once: true, passive: true });
+
+  // Set up timeout for 1.5 seconds
+  setTimeout(() => {
+    loadDelayedModules();
+  }, 1000);
+};
+
+// Load modules
+document.addEventListener('DOMContentLoaded', async function () {
+  // PWA Tracker (immediate)
+  if (isPwa()) {
+    const { initPwaTracker } = await import('./modules/pwaTracker.js');
+    await initPwaTracker();
+  }
+
+  // Custom CSS and JS (immediate)
+  if (isPwa() && settings?.uiComponents?.pwaCustomCssAndJs?.feature === 'on') {
+    const { initPwaCustomCssAndJs } = await import('./modules/pwaCustomCssAndJs.js');
+    await initPwaCustomCssAndJs();
+  }
+
+  // Page Loader (immediate)
+  if (settings?.appCapabilities?.smoothPageTransitions?.feature === 'off' && settings?.uiComponents?.pageLoader?.feature === 'on' && settings?.uiComponents?.pageLoader?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet) || (supported === 'desktop' && userData?.device?.isDesktop))) {
+    const { initPageLoader } = await import('./modules/pageLoader.js');
+    await initPageLoader();
+  }
+
+  // Orientation Lock (immediate)
+  if (settings?.webAppManifest?.displaySettings?.orientationLock === 'on') {
+    const { initOrientationLock } = await import('./modules/orientationLock.js');
+    await initOrientationLock();
+  }
+
+  // Installation related modules (immediate)
+  if (settings?.installation?.prompts?.feature === 'on' && !isPwa()) {
+    // Install Url (immediate)
+    const { initInstallUrl } = await import('./modules/installUrl.js');
+    await initInstallUrl();
+
+    // Installation Button (immediate)
+    const { initInstallButton } = await import('./modules/installButton.js');
+    await initInstallButton();
+  }
+
+  // Toast Messages (immediate - important for user feedback)
+  if (settings?.uiComponents?.toastMessages?.feature === 'on' && settings?.uiComponents?.toastMessages?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
+    const { initToastMessages } = await import('./modules/toastMessages.js');
+    await initToastMessages();
+  }
+
+  // Setup delayed loading for non-critical modules
+  setupDelayedLoading();
 });

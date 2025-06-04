@@ -1,5 +1,4 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const slug = daftplugAdmin.attr('data-slug');
+import { config } from '../admin.js';
 
 /**
  * Loads an image from URL
@@ -108,12 +107,12 @@ function generateRoundedIcon(icon, backgroundColor, size, radius) {
  * Generates a single splash screen
  * @param {HTMLImageElement} icon - Loaded icon image
  * @param {string} backgroundColor - Background color
- * @param {Object} config - Device configuration
+ * @param {Object} deviceConfig - Device configuration
  * @param {boolean} isLandscape - Whether to generate landscape version
  * @returns {string} Data URL of generated splash screen
  */
-function generateSingleSplashScreen(icon, backgroundColor, config, isLandscape = false) {
-  const dimensions = isLandscape ? { width: config.height, height: config.width } : { width: config.width, height: config.height };
+function generateSingleSplashScreen(icon, backgroundColor, deviceConfig, isLandscape = false) {
+  const dimensions = isLandscape ? { width: deviceConfig.height, height: deviceConfig.width } : { width: deviceConfig.width, height: deviceConfig.height };
 
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d', { alpha: false });
@@ -126,7 +125,7 @@ function generateSingleSplashScreen(icon, backgroundColor, config, isLandscape =
   ctx.fillRect(0, 0, dimensions.width, dimensions.height); // Fixed: using dimensions.width/height
 
   // Calculate icon size and position
-  const targetIconSize = calculateIconSize(dimensions.width, dimensions.height, config.device); // Fixed: using dimensions
+  const targetIconSize = calculateIconSize(dimensions.width, dimensions.height, deviceConfig.device); // Fixed: using dimensions
   const scale = targetIconSize / Math.max(icon.width, icon.height);
 
   const scaledWidth = Math.round(icon.width * scale);
@@ -391,12 +390,12 @@ async function generateSplashScreens(iconUrl, backgroundColor) {
     const screens = {};
 
     // Generate for all configurations
-    for (const config of SPLASH_SCREEN_CONFIGS) {
+    for (const deviceConfig of SPLASH_SCREEN_CONFIGS) {
       // Generate portrait version
-      screens[`${config.name}_portrait`] = generateSingleSplashScreen(icon, backgroundColor, config, false);
+      screens[`${deviceConfig.name}_portrait`] = generateSingleSplashScreen(icon, backgroundColor, deviceConfig, false);
 
       // Generate landscape version
-      screens[`${config.name}_landscape`] = generateSingleSplashScreen(icon, backgroundColor, config, true);
+      screens[`${deviceConfig.name}_landscape`] = generateSingleSplashScreen(icon, backgroundColor, deviceConfig, true);
     }
 
     return screens;
@@ -427,7 +426,7 @@ export default async function generateAndSendPwaAssets(iconUrl, backgroundColor,
   formDataFirst.append('maskableIcon', maskableIconBlob, 'icon-maskable.png');
   formDataFirst.append('roundedIcon', roundedIconBlob, 'icon-rounded.png');
 
-  let response = await fetch(wpApiSettings.root + slug + '/savePwaAssets', {
+  let response = await fetch(wpApiSettings.root + config.jsVars.slug + '/savePwaAssets', {
     method: 'POST',
     headers: { 'X-WP-Nonce': wpApiSettings.nonce },
     body: formDataFirst,
@@ -457,7 +456,7 @@ export default async function generateAndSendPwaAssets(iconUrl, backgroundColor,
     }
 
     // 5) Send each batch
-    response = await fetch(wpApiSettings.root + slug + '/savePwaAssets', {
+    response = await fetch(wpApiSettings.root + config.jsVars.slug + '/savePwaAssets', {
       method: 'POST',
       headers: { 'X-WP-Nonce': wpApiSettings.nonce },
       body: formData,

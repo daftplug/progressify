@@ -1,13 +1,12 @@
+import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
 
 export function initAppIconUpload() {
   handleAppIconUpload();
 }
 
 export function handleAppIconUpload() {
-  const settingAppIcon = daftplugAdmin.find('#settingAppIcon');
+  const settingAppIcon = config.daftplugAdminElm.find('#settingAppIcon');
   const appIconUploadBtn = settingAppIcon.find('[data-file-upload-btn]');
   const appIconDeleteBtn = settingAppIcon.find('[data-file-delete-btn]');
   const attachmentPlaceholder = settingAppIcon.find('[data-attachment-placeholder]');

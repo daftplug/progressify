@@ -1,7 +1,6 @@
+import { config } from '../admin.js';
 import { initApexcharts } from '../components/apexcharts.js';
 
-const daftplugAdmin = document.querySelector('#daftplugAdmin');
-const slug = daftplugAdmin.getAttribute('data-slug');
 const { __ } = wp.i18n;
 
 class PwaUsersDataManager {
@@ -11,11 +10,11 @@ class PwaUsersDataManager {
     this.chart = null;
 
     // UI elements
-    this.activeUsersElement = daftplugAdmin.querySelector('#activePwaUsers');
-    this.browserStatsMessage = daftplugAdmin.querySelector('#browserStatsMessage');
-    this.browserStatsContainer = daftplugAdmin.querySelector('#browserStatsContainer');
-    this.chartContainer = daftplugAdmin.querySelector('#pwaInstallsChart');
-    this.periodInputs = daftplugAdmin.querySelectorAll('input[name="installationPeriod"]');
+    this.activeUsersElement = config.daftplugAdminElm[0].querySelector('#activePwaUsers');
+    this.browserStatsMessage = config.daftplugAdminElm[0].querySelector('#browserStatsMessage');
+    this.browserStatsContainer = config.daftplugAdminElm[0].querySelector('#browserStatsContainer');
+    this.chartContainer = config.daftplugAdminElm[0].querySelector('#pwaInstallsChart');
+    this.periodInputs = config.daftplugAdminElm[0].querySelectorAll('input[name="installationPeriod"]');
   }
 
   init() {
@@ -35,7 +34,7 @@ class PwaUsersDataManager {
 
   async loadData() {
     try {
-      const response = await fetch(`${wpApiSettings.root}${slug}/fetchPwaUsersData`, {
+      const response = await fetch(`${wpApiSettings.root}${config.jsVars.slug}/fetchPwaUsersData`, {
         credentials: 'same-origin',
         headers: {
           'X-WP-Nonce': wpApiSettings.nonce,
@@ -288,22 +287,22 @@ class PwaUsersDataManager {
       this.browserStatsContainer.innerHTML = [
         ...validBrowsers.map(
           (browser) => `
-            <div class="p-3 bg-gray-100 dark:bg-neutral-700 rounded-lg">
+            <div class="p-3 bg-gray-100rounded-lg">
                 <img class="shrink-0 size-7 mb-4 ${browser.browser_name === 'Unknown' ? 'rounded-full' : ''}" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
-                <p class="text-sm text-gray-800 dark:text-neutral-200">
+                <p class="text-sm text-gray-800">
                     ${browser.browser_name}
                 </p>
-                <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
+                <p class="font-semibold text-lg text-gray-800">
                     ${browser.percentage}%
                 </p>
             </div>
             `
         ),
         ...Array(emptySlots).fill(`
-            <div class="p-3 border border-dashed border-gray-200 dark:border-neutral-700 rounded-lg">
+            <div class="p-3 border border-dashed border-gray-200 rounded-lg">
                 <div class="shrink-0 size-7 mb-4 rounded-full bg-gray-200"></div>
-                <p class="text-sm text-gray-800 dark:text-neutral-200 bg-gray-200 rounded-full h-2 w-16"></p>
-                <p class="font-semibold text-lg text-gray-800 dark:text-neutral-200">
+                <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16"></p>
+                <p class="font-semibold text-lg text-gray-800">
                   0
                 </p>
             </div>
@@ -314,7 +313,7 @@ class PwaUsersDataManager {
 
   generateBrowserMessage(browsers) {
     if (!browsers?.length || !browsers[0].browser_name) {
-      return __(`Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app.`, slug);
+      return __(`Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app.`, config.jsVars.slug);
     }
 
     const validBrowsers = browsers.filter((b) => b.browser_name);
@@ -322,17 +321,17 @@ class PwaUsersDataManager {
 
     // If we truly have 2 or more actual browsers in use...
     if (validBrowsers.length >= 2 && topBrowser.percentage == 50) {
-      return __(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, slug);
+      return __(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
     }
 
-    const prefix = topBrowser.percentage == 100 ? __('All', slug) : __('Most', slug);
+    const prefix = topBrowser.percentage == 100 ? __('All', config.jsVars.slug) : __('Most', config.jsVars.slug);
 
     if (topBrowser.browser_name == 'Chrome') {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.`, slug);
+      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.`, config.jsVars.slug);
     } else if (topBrowser.browser_name == 'Unknown') {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) browsers are unidentifiable, suggesting they are not using a popular browser, which could affect their PWA experience.`, slug);
+      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) browsers are unidentifiable, suggesting they are not using a popular browser, which could affect their PWA experience.`, config.jsVars.slug);
     } else {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using ${topBrowser.browser_name} browser. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, slug);
+      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using ${topBrowser.browser_name} browser. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
     }
   }
 
@@ -350,7 +349,7 @@ class PwaUsersDataManager {
       {
         series: [
           {
-            name: __('PWA Installs', slug),
+            name: __('PWA Installs', config.jsVars.slug),
             data: counts,
           },
         ],
@@ -381,8 +380,8 @@ class PwaUsersDataManager {
             const installCount = series[seriesIndex][dataPointIndex] || 0;
 
             return `
-              <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md dark:bg-neutral-800 dark:border-neutral-700 min-w-32">
-                <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg dark:!bg-neutral-800 dark:!border-neutral-700 dark:text-neutral-200 ">
+              <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md min-w-32">
+                <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg">
                   ${dateLabel}
                 </div>
                 <div class="apexcharts-tooltip-series-group !flex !justify-between order-1 text-[12px]">
@@ -390,13 +389,13 @@ class PwaUsersDataManager {
                     <span class="apexcharts-tooltip-marker !w-2.5 !h-2.5 !me-1.5 !rounded-sm bg-blue-600"></span>
                     <div class="apexcharts-tooltip-text">
                       <div class="apexcharts-tooltip-y-group !py-0.5">
-                        <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto dark:text-neutral-400">
-                          ${__('PWA Installs', slug)}:
+                        <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto">
+                          ${__('PWA Installs', config.jsVars.slug)}:
                         </span>
                       </div>
                     </div>
                   </span>
-                  <span class="apexcharts-tooltip-text-y-label text-gray-500 dark:text-neutral-400 ms-2">
+                  <span class="apexcharts-tooltip-text-y-label text-gray-500 ms-2">
                     ${installCount}
                   </span>
                 </div>
@@ -422,7 +421,7 @@ class PwaUsersDataManager {
       },
       series: [
         {
-          name: __('PWA Installs', slug),
+          name: __('PWA Installs', config.jsVars.slug),
           data: counts,
         },
       ],
@@ -505,8 +504,8 @@ class PwaUsersDataManager {
           const installCount = series[seriesIndex][dataPointIndex] || 0;
 
           return `
-            <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md dark:bg-neutral-800 dark:border-neutral-700 min-w-32">
-              <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg dark:!bg-neutral-800 dark:!border-neutral-700 dark:text-neutral-200 ">
+            <div class="ms-0.5 mb-2 bg-white border border-gray-200 text-gray-800 rounded-lg shadow-md min-w-32">
+              <div class="apexcharts-tooltip-title font-semibold !text-sm !bg-white !border-gray-200 text-gray-800 rounded-t-lg">
                 ${dateLabel}
               </div>
               <div class="apexcharts-tooltip-series-group !flex !justify-between order-1 text-[12px]">
@@ -514,13 +513,13 @@ class PwaUsersDataManager {
                   <span class="apexcharts-tooltip-marker !w-2.5 !h-2.5 !me-1.5 !rounded-sm" style="background: #2563eb"></span>
                   <div class="apexcharts-tooltip-text">
                     <div class="apexcharts-tooltip-y-group !py-0.5">
-                      <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto dark:text-neutral-400">
-                        ${__('PWA Installs', slug)}:
+                      <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto">
+                        ${__('PWA Installs', config.jsVars.slug)}:
                       </span>
                     </div>
                   </div>
                 </span>
-                <span class="apexcharts-tooltip-text-y-label text-gray-500 dark:text-neutral-400 ms-2">
+                <span class="apexcharts-tooltip-text-y-label text-gray-500 ms-2">
                   ${installCount}
                 </span>
               </div>

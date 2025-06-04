@@ -29,7 +29,6 @@ class Admin
   public $settings;
   public $licenseEndpoint;
   public $envatoItemId;
-  public $pages;
 
   public function __construct($config)
   {
@@ -52,7 +51,6 @@ class Admin
     $this->licenseKey = get_option("{$this->optionName}_license_key");
     $this->capability = 'manage_options';
     $this->settings = $config['settings'];
-    $this->pages = $this->generatePages();
 
     add_action('admin_menu', [$this, 'addMenuPage']);
     add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
@@ -143,12 +141,15 @@ class Admin
       // WP media
       wp_enqueue_media();
 
+      // Load code editor assets
+      wp_enqueue_code_editor(['type' => 'text/css']);
+      wp_enqueue_code_editor(['type' => 'text/javascript']);
+
       // Pass PHP variables to JS
       wp_localize_script(
         "{$this->slug}-admin",
         "{$this->optionName}_admin_js_vars",
         apply_filters("{$this->optionName}_admin_js_vars", [
-          'generalError' => esc_html__('An unexpected error occurred', $this->slug),
           'homeUrl' => trailingslashit(home_url('/', 'https')),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
           'iconUrl' => $this->licenseKey ? WebAppManifest::getPwaIconUrl('maskable', 180) : '',
@@ -159,7 +160,7 @@ class Admin
     }
   }
 
-  public function generatePages()
+  public function adminPages()
   {
     $pages = [
       [
@@ -232,7 +233,7 @@ class Admin
   {
     ?>
 <div id="daftplugAdmin" data-option-name="<?php echo esc_attr($this->optionName); ?>" data-slug="<?php echo esc_attr($this->slug); ?>">
-  <div id="daftplugAdminWrapper" class="relative bg-gray-50 text-balance -daftplugLoading">
+  <div id="daftplugAdminWrapper" class="relative bg-gray-50 -daftplugLoading">
     <?php if (!$this->licenseKey): ?>
     <?php include_once plugin_dir_path(__FILE__) . implode(DIRECTORY_SEPARATOR, ['templates', 'pages', 'activation.php']); ?>
     <?php else: ?>
@@ -251,14 +252,6 @@ class Admin
     register_rest_route($this->slug, '/requestLicenseProcessing', [
       'methods' => 'POST',
       'callback' => [$this, 'requestLicenseProcessing'],
-      'permission_callback' => function () {
-        return current_user_can($this->capability);
-      },
-    ]);
-
-    register_rest_route($this->slug, '/getSettings', [
-      'methods' => 'GET',
-      'callback' => [$this, 'getSettings'],
       'permission_callback' => function () {
         return current_user_can($this->capability);
       },
@@ -322,31 +315,6 @@ class Admin
     return new \WP_Error('invalid_action', 'Invalid action', ['status' => 400]);
   }
 
-  public function getSettings(\WP_REST_Request $request)
-  {
-    if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
-      return new \WP_Error('invalid_nonce', 'Invalid nonce', ['status' => 403]);
-    }
-
-    $settings = get_option("{$this->optionName}_settings", []);
-    return rest_ensure_response($settings);
-  }
-
-  private function arrayMergeDeep($array1, $array2)
-  {
-    $merged = $array1;
-
-    foreach ($array2 as $key => $value) {
-      if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
-        $merged[$key] = $this->arrayMergeDeep($merged[$key], $value);
-      } else {
-        $merged[$key] = $value;
-      }
-    }
-
-    return $merged;
-  }
-
   public function saveSettings(\WP_REST_Request $request)
   {
     if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
@@ -354,58 +322,18 @@ class Admin
     }
 
     $newSettings = $request->get_param('settings');
-    $settingPath = $request->get_param('settingPath');
+    $topLevelKey = $request->get_param('topLevelKey');
 
-    // Ensure newSettings is an array
-    if (!is_array($newSettings) || empty($newSettings)) {
-      $newSettings = [];
+    if (!is_array($newSettings) || !is_string($topLevelKey)) {
+      return new \WP_Error('invalid_settings', 'Invalid settings format', ['status' => 400]);
     }
 
-    if (!is_string($settingPath) || empty($settingPath)) {
-      return new \WP_Error('invalid_setting_path', 'Setting path must be a string', ['status' => 400]);
-    }
-
-    // Get current settings
     $currentSettings = get_option("{$this->optionName}_settings", []);
 
-    // Create a deep copy of current settings
-    $mergedSettings = json_decode(json_encode($currentSettings), true);
+    // Replace the entire top-level key
+    $currentSettings[$topLevelKey] = $newSettings[$topLevelKey];
 
-    // Get the path parts
-    $pathParts = explode('[', str_replace(']', '', $settingPath));
-    $pathParts = array_map('trim', $pathParts);
-
-    // Navigate to the correct location in the settings array
-    $current = &$mergedSettings;
-    $lastKey = array_pop($pathParts);
-
-    foreach ($pathParts as $part) {
-      if (!isset($current[$part])) {
-        $current[$part] = [];
-      }
-      $current = &$current[$part];
-    }
-
-    // Get the new value from the settings array
-    $newValue = isset($newSettings[$settingPath]) ? $newSettings[$settingPath] : [];
-
-    // If the new value is an array, merge it with existing value
-    if (is_array($newValue)) {
-      if (!isset($current[$lastKey]) || !is_array($current[$lastKey])) {
-        $current[$lastKey] = [];
-      }
-      $current[$lastKey] = $this->arrayMergeDeep($current[$lastKey], $newValue);
-    } else {
-      $current[$lastKey] = $newValue;
-    }
-
-    // Debug logging
-    error_log('Merged settings: ' . print_r($mergedSettings, true));
-
-    $saved = update_option("{$this->optionName}_settings", $mergedSettings);
-
-    // Set content type header to ensure proper JSON response
-    header('Content-Type: application/json');
+    $saved = update_option("{$this->optionName}_settings", $currentSettings);
 
     if ($saved) {
       return new \WP_REST_Response(['status' => 'success'], 200);

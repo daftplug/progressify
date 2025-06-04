@@ -273,7 +273,7 @@ class WebAppManifest
     $manifestName = trim(!empty($_GET['name']) ? $_GET['name'] : Plugin::getSetting('webAppManifest[appIdentity][appName]'));
     $manifestShortName = trim(!empty($_GET['shortName']) ? $_GET['shortName'] : trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12)));
     $manifestDescription = trim(!empty($_GET['description']) ? $_GET['description'] : trim(Plugin::getSetting('webAppManifest[appIdentity][description]')));
-    $manifestStartUrl = trim(!empty($_GET['startUrl']) ? $_GET['startUrl'] : add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]')))));
+    $manifestStartUrl = trim(!empty($_GET['startUrl']) ? $_GET['startUrl'] : trailingslashit(wp_make_link_relative(Plugin::getSetting('webAppManifest[displaySettings][startPage]'))));
 
     $manifest = [
       'lang' => get_bloginfo('language') ?: 'en-US',
@@ -461,7 +461,7 @@ class WebAppManifest
       $queryArgs['name'] = !empty($postTitle) ? $postTitle : trim(Plugin::getSetting('webAppManifest[appIdentity][appName]'));
       $queryArgs['shortName'] = !empty($postTitle) ? trim(substr($postTitle, 0, 12)) : trim(substr(Plugin::getSetting('webAppManifest[appIdentity][shortName]'), 0, 12));
       $queryArgs['description'] = !empty($postDescription) ? $postDescription : trim(Plugin::getSetting('webAppManifest[appIdentity][description]'));
-      $queryArgs['startUrl'] = add_query_arg('isPwa', 'true', trailingslashit(wp_make_link_relative($postUrl)));
+      $queryArgs['startUrl'] = trailingslashit(wp_make_link_relative($postUrl));
 
       $manifestUrl = add_query_arg($queryArgs, $manifestUrl);
     }

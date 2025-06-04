@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
       <!-- Nav -->
       <nav class="pb-3 w-full flex flex-col flex-wrap" id="daftplugAdminMenu">
         <ul>
-          <?php foreach ($this->pages as $page): ?>
+          <?php foreach ($this->adminPages() as $page): ?>
           <?php if (isset($page['menuTitle'])): ?>
           <!-- Page Link -->
           <li class="px-5 mb-1.5">

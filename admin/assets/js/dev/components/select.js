@@ -1,17 +1,17 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initSelect() {
   handleSelect();
 }
 
 export function handleSelect() {
-  daftplugAdmin.find('select[data-dp-select]:not([data-processed="true"])').each(function () {
+  config.daftplugAdminElm.find('select[data-dp-select]:not([data-processed="true"])').each(function () {
     const self = jQuery(this);
-    const config = JSON.parse(self.attr('data-dp-select') || '{}');
-    const placeholder = config.placeholder || 'Select...';
-    const size = config.size || 'sm';
-    const hasSearch = config.hasSearch || false;
-    const showIconOnly = config.showIconOnly || false;
+    const selectConfig = JSON.parse(self.attr('data-dp-select') || '{}');
+    const placeholder = selectConfig.placeholder || 'Select...';
+    const size = selectConfig.size || 'sm';
+    const hasSearch = selectConfig.hasSearch || false;
+    const showIconOnly = selectConfig.showIconOnly || false;
     const sizeClasses = {
       xs: 'text-xs',
       sm: 'text-sm',
@@ -19,7 +19,7 @@ export function handleSelect() {
       lg: 'text-lg',
     };
     const textSizeClass = sizeClasses[size] || sizeClasses.sm;
-    const toggleClasses = config.toggleClasses ? `${config.toggleClasses} ${textSizeClass}` : `truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 ps-3 pe-7 flex items-center text-start flex-nowrap bg-white border border-gray-200 text-gray-500 ${textSizeClass} rounded-lg shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700`;
+    const toggleClasses = selectConfig.toggleClasses ? `${selectConfig.toggleClasses} ${textSizeClass}` : `truncate max-w-full overflow-hidden data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 w-full relative py-2 ps-3 pe-7 flex items-center text-start flex-nowrap bg-white border border-gray-200 text-gray-500 ${textSizeClass} rounded-lg shadow-sm align-middle focus:outline-none focus:ring-2 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1]`;
 
     const isMultiple = self.attr('multiple') !== undefined;
 
@@ -46,18 +46,18 @@ export function handleSelect() {
       }
 
       if (description) {
-        descriptionMarkup = `<div class="text-xs mt-0.5 text-gray-500 dark:text-neutral-500" data-description>${description}</div>`;
+        descriptionMarkup = `<div class="text-xs mt-0.5 text-gray-500" data-description>${description}</div>`;
       }
 
       const titleClass = description ? 'font-semibold' : '';
 
       optionTags += `
-        <div data-value="${value}" tabindex="${index}" class="group data-[selected=true]:bg-gray-100 dark:data-[selected=true]:bg-neutral-800 py-2 px-4 ${textSizeClass} text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200">
+        <div data-value="${value}" tabindex="${index}" class="group data-[selected=true]:bg-gray-100 py-2 px-4 ${textSizeClass} text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none">
           <div class="flex items-center min-w-max w-full">
             ${iconMarkup}
-            <div class="${titleClass} text-gray-800 dark:text-neutral-200 pr-3 flex-shrink-0" data-title>${title}</div>
+            <div class="${titleClass} text-gray-800 pr-3 flex-shrink-0" data-title>${title}</div>
             <span class="hidden group-data-[selected=true]:block ms-auto">
-              <svg class="flex-shrink-0 size-3.5 text-gray-800 dark:text-neutral-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="flex-shrink-0 size-3.5 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </span>
@@ -76,12 +76,12 @@ export function handleSelect() {
       <button type="button" data-dp-select-toggle class="${toggleClasses}">
         <span class="text-gray-400">${placeholder}</span>
       </button>
-      <div data-dp-select-dropdown class="absolute mt-3 z-50 min-w-44 max-h-72 ${hasSearch ? 'pb-1 px-1' : 'p-1'} space-y-0.5 overflow-hidden overflow-y-auto bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 top-full hidden dark:bg-neutral-900 dark:border dark:border-neutral-700">
+      <div data-dp-select-dropdown class="absolute mt-3 z-50 min-w-44 max-h-72 ${hasSearch ? 'pb-1 px-1' : 'p-1'} space-y-0.5 overflow-hidden overflow-y-auto bg-white rounded-xl shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 top-full hidden">
         ${
           hasSearch
             ? `
-          <div class="bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900">
-            <input type="text" class="block w-full text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3" placeholder="Search..." data-dp-select-search>
+          <div class="bg-white p-2 -mx-1 sticky top-0">
+            <input type="text" class="block w-full text-sm border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] py-2 px-3" placeholder="Search..." data-dp-select-search>
           </div>
         `
             : ''
@@ -91,7 +91,7 @@ export function handleSelect() {
         </div>
       </div>
       <div class="absolute top-1/2 end-3 -translate-y-1/2">
-        <svg class="flex-shrink-0 size-3.5 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="flex-shrink-0 size-3.5 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m7 15 5 5 5-5"></path>
           <path d="m7 9 5-5 5 5"></path>
         </svg>
@@ -162,7 +162,7 @@ export function handleSelect() {
 
     toggle.on('click', function (event) {
       event.stopPropagation();
-      daftplugAdmin.find('[data-dp-select-dropdown]').not(dropdown).addClass('hidden');
+      config.daftplugAdminElm.find('[data-dp-select-dropdown]').not(dropdown).addClass('hidden');
 
       // Position the dropdown before showing it
       dropdown.removeClass('hidden');
@@ -201,7 +201,7 @@ export function handleSelect() {
           optionsContainer.find('.no-results-message').remove();
           if (!hasVisibleOptions) {
             optionsContainer.append(`
-              <div class="no-results-message py-2 px-4 text-sm text-gray-500 dark:text-neutral-400 text-center">
+              <div class="no-results-message py-2 px-4 text-sm text-gray-500 text-center">
                 No results found
               </div>
             `);
@@ -361,8 +361,8 @@ function updateCustomSelect(select, toggle, dropdown, selectedValues, placeholde
         return `
           <div class="inline-flex items-center">
             ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ''}
-            <div class="text-gray-800 dark:text-neutral-200 truncate">${selectedTitle}</div>
-            ${index < displayedItems.length - 1 ? '<span class="text-gray-800 dark:text-neutral-200 me-1">,</span>' : ''}
+            <div class="text-gray-800 truncate">${selectedTitle}</div>
+            ${index < displayedItems.length - 1 ? '<span class="text-gray-800 me-1">,</span>' : ''}
           </div>
         `;
       })
@@ -388,7 +388,7 @@ function updateCustomSelect(select, toggle, dropdown, selectedValues, placeholde
       toggle.html(`
         <div class="flex items-center">
           ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ''}
-          <div class="text-gray-800 dark:text-neutral-200 truncate">${selectedTitle}</div>
+          <div class="text-gray-800 truncate">${selectedTitle}</div>
         </div>
       `);
     }

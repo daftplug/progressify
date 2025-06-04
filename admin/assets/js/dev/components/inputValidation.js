@@ -1,11 +1,11 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initInputValidation() {
   validateInputs();
 }
 
 export function validateInputs() {
-  const inputs = daftplugAdmin.find('input, textarea, select');
+  const inputs = config.daftplugAdminElm.find('input, textarea, select');
 
   inputs.each(function () {
     const self = jQuery(this);

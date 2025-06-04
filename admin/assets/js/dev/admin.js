@@ -1,3 +1,15 @@
+export const config = (() => {
+  const daftplugAdminElm = jQuery('#daftplugAdmin');
+  const optionName = daftplugAdminElm.attr('data-option-name');
+  const jsVars = window[optionName + '_admin_js_vars'] || {};
+
+  return {
+    daftplugAdminElm,
+    optionName,
+    jsVars,
+  };
+})();
+
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
 import { initDependentMarkup } from './components/dependentMarkup.js';
@@ -18,6 +30,7 @@ import { initPwaScoreData } from './modules/pwaScoreData.js';
 import { initAppIconUpload } from './modules/appIconUpload.js';
 import { initAppShortcutIconUpload } from './modules/appShortcutIconUpload.js';
 import { initAppScreenshotsUpload } from './modules/appScreenshotsUpload.js';
+import { initCustomCssJsEditor } from './modules/customCssJsEditor.js';
 import { initPushImageUpload } from './modules/pushImageUpload.js';
 import { initPushSubscribers } from './modules/pushSubscribers.js';
 import { initModalPushNotifications } from './modules/modalPushNotifications.js';
@@ -65,6 +78,7 @@ const moduleMap = {
     { init: initPushSubscribers, name: 'pushSubscribers' },
     { init: initModalPushNotifications, name: 'modalPushNotifications' },
   ],
+  '#/uiComponents/': [{ init: initCustomCssJsEditor, name: 'customCssJsEditor' }],
   '#/generateMobileApps/': [{ init: initGenerateMobileApps, name: 'generateMobileApps' }],
   '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
   '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
@@ -138,9 +152,4 @@ window.addEventListener('hashchange', () => {
     window.handleHashChange();
   }
   setTimeout(initializeModules, 0);
-});
-
-window.addEventListener('beforeunload', () => {
-  // Add loading state before page is unloaded
-  document.querySelector('#daftplugAdminWrapper').classList.add('-daftplugLoading');
 });

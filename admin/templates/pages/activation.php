@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 <main class="grid 2xl:grid-cols-7 xl:grid-cols-8 w-full bg-gray-50 h-[calc(100svh-32px)] overflow-hidden" data-page-id="activation">
   <div class="hidden xl:flex items-center justify-center 2xl:col-span-2 xl:col-span-3 bg-gray-100 p-6">
     <div>
-      <span class="text-xl font-medium text-gray-800 dark:text-white"><?php echo esc_html($this->name); ?></span>
+      <span class="text-xl font-medium text-gray-800"><?php echo esc_html($this->name); ?></span>
       <img src="<?php echo esc_url(plugins_url('admin/assets/media/illustrations/plugin-features.svg', $this->pluginFile)); ?>" alt="<?php echo esc_attr($this->menuTitle); ?>" />
     </div>
   </div>

@@ -1,24 +1,21 @@
+import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const optionName = daftplugAdmin.attr('data-option-name');
-const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initAppScreenshotsUpload() {
   handleAppScreenshotsUpload();
 }
 
 export function handleAppScreenshotsUpload() {
-  const settingAppScreenshots = daftplugAdmin.find('#settingAppScreenshots');
+  const settingAppScreenshots = config.daftplugAdminElm.find('#settingAppScreenshots');
   const appScreenshotsUploadBtn = settingAppScreenshots.find('[data-file-upload]');
   const screenshotsContainer = settingAppScreenshots.find('[data-screenshots-container]');
   const dropzone = settingAppScreenshots.find('[data-attachment-dropzone]');
   const maxFiles = 5;
 
-  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=750&vph=1334&format=png`, `https://s0.wp.com/mshots/v1/${jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=1280&vph=800&format=png`];
+  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${config.jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=750&vph=1334&format=png`, `https://s0.wp.com/mshots/v1/${config.jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=1280&vph=800&format=png`];
 
   function initializeScreenshots() {
-    const savedScreenshots = jsVars.settings.webAppManifest?.appIdentity?.appScreenshots || [];
+    const savedScreenshots = config.jsVars.settings.webAppManifest?.appIdentity?.appScreenshots || [];
     screenshotsContainer.empty();
 
     if (savedScreenshots.length === 0) {
@@ -217,7 +214,7 @@ export function handleAppScreenshotsUpload() {
 
       const button = jQuery('<button>', {
         type: 'button',
-        class: 'size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700',
+        class: 'size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-50',
       });
 
       const svg = jQuery(document.createElementNS('http://www.w3.org/2000/svg', 'svg')).attr({

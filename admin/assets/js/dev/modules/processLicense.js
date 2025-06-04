@@ -1,10 +1,8 @@
+import { config } from '../admin.js';
 import showToast from '../components/toast.js';
 
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const slug = daftplugAdmin.attr('data-slug');
-
 export function initProcessLicense() {
-  daftplugAdmin.find('form[name="licenseActivationForm"]').on('submit', activateLicense);
+  config.daftplugAdminElm.find('form[name="licenseActivationForm"]').on('submit', activateLicense);
 }
 
 async function sendLicenseProcessRequest(licenseKey, action) {
@@ -14,7 +12,7 @@ async function sendLicenseProcessRequest(licenseKey, action) {
   });
 
   try {
-    const response = await fetch(wpApiSettings.root + slug + '/requestLicenseProcessing', {
+    const response = await fetch(wpApiSettings.root + config.jsVars.slug + '/requestLicenseProcessing', {
       method: 'POST',
       headers: {
         'X-WP-Nonce': wpApiSettings.nonce,
@@ -63,17 +61,17 @@ async function activateLicense(e) {
     const response = await sendLicenseProcessRequest(licenseKey, 'activate');
 
     if (response.status === 'success') {
-      showToast('Success', 'License has been activated successfully!', 'success', 'top-right', true, false);
+      showToast(__('Success', config.jsVars.slug), __('License has been activated successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
       window.location.hash = '#/dashboard/';
       window.location.reload();
     } else if (response.status === 'fail') {
-      showToast('Fail', response.message || 'License activation failed.', 'fail', 'top-right', true, false);
+      showToast(__('Fail', config.jsVars.slug), response.message || __('License activation failed.', config.jsVars.slug), 'fail', 'top-right', true, false);
     } else {
-      showToast('Fail', 'Invalid response from the server. Please try again.', 'fail', 'top-right', true, false);
+      showToast(__('Fail', config.jsVars.slug), __('Invalid response from the server. Please try again.', config.jsVars.slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
     console.error('License activation error:', error);
-    showToast('Fail', `Error: ${error.message}`, 'fail', 'top-right', true, false);
+    showToast(__('Fail', config.jsVars.slug), `Error: ${error.message}`, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-activating');
   }

@@ -286,10 +286,10 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
-      "target": "pushNotifications[button][feature]",
-      "state": "checked",
-      "mode": "availability"
-    }'>
+        "target": "pushNotifications[button][feature]",
+        "state": "checked",
+        "mode": "availability"
+      }'>
         <!-- Button Position -->
         <div id="settingPushButtonPosition">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
@@ -921,7 +921,7 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <input name="pushNotifications[notification][url]" type="url" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Notification URL', $this->slug); ?>" autocomplete="off" required>
+          <input name="pushNotifications[notification][url]" type="url" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Notification URL', $this->slug); ?>" value="<?php echo esc_url(home_url('/', 'https')); ?>" autocomplete="off" required>
         </div>
         <div>
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">

@@ -67,7 +67,6 @@ class Frontend
       "{$this->slug}-frontend",
       "{$this->optionName}_frontend_js_vars",
       apply_filters("{$this->optionName}_frontend_js_vars", [
-        'generalError' => __('An unexpected error occurred', $this->slug),
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'restUrl' => get_rest_url(),
@@ -103,10 +102,6 @@ class Frontend
             'isQq' => Plugin::isPlatform('qq'),
             'isUc' => Plugin::isPlatform('uc'),
             'isYandex' => Plugin::isPlatform('yandex'),
-          ],
-          'platform' => [
-            'isBrowser' => Plugin::isPlatform('browser'),
-            'isPwa' => Plugin::isPlatform('pwa'),
           ],
         ],
         'pluginsData' => [

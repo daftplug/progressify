@@ -1,4 +1,4 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function initDropdown() {
   handleDropdown();
@@ -26,10 +26,10 @@ export function handleDropdown() {
   });
 
   // Start observing the document with the configured parameters
-  observer.observe(daftplugAdmin[0], { childList: true, subtree: true });
+  observer.observe(config.daftplugAdminElm[0], { childList: true, subtree: true });
 }
 
-function setupDropdowns(container = daftplugAdmin) {
+function setupDropdowns(container = config.daftplugAdminElm) {
   const dropdowns = container.is('[data-dp-dropdown]') ? container : container.find('[data-dp-dropdown]');
 
   dropdowns.each(function () {
@@ -42,8 +42,8 @@ function setupDropdowns(container = daftplugAdmin) {
 
     const toggle = self.find('.dp-dropdown-toggle');
     const menu = self.find('.dp-dropdown-menu');
-    const config = JSON.parse(self.attr('data-dp-dropdown'));
-    const trigger = config.trigger || 'click';
+    const dropdownConfig = JSON.parse(self.attr('data-dp-dropdown'));
+    const trigger = dropdownConfig.trigger || 'click';
 
     const openDropdown = () => {
       self.attr('data-open', true);
@@ -86,7 +86,7 @@ function setupDropdowns(container = daftplugAdmin) {
 }
 
 function hideAllDropdowns() {
-  daftplugAdmin.find('[data-dp-dropdown]').each(function () {
+  config.daftplugAdminElm.find('[data-dp-dropdown]').each(function () {
     const self = jQuery(this);
     self.attr('data-open', false);
   });

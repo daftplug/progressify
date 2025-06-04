@@ -1,3 +1,12 @@
+export const isPwa = () => {
+  const isPwaDisplayMode = window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches || window.matchMedia('(display-mode: minimal-ui)').matches || window.navigator.standalone;
+  const isTwa = document.referrer.startsWith('android-app://');
+  const isPwaParam = hasUrlParam('isPwa', 'true');
+  const pwaSession = sessionStorage.getItem('isPwa');
+
+  return isPwaDisplayMode || isTwa || isPwaParam || pwaSession;
+};
+
 export const getContrastTextColor = (backgroundColor) => {
   const temp = document.createElement('div');
   temp.style.backgroundColor = backgroundColor;

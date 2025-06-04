@@ -1,8 +1,5 @@
+import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
-
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const optionName = daftplugAdmin.attr('data-option-name');
-const jsVars = window[optionName + '_admin_js_vars'] || { settings: {} };
 
 export function initAppShortcutIconUpload() {
   handleAppShortcutIconUpload();
@@ -10,7 +7,7 @@ export function initAppShortcutIconUpload() {
 }
 
 function handleAppShortcutIconUpload() {
-  const settingAppShortcuts = daftplugAdmin.find('#settingAppShortcuts');
+  const settingAppShortcuts = config.daftplugAdminElm.find('#settingAppShortcuts');
 
   settingAppShortcuts.on('click', '[data-file-upload]', function (e) {
     e.preventDefault();
@@ -60,7 +57,7 @@ function handleAppShortcutIconUpload() {
 }
 
 function populateInitialShortcutIcons() {
-  const elements = daftplugAdmin.find('[data-dp-copy-markup-target^="appShortcut"]');
+  const elements = config.daftplugAdminElm.find('[data-dp-copy-markup-target^="appShortcut"]');
 
   elements.each(function (index, el) {
     const appShortcutIconInput = jQuery(el).find('input[name*="[icon]"]');
@@ -69,7 +66,7 @@ function populateInitialShortcutIcons() {
     const attachmentLoader = jQuery(el).find('[data-attachment-loader]');
     let imageID;
 
-    JSON.parse(JSON.stringify(jsVars.settings), (key, value) => {
+    JSON.parse(JSON.stringify(config.jsVars.settings), (key, value) => {
       if (key === 'appShortcuts') {
         imageID = value[index]?.icon;
       }

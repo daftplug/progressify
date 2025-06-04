@@ -263,7 +263,7 @@ class Dashboard
         'weight' => 25,
         'condition' => !is_ssl(),
         'title' => esc_html__('Enable secure HTTPS on your server', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
         'action' => [
           'tooltip' => esc_html__('It appears you do not have a secure HTTPS server and PWA requires HTTPS connection to function correctly. Please set up it on your server or contact to your hosting provider to enable it for you.', $this->slug),
         ],
@@ -272,7 +272,7 @@ class Dashboard
         'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][appIcon]'),
         'title' => esc_html__('Upload or select your PWA App Icon', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingAppIcon',
         ],
@@ -281,7 +281,7 @@ class Dashboard
         'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][appName]'),
         'title' => esc_html__('Define your PWA web app Name', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingAppName',
         ],
@@ -290,7 +290,7 @@ class Dashboard
         'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][shortName]'),
         'title' => esc_html__('Define your PWA web app Short Name', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 15 4-8 4 8"/><path d="M4 13h6"/><circle cx="18" cy="12" r="3"/><path d="M21 9v6"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 15 4-8 4 8"/><path d="M4 13h6"/><circle cx="18" cy="12" r="3"/><path d="M21 9v6"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingShortName',
         ],
@@ -299,7 +299,7 @@ class Dashboard
         'weight' => 10,
         'condition' => !Plugin::getSetting('webAppManifest[appIdentity][categories]'),
         'title' => esc_html__('Choose your PWA web app categories', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingCategories',
         ],
@@ -307,7 +307,7 @@ class Dashboard
       'installationPrompts' => [
         'condition' => Plugin::getSetting('installation[prompts][feature]') !== 'on',
         'title' => esc_html__('Enable PWA Installation Prompts', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#subsectionInstallationPrompts',
         ],
@@ -315,7 +315,7 @@ class Dashboard
       'installationOverlays' => [
         'condition' => Plugin::getSetting('installation[prompts][feature]') == 'on' && (Plugin::getSetting('installation[prompts][types][headerBanner][feature]') !== 'on' && Plugin::getSetting('installation[prompts][types][snackbar][feature]') !== 'on' && Plugin::getSetting('installation[prompts][types][navigationMenu][feature]') !== 'on' && Plugin::getSetting('installation[prompts][types][inFeed][feature]') !== 'on' && Plugin::getSetting('installation[prompts][types][blogPopup][feature]') !== 'on' && Plugin::getSetting('installation[prompts][types][woocommerceCheckout][feature]') !== 'on'),
         'title' => esc_html__('Enable one of the PWA Installation Overlays', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v6"/><path d="M9 10h6"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v6"/><path d="M9 10h6"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingPromptsOverlays',
         ],
@@ -323,7 +323,7 @@ class Dashboard
       'offlineCache' => [
         'condition' => Plugin::getSetting('offlineUsage[cache][feature]') !== 'on',
         'title' => esc_html__('Enable Offline Cache for your PWA', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#subsectionOfflineCache',
         ],
@@ -331,7 +331,7 @@ class Dashboard
       'advancedWebCapabilities' => [
         'condition' => Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on',
         'title' => esc_html__('Enable Advanced Web Capabilities for your PWA', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v4"/><path d="m15.2 4.9-.9-.4"/><path d="m15.2 7.1-.9.4"/><path d="m16.9 3.2-.4-.9"/><path d="m16.9 8.8-.4.9"/><path d="m19.5 2.3-.4.9"/><path d="m19.5 9.7-.4-.9"/><path d="m21.7 4.5-.9.4"/><path d="m21.7 7.5-.9-.4"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v4"/><path d="m15.2 4.9-.9-.4"/><path d="m15.2 7.1-.9.4"/><path d="m16.9 3.2-.4-.9"/><path d="m16.9 8.8-.4.9"/><path d="m19.5 2.3-.4.9"/><path d="m19.5 9.7-.4-.9"/><path d="m21.7 4.5-.9.4"/><path d="m21.7 7.5-.9-.4"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#subsectionAdvancedWebCapabilities',
         ],
@@ -339,7 +339,7 @@ class Dashboard
       'backgroundSync' => [
         'condition' => Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') == 'on' && Plugin::getSetting('appCapabilities[advancedWebCapabilities][backgroundSync]') !== 'on',
         'title' => esc_html__('Enable the Background Sync feature', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingBackgroundSync',
         ],
@@ -347,7 +347,7 @@ class Dashboard
       'periodicBackgroundSync' => [
         'condition' => Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') == 'on' && Plugin::getSetting('appCapabilities[advancedWebCapabilities][periodicBackgroundSync]') !== 'on',
         'title' => esc_html__('Enable the Periodic Background Sync feature', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><circle cx="12" cy="12" r="1"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><circle cx="12" cy="12" r="1"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#settingPeriodicBackgroundSync',
         ],
@@ -355,7 +355,7 @@ class Dashboard
       'pushNotificationsPromptOrButton' => [
         'condition' => Plugin::getSetting('pushNotifications[prompt][feature]') !== 'on' && Plugin::getSetting('pushNotifications[button][feature]') !== 'on',
         'title' => esc_html__('Enable Push Notifications Prompt or Button', $this->slug),
-        'icon' => '<svg class="shrink-0 size-4 text-gray-600 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>',
+        'icon' => '<svg class="shrink-0 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>',
         'action' => [
           'findAndHighlightElement' => '#subsectionPushPrompt',
         ],

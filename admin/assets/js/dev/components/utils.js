@@ -1,10 +1,10 @@
-const daftplugAdmin = jQuery('#daftplugAdmin');
+import { config } from '../admin.js';
 
 export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
-  const allPages = daftplugAdmin.find('[data-page-id]');
-  const allMenuItems = daftplugAdmin.find('nav a[data-page-id]');
-  const allSubpages = daftplugAdmin.find('[data-subpage-id]');
-  const allSubmenuItems = daftplugAdmin.find('nav a[data-subpage-id]');
+  const allPages = config.daftplugAdminElm.find('[data-page-id]');
+  const allMenuItems = config.daftplugAdminElm.find('nav a[data-page-id]');
+  const allSubpages = config.daftplugAdminElm.find('[data-subpage-id]');
+  const allSubmenuItems = config.daftplugAdminElm.find('nav a[data-subpage-id]');
   const page = allPages.filter(`[data-page-id="${pageId}"]`);
   const menuItem = allMenuItems.filter(`[data-page-id="${pageId}"]`);
   const subPage = allSubpages.filter(`[data-subpage-id="${pageId}-${subPageId}"]`);
@@ -64,7 +64,7 @@ export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
 
     // Scroll to top of the content only if scrollToTop is true
     if (scrollToTop) {
-      daftplugAdmin.find('main#content').scrollTop(0);
+      config.daftplugAdminElm.find('main#content').scrollTop(0);
     }
 
     setTimeout(resolve, 0);
@@ -102,7 +102,7 @@ export function highlightElement(selector) {
   const spotlight = () => {
     return new Promise((resolve) => {
       const overlay = createOverlay();
-      daftplugAdmin.get(0).appendChild(overlay);
+      config.daftplugAdminElm[0].appendChild(overlay);
       element.style.cssText = `
         z-index: 9999999999999999999 !important;
         position: relative !important;

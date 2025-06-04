@@ -1,15 +1,12 @@
+import { config } from '../admin.js';
 import jQuery from '../components/utils.js';
 import showToast from '../components/toast.js';
 
-const daftplugAdmin = jQuery('#daftplugAdmin');
-const optionName = daftplugAdmin.attr('data-option-name');
-const slug = daftplugAdmin.attr('data-slug');
-const jsVars = window[optionName + '_admin_js_vars'];
 const { __ } = wp.i18n;
 
 export function initModalPushNotifications() {
-  daftplugAdmin.find('form[id="send-notification-popup"]').on('submit', doModalPushNotification);
-  daftplugAdmin.find('form[id="send-notification-popup"] #previewPushNotification').on('click', previewPushNotification);
+  config.daftplugAdminElm.find('form[id="send-notification-popup"]').on('submit', doModalPushNotification);
+  config.daftplugAdminElm.find('form[id="send-notification-popup"] #previewPushNotification').on('click', previewPushNotification);
 }
 
 function doModalPushNotification(e) {
@@ -17,7 +14,7 @@ function doModalPushNotification(e) {
   const form = jQuery(e.target);
   const parsedData = JSON.parse(form.daftplugSerialize());
   const sendNotificationBtn = form.find('button[type="submit"]');
-  const intractableComponents = daftplugAdmin.find('header, aside, button, footer');
+  const intractableComponents = config.daftplugAdminElm.find('header, aside, button, footer');
 
   sendNotificationBtn.attr('data-sending', true);
   intractableComponents.attr('data-disabled', true);
@@ -26,7 +23,7 @@ function doModalPushNotification(e) {
     notificationData: parsedData.pushNotifications.notification,
   });
 
-  fetch(wpApiSettings.root + slug + '/doModalPushNotification', {
+  fetch(wpApiSettings.root + config.jsVars.slug + '/doModalPushNotification', {
     method: 'POST',
     headers: {
       'X-WP-Nonce': wpApiSettings.nonce,
@@ -46,7 +43,7 @@ function doModalPushNotification(e) {
       }
     })
     .catch((error) => {
-      showToast('Fail', error.message || __('Sending failed. There was an error on server.', slug), 'fail', 'top-right', true, false);
+      showToast('Fail', error.message || __('Sending failed. There was an error on server.', config.jsVars.slug), 'fail', 'top-right', true, false);
     })
     .finally(() => {
       sendNotificationBtn.removeAttr('data-sending');
@@ -63,7 +60,7 @@ function previewPushNotification(e) {
     title: form.find('[name="pushNotifications[notification][title]"]').val() || '',
     body: form.find('[name="pushNotifications[notification][message]"]').val() || '',
     image: form.find('[data-attachment-holder]').attr('src') || '',
-    icon: jsVars.iconUrl || '',
+    icon: config.jsVars.iconUrl || '',
     tag: 'notification',
     renotify: true,
     requireInteraction: form.find('[name="pushNotifications[notification][persistent]"]').is(':checked'),
@@ -72,7 +69,7 @@ function previewPushNotification(e) {
 
   // Check browser support
   if (!('Notification' in window)) {
-    showToast('Fail', __('Notifications are not supported by your browser.', slug), 'fail', 'top-right', true, false);
+    showToast(__('Fail', config.jsVars.slug), __('Notifications are not supported by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
     return;
   }
 
@@ -84,10 +81,10 @@ function previewPushNotification(e) {
       if (permission === 'granted') {
         new Notification(notificationData.title, notificationData);
       } else {
-        showToast('Fail', __('You need to accept the notifications permission to preview.', slug), 'fail', 'top-right', true, false);
+        showToast(__('Fail', config.jsVars.slug), __('You need to accept the notifications permission to preview.', config.jsVars.slug), 'fail', 'top-right', true, false);
       }
     });
   } else {
-    showToast('Fail', __('Push notifications are blocked by your browser.', slug), 'fail', 'top-right', true, false);
+    showToast(__('Fail', config.jsVars.slug), __('Push notifications are blocked by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
   }
 }

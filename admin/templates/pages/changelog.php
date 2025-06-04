@@ -4,6 +4,19 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.2.1" data-date="June 3, 2025" data-title="Share Button and Custom URLs" data-description="The update includes addition of Share Button and significant improvements.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added PWA Custom CSS/JS feature.</li>
+      <li>Added Share Button feature.</li>
+      <li>Added more icons to Navigation Tab Bar.</li>
+      <li>Navigation Tab Bar now supports custom URLs.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Improved admin-side stability and performance.</li>
+      <li>Significantly improved the frontend performance of the plugin.</li>
+      <li>Improved PWA detection and installation prompt compatibility.</li>
+    </ul>
+  </div>
   <div data-version="v1.2.0" data-date="May 19, 2025" data-title="Dynamic Manifest" data-description="The update includes addition of Dynamic Manifest feature and small fixes.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added Dynamic Manifest option.</li>
