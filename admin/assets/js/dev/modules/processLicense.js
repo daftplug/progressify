@@ -61,17 +61,17 @@ async function activateLicense(e) {
     const response = await sendLicenseProcessRequest(licenseKey, 'activate');
 
     if (response.status === 'success') {
-      showToast(__('Success', config.jsVars.slug), __('License has been activated successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
+      showToast(wp.i18n.__('Success', config.jsVars.slug), wp.i18n.__('License has been activated successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
       window.location.hash = '#/dashboard/';
       window.location.reload();
     } else if (response.status === 'fail') {
-      showToast(__('Fail', config.jsVars.slug), response.message || __('License activation failed.', config.jsVars.slug), 'fail', 'top-right', true, false);
+      showToast(wp.i18n.__('Fail', config.jsVars.slug), response.message || wp.i18n.__('License activation failed.', config.jsVars.slug), 'fail', 'top-right', true, false);
     } else {
-      showToast(__('Fail', config.jsVars.slug), __('Invalid response from the server. Please try again.', config.jsVars.slug), 'fail', 'top-right', true, false);
+      showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Invalid response from the server. Please try again.', config.jsVars.slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
     console.error('License activation error:', error);
-    showToast(__('Fail', config.jsVars.slug), `Error: ${error.message}`, 'fail', 'top-right', true, false);
+    showToast(wp.i18n.__('Fail', config.jsVars.slug), `Error: ${error.message}`, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-activating');
   }

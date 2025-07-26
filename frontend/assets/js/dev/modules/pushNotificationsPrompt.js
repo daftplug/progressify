@@ -2,8 +2,6 @@ import { config } from '../frontend.js';
 import PushNotificationsSubscription from '../components/pushNotificationsSubscription.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaPushNotificationsPrompt extends HTMLElement {
   constructor() {
     super();
@@ -82,7 +80,7 @@ class PwaPushNotificationsPrompt extends HTMLElement {
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const backgroundColor = getContrastTextColor(themeColor);
     const textColor = getContrastTextColor(backgroundColor);
-    const promptMessage = config.jsVars.settings.pushNotifications?.prompt?.message ?? __('We would like to show you notifications for the latest news and updates.', config.jsVars.slug);
+    const promptMessage = config.jsVars.settings.pushNotifications?.prompt?.message ?? wp.i18n.__('We would like to show you notifications for the latest news and updates.', config.jsVars.slug);
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const appIconHtml = config.jsVars.iconUrl ? `<img class="push-notifications-prompt-media_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
@@ -213,16 +211,16 @@ class PwaPushNotificationsPrompt extends HTMLElement {
         <div class="push-notifications-prompt-media">
           ${appIconHtml}
           <div class="push-notifications-prompt-media_texts">
-            <div class="push-notifications-prompt-media_title">${__('Push Notifications', config.jsVars.slug)}</div>
+            <div class="push-notifications-prompt-media_title">${wp.i18n.__('Push Notifications', config.jsVars.slug)}</div>
             <div class="push-notifications-prompt-media_message">${promptMessage}</div>
           </div>
         </div>
         <div class="push-notifications-prompt-buttons">
           <button type="button" class="push-notifications-prompt-button_dismiss">
-            ${__('Dismiss', config.jsVars.slug)}
+            ${wp.i18n.__('Dismiss', config.jsVars.slug)}
           </button>
           <button type="button" class="push-notifications-prompt-button_allow">
-            ${__('Allow Notifications', config.jsVars.slug)}
+            ${wp.i18n.__('Allow Notifications', config.jsVars.slug)}
           </button>
         </div>
       </div>

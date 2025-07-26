@@ -360,9 +360,15 @@ if (!defined('ABSPATH')) {
           <select name="webAppManifest[displaySettings][orientation]" required="true" data-dp-select='{
           "placeholder": "<?php esc_html_e('Select Orientation', $this->slug); ?>"
         }'>
-            <option value="any" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'any'); ?>><?php esc_html_e('Allow Both', $this->slug); ?></option>
-            <option value="portrait" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'portrait'); ?>><?php esc_html_e('Portrait', $this->slug); ?></option>
-            <option value="landscape" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'landscape'); ?>><?php esc_html_e('Landscape', $this->slug); ?></option>
+            <option value="portrait" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'portrait'); ?> data-dp-select-option='{
+            "description": "<?php esc_html_e('The app displays in portrait mode, with the screen height greater than the width.', $this->slug); ?>"
+          }'><?php esc_html_e('Portrait', $this->slug); ?></option>
+            <option value="any" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'any'); ?> data-dp-select-option='{
+            "description": "<?php esc_html_e('The app displays in both portrait and landscape modes.', $this->slug); ?>"
+          }'><?php esc_html_e('Allow Both', $this->slug); ?></option>
+            <option value="landscape" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][orientation]'), 'landscape'); ?> data-dp-select-option='{
+            "description": "<?php esc_html_e('The app displays in landscape mode, with the screen width greater than the height.', $this->slug); ?>"
+          }'><?php esc_html_e('Landscape', $this->slug); ?></option>
           </select>
         </div>
         <!-- End Orientation -->

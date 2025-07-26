@@ -16,12 +16,15 @@ if (!defined('ABSPATH')) {
               d="M414.62-200h-46.08q-5.85 0-10.12-4.38-4.27-4.39-4.27-11 0-5.85 4.77-10.12t10.62-4.27h45.08q10.76 0 17.69-6.92 6.92-6.93 6.92-17.69v-450.24q0-10.76-6.92-17.69-6.93-6.92-17.69-6.92h-45.08q-6.58 0-10.98-4.46-4.41-4.46-4.41-11.11 0-6.66 4.41-10.93 4.4-4.27 10.98-4.27h45.08q23.05 0 39.22 16.16Q470-727.67 470-704.62v449.24q0 23.05-16.16 39.22Q437.67-200 414.62-200Zm206.15 0q-23.06 0-39.22-16.16-16.17-16.17-16.17-39.22v-449.24q0-23.05 16.17-39.22Q597.71-760 620.77-760h203.85q23.05 0 39.22 16.16Q880-727.67 880-704.62v449.24q0 23.05-16.16 39.22Q847.67-200 824.62-200H620.77Zm0-29.77h203.85q10.76 0 17.69-6.92 6.92-6.93 6.92-17.69v-450.24q0-10.76-6.92-17.69-6.93-6.92-17.69-6.92H620.77q-10.77 0-17.69 6.92-6.93 6.93-6.93 17.69v450.24q0 10.76 6.93 17.69 6.92 6.92 17.69 6.92ZM296.54-464.62H95.38q-6.57 0-10.98-4.45-4.4-4.46-4.4-11.12 0-6.66 4.4-10.93 4.41-4.26 10.98-4.26h201.16l-73.46-71.16q-4.39-4.38-4.77-10.23-.39-5.85 3.07-11 4.53-4.38 10.77-4 6.23.39 11.39 4l91.74 88.35q4.1 4.19 6.49 9.04 2.38 4.85 2.38 10.62 0 5.76-2.38 10.76-2.39 5-6.53 9.1L245.31-371q-5.16 4.38-11.89 4.38t-11.11-4.77q-4.39-4.76-4.39-11.19t5.16-9.65l73.46-72.39Zm299.61 234.85V-729.23-229.77Z" />
           </svg>
           <div class="grow">
-            <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800">
+            <label class="group/tooltip cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800" data-dp-tooltip='{"trigger": "hover", "placement": "bottom"}'>
               <span class="inline text-nowrap bg-yellow-50 border border-yellow-300 text-yellow-600 text-[9px] leading-none rounded-full py-[0.1875rem] px-1.5"><?php esc_html_e('Beta', $this->slug); ?></span>
               <?php esc_html_e('Smooth Transitions', $this->slug); ?>
               <div class="relative inline-flex">
                 <input type="checkbox" name="appCapabilities[smoothPageTransitions][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start" <?php checked(Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]'), 'on'); ?>>
               </div>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-sm z-[99999999999999] text-center py-1 px-2 bg-red-50 text-xs font-medium text-red-600 rounded shadow-sm" role="tooltip">
+                <?php esc_html_e('This feature is currently in beta and may not function reliably on all websites. We recommend testing it after enabling and disabling it if any issues arise.', $this->slug); ?>
+              </span>
             </label>
             <p class="mt-1 text-sm text-gray-500">
               <?php esc_html_e('This feature provides a true native app-like experience by loading content without reloading the entire page. It enables smooth slide and fade transition animations between pages and displays a progress bar while the page loads.', $this->slug); ?>
@@ -499,7 +502,7 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <input name="appCapabilities[idleDetection][threshold]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" aria-roledescription="Number field" value="<?php echo esc_html(Plugin::getSetting('appCapabilities[idleDetection][threshold]')); ?>" step="1" max="120" min="0" required>
+          <input name="appCapabilities[idleDetection][threshold]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" aria-roledescription="Number field" placeholder="<?php esc_html_e('Enter Threshold', $this->slug); ?>" value="<?php echo esc_html(Plugin::getSetting('appCapabilities[idleDetection][threshold]')); ?>" step="1" max="120" min="0" required>
         </div>
         <!-- End Threshold -->
         <!-- Supported Devices -->

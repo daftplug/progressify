@@ -2,7 +2,7 @@
 namespace DaftPlug\Progressify;
 
 use DaftPlug\Progressify\{Admin, Frontend};
-use DaftPlug\Progressify\Module\{Dashboard, WebAppManifest, Installation, OfflineUsage, AppCapabilities, PushNotifications, Compatibility};
+use DaftPlug\Progressify\Module\{Dashboard, WebAppManifest, Installation, OfflineUsage, AppCapabilities, PushNotifications};
 use DeviceDetector\DeviceDetector;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{Version, EccLevel};
@@ -93,8 +93,6 @@ class Plugin
       $this->AppCapabilities = new AppCapabilities($config);
       require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
       $this->PushNotifications = new PushNotifications($config);
-      require_once self::$pluginDirPath . 'includes/modules/compatibility.php';
-      $this->Compatibility = new Compatibility($config);
 
       // Init Frontend
       require_once self::$pluginDirPath . 'frontend/frontend.php';
@@ -181,9 +179,6 @@ class Plugin
             'feature' => 'on',
           ],
           'forms' => [
-            'feature' => 'off',
-          ],
-          'googleAnalytics' => [
             'feature' => 'off',
           ],
         ],
@@ -1444,61 +1439,5 @@ class Plugin
     }
 
     return $userData;
-  }
-
-  public static function loadJsTranslations($script_handle)
-  {
-    global $wp_filesystem;
-    if (!function_exists('WP_Filesystem')) {
-      require_once ABSPATH . 'wp-admin/includes/file.php';
-    }
-    WP_Filesystem();
-
-    if (!$wp_filesystem) {
-      return;
-    }
-
-    $locale = determine_locale();
-    $slug = self::$slug;
-
-    // Define possible paths to check
-    $paths = [WP_LANG_DIR . '/loco/plugins/', WP_LANG_DIR . '/plugins/'];
-
-    // Try each path until we find matching files
-    $files = [];
-    foreach ($paths as $path) {
-      $json_path = $path . $slug . "-{$locale}-*.json";
-      $found_files = glob($json_path);
-      if (!empty($found_files)) {
-        $files = $found_files;
-        break; // Stop once we find files in any location
-      }
-    }
-
-    if (empty($files)) {
-      return;
-    }
-
-    $inline_script = '';
-    foreach ($files as $file) {
-      if (!$wp_filesystem->exists($file)) {
-        continue;
-      }
-
-      $json = $wp_filesystem->get_contents($file);
-      if (!$json) {
-        continue;
-      }
-
-      $translations = json_decode($json, true);
-      if (!empty($translations['locale_data'][$slug])) {
-        $locale_data = wp_json_encode($translations['locale_data'][$slug]);
-        $inline_script .= "wp.i18n.setLocaleData({$locale_data}, '{$slug}');\n";
-      }
-    }
-
-    if (!empty($inline_script)) {
-      wp_add_inline_script($script_handle, $inline_script);
-    }
   }
 }

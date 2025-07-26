@@ -1,7 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor, addParamToUrl } from '../components/utils.js';
 
-const { __ } = wp.i18n;
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -416,7 +415,7 @@ class PwaInstallPrompt extends HTMLElement {
           </svg>
         </span>
         <span class="install-prompt-body-instructions_step_copy_tooltip" role="tooltip">
-          ${__('Copied', config.jsVars.slug)}
+          ${wp.i18n.__('Copied', config.jsVars.slug)}
         </span>
       </button>
     `
@@ -476,7 +475,7 @@ class PwaInstallPrompt extends HTMLElement {
     return `
       <div class="install-prompt-loading">
         <div class="install-prompt-loading-spinner"></div>
-        <div class="install-prompt-loading-text">${__('Checking installation capabilities...', config.jsVars.slug)}</div>
+        <div class="install-prompt-loading-text">${wp.i18n.__('Checking installation capabilities...', config.jsVars.slug)}</div>
       </div>
     `;
   }
@@ -531,11 +530,11 @@ class PwaInstallPrompt extends HTMLElement {
 
     const { device, os, browser } = config.jsVars.userData;
     let btnIconSvg = '';
-    let btnIconText = __('Click to Install', config.jsVars.slug);
+    let btnIconText = wp.i18n.__('Click to Install', config.jsVars.slug);
 
     if (device.isSmartphone || device.isTablet) {
       btnIconSvg = svg.installMobile;
-      btnIconText = __('Tap to Install', config.jsVars.slug);
+      btnIconText = wp.i18n.__('Tap to Install', config.jsVars.slug);
     } else if (device.isDesktop) {
       btnIconSvg = svg.installDesktop;
     }
@@ -690,80 +689,80 @@ class PwaInstallPrompt extends HTMLElement {
     if (device.isSmartphone || device.isTablet) {
       if (os.isAndroid) {
         if (browser.isChrome) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option from the menu.', config.jsVars.slug), svg.addToHomeScreen);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option from the menu.', config.jsVars.slug), svg.addToHomeScreen);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isFirefox) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
-          renderStep(__('Select "Install"', config.jsVars.slug), __('Tap the "Install" option from the menu.', config.jsVars.slug), svg.addToHomeScreen);
-          renderStep(__('Confirm by Tapping "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" button on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
+          renderStep(wp.i18n.__('Select "Install"', config.jsVars.slug), wp.i18n.__('Tap the "Install" option from the menu.', config.jsVars.slug), svg.addToHomeScreen);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" button on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isOpera) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
-          renderStep(__('Select "Home Screen"', config.jsVars.slug), __('Tap the "Install" option from the menu.', config.jsVars.slug), svg.installMobile);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots), located at the top-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
+          renderStep(wp.i18n.__('Select "Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Install" option from the menu.', config.jsVars.slug), svg.installMobile);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isEdge) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
-          renderStep(__('Select "Add to Phone"', config.jsVars.slug), __('Tap the "Add to Phone" option from the menu', config.jsVars.slug), svg.installMobile);
-          renderStep(__('Confirm by Tapping "Install"', config.jsVars.slug), __('Tap the "Install" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
+          renderStep(wp.i18n.__('Select "Add to Phone"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Phone" option from the menu', config.jsVars.slug), svg.installMobile);
+          renderStep(wp.i18n.__('Confirm by Tapping "Install"', config.jsVars.slug), wp.i18n.__('Tap the "Install" text on the browser installation dialog.', config.jsVars.slug), svg.tapFinger);
         } else {
-          renderStep(__('Copy the Page URL', config.jsVars.slug), __("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
-          renderStep(__('Open the Google Chrome Browser', config.jsVars.slug), __('Launch the Google Chrome web browser from your home screen.', config.jsVars.slug), svg.googleChrome);
-          renderStep(__('Paste and Open the URL', config.jsVars.slug), __("Paste the copied URL into Google Chrome's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
+          renderStep(wp.i18n.__('Copy the Page URL', config.jsVars.slug), wp.i18n.__("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
+          renderStep(wp.i18n.__('Open the Google Chrome Browser', config.jsVars.slug), wp.i18n.__('Launch the Google Chrome web browser from your home screen.', config.jsVars.slug), svg.googleChrome);
+          renderStep(wp.i18n.__('Paste and Open the URL', config.jsVars.slug), wp.i18n.__("Paste the copied URL into Google Chrome's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
         }
       } else if (os.isIos) {
         if (browser.isSafari) {
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __('Tap the share icon located at the center-bottom of your screen.', config.jsVars.slug), svg.iosShare);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__('Tap the share icon located at the center-bottom of your screen.', config.jsVars.slug), svg.iosShare);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isChrome) {
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __('Tap the share icon located at the top-right of your browser address bar.', config.jsVars.slug), svg.iosShare);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__('Tap the share icon located at the top-right of your browser address bar.', config.jsVars.slug), svg.iosShare);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isFirefox) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __('Tap the share icon in the dialog overlay that the browser opens.', config.jsVars.slug), svg.iosShare);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__('Tap the share icon in the dialog overlay that the browser opens.', config.jsVars.slug), svg.iosShare);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isOpera) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots), located at the bottom-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __('Tap the share icon located at the top of the dialog overlay that browser opens.', config.jsVars.slug), svg.upload);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots), located at the bottom-right of your screen.', config.jsVars.slug), svg.vertThreeDots);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__('Tap the share icon located at the top of the dialog overlay that browser opens.', config.jsVars.slug), svg.upload);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isEdge) {
-          renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __('Tap the share icon in the dialog overlay that the browser opens.', config.jsVars.slug), svg.upload);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three horizontal lines) located at the bottom-right of your screen.', config.jsVars.slug), svg.hamburgerMenu);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__('Tap the share icon in the dialog overlay that the browser opens.', config.jsVars.slug), svg.upload);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else if (browser.isDuckduckgo) {
-          renderStep(__('Tap the Share Icon', config.jsVars.slug), __("Tap the share icon located at the right side of the browser's address bar.", config.jsVars.slug), svg.upload);
-          renderStep(__('Select "Add to Home Screen"', config.jsVars.slug), __('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
-          renderStep(__('Confirm by Tapping "Add"', config.jsVars.slug), __('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
+          renderStep(wp.i18n.__('Tap the Share Icon', config.jsVars.slug), wp.i18n.__("Tap the share icon located at the right side of the browser's address bar.", config.jsVars.slug), svg.upload);
+          renderStep(wp.i18n.__('Select "Add to Home Screen"', config.jsVars.slug), wp.i18n.__('Tap the "Add to Home Screen" option, represented by the plus [+] icon.', config.jsVars.slug), svg.plusInBox);
+          renderStep(wp.i18n.__('Confirm by Tapping "Add"', config.jsVars.slug), wp.i18n.__('Tap the "Add" button at the top-right corner of your screen.', config.jsVars.slug), svg.tapFinger);
         } else {
-          renderStep(__('Copy the Page URL', config.jsVars.slug), __("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
-          renderStep(__('Open the Safari Browser', config.jsVars.slug), __('Launch the Safari web browser from your home screen.', config.jsVars.slug), svg.safari);
-          renderStep(__('Paste and Open the URL', config.jsVars.slug), __("Paste the copied URL into Safari's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
+          renderStep(wp.i18n.__('Copy the Page URL', config.jsVars.slug), wp.i18n.__("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
+          renderStep(wp.i18n.__('Open the Safari Browser', config.jsVars.slug), wp.i18n.__('Launch the Safari web browser from your home screen.', config.jsVars.slug), svg.safari);
+          renderStep(wp.i18n.__('Paste and Open the URL', config.jsVars.slug), wp.i18n.__("Paste the copied URL into Safari's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
         }
       } else {
-        renderStep(__('Installation Not Supported', config.jsVars.slug), __('Your operating system does not support web app installation. Please try accessing the website on an Android or iOS mobile device.', config.jsVars.slug), svg.noInstallSupport);
+        renderStep(wp.i18n.__('Installation Not Supported', config.jsVars.slug), wp.i18n.__('Your operating system does not support web app installation. Please try accessing the website on an Android or iOS mobile device.', config.jsVars.slug), svg.noInstallSupport);
       }
     } else if (device.isDesktop) {
       if (browser.isChrome) {
-        renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots) in the top-right corner of your browser window.', config.jsVars.slug), svg.vertThreeDots);
-        renderStep(__('Expand "Cast, save and share"', config.jsVars.slug), __('Hover over the "Cast, Save, and Share" menu item to expand its options.', config.jsVars.slug), svg.fileSave);
-        renderStep(__('Select "Install page as app..."', config.jsVars.slug), __('Click on "Install page as app..." from the menu.', config.jsVars.slug), svg.installDesktop);
-        renderStep(__('Confirm by Clicking "Install"', config.jsVars.slug), __('Click the "Install" button in the browser\'s installation dialog.', config.jsVars.slug), svg.mouseClick);
+        renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots) in the top-right corner of your browser window.', config.jsVars.slug), svg.vertThreeDots);
+        renderStep(wp.i18n.__('Expand "Cast, save and share"', config.jsVars.slug), wp.i18n.__('Hover over the "Cast, Save, and Share" menu item to expand its options.', config.jsVars.slug), svg.fileSave);
+        renderStep(wp.i18n.__('Select "Install page as app..."', config.jsVars.slug), wp.i18n.__('Click on "Install page as app..." from the menu.', config.jsVars.slug), svg.installDesktop);
+        renderStep(wp.i18n.__('Confirm by Clicking "Install"', config.jsVars.slug), wp.i18n.__('Click the "Install" button in the browser\'s installation dialog.', config.jsVars.slug), svg.mouseClick);
       } else if (browser.isEdge) {
-        renderStep(__('Tap the Menu Icon', config.jsVars.slug), __('Tap the menu icon (three dots) in the top-right corner of your browser window.', config.jsVars.slug), svg.horizThreeDots);
-        renderStep(__('Expand "Apps"', config.jsVars.slug), __('Hover over the "Apps" menu item to expand its options.', config.jsVars.slug), svg.appsGrid);
-        renderStep(__('Select "Install this site as app"', config.jsVars.slug), __('Click on "Install this site as app" from the menu.', config.jsVars.slug), svg.directionDown);
-        renderStep(__('Confirm by Clicking "Install"', config.jsVars.slug), __('Click the "Install" button in the browser\'s installation dialog.', config.jsVars.slug), svg.mouseClick);
+        renderStep(wp.i18n.__('Tap the Menu Icon', config.jsVars.slug), wp.i18n.__('Tap the menu icon (three dots) in the top-right corner of your browser window.', config.jsVars.slug), svg.horizThreeDots);
+        renderStep(wp.i18n.__('Expand "Apps"', config.jsVars.slug), wp.i18n.__('Hover over the "Apps" menu item to expand its options.', config.jsVars.slug), svg.appsGrid);
+        renderStep(wp.i18n.__('Select "Install this site as app"', config.jsVars.slug), wp.i18n.__('Click on "Install this site as app" from the menu.', config.jsVars.slug), svg.directionDown);
+        renderStep(wp.i18n.__('Confirm by Clicking "Install"', config.jsVars.slug), wp.i18n.__('Click the "Install" button in the browser\'s installation dialog.', config.jsVars.slug), svg.mouseClick);
       } else {
-        renderStep(__('Copy the Page URL', config.jsVars.slug), __("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
-        renderStep(__('Open the Google Chrome Browser', config.jsVars.slug), __('Launch the Google Chrome web browser from your start menu.', config.jsVars.slug), svg.googleChrome);
-        renderStep(__('Paste and Open the URL', config.jsVars.slug), __("Paste the copied URL into Google Chrome's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
+        renderStep(wp.i18n.__('Copy the Page URL', config.jsVars.slug), wp.i18n.__("Click the button below to copy the page's URL.", config.jsVars.slug), svg.copy, this.renderCopyInstallUrlButton());
+        renderStep(wp.i18n.__('Open the Google Chrome Browser', config.jsVars.slug), wp.i18n.__('Launch the Google Chrome web browser from your start menu.', config.jsVars.slug), svg.googleChrome);
+        renderStep(wp.i18n.__('Paste and Open the URL', config.jsVars.slug), wp.i18n.__("Paste the copied URL into Google Chrome's address bar and open the page.", config.jsVars.slug), svg.pasteGo);
       }
     } else {
-      renderStep(__('Installation Not Supported', config.jsVars.slug), __('Your device does not support web app installation. Please try accessing the website on a mobile or desktop device.', config.jsVars.slug), svg.noInstallSupport);
+      renderStep(wp.i18n.__('Installation Not Supported', config.jsVars.slug), wp.i18n.__('Your device does not support web app installation. Please try accessing the website on a mobile or desktop device.', config.jsVars.slug), svg.noInstallSupport);
     }
 
     return steps.length ? `<ul class="install-prompt-body-instructions">${steps.join('')}</ul>` : '';
@@ -980,7 +979,7 @@ class PwaInstallPrompt extends HTMLElement {
     `);
 
     const content = this.renderContent();
-    const promptTitle = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
+    const promptTitle = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__('Install Web App', config.jsVars.slug);
     const combinedStyles = Array.from(this.styles).join('\n');
 
     this.shadowRoot.innerHTML = `
@@ -1000,7 +999,7 @@ class PwaInstallPrompt extends HTMLElement {
           </div>
           <div class="install-prompt-footer">
             <button type="button" class="install-prompt-footer_close">
-              ${__('Close Dialog', config.jsVars.slug)}
+              ${wp.i18n.__('Close Dialog', config.jsVars.slug)}
             </button>
           </div>
         </div>

@@ -2,8 +2,6 @@ import { config } from '../admin.js';
 import jQuery from '../components/utils.js';
 import showToast from '../components/toast.js';
 
-const { __ } = wp.i18n;
-
 export function initSupportRequest() {
   config.daftplugAdminElm.find('form[name="supportForm"]').on('submit', sendSupportRequest);
 }
@@ -48,12 +46,12 @@ async function sendSupportRequest(e) {
 
     if (data.status === 'success') {
       form.trigger('reset');
-      showToast(__('Success', config.jsVars.slug), __('Support request have submitted successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
+      showToast(wp.i18n.__('Success', config.jsVars.slug), wp.i18n.__('Support request have submitted successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
     } else {
-      showToast(__('Fail', config.jsVars.slug), __('Support request have failed to be submitted!', config.jsVars.slug), 'fail', 'top-right', true, false);
+      showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Support request have failed to be submitted!', config.jsVars.slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
-    showToast(__('Fail', config.jsVars.slug), error.message, 'fail', 'top-right', true, false);
+    showToast(wp.i18n.__('Fail', config.jsVars.slug), error.message, 'fail', 'top-right', true, false);
   } finally {
     submitRequestBtn.removeAttr('data-submitting');
     intractableComponents.removeAttr('data-disabled');

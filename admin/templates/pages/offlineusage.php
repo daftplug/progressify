@@ -56,8 +56,7 @@ if (!defined('ABSPATH')) {
             </div>
             <div class="flex justify-between items-center">
               <div class="relative inline-block">
-                <input type="checkbox" id="offlineUsage[cache][customFallbackPage][feature]" name="offlineUsage[cache][customFallbackPage][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start"
-                  <?php checked(Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]'), 'on'); ?>>
+                <input type="checkbox" id="offlineUsage[cache][customFallbackPage][feature]" name="offlineUsage[cache][customFallbackPage][feature]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start" <?php checked(Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]'), 'on'); ?>>
               </div>
             </div>
           </label>
@@ -148,7 +147,7 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <input name="offlineUsage[cache][expirationTime]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" value="<?php echo esc_attr(Plugin::getSetting('offlineUsage[cache][expirationTime]')); ?>" step="1" max="10" min="1" required="true">
+          <input name="offlineUsage[cache][expirationTime]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" placeholder="<?php esc_html_e('Enter Cache Expiration Time', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('offlineUsage[cache][expirationTime]')); ?>" step="1" max="10" min="1" required="true">
         </div>
         <!-- End Cache Expiration Time -->
       </div>
@@ -246,38 +245,6 @@ if (!defined('ABSPATH')) {
           </label>
         </div>
         <!-- End Offline Forms -->
-        <!-- Offline Google Analytics -->
-        <div id="settingGoogleAnalytics" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3">
-          <label for="offlineUsage[capabilities][googleAnalytics]" class="cursor-pointer flex gap-x-3" data-disabled="true">
-            <div class="grow">
-              <h3 class="flex items-center text-sm text-gray-800 font-semibold">
-                <?php esc_html_e('Offline Google Analytics', $this->slug); ?>
-                <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
-                  <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                  </svg>
-                  <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
-                    <?php esc_html_e('Tracks user interactions and page views while offline, and syncs the data with Google Analytics once the connection is restored.', $this->slug); ?>
-                  </span>
-                </button>
-              </h3>
-              <p class="mt-0.5 text-xs text-gray-500">
-                <?php esc_html_e('Tracks users offline and syncs with Google Analytics when reconnected.', $this->slug); ?>
-              </p>
-            </div>
-            <div class="flex justify-between items-center">
-              <div class="relative inline-block">
-                <input type="checkbox" id="offlineUsage[capabilities][googleAnalytics]" name="offlineUsage[capabilities][googleAnalytics]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start"
-                  <?php checked(Plugin::getSetting('offlineUsage[capabilities][googleAnalytics]'), 'on'); ?>>
-              </div>
-            </div>
-          </label>
-        </div>
-        <p class="!mt-2 text-xs text-red-700">
-          <?php esc_html_e('This feature is temporarily disabled due to incompatibility with new version of Google Analytics (GA4).', $this->slug); ?>
-        </p>
-        <!-- End Offline Google Analytics -->
       </div>
       <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
         <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">

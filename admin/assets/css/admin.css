@@ -1496,26 +1496,32 @@ rect.legend-mouseover-inactive,
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+
 .introjs-showElement {
   z-index: 9999999 !important;
 }
+
 tr.introjs-showElement > td {
   z-index: 9999999 !important;
   position: relative;
 }
+
 tr.introjs-showElement > th {
   z-index: 9999999 !important;
   position: relative;
 }
+
 .introjs-disableInteraction {
   z-index: 99999999 !important;
   position: absolute;
   background-color: #fff;
   opacity: 0;
 }
+
 .introjs-relativePosition {
   position: relative;
 }
+
 .introjs-helperLayer {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1526,18 +1532,22 @@ tr.introjs-showElement > th {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+
 .introjs-helperLayer * {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
+
 .introjs-helperLayer :before {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
+
 .introjs-helperLayer :after {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
+
 .introjs-tooltipReferenceLayer {
   font: inherit;
   -webkit-box-sizing: content-box;
@@ -1550,66 +1560,79 @@ tr.introjs-showElement > th {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+
 .introjs-tooltipReferenceLayer * {
   font: inherit;
 }
+
 .introjs-arrow {
   border: 5px solid transparent;
   content: '';
   position: absolute;
 }
+
 .introjs-arrow.top {
   top: -10px;
   left: 10px;
   border-bottom-color: #fff;
 }
+
 .introjs-arrow.top-right {
   top: -10px;
   right: 10px;
   border-bottom-color: #fff;
 }
+
 .introjs-arrow.top-middle {
   top: -10px;
   left: 50%;
   margin-left: -5px;
   border-bottom-color: #fff;
 }
+
 .introjs-arrow.right {
   right: -10px;
   top: 10px;
   border-left-color: #fff;
 }
+
 .introjs-arrow.right-bottom {
   bottom: 10px;
   right: -10px;
   border-left-color: #fff;
 }
+
 .introjs-arrow.bottom {
   bottom: -10px;
   left: 10px;
   border-top-color: #fff;
 }
+
 .introjs-arrow.bottom-right {
   bottom: -10px;
   right: 10px;
   border-top-color: #fff;
 }
+
 .introjs-arrow.bottom-middle {
   bottom: -10px;
   left: 50%;
   margin-left: -5px;
   border-top-color: #fff;
 }
+
 .introjs-arrow.left {
   left: -10px;
   top: 10px;
   border-right-color: #fff;
 }
+
 .introjs-arrow.left-bottom {
   left: -10px;
   bottom: 10px;
   border-right-color: #fff;
 }
+
 .introjs-tooltip {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1625,9 +1648,11 @@ tr.introjs-showElement > th {
   -o-transition: opacity 0.1s ease-out;
   transition: opacity 0.1s ease-out;
 }
+
 .introjs-tooltiptext {
   padding: 15px;
 }
+
 .introjs-tooltip-title {
   font-size: 18px;
   margin: 0;
@@ -1636,9 +1661,11 @@ tr.introjs-showElement > th {
   float: left;
   line-height: 32px;
 }
+
 .introjs-tooltip-header {
   padding: 10px 15px 0 15px;
 }
+
 .introjs-tooltip-header:after {
   content: '.';
   visibility: hidden;
@@ -1646,12 +1673,14 @@ tr.introjs-showElement > th {
   height: 0;
   clear: both;
 }
+
 .introjs-tooltipbuttons {
   border-top: 1px solid #e5eaef;
   padding: 10px;
   text-align: right;
   white-space: nowrap;
 }
+
 .introjs-tooltipbuttons:after {
   content: '';
   visibility: hidden;
@@ -1659,6 +1688,7 @@ tr.introjs-showElement > th {
   height: 0;
   clear: both;
 }
+
 .introjs-button {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1683,6 +1713,7 @@ tr.introjs-showElement > th {
   text-shadow: none;
   zoom: 1;
 }
+
 .introjs-button:active,
 .introjs-button:focus,
 .introjs-button:hover {
@@ -1691,10 +1722,12 @@ tr.introjs-showElement > th {
   text-decoration: none;
   color: #fff;
 }
+
 .introjs-button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+
 .introjs-skipbutton {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1707,19 +1740,23 @@ tr.introjs-showElement > th {
   text-align: center;
   padding: 7px 10px;
 }
+
 .introjs-skipbutton:focus,
 .introjs-skipbutton:hover {
   color: #000;
   outline: 0;
   text-decoration: none;
 }
+
 .introjs-prevbutton {
   float: left;
   background: #35373c;
 }
+
 .introjs-nextbutton {
   float: right;
 }
+
 .introjs-disabled {
   color: #8b98a9;
   border-color: #cfd5df;
@@ -1730,6 +1767,7 @@ tr.introjs-showElement > th {
   background-image: none;
   text-decoration: none;
 }
+
 .introjs-disabled:focus,
 .introjs-disabled:hover {
   color: #8b98a9;
@@ -1741,9 +1779,11 @@ tr.introjs-showElement > th {
   background-image: none;
   text-decoration: none;
 }
+
 .introjs-hidden {
   display: none;
 }
+
 .introjs-progress {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1753,6 +1793,7 @@ tr.introjs-showElement > th {
   border-radius: 5px;
   background-color: #e5eaef;
 }
+
 .introjs-progressbar {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -1764,6 +1805,7 @@ tr.introjs-showElement > th {
   text-align: center;
   background-color: #2563eb;
 }
+
 .introjsFloatingElement {
   position: absolute;
   height: 0;
@@ -1771,6 +1813,7 @@ tr.introjs-showElement > th {
   left: 50%;
   top: 50%;
 }
+
 .introjs-fixedTooltip {
   position: fixed;
 }

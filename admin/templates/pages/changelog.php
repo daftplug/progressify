@@ -4,6 +4,19 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.2.5" data-date="July 22, 2025" data-title="Admin Side and Translations Fixes" data-description="The update includes improvements on the Admin side and fixes for frontend translations.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Improved dashboard loading state.</li>
+      <li>Amended localization handling as the final fix for frontend translations.</li>
+      <li>Fixed intro guide not getting away after completion in certain cases.</li>
+      <li>Fixed WP admin menu not scrolling.</li>
+    </ul>
+  </div>
+  <div data-version="v1.2.4" data-date="June 19, 2025" data-title="Frontend Translations Fix" data-description="The update includes fix for frontend translations not working.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed translations not working on frontend.</li>
+    </ul>
+  </div>
   <div data-version="v1.2.3" data-date="June 5, 2025" data-title="Share Button, PWA CSS/JS and Navigation Tab Bar Improvements" data-description="The update includes addition of Share Button, PWA-Specific CSS/JS and other significant improvements.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added PWA Custom CSS/JS feature.</li>

@@ -1,7 +1,5 @@
 import { config } from '../admin.js';
 
-const { __ } = wp.i18n;
-
 export function initGenerateMobileApps() {
   const paypalContainers = config.daftplugAdminElm.find('.paypalButtonsContainer');
   paypalContainers.each(function (e) {
@@ -55,7 +53,7 @@ function initPayPalButton(container, productName, price, buttonColor) {
               marginTop: '10px',
               color: '#fff',
             })
-            .html(__('Thank you for the payment! We are starting to create apps for you and will send it to you soon.', config.jsVars.slug))
+            .html(wp.i18n.__('Thank you for the payment! We are starting to create apps for you and will send it to you soon.', config.jsVars.slug))
             .fadeIn('fast');
 
           setTimeout(function () {
@@ -75,7 +73,7 @@ function initPayPalButton(container, productName, price, buttonColor) {
             marginTop: '10px',
             color: '#fff',
           })
-          .html(__('Payment failed! Please try again or contact us on support@daftplug.com', config.jsVars.slug))
+          .html(wp.i18n.__('Payment failed! Please try again or contact us on support@daftplug.com', config.jsVars.slug))
           .fadeIn('fast');
 
         setTimeout(function () {

@@ -1,8 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaToastMessages extends HTMLElement {
   constructor() {
     super();
@@ -102,25 +100,25 @@ class PwaToastMessages extends HTMLElement {
 
     switch (true) {
       case config.jsVars.pageData.type.isHome:
-        message = __('Homepage Opened', config.jsVars.slug);
+        message = wp.i18n.__('Homepage Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.is404:
-        message = __('Page Not Found', config.jsVars.slug);
+        message = wp.i18n.__('Page Not Found', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isSearch:
-        message = __('Search Results', config.jsVars.slug);
+        message = wp.i18n.__('Search Results', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isBlogPost:
-        message = __('Article Opened', config.jsVars.slug);
+        message = wp.i18n.__('Article Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isWooShop:
-        message = __('Shop Opened', config.jsVars.slug);
+        message = wp.i18n.__('Shop Opened', config.jsVars.slug);
         break;
       case config.jsVars.pageData.type.isWooProduct:
-        message = __('Product Opened', config.jsVars.slug);
+        message = wp.i18n.__('Product Opened', config.jsVars.slug);
         break;
       default:
-        message = __('Page Opened', config.jsVars.slug);
+        message = wp.i18n.__('Page Opened', config.jsVars.slug);
         break;
     }
 

@@ -2,8 +2,6 @@ import { config } from '../admin.js';
 import jQuery from '../components/utils.js';
 import showToast from '../components/toast.js';
 
-const { __ } = wp.i18n;
-
 export function initModalPushNotifications() {
   config.daftplugAdminElm.find('form[id="send-notification-popup"]').on('submit', doModalPushNotification);
   config.daftplugAdminElm.find('form[id="send-notification-popup"] #previewPushNotification').on('click', previewPushNotification);
@@ -43,7 +41,7 @@ function doModalPushNotification(e) {
       }
     })
     .catch((error) => {
-      showToast('Fail', error.message || __('Sending failed. There was an error on server.', config.jsVars.slug), 'fail', 'top-right', true, false);
+      showToast('Fail', error.message || wp.i18n.__('Sending failed. There was an error on server.', config.jsVars.slug), 'fail', 'top-right', true, false);
     })
     .finally(() => {
       sendNotificationBtn.removeAttr('data-sending');
@@ -69,7 +67,7 @@ function previewPushNotification(e) {
 
   // Check browser support
   if (!('Notification' in window)) {
-    showToast(__('Fail', config.jsVars.slug), __('Notifications are not supported by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
+    showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Notifications are not supported by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
     return;
   }
 
@@ -81,10 +79,10 @@ function previewPushNotification(e) {
       if (permission === 'granted') {
         new Notification(notificationData.title, notificationData);
       } else {
-        showToast(__('Fail', config.jsVars.slug), __('You need to accept the notifications permission to preview.', config.jsVars.slug), 'fail', 'top-right', true, false);
+        showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('You need to accept the notifications permission to preview.', config.jsVars.slug), 'fail', 'top-right', true, false);
       }
     });
   } else {
-    showToast(__('Fail', config.jsVars.slug), __('Push notifications are blocked by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
+    showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Push notifications are blocked by your browser.', config.jsVars.slug), 'fail', 'top-right', true, false);
   }
 }

@@ -3,8 +3,6 @@ import jQuery from '../components/utils.js';
 import generateAndSendPwaAssets from '../components/pwaAssetGenerator.js';
 import showToast from '../components/toast.js';
 
-const { __ } = wp.i18n;
-
 export function initSettings() {
   checkAndGeneratePwaAssetsIfNeeded();
   config.daftplugAdminElm.find('form[name="settingsForm"]').on('submit', saveSettings);
@@ -77,8 +75,8 @@ export async function saveSettings(e) {
 
     if (data.status === 'success') {
       try {
-        // Generate PWA assets if the PWA icon is changed
-        if (topLevelKey === 'webAppManifest' && parsedSettings.webAppManifest.appIdentity.appIcon !== config.jsVars.settings.webAppManifest.appIdentity.appIcon) {
+        // Generate PWA assets if the PWA icon, or background color is changed
+        if (topLevelKey === 'webAppManifest' && (parsedSettings.webAppManifest.appIdentity.appIcon !== config.jsVars.settings.webAppManifest.appIdentity.appIcon || parsedSettings.webAppManifest.appearance.backgroundColor !== config.jsVars.settings.webAppManifest.appearance.backgroundColor)) {
           const iconUrl = config.daftplugAdminElm.find('#settingAppIcon').find('[data-attachment-holder]').attr('src');
           const backgroundColor = parsedSettings.webAppManifest.appearance.backgroundColor;
           await generateAndSendPwaAssets(iconUrl, backgroundColor);
@@ -94,16 +92,16 @@ export async function saveSettings(e) {
         });
       } catch (error) {
         console.error('Failed to generate PWA assets:', error);
-        showToast(__('Warning', config.jsVars.slug), __('Settings saved but PWA assets generation failed!', config.jsVars.slug), 'warning', 'top-right', true, false);
+        showToast(wp.i18n.__('Warning', config.jsVars.slug), wp.i18n.__('Settings saved but PWA assets generation failed!', config.jsVars.slug), 'warning', 'top-right', true, false);
       } finally {
-        showToast(__('Success', config.jsVars.slug), __('Your changes have been saved successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
+        showToast(wp.i18n.__('Success', config.jsVars.slug), wp.i18n.__('Your changes have been saved successfully!', config.jsVars.slug), 'success', 'top-right', true, false);
       }
     } else {
-      showToast(__('Fail', config.jsVars.slug), __('Your changes have failed to be saved!', config.jsVars.slug), 'fail', 'top-right', true, false);
+      showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Your changes have failed to be saved!', config.jsVars.slug), 'fail', 'top-right', true, false);
     }
   } catch (error) {
     console.error('Save failed:', error);
-    showToast(__('Fail', config.jsVars.slug), __('Your changes have failed to be saved!', config.jsVars.slug), 'fail', 'top-right', true, false);
+    showToast(wp.i18n.__('Fail', config.jsVars.slug), wp.i18n.__('Your changes have failed to be saved!', config.jsVars.slug), 'fail', 'top-right', true, false);
   } finally {
     saveSettingsBtn.removeAttr('data-saving');
     intractableComponents.removeAttr('data-disabled');

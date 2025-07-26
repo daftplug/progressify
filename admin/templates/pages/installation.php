@@ -298,7 +298,7 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <input name="installation[prompts][timeout]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" aria-roledescription="Number field" value="<?php echo esc_attr(Plugin::getSetting('installation[prompts][timeout]')); ?>" step="1" max="10" min="1" required>
+          <input name="installation[prompts][timeout]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" aria-roledescription="Number field" placeholder="<?php esc_html_e('Enter Timeout', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('installation[prompts][timeout]')); ?>" step="1" max="10" min="1" required>
         </div>
         <!-- End Timeout -->
       </div>

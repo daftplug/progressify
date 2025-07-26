@@ -1,8 +1,6 @@
 import { config } from '../admin.js';
 import { initApexcharts } from '../components/apexcharts.js';
 
-const { __ } = wp.i18n;
-
 class PwaUsersDataManager {
   constructor() {
     this.usersData = null;
@@ -287,7 +285,7 @@ class PwaUsersDataManager {
       this.browserStatsContainer.innerHTML = [
         ...validBrowsers.map(
           (browser) => `
-            <div class="p-3 bg-gray-100rounded-lg">
+            <div class="p-3 bg-gray-100 rounded-lg">
                 <img class="shrink-0 size-7 mb-4 ${browser.browser_name === 'Unknown' ? 'rounded-full' : ''}" src="${browser.browser_icon}" alt="${browser.browser_name} Logo">
                 <p class="text-sm text-gray-800">
                     ${browser.browser_name}
@@ -300,11 +298,11 @@ class PwaUsersDataManager {
         ),
         ...Array(emptySlots).fill(`
             <div class="p-3 border border-dashed border-gray-200 rounded-lg">
-                <div class="shrink-0 size-7 mb-4 rounded-full bg-gray-200"></div>
-                <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16"></p>
-                <p class="font-semibold text-lg text-gray-800">
-                  0
-                </p>
+              <div class="shrink-0 size-7 mb-5 rounded-full bg-gray-200"></div>
+              <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16"></p>
+              <p class="mt-1 font-semibold text-lg text-gray-800">
+                0
+              </p>
             </div>
             `),
       ].join('');
@@ -313,7 +311,7 @@ class PwaUsersDataManager {
 
   generateBrowserMessage(browsers) {
     if (!browsers?.length || !browsers[0].browser_name) {
-      return __(`Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app.`, config.jsVars.slug);
+      return wp.i18n.__(`Your PWA hasn't been installed yet, and there are no current users. Make sure Installation Prompts are enabled to encourage users to install your web app.`, config.jsVars.slug);
     }
 
     const validBrowsers = browsers.filter((b) => b.browser_name);
@@ -321,17 +319,17 @@ class PwaUsersDataManager {
 
     // If we truly have 2 or more actual browsers in use...
     if (validBrowsers.length >= 2 && topBrowser.percentage == 50) {
-      return __(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
+      return wp.i18n.__(`Your PWA users are evenly distributed across different browsers. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
     }
 
-    const prefix = topBrowser.percentage == 100 ? __('All', config.jsVars.slug) : __('Most', config.jsVars.slug);
+    const prefix = topBrowser.percentage == 100 ? wp.i18n.__('All', config.jsVars.slug) : wp.i18n.__('Most', config.jsVars.slug);
 
     if (topBrowser.browser_name == 'Chrome') {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.`, config.jsVars.slug);
+      return wp.i18n.__(`${prefix} of your PWA users (${topBrowser.percentage}%) are using Chrome browser, which is good as Google Chrome is the most PWA-friendly browser.`, config.jsVars.slug);
     } else if (topBrowser.browser_name == 'Unknown') {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) browsers are unidentifiable, suggesting they are not using a popular browser, which could affect their PWA experience.`, config.jsVars.slug);
+      return wp.i18n.__(`${prefix} of your PWA users (${topBrowser.percentage}%) browsers are unidentifiable, suggesting they are not using a popular browser, which could affect their PWA experience.`, config.jsVars.slug);
     } else {
-      return __(`${prefix} of your PWA users (${topBrowser.percentage}%) are using ${topBrowser.browser_name} browser. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
+      return wp.i18n.__(`${prefix} of your PWA users (${topBrowser.percentage}%) are using ${topBrowser.browser_name} browser. While we strive for broad compatibility, Chrome is recommended as the most PWA-friendly.`, config.jsVars.slug);
     }
   }
 
@@ -349,7 +347,7 @@ class PwaUsersDataManager {
       {
         series: [
           {
-            name: __('PWA Installs', config.jsVars.slug),
+            name: wp.i18n.__('PWA Installs', config.jsVars.slug),
             data: counts,
           },
         ],
@@ -390,7 +388,7 @@ class PwaUsersDataManager {
                     <div class="apexcharts-tooltip-text">
                       <div class="apexcharts-tooltip-y-group !py-0.5">
                         <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto">
-                          ${__('PWA Installs', config.jsVars.slug)}:
+                          ${wp.i18n.__('PWA Installs', config.jsVars.slug)}:
                         </span>
                       </div>
                     </div>
@@ -412,6 +410,9 @@ class PwaUsersDataManager {
   createChart(dates, counts, installations) {
     const emptyData = counts.every((c) => c === 0);
 
+    // Clear the container before creating the chart
+    this.chartContainer.innerHTML = '';
+
     const chartOptions = {
       chart: {
         type: 'area',
@@ -421,7 +422,7 @@ class PwaUsersDataManager {
       },
       series: [
         {
-          name: __('PWA Installs', config.jsVars.slug),
+          name: wp.i18n.__('PWA Installs', config.jsVars.slug),
           data: counts,
         },
       ],
@@ -514,7 +515,7 @@ class PwaUsersDataManager {
                   <div class="apexcharts-tooltip-text">
                     <div class="apexcharts-tooltip-y-group !py-0.5">
                       <span class="apexcharts-tooltip-text-y-value !font-medium text-gray-500 !ms-auto">
-                        ${__('PWA Installs', config.jsVars.slug)}:
+                        ${wp.i18n.__('PWA Installs', config.jsVars.slug)}:
                       </span>
                     </div>
                   </div>

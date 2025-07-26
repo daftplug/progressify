@@ -502,6 +502,7 @@
     `;
         }
         renderCopyInstallUrlButton() {
+          var _a;
           this.injectStyles(`
       .install-prompt-body-instructions_step_copy {
         position: relative;
@@ -603,7 +604,7 @@
         opacity: 1;
       }
     `);
-          const startPage = config.jsVars.settings.webAppManifest.displaySettings?.startPage;
+          const startPage = (_a = config.jsVars.settings.webAppManifest.displaySettings) == null ? void 0 : _a.startPage;
           return startPage ? `
       <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${addParamToUrl("performInstallation", "true", startPage)}">
         <span class="install-prompt-body-instructions_step_copy_url">
@@ -681,7 +682,8 @@
     `;
         }
         renderNativeInstallButton() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const textColor = getContrastTextColor(themeColor);
           this.injectStyles(`
       .install-prompt-native-button {
@@ -952,6 +954,7 @@
           return steps.length ? `<ul class="install-prompt-body-instructions">${steps.join("")}</ul>` : "";
         }
         render() {
+          var _a, _b, _c;
           this.injectStyles(`
       .install-prompt {
         position: fixed;
@@ -1161,7 +1164,7 @@
       }
     `);
           const content = this.renderContent();
-          const promptTitle = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
+          const promptTitle = (_c = (_b = (_a = config.jsVars.settings.installation) == null ? void 0 : _a.prompts) == null ? void 0 : _b.text) != null ? _c : wp.i18n.__("Install Web App", config.jsVars.slug);
           const combinedStyles = Array.from(this.styles).join("\n");
           this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
@@ -1250,11 +1253,12 @@
           });
         }
         render() {
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+          const appName = (_a = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _a : "";
+          const themeColor = (_d = (_c = (_b = config.jsVars.settings.webAppManifest) == null ? void 0 : _b.appearance) == null ? void 0 : _c.themeColor) != null ? _d : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
-          const message = config.jsVars.settings.installation?.prompts?.types?.headerBanner?.message ?? wp.i18n.__("Get our web app. It won't take up space on your device.", config.jsVars.slug);
+          const title = (_g = (_f = (_e = config.jsVars.settings.installation) == null ? void 0 : _e.prompts) == null ? void 0 : _f.text) != null ? _g : wp.i18n.__("Install Web App", config.jsVars.slug);
+          const message = (_l = (_k = (_j = (_i = (_h = config.jsVars.settings.installation) == null ? void 0 : _h.prompts) == null ? void 0 : _i.types) == null ? void 0 : _j.headerBanner) == null ? void 0 : _k.message) != null ? _l : wp.i18n.__("Get our web app. It won't take up space on your device.", config.jsVars.slug);
           const appIconHtml = config.jsVars.iconUrl ? `<img class="header-banner-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : "";
           this.injectStyles(`
       .header-banner-overlay {
@@ -1503,10 +1507,11 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
-          const message = config.jsVars.settings.installation?.prompts?.types?.snackbar?.message ?? wp.i18n.__("Installing uses no storage and offers a quick way back to our web app.", config.jsVars.slug);
+          const title = (_f = (_e = (_d = config.jsVars.settings.installation) == null ? void 0 : _d.prompts) == null ? void 0 : _e.text) != null ? _f : wp.i18n.__("Install Web App", config.jsVars.slug);
+          const message = (_k = (_j = (_i = (_h = (_g = config.jsVars.settings.installation) == null ? void 0 : _g.prompts) == null ? void 0 : _h.types) == null ? void 0 : _i.snackbar) == null ? void 0 : _j.message) != null ? _k : wp.i18n.__("Installing uses no storage and offers a quick way back to our web app.", config.jsVars.slug);
           this.injectStyles(`
       .snackbar-overlay {
         display: flex;
@@ -1694,9 +1699,10 @@
           });
         }
         render() {
+          var _a, _b, _c, _d;
           const { device, os, browser } = config.jsVars.userData;
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          const appName = (_a = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _a : "";
+          const themeColor = (_d = (_c = (_b = config.jsVars.settings.webAppManifest) == null ? void 0 : _b.appearance) == null ? void 0 : _c.themeColor) != null ? _d : "#000000";
           const textColor = getContrastTextColor(themeColor);
           const appIconHtml = config.jsVars.iconUrl ? `<img class="blog-popup-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"></img>` : "";
           let browserTitle;
@@ -2023,7 +2029,7 @@
           let overlay = document.querySelector("pwa-install-overlay-navigation-menu");
           if (!overlay) {
             const menuData = this.findMobileMenu();
-            if (menuData?.menu) {
+            if (menuData == null ? void 0 : menuData.menu) {
               overlay = document.createElement("pwa-install-overlay-navigation-menu");
               const menuItem = document.createElement("li");
               menuItem.className = "menu-item pwa-install-menu-item";
@@ -2043,16 +2049,17 @@
         }
         handlePerformInstallation() {
           const installButton = this.shadowRoot.querySelector(".navigation-menu-overlay-button_install");
-          installButton?.addEventListener("click", () => {
+          installButton == null ? void 0 : installButton.addEventListener("click", () => {
             performInstallation();
           });
         }
         render() {
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+          const appName = (_a = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _a : "";
+          const themeColor = (_d = (_c = (_b = config.jsVars.settings.webAppManifest) == null ? void 0 : _b.appearance) == null ? void 0 : _c.themeColor) != null ? _d : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
-          const message = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.message ?? wp.i18n.__("Find what you need faster by installing our web app!", config.jsVars.slug);
+          const title = (_g = (_f = (_e = config.jsVars.settings.installation) == null ? void 0 : _e.prompts) == null ? void 0 : _f.text) != null ? _g : wp.i18n.__("Install Web App", config.jsVars.slug);
+          const message = (_l = (_k = (_j = (_i = (_h = config.jsVars.settings.installation) == null ? void 0 : _h.prompts) == null ? void 0 : _i.types) == null ? void 0 : _j.navigationMenu) == null ? void 0 : _k.message) != null ? _l : wp.i18n.__("Find what you need faster by installing our web app!", config.jsVars.slug);
           const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : "";
           this.injectStyles(`
       .navigation-menu-overlay {
@@ -2205,11 +2212,12 @@
           return { feedContainer, feedItems };
         }
         static async show() {
+          var _a;
           let overlay = document.querySelector("pwa-install-overlay-in-feed");
           if (!overlay) {
             overlay = document.createElement("pwa-install-overlay-in-feed");
             const feed = await this.findFeedContainer();
-            if (feed && feed.feedItems?.length >= 4) {
+            if (feed && ((_a = feed.feedItems) == null ? void 0 : _a.length) >= 4) {
               const targetItem = feed.feedItems[3];
               const overlayWrapper = document.createElement("div");
               overlayWrapper.className = "pwa-install-overlay-wrapper";
@@ -2224,16 +2232,17 @@
         }
         handlePerformInstallation() {
           const installButton = this.shadowRoot.querySelector(".in-feed-overlay-button_install");
-          installButton?.addEventListener("click", () => {
+          installButton == null ? void 0 : installButton.addEventListener("click", () => {
             performInstallation();
           });
         }
         render() {
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+          const appName = (_a = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _a : "";
+          const themeColor = (_d = (_c = (_b = config.jsVars.settings.webAppManifest) == null ? void 0 : _b.appearance) == null ? void 0 : _c.themeColor) != null ? _d : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
-          const message = config.jsVars.settings.installation?.prompts?.types?.inFeed?.message ?? wp.i18n.__("Keep reading, even when you're on the train!", config.jsVars.slug);
+          const title = (_g = (_f = (_e = config.jsVars.settings.installation) == null ? void 0 : _e.prompts) == null ? void 0 : _f.text) != null ? _g : wp.i18n.__("Install Web App", config.jsVars.slug);
+          const message = (_l = (_k = (_j = (_i = (_h = config.jsVars.settings.installation) == null ? void 0 : _h.prompts) == null ? void 0 : _i.types) == null ? void 0 : _j.inFeed) == null ? void 0 : _k.message) != null ? _l : wp.i18n.__("Keep reading, even when you're on the train!", config.jsVars.slug);
           const appIconHtml = config.jsVars.iconUrl ? `<img class="in-feed-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : "";
           this.injectStyles(`
       .in-feed-overlay {
@@ -2389,16 +2398,17 @@
         }
         handlePerformInstallation() {
           const installButton = this.shadowRoot.querySelector(".woocommerce-checkout-overlay-button_install");
-          installButton?.addEventListener("click", () => {
+          installButton == null ? void 0 : installButton.addEventListener("click", () => {
             performInstallation();
           });
         }
         render() {
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+          const appName = (_a = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _a : "";
+          const themeColor = (_d = (_c = (_b = config.jsVars.settings.webAppManifest) == null ? void 0 : _b.appearance) == null ? void 0 : _c.themeColor) != null ? _d : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
-          const message = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.message ?? wp.i18n.__("Keep track of your orders. Our web app is fast, small and works offline.", config.jsVars.slug);
+          const title = (_g = (_f = (_e = config.jsVars.settings.installation) == null ? void 0 : _e.prompts) == null ? void 0 : _f.text) != null ? _g : wp.i18n.__("Install Web App", config.jsVars.slug);
+          const message = (_l = (_k = (_j = (_i = (_h = config.jsVars.settings.installation) == null ? void 0 : _h.prompts) == null ? void 0 : _i.types) == null ? void 0 : _j.woocommerceCheckout) == null ? void 0 : _k.message) != null ? _l : wp.i18n.__("Keep track of your orders. Our web app is fast, small and works offline.", config.jsVars.slug);
           const appIconHtml = config.jsVars.iconUrl ? `<img class="woocommerce-checkout-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : "";
           this.injectStyles(`
       .woocommerce-checkout-overlay {
@@ -2580,7 +2590,8 @@
           }, 2e3);
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
@@ -2884,7 +2895,8 @@
           return response;
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
@@ -3238,7 +3250,8 @@
           return listItems.join("");
         }
         async render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
           const borderColor = backgroundColor === "#ffffff" ? "#e5e7eb" : "#404040";
@@ -3402,7 +3415,8 @@
           updateProgress();
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           this.injectStyles(`
       .scroll-progress-bar {
           position: fixed;
@@ -3639,7 +3653,7 @@
             darkModeSwitch = document.createElement("pwa-dark-mode");
             if (switchType === "menu-switch") {
               const headerData = this.findHeader();
-              if (headerData?.menu) {
+              if (headerData == null ? void 0 : headerData.menu) {
                 const menuItem = document.createElement("li");
                 menuItem.className = "menu-item pwa-dark-mode-item";
                 const existingMenuItem = headerData.menu.querySelector("li");
@@ -3940,7 +3954,8 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const iconColor = getContrastTextColor(themeColor);
           const positionStyles = {
             "bottom-right": document.querySelector("pwa-navigation-tab-bar") ? "bottom: 70px; right: 20px;" : "bottom: 20px; right: 20px;",
@@ -4126,7 +4141,8 @@
           );
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const textColor = getContrastTextColor(themeColor);
           this.injectStyles(`
       :host {
@@ -4279,7 +4295,8 @@
           }, 200);
         }
         render() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
+          var _a, _b, _c;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
           const textColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
       .shake-notification {
@@ -4413,10 +4430,11 @@
     }(this, function() {
       const t = /* @__PURE__ */ new WeakMap();
       function e(e2, n2, o2, i2) {
+        var _a, _b;
         if (!e2 && !t.has(n2)) return false;
-        const r2 = t.get(n2) ?? /* @__PURE__ */ new WeakMap();
+        const r2 = (_a = t.get(n2)) != null ? _a : /* @__PURE__ */ new WeakMap();
         t.set(n2, r2);
-        const s2 = r2.get(o2) ?? /* @__PURE__ */ new Set();
+        const s2 = (_b = r2.get(o2)) != null ? _b : /* @__PURE__ */ new Set();
         r2.set(o2, s2);
         const a2 = s2.has(i2);
         return e2 ? s2.add(i2) : s2.delete(i2), a2 && e2;
@@ -4432,7 +4450,7 @@
         const r2 = new AbortController();
         return function(t3, n3, o3, i3 = {}) {
           const { signal: r3, base: s2 = document } = i3;
-          if (r3?.aborted) return;
+          if (r3 == null ? void 0 : r3.aborted) return;
           const { once: a2, ...c2 } = i3, l2 = s2 instanceof Document ? s2.documentElement : s2, h2 = Boolean("object" == typeof i3 ? i3.capture : i3), u2 = (i4) => {
             const r4 = function(t4, e2) {
               let n4 = t4.target;
@@ -4446,7 +4464,7 @@
               o3.call(l2, t4), a2 && (l2.removeEventListener(n3, u2, c2), e(false, l2, o3, d2));
             }
           }, d2 = JSON.stringify({ selector: t3, type: n3, capture: h2 });
-          e(true, l2, o3, d2) || l2.addEventListener(n3, u2, c2), r3?.addEventListener("abort", () => {
+          e(true, l2, o3, d2) || l2.addEventListener(n3, u2, c2), r3 == null ? void 0 : r3.addEventListener("abort", () => {
             e(false, l2, o3, d2);
           });
         }(t2, n2, o2, i2 = { ...i2, signal: r2.signal }), { destroy: () => r2.abort() };
@@ -4467,6 +4485,7 @@
         }
       }
       const a = function(t2, e2) {
+        var _a;
         void 0 === e2 && (e2 = {});
         try {
           let n2 = function(n3) {
@@ -4480,7 +4499,7 @@
           };
           const o2 = this;
           t2 = s.fromUrl(t2).url;
-          const { visit: i2 = o2.visit } = e2, r2 = { ...o2.options.requestHeaders, ...e2.headers }, a2 = e2.timeout ?? o2.options.timeout, l2 = new AbortController(), { signal: h2 } = l2;
+          const { visit: i2 = o2.visit } = e2, r2 = { ...o2.options.requestHeaders, ...e2.headers }, a2 = (_a = e2.timeout) != null ? _a : o2.options.timeout, l2 = new AbortController(), { signal: h2 } = l2;
           e2 = { ...e2, headers: r2, signal: h2 };
           let u2, d2 = false, f2 = null;
           a2 && a2 > 0 && (f2 = setTimeout(() => {
@@ -4500,7 +4519,7 @@
             return s2 && s2.then ? s2.then(void 0, r3) : s2;
           }(0, function(e3) {
             if (d2) throw o2.hooks.call("fetch:timeout", i2, { url: t2 }), new c(`Request timed out: ${t2}`, { url: t2, timedOut: d2 });
-            if ("AbortError" === e3?.name || h2.aborted) throw new c(`Request aborted: ${t2}`, { url: t2, aborted: true });
+            if ("AbortError" === (e3 == null ? void 0 : e3.name) || h2.aborted) throw new c(`Request aborted: ${t2}`, { url: t2, aborted: true });
             throw e3;
           });
           return Promise.resolve(m2 && m2.then ? m2.then(n2) : n2());
@@ -4572,8 +4591,8 @@
         return !!t2 && ("object" == typeof t2 || "function" == typeof t2) && "function" == typeof t2.then;
       }
       function m(t2, e2) {
-        const n2 = t2?.closest(`[${e2}]`);
-        return n2?.hasAttribute(e2) ? n2?.getAttribute(e2) || true : void 0;
+        const n2 = t2 == null ? void 0 : t2.closest(`[${e2}]`);
+        return (n2 == null ? void 0 : n2.hasAttribute(e2)) ? (n2 == null ? void 0 : n2.getAttribute(e2)) || true : void 0;
       }
       class p {
         constructor(t2) {
@@ -4609,7 +4628,7 @@
         constructor(t2, e2) {
           this.id = void 0, this.state = void 0, this.from = void 0, this.to = void 0, this.containers = void 0, this.animation = void 0, this.trigger = void 0, this.cache = void 0, this.history = void 0, this.scroll = void 0, this.meta = void 0;
           const { to: n2, from: o2, hash: i2, el: r2, event: s2 } = e2;
-          this.id = Math.random(), this.state = 1, this.from = { url: o2 ?? t2.location.url, hash: t2.location.hash }, this.to = { url: n2, hash: i2 }, this.containers = t2.options.containers, this.animation = { animate: true, wait: false, name: void 0, native: t2.options.native, scope: t2.options.animationScope, selector: t2.options.animationSelector }, this.trigger = { el: r2, event: s2 }, this.cache = { read: t2.options.cache, write: t2.options.cache }, this.history = { action: "push", popstate: false, direction: void 0 }, this.scroll = { reset: true, target: void 0 }, this.meta = {};
+          this.id = Math.random(), this.state = 1, this.from = { url: o2 != null ? o2 : t2.location.url, hash: t2.location.hash }, this.to = { url: n2, hash: i2 }, this.containers = t2.options.containers, this.animation = { animate: true, wait: false, name: void 0, native: t2.options.native, scope: t2.options.animationScope, selector: t2.options.animationSelector }, this.trigger = { el: r2, event: s2 }, this.cache = { read: t2.options.cache, write: t2.options.cache }, this.history = { action: "push", popstate: false, direction: void 0 }, this.scroll = { reset: true, target: void 0 }, this.meta = {};
         }
         advance(t2) {
           this.state < t2 && (this.state = t2);
@@ -4787,7 +4806,7 @@
               }, n3);
             }(t2, function(t3) {
               let { hook: i3, handler: a3, defaultHandler: c2, once: l2 } = t3;
-              if (!e2?.done) return l2 && r2.off(i3, a3), function(t4, o3) {
+              if (!(e2 == null ? void 0 : e2.done)) return l2 && r2.off(i3, a3), function(t4, o3) {
                 try {
                   var i4 = Promise.resolve(function(t5, e3) {
                     return void 0 === e3 && (e3 = []), new Promise((n3, o4) => {
@@ -4818,7 +4837,7 @@
         runSync(t2, e2, n2, o2) {
           void 0 === e2 && (e2 = this.swup.visit), void 0 === o2 && (o2 = false);
           const i2 = [];
-          for (const { hook: r2, handler: s2, defaultHandler: a2, once: c2 } of t2) if (!e2?.done) {
+          for (const { hook: r2, handler: s2, defaultHandler: a2, once: c2 } of t2) if (!(e2 == null ? void 0 : e2.done)) {
             c2 && this.off(r2, s2);
             try {
               const t3 = s2(e2, n2, a2);
@@ -4854,10 +4873,11 @@
           return { found: true, before: r2, handler: l2, after: a2, replaced: c2 };
         }
         sortRegistrations(t2, e2) {
-          return (t2.priority ?? 0) - (e2.priority ?? 0) || t2.id - e2.id || 0;
+          var _a, _b2;
+          return ((_a = t2.priority) != null ? _a : 0) - ((_b2 = e2.priority) != null ? _b2 : 0) || t2.id - e2.id || 0;
         }
         dispatchDomEvent(t2, e2, n2) {
-          if (e2?.done) return;
+          if (e2 == null ? void 0 : e2.done) return;
           const o2 = { hook: t2, args: n2, visit: e2 || this.swup.visit };
           document.dispatchEvent(new CustomEvent("swup:any", { detail: o2, bubbles: true })), document.dispatchEvent(new CustomEvent(`swup:${t2}`, { detail: o2, bubbles: true }));
         }
@@ -4916,6 +4936,7 @@
         void 0 === e2 && (e2 = {});
         try {
           let r2 = function(r3) {
+            var _a, _b;
             if (a2) return r3;
             c2.navigating = true, c2.visit = t2;
             const { el: l3 } = t2.trigger;
@@ -4923,7 +4944,7 @@
             const h2 = e2.history || m(l3, "data-swup-history");
             "string" == typeof h2 && ["push", "replace"].includes(h2) && (t2.history.action = h2);
             const u2 = e2.animation || m(l3, "data-swup-animation");
-            return "string" == typeof u2 && (t2.animation.name = u2), t2.meta = e2.meta || {}, "object" == typeof e2.cache ? (t2.cache.read = e2.cache.read ?? t2.cache.read, t2.cache.write = e2.cache.write ?? t2.cache.write) : void 0 !== e2.cache && (t2.cache = { read: !!e2.cache, write: !!e2.cache }), delete e2.cache, function(r4, a3) {
+            return "string" == typeof u2 && (t2.animation.name = u2), t2.meta = e2.meta || {}, "object" == typeof e2.cache ? (t2.cache.read = (_a = e2.cache.read) != null ? _a : t2.cache.read, t2.cache.write = (_b = e2.cache.write) != null ? _b : t2.cache.write) : void 0 !== e2.cache && (t2.cache = { read: !!e2.cache, write: !!e2.cache }), delete e2.cache, function(r4, a3) {
               try {
                 var l4 = function(r5, a4) {
                   try {
@@ -5014,7 +5035,7 @@
                   }
                   return l5 && l5.then ? l5.then(void 0, a4) : l5;
                 }(0, function(e3) {
-                  e3 && !e3?.aborted ? (t2.state = 9, console.error(e3), c2.options.skipPopStateHandling = () => (window.location.assign(t2.to.url + t2.to.hash), true), window.history.back()) : t2.state = 8;
+                  e3 && !(e3 == null ? void 0 : e3.aborted) ? (t2.state = 9, console.error(e3), c2.options.skipPopStateHandling = () => (window.location.assign(t2.to.url + t2.to.hash), true), window.history.back()) : t2.state = 8;
                 });
               } catch (t3) {
                 return a3(true, t3);
@@ -5064,9 +5085,10 @@
           return Promise.reject(t3);
         }
       }, L = function(t2) {
+        var _a;
         const e2 = t2.to.document;
         if (!e2) return false;
-        const n2 = e2.querySelector("title")?.innerText || "";
+        const n2 = ((_a = e2.querySelector("title")) == null ? void 0 : _a.innerText) || "";
         document.title = n2;
         const o2 = u('[data-swup-persist]:not([data-swup-persist=""])'), i2 = t2.containers.map((t3) => {
           const n3 = document.querySelector(t3), o3 = e2.querySelector(t3);
@@ -5077,7 +5099,7 @@
           n3 && n3 !== t3 && n3.replaceWith(t3);
         }), i2.length === t2.containers.length;
       }, V = function(t2) {
-        const e2 = { behavior: "auto" }, { target: n2, reset: o2 } = t2.scroll, i2 = n2 ?? t2.to.hash;
+        const e2 = { behavior: "auto" }, { target: n2, reset: o2 } = t2.scroll, i2 = n2 != null ? n2 : t2.to.hash;
         let r2 = false;
         return i2 && (r2 = this.hooks.callSync("scroll:anchor", t2, { hash: i2, options: e2 }, (t3, e3) => {
           let { hash: n3, options: o3 } = e3;
@@ -5128,7 +5150,7 @@
         }
       }, N = function(t2) {
         var e2;
-        if (e2 = t2, Boolean(e2?.isSwupPlugin)) {
+        if (e2 = t2, Boolean(e2 == null ? void 0 : e2.isSwupPlugin)) {
           if (t2.swup = this, !t2._checkRequirements || t2._checkRequirements()) return t2._beforeMount && t2._beforeMount(), t2.mount(), this.plugins.push(t2), this.plugins;
         } else console.error("Not a swup plugin instance", t2);
       };
@@ -5150,17 +5172,22 @@
       }
       const W = { animateHistoryBrowsing: false, animationSelector: '[class*="transition-"]', animationScope: "html", cache: true, containers: ["#swup"], hooks: {}, ignoreVisit: function(t2, e2) {
         let { el: n2 } = void 0 === e2 ? {} : e2;
-        return !!n2?.closest("[data-no-swup]");
-      }, linkSelector: "a[href]", linkToSelf: "scroll", native: false, plugins: [], resolveUrl: (t2) => t2, requestHeaders: { "X-Requested-With": "swup", Accept: "text/html, application/xhtml+xml" }, skipPopStateHandling: (t2) => "swup" !== t2.state?.source, timeout: 0 };
+        return !!(n2 == null ? void 0 : n2.closest("[data-no-swup]"));
+      }, linkSelector: "a[href]", linkToSelf: "scroll", native: false, plugins: [], resolveUrl: (t2) => t2, requestHeaders: { "X-Requested-With": "swup", Accept: "text/html, application/xhtml+xml" }, skipPopStateHandling: (t2) => {
+        var _a;
+        return "swup" !== ((_a = t2.state) == null ? void 0 : _a.source);
+      }, timeout: 0 };
       return class {
         get currentPageUrl() {
           return this.location.url;
         }
         constructor(t2) {
+          var _a, _b;
           void 0 === t2 && (t2 = {}), this.version = "4.8.1", this.options = void 0, this.defaults = W, this.plugins = [], this.visit = void 0, this.cache = void 0, this.hooks = void 0, this.classes = void 0, this.location = s.fromUrl(window.location.href), this.currentHistoryIndex = void 0, this.clickDelegate = void 0, this.navigating = false, this.onVisitEnd = void 0, this.use = N, this.unuse = R, this.findPlugin = O, this.log = () => {
-          }, this.navigate = T, this.performNavigation = H, this.createVisit = g, this.delegateEvent = r, this.fetchPage = a, this.awaitAnimations = E, this.renderPage = q, this.replaceContent = L, this.animatePageIn = I, this.animatePageOut = j, this.scrollToContent = V, this.getAnchorElement = S, this.getCurrentUrl = o, this.resolveUrl = D, this.isSameResolvedUrl = M, this.options = { ...this.defaults, ...t2 }, this.handleLinkClick = this.handleLinkClick.bind(this), this.handlePopState = this.handlePopState.bind(this), this.cache = new l(this), this.classes = new p(this), this.hooks = new b(this), this.visit = this.createVisit({ to: "" }), this.currentHistoryIndex = window.history.state?.index ?? 1, this.enable();
+          }, this.navigate = T, this.performNavigation = H, this.createVisit = g, this.delegateEvent = r, this.fetchPage = a, this.awaitAnimations = E, this.renderPage = q, this.replaceContent = L, this.animatePageIn = I, this.animatePageOut = j, this.scrollToContent = V, this.getAnchorElement = S, this.getCurrentUrl = o, this.resolveUrl = D, this.isSameResolvedUrl = M, this.options = { ...this.defaults, ...t2 }, this.handleLinkClick = this.handleLinkClick.bind(this), this.handlePopState = this.handlePopState.bind(this), this.cache = new l(this), this.classes = new p(this), this.hooks = new b(this), this.visit = this.createVisit({ to: "" }), this.currentHistoryIndex = (_b = (_a = window.history.state) == null ? void 0 : _a.index) != null ? _b : 1, this.enable();
         }
         enable() {
+          var _a;
           try {
             const t2 = this, { linkSelector: e2 } = t2.options;
             t2.clickDelegate = t2.delegateEvent(e2, "click", t2.handleLinkClick), window.addEventListener("popstate", t2.handlePopState), t2.options.animateHistoryBrowsing && (window.history.scrollRestoration = "manual"), t2.options.native = t2.options.native && !!document.startViewTransition, t2.options.plugins.forEach((e3) => t2.use(e3));
@@ -5168,7 +5195,7 @@
               const [o2, i2] = t2.hooks.parseName(e3);
               t2.hooks.on(o2, n2, i2);
             }
-            return "swup" !== window.history.state?.source && i(null, { index: t2.currentHistoryIndex }), Promise.resolve(d()).then(function() {
+            return "swup" !== ((_a = window.history.state) == null ? void 0 : _a.source) && i(null, { index: t2.currentHistoryIndex }), Promise.resolve(d()).then(function() {
               return Promise.resolve(t2.hooks.call("enable", void 0, void 0, () => {
                 const e3 = document.documentElement;
                 e3.classList.add("swup-enabled"), e3.classList.toggle("swup-native", t2.options.native);
@@ -5203,7 +5230,8 @@
           if (this.navigating && o2 === this.visit.to.url) return void t2.preventDefault();
           const a2 = this.createVisit({ to: o2, hash: r2, el: e2, event: t2 });
           t2.metaKey || t2.ctrlKey || t2.shiftKey || t2.altKey ? this.hooks.callSync("link:newtab", a2, { href: n2 }) : 0 === t2.button && this.hooks.callSync("link:click", a2, { el: e2, event: t2 }, () => {
-            const e3 = a2.from.url ?? "";
+            var _a;
+            const e3 = (_a = a2.from.url) != null ? _a : "";
             t2.preventDefault(), o2 && o2 !== e3 ? this.isSameResolvedUrl(o2, e3) || this.performNavigation(a2) : r2 ? this.hooks.callSync("link:anchor", a2, { hash: r2 }, () => {
               i(o2 + r2), this.scrollToContent(a2);
             }) : this.hooks.callSync("link:self", a2, void 0, () => {
@@ -5212,12 +5240,13 @@
           });
         }
         handlePopState(t2) {
-          const e2 = t2.state?.url ?? window.location.href;
+          var _a, _b, _c, _d;
+          const e2 = (_b = (_a = t2.state) == null ? void 0 : _a.url) != null ? _b : window.location.href;
           if (this.options.skipPopStateHandling(t2)) return;
           if (this.isSameResolvedUrl(o(), this.location.url)) return;
           const { url: n2, hash: i2 } = s.fromUrl(e2), r2 = this.createVisit({ to: n2, hash: i2, event: t2 });
           r2.history.popstate = true;
-          const a2 = t2.state?.index ?? 0;
+          const a2 = (_d = (_c = t2.state) == null ? void 0 : _c.index) != null ? _d : 0;
           a2 && a2 !== this.currentHistoryIndex && (r2.history.direction = a2 - this.currentHistoryIndex > 0 ? "forwards" : "backwards", this.currentHistoryIndex = a2), r2.animation.animate = false, r2.scroll.reset = false, r2.scroll.target = false, this.options.animateHistoryBrowsing && (r2.animation.animate = true, r2.scroll.reset = true), this.hooks.callSync("history:popstate", r2, { event: t2 }, () => {
             this.performNavigation(r2);
           });
@@ -5454,7 +5483,7 @@
                   return t4;
                 }) };
               }(document.head, l.head, { shouldPersist: (e4) => t2.isPersistentTag(e4) });
-              t2.swup.log(`Removed ${c.length} / added ${h.length} tags in head`), u?.length && function(e4, t3, n4) {
+              t2.swup.log(`Removed ${c.length} / added ${h.length} tags in head`), (u == null ? void 0 : u.length) && function(e4, t3, n4) {
                 void 0 === n4 && (n4 = []);
                 const r2 = /* @__PURE__ */ new Set();
                 for (const { name: s2, value: i2 } of o(t3, n4)) e4.setAttribute(s2, i2), r2.add(s2);
@@ -6114,7 +6143,8 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
@@ -6329,11 +6359,12 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f, _g;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
-          const promptMessage = config.jsVars.settings.pushNotifications?.prompt?.message ?? wp.i18n.__("We would like to show you notifications for the latest news and updates.", config.jsVars.slug);
-          const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? "";
+          const promptMessage = (_f = (_e = (_d = config.jsVars.settings.pushNotifications) == null ? void 0 : _d.prompt) == null ? void 0 : _e.message) != null ? _f : wp.i18n.__("We would like to show you notifications for the latest news and updates.", config.jsVars.slug);
+          const appName = (_g = config.jsVars.settings.webAppManifest.appIdentity.appName) != null ? _g : "";
           const appIconHtml = config.jsVars.iconUrl ? `<img class="push-notifications-prompt-media_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : "";
           this.injectStyles(`
       .push-notifications-prompt {
@@ -6574,7 +6605,8 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const iconColor = getContrastTextColor(themeColor);
           const positionStyles = {
             "bottom-right": document.querySelector("pwa-navigation-tab-bar") ? "bottom: 70px; right: 20px;" : "bottom: 20px; right: 20px;",
@@ -7162,8 +7194,9 @@
           });
         }
         renderDefaultPageLoader() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
-          const appIcon = config.jsVars.iconUrl ?? "";
+          var _a, _b, _c, _d;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
+          const appIcon = (_d = config.jsVars.iconUrl) != null ? _d : "";
           this.injectStyles(`
       .pageLoader.-default {
         background-color: ${backgroundColor};
@@ -7199,7 +7232,8 @@
     `;
         }
         renderSkeletonPageLoader() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
+          var _a, _b, _c;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
           this.injectStyles(`
       .pageLoader.-skeleton {
         background-color: ${backgroundColor};
@@ -7210,7 +7244,8 @@
     `;
         }
         renderSpinnerPageLoader() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
+          var _a, _b, _c;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
           const spinnerColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
       .pageLoader.-spinner {
@@ -7725,7 +7760,8 @@
     `;
         }
         renderPercentPageLoader() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
+          var _a, _b, _c;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
           const percentColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
       .pageLoader.-percent {
@@ -7767,7 +7803,8 @@
     `;
         }
         renderFadePageLoader() {
-          const backgroundColor = config.jsVars.settings.webAppManifest?.appearance?.backgroundColor ?? "#ffffff";
+          var _a, _b, _c;
+          const backgroundColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.backgroundColor) != null ? _c : "#ffffff";
           this.injectStyles(`
       .pageLoader.-fade {
         background-color: ${backgroundColor};
@@ -7957,9 +7994,10 @@
           });
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c, _d, _e, _f;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const textColor = getContrastTextColor(themeColor);
-          const buttonText = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__("Install Web App", config.jsVars.slug);
+          const buttonText = (_f = (_e = (_d = config.jsVars.settings.installation) == null ? void 0 : _d.prompts) == null ? void 0 : _e.text) != null ? _f : wp.i18n.__("Install Web App", config.jsVars.slug);
           this.injectStyles(`
       :host(:active),
       :host(:focus) {
@@ -8050,7 +8088,8 @@
           return toastMessages;
         }
         render() {
-          const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? "#000000";
+          var _a, _b, _c;
+          const themeColor = (_c = (_b = (_a = config.jsVars.settings.webAppManifest) == null ? void 0 : _a.appearance) == null ? void 0 : _b.themeColor) != null ? _c : "#000000";
           const backgroundColor = getContrastTextColor(themeColor);
           const textColor = getContrastTextColor(backgroundColor);
           this.injectStyles(`
@@ -8152,103 +8191,137 @@
       ({ settings, userData, pluginsData, pageData } = config.jsVars);
       delayedModulesLoaded = false;
       loadDelayedModules = async () => {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B, _C, _D, _E, _F, _G, _H, _I, _J, _K, _L, _M, _N, _O, _P, _Q, _R, _S, _T, _U, _V, _W, _X, _Y, _Z, __, _$, _aa, _ba, _ca, _da, _ea, _fa, _ga, _ha, _ia, _ja, _ka, _la, _ma, _na, _oa, _pa, _qa, _ra, _sa, _ta, _ua, _va, _wa, _xa, _ya, _za, _Aa, _Ba, _Ca, _Da, _Ea, _Fa, _Ga, _Ha, _Ia, _Ja, _Ka, _La, _Ma, _Na, _Oa, _Pa, _Qa, _Ra, _Sa, _Ta, _Ua, _Va, _Wa, _Xa, _Ya, _Za, __a, _$a, _ab, _bb, _cb, _db, _eb, _fb;
         if (delayedModulesLoaded) return;
         delayedModulesLoaded = true;
         document.removeEventListener("mousemove", loadDelayedModules);
         document.removeEventListener("scroll", loadDelayedModules);
         document.removeEventListener("touchstart", loadDelayedModules);
         document.removeEventListener("keydown", loadDelayedModules);
-        if (settings?.installation?.prompts?.feature === "on" && !isPwa()) {
-          if (settings?.installation?.prompts?.skipFirstVisit !== "on" || isReturningVisitor()) {
-            if (settings?.installation?.prompts?.types?.headerBanner?.feature === "on" && !getCookie("pwa_header_banner_overlay_shown")) {
+        if (((_b = (_a = settings == null ? void 0 : settings.installation) == null ? void 0 : _a.prompts) == null ? void 0 : _b.feature) === "on" && !isPwa()) {
+          if (((_d = (_c = settings == null ? void 0 : settings.installation) == null ? void 0 : _c.prompts) == null ? void 0 : _d.skipFirstVisit) !== "on" || isReturningVisitor()) {
+            if (((_h = (_g = (_f = (_e = settings == null ? void 0 : settings.installation) == null ? void 0 : _e.prompts) == null ? void 0 : _f.types) == null ? void 0 : _g.headerBanner) == null ? void 0 : _h.feature) === "on" && !getCookie("pwa_header_banner_overlay_shown")) {
               const { initInstallOverlayHeaderBanner: initInstallOverlayHeaderBanner2 } = await Promise.resolve().then(() => (init_installOverlayHeaderBanner(), installOverlayHeaderBanner_exports));
               await initInstallOverlayHeaderBanner2();
-              setCookie(`pwa_header_banner_overlay_shown`, "true", settings?.installation?.prompts?.timeout ?? 1);
+              setCookie(`pwa_header_banner_overlay_shown`, "true", (_k = (_j = (_i = settings == null ? void 0 : settings.installation) == null ? void 0 : _i.prompts) == null ? void 0 : _j.timeout) != null ? _k : 1);
             }
-            if (settings?.installation?.prompts?.types?.snackbar?.feature === "on" && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie("pwa_snackbar_overlay_shown")) {
+            if (((_o = (_n = (_m = (_l = settings == null ? void 0 : settings.installation) == null ? void 0 : _l.prompts) == null ? void 0 : _m.types) == null ? void 0 : _n.snackbar) == null ? void 0 : _o.feature) === "on" && (((_p = userData == null ? void 0 : userData.device) == null ? void 0 : _p.isSmartphone) || ((_q = userData == null ? void 0 : userData.device) == null ? void 0 : _q.isTablet)) && !getCookie("pwa_snackbar_overlay_shown")) {
               const { initInstallOverlaySnackbar: initInstallOverlaySnackbar2 } = await Promise.resolve().then(() => (init_installOverlaySnackbar(), installOverlaySnackbar_exports));
               await initInstallOverlaySnackbar2();
-              setCookie(`pwa_snackbar_overlay_shown`, "true", settings?.installation?.prompts?.timeout ?? 1);
+              setCookie(`pwa_snackbar_overlay_shown`, "true", (_t = (_s = (_r = settings == null ? void 0 : settings.installation) == null ? void 0 : _r.prompts) == null ? void 0 : _s.timeout) != null ? _t : 1);
             }
-            if (settings?.installation?.prompts?.types?.blogPopup?.feature === "on" && pageData?.type?.isBlogPost && (userData?.device?.isSmartphone || userData?.device?.isTablet) && !getCookie("pwa_blog_popup_overlay_shown")) {
+            if (((_x = (_w = (_v = (_u = settings == null ? void 0 : settings.installation) == null ? void 0 : _u.prompts) == null ? void 0 : _v.types) == null ? void 0 : _w.blogPopup) == null ? void 0 : _x.feature) === "on" && ((_y = pageData == null ? void 0 : pageData.type) == null ? void 0 : _y.isBlogPost) && (((_z = userData == null ? void 0 : userData.device) == null ? void 0 : _z.isSmartphone) || ((_A = userData == null ? void 0 : userData.device) == null ? void 0 : _A.isTablet)) && !getCookie("pwa_blog_popup_overlay_shown")) {
               const { initInstallOverlayBlogPopup: initInstallOverlayBlogPopup2 } = await Promise.resolve().then(() => (init_installOverlayBlogPopup(), installOverlayBlogPopup_exports));
               await initInstallOverlayBlogPopup2();
-              setCookie(`pwa_blog_popup_overlay_shown`, "true", settings?.installation?.prompts?.timeout ?? 1);
+              setCookie(`pwa_blog_popup_overlay_shown`, "true", (_D = (_C = (_B = settings == null ? void 0 : settings.installation) == null ? void 0 : _B.prompts) == null ? void 0 : _C.timeout) != null ? _D : 1);
             }
-            if (settings?.installation?.prompts?.types?.navigationMenu?.feature === "on" && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+            if (((_H = (_G = (_F = (_E = settings == null ? void 0 : settings.installation) == null ? void 0 : _E.prompts) == null ? void 0 : _F.types) == null ? void 0 : _G.navigationMenu) == null ? void 0 : _H.feature) === "on" && (((_I = userData == null ? void 0 : userData.device) == null ? void 0 : _I.isSmartphone) || ((_J = userData == null ? void 0 : userData.device) == null ? void 0 : _J.isTablet))) {
               const { initInstallOverlayNavigationMenu: initInstallOverlayNavigationMenu2 } = await Promise.resolve().then(() => (init_installOverlayNavigationMenu(), installOverlayNavigationMenu_exports));
               await initInstallOverlayNavigationMenu2();
             }
-            if (settings?.installation?.prompts?.types?.inFeed?.feature === "on" && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+            if (((_N = (_M = (_L = (_K = settings == null ? void 0 : settings.installation) == null ? void 0 : _K.prompts) == null ? void 0 : _L.types) == null ? void 0 : _M.inFeed) == null ? void 0 : _N.feature) === "on" && (((_O = userData == null ? void 0 : userData.device) == null ? void 0 : _O.isSmartphone) || ((_P = userData == null ? void 0 : userData.device) == null ? void 0 : _P.isTablet))) {
               const { initInstallOverlayInFeed: initInstallOverlayInFeed2 } = await Promise.resolve().then(() => (init_installOverlayInFeed(), installOverlayInFeed_exports));
               await initInstallOverlayInFeed2();
             }
-            if (settings?.installation?.prompts?.types?.woocommerceCheckout?.feature === "on" && pluginsData?.isActive?.woocommerce && document.body.classList.contains("woocommerce-checkout") && (userData?.device?.isSmartphone || userData?.device?.isTablet)) {
+            if (((_T = (_S = (_R = (_Q = settings == null ? void 0 : settings.installation) == null ? void 0 : _Q.prompts) == null ? void 0 : _R.types) == null ? void 0 : _S.woocommerceCheckout) == null ? void 0 : _T.feature) === "on" && ((_U = pluginsData == null ? void 0 : pluginsData.isActive) == null ? void 0 : _U.woocommerce) && document.body.classList.contains("woocommerce-checkout") && (((_V = userData == null ? void 0 : userData.device) == null ? void 0 : _V.isSmartphone) || ((_W = userData == null ? void 0 : userData.device) == null ? void 0 : _W.isTablet))) {
               const { initInstallOverlayWoocommerceCheckout: initInstallOverlayWoocommerceCheckout2 } = await Promise.resolve().then(() => (init_installOverlayWoocommerceCheckout(), installOverlayWoocommerceCheckout_exports));
               await initInstallOverlayWoocommerceCheckout2();
             }
           }
         }
-        if (settings?.offlineUsage?.capabilities?.feature === "on") {
-          if (settings?.offlineUsage?.capabilities?.notification?.feature === "on") {
+        if (((_Y = (_X = settings == null ? void 0 : settings.offlineUsage) == null ? void 0 : _X.capabilities) == null ? void 0 : _Y.feature) === "on") {
+          if (((_$ = (__ = (_Z = settings == null ? void 0 : settings.offlineUsage) == null ? void 0 : _Z.capabilities) == null ? void 0 : __.notification) == null ? void 0 : _$.feature) === "on") {
             const { initOfflineNotification: initOfflineNotification2 } = await Promise.resolve().then(() => (init_offlineNotification(), offlineNotification_exports));
             await initOfflineNotification2();
           }
-          if (settings?.offlineUsage?.capabilities?.forms?.feature === "on") {
+          if (((_ca = (_ba = (_aa = settings == null ? void 0 : settings.offlineUsage) == null ? void 0 : _aa.capabilities) == null ? void 0 : _ba.forms) == null ? void 0 : _ca.feature) === "on") {
             const { initOfflineForms: initOfflineForms2 } = await Promise.resolve().then(() => (init_offlineForms(), offlineForms_exports));
             await initOfflineForms2();
           }
         }
-        if (settings?.uiComponents?.navigationTabBar?.feature === "on" && settings?.uiComponents?.navigationTabBar?.navigationItems.some((item) => item.icon && item.label && item.page) && settings?.uiComponents?.navigationTabBar?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_ea = (_da = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _da.navigationTabBar) == null ? void 0 : _ea.feature) === "on" && ((_ga = (_fa = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _fa.navigationTabBar) == null ? void 0 : _ga.navigationItems.some((item) => item.icon && item.label && item.page)) && ((_ia = (_ha = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _ha.navigationTabBar) == null ? void 0 : _ia.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initNavigationTabBar: initNavigationTabBar2 } = await Promise.resolve().then(() => (init_navigationTabBar(), navigationTabBar_exports));
           await initNavigationTabBar2();
         }
-        if (settings?.uiComponents?.scrollProgressBar?.feature === "on" && settings?.uiComponents?.scrollProgressBar?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_ka = (_ja = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _ja.scrollProgressBar) == null ? void 0 : _ka.feature) === "on" && ((_ma = (_la = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _la.scrollProgressBar) == null ? void 0 : _ma.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initScrollProgressBar: initScrollProgressBar2 } = await Promise.resolve().then(() => (init_scrollProgressBar(), scrollProgressBar_exports));
           await initScrollProgressBar2();
         }
-        if (settings?.uiComponents?.darkMode?.feature === "on" && settings?.uiComponents?.darkMode?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_oa = (_na = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _na.darkMode) == null ? void 0 : _oa.feature) === "on" && ((_qa = (_pa = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _pa.darkMode) == null ? void 0 : _qa.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initDarkMode: initDarkMode2 } = await Promise.resolve().then(() => (init_darkMode(), darkMode_exports));
           await initDarkMode2();
         }
-        if (settings?.uiComponents?.shareButton?.feature === "on" && navigator.share && settings?.uiComponents?.shareButton?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_sa = (_ra = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _ra.shareButton) == null ? void 0 : _sa.feature) === "on" && navigator.share && ((_ua = (_ta = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _ta.shareButton) == null ? void 0 : _ua.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initShareButton: initShareButton2 } = await Promise.resolve().then(() => (init_shareButton(), shareButton_exports));
           await initShareButton2();
         }
-        if (settings?.uiComponents?.pullDownRefresh?.feature === "on" && settings?.uiComponents?.pullDownRefresh?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_wa = (_va = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _va.pullDownRefresh) == null ? void 0 : _wa.feature) === "on" && ((_ya = (_xa = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _xa.pullDownRefresh) == null ? void 0 : _ya.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initPullDownRefresh: initPullDownRefresh2 } = await Promise.resolve().then(() => (init_pullDownRefresh(), pullDownRefresh_exports));
           await initPullDownRefresh2();
         }
-        if (settings?.uiComponents?.shakeRefresh?.feature === "on" && "DeviceMotionEvent" in window && settings?.uiComponents?.shakeRefresh?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_Aa = (_za = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _za.shakeRefresh) == null ? void 0 : _Aa.feature) === "on" && "DeviceMotionEvent" in window && ((_Ca = (_Ba = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _Ba.shakeRefresh) == null ? void 0 : _Ca.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initShakeRefresh: initShakeRefresh2 } = await Promise.resolve().then(() => (init_shakeRefresh(), shakeRefresh_exports));
           await initShakeRefresh2();
         }
-        if (settings?.uiComponents?.inactiveBlur?.feature === "on" && settings?.uiComponents?.inactiveBlur?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_Ea = (_Da = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _Da.inactiveBlur) == null ? void 0 : _Ea.feature) === "on" && ((_Ga = (_Fa = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _Fa.inactiveBlur) == null ? void 0 : _Ga.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initInactiveBlur: initInactiveBlur2 } = await Promise.resolve().then(() => (init_inactiveBlur(), inactiveBlur_exports));
           await initInactiveBlur2();
         }
-        if (settings?.appCapabilities?.smoothPageTransitions?.feature === "on" && settings?.appCapabilities?.smoothPageTransitions?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_Ia = (_Ha = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ha.smoothPageTransitions) == null ? void 0 : _Ia.feature) === "on" && ((_Ka = (_Ja = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ja.smoothPageTransitions) == null ? void 0 : _Ka.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initSmoothPageTransitions: initSmoothPageTransitions2 } = await Promise.resolve().then(() => (init_smoothPageTransitions(), smoothPageTransitions_exports));
           await initSmoothPageTransitions2();
         }
-        if (settings?.appCapabilities?.vibrations?.feature === "on" && navigator.vibrate && settings?.appCapabilities?.vibrations?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_Ma = (_La = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _La.vibrations) == null ? void 0 : _Ma.feature) === "on" && navigator.vibrate && ((_Oa = (_Na = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Na.vibrations) == null ? void 0 : _Oa.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initVibrations: initVibrations2 } = await Promise.resolve().then(() => (init_vibrations(), vibrations_exports));
           await initVibrations2();
         }
-        if (settings?.appCapabilities?.idleDetection?.feature === "on" && "IdleDetector" in window && settings?.appCapabilities?.idleDetection?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_Qa = (_Pa = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Pa.idleDetection) == null ? void 0 : _Qa.feature) === "on" && "IdleDetector" in window && ((_Sa = (_Ra = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ra.idleDetection) == null ? void 0 : _Sa.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initIdleDetection: initIdleDetection2 } = await Promise.resolve().then(() => (init_idleDetection(), idleDetection_exports));
           await initIdleDetection2();
         }
-        if (settings?.appCapabilities?.screenWakeLock?.feature === "on" && navigator.wakeLock && settings?.appCapabilities?.screenWakeLock?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_Ua = (_Ta = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ta.screenWakeLock) == null ? void 0 : _Ua.feature) === "on" && navigator.wakeLock && ((_Wa = (_Va = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Va.screenWakeLock) == null ? void 0 : _Wa.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initScreenWakeLock: initScreenWakeLock2 } = await Promise.resolve().then(() => (init_screenWakeLock(), screenWakeLock_exports));
           await initScreenWakeLock2();
         }
-        if (settings?.pushNotifications?.prompt?.feature === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && !["subscribed", "blocked"].includes(await pushNotificationsSubscription_default.getSubscriptionState()) && !getCookie("pwa_push_notifications_prompt_shown") && (settings?.pushNotifications?.prompt?.skipFirstVisit !== "on" || isReturningVisitor())) {
+        if (((_Ya = (_Xa = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _Xa.prompt) == null ? void 0 : _Ya.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && !["subscribed", "blocked"].includes(await pushNotificationsSubscription_default.getSubscriptionState()) && !getCookie("pwa_push_notifications_prompt_shown") && (((__a = (_Za = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _Za.prompt) == null ? void 0 : __a.skipFirstVisit) !== "on" || isReturningVisitor())) {
           const { initPushNotificationsPrompt: initPushNotificationsPrompt2 } = await Promise.resolve().then(() => (init_pushNotificationsPrompt(), pushNotificationsPrompt_exports));
           await initPushNotificationsPrompt2();
-          setCookie("pwa_push_notifications_prompt_shown", "true", settings?.pushNotifications?.prompt?.timeout ?? 1);
+          setCookie("pwa_push_notifications_prompt_shown", "true", (_bb = (_ab = (_$a = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _$a.prompt) == null ? void 0 : _ab.timeout) != null ? _bb : 1);
         }
-        if (settings?.pushNotifications?.button?.feature === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && await pushNotificationsSubscription_default.getSubscriptionState() !== "blocked" && (await pushNotificationsSubscription_default.getSubscriptionState() !== "subscribed" || settings?.pushNotifications?.button?.behavior === "shown")) {
+        if (((_db = (_cb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _cb.button) == null ? void 0 : _db.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && await pushNotificationsSubscription_default.getSubscriptionState() !== "blocked" && (await pushNotificationsSubscription_default.getSubscriptionState() !== "subscribed" || ((_fb = (_eb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _eb.button) == null ? void 0 : _fb.behavior) === "shown")) {
           const { initPushNotificationsButton: initPushNotificationsButton2 } = await Promise.resolve().then(() => (init_pushNotificationsButton(), pushNotificationsButton_exports));
           await initPushNotificationsButton2();
         }
@@ -8263,29 +8336,36 @@
         }, 1e3);
       };
       document.addEventListener("DOMContentLoaded", async function() {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
         if (isPwa()) {
           const { initPwaTracker: initPwaTracker2 } = await Promise.resolve().then(() => (init_pwaTracker(), pwaTracker_exports));
           await initPwaTracker2();
         }
-        if (isPwa() && settings?.uiComponents?.pwaCustomCssAndJs?.feature === "on") {
+        if (isPwa() && ((_b = (_a = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _a.pwaCustomCssAndJs) == null ? void 0 : _b.feature) === "on") {
           const { initPwaCustomCssAndJs: initPwaCustomCssAndJs2 } = await Promise.resolve().then(() => (init_pwaCustomCssAndJs(), pwaCustomCssAndJs_exports));
           await initPwaCustomCssAndJs2();
         }
-        if (settings?.appCapabilities?.smoothPageTransitions?.feature === "off" && settings?.uiComponents?.pageLoader?.feature === "on" && settings?.uiComponents?.pageLoader?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet || supported === "desktop" && userData?.device?.isDesktop)) {
+        if (((_d = (_c = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _c.smoothPageTransitions) == null ? void 0 : _d.feature) === "off" && ((_f = (_e = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _e.pageLoader) == null ? void 0 : _f.feature) === "on" && ((_h = (_g = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _g.pageLoader) == null ? void 0 : _h.supportedDevices.some((supported) => {
+          var _a2, _b2, _c2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
+        }))) {
           const { initPageLoader: initPageLoader2 } = await Promise.resolve().then(() => (init_pageLoader(), pageLoader_exports));
           await initPageLoader2();
         }
-        if (settings?.webAppManifest?.displaySettings?.orientationLock === "on") {
+        if (((_j = (_i = settings == null ? void 0 : settings.webAppManifest) == null ? void 0 : _i.displaySettings) == null ? void 0 : _j.orientationLock) === "on") {
           const { initOrientationLock: initOrientationLock2 } = await Promise.resolve().then(() => (init_orientationLock(), orientationLock_exports));
           await initOrientationLock2();
         }
-        if (settings?.installation?.prompts?.feature === "on" && !isPwa()) {
+        if (((_l = (_k = settings == null ? void 0 : settings.installation) == null ? void 0 : _k.prompts) == null ? void 0 : _l.feature) === "on" && !isPwa()) {
           const { initInstallUrl: initInstallUrl2 } = await Promise.resolve().then(() => (init_installUrl(), installUrl_exports));
           await initInstallUrl2();
           const { initInstallButton: initInstallButton2 } = await Promise.resolve().then(() => (init_installButton(), installButton_exports));
           await initInstallButton2();
         }
-        if (settings?.uiComponents?.toastMessages?.feature === "on" && settings?.uiComponents?.toastMessages?.supportedDevices.some((supported) => supported === "smartphone" && userData?.device?.isSmartphone || supported === "tablet" && userData?.device?.isTablet)) {
+        if (((_n = (_m = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _m.toastMessages) == null ? void 0 : _n.feature) === "on" && ((_p = (_o = settings == null ? void 0 : settings.uiComponents) == null ? void 0 : _o.toastMessages) == null ? void 0 : _p.supportedDevices.some((supported) => {
+          var _a2, _b2;
+          return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
+        }))) {
           const { initToastMessages: initToastMessages2 } = await Promise.resolve().then(() => (init_toastMessages(), toastMessages_exports));
           await initToastMessages2();
         }

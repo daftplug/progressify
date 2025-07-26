@@ -317,7 +317,7 @@ class WebAppManifest
               $url = "https://play.google.com/store/apps/details?id={$relatedApplication['id']}";
               break;
             case 'itunes':
-              $url = "https://apps.apple.com/us/app/{$relatedApplication['id']}";
+              $url = "https://apps.apple.com/app/{$relatedApplication['id']}";
               break;
             case 'windows':
               $url = "https://apps.microsoft.com/detail/{$relatedApplication['id']}";

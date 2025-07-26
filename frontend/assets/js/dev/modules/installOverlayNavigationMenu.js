@@ -2,8 +2,6 @@ import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaInstallOverlayNavigationMenu extends HTMLElement {
   constructor() {
     super();
@@ -91,8 +89,8 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const title = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
-    const message = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.message ?? __('Find what you need faster by installing our web app!', config.jsVars.slug);
+    const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__('Install Web App', config.jsVars.slug);
+    const message = config.jsVars.settings.installation?.prompts?.types?.navigationMenu?.message ?? wp.i18n.__('Find what you need faster by installing our web app!', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="navigation-menu-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -186,7 +184,7 @@ class PwaInstallOverlayNavigationMenu extends HTMLElement {
           </div>
         </div>
         <button type="button" class="navigation-menu-overlay-button_install">
-          ${__('Install Now', config.jsVars.slug)}
+          ${wp.i18n.__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

@@ -248,7 +248,7 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <input name="pushNotifications[prompt][timeout]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" aria-roledescription="Number field" value="<?php echo esc_attr(Plugin::getSetting('pushNotifications[prompt][timeout]')); ?>" step="1" max="10" min="1" required="true">
+          <input name="pushNotifications[prompt][timeout]" type="number" class="shadow-sm py-2 px-3 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" aria-roledescription="Number field" placeholder="<?php esc_html_e('Enter Timeout', $this->slug); ?>" value="<?php echo esc_attr(Plugin::getSetting('pushNotifications[prompt][timeout]')); ?>" step="1" max="10" min="1" required="true">
         </div>
         <!-- End Timeout -->
       </div>
@@ -353,7 +353,7 @@ if (!defined('ABSPATH')) {
   </fieldset>
   <!-- End Button -->
   <!-- Automation -->
-  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0" id="subsectionPushAutomatoin">
+  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0" id="subsectionPushAutomation">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
       <div class="xl:col-span-1">
         <div class="flex gap-x-2 sticky top-6">
@@ -1025,13 +1025,13 @@ if (!defined('ABSPATH')) {
     </div>
     <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
       <button type="button" class="py-2 px-3 inline-flex justify-center items-center text-start bg-white border border-gray-200 text-gray-800 text-sm font-medium rounded-lg shadow-sm align-middle hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" id="previewPushNotification">
-        <?php esc_html_e('Preview Notification', $this->slug); ?>
+        <?php esc_html_e('Preview', $this->slug); ?>
       </button>
       <button type="submit" class="group py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-blue-600 border border-blue-600 text-white text-sm font-medium rounded-lg shadow-sm align-middle hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-1 focus:ring-blue-300">
         <span class="hidden group-data-[sending=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
           <span class="sr-only"><?php esc_html_e('Sending...', $this->slug); ?></span>
         </span>
-        <?php esc_html_e('Send Push Notification', $this->slug); ?>
+        <?php esc_html_e('Send Notification', $this->slug); ?>
       </button>
     </div>
   </div>

@@ -59,9 +59,6 @@ class Frontend
     wp_set_script_translations("{$this->slug}-frontend", $this->slug);
     $this->dependencies[] = "{$this->slug}-frontend";
 
-    // Load translations inline after the main script
-    Plugin::loadJsTranslations("{$this->slug}-frontend");
-
     // Other localizations
     wp_localize_script(
       "{$this->slug}-frontend",

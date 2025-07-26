@@ -2,8 +2,6 @@ import { config } from '../frontend.js';
 import PushNotificationsSubscription from '../components/pushNotificationsSubscription.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaPushNotificationsButton extends HTMLElement {
   constructor() {
     super();
@@ -177,7 +175,7 @@ class PwaPushNotificationsButton extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="push-notifications-button" aria-label="${__('Enable / Disable Push Notifications')}">
+      <div class="push-notifications-button" aria-label="${wp.i18n.__('Enable / Disable Push Notifications')}">
         <span class="push-notifications-button_spinner"></span>
         <span class="push-notifications-button_icon"></span>
       </div>

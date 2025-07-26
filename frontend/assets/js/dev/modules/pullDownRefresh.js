@@ -1,8 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaPullDownRefresh extends HTMLElement {
   constructor() {
     super();
@@ -100,9 +98,9 @@ class PwaPullDownRefresh extends HTMLElement {
       refreshContainer.style.height = `${pullDistance}px`;
 
       if (pullDistance > this.threshold) {
-        statusText.textContent = __('Release to refresh', config.jsVars.slug);
+        statusText.textContent = wp.i18n.__('Release to refresh', config.jsVars.slug);
       } else {
-        statusText.textContent = __('Pull down to refresh', config.jsVars.slug);
+        statusText.textContent = wp.i18n.__('Pull down to refresh', config.jsVars.slug);
       }
     }
   }
@@ -122,7 +120,7 @@ class PwaPullDownRefresh extends HTMLElement {
     if (pullDistance > this.threshold) {
       this.refreshing = true;
       refreshContainer.style.height = '60px';
-      statusText.textContent = __('Refreshing...', config.jsVars.slug);
+      statusText.textContent = wp.i18n.__('Refreshing...', config.jsVars.slug);
       spinner.style.display = 'block';
       location.reload();
     } else {
@@ -232,7 +230,7 @@ class PwaPullDownRefresh extends HTMLElement {
         <div class="pull-down-refresh_content">
           <div class="pull-down-refresh_spinner" role="status" aria-label="loading"></div>
           <span class="pull-down-refresh_text">
-            ${__('Pull down to refresh', config.jsVars.slug)}
+            ${wp.i18n.__('Pull down to refresh', config.jsVars.slug)}
           </span>
         </div>
       </div>

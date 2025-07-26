@@ -2,8 +2,6 @@ import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
   constructor() {
     super();
@@ -59,8 +57,8 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
     const appName = config.jsVars.settings.webAppManifest.appIdentity.appName ?? '';
     const themeColor = config.jsVars.settings.webAppManifest?.appearance?.themeColor ?? '#000000';
     const textColor = getContrastTextColor(themeColor);
-    const title = config.jsVars.settings.installation?.prompts?.text ?? __('Install Web App', config.jsVars.slug);
-    const message = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.message ?? __('Keep track of your orders. Our web app is fast, small and works offline.', config.jsVars.slug);
+    const title = config.jsVars.settings.installation?.prompts?.text ?? wp.i18n.__('Install Web App', config.jsVars.slug);
+    const message = config.jsVars.settings.installation?.prompts?.types?.woocommerceCheckout?.message ?? wp.i18n.__('Keep track of your orders. Our web app is fast, small and works offline.', config.jsVars.slug);
     const appIconHtml = config.jsVars.iconUrl ? `<img class="woocommerce-checkout-overlay-appinfo_icon" src="${config.jsVars.iconUrl}" alt="${appName}" onerror="this.style.display='none'"/>` : '';
 
     this.injectStyles(`
@@ -155,7 +153,7 @@ class PwaInstallOverlayWoocommerceCheckout extends HTMLElement {
           </div>
         </div>
         <button type="button" class="woocommerce-checkout-overlay-button_install">
-          ${__('Install Now', config.jsVars.slug)}
+          ${wp.i18n.__('Install Now', config.jsVars.slug)}
         </button>
       </div>
     `;

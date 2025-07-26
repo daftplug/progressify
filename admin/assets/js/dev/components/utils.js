@@ -16,17 +16,11 @@ export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
   const errorPage = allPages.filter('[data-page-id="error"]');
 
   return new Promise((resolve) => {
-    // Function to update URL hash without triggering hashchange event
+    // Function to update URL hash
     const updateHash = (hash) => {
       const currentHash = location.hash;
       if (currentHash !== hash) {
-        // Temporarily remove hashchange listener to prevent infinite loop
-        jQuery(window).off('hashchange', window.handleHashChange);
         location.hash = hash;
-        // Restore hashchange listener after a short delay
-        setTimeout(() => {
-          jQuery(window).on('hashchange', window.handleHashChange);
-        }, 0);
       }
     };
 
@@ -38,28 +32,28 @@ export function navigateToPage(pageId, subPageId = '', scrollToTop = true) {
           if (subPage.length) {
             allSubpages.add(allSubmenuItems).add(allMenuItems).removeAttr('data-active');
             subPage.add(submenuItem).attr('data-active', 'true');
-            updateHash(`#/${pageId}-${subPageId}/`);
+            updateHash(`#/${pageId}-${subPageId}`);
           } else {
             allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
             errorPage.attr('data-active', 'true');
-            updateHash('#/error/');
+            updateHash('#/error');
           }
         } else {
           firstSubpage.add(firstSubmenuItem).attr('data-active', 'true');
           if (firstSubpageId) {
             const [firstPageId, firstSubId] = firstSubpageId.split('-');
-            updateHash(`#/${firstPageId}-${firstSubId}/`);
+            updateHash(`#/${firstPageId}-${firstSubId}`);
           }
         }
       } else {
         allMenuItems.add(allSubmenuItems).removeAttr('data-active');
         menuItem.attr('data-active', 'true');
-        updateHash(`#/${pageId}/`);
+        updateHash(`#/${pageId}`);
       }
     } else {
       allPages.add(allMenuItems).add(allSubmenuItems).removeAttr('data-active');
       errorPage.attr('data-active', 'true');
-      updateHash('#/error/');
+      updateHash('#/error');
     }
 
     // Scroll to top of the content only if scrollToTop is true

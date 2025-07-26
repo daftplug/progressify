@@ -1,8 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaOfflineNotification extends HTMLElement {
   constructor() {
     super();
@@ -35,7 +33,7 @@ class PwaOfflineNotification extends HTMLElement {
       notification.classList.remove('reconnected');
       icon.classList.add('spinner');
       icon.classList.remove('success');
-      text.textContent = __('Connection lost. Attempting to reconnect...', config.jsVars.slug);
+      text.textContent = wp.i18n.__('Connection lost. Attempting to reconnect...', config.jsVars.slug);
 
       setTimeout(() => {
         notification.classList.add('visible');
@@ -56,7 +54,7 @@ class PwaOfflineNotification extends HTMLElement {
     notification.classList.add('reconnected');
     icon.classList.remove('spinner');
     icon.classList.add('success');
-    text.textContent = __('Successfully reconnected to the internet!', config.jsVars.slug);
+    text.textContent = wp.i18n.__('Successfully reconnected to the internet!', config.jsVars.slug);
 
     // Clear any existing removal timeout
     if (offlineNotification._removeTimeout) {
@@ -167,7 +165,7 @@ class PwaOfflineNotification extends HTMLElement {
       <div class="offline-notification" role="alert" tabindex="-1">
         <div class="offline-notification_icon spinner" role="status" aria-label="loading"></div>
         <span class="offline-notification_text">
-          ${__('Connection lost. Attempting to reconnect...', config.jsVars.slug)}
+          ${wp.i18n.__('Connection lost. Attempting to reconnect...', config.jsVars.slug)}
         </span>
       </div>
     `;

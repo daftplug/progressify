@@ -10,6 +10,9 @@ export const config = (() => {
   };
 })();
 
+// Navigation function
+import { navigateToPage } from './components/utils.js';
+
 // Components
 import { initCopyMarkup } from './components/copyMarkup.js';
 import { initDependentMarkup } from './components/dependentMarkup.js';
@@ -22,7 +25,6 @@ import { initDropdown } from './components/dropdown.js';
 // Modules
 import { initProcessLicense } from './modules/processLicense.js';
 import { initIntroGuide } from './modules/introGuide.js';
-import { initNavigation } from './modules/navigation.js';
 import { initSettings } from './modules/settings.js';
 import { initSearch } from './modules/search.js';
 import { initPwaUsersData } from './modules/pwaUsersData.js';
@@ -46,7 +48,6 @@ const coreModules = [
   { init: initTooltip, name: 'tooltip' },
   { init: initOverlay, name: 'overlay' },
   { init: initInputValidation, name: 'inputValidation' },
-  { init: initNavigation, name: 'navigation' },
   { init: initDropdown, name: 'dropdown' },
   { init: initSelect, name: 'select' },
 ];
@@ -63,25 +64,25 @@ const commonModules = [
 
 // Hash-based module mapping
 const moduleMap = {
-  '#/activation/': [{ init: initProcessLicense, name: 'processLicense' }],
-  '#/dashboard/': [
+  '#/activation': [{ init: initProcessLicense, name: 'processLicense' }],
+  '#/dashboard': [
     { init: initPwaUsersData, name: 'pwaUsersData' },
     { init: initPwaScoreData, name: 'pwaScoreData' },
   ],
-  '#/webAppManifest/': [
+  '#/webAppManifest': [
     { init: initAppIconUpload, name: 'appIconUpload' },
     { init: initAppShortcutIconUpload, name: 'appShortcutIconUpload' },
     { init: initAppScreenshotsUpload, name: 'appScreenshotsUpload' },
   ],
-  '#/pushNotifications/': [
+  '#/pushNotifications': [
     { init: initPushImageUpload, name: 'pushImageUpload' },
     { init: initPushSubscribers, name: 'pushSubscribers' },
     { init: initModalPushNotifications, name: 'modalPushNotifications' },
   ],
-  '#/uiComponents/': [{ init: initCustomCssJsEditor, name: 'customCssJsEditor' }],
-  '#/generateMobileApps/': [{ init: initGenerateMobileApps, name: 'generateMobileApps' }],
-  '#/helpCenter/': [{ init: initSupportRequest, name: 'supportRequest' }],
-  '#/changelog/': [{ init: initChangelog, name: 'changelog' }],
+  '#/uiComponents': [{ init: initCustomCssJsEditor, name: 'customCssJsEditor' }],
+  '#/generateMobileApps': [{ init: initGenerateMobileApps, name: 'generateMobileApps' }],
+  '#/helpCenter': [{ init: initSupportRequest, name: 'supportRequest' }],
+  '#/changelog': [{ init: initChangelog, name: 'changelog' }],
 };
 
 // Initialize modules in the desired order
@@ -89,18 +90,22 @@ const initializeModules = () => {
   // Check if we're on the activation page by DOM element
   const activationElement = document.querySelector('#daftplugAdmin main[data-page-id="activation"]');
   const isActivationPage = activationElement !== null;
+  const normalizeHash = (hash) => {
+    if (!hash || hash === '#/' || hash === '#') return '#/dashboard';
+    return hash.replace(/\/$/, '');
+  };
 
   // If we're on activation page but hash doesn't reflect it, update the hash
-  if (isActivationPage && !window.location.hash.startsWith('#/activation/')) {
+  if (isActivationPage && !window.location.hash.startsWith('#/activation')) {
     // Set the hash without triggering another hashchange event
-    history.replaceState(null, null, '#/activation/');
+    history.replaceState(null, null, '#/activation');
   }
 
   // Get current hash after possible update
-  const currentHash = window.location.hash || '#/';
+  const currentHash = normalizeHash(window.location.hash);
 
   // Initialize common modules (except on activation and error pages)
-  if (!isActivationPage && !currentHash.startsWith('#/error/')) {
+  if (!isActivationPage && !currentHash.startsWith('#/error')) {
     commonModules.forEach((module) => {
       if (!initializedModules.has(module.name)) {
         module.init();
@@ -130,26 +135,46 @@ const initializeModules = () => {
   });
 };
 
-// Initialize on page load
-window.addEventListener('DOMContentLoaded', () => {
-  // Explicitly call handleNavigation to ensure initial page routing
-  if (typeof window.handleHashChange === 'function') {
-    window.handleHashChange();
+const initializeNavigation = () => {
+  if (config.daftplugAdminElm.find('main[data-page-id="activation"]').length) {
+    return navigateToPage('activation');
   }
-});
 
-window.addEventListener('load', () => {
-  // Initialize all remaining modules in the correct order
-  initializeModules();
+  if (location.hash) {
+    const hashValue = location.hash.replace(/#|\//g, '');
+    const [pageId, subPageId] = hashValue.split('-');
+    return navigateToPage(pageId, subPageId);
+  } else {
+    return navigateToPage('dashboard');
+  }
+};
 
-  // Remove loading state after page is loaded
+const initializeLoaderRemoving = () => {
   document.querySelector('#daftplugAdminWrapper').classList.remove('-daftplugLoading');
+};
+
+const initializeMenuFolding = () => {
+  const wpAdminMenu = document.querySelector('#adminmenumain');
+  if (wpAdminMenu) {
+    wpAdminMenu.addEventListener('mouseenter', () => {
+      document.body.classList.remove('folded');
+    });
+    wpAdminMenu.addEventListener('mouseleave', () => {
+      document.body.classList.add('folded');
+    });
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  initializeNavigation().then(() => {
+    initializeModules();
+    initializeLoaderRemoving();
+    initializeMenuFolding();
+  });
 });
 
-// Handle hash changes - ensure navigation happens first
 window.addEventListener('hashchange', () => {
-  if (typeof window.handleHashChange === 'function') {
-    window.handleHashChange();
-  }
-  setTimeout(initializeModules, 0);
+  initializeNavigation().then(() => {
+    initializeModules();
+  });
 });

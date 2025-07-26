@@ -1,8 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaShareButton extends HTMLElement {
   constructor() {
     super();
@@ -103,7 +101,7 @@ class PwaShareButton extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>${combinedStyles}</style>
-      <div class="share-button" aria-label="${__('Share')}">
+      <div class="share-button" aria-label="${wp.i18n.__('Share')}">
         <span class="share-button_icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v13"/><path d="m16 6-4-4-4 4"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/></svg>
         </span>

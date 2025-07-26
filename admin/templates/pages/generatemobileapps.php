@@ -98,9 +98,9 @@ if (!defined('ABSPATH')) {
               <span class="text-xs leading-tight text-gray-800">
                 <?php esc_html_e('Discount Applied', $this->slug); ?>
               </span>
-              <s class="mt-1 text-2xl leading-6 font-medium text-gray-400">
-                <span>$</span><span>67</span>
-              </s>
+              <span class="w-max mt-1 text-2xl leading-6 font-medium text-gray-400 relative flex items-center justify-center after:absolute after:w-[120%] after:h-0.5 after:bg-red-600 after:rotate-12">
+                <span class="text-xs font-normal self-start me-0.5">$</span>67
+              </span>
             </span>
           </div>
         </div>

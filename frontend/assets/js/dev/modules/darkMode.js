@@ -1,7 +1,5 @@
 import { config } from '../frontend.js';
 
-const { __ } = wp.i18n;
-
 class PwaDarkMode extends HTMLElement {
   constructor() {
     super();
@@ -389,7 +387,7 @@ class PwaDarkMode extends HTMLElement {
     `);
 
     return `
-      <div class="dark-mode-menu ${this.darkMode ? '-dark' : ''}" aria-label="${__('Toggle dark mode')}">
+      <div class="dark-mode-menu ${this.darkMode ? '-dark' : ''}" aria-label="${wp.i18n.__('Toggle dark mode')}">
         <span class="dark-mode-menu-icon">
           ${this.darkMode ? this.icons.dark : this.icons.light}
         </span>
@@ -448,7 +446,7 @@ class PwaDarkMode extends HTMLElement {
     `);
 
     return `
-      <div class="dark-mode-floating" aria-label="${__('Toggle dark mode')}">
+      <div class="dark-mode-floating" aria-label="${wp.i18n.__('Toggle dark mode')}">
         <span class="dark-mode-floating-icon">
           ${this.darkMode ? this.icons.dark : this.icons.light}
         </span>

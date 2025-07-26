@@ -1,8 +1,6 @@
 import { config } from '../frontend.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaShakeRefresh extends HTMLElement {
   constructor() {
     super();
@@ -155,7 +153,7 @@ class PwaShakeRefresh extends HTMLElement {
       <div class="shake-notification" role="alert">
         <div class="shake-notification_spinner" role="status" aria-label="loading"></div>
         <span class="shake-notification_text">
-          ${__('Shake detected! Refreshing the page...', config.jsVars.slug)}
+          ${wp.i18n.__('Shake detected! Refreshing the page...', config.jsVars.slug)}
         </span>
       </div>
     `;

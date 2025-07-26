@@ -27,12 +27,39 @@ if (!defined('ABSPATH')) {
     <div class="flex flex-col h-full pb-5 px-5">
       <div>
         <h4 class="text-5xl md:text-6xl font-medium text-blue-600">
-          <span class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent" id="activePwaUsers"></span>
+          <div class="bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-800 text-transparent" id="activePwaUsers">0</div>
         </h4>
-        <p class="mt-5 text-gray-500 text-sm" id="browserStatsMessage"></p>
+        <div class="mt-5 text-gray-500 text-sm" id="browserStatsMessage">
+          <ul class="pt-2 pb-1 space-y-2 animate-pulse">
+            <li class="w-full h-2.5 bg-gray-200 rounded-full"></li>
+            <li class="w-20 h-2.5 bg-gray-200 rounded-full"></li>
+          </ul>
+        </div>
       </div>
       <div class="mt-5">
-        <div class="grid grid-cols-3 gap-3" id="browserStatsContainer"></div>
+        <div class="grid grid-cols-3 gap-3" id="browserStatsContainer">
+          <div class="p-3 border border-dashed border-gray-200 rounded-lg">
+            <div class="shrink-0 size-7 mb-5 rounded-full bg-gray-200 animate-pulse"></div>
+            <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+            <p class="mt-1 font-semibold text-lg text-gray-800">
+              0
+            </p>
+          </div>
+          <div class="p-3 border border-dashed border-gray-200 rounded-lg">
+            <div class="shrink-0 size-7 mb-5 rounded-full bg-gray-200 animate-pulse"></div>
+            <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+            <p class="mt-1 font-semibold text-lg text-gray-800">
+              0
+            </p>
+          </div>
+          <div class="p-3 border border-dashed border-gray-200 rounded-lg">
+            <div class="shrink-0 size-7 mb-5 rounded-full bg-gray-200 animate-pulse"></div>
+            <p class="text-sm text-gray-800 bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+            <p class="mt-1 font-semibold text-lg text-gray-800">
+              0
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +89,12 @@ if (!defined('ABSPATH')) {
               <p class="text-xs font-medium text-gray-500 line-clamp-1 empty:bg-gray-200 empty:rounded-full empty:h-1 empty:w-60 empty:!mt-2.5"><?php echo esc_html(Plugin::getSetting('webAppManifest[appIdentity][description]')); ?></p>
             </div>
           </div>
-          <div id="pwaScoreResult"></div>
+          <div id="pwaScoreResult">
+            <span class="py-1.5 ps-1.5 pe-2 inline-flex items-center gap-x-1.5 text-xs font-medium rounded-full bg-gray-200">
+              <span class="inline-block shrink-0 size-2.5 rounded-full bg-gray-400"></span>
+              <span class="bg-gray-400 h-1.5 w-8 rounded-full animate-pulse"></span>
+            </span>
+          </div>
         </div>
         <div class="mt-4">
           <div class="mb-1 flex justify-between items-center gap-x-2">
@@ -91,10 +123,34 @@ if (!defined('ABSPATH')) {
               </span>
             </div>
           </div>
-          <div class="relative" id="pwaScoreProgressbar"></div>
+          <div class="relative" id="pwaScoreProgressbar">
+            <div class="flex items-center w-full h-2.5 bg-gradient-to-r from-red-500 via-yellow-400 via-90% to-green-400 rounded-full" role="progressbar"></div>
+          </div>
         </div>
       </div>
-      <div id="pwaScoreActions"></div>
+      <div id="pwaScoreActions">
+        <div class="relative mt-6 flex flex-col">
+          <p class="mb-2 w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+          <div class="p-1.5 flex items-center gap-x-2 text-sm font-medium text-gray-800 rounded-lg animate-pulse">
+            <div class="flex shrink-0 justify-center items-center size-7 bg-white border border-gray-200 rounded-lg">
+              <div class="rounded-full bg-gray-200 size-4"></div>
+            </div>
+            <div class="w-full h-2.5 bg-gray-200 rounded-full"></div>
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </div>
+          <div class="p-1.5 flex items-center gap-x-2 text-sm font-medium text-gray-800 rounded-lg animate-pulse">
+            <div class="flex shrink-0 justify-center items-center size-7 bg-white border border-gray-200 rounded-lg">
+              <div class="rounded-full bg-gray-200 size-4"></div>
+            </div>
+            <div class="w-full h-2.5 bg-gray-200 rounded-full"></div>
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -129,6 +185,12 @@ if (!defined('ABSPATH')) {
         </label>
       </div>
     </div>
-    <div id="pwaInstallsChart" class="min-h-[215px] md:min-h-[315px] pb-3 px-1"></div>
+    <div id="pwaInstallsChart" class="min-h-[215px] md:min-h-[315px] pb-3 px-1">
+      <div class="flex items-center justify-center w-auto h-[calc(100%-0.5rem)] bg-gray-50 rounded-lg mx-4">
+        <svg class="size-14 text-gray-200 animate-pulse" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+          <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+        </svg>
+      </div>
+    </div>
   </div>
 </div>

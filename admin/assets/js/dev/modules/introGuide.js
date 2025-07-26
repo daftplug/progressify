@@ -1,8 +1,6 @@
 import { config } from '../admin.js';
 import { navigateToPage } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 export function initIntroGuide() {
   jQuery(window).on('load', startIntroGuide);
 }
@@ -12,6 +10,8 @@ function startIntroGuide() {
   if (config.daftplugAdminElm.find('main[data-page-id="activation"]').length || localStorage.getItem(config.jsVars.slug + '-intro-shown')) {
     return;
   }
+
+  localStorage.setItem(config.jsVars.slug + '-intro-shown', true);
 
   introJs('#daftplugAdminWrapper')
     .setOptions({
@@ -30,7 +30,7 @@ function startIntroGuide() {
         {
           title: 'Hello 👋',
           element: document.querySelector('#daftplugAdminLogo'),
-          intro: __('Thank you for installing Progressify! Let me guide you through the plugin really quick.', config.jsVars.slug),
+          intro: wp.i18n.__('Thank you for installing Progressify! Let me guide you through the plugin really quick.', config.jsVars.slug),
           position: 'right',
           onChange: function () {
             navigateToPage('dashboard');
@@ -39,7 +39,7 @@ function startIntroGuide() {
         {
           title: 'Navigation',
           element: document.querySelector('#daftplugAdminMenu'),
-          intro: __('This is the main navigation menu. You can use it to navigate through the different pages.', config.jsVars.slug),
+          intro: wp.i18n.__('This is the main navigation menu. You can use it to navigate through the different pages.', config.jsVars.slug),
           position: 'right',
           onChange: function () {
             navigateToPage('dashboard');
@@ -48,7 +48,7 @@ function startIntroGuide() {
         {
           title: 'Search',
           element: document.querySelector('#settingsSearch'),
-          intro: __('Use the search bar to search settings and features.', config.jsVars.slug),
+          intro: wp.i18n.__('Use the search bar to search settings and features.', config.jsVars.slug),
           position: 'bottom',
           onChange: function () {
             navigateToPage('dashboard');
@@ -57,7 +57,7 @@ function startIntroGuide() {
         {
           title: 'Active Users',
           element: document.querySelector('#activePwaUsers'),
-          intro: __('Here will be the number of users who installed your web app and are actively using it as PWA.', config.jsVars.slug),
+          intro: wp.i18n.__('Here will be the number of users who installed your web app and are actively using it as PWA.', config.jsVars.slug),
           position: 'right',
           onChange: function () {
             navigateToPage('dashboard');
@@ -66,7 +66,7 @@ function startIntroGuide() {
         {
           title: 'Scorecard',
           element: document.querySelector('#pwaScorecard'),
-          intro: __('This shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score.', config.jsVars.slug),
+          intro: wp.i18n.__('This shows the status and overall condition of your PWA setup. Your goal should be to resolve all action items and achieve an excellent score.', config.jsVars.slug),
           position: 'left',
           onChange: function () {
             navigateToPage('dashboard');
@@ -75,7 +75,7 @@ function startIntroGuide() {
         {
           title: 'Installation Analytics',
           element: document.querySelector('#pwaInstallations'),
-          intro: __('Here you will see the analytics of PWA installations over time.', config.jsVars.slug),
+          intro: wp.i18n.__('Here you will see the analytics of PWA installations over time.', config.jsVars.slug),
           position: 'top',
           onChange: function () {
             navigateToPage('dashboard');
@@ -84,7 +84,7 @@ function startIntroGuide() {
         {
           title: 'Configuration',
           element: document.querySelector('#subsectionNavigationTabBar'),
-          intro: __('Enable features and configure their options as you need.', config.jsVars.slug),
+          intro: wp.i18n.__('Enable features and configure their options as you need.', config.jsVars.slug),
           position: 'bottom',
           onChange: function () {
             navigateToPage('uiComponents');
@@ -93,7 +93,7 @@ function startIntroGuide() {
         {
           title: 'Save Changes',
           element: document.querySelector('#saveSettingsButton'),
-          intro: __('After making changes to the settings, you can save them by clicking buttons placed at the bottom of the settings section.', config.jsVars.slug),
+          intro: wp.i18n.__('After making changes to the settings, you can save them by clicking buttons placed at the bottom of the settings section.', config.jsVars.slug),
           position: 'left',
           onChange: function () {
             navigateToPage('uiComponents');
@@ -102,7 +102,7 @@ function startIntroGuide() {
         {
           title: 'Get Mobile Apps',
           element: document.querySelector('#androidAndIosPlan'),
-          intro: __('When you finish setting up your PWA, you can optionally request generation of Android and iOS mobile apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store and App Store to reach more users.', config.jsVars.slug),
+          intro: wp.i18n.__('When you finish setting up your PWA, you can optionally request generation of Android and iOS mobile apps that mirror your website in real-time, requiring no updates, and publish your web app to the Google Play Store and App Store to reach more users.', config.jsVars.slug),
           position: 'left',
           onChange: function () {
             navigateToPage('generateMobileApps');
@@ -114,12 +114,6 @@ function startIntroGuide() {
       if (this._introItems[this._currentStep].onChange) {
         this._introItems[this._currentStep].onChange();
       }
-    })
-    .oncomplete(function () {
-      localStorage.setItem(config.jsVars.slug + '-intro-shown', true);
-    })
-    .onexit(function () {
-      localStorage.setItem(config.jsVars.slug + '-intro-shown', true);
     })
     .start();
 }

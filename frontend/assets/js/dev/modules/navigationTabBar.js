@@ -78,6 +78,9 @@ class PwaNavigationTabBar extends HTMLElement {
         margin: 0;
         padding: 0;
         padding-bottom: env(safe-area-inset-bottom);
+        transition: padding-bottom 250ms cubic-bezier(0.42, 0, 0.58, 1);
+        touch-action: none;
+        user-select: none;
         width: 100%;
         z-index: 999999999;
         height: 3.5rem;

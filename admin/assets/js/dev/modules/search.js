@@ -85,7 +85,14 @@ function buildSettingsItems() {
     fieldsets.each(function () {
       const fieldset = jQuery(this);
       const fieldsetId = fieldset.attr('id');
-      const fieldsetTitle = fieldset.find('h5, label').first().text().trim();
+      const titleElement = fieldset.find('h5, label').first();
+      const fieldsetTitle = titleElement
+        .contents()
+        .filter(function () {
+          return this.nodeType === Node.TEXT_NODE;
+        })
+        .text()
+        .trim();
       const fieldsetIcon = fieldset.find('svg').clone();
       fieldsetIcon.attr('class', 'shrink-0 size-5 fill-gray-500');
 

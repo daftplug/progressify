@@ -57,8 +57,18 @@ class Admin
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('admin_post_delete_support_access', [$this, 'handleSupportAccountDeletion']);
     add_action('admin_bar_menu', [$this, 'addSupportAccountDeleteButton'], 100);
+    add_filter('admin_body_class', [$this, 'foldAdminMenu']);
     add_filter('pre_set_site_transient_update_plugins', [$this, 'checkIfUpdateIsAvailable']);
     add_filter('plugins_api', [$this, 'getPluginUpdateInfo'], 10, 3);
+  }
+
+  public function foldAdminMenu($classes)
+  {
+    $screen = get_current_screen();
+    if ($screen && $screen->id === $this->menuId) {
+      $classes .= ' folded';
+    }
+    return $classes;
   }
 
   public function addMenuPage()
@@ -127,6 +137,12 @@ class Admin
           #wpbody-content {
             padding-bottom: 0 !important;
           }
+          #adminmenu {
+            overflow: auto;
+            max-height: calc(100svh - 32px);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
         '
       );
 
@@ -134,9 +150,6 @@ class Admin
       wp_enqueue_script("{$this->slug}-admin", plugins_url('admin/assets/js/admin.min.js', $this->pluginFile), $this->dependencies, $this->version, true);
       wp_set_script_translations("{$this->slug}-admin", $this->slug);
       $this->dependencies[] = "{$this->slug}-admin";
-
-      // Load translations inline after the main script
-      Plugin::loadJsTranslations("{$this->slug}-admin");
 
       // WP media
       wp_enqueue_media();

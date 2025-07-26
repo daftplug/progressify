@@ -1,7 +1,5 @@
 import { config } from '../admin.js';
 
-const { __ } = wp.i18n;
-
 class SubscriberManager {
   constructor(container) {
     this.container = container;
@@ -103,10 +101,10 @@ class SubscriberManager {
               </svg>
               <div class="max-w-sm mx-auto">
                 <p class="mt-2 text-base font-medium text-gray-800">
-                  ${__('No Subscribers', config.jsVars.slug)}
+                  ${wp.i18n.__('No Subscribers', config.jsVars.slug)}
                 </p>
                 <p class="text-sm text-gray-500">
-                  ${__('There are no push notification subscribers yet.', config.jsVars.slug)}
+                  ${wp.i18n.__('There are no push notification subscribers yet.', config.jsVars.slug)}
                 </p>
               </div>
             </div>
@@ -183,7 +181,7 @@ class SubscriberManager {
                     <line x1="10" x2="10" y1="11" y2="17"></line>
                     <line x1="14" x2="14" y1="11" y2="17"></line>
                   </svg>
-                  ${__('Delete', config.jsVars.slug)}
+                  ${wp.i18n.__('Delete', config.jsVars.slug)}
                 </button>
               </div>
             </div>
@@ -232,7 +230,7 @@ class SubscriberManager {
   }
 
   async removeSubscriber(endpoint) {
-    if (!confirm(__('Are you sure you want to remove this subscriber?', config.jsVars.slug))) return;
+    if (!confirm(wp.i18n.__('Are you sure you want to remove this subscriber?', config.jsVars.slug))) return;
 
     try {
       const response = await fetch(wpApiSettings.root + config.jsVars.slug + '/removeSubscription', {

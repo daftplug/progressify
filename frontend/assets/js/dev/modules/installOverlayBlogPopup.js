@@ -2,8 +2,6 @@ import { config } from '../frontend.js';
 import { performInstallation } from '../components/installPrompt.js';
 import { getContrastTextColor } from '../components/utils.js';
 
-const { __ } = wp.i18n;
-
 class PwaInstallOverlayBlogPopup extends HTMLElement {
   constructor() {
     super();
@@ -312,7 +310,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
       <div class="blog-popup-overlay">
         <div class="blog-popup-overlay-container">
           <div class="blog-popup-overlay-header">
-            <div class="blog-popup-overlay-header_title">${__('Read this article in our web app', config.jsVars.slug)}</div>
+            <div class="blog-popup-overlay-header_title">${wp.i18n.__('Read this article in our web app', config.jsVars.slug)}</div>
           </div>
           <div class="blog-popup-overlay-body">
             <div class="blog-popup-overlay-appinfo">
@@ -321,7 +319,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-appinfo_appname">${appName}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -install">
-                ${__('Open', config.jsVars.slug)}
+                ${wp.i18n.__('Open', config.jsVars.slug)}
               </button>
             </div>
             <div class="blog-popup-overlay-browserinfo">
@@ -330,7 +328,7 @@ class PwaInstallOverlayBlogPopup extends HTMLElement {
                 <div class="blog-popup-overlay-browserinfo_title">${browserTitle}</div>
               </div>
               <button type="button" class="blog-popup-overlay-button -continue">
-                ${__('Continue', config.jsVars.slug)}
+                ${wp.i18n.__('Continue', config.jsVars.slug)}
               </button>
             </div>     
           </div>
