@@ -4,6 +4,12 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.2.6" data-date="August 5, 2025" data-title="Stability Improvements" data-description="The update is mainly for stability improvements and preparation for the next major update.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Intro guide is now cookie based for more stability.</li>
+      <li>Fixed some of the admin side components not loading properly.</li>
+    </ul>
+  </div>
   <div data-version="v1.2.5" data-date="July 22, 2025" data-title="Admin Side and Translations Fixes" data-description="The update includes improvements on the Admin side and fixes for frontend translations.">
     <ul data-icon="checkmark" data-label="Fixes and Improvements">
       <li>Improved dashboard loading state.</li>

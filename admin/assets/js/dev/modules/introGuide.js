@@ -1,5 +1,5 @@
 import { config } from '../admin.js';
-import { navigateToPage } from '../components/utils.js';
+import { navigateToPage, setCookie, getCookie } from '../components/utils.js';
 
 export function initIntroGuide() {
   jQuery(window).on('load', startIntroGuide);
@@ -7,11 +7,11 @@ export function initIntroGuide() {
 
 // start plugin intro
 function startIntroGuide() {
-  if (config.daftplugAdminElm.find('main[data-page-id="activation"]').length || localStorage.getItem(config.jsVars.slug + '-intro-shown')) {
+  if (config.daftplugAdminElm.find('main[data-page-id="activation"]').length || getCookie(config.jsVars.slug + '-intro-shown')) {
     return;
   }
 
-  localStorage.setItem(config.jsVars.slug + '-intro-shown', true);
+  setCookie(config.jsVars.slug + '-intro-shown', true, 30);
 
   introJs('#daftplugAdminWrapper')
     .setOptions({

@@ -322,7 +322,8 @@ class Plugin
     ];
 
     if (get_transient("{$this->optionName}_updated")) {
-      update_option("{$this->optionName}_settings", wp_parse_args(self::$settings, $this->defaultSettings));
+      $mergedSettings = $this->arrayMergeRecursiveDistinct($this->defaultSettings, self::$settings);
+      update_option(self::$slug . '_settings', $mergedSettings);
       delete_transient("{$this->optionName}_updated");
     }
 
@@ -919,6 +920,21 @@ class Plugin
   {
     $keys = preg_split('/\]\[|\[|\]/', $key, -1, PREG_SPLIT_NO_EMPTY);
     return $keys;
+  }
+
+  private function arrayMergeRecursiveDistinct(array &$array1, array &$array2)
+  {
+    $merged = $array1;
+
+    foreach ($array2 as $key => &$value) {
+      if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+        $merged[$key] = $this->arrayMergeRecursiveDistinct($merged[$key], $value);
+      } else {
+        $merged[$key] = $value;
+      }
+    }
+
+    return $merged;
   }
 
   public static function getContent($file)

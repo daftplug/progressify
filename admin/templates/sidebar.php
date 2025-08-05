@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                 <path d="M12 17h.01"></path>
               </svg>
-              <?php esc_html_e('Help Centre', $this->slug); ?>
+              <?php esc_html_e('Help Center', $this->slug); ?>
             </a>
           </li>
           <li class="px-5">
@@ -71,6 +71,36 @@ if (!defined('ABSPATH')) {
         </ul>
       </nav>
       <!-- End Nav -->
+      <!-- Card -->
+      <div class="m-5 p-3 flex flex-col bg-gray-100 rounded-lg">
+        <div class="flex items-center gap-x-1.5">
+          <svg class="shrink-0 size-7 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="4" rx="1" />
+            <path d="M12 8v13" />
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
+          </svg>
+          <div class="grow">
+            <h3 class="font-medium text-sm text-gray-800">
+              <?php esc_html_e('Get 20% Discount', $this->slug); ?>
+            </h3>
+          </div>
+        </div>
+        <div class="mt-3">
+          <p class="text-xs text-gray-500">
+            <?php esc_html_e('Write a 5-star review, contact us to verify, and get 20% off your Android and iOS apps.', $this->slug); ?>
+          </p>
+        </div>
+        <div class="mt-3 flex flex-col gap-2">
+          <a class="w-full flex justify-center items-center gap-x-1.5 py-2 px-3 font-medium text-xs bg-black text-white rounded-lg focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none" target="_blank" href="https://www.trustpilot.com/evaluate/daftplug.com">
+            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+            </svg>
+            <?php esc_html_e('Write a Review', $this->slug); ?>
+          </a>
+        </div>
+      </div>
+      <!-- End Card -->
     </div>
     <!-- End Content -->
     <div class="xl:hidden absolute top-3 -end-3 z-10">
