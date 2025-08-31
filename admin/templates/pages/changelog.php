@@ -4,6 +4,26 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.3.7" data-date="August 31, 2025" data-title="Minor Fixes and Improvements" data-description="The update includes mainly the fixes and improvements across all areas.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed screenshot not rendering correctly in certain cases.</li>
+      <li>Improved PWA assets generation process.</li>
+      <li>Improved defining start URL for PWA.</li>
+      <li>Fixed push notification not recording logged in user ID.</li>
+      <li>Fixed license validation issue.</li>
+    </ul>
+  </div>
+  <div data-version="v1.3.6" data-date="August 7, 2025" data-title="Autosave Forms and UTM Tracking" data-description="The update includes addition of Autosave Forms and UTM Tracking feature.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added forms autosaving capability to prevent data loss.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>PWA opens are now tracked via UTM tracking.</li>
+    </ul>
+    <ul data-icon="warning" data-label="Removed Features">
+      <li>Biometric Authentication feature is removed due to instability.</li>
+    </ul>
+  </div>
   <div data-version="v1.2.6" data-date="August 5, 2025" data-title="Stability Improvements" data-description="The update is mainly for stability improvements and preparation for the next major update.">
     <ul data-icon="checkmark" data-label="Fixes and Improvements">
       <li>Intro guide is now cookie based for more stability.</li>

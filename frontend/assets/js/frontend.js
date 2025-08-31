@@ -182,6 +182,7 @@
               method: "POST",
               credentials: "include",
               headers: {
+                "X-WP-Nonce": config.jsVars.restNonce,
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({
@@ -604,11 +605,11 @@
         opacity: 1;
       }
     `);
-          const startPage = (_a = config.jsVars.settings.webAppManifest.displaySettings) == null ? void 0 : _a.startPage;
-          return startPage ? `
-      <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${addParamToUrl("performInstallation", "true", startPage)}">
+          const startPagePath = (_a = config.jsVars.settings.webAppManifest.displaySettings) == null ? void 0 : _a.startPagePath;
+          return startPagePath ? `
+      <button type="button" class="install-prompt-body-instructions_step_copy" data-clipboard-content="${addParamToUrl("performInstallation", "true", config.jsVars.homeUrl + startPagePath)}">
         <span class="install-prompt-body-instructions_step_copy_url">
-          ${startPage}
+          ${config.jsVars.homeUrl + startPagePath}
         </span>
         <span class="install-prompt-body-instructions_step_copy_icons">
           <svg class="install-prompt-body-instructions_step_copy_svg clipboard-default" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2698,14 +2699,14 @@
       e.preventDefault();
       e.stopPropagation();
       const form = e.target;
-      const formData = new FormData(form);
+      const formData2 = new FormData(form);
       const submitData = {
         formId: form.id || `pwa-form-${Math.random().toString(36).slice(2, 9)}`,
         submitId: `${form.id}-${Date.now()}`,
         url: form.action || window.location.href,
         method: (form.method || "POST").toUpperCase(),
         timestamp: Date.now(),
-        data: Object.fromEntries(formData),
+        data: Object.fromEntries(formData2),
         contentType: form.enctype || "application/x-www-form-urlencoded"
       };
       PwaOfflineFormHandler.show(submitData);
@@ -2745,11 +2746,11 @@
         injectStyles(css) {
           this.styles.add(css);
         }
-        static show(formData) {
+        static show(formData2) {
           let handler = document.querySelector("pwa-offline-form-handler");
           if (!handler) {
             handler = document.createElement("pwa-offline-form-handler");
-            handler.formData = formData;
+            handler.formData = formData2;
             document.body.appendChild(handler);
             requestAnimationFrame(() => {
               const backdrop = handler.shadowRoot.querySelector(".offline-form-handler");
@@ -6023,6 +6024,246 @@
     }
   });
 
+  // frontend/assets/js/dev/modules/autosaveForms.js
+  var autosaveForms_exports = {};
+  __export(autosaveForms_exports, {
+    initAutosaveForms: () => initAutosaveForms
+  });
+  function persist(form) {
+    if (formData.has(form)) {
+      return;
+    }
+    load(form);
+    const saveForm = () => save(form);
+    const inputHandler = debounce(() => save(form), 500);
+    const saveFormBeforeUnload = () => {
+      window.removeEventListener("unload", saveForm);
+      saveForm();
+    };
+    const submitHandler = () => {
+      cleanup(form);
+      if (config.jsVars.settings.appCapabilities.autosaveForms.persistOnSubmit !== "on") {
+        clearStorage(form);
+      }
+    };
+    formData.set(form, {
+      saveForm,
+      inputHandler,
+      saveFormBeforeUnload,
+      submitHandler
+    });
+    window.addEventListener("beforeunload", saveFormBeforeUnload);
+    window.addEventListener("unload", saveForm);
+    form.addEventListener("input", inputHandler);
+    form.addEventListener("change", inputHandler);
+    form.addEventListener("submit", submitHandler);
+  }
+  function serialize(form) {
+    const data = {};
+    for (const element of form.elements) {
+      if (!element.name || element.disabled) {
+        continue;
+      }
+      const tag = element.tagName;
+      const type = element.type;
+      if (tag === "INPUT" && (type === "password" || type === "file")) {
+        continue;
+      }
+      if (tag === "INPUT" && (type === "submit" || type === "button" || type === "reset" || type === "image")) {
+        continue;
+      }
+      if (tag === "INPUT") {
+        if (type === "radio") {
+          if (element.checked) {
+            data[element.name] = element.value;
+          }
+        } else if (type === "checkbox") {
+          if (!data[element.name]) {
+            data[element.name] = [];
+          }
+          if (element.checked) {
+            data[element.name].push(element.value);
+          }
+        } else {
+          data[element.name] = element.value;
+        }
+      } else if (tag === "TEXTAREA") {
+        data[element.name] = element.value;
+      } else if (tag === "SELECT") {
+        if (element.multiple) {
+          data[element.name] = Array.from(element.selectedOptions).map((option) => option.value);
+        } else {
+          data[element.name] = element.value;
+        }
+      }
+    }
+    return data;
+  }
+  function save(form) {
+    try {
+      const data = serialize(form);
+      const key = getStorageKey(form);
+      if (Object.keys(data).length > 0) {
+        data._timestamp = Date.now();
+        localStorage.setItem(key, JSON.stringify(data));
+      }
+    } catch (error) {
+      console.warn("Failed to save form data:", error);
+    }
+  }
+  function deserialize(form, data) {
+    for (const name in data) {
+      if (name.startsWith("_")) {
+        continue;
+      }
+      const elements = Array.from(form.elements).filter((element) => element.name === name);
+      elements.forEach((element) => {
+        applyValues(element, data[name]);
+      });
+    }
+  }
+  function applyValues(element, value) {
+    const tag = element.tagName;
+    const type = element.type;
+    try {
+      if (tag === "INPUT") {
+        if (type === "radio") {
+          element.checked = element.value === value;
+        } else if (type === "checkbox") {
+          if (Array.isArray(value)) {
+            element.checked = value.includes(element.value);
+          } else {
+            element.checked = Boolean(value);
+          }
+        } else {
+          element.value = value || "";
+        }
+      } else if (tag === "TEXTAREA") {
+        element.value = value || "";
+      } else if (tag === "SELECT") {
+        if (element.multiple && Array.isArray(value)) {
+          Array.from(element.options).forEach((option) => {
+            option.selected = value.includes(option.value);
+          });
+        } else {
+          element.value = value || "";
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to apply value to element:", element, error);
+    }
+  }
+  function load(form) {
+    try {
+      const json = localStorage.getItem(getStorageKey(form));
+      if (json) {
+        const data = JSON.parse(json);
+        deserialize(form, data);
+      }
+    } catch (error) {
+      console.warn("Failed to load form data:", error);
+      clearStorage(form);
+    }
+  }
+  function clearStorage(form) {
+    try {
+      localStorage.removeItem(getStorageKey(form));
+    } catch (error) {
+      console.warn("Failed to clear form storage:", error);
+    }
+  }
+  function getStorageKey(form) {
+    let identifier = form.id;
+    if (!identifier) {
+      const formStructure = {
+        action: form.action || "",
+        method: form.method || "get",
+        fieldCount: form.elements.length,
+        fieldNames: Array.from(form.elements).filter((el) => el.name).slice(0, 5).map((el) => el.name).sort().join(",")
+      };
+      identifier = btoa(JSON.stringify(formStructure)).replace(/[^a-zA-Z0-9]/g, "").substring(0, 16);
+    }
+    const path = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+    return `autosave_${path}_${identifier}`;
+  }
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  function cleanup(form) {
+    const handlers = formData.get(form);
+    if (handlers) {
+      window.removeEventListener("beforeunload", handlers.saveFormBeforeUnload);
+      window.removeEventListener("unload", handlers.saveForm);
+      form.removeEventListener("input", handlers.inputHandler);
+      form.removeEventListener("change", handlers.inputHandler);
+      form.removeEventListener("submit", handlers.submitHandler);
+      formData.delete(form);
+    }
+  }
+  function cleanupOldStorage() {
+    try {
+      const now = Date.now();
+      const maxAge = 7 * 24 * 60 * 60 * 1e3;
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("autosave_")) {
+          try {
+            const data = JSON.parse(localStorage.getItem(key));
+            if (data && data._timestamp && now - data._timestamp > maxAge) {
+              localStorage.removeItem(key);
+            }
+          } catch (e) {
+            localStorage.removeItem(key);
+          }
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to cleanup old storage:", error);
+    }
+  }
+  async function initAutosaveForms() {
+    try {
+      Array.from(document.forms).forEach((form) => {
+        persist(form);
+      });
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.tagName === "FORM") {
+                persist(node);
+              }
+              const forms = node.querySelectorAll ? node.querySelectorAll("form") : [];
+              forms.forEach((form) => persist(form));
+            }
+          });
+        });
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      cleanupOldStorage();
+    } catch (error) {
+      console.error("Failed to initialize autosave forms:", error);
+    }
+  }
+  var formData;
+  var init_autosaveForms = __esm({
+    "frontend/assets/js/dev/modules/autosaveForms.js"() {
+      init_frontend();
+      formData = /* @__PURE__ */ new WeakMap();
+    }
+  });
+
   // frontend/assets/js/dev/modules/vibrations.js
   var vibrations_exports = {};
   __export(vibrations_exports, {
@@ -8191,7 +8432,7 @@
       ({ settings, userData, pluginsData, pageData } = config.jsVars);
       delayedModulesLoaded = false;
       loadDelayedModules = async () => {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B, _C, _D, _E, _F, _G, _H, _I, _J, _K, _L, _M, _N, _O, _P, _Q, _R, _S, _T, _U, _V, _W, _X, _Y, _Z, __, _$, _aa, _ba, _ca, _da, _ea, _fa, _ga, _ha, _ia, _ja, _ka, _la, _ma, _na, _oa, _pa, _qa, _ra, _sa, _ta, _ua, _va, _wa, _xa, _ya, _za, _Aa, _Ba, _Ca, _Da, _Ea, _Fa, _Ga, _Ha, _Ia, _Ja, _Ka, _La, _Ma, _Na, _Oa, _Pa, _Qa, _Ra, _Sa, _Ta, _Ua, _Va, _Wa, _Xa, _Ya, _Za, __a, _$a, _ab, _bb, _cb, _db, _eb, _fb;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B, _C, _D, _E, _F, _G, _H, _I, _J, _K, _L, _M, _N, _O, _P, _Q, _R, _S, _T, _U, _V, _W, _X, _Y, _Z, __, _$, _aa, _ba, _ca, _da, _ea, _fa, _ga, _ha, _ia, _ja, _ka, _la, _ma, _na, _oa, _pa, _qa, _ra, _sa, _ta, _ua, _va, _wa, _xa, _ya, _za, _Aa, _Ba, _Ca, _Da, _Ea, _Fa, _Ga, _Ha, _Ia, _Ja, _Ka, _La, _Ma, _Na, _Oa, _Pa, _Qa, _Ra, _Sa, _Ta, _Ua, _Va, _Wa, _Xa, _Ya, _Za, __a, _$a, _ab, _bb, _cb, _db, _eb, _fb, _gb, _hb;
         if (delayedModulesLoaded) return;
         delayedModulesLoaded = true;
         document.removeEventListener("mousemove", loadDelayedModules);
@@ -8295,33 +8536,37 @@
           const { initSmoothPageTransitions: initSmoothPageTransitions2 } = await Promise.resolve().then(() => (init_smoothPageTransitions(), smoothPageTransitions_exports));
           await initSmoothPageTransitions2();
         }
-        if (((_Ma = (_La = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _La.vibrations) == null ? void 0 : _Ma.feature) === "on" && navigator.vibrate && ((_Oa = (_Na = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Na.vibrations) == null ? void 0 : _Oa.supportedDevices.some((supported) => {
+        if (((_Ma = (_La = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _La.autosaveForms) == null ? void 0 : _Ma.feature) === "on") {
+          const { initAutosaveForms: initAutosaveForms2 } = await Promise.resolve().then(() => (init_autosaveForms(), autosaveForms_exports));
+          await initAutosaveForms2();
+        }
+        if (((_Oa = (_Na = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Na.vibrations) == null ? void 0 : _Oa.feature) === "on" && navigator.vibrate && ((_Qa = (_Pa = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Pa.vibrations) == null ? void 0 : _Qa.supportedDevices.some((supported) => {
           var _a2, _b2;
           return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet);
         }))) {
           const { initVibrations: initVibrations2 } = await Promise.resolve().then(() => (init_vibrations(), vibrations_exports));
           await initVibrations2();
         }
-        if (((_Qa = (_Pa = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Pa.idleDetection) == null ? void 0 : _Qa.feature) === "on" && "IdleDetector" in window && ((_Sa = (_Ra = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ra.idleDetection) == null ? void 0 : _Sa.supportedDevices.some((supported) => {
+        if (((_Sa = (_Ra = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ra.idleDetection) == null ? void 0 : _Sa.feature) === "on" && "IdleDetector" in window && ((_Ua = (_Ta = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ta.idleDetection) == null ? void 0 : _Ua.supportedDevices.some((supported) => {
           var _a2, _b2, _c2;
           return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
         }))) {
           const { initIdleDetection: initIdleDetection2 } = await Promise.resolve().then(() => (init_idleDetection(), idleDetection_exports));
           await initIdleDetection2();
         }
-        if (((_Ua = (_Ta = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Ta.screenWakeLock) == null ? void 0 : _Ua.feature) === "on" && navigator.wakeLock && ((_Wa = (_Va = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Va.screenWakeLock) == null ? void 0 : _Wa.supportedDevices.some((supported) => {
+        if (((_Wa = (_Va = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Va.screenWakeLock) == null ? void 0 : _Wa.feature) === "on" && navigator.wakeLock && ((_Ya = (_Xa = settings == null ? void 0 : settings.appCapabilities) == null ? void 0 : _Xa.screenWakeLock) == null ? void 0 : _Ya.supportedDevices.some((supported) => {
           var _a2, _b2, _c2;
           return supported === "smartphone" && ((_a2 = userData == null ? void 0 : userData.device) == null ? void 0 : _a2.isSmartphone) || supported === "tablet" && ((_b2 = userData == null ? void 0 : userData.device) == null ? void 0 : _b2.isTablet) || supported === "desktop" && ((_c2 = userData == null ? void 0 : userData.device) == null ? void 0 : _c2.isDesktop);
         }))) {
           const { initScreenWakeLock: initScreenWakeLock2 } = await Promise.resolve().then(() => (init_screenWakeLock(), screenWakeLock_exports));
           await initScreenWakeLock2();
         }
-        if (((_Ya = (_Xa = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _Xa.prompt) == null ? void 0 : _Ya.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && !["subscribed", "blocked"].includes(await pushNotificationsSubscription_default.getSubscriptionState()) && !getCookie("pwa_push_notifications_prompt_shown") && (((__a = (_Za = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _Za.prompt) == null ? void 0 : __a.skipFirstVisit) !== "on" || isReturningVisitor())) {
+        if (((__a = (_Za = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _Za.prompt) == null ? void 0 : __a.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && !["subscribed", "blocked"].includes(await pushNotificationsSubscription_default.getSubscriptionState()) && !getCookie("pwa_push_notifications_prompt_shown") && (((_ab = (_$a = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _$a.prompt) == null ? void 0 : _ab.skipFirstVisit) !== "on" || isReturningVisitor())) {
           const { initPushNotificationsPrompt: initPushNotificationsPrompt2 } = await Promise.resolve().then(() => (init_pushNotificationsPrompt(), pushNotificationsPrompt_exports));
           await initPushNotificationsPrompt2();
-          setCookie("pwa_push_notifications_prompt_shown", "true", (_bb = (_ab = (_$a = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _$a.prompt) == null ? void 0 : _ab.timeout) != null ? _bb : 1);
+          setCookie("pwa_push_notifications_prompt_shown", "true", (_db = (_cb = (_bb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _bb.prompt) == null ? void 0 : _cb.timeout) != null ? _db : 1);
         }
-        if (((_db = (_cb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _cb.button) == null ? void 0 : _db.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && await pushNotificationsSubscription_default.getSubscriptionState() !== "blocked" && (await pushNotificationsSubscription_default.getSubscriptionState() !== "subscribed" || ((_fb = (_eb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _eb.button) == null ? void 0 : _fb.behavior) === "shown")) {
+        if (((_fb = (_eb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _eb.button) == null ? void 0 : _fb.feature) === "on" && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && await pushNotificationsSubscription_default.getSubscriptionState() !== "blocked" && (await pushNotificationsSubscription_default.getSubscriptionState() !== "subscribed" || ((_hb = (_gb = settings == null ? void 0 : settings.pushNotifications) == null ? void 0 : _gb.button) == null ? void 0 : _hb.behavior) === "shown")) {
           const { initPushNotificationsButton: initPushNotificationsButton2 } = await Promise.resolve().then(() => (init_pushNotificationsButton(), pushNotificationsButton_exports));
           await initPushNotificationsButton2();
         }

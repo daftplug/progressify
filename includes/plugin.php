@@ -65,7 +65,6 @@ class Plugin
     self::$domain = self::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
     self::$licenseKey = get_option("{$this->optionName}_license_key");
     $this->capability = 'manage_options';
-
     self::$settings = $config['settings'];
 
     $autoload_path = self::$pluginDirPath . 'vendor/autoload.php';
@@ -73,30 +72,6 @@ class Plugin
       require_once $autoload_path;
     } else {
       error_log('DaftPlug Progressify: Autoload file not found.');
-    }
-
-    // Init Admin
-    require_once self::$pluginDirPath . 'admin/admin.php';
-    $this->Admin = new Admin($config);
-
-    if (self::$licenseKey && !isset($_GET['noprogressify'])) {
-      // Init Modules
-      require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
-      $this->Dashboard = new Dashboard($config);
-      require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
-      $this->WebAppManifest = new WebAppManifest($config);
-      require_once self::$pluginDirPath . 'includes/modules/installation.php';
-      $this->Installation = new Installation($config);
-      require_once self::$pluginDirPath . 'includes/modules/offlineusage.php';
-      $this->OfflineUsage = new OfflineUsage($config);
-      require_once self::$pluginDirPath . 'includes/modules/appcapabilities.php';
-      $this->AppCapabilities = new AppCapabilities($config);
-      require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
-      $this->PushNotifications = new PushNotifications($config);
-
-      // Init Frontend
-      require_once self::$pluginDirPath . 'frontend/frontend.php';
-      $this->Frontend = new Frontend($config);
     }
 
     // Init default settings
@@ -114,7 +89,7 @@ class Plugin
           'categories' => [],
         ],
         'displaySettings' => [
-          'startPage' => trailingslashit(strtok(home_url('/', 'https'), '?')),
+          'startPagePath' => '/',
           'displayMode' => 'standalone',
           'orientation' => 'portrait',
           'orientationLock' => 'off',
@@ -240,6 +215,10 @@ class Plugin
           'supportedDevices' => [],
           'compatibilityMode' => 'off',
         ],
+        'autosaveForms' => [
+          'feature' => 'off',
+          'persistOnSubmit' => 'off',
+        ],
         'urlProtocolHandler' => [
           'feature' => 'off',
           'protocol' => '',
@@ -270,7 +249,6 @@ class Plugin
         ],
         'advancedWebCapabilities' => [
           'feature' => 'on',
-          'biometricAuthentication' => 'off',
           'backgroundSync' => 'on',
           'periodicBackgroundSync' => 'on',
           'contentIndexing' => 'off',
@@ -321,23 +299,50 @@ class Plugin
       ],
     ];
 
+    // Add default settings
+    add_option("{$this->optionName}_settings", $this->defaultSettings);
+
     if (get_transient("{$this->optionName}_updated")) {
       $mergedSettings = $this->arrayMergeRecursiveDistinct($this->defaultSettings, self::$settings);
       update_option(self::$slug . '_settings', $mergedSettings);
       delete_transient("{$this->optionName}_updated");
     }
 
-    add_action('plugins_loaded', [$this, 'loadTextDomain']);
+    // Init Admin
+    require_once self::$pluginDirPath . 'admin/admin.php';
+    $this->Admin = new Admin($config);
+
+    if (self::$licenseKey && !isset($_GET['noprogressify'])) {
+      // Validate License
+      $licenseResponse = Plugin::daftplugProcessLicense(self::$licenseKey, 'validate');
+      if (!is_wp_error($licenseResponse) && !$licenseResponse->valid) {
+        delete_option("{$this->optionName}_license_key");
+      }
+
+      // Init Modules
+      require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
+      $this->Dashboard = new Dashboard($config);
+      require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
+      $this->WebAppManifest = new WebAppManifest($config);
+      require_once self::$pluginDirPath . 'includes/modules/installation.php';
+      $this->Installation = new Installation($config);
+      require_once self::$pluginDirPath . 'includes/modules/offlineusage.php';
+      $this->OfflineUsage = new OfflineUsage($config);
+      require_once self::$pluginDirPath . 'includes/modules/appcapabilities.php';
+      $this->AppCapabilities = new AppCapabilities($config);
+      require_once self::$pluginDirPath . 'includes/modules/pushnotifications.php';
+      $this->PushNotifications = new PushNotifications($config);
+
+      // Init Frontend
+      require_once self::$pluginDirPath . 'frontend/frontend.php';
+      $this->Frontend = new Frontend($config);
+    }
+
     add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
     register_activation_hook(self::$pluginFile, [$this, 'onActivate']);
     add_action('upgrader_process_complete', [$this, 'onUpdate'], 10, 2);
     register_deactivation_hook(self::$pluginFile, [$this, 'onDeactivate']);
     register_uninstall_hook(self::$pluginFile, [self::class, 'onUninstall']);
-  }
-
-  public function loadTextDomain()
-  {
-    load_plugin_textdomain(self::$slug, false);
   }
 
   public function onActivate()
@@ -364,9 +369,6 @@ class Plugin
         ]);
       }
     }
-
-    // Add default settings
-    add_option("{$this->optionName}_settings", $this->defaultSettings);
   }
 
   public function onUpdate($upgraderObject, $options)
@@ -402,32 +404,106 @@ class Plugin
 
   public static function daftplugProcessLicense($licenseKey, $action)
   {
-    $params = [
-      'sslverify' => false,
-      'body' => [
-        'license_key' => $licenseKey,
-        'action' => $action,
-        'slug' => self::$slug,
-        'domain' => self::$domain,
-        'envato_item_id' => self::$envatoItemId,
+    $action = sanitize_key($action);
+    $is_read = in_array($action, ['validate', 'update'], true);
+
+    // One bucket per (license, slug, domain, envato item)
+    $bucket_key =
+      'daftplug_license_bucket_' .
+      md5(
+        implode('|', [
+          (string) $licenseKey,
+          (string) self::$slug,
+          (string) self::$domain, // ensure your client normalization matches server
+          (string) self::$envatoItemId,
+        ])
+      );
+
+    $cache_ttl = HOUR_IN_SECONDS * 6;
+
+    // For reads, serve from bucket if we already have that action cached
+    $bucket = $is_read ? get_transient($bucket_key) : null;
+
+    // If it has expired, get_transient() returns false. Proactively delete to clean DB rows.
+    if ($is_read && $bucket === false) {
+      delete_transient($bucket_key);
+    }
+
+    if ($is_read && is_array($bucket) && array_key_exists($action, $bucket)) {
+      return $bucket[$action];
+    }
+
+    if ($is_read && is_array($bucket) && array_key_exists($action, $bucket)) {
+      return $bucket[$action];
+    }
+
+    $common_args = [
+      'timeout' => 5,
+      'sslverify' => true,
+      'headers' => [
+        'Accept' => 'application/json',
+        'User-Agent' => 'WordPress/' . get_bloginfo('version') . '; ' . home_url(),
       ],
-      'user-agent' => 'WordPress/' . get_bloginfo('version') . '; ' . get_bloginfo('url'),
     ];
 
-    $response = wp_remote_post(self::$licenseEndpoint, $params);
+    $payload = [
+      'license_key' => $licenseKey,
+      'action' => $action,
+      'slug' => self::$slug,
+      'domain' => self::$domain,
+      'envato_item_id' => self::$envatoItemId,
+    ];
+
+    if ($is_read) {
+      // GET for cacheable reads
+      $url = add_query_arg($payload, self::$licenseEndpoint);
+      $response = wp_remote_get($url, $common_args);
+    } else {
+      // POST for mutations
+      $args = $common_args;
+      $args['headers']['Content-Type'] = 'application/json';
+      $args['body'] = wp_json_encode($payload);
+      $args['data_format'] = 'body';
+      $response = wp_remote_post(self::$licenseEndpoint, $args);
+    }
 
     if (is_wp_error($response)) {
       return $response;
     }
 
     $body = wp_remote_retrieve_body($response);
-
-    // Try to decode the JSON response
     $result = json_decode($body);
 
-    // Check if JSON decoding failed
     if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
       return new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
+    }
+
+    // Helper: detect "expired" license message from your license API
+    $is_expired_license = is_object($result) && isset($result->valid, $result->error) && $result->valid === false && stripos((string) $result->error, 'expired') !== false;
+
+    if ($is_read) {
+      if ($is_expired_license) {
+        // Do NOT cache expired license; also clear any old bucket so it disappears
+        delete_transient($bucket_key);
+      } else {
+        // Cache (valid or invalid-but-not-expired) for the TTL
+        if (!is_array($bucket)) {
+          $bucket = [];
+        }
+        $bucket[$action] = $result;
+        set_transient($bucket_key, $bucket, $cache_ttl);
+      }
+    } else {
+      // Mutations affect cache
+      if ($action === 'activate') {
+        if (!empty($result->valid)) {
+          // Seed a "valid" validate result so reads are instant
+          set_transient($bucket_key, ['validate' => $result], $cache_ttl);
+        }
+      } elseif ($action === 'deactivate') {
+        // Clear cache so next read reflects deactivation immediately
+        delete_transient($bucket_key);
+      }
     }
 
     return $result;
@@ -937,6 +1013,11 @@ class Plugin
     return $merged;
   }
 
+  public static function getHomeUrl($trailingSlash = true)
+  {
+    return $trailingSlash ? trailingslashit(strtok(home_url('/', 'https'), '?')) : untrailingslashit(strtok(home_url('/', 'https'), '?'));
+  }
+
   public static function getContent($file)
   {
     if (empty($file) || !is_file($file)) {
@@ -1128,7 +1209,7 @@ class Plugin
     $scaleFactor = 4;
 
     // Parse size input and apply scaling
-    list($width, $height) = explode('x', strtolower($size));
+    [$width, $height] = explode('x', strtolower($size));
     $targetWidth = (int) $width;
     $targetHeight = (int) $height;
     $scaledWidth = $targetWidth * $scaleFactor;
@@ -1137,19 +1218,24 @@ class Plugin
 
     $options = new QROptions([
       'version' => Version::AUTO,
+      'eccLevel' => EccLevel::M,
       'outputType' => QROutputInterface::GDIMAGE_PNG,
-      'eccLevel' => EccLevel::H,
-      'scale' => max(1, (int) ($targetSize / 33)),
-      'imageBase64' => false,
-      'addQuietzone' => false,
+      'returnResource' => true,
+      'outputBase64' => false,
+      'addQuietzone' => true,
+      'quietzoneSize' => 1,
       'addLogoSpace' => !empty($logo),
       'logoSpaceWidth' => 0,
       'logoSpaceHeight' => 0,
+      'scale' => max(1, (int) ($targetSize / 33)),
     ]);
 
     try {
-      // Generate the QR code at scaled resolution
-      $qrcode = (new QRCode($options))->render($data);
+      // Process QR code
+      $qrImage = (new QRCode($options))->render($data); // <-- GdImage now
+      if (!$qrImage instanceof \GdImage) {
+        throw new \Exception('QR output did not return a GdImage');
+      }
 
       // Define scaled dimensions
       $padding = 10 * $scaleFactor;
@@ -1170,12 +1256,6 @@ class Plugin
 
       // Fill background with white
       imagefill($baseImage, 0, 0, $white);
-
-      // Process QR code
-      $qrImage = imagecreatefromstring($qrcode);
-      if (!$qrImage) {
-        throw new \Exception('Failed to create QR code image from string');
-      }
 
       // Calculate QR code size to fit within padding
       $qrSize = $scaledWidth - $totalPadding;
@@ -1270,7 +1350,6 @@ class Plugin
 
           imagedestroy($logoImage);
         } catch (\Exception $e) {
-          error_log('QR code logo processing failed: ' . $e->getMessage());
           // Continue without the logo
         }
       }
@@ -1300,7 +1379,6 @@ class Plugin
 
       return $imageData;
     } catch (\Exception $e) {
-      error_log('QR code generation failed: ' . $e->getMessage());
       return false;
     }
   }

@@ -11,7 +11,7 @@ function startIntroGuide() {
     return;
   }
 
-  setCookie(config.jsVars.slug + '-intro-shown', true, 30);
+  setCookie(config.jsVars.slug + '-intro-shown', true, 9999);
 
   introJs('#daftplugAdminWrapper')
     .setOptions({

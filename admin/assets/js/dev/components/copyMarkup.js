@@ -1,5 +1,6 @@
 import { config } from '../admin.js';
 import { handleSelect } from './select.js';
+import { handlePagePathInput } from './pagePathInput.js';
 
 export function initCopyMarkup() {
   handleCopyMarkup();
@@ -40,6 +41,7 @@ function handleCopyMarkup() {
         const newElement = jQuery(template);
         newElement.appendTo(wrapperElement);
         handleSelect();
+        handlePagePathInput();
         reindexElements(wrapperElement, wrapper, target);
         checkLimit();
       }

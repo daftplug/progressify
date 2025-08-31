@@ -66,8 +66,8 @@ class Frontend
       apply_filters("{$this->optionName}_frontend_js_vars", [
         'homeUrl' => trailingslashit(strtok(home_url('/', 'https'), '?')),
         'ajaxUrl' => admin_url('admin-ajax.php'),
-        'restUrl' => get_rest_url(),
-        'restNonce' => wp_create_nonce('wp-rest'),
+        'restUrl' => esc_url_raw(get_rest_url()),
+        'restNonce' => wp_create_nonce('wp_rest'),
         'iconUrl' => WebAppManifest::getPwaIconUrl('maskable', 180),
         'slug' => $this->slug,
         'settings' => $this->settings,

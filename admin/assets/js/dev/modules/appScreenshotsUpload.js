@@ -1,6 +1,8 @@
 import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
 
+const { __ } = wp.i18n;
+
 export function initAppScreenshotsUpload() {
   handleAppScreenshotsUpload();
 }
@@ -12,7 +14,7 @@ export function handleAppScreenshotsUpload() {
   const dropzone = settingAppScreenshots.find('[data-attachment-dropzone]');
   const maxFiles = 5;
 
-  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${config.jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=750&vph=1334&format=png`, `https://s0.wp.com/mshots/v1/${config.jsVars.settings.webAppManifest?.displaySettings?.startPage}?vpw=1280&vph=800&format=png`];
+  const defaultScreenshots = [`https://s0.wp.com/mshots/v1/${config.jsVars.homeUrl + config.jsVars.settings.webAppManifest?.displaySettings?.startPagePath}?vpw=750&vph=1334&format=png`, `https://s0.wp.com/mshots/v1/${config.jsVars.homeUrl + config.jsVars.settings.webAppManifest?.displaySettings?.startPagePath}?vpw=1280&vph=800&format=png`];
 
   function initializeScreenshots() {
     const savedScreenshots = config.jsVars.settings.webAppManifest?.appIdentity?.appScreenshots || [];
@@ -120,9 +122,9 @@ export function handleAppScreenshotsUpload() {
   appScreenshotsUploadBtn.on('click', function (e) {
     e.preventDefault();
     let frame = wp.media({
-      title: 'Select or upload App Screenshots',
+      title: __('Select or upload App Screenshots', config.jsVars.slug),
       button: {
-        text: 'Select Screenshots',
+        text: __('Select Screenshots', config.jsVars.slug),
       },
       multiple: true,
     });

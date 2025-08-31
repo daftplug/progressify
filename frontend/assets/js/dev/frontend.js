@@ -133,6 +133,12 @@ const loadDelayedModules = async () => {
     await initSmoothPageTransitions();
   }
 
+  // Autosave Forms
+  if (settings?.appCapabilities?.autosaveForms?.feature === 'on') {
+    const { initAutosaveForms } = await import('./modules/autosaveForms.js');
+    await initAutosaveForms();
+  }
+
   // Vibrations
   if (settings?.appCapabilities?.vibrations?.feature === 'on' && navigator.vibrate && settings?.appCapabilities?.vibrations?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
     const { initVibrations } = await import('./modules/vibrations.js');
@@ -215,7 +221,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     await initInstallButton();
   }
 
-  // Toast Messages (immediate - important for user feedback)
+  // Toast Messages (immediate)
   if (settings?.uiComponents?.toastMessages?.feature === 'on' && settings?.uiComponents?.toastMessages?.supportedDevices.some((supported) => (supported === 'smartphone' && userData?.device?.isSmartphone) || (supported === 'tablet' && userData?.device?.isTablet))) {
     const { initToastMessages } = await import('./modules/toastMessages.js');
     await initToastMessages();

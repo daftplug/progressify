@@ -96,6 +96,7 @@ class PushNotificationsSubscriptionManager {
         method: 'POST',
         credentials: 'include',
         headers: {
+          'X-WP-Nonce': config.jsVars.restNonce,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

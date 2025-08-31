@@ -49,7 +49,6 @@ class AppCapabilities
     add_filter("{$this->optionName}_manifest", [$this, 'addUrlProtocolHandlerToManifest']);
     add_filter("{$this->optionName}_manifest", [$this, 'addFileHandlerToManifest']);
     add_filter("{$this->optionName}_manifest", [$this, 'addWebShareTargetToManifest']);
-    add_action('plugin_loaded', [$this, 'initBiometricAuthentication']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addBackgroundSyncToServiceWorker']);
     add_filter("{$this->optionName}_serviceworker", [$this, 'addPeriodicBackgroundSyncToServiceWorker']);
     add_filter('wp_footer', [$this, 'renderPeriodicSyncRegistration']);
@@ -60,7 +59,7 @@ class AppCapabilities
 
   public function wrapAllContentWithSwup()
   {
-    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]') !== 'on') {
+    if (Plugin::getSetting('appCapabilities[smoothPageTransitions][feature]') !== 'on') {
       return;
     }
 
@@ -156,13 +155,6 @@ class AppCapabilities
     ];
 
     return $manifest;
-  }
-
-  public function initBiometricAuthentication()
-  {
-    if (Plugin::getSetting('appCapabilities[advancedWebCapabilities][feature]') !== 'on' || Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]') !== 'on') {
-      return;
-    }
   }
 
   public function addBackgroundSyncToServiceWorker($serviceWorker)

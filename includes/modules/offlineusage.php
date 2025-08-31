@@ -147,7 +147,7 @@ class OfflineUsage
   public function buildServiceworkerData()
   {
     $isOfflineCacheEnabled = Plugin::getSetting('offlineUsage[cache][feature]') == 'on';
-    $offlineFallbackPage = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on' ? Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]') : $this->getOfflineFallbackUrl();
+    $offlineFallbackPage = Plugin::getSetting('offlineUsage[cache][customFallbackPage][feature]') == 'on' ? esc_url(Plugin::getHomeUrl(false) . Plugin::getSetting('offlineUsage[cache][customFallbackPage][path]')) : Plugin::getHomeUrl(false) . $this->getOfflineFallbackUrl();
     $cachingStrategy = Plugin::getSetting('offlineUsage[cache][strategy]');
     $cacheExpiration = intval(Plugin::getSetting('offlineUsage[cache][expirationTime]')) ?: 10;
 

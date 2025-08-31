@@ -514,7 +514,7 @@ class PushNotifications
       'os_icon' => $userData['os']['icon'],
       'browser_name' => $userData['browser']['name'],
       'browser_icon' => $userData['browser']['icon'],
-      'wp_user_id' => get_current_user_id() ?: null,
+      'wp_user_id' => get_current_user_id(),
       'date' => current_time('mysql'),
     ];
 

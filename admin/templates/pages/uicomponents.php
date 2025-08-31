@@ -495,20 +495,7 @@ if (!defined('ABSPATH')) {
                 <input name="uiComponents[navigationTabBar][navigationItems][label]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Label', $this->slug); ?>">
               </div>
               <div class="flex-grow">
-                <input name="uiComponents[navigationTabBar][navigationItems][page]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-calendar-picker-indicator]:!hidden" placeholder="<?php esc_html_e('Enter URL or Select Page', $this->slug); ?>" list="uiComponents[navigationTabBar][navigationItems][page]">
-                <datalist id="uiComponents[navigationTabBar][navigationItems][page]">
-                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>><?php esc_html_e('Home Page', $this->slug); ?></option>
-                  <?php
-                  $posts = get_posts([
-                    'post_type' => 'page',
-                    'posts_per_page' => -1,
-                    'post_status' => 'publish',
-                  ]);
-                  foreach ($posts as $post): ?>
-                  <option value="<?php echo esc_url(get_permalink($post->ID)); ?>" <?php selected(Plugin::getSetting('uiComponents[navigationTabBar][navigationItems][page]'), get_permalink($post->ID)); ?>><?php echo esc_html($post->post_title); ?></option>
-                  <?php endforeach;
-                  ?>
-                </datalist>
+                <input name="uiComponents[navigationTabBar][navigationItems][page]" type="url" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none [&::-webkit-calendar-picker-indicator]:!hidden" placeholder="<?php esc_html_e('Enter URL', $this->slug); ?>" list="uiComponents[navigationTabBar][navigationItems][page]">
               </div>
               <div class="flex-none flex items-center ml-1.5">
                 <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200" data-dp-copy-markup-delete="navigationItem">

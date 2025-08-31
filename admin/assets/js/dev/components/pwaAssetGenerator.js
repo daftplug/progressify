@@ -39,26 +39,34 @@ function generateMaskableIcon(icon, backgroundColor, size, safeZone) {
   canvas.width = size;
   canvas.height = size;
 
-  // Fill background
+  // Always fill background - maskable icons MUST have backgrounds
+  // because the system will apply various circular/rounded masks
   ctx.fillStyle = backgroundColor;
   ctx.fillRect(0, 0, size, size);
 
-  // Calculate scaling to fit icon in safe zone while preserving aspect ratio
+  // Calculate scaling to fit icon in safe zone (80% by default)
+  // This ensures the important parts of the icon stay visible when masked
   const safeSize = size * safeZone;
   const scale = Math.min(safeSize / icon.width, safeSize / icon.height);
 
   // Center the scaled icon
-  const x = (size - icon.width * scale) / 2;
-  const y = (size - icon.height * scale) / 2;
+  const scaledWidth = icon.width * scale;
+  const scaledHeight = icon.height * scale;
+  const x = (size - scaledWidth) / 2;
+  const y = (size - scaledHeight) / 2;
+
+  // Enable high-quality scaling
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
 
   // Draw icon
-  ctx.drawImage(icon, x, y, icon.width * scale, icon.height * scale);
+  ctx.drawImage(icon, x, y, scaledWidth, scaledHeight);
 
   return canvas.toDataURL('image/png');
 }
 
 /**
- * Generates a rounded icon with transparent background
+ * Generates a rounded icon with smooth rounded corners
  * @private
  */
 function generateRoundedIcon(icon, backgroundColor, size, radius) {
@@ -68,37 +76,58 @@ function generateRoundedIcon(icon, backgroundColor, size, radius) {
   canvas.width = size;
   canvas.height = size;
 
-  // Clear canvas (transparent background)
+  // Enable high-quality rendering
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  // Clear canvas to transparent
   ctx.clearRect(0, 0, size, size);
 
-  // Draw rounded rectangle
+  // Create rounded rectangle clipping path for perfectly smooth corners
+  ctx.save();
   ctx.beginPath();
-  ctx.moveTo(radius, 0);
-  ctx.lineTo(size - radius, 0);
-  ctx.arc(size - radius, radius, radius, -Math.PI / 2, 0);
-  ctx.lineTo(size, size - radius);
-  ctx.arc(size - radius, size - radius, radius, 0, Math.PI / 2);
-  ctx.lineTo(radius, size);
-  ctx.arc(radius, size - radius, radius, Math.PI / 2, Math.PI);
-  ctx.lineTo(0, radius);
-  ctx.arc(radius, radius, radius, Math.PI, -Math.PI / 2);
-  ctx.closePath();
 
-  // Fill rounded rectangle with background color
+  // Modern browsers support roundRect
+  if (typeof ctx.roundRect === 'function') {
+    ctx.roundRect(0, 0, size, size, radius);
+  } else {
+    // Fallback for older browsers - draw rounded rectangle manually
+    ctx.moveTo(radius, 0);
+    ctx.lineTo(size - radius, 0);
+    ctx.arc(size - radius, radius, radius, -Math.PI / 2, 0);
+    ctx.lineTo(size, size - radius);
+    ctx.arc(size - radius, size - radius, radius, 0, Math.PI / 2);
+    ctx.lineTo(radius, size);
+    ctx.arc(radius, size - radius, radius, Math.PI / 2, Math.PI);
+    ctx.lineTo(0, radius);
+    ctx.arc(radius, radius, radius, Math.PI, -Math.PI / 2);
+    ctx.closePath();
+  }
+
+  // Clip to this rounded shape
+  ctx.clip();
+
+  // Fill the clipped area with background color
   ctx.fillStyle = backgroundColor;
-  ctx.fill();
+  ctx.fillRect(0, 0, size, size);
 
-  // Calculate scaling to fit icon while preserving aspect ratio
-  // Using 90% of the rounded rectangle's inner space
-  const innerSize = size * 0.9;
-  const scale = Math.min(innerSize / icon.width, innerSize / icon.height);
+  // Use SAME scaling as maskable icon (safe zone approach)
+  // This ensures identical content, just with rounded corners
+  const safeZone = 0.8; // Same as maskable icon
+  const safeSize = size * safeZone;
+  const scale = Math.min(safeSize / icon.width, safeSize / icon.height);
 
-  // Center the scaled icon
-  const x = (size - icon.width * scale) / 2;
-  const y = (size - icon.height * scale) / 2;
+  // Center the scaled icon (same calculation as maskable)
+  const scaledWidth = icon.width * scale;
+  const scaledHeight = icon.height * scale;
+  const x = (size - scaledWidth) / 2;
+  const y = (size - scaledHeight) / 2;
 
-  // Draw icon
-  ctx.drawImage(icon, x, y, icon.width * scale, icon.height * scale);
+  // Draw icon within the clipped rounded area
+  ctx.drawImage(icon, x, y, scaledWidth, scaledHeight);
+
+  // Restore context to remove clipping
+  ctx.restore();
 
   return canvas.toDataURL('image/png');
 }

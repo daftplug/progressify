@@ -1,6 +1,7 @@
 <?php
 
 namespace DaftPlug\Progressify;
+use DaftPlug\Progressify\Plugin;
 use DaftPlug\Progressify\Module\WebAppManifest;
 
 if (!defined('ABSPATH')) {
@@ -163,7 +164,7 @@ class Admin
         "{$this->slug}-admin",
         "{$this->optionName}_admin_js_vars",
         apply_filters("{$this->optionName}_admin_js_vars", [
-          'homeUrl' => trailingslashit(home_url('/', 'https')),
+          'homeUrl' => Plugin::getHomeUrl(false),
           'adminUrl' => trailingslashit(admin_url('/', 'https')),
           'iconUrl' => $this->licenseKey ? WebAppManifest::getPwaIconUrl('maskable', 180) : '',
           'slug' => $this->slug,

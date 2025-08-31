@@ -157,6 +157,67 @@ if (!defined('ABSPATH')) {
     </div>
   </fieldset>
   <!-- End Smooth Page Transitions -->
+  <!-- Autosave Forms -->
+  <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0" id="subsectionAutosaveForms">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
+      <div class="xl:col-span-1">
+        <div class="flex gap-x-2 sticky top-6">
+          <svg class="fill-gray-400 size-9 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path
+              d="M633.08-208.46q11.23 0 19.07-7.85 7.85-7.84 7.85-19.07 0-11.24-7.85-19.08-7.84-7.85-19.07-7.85T614-254.46q-7.85 7.84-7.85 19.08 0 11.23 7.85 19.07 7.85 7.85 19.08 7.85Zm86.92 0q11.23 0 19.08-7.85 7.84-7.84 7.84-19.07 0-11.24-7.84-19.08-7.85-7.85-19.08-7.85-11.23 0-19.08 7.85-7.84 7.84-7.84 19.08 0 11.23 7.84 19.07 7.85 7.85 19.08 7.85Zm86.92 0q11.23 0 19.08-7.85 7.85-7.84 7.85-19.07 0-11.24-7.85-19.08-7.85-7.85-19.08-7.85-11.23 0-19.07 7.85-7.85 7.84-7.85 19.08 0 11.23 7.85 19.07 7.84 7.85 19.07 7.85ZM224.62-160q-26.66 0-45.64-18.98T160-224.62v-510.76q0-26.66 18.98-45.64T224.62-800h510.76q26.66 0 45.64 18.98T800-735.38v204.61q0 8.5-5.76 14.25t-14.27 5.75q-8.51 0-14.24-5.75T760-530.77v-204.61q0-9.24-7.69-16.93-7.69-7.69-16.93-7.69H224.62q-9.24 0-16.93 7.69-7.69 7.69-7.69 16.93v510.76q0 9.24 7.69 16.93 7.69 7.69 16.93 7.69h204.61q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24T429.23-160H224.62ZM200-239.73V-200v-560V-507.77v-3 271.04Zm100-89.47q0 8.51 5.75 14.24t14.25 5.73h118.38q8.5 0 14.25-5.76t5.75-14.27q0-8.51-5.75-14.24t-14.25-5.73H320q-8.5 0-14.25 5.76-5.75 5.75-5.75 14.27Zm0-150.77q0 8.51 5.75 14.24T320-460h259.23q8.5 0 14.25-5.76t5.75-14.27q0-8.51-5.75-14.24T579.23-500H320q-8.5 0-14.25 5.76T300-479.97Zm0-150.77q0 8.51 5.75 14.24t14.25 5.73h320q8.5 0 14.25-5.76 5.75-5.75 5.75-14.27 0-8.51-5.75-14.24T640-650.77H320q-8.5 0-14.25 5.76T300-630.74ZM720-75.38q-66.85 0-113.42-46.58Q560-168.54 560-235.38q0-66.85 46.58-113.43 46.57-46.57 113.42-46.57t113.42 46.57Q880-302.23 880-235.38q0 66.84-46.58 113.42Q786.85-75.38 720-75.38Z" />
+          </svg>
+          <div class="grow">
+            <label class="cursor-pointer flex items-center gap-x-2 text-base font-semibold text-gray-800">
+              <?php esc_html_e('Autosave Forms', $this->slug); ?>
+              <div class="relative inline-flex">
+                <input type="checkbox" name="appCapabilities[autosaveForms][feature]" class="inline-flex relative w-[36px] h-[20px] !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-4 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start" <?php checked(Plugin::getSetting('appCapabilities[autosaveForms][feature]'), 'on'); ?>>
+              </div>
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <?php esc_html_e('The Autosave Forms feature automatically saves values entered by users into forms before they submit them, ensuring their data is preserved even if they refresh the page or return later.', $this->slug); ?>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7" data-dp-dependant-markup='{
+        "target": "appCapabilities[autosaveForms][feature]",
+        "state": "checked",
+        "mode": "availability"
+      }'>
+        <!-- Persist on Submit -->
+        <div id="settingAutosaveFormsPersistOnSubmit">
+          <div class="mb-1.5 flex items-center text-sm font-medium text-gray-800">
+            <?php esc_html_e('Persist on Submit', $this->slug); ?>
+            <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
+              <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+              <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
+                <?php esc_html_e('Saves and preserves filled out form values even after the form is submitted.', $this->slug); ?>
+              </span>
+            </button>
+          </div>
+          <div class="flex gap-x-3 rounded-lg bg-white">
+            <label class="flex items-center gap-x-1.5 cursor-pointer">
+              <input type="checkbox" name="appCapabilities[autosaveForms][persistOnSubmit]" class="shrink-0 checked:before:!content-none bg-transparent border-gray-300 [&:not(:checked)]:focus:!border-gray-300 shadow-none rounded text-blue-600 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" <?php checked(Plugin::getSetting('appCapabilities[autosaveForms][persistOnSubmit]'), 'on'); ?>>
+              <span class="text-sm"><?php esc_html_e('Persist form values even after the form is submitted.', $this->slug); ?></span>
+            </label>
+          </div>
+        </div>
+        <!-- End Persist on Submit -->
+      </div>
+      <div class="col-span-full xl:-mt-6 flex flex-1 justify-end items-center gap-2">
+        <button type="submit" class="group py-2 px-3 inline-flex rounded-lg justify-center items-center gap-x-2 text-sm font-semibold border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+          <span class="hidden group-data-[saving=true]:inline-block animate-spin size-4 border-[3px] border-current border-t-transparent text-white rounded-full transition" role="status" aria-label="loading">
+            <span class="sr-only"><?php esc_html_e('Saving...', $this->slug); ?></span>
+          </span>
+          <?php esc_html_e('Save Changes', $this->slug); ?>
+        </button>
+      </div>
+    </div>
+  </fieldset>
+  <!-- End Autosave Forms -->
   <!-- URL Protocol Handler -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0" id="subsectionUrlProtocolHandler">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">
@@ -637,7 +698,7 @@ if (!defined('ABSPATH')) {
               </div>
             </label>
             <p class="mt-1 text-sm text-gray-500">
-              <?php esc_html_e('Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, web authentication for biometric login, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience.', $this->slug); ?>
+              <?php esc_html_e('Enable support for advanced PWA functionality APIs to enhance your web app with features such as background sync, periodic background sync, content indexation, persistent storage, and other capabilities that provide a richer, more native-like experience.', $this->slug); ?>
             </p>
           </div>
         </div>
@@ -647,34 +708,6 @@ if (!defined('ABSPATH')) {
                   "state": "checked",
       "mode": "availability"
     }'>
-        <!-- Biometric Authentication -->
-        <div id="settingBiometricAuthentication " class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3">
-          <label for="appCapabilities[advancedWebCapabilities][biometricAuthentication]" class="cursor-pointer flex gap-x-3">
-            <div class="grow">
-              <h3 class="flex items-center text-sm text-gray-800 font-semibold">
-                <?php esc_html_e('Biometric Authentication', $this->slug); ?>
-                <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
-                  <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                  </svg>
-                  <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
-                    <?php esc_html_e('The Biometric Authentication feature is leveraging the Web Authentication API that allows standard WP login to authenticate registered users with the device\'s built-in authenticators like Touch ID, Face ID and Windows Hello or even using security keys like Yubikey.', $this->slug); ?>
-                  </span>
-                </button>
-              </h3>
-              <p class="mt-0.5 text-xs text-gray-500">
-                <?php esc_html_e('Allow login with Touch ID, Face ID or with other device\'s built-in authenticator.', $this->slug); ?>
-              </p>
-            </div>
-            <div class="flex justify-between items-center">
-              <div class="relative inline-block">
-                <input type="checkbox" id="appCapabilities[advancedWebCapabilities][biometricAuthentication]" name="appCapabilities[advancedWebCapabilities][biometricAuthentication]" class="relative w-11 h-6 !p-px bg-gray-100 !border-transparent !border text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none checked:bg-none checked:text-blue-600 checked:border-blue-600 focus:checked:border-blue-600 before:inline-block before:!size-5 before:bg-white checked:before:bg-white checked:before:m-0 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 text-start" <?php checked(Plugin::getSetting('appCapabilities[advancedWebCapabilities][biometricAuthentication]'), 'on'); ?>>
-              </div>
-            </div>
-          </label>
-        </div>
-        <!-- End Biometric Authentication -->
         <!-- Background Sync -->
         <div id="settingBackgroundSync" class="relative bg-white border border-gray-200 rounded-xl shadow-sm py-2 px-3">
           <label for="appCapabilities[advancedWebCapabilities][backgroundSync]" class="cursor-pointer flex gap-x-3">

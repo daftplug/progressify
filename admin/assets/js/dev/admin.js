@@ -165,16 +165,18 @@ const initializeMenuFolding = () => {
   }
 };
 
-window.addEventListener('DOMContentLoaded', () => {
-  initializeNavigation().then(() => {
-    initializeModules();
-    initializeLoaderRemoving();
-    initializeMenuFolding();
+if (config.daftplugAdminElm.length) {
+  window.addEventListener('DOMContentLoaded', () => {
+    initializeNavigation().then(() => {
+      initializeModules();
+      initializeLoaderRemoving();
+      initializeMenuFolding();
+    });
   });
-});
 
-window.addEventListener('hashchange', () => {
-  initializeNavigation().then(() => {
-    initializeModules();
+  window.addEventListener('hashchange', () => {
+    initializeNavigation().then(() => {
+      initializeModules();
+    });
   });
-});
+}

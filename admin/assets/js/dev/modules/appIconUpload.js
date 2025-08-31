@@ -1,6 +1,8 @@
 import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
 
+const { __ } = wp.i18n;
+
 export function initAppIconUpload() {
   handleAppIconUpload();
 }
@@ -8,7 +10,6 @@ export function initAppIconUpload() {
 export function handleAppIconUpload() {
   const settingAppIcon = config.daftplugAdminElm.find('#settingAppIcon');
   const appIconUploadBtn = settingAppIcon.find('[data-file-upload-btn]');
-  const appIconDeleteBtn = settingAppIcon.find('[data-file-delete-btn]');
   const attachmentPlaceholder = settingAppIcon.find('[data-attachment-placeholder]');
   const attachmentHolder = settingAppIcon.find('[data-attachment-holder]');
   const appIconInput = settingAppIcon.find('[data-file-upload-input]');
@@ -38,12 +39,12 @@ export function handleAppIconUpload() {
         if (response.ok) {
           updateUIState();
         } else {
-          appIconInput.val('');
+          appIconInput.val('').trigger('change');
           updateUIState();
         }
       })
       .catch(() => {
-        appIconInput.val('');
+        appIconInput.val('').trigger('change');
         updateUIState();
         console.error('App icon attachment has a problem');
       });
@@ -61,9 +62,9 @@ export function handleAppIconUpload() {
     }
 
     frame = wp.media({
-      title: 'Select or upload an App Icon',
+      title: __('Select or upload an App Icon', config.jsVars.slug),
       button: {
-        text: 'Select App Icon',
+        text: __('Select App Icon', config.jsVars.slug),
       },
       multiple: false,
     });
@@ -78,18 +79,11 @@ export function handleAppIconUpload() {
       }
 
       const imageSrc = attachment.url;
-      appIconInput.val(attachment.id);
+      appIconInput.val(attachment.id).trigger('change');
       attachmentHolder.attr('src', imageSrc);
       updateUIState();
     });
 
     frame.open();
-  });
-
-  appIconDeleteBtn.on('click', function (e) {
-    e.preventDefault();
-    appIconInput.val('');
-    attachmentHolder.attr('src', '');
-    updateUIState();
   });
 }

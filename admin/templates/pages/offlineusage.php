@@ -77,24 +77,10 @@ if (!defined('ABSPATH')) {
                 </span>
               </button>
             </label>
-            <select name="offlineUsage[cache][customFallbackPage][page]" required="true" data-dp-select='{
-              "placeholder": "<?php esc_html_e('Select Offline Fallback Page', $this->slug); ?>",
-              "hasSearch": true,
-              "size": "xs"
-            }'>
-              <?php foreach ($this->getPostTypes() as $postType) {
-                $posts = get_posts([
-                  'post_type' => $postType,
-                  'posts_per_page' => -1,
-                  'post_status' => 'publish',
-                ]);
-                foreach ($posts as $post): ?>
-              <option value="<?php echo esc_url(get_permalink($post->ID)); ?>" <?php selected(Plugin::getSetting('offlineUsage[cache][customFallbackPage][page]'), get_permalink($post->ID)); ?> data-dp-select-option='{
-                      "description": "<?php echo esc_html(get_post_type_object($postType)->labels->singular_name); ?> - <?php echo esc_url(str_replace(home_url('', 'https'), '', get_permalink($post->ID))); ?>"
-                    }'><?php echo esc_html($post->post_title); ?></option>
-              <?php endforeach;
-              } ?>
-            </select>
+            <div class="relative flex items-center" id="pagePathInput">
+              <div class="shrink-0 pointer-events-none py-2 px-3 shadow-sm rounded-s-lg text-xs text-gray-500 border border-e-0 border-gray-200 bg-gray-50"><?php echo esc_url(Plugin::getHomeUrl(false)); ?></div>
+              <input name="offlineUsage[cache][customFallbackPage][path]" type="text" class="py-2 px-3 block w-full shadow-sm border border-gray-200 rounded-e-lg text-xs placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Path', 'progressify'); ?>" value="<?php echo esc_attr(Plugin::getSetting('offlineUsage[cache][customFallbackPage][path]')); ?>" autocomplete="off" required="true">
+            </div>
           </div>
         </div>
         <!-- End Custom Offline Fallback Page -->

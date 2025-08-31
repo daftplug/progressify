@@ -78,14 +78,6 @@ if (!defined('ABSPATH')) {
             </span>
             <div class="group flex relative items-center justify-center">
               <img class="flex-shrink-0 size-20 rounded-full hidden border border-gray-200 shadow-sm" src="<?php echo esc_url(wp_get_attachment_image_src(Plugin::getSetting('webAppManifest[appIdentity][appIcon]'), 'full')[0] ?? ''); ?>" alt="<?php esc_html_e('App Icon', $this->slug); ?>" data-attachment-holder="" />
-              <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 rounded-full transition cursor-pointer">
-                <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-50">
-                  <svg class="flex-shrink-0 size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 6 6 18"></path>
-                    <path d="M6 6 18 18"></path>
-                  </svg>
-                </span>
-              </span>
             </div>
             <div class="relative grow">
               <div class="flex items-center gap-x-2">
@@ -278,42 +270,26 @@ if (!defined('ABSPATH')) {
         </div>
       </div>
       <div class="xl:col-span-2 ml-11 xl:m-0 space-y-7">
-        <!-- Start Page -->
-        <div id="settingStartPage">
+        <!-- Start Page Path -->
+        <div id="settingStartPagePath">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
-            <?php esc_html_e('Start Page', $this->slug); ?>
+            <?php esc_html_e('Start Page Path', 'progressify'); ?>
             <button type="button" class="group/tooltip relative cursor-help ms-1 flex" tabindex="-1" data-dp-tooltip='{"trigger": "hover", "placement": "top"}'>
               <svg class="inline-block size-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
               </svg>
               <span class="dp-tooltip-content group-data-[shown=true]/tooltip:opacity-100 group-data-[shown=true]/tooltip:visible opacity-0 transition-opacity inline-block absolute w-max invisible max-w-xs sm:max-w-lg z-[99999999999999] text-center py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
-                <?php esc_html_e('Set the initial page that loads when your app is launched from the home screen. In normal cases it should be your homepage.', $this->slug); ?>
+                <?php esc_html_e('Set the initial page path that loads when your app is launched from the home screen. In normal cases it should be your homepage, so just a slash - /.', 'progressify'); ?>
               </span>
             </button>
           </label>
-          <select name="webAppManifest[displaySettings][startPage]" required="true" data-dp-select='{
-            "placeholder": "<?php esc_html_e('Select Start Page', $this->slug); ?>",
-            "hasSearch": true
-          }'>
-            <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?> data-dp-select-option='{
-              "description": "/"
-            }'><?php esc_html_e('Home Page', $this->slug); ?></option>
-            <?php foreach ($this->getPostTypes() as $postType) {
-              $posts = get_posts([
-                'post_type' => $postType,
-                'posts_per_page' => -1,
-                'post_status' => 'publish',
-              ]);
-              foreach ($posts as $post): ?>
-            <option value="<?php echo esc_url(get_permalink($post->ID)); ?>" <?php selected(Plugin::getSetting('webAppManifest[displaySettings][startPage]'), get_permalink($post->ID)); ?> data-dp-select-option='{
-                    "description": "<?php echo esc_html(get_post_type_object($postType)->labels->singular_name); ?> - <?php echo esc_url(str_replace(home_url('', 'https'), '', get_permalink($post->ID))); ?>"
-                  }'><?php echo esc_html($post->post_title); ?></option>
-            <?php endforeach;
-            } ?>
-          </select>
+          <div class="relative flex items-center" id="pagePathInput">
+            <div class="shrink-0 pointer-events-none py-2 px-3 shadow-sm rounded-s-lg text-sm text-gray-500 border border-e-0 border-gray-200 bg-gray-50"><?php echo esc_url(Plugin::getHomeUrl(false)); ?></div>
+            <input name="webAppManifest[displaySettings][startPagePath]" type="text" class="py-2 px-3 block w-full shadow-sm border border-gray-200 rounded-e-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Path', 'progressify'); ?>" value="<?php echo esc_attr(Plugin::getSetting('webAppManifest[displaySettings][startPagePath]')); ?>" autocomplete="off" required="true">
+          </div>
         </div>
-        <!-- End Start Page -->
+        <!-- End Start Page Path -->
         <!-- Display Mode -->
         <div id="settingDisplayMode">
           <label class="inline-flex items-center mb-1.5 text-sm font-medium text-gray-800">
@@ -632,26 +608,10 @@ if (!defined('ABSPATH')) {
                 <input name="webAppManifest[advancedFeatures][appShortcuts][name]" type="text" class="py-2 px-3 block w-full shadow-sm border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Shortcut Name', $this->slug); ?>">
               </div>
               <div class="flex-grow w-1/3">
-                <select name="webAppManifest[advancedFeatures][appShortcuts][url]" required="true" data-dp-select='{
-                  "placeholder": "<?php esc_html_e('Select Shortcut Page', $this->slug); ?>",
-                  "hasSearch": true
-                }'>
-                  <option value="<?php echo esc_url(trailingslashit(strtok(home_url('/', 'https'), '?'))); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), trailingslashit(strtok(home_url('/', 'https'), '?'))); ?> data-dp-select-option='{
-                    "description": "/"
-                  }'><?php esc_html_e('Home Page', $this->slug); ?></option>
-                  <?php foreach ($this->getPostTypes() as $postType) {
-                    $posts = get_posts([
-                      'post_type' => $postType,
-                      'posts_per_page' => -1,
-                      'post_status' => 'publish',
-                    ]);
-                    foreach ($posts as $post): ?>
-                  <option value="<?php echo esc_url(get_permalink($post->ID)); ?>" <?php selected(Plugin::getSetting('webAppManifest[advancedFeatures][appShortcuts][url]'), get_permalink($post->ID)); ?> data-dp-select-option='{
-                          "description": "<?php echo esc_html(get_post_type_object($postType)->labels->singular_name); ?> - <?php echo esc_url(str_replace(home_url('', 'https'), '', get_permalink($post->ID))); ?>"
-                        }'><?php echo esc_html($post->post_title); ?></option>
-                  <?php endforeach;
-                  } ?>
-                </select>
+                <div class="relative flex items-center" id="pagePathInput">
+                  <div class="shrink-0 pointer-events-none py-2 px-3 shadow-sm rounded-s-lg text-sm text-gray-500 border border-e-0 border-gray-200 bg-gray-50"><?php echo esc_url(Plugin::getHomeUrl(false)); ?></div>
+                  <input name="webAppManifest[advancedFeatures][appShortcuts][path]" type="text" class="py-2 px-3 block w-full shadow-sm border border-gray-200 rounded-e-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" placeholder="<?php esc_html_e('Enter Path', 'progressify'); ?>" autocomplete="off" required="true">
+                </div>
               </div>
               <div class="flex-none flex items-center ml-1.5">
                 <button type="button" class="py-1 px-1 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full bg-gray-100 border border-transparent text-gray-600 hover:bg-gray-200 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-200" data-dp-copy-markup-delete="appShortcut">

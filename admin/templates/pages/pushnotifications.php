@@ -13,85 +13,405 @@ if (!defined('ABSPATH')) {
         <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200">
           <div>
             <h2 class="text-lg font-semibold text-gray-800">
-              <?php esc_html_e('Push Notifications Subscribers', $this->slug); ?>
+              <?php esc_html_e('Push Notifications Subscribers', 'progressify'); ?>
             </h2>
             <p class="text-sm text-gray-600">
-              <?php esc_html_e('List of your users who are subscribed for push notifications.', $this->slug); ?>
+              <?php esc_html_e('List of your users who are subscribed for push notifications.', 'progressify'); ?>
             </p>
           </div>
-          <div>
-            <button type="button" id="send-notification-button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="send-notification-popup" data-dp-open-overlay="#send-notification-popup">
-              <svg class="flex-shrink-0 size-4" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-              </svg>
-              <?php esc_html_e('Send Push Notification', $this->slug); ?>
-            </button>
-          </div>
+          <button type="button" id="send-notification-button" class="hidden py-2 px-3 items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="send-notification-popup" data-dp-open-overlay="#send-notification-popup">
+            <svg class="flex-shrink-0 size-4" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <?php esc_html_e('Send Push Notification', 'progressify'); ?>
+          </button>
         </div>
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="hidden bg-gray-50">
             <tr>
               <th scope="col" class="ps-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                    <?php esc_html_e('Country', $this->slug); ?>
+                    <?php esc_html_e('Country', 'progressify'); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="ps-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                    <?php esc_html_e('Operating System', $this->slug); ?>
+                    <?php esc_html_e('Operating System', 'progressify'); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                    <?php esc_html_e('Browser', $this->slug); ?>
+                    <?php esc_html_e('Browser', 'progressify'); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-start">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                    <?php esc_html_e('Date', $this->slug); ?>
+                    <?php esc_html_e('Date', 'progressify'); ?>
                   </span>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3 text-end">
                 <div class="flex items-center gap-x-2">
                   <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                    <?php esc_html_e('Actions', $this->slug); ?>
+                    <?php esc_html_e('Actions', 'progressify'); ?>
                   </span>
                 </div>
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200"></tbody>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block w-7 h-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow">
+                      <p class="bg-gray-200 rounded-full h-2 w-18 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <div class="flex items-center gap-x-1.5">
+                    <span class="inline-block size-5 rounded-full animate-pulse bg-gray-200"></span>
+                    <div class="grow space-y-1">
+                      <p class="bg-gray-200 rounded-full h-2 w-16 animate-pulse"></p>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-2.5">
+                  <p class="w-20 h-2.5 bg-gray-200 rounded-full animate-pulse"></p>
+                </div>
+              </td>
+              <td class="size-px whitespace-nowrap">
+                <div class="px-6 py-1.5">
+                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="19" cy="12" r="1"></circle>
+                    <circle cx="5" cy="12" r="1"></circle>
+                  </svg>
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
-          <div>
+          <div class="relative flex items-center gap-x-4">
             <p class="text-sm text-gray-600">
-              <?php esc_html_e('Total:', $this->slug); ?> <span class="font-semibold text-gray-800" id="totalSubscribers"></span>
+              <?php esc_html_e('Total:', 'progressify'); ?>
+              <span class="font-semibold text-gray-800" id="totalSubscribers">0</span>
             </p>
           </div>
-          <div>
-            <div class="inline-flex gap-x-2" id="pagination">
-              <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]::opacity-50 data-[disabled=true]::pointer-events-none" id="prevButton">
-                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-                <?php esc_html_e('Prev', $this->slug); ?>
-              </button>
-              <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]::opacity-50 data-[disabled=true]::pointer-events-none" id="nextButton">
-                <?php esc_html_e('Next', $this->slug); ?>
-                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </button>
-            </div>
+          <div class="hidden gap-x-2" id="pagination">
+            <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]::opacity-50 data-[disabled=true]::pointer-events-none" id="prevButton">
+              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              <?php esc_html_e('Prev', 'progressify'); ?>
+            </button>
+            <button type="button" class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]::opacity-50 data-[disabled=true]::pointer-events-none" id="nextButton">
+              <?php esc_html_e('Next', 'progressify'); ?>
+              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -844,17 +1164,23 @@ if (!defined('ABSPATH')) {
               </span>
             </button>
           </label>
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="flex flex-shrink-0 justify-center items-center size-20 border-2 border-dotted border-gray-300 text-gray-400 rounded-full" data-attachment-placeholder="">
-              <svg class="flex-shrink-0 size-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <div class="relative flex items-center justify-center border border-dashed border-gray-300 rounded-xl h-40 overflow-hidden has-[[data-attachment-placeholder].hidden]:border-none">
+            <div class="text-center cursor-pointer" data-attachment-placeholder="" data-file-upload-btn="">
+              <svg class="w-14 text-gray-400 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
                 <circle cx="9" cy="9" r="2"></circle>
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
               </svg>
-            </span>
-            <div class="group flex relative items-center justify-center">
-              <img class="flex-shrink-0 size-20 rounded-full hidden" src="" alt="<?php esc_html_e('Notification Image', $this->slug); ?>" data-attachment-holder="" />
-              <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 rounded-full transition cursor-pointer">
+              <div class="mt-1 flex flex-wrap justify-center text-sm leading-6 font-medium text-gray-800">
+                <?php esc_html_e('Click to select an image', 'progressify'); ?>
+              </div>
+              <p class="text-xs text-gray-400">
+                <?php esc_html_e('Select an image to display in your notification.', 'progressify'); ?>
+              </p>
+            </div>
+            <div class="group flex relative items-center justify-center size-full">
+              <img class="flex-shrink-0 size-full object-cover hidden" src="" alt="<?php esc_html_e('Notification Image', 'progressify'); ?>" data-attachment-holder="" />
+              <span data-file-delete-btn="" class="opacity-0 group-hover:opacity-100 flex absolute size-full items-center justify-center bg-black/45 transition cursor-pointer">
                 <span class="size-5 inline-flex justify-center items-center gap-x-1.5 font-medium text-sm rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none focus:outline-none focus:bg-gray-50">
                   <svg class="flex-shrink-0 size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6 6 18"></path>
@@ -863,19 +1189,7 @@ if (!defined('ABSPATH')) {
                 </span>
               </span>
             </div>
-            <div class="relative grow">
-              <div class="flex items-center gap-x-2">
-                <input type="text" name="pushNotifications[notification][image]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" data-file-upload-input="" data-mimes="png,jpg,jpeg,webp" data-min-width="50" data-max-width="" data-min-height="50" data-max-height="">
-                <button data-file-upload-btn="" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none">
-                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="17 8 12 3 7 8"></polyline>
-                    <line x1="12" x2="12" y1="3" y2="15"></line>
-                  </svg>
-                  <?php esc_html_e('Select Image', $this->slug); ?>
-                </button>
-              </div>
-            </div>
+            <input type="text" name="pushNotifications[notification][image]" class="!block absolute pointer-events-none w-px left-0 appearance-none opacity-0" data-file-upload-input="" data-mimes="png,jpg,jpeg,webp" data-min-width="50" data-max-width="" data-min-height="50" data-max-height="">
           </div>
         </div>
         <div>

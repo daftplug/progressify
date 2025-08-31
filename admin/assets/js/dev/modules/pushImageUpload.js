@@ -1,6 +1,8 @@
 import { config } from '../admin.js';
 import { validateAttachment } from '../components/utils.js';
 
+const { __ } = wp.i18n;
+
 export function initPushImageUpload() {
   handlePushImageUpload();
 }
@@ -61,9 +63,9 @@ export function handlePushImageUpload() {
     }
 
     frame = wp.media({
-      title: 'Select or upload a notification image',
+      title: __('Select or upload a notification image', config.jsVars.slug),
       button: {
-        text: 'Select Notification Image',
+        text: __('Select Notification Image', config.jsVars.slug),
       },
       multiple: false,
     });

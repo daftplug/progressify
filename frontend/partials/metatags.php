@@ -12,7 +12,7 @@ $appName = trim(Plugin::getSetting('webAppManifest[appIdentity][appName]'));
 $smallMaskableAppIcon = WebAppManifest::getPwaIconUrl('maskable', 180);
 $fullMaskableAppIcon = WebAppManifest::getPwaIconUrl('maskable');
 $themeColor = Plugin::getSetting('webAppManifest[appearance][themeColor]');
-$startPage = Plugin::getSetting('webAppManifest[displaySettings][startPage]');
+$startPage = Plugin::getHomeUrl(false) . Plugin::getSetting('webAppManifest[displaySettings][startPagePath]');
 $iosStatusBarStyle = Plugin::getSetting('webAppManifest[appearance][iosStatusBarStyle]');
 $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][relatedApplications]');
 ?>
@@ -59,8 +59,7 @@ $relatedApplications = Plugin::getSetting('webAppManifest[advancedFeatures][rela
 <!-- Accent Color -->
 <style>
 :root {
-  accent-color: <?php echo esc_html($themeColor);
-  ?>;
+  accent-color: <?php echo esc_html($themeColor); ?>;
 }
 </style>
 

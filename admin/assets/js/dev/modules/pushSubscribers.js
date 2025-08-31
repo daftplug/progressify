@@ -1,14 +1,16 @@
 import { config } from '../admin.js';
 
+const { __ } = wp.i18n;
+
 class SubscriberManager {
   constructor(container) {
     this.container = container;
     this.thead = container.querySelector('table thead');
     this.tbody = container.querySelector('table tbody');
-    this.prevBtn = container.querySelector('#prevButton');
-    this.nextBtn = container.querySelector('#nextButton');
     this.sendNotificationButton = container.querySelector('#send-notification-button');
     this.pagination = container.querySelector('#pagination');
+    this.prevBtn = container.querySelector('#prevButton');
+    this.nextBtn = container.querySelector('#nextButton');
     this.totalDisplay = container.querySelector('#totalSubscribers');
     this.currentPage = 1;
     this.totalPages = 1;
@@ -38,9 +40,6 @@ class SubscriberManager {
 
   async loadSubscribers(page) {
     try {
-      this.isLoading = true;
-      this.toggleLoadingState(true);
-
       const url = new URL(`${wpApiSettings.root}${config.jsVars.slug}/fetchPushNotificationsSubscribers`);
       url.searchParams.append('page', page);
 
@@ -61,9 +60,6 @@ class SubscriberManager {
       }
     } catch (error) {
       console.error('Error loading subscribers:', error);
-    } finally {
-      this.isLoading = false;
-      this.toggleLoadingState(false);
     }
   }
 
@@ -101,30 +97,34 @@ class SubscriberManager {
               </svg>
               <div class="max-w-sm mx-auto">
                 <p class="mt-2 text-base font-medium text-gray-800">
-                  ${wp.i18n.__('No Subscribers', config.jsVars.slug)}
+                  ${__('No Subscribers', config.jsVars.slug)}
                 </p>
                 <p class="text-sm text-gray-500">
-                  ${wp.i18n.__('There are no push notification subscribers yet.', config.jsVars.slug)}
+                  ${__('There are no push notification subscribers yet.', config.jsVars.slug)}
                 </p>
               </div>
             </div>
           </td>
         </tr>
       `;
+
+      this.totalDisplay.textContent = '0';
       this.thead?.classList.add('hidden');
+      this.pagination?.classList.remove('inline-flex');
+      this.pagination?.classList.add('hidden');
+      this.sendNotificationButton?.classList.remove('inline-flex');
       this.sendNotificationButton?.classList.add('hidden');
-      if (this.totalDisplay) {
-        this.totalDisplay.textContent = '0';
-      }
+
       return;
     }
 
     this.tbody.innerHTML = data.subscribers.map((sub) => this.createSubscriberRow(sub)).join('');
     this.thead?.classList.remove('hidden');
     this.sendNotificationButton?.classList.remove('hidden');
+    this.sendNotificationButton?.classList.add('inline-flex');
 
     if (this.totalDisplay) {
-      this.totalDisplay.textContent = data.total || '0';
+      this.totalDisplay.textContent = data.total.toLocaleString();
     }
   }
 
@@ -181,7 +181,7 @@ class SubscriberManager {
                     <line x1="10" x2="10" y1="11" y2="17"></line>
                     <line x1="14" x2="14" y1="11" y2="17"></line>
                   </svg>
-                  ${wp.i18n.__('Delete', config.jsVars.slug)}
+                  ${__('Delete', config.jsVars.slug)}
                 </button>
               </div>
             </div>
@@ -194,11 +194,15 @@ class SubscriberManager {
   updatePagination(data) {
     this.totalPages = data.pages;
 
-    if (this.pagination) {
-      this.pagination.style.display = data.total === 0 ? 'none' : 'inline-flex';
+    if (this.totalPages > 1) {
+      this.pagination?.classList.remove('hidden');
+      this.pagination?.classList.add('inline-flex');
+    } else {
+      this.pagination?.classList.add('hidden');
+      this.pagination?.classList.remove('inline-flex');
     }
 
-    if (data.total > 0) {
+    if (this.pagination && data.total > 0) {
       this.prevBtn.disabled = this.currentPage === 1;
       this.nextBtn.disabled = this.currentPage === this.totalPages;
       this.prevBtn.dataset.disabled = (this.currentPage === 1).toString();
@@ -208,6 +212,7 @@ class SubscriberManager {
 
   toggleLoadingState(isLoading) {
     this.container.style.opacity = isLoading ? '0.5' : '1';
+    this.container.style.pointerEvents = isLoading ? 'none' : 'auto';
     this.prevBtn.disabled = isLoading;
     this.nextBtn.disabled = isLoading;
   }
@@ -220,9 +225,6 @@ class SubscriberManager {
     const endpoint = button.dataset.endpoint;
 
     switch (action) {
-      case 'copy-endpoint':
-        // Implement copy endpoint functionality
-        break;
       case 'delete':
         await this.removeSubscriber(endpoint);
         break;
@@ -230,9 +232,11 @@ class SubscriberManager {
   }
 
   async removeSubscriber(endpoint) {
-    if (!confirm(wp.i18n.__('Are you sure you want to remove this subscriber?', config.jsVars.slug))) return;
+    if (!confirm(__('Are you sure you want to remove this subscriber?', config.jsVars.slug))) return;
 
     try {
+      this.isLoading = true;
+      this.toggleLoadingState(true);
       const response = await fetch(wpApiSettings.root + config.jsVars.slug + '/removeSubscription', {
         method: 'DELETE',
         headers: {
@@ -248,6 +252,9 @@ class SubscriberManager {
       }
     } catch (error) {
       console.error('Error removing subscriber:', error);
+    } finally {
+      this.isLoading = false;
+      this.toggleLoadingState(false);
     }
   }
 }

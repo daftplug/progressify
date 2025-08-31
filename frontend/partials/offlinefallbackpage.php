@@ -1,6 +1,11 @@
 <?php
 
-use DaftPlug\Progressify\Plugin; ?>
+use DaftPlug\Progressify\Plugin;
+
+if (!defined('ABSPATH')) {
+  exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,20 +13,41 @@ use DaftPlug\Progressify\Plugin; ?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php esc_html_e("You're Offline", Plugin::$slug); ?></title>
+  <title><?php esc_html_e("You're Offline", 'progressify'); ?></title>
   <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f3f4f6;
+    background-image: url("<?php echo esc_url('https://s0.wp.com/mshots/v1/' . urlencode(Plugin::getHomeUrl() . Plugin::getSetting('webAppManifest[displaySettings][startPagePath]')) . '?vpw=1280&vph=800&format=png'); ?>");
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .offline-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    pointer-events: all;
+    z-index: 99999999999999999999;
+  }
+
+  .offline-fallback_card {
     text-align: center;
     padding: 1.5rem;
     margin: 0 1rem;
@@ -83,26 +109,23 @@ use DaftPlug\Progressify\Plugin; ?>
 
 <body>
   <div class="offline-fallback">
-    <div class="offline-fallback_title"><?php esc_html_e("You're Offline", Plugin::$slug); ?></div>
-    <div class="offline-fallback_message">
-      <?php esc_html_e('It looks like you lost your internet connection. Please check your connection to reconnect.', Plugin::$slug); ?>
+    <div class="offline-fallback_card">
+      <div class="offline-fallback_title"><?php esc_html_e("You're Offline", 'progressify'); ?></div>
+      <div class="offline-fallback_message">
+        <?php esc_html_e('It looks like you lost your internet connection. Please check your connection to reconnect.', 'progressify'); ?>
+      </div>
+      <button type="button" onclick="window.location.reload()" class="offline-fallback_button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
+          <path d="m2 22 3-3" />
+          <path d="M7.5 13.5 10 11" />
+          <path d="M10.5 16.5 13 14" />
+          <path d="m18 3-4 4h6l-4 4" />
+        </svg>
+        <?php esc_html_e('Reconnect', 'progressify'); ?>
+      </button>
     </div>
-    <button type="button" onclick="window.location.reload()" class="offline-fallback_button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
-        <path d="m2 22 3-3" />
-        <path d="M7.5 13.5 10 11" />
-        <path d="M10.5 16.5 13 14" />
-        <path d="m18 3-4 4h6l-4 4" />
-      </svg>
-      <?php esc_html_e('Reconnect', Plugin::$slug); ?>
-    </button>
   </div>
-  <script>
-  window.addEventListener('online', function() {
-    window.location.reload();
-  });
-  </script>
 </body>
 
 </html>
