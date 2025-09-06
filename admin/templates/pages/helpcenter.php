@@ -1,121 +1,9 @@
 <?php
-use DaftPlug\Progressify\Plugin;
-
 if (!defined('ABSPATH')) {
   exit();
-}
-?>
+} ?>
 
-<div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
-  <!-- FAQ -->
-  <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
-    <div class="p-5 pb-3">
-      <h2 class="flex items-center text-lg font-semibold text-gray-800">
-        <?php esc_html_e('Frequently Asked Questions', $this->slug); ?>
-      </h2>
-      <p class="mt-1 text-sm text-gray-600">
-        <?php esc_html_e('Reading the FAQ is useful when you\'re experiencing a common issue related to the plugin. If the FAQ didn\'t help and you have a hard time resolving the problem, please submit a ticket.', $this->slug); ?>
-      </p>
-    </div>
-    <div class="mt-4 flex flex-col h-full pb-5 px-5">
-      <div class="group/accordion *:transition-all bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg">
-        <button class="group-focus-within/accordion:text-blue-600 text-base inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-expanded="false">
-          <svg class="group-focus-within/accordion:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <svg class="group-focus-within/accordion:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-          </svg>
-          <?php esc_html_e('What are Progressive Web Apps?', $this->slug); ?>
-        </button>
-        <div class="max-h-0 group-focus-within/accordion:max-h-[1000px] w-full overflow-hidden transition-[height] duration-500" role="region">
-          <div class="pb-4 px-5">
-            <p class="text-sm text-gray-800">
-              <?php esc_html_e('Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. They combine the broad reach of web apps with the rich capabilities of platform-specific apps to enhance the user experience.', $this->slug); ?>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="group/accordion *:transition-all bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg">
-        <button class="group-focus-within/accordion:text-blue-600 text-base inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-expanded="false">
-          <svg class="group-focus-within/accordion:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <svg class="group-focus-within/accordion:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-          </svg>
-          <?php esc_html_e('Why do installation prompts sometimes not appear?', $this->slug); ?>
-        </button>
-        <div class="max-h-0 group-focus-within/accordion:max-h-[1000px] w-full overflow-hidden transition-[height] duration-500" role="region">
-          <div class="pb-4 px-5">
-            <p class="text-sm text-gray-800">
-              <?php esc_html_e('Installation prompts appear dynamically based on your settings and specific conditions. Some prompts are shown only to tablet and smartphone users, while others also appear on desktops. Some can be dismissed, some auto-dismiss, and others are persistent. An installation overlay will not appear if the feature is disabled, the user has already seen and dismissed it while the timeout hasn\'t expired, or if the prompts are set to show only to returning visitors, and the user is visiting for the first time. If a prompt isn’t showing, check that it is enabled in the settings and that the display conditions are met.', $this->slug); ?>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="group/accordion *:transition-all bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg">
-        <button class="group-focus-within/accordion:text-blue-600 text-base inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-expanded="false">
-          <svg class="group-focus-within/accordion:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <svg class="group-focus-within/accordion:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-          </svg>
-          <?php esc_html_e('Does Push Notifications work on iOS?', $this->slug); ?>
-        </button>
-        <div class="max-h-0 group-focus-within/accordion:max-h-[1000px] w-full overflow-hidden transition-[height] duration-500" role="region">
-          <div class="pb-4 px-5">
-            <p class="text-sm text-gray-800">
-              <?php esc_html_e('Yes, iOS Safari is supporting web based push notifications, but only if the website is added to the home screen, so if installed as a PWA. Push notifications are as well supported on macOS devices (MacBook and iMac).', $this->slug); ?>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="group/accordion *:transition-all bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg">
-        <button class="group-focus-within/accordion:text-blue-600 text-base inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-expanded="false">
-          <svg class="group-focus-within/accordion:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <svg class="group-focus-within/accordion:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-          </svg>
-          <?php esc_html_e('Is the plugin compatible with all themes and plugins?', $this->slug); ?>
-        </button>
-        <div class="max-h-0 group-focus-within/accordion:max-h-[1000px] w-full overflow-hidden transition-[height] duration-500" role="region">
-          <div class="pb-4 px-5">
-            <p class="text-sm text-gray-800">
-              <?php esc_html_e('PWAs designed by Progressify is fully compatible with all kinds of WordPress configuration, including plugins and themes. Please note that you should disable all other plugins that deliver the same functionality as Progressify in order to avoid compatibility issues.', $this->slug); ?>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="group/accordion *:transition-all bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg">
-        <button class="group-focus-within/accordion:text-blue-600 text-base inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none" aria-expanded="false">
-          <svg class="group-focus-within/accordion:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <svg class="group-focus-within/accordion:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-          </svg>
-          <?php esc_html_e('How can I update the plugin?', $this->slug); ?>
-        </button>
-        <div class="max-h-0 group-focus-within/accordion:max-h-[1000px] w-full overflow-hidden transition-[height] duration-500" role="region">
-          <div class="pb-4 px-5">
-            <p class="text-sm text-gray-800">
-              <?php echo wp_kses_post(sprintf(esc_html__('There are two ways to update the plugin to the newer version: Using a WordPress built-in update system which will automatically check for updates and show you a notification on an %1$s when there will be an update available or manually download latest version of plugin from %2$s and re-install it.', $this->slug), '<a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium" href="' . esc_url(admin_url('/plugins.php')) . '">' . esc_html__('admin plugins page', $this->slug) . '</a>', '<a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium" href="https://codecanyon.net/downloads" target="_blank">' . esc_html__('CodeCanyon', $this->slug) . '</a>')); ?>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End FAQ -->
+<div class="relative max-w-screen-md mx-auto">
   <!-- Support Request -->
   <div class="h-full flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
     <div class="p-5 pb-3">
@@ -123,7 +11,7 @@ if (!defined('ABSPATH')) {
         <?php esc_html_e('Support Request', $this->slug); ?>
       </h2>
       <p class="mt-1 text-sm text-gray-600">
-        <?php esc_html_e('Before submitting a ticket, please make sure that the FAQ didn\'t help, you\'re using the latest version of the plugin and there are no javascript errors on your website.', $this->slug); ?>
+        <?php esc_html_e('Before submitting a ticket, please make sure that you\'re using the latest version of the plugin.', $this->slug); ?>
       </p>
     </div>
     <div class="mt-4 flex flex-col h-full pb-5 px-5">

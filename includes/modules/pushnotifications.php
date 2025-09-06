@@ -538,6 +538,17 @@ class PushNotifications
     $inserted = $this->wpdb->insert($this->tableName, $data, $formats);
 
     if ($inserted) {
+      // Send welcome notification
+      if (Plugin::getSetting('pushNotifications[automation][feature]') == 'on' && Plugin::getSetting('pushNotifications[automation][welcome]') == 'on') {
+        $notificationData = [
+          'icon' => esc_url_raw(WebAppManifest::getPwaIconUrl('rounded')),
+          'title' => __('Welcome to Notifications!', $this->slug),
+          'body' => __('Thank you for subscribing. You’ll now receive important updates from us.', $this->slug),
+          'data' => ['url' => Plugin::getHomeUrl()],
+        ];
+        $this->sendPushNotification($endpoint, $notificationData);
+      }
+
       return new \WP_REST_Response(
         [
           'status' => 'success',
@@ -625,6 +636,9 @@ class PushNotifications
         // Changed to true for string pattern matching
         case $to === 'everyone':
           $subscribers = $this->wpdb->get_results("SELECT * FROM {$this->tableName}", ARRAY_A);
+          break;
+        case is_string($to) && filter_var($to, FILTER_VALIDATE_URL):
+          $subscribers = $this->wpdb->get_results($this->wpdb->prepare("SELECT * FROM {$this->tableName} WHERE endpoint = %s", $to), ARRAY_A);
           break;
         case is_numeric($to):
           $subscribers = $this->wpdb->get_results($this->wpdb->prepare("SELECT * FROM {$this->tableName} WHERE wp_user_id = %d", $to), ARRAY_A);

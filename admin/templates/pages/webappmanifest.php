@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
   exit();
 }
 ?>
-<form name="settingsForm" spellcheck="false" autocomplete="off" class="flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+<form name="settingsForm" spellcheck="false" autocomplete="off" class="max-w-screen-xl flex flex-col p-5 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
   <!-- App Identity -->
   <fieldset class="py-7 sm:py-10 first:pt-0 last-of-type:pb-0 border-t border-gray-200 first:border-t-0" id="subsectionAppIdentity">
     <div class="xl:grid xl:grid-cols-3 xl:gap-14 max-xl:space-y-7">

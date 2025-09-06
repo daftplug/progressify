@@ -113,7 +113,7 @@ class Admin
       $this->dependencies[] = 'wp-i18n';
       $this->dependencies[] = 'jquery';
 
-      // load paypal script
+      // load PayPal script
       wp_enqueue_script("{$this->slug}-paypal", 'https://www.paypal.com/sdk/js?client-id=AedsKFiD_n0HAGYux72v5vOMTbkqZDzFCV7xQplja4egRmRafd87q2H2xM-eEumHWlFL4OlQCCJuEn5k&enable-funding=venmo&currency=USD', $this->dependencies, null, true);
       $this->dependencies[] = "{$this->slug}-paypal";
 
@@ -169,6 +169,7 @@ class Admin
           'iconUrl' => $this->licenseKey ? WebAppManifest::getPwaIconUrl('maskable', 180) : '',
           'slug' => $this->slug,
           'settings' => $this->settings,
+          'pluginDirUrl' => $this->pluginDirUrl,
         ])
       );
     }

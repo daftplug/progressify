@@ -273,6 +273,7 @@ class Plugin
         ],
         'automation' => [
           'feature' => 'off',
+          'welcome' => 'off',
           'wordpress' => [
             'newContent' => [
               'feature' => 'off',
@@ -408,35 +409,78 @@ class Plugin
     $is_read = in_array($action, ['validate', 'update'], true);
 
     // One bucket per (license, slug, domain, envato item)
-    $bucket_key =
-      'daftplug_license_bucket_' .
-      md5(
-        implode('|', [
-          (string) $licenseKey,
-          (string) self::$slug,
-          (string) self::$domain, // ensure your client normalization matches server
-          (string) self::$envatoItemId,
-        ])
-      );
+    $bucket_key = 'daftplug_license_bucket_' . md5(implode('|', [(string) $licenseKey, (string) self::$slug, (string) self::$domain, (string) self::$envatoItemId]));
 
-    $cache_ttl = HOUR_IN_SECONDS * 6;
+    $cache_ttl = HOUR_IN_SECONDS * 24;
 
-    // For reads, serve from bucket if we already have that action cached
+    // In-process memoization to prevent multiple remote calls in one PHP request
+    static $memo = [];
+    if ($is_read && isset($memo[$bucket_key][$action])) {
+      return $memo[$bucket_key][$action];
+    }
+
+    // -------- Rate-limit check (transient -> option fallback) --------
+    if ($is_read) {
+      $rate_limit_cache_key = $bucket_key . '_rate_limit';
+      $rate_limit_error = get_transient($rate_limit_cache_key);
+
+      if ($rate_limit_error === false) {
+        // Option fallback (non-autoloaded), stored as ['value'=>mixed,'expires'=>ts]
+        $opt_key_rl = 'daftplug_cache_' . md5($rate_limit_cache_key);
+        $row = get_option($opt_key_rl, null);
+        if (is_array($row) && isset($row['expires'])) {
+          if (time() < (int) $row['expires']) {
+            $rate_limit_error = $row['value'];
+            // Rehydrate transient best-effort
+            $remaining = max(1, (int) $row['expires'] - time());
+            set_transient($rate_limit_cache_key, $rate_limit_error, $remaining);
+          } else {
+            delete_option($opt_key_rl); // expired
+          }
+        }
+      }
+
+      if ($rate_limit_error !== false) {
+        if (!isset($memo[$bucket_key])) {
+          $memo[$bucket_key] = [];
+        }
+        $memo[$bucket_key][$action] = $rate_limit_error;
+        return $rate_limit_error;
+      }
+    }
+
+    // -------- Bucket read (transient -> option fallback) --------
     $bucket = $is_read ? get_transient($bucket_key) : null;
 
-    // If it has expired, get_transient() returns false. Proactively delete to clean DB rows.
     if ($is_read && $bucket === false) {
-      delete_transient($bucket_key);
+      // Option fallback for the bucket
+      $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
+      $row = get_option($opt_key_bucket, null);
+      if (is_array($row) && isset($row['expires'])) {
+        if (time() < (int) $row['expires']) {
+          $bucket = $row['value'];
+          // Rehydrate transient best-effort
+          $remaining = max(1, (int) $row['expires'] - time());
+          set_transient($bucket_key, $bucket, $remaining);
+        } else {
+          delete_option($opt_key_bucket);
+          // Proactively delete transient row (no-op if ext object cache)
+          delete_transient($bucket_key);
+        }
+      } else {
+        delete_transient($bucket_key); // clean DB rows if any
+      }
     }
 
     if ($is_read && is_array($bucket) && array_key_exists($action, $bucket)) {
+      if (!isset($memo[$bucket_key])) {
+        $memo[$bucket_key] = [];
+      }
+      $memo[$bucket_key][$action] = $bucket[$action];
       return $bucket[$action];
     }
 
-    if ($is_read && is_array($bucket) && array_key_exists($action, $bucket)) {
-      return $bucket[$action];
-    }
-
+    // -------- Remote call --------
     $common_args = [
       'timeout' => 5,
       'sslverify' => true,
@@ -455,7 +499,7 @@ class Plugin
     ];
 
     if ($is_read) {
-      // GET for cacheable reads
+      // GET for cacheable reads (server-side cache friendly)
       $url = add_query_arg($payload, self::$licenseEndpoint);
       $response = wp_remote_get($url, $common_args);
     } else {
@@ -468,44 +512,110 @@ class Plugin
     }
 
     if (is_wp_error($response)) {
+      if (!isset($memo[$bucket_key])) {
+        $memo[$bucket_key] = [];
+      }
+      $memo[$bucket_key][$action] = $response;
       return $response;
+    }
+
+    $response_code = wp_remote_retrieve_response_code($response);
+    $retry_after_hdr = wp_remote_retrieve_header($response, 'retry-after');
+    $retry_after_sec = is_numeric($retry_after_hdr) ? (int) $retry_after_hdr : (($t = strtotime($retry_after_hdr)) ? max(0, $t - time()) : 0);
+
+    // -------- 429 Too Many Requests -> backoff with DB-backed fallback --------
+    if ($response_code === 429) {
+      // Default 2h; respect Retry-After if present; add small jitter to avoid herds
+      $ttl = $retry_after_sec ?: HOUR_IN_SECONDS * 2;
+      $ttl += wp_rand(0, 60);
+
+      $rate_limit_error = new \WP_Error('rate_limit_exceeded', 'License server rate limit exceeded. Please try again later.');
+
+      if ($is_read) {
+        $rate_limit_cache_key = $bucket_key . '_rate_limit';
+        set_transient($rate_limit_cache_key, $rate_limit_error, $ttl);
+
+        // Option fallback write (non-autoloaded)
+        $opt_key_rl = 'daftplug_cache_' . md5($rate_limit_cache_key);
+        $payload_rl = ['value' => $rate_limit_error, 'expires' => time() + $ttl];
+        if (get_option($opt_key_rl, null) === null) {
+          add_option($opt_key_rl, $payload_rl, '', 'no');
+        } else {
+          update_option($opt_key_rl, $payload_rl, false);
+        }
+      }
+
+      if (!isset($memo[$bucket_key])) {
+        $memo[$bucket_key] = [];
+      }
+      $memo[$bucket_key][$action] = $rate_limit_error;
+      return $rate_limit_error;
     }
 
     $body = wp_remote_retrieve_body($response);
     $result = json_decode($body);
 
-    if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
-      return new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
+    if (json_last_error() !== JSON_ERROR_NONE) {
+      $err = new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
+      if (!isset($memo[$bucket_key])) {
+        $memo[$bucket_key] = [];
+      }
+      $memo[$bucket_key][$action] = $err;
+      return $err;
     }
 
-    // Helper: detect "expired" license message from your license API
+    // Detect "expired" license message from your license API
     $is_expired_license = is_object($result) && isset($result->valid, $result->error) && $result->valid === false && stripos((string) $result->error, 'expired') !== false;
 
+    // -------- Cache writes with option fallback --------
     if ($is_read) {
       if ($is_expired_license) {
-        // Do NOT cache expired license; also clear any old bucket so it disappears
+        // Do NOT cache expired license; clear any old bucket
         delete_transient($bucket_key);
+        delete_option('daftplug_cache_' . md5($bucket_key));
       } else {
-        // Cache (valid or invalid-but-not-expired) for the TTL
         if (!is_array($bucket)) {
           $bucket = [];
         }
         $bucket[$action] = $result;
+
+        // Write transient
         set_transient($bucket_key, $bucket, $cache_ttl);
+
+        // Option fallback write (non-autoloaded)
+        $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
+        $payload_bucket = ['value' => $bucket, 'expires' => time() + $cache_ttl];
+        if (get_option($opt_key_bucket, null) === null) {
+          add_option($opt_key_bucket, $payload_bucket, '', 'no');
+        } else {
+          update_option($opt_key_bucket, $payload_bucket, false);
+        }
       }
     } else {
       // Mutations affect cache
       if ($action === 'activate') {
         if (!empty($result->valid)) {
-          // Seed a "valid" validate result so reads are instant
-          set_transient($bucket_key, ['validate' => $result], $cache_ttl);
+          $seed = ['validate' => $result];
+          set_transient($bucket_key, $seed, $cache_ttl);
+
+          $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
+          $payload_bucket = ['value' => $seed, 'expires' => time() + $cache_ttl];
+          if (get_option($opt_key_bucket, null) === null) {
+            add_option($opt_key_bucket, $payload_bucket, '', 'no');
+          } else {
+            update_option($opt_key_bucket, $payload_bucket, false);
+          }
         }
       } elseif ($action === 'deactivate') {
-        // Clear cache so next read reflects deactivation immediately
         delete_transient($bucket_key);
+        delete_option('daftplug_cache_' . md5($bucket_key));
       }
     }
 
+    if (!isset($memo[$bucket_key])) {
+      $memo[$bucket_key] = [];
+    }
+    $memo[$bucket_key][$action] = $result;
     return $result;
   }
 

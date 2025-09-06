@@ -3,7 +3,15 @@ if (!defined('ABSPATH')) {
   exit();
 } ?>
 
-<div id="changelogContainer" class="flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+<div id="changelogContainer" class="max-w-screen-xl flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.3.8" data-date="September 6, 2025" data-title="Welcome Notification and Performance Fixes" data-description="The update includes addition of Welcome Notification automation and fixes for performance issues.">
+    <ul data-icon="star" data-label="Feature Updates">
+      <li>Added welcome notification automation.</li>
+    </ul>
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Fixed license check performance problem.</li>
+    </ul>
+  </div>
   <div data-version="v1.3.7" data-date="August 31, 2025" data-title="Minor Fixes and Improvements" data-description="The update includes mainly the fixes and improvements across all areas.">
     <ul data-icon="checkmark" data-label="Fixes and Improvements">
       <li>Fixed screenshot not rendering correctly in certain cases.</li>
