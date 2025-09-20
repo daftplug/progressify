@@ -553,7 +553,7 @@
         return `
           <div class="inline-flex items-center">
             ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ""}
-            <div class="text-gray-800 truncate">${selectedTitle}</div>
+            <div class="text-gray-800 truncate max-w-60">${selectedTitle}</div>
             ${index < displayedItems.length - 1 ? '<span class="text-gray-800 me-1">,</span>' : ""}
           </div>
         `;
@@ -576,7 +576,7 @@
         toggle.html(`
         <div class="flex items-center">
           ${selectedIcon ? `<div class="me-1.5 flex shrink-0">${selectedIcon}</div>` : ""}
-          <div class="text-gray-800 truncate">${selectedTitle}</div>
+          <div class="text-gray-800 truncate max-w-96">${selectedTitle}</div>
         </div>
       `);
       }

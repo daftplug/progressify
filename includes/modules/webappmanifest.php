@@ -48,7 +48,6 @@ class WebAppManifest
 
     add_action('rest_api_init', [$this, 'registerRoutes']);
     add_action('parse_request', [$this, 'renderManifest']);
-    add_action('parse_request', [$this, 'renderWebAppOriginAssociation']);
     add_action('wp_head', [$this, 'renderMetaTagsInHeader'], 0);
   }
 
@@ -200,44 +199,6 @@ class WebAppManifest
     return true;
   }
 
-  public function renderWebAppOriginAssociation()
-  {
-    global $wp;
-    global $wp_query;
-
-    if (!$wp_query->is_main_query()) {
-      return;
-    }
-
-    if ($wp->request === '.well-known/web-app-origin-association') {
-      $wp_query->set('.well-known/web-app-origin-association', 1);
-    }
-
-    if ($wp_query->get('.well-known/web-app-origin-association')) {
-      nocache_headers();
-      header('X-Robots-Tag: noindex, follow');
-      header('Content-Type: application/json; charset=utf-8');
-
-      $webAppOriginAssociation = [
-        'web_apps' => [
-          [
-            'manifest' => self::getManifestUrl(false),
-            'details' => [
-              'paths' => ['/*'],
-            ],
-          ],
-          [
-            'web_app_identity' => Plugin::getDomainFromUrl(Plugin::getHomeUrl()),
-          ],
-        ],
-      ];
-
-      wp_send_json($webAppOriginAssociation, 200, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-      exit();
-    }
-  }
-
   public function renderManifest()
   {
     global $wp;
@@ -281,8 +242,7 @@ class WebAppManifest
       'dir' => is_rtl() ? 'rtl' : 'ltr',
       'name' => $manifestName,
       'scope' => $scope,
-      'start_url' => add_query_arg('utm_source', 'pwa', $manifestStartUrlPath),
-      'scope_extensions' => [['origin' => 'https://*.' . Plugin::getDomainFromUrl(Plugin::getHomeUrl())]],
+      'start_url' => add_query_arg('utm_source', 'pwa', $manifestStartUrlPath !== '' ? $manifestStartUrlPath : '/'),
       'short_name' => $manifestShortName,
       'description' => $manifestDescription,
       'display' => Plugin::getSetting('webAppManifest[displaySettings][displayMode]'),

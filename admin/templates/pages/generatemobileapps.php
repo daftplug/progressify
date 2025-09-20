@@ -1,7 +1,10 @@
 <?php
+use DaftPlug\Progressify\Plugin;
+
 if (!defined('ABSPATH')) {
   exit();
-} ?>
+}
+?>
 <div class="relative">
   <div class="max-w-3xl mx-auto text-center">
     <h2 class="text-2xl font-bold md:text-3xl md:leading-tight"><?php esc_html_e('Generate Mobile Apps', $this->slug); ?></h2>
@@ -13,9 +16,9 @@ if (!defined('ABSPATH')) {
         <div class="text-xl font-semibold text-gray-800"><?php esc_html_e('Android', 'progressify'); ?></div>
         <div class="flex items-center space-x-4">
           <div class="relative inline-block shrink-0">
-            <img class="size-10" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile)); ?>" alt="Android" />
+            <img class="size-10" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', Plugin::$pluginFile)); ?>" alt="Android" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-1 shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile)); ?>" alt="Play Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', Plugin::$pluginFile)); ?>" alt="Play Store" />
             </div>
           </div>
         </div>
@@ -30,11 +33,11 @@ if (!defined('ABSPATH')) {
       <div class="mt-5 text-sm text-gray-700">
         <?php esc_html_e('Perfect for bringing your web app to Android devices through the Google Play Store.', 'progressify'); ?>
       </div>
-      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="silver" data-product-name="Android App" data-price="26">
+      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="silver" data-package-name="Android App" data-price="26">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 bg-white flex flex-col gap-y-2.5">
+      <ul class="-mt-8 pt-6 z-[9999999999] bg-white flex flex-col gap-y-2.5">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
@@ -74,15 +77,15 @@ if (!defined('ABSPATH')) {
         <div class="text-xl font-semibold text-gray-800"><?php esc_html_e('Android & iOS', 'progressify'); ?></div>
         <div class="flex items-center space-x-4">
           <div class="relative inline-block shrink-0">
-            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile)); ?>" alt="Android" />
+            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', Plugin::$pluginFile)); ?>" alt="Android" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-1 shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile)); ?>" alt="Play Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', Plugin::$pluginFile)); ?>" alt="Play Store" />
             </div>
           </div>
           <div class="relative inline-block shrink-0">
-            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile)); ?>" alt="Mac" />
+            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', Plugin::$pluginFile)); ?>" alt="Mac" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-1 shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/app-store.png', $this->pluginFile)); ?>" alt="App Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/app-store.png', Plugin::$pluginFile)); ?>" alt="App Store" />
             </div>
           </div>
         </div>
@@ -108,11 +111,11 @@ if (!defined('ABSPATH')) {
       <div class="mt-5 text-sm text-gray-700">
         <?php esc_html_e('Ideal for reaching both Android and iOS users via the Google Play Store and Apple App Store.', 'progressify'); ?>
       </div>
-      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="blue" data-product-name="Android and iOS Apps" data-price="45">
+      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="blue" data-package-name="Android and iOS Apps" data-price="45">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 bg-white flex flex-col gap-y-2.5">
+      <ul class="-mt-8 pt-6 z-[9999999999] bg-white flex flex-col gap-y-2.5">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>
@@ -152,21 +155,21 @@ if (!defined('ABSPATH')) {
         <div class="text-xl font-semibold text-gray-800"><?php esc_html_e('Mobile & Desktop', 'progressify'); ?></div>
         <div class="flex items-center space-x-4">
           <div class="relative inline-block shrink-0">
-            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', $this->pluginFile)); ?>" alt="Android" />
+            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/android.png', Plugin::$pluginFile)); ?>" alt="Android" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-1 shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', $this->pluginFile)); ?>" alt="Play Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/play-store.png', Plugin::$pluginFile)); ?>" alt="Play Store" />
             </div>
           </div>
           <div class="relative inline-block shrink-0">
-            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', $this->pluginFile)); ?>" alt="Mac" />
+            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/mac.png', Plugin::$pluginFile)); ?>" alt="Mac" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-1 shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/app-store.png', $this->pluginFile)); ?>" alt="App Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/app-store.png', Plugin::$pluginFile)); ?>" alt="App Store" />
             </div>
           </div>
           <div class="relative inline-block shrink-0">
-            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/windows.png', $this->pluginFile)); ?>" alt="Windows" />
+            <img class="size-11" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/operating-systems/windows.png', Plugin::$pluginFile)); ?>" alt="Windows" />
             <div class="absolute -bottom-1 -right-1 size-5 inline-block border border-gray-200 bg-white p-[3px] shrink-0 rounded-full">
-              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/microsoft-store.png', $this->pluginFile)); ?>" alt="Microsoft Store" />
+              <img class="size-full" src="<?php echo esc_url(plugins_url('admin/assets/media/icons/app-stores/microsoft-store.png', Plugin::$pluginFile)); ?>" alt="Microsoft Store" />
             </div>
           </div>
         </div>
@@ -181,11 +184,11 @@ if (!defined('ABSPATH')) {
       <div class="mt-5 text-sm text-gray-700">
         <?php esc_html_e('Built for PWA enthusiasts who want to extend reach across Android, iOS, and Windows devices.', 'progressify'); ?>
       </div>
-      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="gold" data-product-name="Android, iOS and Windows Apps" data-price="78">
+      <div class="paypalButtonsContainer mt-5 w-full" data-button-color="gold" data-package-name="Android, iOS and Windows Apps" data-price="78">
         <div class="paypalButtons"></div>
         <div class="paypalResponse"></div>
       </div>
-      <ul class="mt-5 bg-white flex flex-col gap-y-2.5">
+      <ul class="-mt-8 pt-6 z-[9999999999] bg-white flex flex-col gap-y-2.5">
         <li class="flex space-x-2 items-center m-0">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 6 9 17l-5-5"></path>

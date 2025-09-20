@@ -4,6 +4,12 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <div id="changelogContainer" class="max-w-screen-xl flex flex-col p-6 sm:py-8 bg-white border border-gray-200 shadow-sm rounded-xl">
+  <div data-version="v1.3.9" data-date="September 20, 2025" data-title="Performance Improvements and Adjustments" data-description="The update includes performance improvements and adjustments to default options.">
+    <ul data-icon="checkmark" data-label="Fixes and Improvements">
+      <li>Adjusted plugin default options</li>
+      <li>Implemented final solution for license check performance problem.</li>
+    </ul>
+  </div>
   <div data-version="v1.3.8" data-date="September 6, 2025" data-title="Welcome Notification and Performance Fixes" data-description="The update includes addition of Welcome Notification automation and fixes for performance issues.">
     <ul data-icon="star" data-label="Feature Updates">
       <li>Added welcome notification automation.</li>

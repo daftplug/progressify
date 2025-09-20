@@ -34,6 +34,7 @@ class Plugin
   public $capability;
   public $defaultSettings;
   public static $settings;
+  public static $licenseCronHook;
 
   public $Admin;
   public $Frontend;
@@ -62,16 +63,17 @@ class Plugin
     $this->menuTitle = $config['menu_title'];
     self::$licenseEndpoint = $config['license_endpoint'];
     self::$envatoItemId = $config['envato_item_id'];
-    self::$domain = self::getDomainFromUrl(trailingslashit(strtok(home_url('/', 'https'), '?')));
+    self::$domain = self::getDomainFromUrl(self::getHomeUrl());
     self::$licenseKey = get_option("{$this->optionName}_license_key");
     $this->capability = 'manage_options';
     self::$settings = $config['settings'];
+    self::$licenseCronHook = self::$pluginOptionName . '_validate_license';
 
     $autoload_path = self::$pluginDirPath . 'vendor/autoload.php';
     if (file_exists($autoload_path)) {
       require_once $autoload_path;
     } else {
-      error_log('DaftPlug Progressify: Autoload file not found.');
+      error_log('Progressify: Autoload file not found.');
     }
 
     // Init default settings
@@ -189,9 +191,9 @@ class Plugin
           'supportedDevices' => [],
         ],
         'pageLoader' => [
-          'feature' => 'on',
+          'feature' => 'off',
           'type' => 'default',
-          'supportedDevices' => ['smartphone', 'tablet', 'desktop'],
+          'supportedDevices' => [],
         ],
         'inactiveBlur' => [
           'feature' => 'off',
@@ -314,13 +316,6 @@ class Plugin
     $this->Admin = new Admin($config);
 
     if (self::$licenseKey && !isset($_GET['noprogressify'])) {
-      // Validate License
-      $licenseResponse = Plugin::daftplugProcessLicense(self::$licenseKey, 'validate');
-      if (!is_wp_error($licenseResponse) && !$licenseResponse->valid) {
-        delete_option("{$this->optionName}_license_key");
-      }
-
-      // Init Modules
       require_once self::$pluginDirPath . 'includes/modules/dashboard.php';
       $this->Dashboard = new Dashboard($config);
       require_once self::$pluginDirPath . 'includes/modules/webappmanifest.php';
@@ -337,6 +332,22 @@ class Plugin
       // Init Frontend
       require_once self::$pluginDirPath . 'frontend/frontend.php';
       $this->Frontend = new Frontend($config);
+    }
+
+    // Schedule daily license validation if not already scheduled
+    if (!wp_next_scheduled("{$this->optionName}_validate_license")) {
+      wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', "{$this->optionName}_validate_license");
+    }
+
+    // Schedule daily license validation if not already scheduled
+    if (!wp_next_scheduled(self::$licenseCronHook)) {
+      // Use time() (immediate scheduling window) or keep + HOUR_IN_SECONDS if you prefer delay
+      wp_schedule_event(time(), 'daily', self::$licenseCronHook);
+    }
+
+    // Register callback only once
+    if (!has_action(self::$licenseCronHook, [self::class, 'cronValidateLicense'])) {
+      add_action(self::$licenseCronHook, [self::class, 'cronValidateLicense']);
     }
 
     add_filter("plugin_action_links_{$this->pluginBasename}", [$this, 'addPluginActionLinks']);
@@ -386,14 +397,28 @@ class Plugin
   public function onDeactivate()
   {
     flush_rewrite_rules();
+    // Clear scheduled license validation event
+    $hook = self::$licenseCronHook ?: self::$pluginOptionName . '_validate_license';
+    $timestamp = wp_next_scheduled($hook);
+    if ($timestamp) {
+      wp_unschedule_event($timestamp, $hook);
+    }
   }
 
   public static function onUninstall()
   {
     $optionName = self::$pluginOptionName;
-    self::daftplugProcessLicense(self::$licenseKey, 'deactivate');
+    if (!empty(self::$licenseKey)) {
+      self::daftplugProcessLicense(self::$licenseKey, 'deactivate');
+    }
     delete_option("{$optionName}_license_key");
     delete_option("{$optionName}_settings");
+
+    $hook = self::$licenseCronHook ?: $optionName . '_validate_license';
+    $timestamp = wp_next_scheduled($hook);
+    if ($timestamp) {
+      wp_unschedule_event($timestamp, $hook);
+    }
   }
 
   public function addPluginActionLinks($links)
@@ -403,86 +428,25 @@ class Plugin
     return $links;
   }
 
+  /**
+   * Process license actions (validate, update, activate, deactivate).
+   * NOTE: All previous transient / option caching & rate limiting was removed.
+   * This function now performs a direct remote request each call. Invoke it manually
+   * from scheduled events or explicit admin actions to avoid overhead on every page load.
+   *
+   * @param string $licenseKey
+   * @param string $action One of: validate|update|activate|deactivate
+   * @return object|\WP_Error Decoded JSON (stdClass) on success or WP_Error on failure.
+   */
   public static function daftplugProcessLicense($licenseKey, $action)
   {
     $action = sanitize_key($action);
-    $is_read = in_array($action, ['validate', 'update'], true);
-
-    // One bucket per (license, slug, domain, envato item)
-    $bucket_key = 'daftplug_license_bucket_' . md5(implode('|', [(string) $licenseKey, (string) self::$slug, (string) self::$domain, (string) self::$envatoItemId]));
-
-    $cache_ttl = HOUR_IN_SECONDS * 24;
-
-    // In-process memoization to prevent multiple remote calls in one PHP request
-    static $memo = [];
-    if ($is_read && isset($memo[$bucket_key][$action])) {
-      return $memo[$bucket_key][$action];
+    if (!in_array($action, ['validate', 'update', 'activate', 'deactivate'], true)) {
+      return new \WP_Error('invalid_action', 'Invalid license action supplied.');
     }
 
-    // -------- Rate-limit check (transient -> option fallback) --------
-    if ($is_read) {
-      $rate_limit_cache_key = $bucket_key . '_rate_limit';
-      $rate_limit_error = get_transient($rate_limit_cache_key);
-
-      if ($rate_limit_error === false) {
-        // Option fallback (non-autoloaded), stored as ['value'=>mixed,'expires'=>ts]
-        $opt_key_rl = 'daftplug_cache_' . md5($rate_limit_cache_key);
-        $row = get_option($opt_key_rl, null);
-        if (is_array($row) && isset($row['expires'])) {
-          if (time() < (int) $row['expires']) {
-            $rate_limit_error = $row['value'];
-            // Rehydrate transient best-effort
-            $remaining = max(1, (int) $row['expires'] - time());
-            set_transient($rate_limit_cache_key, $rate_limit_error, $remaining);
-          } else {
-            delete_option($opt_key_rl); // expired
-          }
-        }
-      }
-
-      if ($rate_limit_error !== false) {
-        if (!isset($memo[$bucket_key])) {
-          $memo[$bucket_key] = [];
-        }
-        $memo[$bucket_key][$action] = $rate_limit_error;
-        return $rate_limit_error;
-      }
-    }
-
-    // -------- Bucket read (transient -> option fallback) --------
-    $bucket = $is_read ? get_transient($bucket_key) : null;
-
-    if ($is_read && $bucket === false) {
-      // Option fallback for the bucket
-      $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
-      $row = get_option($opt_key_bucket, null);
-      if (is_array($row) && isset($row['expires'])) {
-        if (time() < (int) $row['expires']) {
-          $bucket = $row['value'];
-          // Rehydrate transient best-effort
-          $remaining = max(1, (int) $row['expires'] - time());
-          set_transient($bucket_key, $bucket, $remaining);
-        } else {
-          delete_option($opt_key_bucket);
-          // Proactively delete transient row (no-op if ext object cache)
-          delete_transient($bucket_key);
-        }
-      } else {
-        delete_transient($bucket_key); // clean DB rows if any
-      }
-    }
-
-    if ($is_read && is_array($bucket) && array_key_exists($action, $bucket)) {
-      if (!isset($memo[$bucket_key])) {
-        $memo[$bucket_key] = [];
-      }
-      $memo[$bucket_key][$action] = $bucket[$action];
-      return $bucket[$action];
-    }
-
-    // -------- Remote call --------
     $common_args = [
-      'timeout' => 5,
+      'timeout' => 8,
       'sslverify' => true,
       'headers' => [
         'Accept' => 'application/json',
@@ -491,19 +455,17 @@ class Plugin
     ];
 
     $payload = [
-      'license_key' => $licenseKey,
+      'license_key' => (string) $licenseKey,
       'action' => $action,
-      'slug' => self::$slug,
-      'domain' => self::$domain,
-      'envato_item_id' => self::$envatoItemId,
+      'slug' => (string) self::$slug,
+      'domain' => (string) self::$domain,
+      'envato_item_id' => (string) self::$envatoItemId,
     ];
 
-    if ($is_read) {
-      // GET for cacheable reads (server-side cache friendly)
+    if (in_array($action, ['validate', 'update'], true)) {
       $url = add_query_arg($payload, self::$licenseEndpoint);
       $response = wp_remote_get($url, $common_args);
     } else {
-      // POST for mutations
       $args = $common_args;
       $args['headers']['Content-Type'] = 'application/json';
       $args['body'] = wp_json_encode($payload);
@@ -512,111 +474,35 @@ class Plugin
     }
 
     if (is_wp_error($response)) {
-      if (!isset($memo[$bucket_key])) {
-        $memo[$bucket_key] = [];
-      }
-      $memo[$bucket_key][$action] = $response;
       return $response;
     }
 
-    $response_code = wp_remote_retrieve_response_code($response);
-    $retry_after_hdr = wp_remote_retrieve_header($response, 'retry-after');
-    $retry_after_sec = is_numeric($retry_after_hdr) ? (int) $retry_after_hdr : (($t = strtotime($retry_after_hdr)) ? max(0, $t - time()) : 0);
-
-    // -------- 429 Too Many Requests -> backoff with DB-backed fallback --------
-    if ($response_code === 429) {
-      // Default 2h; respect Retry-After if present; add small jitter to avoid herds
-      $ttl = $retry_after_sec ?: HOUR_IN_SECONDS * 2;
-      $ttl += wp_rand(0, 60);
-
-      $rate_limit_error = new \WP_Error('rate_limit_exceeded', 'License server rate limit exceeded. Please try again later.');
-
-      if ($is_read) {
-        $rate_limit_cache_key = $bucket_key . '_rate_limit';
-        set_transient($rate_limit_cache_key, $rate_limit_error, $ttl);
-
-        // Option fallback write (non-autoloaded)
-        $opt_key_rl = 'daftplug_cache_' . md5($rate_limit_cache_key);
-        $payload_rl = ['value' => $rate_limit_error, 'expires' => time() + $ttl];
-        if (get_option($opt_key_rl, null) === null) {
-          add_option($opt_key_rl, $payload_rl, '', 'no');
-        } else {
-          update_option($opt_key_rl, $payload_rl, false);
-        }
-      }
-
-      if (!isset($memo[$bucket_key])) {
-        $memo[$bucket_key] = [];
-      }
-      $memo[$bucket_key][$action] = $rate_limit_error;
-      return $rate_limit_error;
-    }
-
+    $code = wp_remote_retrieve_response_code($response);
     $body = wp_remote_retrieve_body($response);
-    $result = json_decode($body);
+    $decoded = json_decode($body);
 
     if (json_last_error() !== JSON_ERROR_NONE) {
-      $err = new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
-      if (!isset($memo[$bucket_key])) {
-        $memo[$bucket_key] = [];
-      }
-      $memo[$bucket_key][$action] = $err;
-      return $err;
+      return new \WP_Error('json_decode_error', 'Failed to decode license server response: ' . json_last_error_msg());
     }
 
-    // Detect "expired" license message from your license API
-    $is_expired_license = is_object($result) && isset($result->valid, $result->error) && $result->valid === false && stripos((string) $result->error, 'expired') !== false;
+    return $decoded;
+  }
 
-    // -------- Cache writes with option fallback --------
-    if ($is_read) {
-      if ($is_expired_license) {
-        // Do NOT cache expired license; clear any old bucket
-        delete_transient($bucket_key);
-        delete_option('daftplug_cache_' . md5($bucket_key));
-      } else {
-        if (!is_array($bucket)) {
-          $bucket = [];
-        }
-        $bucket[$action] = $result;
-
-        // Write transient
-        set_transient($bucket_key, $bucket, $cache_ttl);
-
-        // Option fallback write (non-autoloaded)
-        $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
-        $payload_bucket = ['value' => $bucket, 'expires' => time() + $cache_ttl];
-        if (get_option($opt_key_bucket, null) === null) {
-          add_option($opt_key_bucket, $payload_bucket, '', 'no');
-        } else {
-          update_option($opt_key_bucket, $payload_bucket, false);
-        }
-      }
-    } else {
-      // Mutations affect cache
-      if ($action === 'activate') {
-        if (!empty($result->valid)) {
-          $seed = ['validate' => $result];
-          set_transient($bucket_key, $seed, $cache_ttl);
-
-          $opt_key_bucket = 'daftplug_cache_' . md5($bucket_key);
-          $payload_bucket = ['value' => $seed, 'expires' => time() + $cache_ttl];
-          if (get_option($opt_key_bucket, null) === null) {
-            add_option($opt_key_bucket, $payload_bucket, '', 'no');
-          } else {
-            update_option($opt_key_bucket, $payload_bucket, false);
-          }
-        }
-      } elseif ($action === 'deactivate') {
-        delete_transient($bucket_key);
-        delete_option('daftplug_cache_' . md5($bucket_key));
-      }
+  // Cron handler to validate license periodically. Add filters/notices elsewhere if needed.
+  public static function cronValidateLicense()
+  {
+    if (empty(self::$licenseKey)) {
+      return;
     }
-
-    if (!isset($memo[$bucket_key])) {
-      $memo[$bucket_key] = [];
+    $resp = self::daftplugProcessLicense(self::$licenseKey, 'validate');
+    if (is_wp_error($resp)) {
+      error_log('Progressify license validate error: ' . $resp->get_error_message());
+      return;
     }
-    $memo[$bucket_key][$action] = $result;
-    return $result;
+    if (isset($resp->valid) && !$resp->valid) {
+      delete_option(self::$pluginOptionName . '_license_key');
+      self::$licenseKey = null;
+    }
   }
 
   public static function getSetting($key)
@@ -807,299 +693,28 @@ class Plugin
 
   public static function getDomainFromUrl($url)
   {
-    // Handle empty or invalid URLs
-    if (empty($url)) {
-      return false;
+    $url = trim((string) $url);
+    if ($url === '') {
+      return '';
+    }
+    // Strip protocol
+    $url = preg_replace('#^\s*https?://#i', '', $url);
+    // Strip path/query/fragment by parsing as host
+    $host = wp_parse_url('http://' . $url, PHP_URL_HOST); // ensure host context
+    $host = $host ?: $url;
+    // Lowercase, strip leading www., trailing dot
+    $host = strtolower($host);
+    $host = preg_replace('#^www\.#i', '', $host);
+    $host = rtrim($host, '.');
+    // Normalize IDN to ASCII if possible
+    if (function_exists('idn_to_ascii')) {
+      $idn = idn_to_ascii($host, 0, defined('INTL_IDNA_VARIANT_UTS46') ? INTL_IDNA_VARIANT_UTS46 : 0);
+      if ($idn) {
+        $host = $idn;
+      }
     }
 
-    // Add scheme if missing to make wp_parse_url work correctly
-    if (!preg_match('~^(?:f|ht)tps?://~i', $url)) {
-      $url = 'https://' . $url;
-    }
-
-    // Parse the URL
-    $pieces = wp_parse_url($url);
-
-    // If no host is found, return false
-    if (empty($pieces['host'])) {
-      return false;
-    }
-
-    $host = $pieces['host'];
-
-    // Remove 'www.' if present
-    $host = preg_replace('/^www\./i', '', $host);
-
-    // Split the host into parts
-    $parts = explode('.', $host);
-
-    // If we have less than 2 parts, return false
-    if (count($parts) < 2) {
-      return false;
-    }
-
-    // Handle special cases for ccTLDs
-    $ccTLDs = [
-      'ac',
-      'ad',
-      'ae',
-      'af',
-      'ag',
-      'ai',
-      'al',
-      'am',
-      'ao',
-      'aq',
-      'ar',
-      'as',
-      'at',
-      'au',
-      'aw',
-      'ax',
-      'az',
-      'ba',
-      'bb',
-      'bd',
-      'be',
-      'bf',
-      'bg',
-      'bh',
-      'bi',
-      'bj',
-      'bm',
-      'bn',
-      'bo',
-      'bq',
-      'br',
-      'bs',
-      'bt',
-      'bv',
-      'bw',
-      'by',
-      'bz',
-      'ca',
-      'cc',
-      'cd',
-      'cf',
-      'cg',
-      'ch',
-      'ci',
-      'ck',
-      'cl',
-      'cm',
-      'cn',
-      'co',
-      'cr',
-      'cu',
-      'cv',
-      'cw',
-      'cx',
-      'cy',
-      'cz',
-      'de',
-      'dj',
-      'dk',
-      'dm',
-      'do',
-      'dz',
-      'ec',
-      'ee',
-      'eg',
-      'eh',
-      'er',
-      'es',
-      'et',
-      'eu',
-      'fi',
-      'fj',
-      'fk',
-      'fm',
-      'fo',
-      'fr',
-      'ga',
-      'gb',
-      'gd',
-      'ge',
-      'gf',
-      'gg',
-      'gh',
-      'gi',
-      'gl',
-      'gm',
-      'gn',
-      'gp',
-      'gq',
-      'gr',
-      'gs',
-      'gt',
-      'gu',
-      'gw',
-      'gy',
-      'hk',
-      'hm',
-      'hn',
-      'hr',
-      'ht',
-      'hu',
-      'id',
-      'ie',
-      'il',
-      'im',
-      'in',
-      'io',
-      'iq',
-      'ir',
-      'is',
-      'it',
-      'je',
-      'jm',
-      'jo',
-      'jp',
-      'ke',
-      'kg',
-      'kh',
-      'ki',
-      'km',
-      'kn',
-      'kp',
-      'kr',
-      'kw',
-      'ky',
-      'kz',
-      'la',
-      'lb',
-      'lc',
-      'li',
-      'lk',
-      'lr',
-      'ls',
-      'lt',
-      'lu',
-      'lv',
-      'ly',
-      'ma',
-      'mc',
-      'md',
-      'me',
-      'mf',
-      'mg',
-      'mh',
-      'mk',
-      'ml',
-      'mm',
-      'mn',
-      'mo',
-      'mp',
-      'mq',
-      'mr',
-      'ms',
-      'mt',
-      'mu',
-      'mv',
-      'mw',
-      'mx',
-      'my',
-      'mz',
-      'na',
-      'nc',
-      'ne',
-      'nf',
-      'ng',
-      'ni',
-      'nl',
-      'no',
-      'np',
-      'nr',
-      'nu',
-      'nz',
-      'om',
-      'pa',
-      'pe',
-      'pf',
-      'pg',
-      'ph',
-      'pk',
-      'pl',
-      'pm',
-      'pn',
-      'pr',
-      'ps',
-      'pt',
-      'pw',
-      'py',
-      'qa',
-      're',
-      'ro',
-      'rs',
-      'ru',
-      'rw',
-      'sa',
-      'sb',
-      'sc',
-      'sd',
-      'se',
-      'sg',
-      'sh',
-      'si',
-      'sj',
-      'sk',
-      'sl',
-      'sm',
-      'sn',
-      'so',
-      'sr',
-      'ss',
-      'st',
-      'sv',
-      'sx',
-      'sy',
-      'sz',
-      'tc',
-      'td',
-      'tf',
-      'tg',
-      'th',
-      'tj',
-      'tk',
-      'tl',
-      'tm',
-      'tn',
-      'to',
-      'tr',
-      'tt',
-      'tv',
-      'tw',
-      'tz',
-      'ua',
-      'ug',
-      'uk',
-      'um',
-      'us',
-      'uy',
-      'uz',
-      'va',
-      'vc',
-      've',
-      'vg',
-      'vi',
-      'vn',
-      'vu',
-      'wf',
-      'ws',
-      'ye',
-      'yt',
-      'za',
-      'zm',
-      'zw',
-    ];
-
-    // If the last part is a ccTLD and we have at least 3 parts, take the last 3 parts
-    if (in_array(end($parts), $ccTLDs) && count($parts) >= 3) {
-      return $parts[count($parts) - 3] . '.' . $parts[count($parts) - 2] . '.' . $parts[count($parts) - 1];
-    }
-
-    // For all other cases, take the last two parts
-    return $parts[count($parts) - 2] . '.' . $parts[count($parts) - 1];
+    return $host;
   }
 
   private static function parseNestedKey($key)
